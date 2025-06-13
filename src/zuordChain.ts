@@ -1,3 +1,3 @@
-export type ZuordChain<U extends object[]> = U extends [infer Head, ...infer Rest]
-    ? Head & ZuordChain<Rest extends object[] ? Rest : []>
+export type ZuordContent<U extends object[]> = U extends [infer Head, ...infer Rest]
+    ? Head & ZuordContent<Rest extends object[] ? Rest : []>
     : unknown;
