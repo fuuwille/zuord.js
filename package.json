@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/k4yr2/zuord/issues"
   },
-  "homepage": "https://github.com/k4yr2/zuord#readme"
+  "homepage": "https://github.com/k4yr2/zuord#readme",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
 }
