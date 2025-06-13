@@ -6,9 +6,38 @@ export class zuord {
 
     //
 
-    public static content<U extends object[]>(...rest: U): ZuordContent<U> {
-        const mergedRest = Object.assign({}, ...rest);
-        return mergedRest as ZuordContent<U>;
+    public static content<U extends object[]>(...content: U): ZuordContent<U> {
+        if (content.length === 0) {
+            return {} as ZuordContent<U>;
+        }
+
+        return zuord.#deepMerge(...content) as ZuordContent<U>;
+    }
+
+    static #isObject(item: any): item is object {
+        return item !== null && typeof item === 'object' && !Array.isArray(item);
+    }
+
+    static #deepMerge<T extends object[]>(...objects: T): T[number] {
+        const result: any = {};
+
+        for (const obj of objects) {
+            if (!zuord.#isObject(obj)) continue;
+
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    const value = obj[key];
+
+                    if (zuord.#isObject(value) && zuord.#isObject(result[key])) {
+                    result[key] = zuord.#deepMerge(result[key], value);
+                    } else {
+                    result[key] = value;
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
 
