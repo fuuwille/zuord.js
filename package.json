@@ -4,7 +4,8 @@
   "description": "Type-safe deep merge utility for producing merged content from multiple objects with full TypeScript support.",
   "main": "dist/zuord.js",
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",
