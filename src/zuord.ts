@@ -6,7 +6,7 @@ export class zuord {
 
     //
 
-    public static assign<U extends object[]>(...rest: U): ZuordContent<U> {
+    public static content<U extends object[]>(...rest: U): ZuordContent<U> {
         const mergedRest = Object.assign({}, ...rest);
         return mergedRest as ZuordContent<U>;
     }
