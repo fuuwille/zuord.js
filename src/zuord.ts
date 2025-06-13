@@ -26,12 +26,12 @@ export class zuord {
 
             for (const key in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    const value = obj[key];
-
+                    const value = (obj as Record<string, any>)[key];
+                    
                     if (zuord.#isObject(value) && zuord.#isObject(result[key])) {
-                    result[key] = zuord.#deepMerge(result[key], value);
+                        result[key] = zuord.#deepMerge(result[key], value);
                     } else {
-                    result[key] = value;
+                        result[key] = value;
                     }
                 }
             }
