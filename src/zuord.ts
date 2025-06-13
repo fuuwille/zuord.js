@@ -1,4 +1,4 @@
-import { ZuordContent } from "./zuordChain";
+import { ZuordContent } from "./zuordContent";
 
 export class zuord {
     private constructor() {
