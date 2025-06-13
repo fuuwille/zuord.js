@@ -1,4 +1,5 @@
 import { ZuordContent } from "./zuordContent";
+import { ZuordPattern } from "./zuordPattern";
 
 export class zuord {
     private constructor() {
@@ -13,6 +14,23 @@ export class zuord {
 
         return zuord.#deepMerge(...content) as ZuordContent<U>;
     }
+
+    public static pattern<T extends object>(obj: T) : ZuordPattern<T> {
+        if (!zuord.#isObject(obj)) {
+            return true as ZuordPattern<T>;
+        }
+
+        const result: any = {};
+        for (const key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                result[key] = zuord.pattern((obj as any)[key]);
+            }
+        }
+
+        return result;
+    }
+
+    //
 
     static #isObject(item: any): item is object {
         return item !== null && typeof item === 'object' && !Array.isArray(item);
