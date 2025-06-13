@@ -17,7 +17,7 @@ export class zuord {
 
     public static pattern<T extends object>(obj: T) : ZuordPattern<T> {
         if (!zuord.#isObject(obj)) {
-            return true as ZuordPattern<T>;
+            throw new TypeError("Input must be an object.");
         }
 
         const result: any = {};
