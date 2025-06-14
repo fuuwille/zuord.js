@@ -1,5 +1,5 @@
-import IsObject from "./utils/isObject";
-
-export type ZuordPattern<T> = IsObject<T> extends true
-    ? { [K in keyof T]: ZuordPattern<T[K]> }
-    : true;
+export type ZuordPattern<T> = 
+    T extends Array<unknown> ? true
+    : T extends object
+        ? { [K in keyof T]: ZuordPattern<T[K]> }
+        : true;
