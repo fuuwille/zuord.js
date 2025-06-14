@@ -34,7 +34,7 @@ export class zuord {
 
     public static pick<T extends object, P>(obj: T, pattern: P): ZuordPick<T, P> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(pattern)) {
-            return obj;
+            return obj as ZuordPick<T, P>;
         }
 
         const result: any = {};
