@@ -1,13 +1,8 @@
-import DeepPartial from "./utils/deepPartial";
-import IsObject from "./utils/isObject";
-import { ZuordPattern } from "./zuordPattern";
-
-export type ZuordPick<T, U extends DeepPartial<ZuordPattern<T>>> = {
-    [K in keyof T & keyof U as
-        U[K] extends undefined
-        ? never
-        : K
-    ]: IsObject<T[K]> extends true
-        ? ZuordPick<T[K], NonNullable<U[K]>>
-        : T[K];
+export type ZuordPick<T, U> = {
+    [K in keyof T & keyof U as U[K] extends undefined ? never : K]:
+        U[K] extends true
+            ? T[K]
+            : U[K] extends object
+                ? ZuordPick<T[K], NonNullable<U[K]>>
+                : T[K];
 };
