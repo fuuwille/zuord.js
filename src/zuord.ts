@@ -1,3 +1,4 @@
+import { isObject } from "./utils/isObject";
 import { ZuordContent } from "./zuordContent";
 import { ZuordOmit, ZuordOmitOf } from "./zuordOmit";
 import { ZuordPattern } from "./zuordPattern";
@@ -18,13 +19,13 @@ export class zuord {
         const result: any = {};
 
         for (const obj of content) {
-            if (!zuord.#isObject(obj)) continue;
+            if (!isObject(obj)) continue;
 
             for (const key in obj) {
                 if (Object.prototype.hasOwnProperty.call(obj, key)) {
                     const value = (obj as Record<string, any>)[key];
                     
-                    if (zuord.#isObject(value) && zuord.#isObject(result[key])) {
+                    if (isObject(value) && isObject(result[key])) {
                         result[key] = zuord.content(result[key], value);
                     } else {
                         result[key] = value;
@@ -36,7 +37,7 @@ export class zuord {
         return result;    }
 
     public static pattern<T extends object>(obj: T) : ZuordPattern<T> {
-        if (!zuord.#isObject(obj)) {
+        if (!isObject(obj)) {
             return true as ZuordPattern<T>;
         }
 
@@ -51,7 +52,7 @@ export class zuord {
     }
 
     public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordPick<T, S> {
-        if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
+        if (!isObject(obj) || !isObject(schema)) {
             return obj as ZuordPick<T, S>;
         }
 
@@ -64,7 +65,7 @@ export class zuord {
 
                 if (patVal === true) {
                     result[key] = objVal;
-                } else if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
+                } else if (isObject(patVal) && isObject(objVal)) {
                     result[key] = zuord.pick(objVal, patVal);
                 }
             }
@@ -74,7 +75,7 @@ export class zuord {
     }
 
     public static omit<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordOmit<T, S> {
-        if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
+        if (!isObject(obj) || !isObject(schema)) {
             return obj as ZuordOmit<T, S>;
         }
 
@@ -91,9 +92,9 @@ export class zuord {
                     continue;
                 }
 
-                if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
+                if (isObject(patVal) && isObject(objVal)) {
                     const sub = zuord.omit(objVal, patVal);
-                    if (zuord.#isObject(sub) && Object.keys(sub).length > 0) {
+                    if (isObject(sub) && Object.keys(sub).length > 0) {
                         result[key] = sub;
                     }
                 } else {
@@ -109,9 +110,6 @@ export class zuord {
 
     //
 
-    static #isObject(item: any): item is object {
-        return item !== null && typeof item === 'object' && !Array.isArray(item);
-    }
 }
 
 export default zuord;
