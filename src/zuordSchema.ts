@@ -1,4 +1,4 @@
-import ZuordNormalize from "./zuordNormalize";
+import { ZuordNormalize } from "./zuordNormalize";
 
 export type ZuordSchema<T> = ZuordNormalize<ZuordSchemaRaw<T>>
 
