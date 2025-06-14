@@ -57,9 +57,9 @@ export class zuord {
         return result;
     }
 
-    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S & ZuordSchema> {
+    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
-            return obj as ZuordOmit<T, S & ZuordSchema>;
+            return obj as ZuordOmit<T, S>;
         }
 
         const result: any = {};
