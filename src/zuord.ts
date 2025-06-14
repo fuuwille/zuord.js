@@ -57,21 +57,20 @@ export class zuord {
         return result;
     }
 
-    public static omit<T extends object, P>(obj: T, pattern: P): ZuordOmit<T, P> {
-        if (!zuord.#isObject(obj) || !zuord.#isObject(pattern)) {
-            return obj as ZuordOmit<T, P>;
+    public static omit<T extends object, S extends ZuordSchemaOf<T> & ZuordSchema>(obj: T, schema: S): ZuordOmit<T, S> {
+        if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
+            return obj as ZuordOmit<T, S>;
         }
 
         const result: any = {};
 
-        for (const key in obj) {
-            if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+        for (const key in schema) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                const patVal = schema[key];
+                const objVal = (obj as any)[key];
 
-            const objVal = obj[key];
-            const patVal = (pattern as any)[key];
-
-            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
-                if (patVal === true) {
+                if (Object.prototype.hasOwnProperty.call(schema, key)) {
+                    if (patVal === true) {
                     // Omit et
                     continue;
                 }
@@ -89,6 +88,7 @@ export class zuord {
             } else {
                 result[key] = objVal;
             }
+        }
         }
 
         return result;
