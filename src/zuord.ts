@@ -1,5 +1,5 @@
 import { isObject } from "./utils/isObject";
-import { ZuordContent } from "./zuordContent";
+import { ZuordMerge } from "./zuordMerge";
 import { ZuordOmit } from "./zuordOmit";
 import { ZuordPick } from "./zuordPick";
 import { ZuordSchema } from "./zuordSchema";
@@ -10,9 +10,9 @@ export class zuord {
 
     //
 
-    public static content<U extends object[]>(...content: U): ZuordContent<U> {
+    public static merge<U extends object[]>(...content: U): ZuordMerge<U> {
         if (content.length === 0) {
-            return {} as ZuordContent<U>;
+            return {} as ZuordMerge<U>;
         }
 
         const result: any = {};
@@ -25,7 +25,7 @@ export class zuord {
                     const value = (obj as Record<string, any>)[key];
                     
                     if (isObject(value) && isObject(result[key])) {
-                        result[key] = zuord.content(result[key], value);
+                        result[key] = zuord.merge(result[key], value);
                     } else {
                         result[key] = value;
                     }
@@ -101,7 +101,7 @@ export default zuord;
 
 //
 
-export type { ZuordContent } from "./zuordContent";
+export type { ZuordMerge as ZuordContent } from "./zuordMerge";
 export type { ZuordPick, ZuordPickOf } from "./zuordPick";
 export type { ZuordOmit, ZuordOmitOf } from "./zuordOmit";
 export type { ZuordSchema, IsZuordSchema } from "./zuordSchema";
