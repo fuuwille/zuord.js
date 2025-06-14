@@ -1,0 +1,1 @@
+export type IsArray<T> = T extends readonly any[] ? true : false;
