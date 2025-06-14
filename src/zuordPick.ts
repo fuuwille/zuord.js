@@ -10,3 +10,5 @@ export type ZuordPick<T, U> = {
                     : never
                 : never;
 };
+
+export type ZuordPickOf<T, U> = ZuordPick<T, ZuordSchema<U>>;
