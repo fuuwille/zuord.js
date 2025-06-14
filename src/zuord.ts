@@ -10,30 +10,26 @@ export class zuord {
 
     //
 
-    public static merge<U extends object[]>(...content: U): ZuordMerge<U> {
+    public static merge<U extends object[]>(...content: U) {
         if (content.length === 0) {
             return {} as ZuordMerge<U>;
         }
 
-        const result: any = {};
+        const result: Record<string, unknown> = {};
 
         for (const obj of content) {
             if (!isObject(obj)) continue;
 
-            for (const key in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    const value = (obj as Record<string, any>)[key];
-                    
-                    if (isObject(value) && isObject(result[key])) {
-                        result[key] = zuord.merge(result[key], value);
-                    } else {
-                        result[key] = value;
-                    }
+            for (const [key, value] of Object.entries(obj)) {
+                if (isObject(value) && isObject(result[key])) {
+                    result[key] = zuord.merge(result[key] as object, value as object);
+                } else {
+                    result[key] = value;
                 }
             }
         }
 
-        return result;    
+        return result as ZuordMerge<U>;
     }
 
     public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordPick<T, S> {
