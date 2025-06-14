@@ -1,10 +1,9 @@
 import { IsNever } from "./utils/isNever";
+import { isObject } from "./utils/isObject";
 import { ZuordNormalize } from "./zuordNormalize";
 import { ZuordSchema } from "./zuordSchema";
 
 export type ZuordOmit<T, U> = ZuordNormalize<ZuordOmitRaw<T, U>>;
-
-//
 
 export type ZuordOmitRaw<T, U> = {
     [K in keyof T as
@@ -30,3 +29,39 @@ export type ZuordOmitRaw<T, U> = {
 };
 
 export type ZuordOmitOf<T, U> = ZuordOmit<T, ZuordSchema<U>>;
+
+//
+
+export function zuordOmit<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
+    if (!isObject(obj)) {
+        throw new TypeError("omit: First argument must be a valid object.");
+    }
+    if (!isObject(pattern)) {
+        throw new TypeError("omit: Second argument must be a valid schema (object).");
+    }
+
+    const result : any = {};
+
+    for (const key of Object.keys(obj)) {
+        const objVal = (obj as any)[key];
+        const patVal = (pattern as any)[key];
+
+        if (Object.prototype.hasOwnProperty.call(pattern, key)) {
+            if (patVal === true) {
+                continue;
+            }
+            if (isObject(patVal) && isObject(objVal)) {
+                const sub = zuordOmit(objVal, patVal);
+                if (isObject(sub) && Object.keys(sub).length > 0) {
+                    result[key] = sub;
+                }
+            } else {
+                result[key] = objVal;
+            }
+        } else {
+            result[key] = objVal;
+        }
+    }
+
+    return result as ZuordOmit<T, P>;
+}

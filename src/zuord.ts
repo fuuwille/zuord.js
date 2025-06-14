@@ -7,45 +7,6 @@ import { ZuordSchema } from "./zuordSchema";
 export class zuord {
     private constructor() {
     }
-
-    //
-
-    public static omit<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
-        if (!isObject(obj)) {
-            throw new TypeError("omit: First argument must be a valid object.");
-        }
-        if (!isObject(pattern)) {
-            throw new TypeError("omit: Second argument must be a valid schema (object).");
-        }
-
-        const result : any = {};
-
-        for (const key of Object.keys(obj)) {
-            const objVal = (obj as any)[key];
-            const patVal = (pattern as any)[key];
-
-            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
-                if (patVal === true) {
-                    continue;
-                }
-                if (isObject(patVal) && isObject(objVal)) {
-                    const sub = zuord.omit(objVal, patVal);
-                    if (isObject(sub) && Object.keys(sub).length > 0) {
-                        result[key] = sub;
-                    }
-                } else {
-                    result[key] = objVal;
-                }
-            } else {
-                result[key] = objVal;
-            }
-        }
-
-        return result as ZuordOmit<T, P>;
-    }
-
-    //
-
 }
 
 export default zuord;
