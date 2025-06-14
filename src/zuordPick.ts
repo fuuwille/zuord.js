@@ -1,9 +1,6 @@
+import DeepPartial from "./utils/deepPartial";
 import IsObject from "./utils/isObject";
 import { ZuordPattern } from "./zuordPattern";
-
-type DeepPartial<T> = {
-  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
-};
 
 export type ZuordPick<T, U extends DeepPartial<ZuordPattern<T>>> = {
     [K in keyof T & keyof U as
