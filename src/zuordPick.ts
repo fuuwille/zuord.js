@@ -6,7 +6,7 @@ export type ZuordPick<T, U> = {
             ? T[K]
             : U[K] extends object
                 ? T[K] extends object
-                    ? ZuordPick<T[K], U[K] & ZuordSchema<T[K]>>
+                    ? ZuordPick<T[K], U[K]>
                     : never
                 : never;
 };
