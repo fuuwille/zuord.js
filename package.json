@@ -5,7 +5,7 @@
   "main": "dist/zuord.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npx tsc -p tsconfig.dist.json",
+    "build": "npx tsup",
     "prepare": "npm run clean && npm run build"
   },
   "repository": {
@@ -22,7 +22,6 @@
   "homepage": "https://github.com/k4yr2/zuord#readme",
   "devDependencies": {
     "rimraf": "^6.0.1",
-    "tsup": "^8.5.0",
     "vitest": "^3.2.3"
   }
 }
