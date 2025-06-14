@@ -70,8 +70,8 @@ export class zuord {
             const objVal = obj[key];
             const patVal = (schema as any)[key] as ZuordSchemaOf<typeof objVal>;
 
-                if (Object.prototype.hasOwnProperty.call(schema, key)) {
-                    if (patVal === true) {
+            if (Object.prototype.hasOwnProperty.call(schema, key)) {
+                if (patVal === true) {
                     continue;
                 }
 
