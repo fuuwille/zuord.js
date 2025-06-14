@@ -1,7 +1,6 @@
+import { IsNever } from "./utils/isNever";
 import { ZuordNormalize } from "./zuordNormalize";
 import { ZuordSchema } from "./zuordSchema";
-
-type IsNever<T> = [T] extends [never] ? true : false;
 
 export type ZuordOmit<T, U> = ZuordNormalize<ZuordOmitRaw<T, U>>;
 
