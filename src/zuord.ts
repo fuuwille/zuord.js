@@ -10,28 +10,6 @@ export class zuord {
 
     //
 
-    public static merge<U extends object[]>(...content: U): ZuordMerge<U> {
-        if (content.length === 0) {
-            return {} as ZuordMerge<U>;
-        }
-
-        const result: Record<string, unknown> = {};
-
-        for (const obj of content) {
-            if (!isObject(obj)) continue;
-
-            for (const [key, value] of Object.entries(obj)) {
-                if (isObject(value) && isObject(result[key])) {
-                    result[key] = zuord.merge(result[key] as object, value as object);
-                } else {
-                    result[key] = value;
-                }
-            }
-        }
-
-        return result as ZuordMerge<U>;
-    }
-
     public static pick<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordPick<T, P> {
         if (!isObject(obj)) {
             throw new TypeError("pick: First argument must be a valid object.");
