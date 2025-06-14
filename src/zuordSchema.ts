@@ -1,7 +1,6 @@
-export type ZuordSchema<T> = true | (T extends object ? {
-    [K in keyof T]?: T[K] extends object
-        ? ZuordSchema<T[K]> : true;
-} : never);
+export type ZuordSchema<T> = T extends Array<unknown> ? true
+    : T extends object ? { [K in keyof T]: ZuordSchema<T[K]> }
+    : true;
 
 export default ZuordSchema;
 
