@@ -1,15 +1,20 @@
+import { ZuordNormalize } from "./zuordNormalize";
 import { ZuordSchema } from "./zuordSchema";
 
 type IsNever<T> = [T] extends [never] ? true : false;
 
-export type ZuordOmit<T, U> = {
+export type ZuordOmit<T, U> = ZuordNormalize<ZuordOmitRaw<T, U>>;
+
+//
+
+export type ZuordOmitRaw<T, U> = {
     [K in keyof T as
         K extends keyof U
             ? U[K] extends true
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? IsNever<ZuordOmit<T[K], U[K]>> extends true
+                        ? IsNever<ZuordOmitRaw<T[K], U[K]>> extends true
                             ? never
                             : K
                         : K
@@ -19,7 +24,7 @@ export type ZuordOmit<T, U> = {
         K extends keyof U
             ? U[K] extends object
                 ? T[K] extends object
-                    ? ZuordOmit<T[K], U[K]>
+                    ? ZuordOmitRaw<T[K], U[K]>
                     : T[K]
                 : T[K]
             : T[K];
