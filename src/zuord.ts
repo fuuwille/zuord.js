@@ -10,30 +10,6 @@ export class zuord {
 
     //
 
-    public static pick<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordPick<T, P> {
-        if (!isObject(obj)) {
-            throw new TypeError("pick: First argument must be a valid object.");
-        }
-        if (!isObject(pattern)) {
-            throw new TypeError("pick: Second argument must be a valid schema (object).");
-        }
-
-        const result : any = {};
-
-        for (const key of Object.keys(pattern)) {
-            const patVal = (pattern as any)[key];
-            const objVal = (obj as any)[key];
-
-            if (patVal === true) {
-                result[key] = objVal;
-            } else if (isObject(patVal) && isObject(objVal)) {
-                result[key] = zuord.pick(objVal, patVal);
-            }
-        }
-
-        return result as ZuordPick<T, P>;
-    }
-
     public static omit<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
         if (!isObject(obj)) {
             throw new TypeError("omit: First argument must be a valid object.");
