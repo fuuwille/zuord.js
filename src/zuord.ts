@@ -1,7 +1,7 @@
 import { ZuordContent } from "./zuordContent";
-import { ZuordOmit } from "./zuordOmit";
+import { ZuordOmit, ZuordOmitOf } from "./zuordOmit";
 import { ZuordPattern } from "./zuordPattern";
-import { ZuordPick } from "./zuordPick";
+import { ZuordPick, ZuordPickOf } from "./zuordPick";
 import { ZuordSchema } from "./zuordSchema";
 
 export class zuord {
@@ -15,8 +15,25 @@ export class zuord {
             return {} as ZuordContent<U>;
         }
 
-        return zuord.#deepMerge(...content) as ZuordContent<U>;
-    }
+        const result: any = {};
+
+        for (const obj of content) {
+            if (!zuord.#isObject(obj)) continue;
+
+            for (const key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    const value = (obj as Record<string, any>)[key];
+                    
+                    if (zuord.#isObject(value) && zuord.#isObject(result[key])) {
+                        result[key] = zuord.content(result[key], value);
+                    } else {
+                        result[key] = value;
+                    }
+                }
+            }
+        }
+
+        return result;    }
 
     public static pattern<T extends object>(obj: T) : ZuordPattern<T> {
         if (!zuord.#isObject(obj)) {
@@ -94,28 +111,6 @@ export class zuord {
 
     static #isObject(item: any): item is object {
         return item !== null && typeof item === 'object' && !Array.isArray(item);
-    }
-
-    static #deepMerge<T extends object[]>(...objects: T): T[number] {
-        const result: any = {};
-
-        for (const obj of objects) {
-            if (!zuord.#isObject(obj)) continue;
-
-            for (const key in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                    const value = (obj as Record<string, any>)[key];
-                    
-                    if (zuord.#isObject(value) && zuord.#isObject(result[key])) {
-                        result[key] = zuord.#deepMerge(result[key], value);
-                    } else {
-                        result[key] = value;
-                    }
-                }
-            }
-        }
-
-        return result;
     }
 }
 
