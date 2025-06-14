@@ -1,9 +1,8 @@
-import DeepPartial from "./utils/deepPartial";
 import { ZuordContent } from "./zuordContent";
 import { ZuordOmit } from "./zuordOmit";
 import { ZuordPattern } from "./zuordPattern";
 import { ZuordPick } from "./zuordPick";
-import ZuordSchema, { ZuordSchemaOf } from "./zuordSchema";
+import { ZuordSchema } from "./zuordSchema";
 
 export class zuord {
     private constructor() {
@@ -34,7 +33,7 @@ export class zuord {
         return result;
     }
 
-    public static pick<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordPick<T, S> {
+    public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordPick<T, S> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
             return obj as ZuordPick<T, S>;
         }
@@ -57,7 +56,7 @@ export class zuord {
         return result;
     }
 
-    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S> {
+    public static omit<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordOmit<T, S> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
             return obj as ZuordOmit<T, S>;
         }
@@ -68,7 +67,7 @@ export class zuord {
             if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
 
             const objVal = obj[key];
-            const patVal = (schema as any)[key] as ZuordSchemaOf<typeof objVal>;
+            const patVal = (schema as any)[key] as ZuordSchema<typeof objVal>;
 
             if (Object.prototype.hasOwnProperty.call(schema, key)) {
                 if (patVal === true) {
