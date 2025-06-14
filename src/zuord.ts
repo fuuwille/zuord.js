@@ -1,5 +1,7 @@
+import DeepPartial from "./utils/deepPartial";
 import { ZuordContent } from "./zuordContent";
 import { ZuordPattern } from "./zuordPattern";
+import { ZuordPick } from "./zuordPick";
 
 export class zuord {
     private constructor() {
@@ -24,6 +26,29 @@ export class zuord {
         for (const key in obj) {
             if (Object.prototype.hasOwnProperty.call(obj, key)) {
                 result[key] = zuord.pattern((obj as any)[key]);
+            }
+        }
+
+        return result;
+    }
+
+    public static pick<T extends object, P extends DeepPartial<ZuordPattern<T>>>(obj: T, pattern: P): ZuordPick<T, P> {
+        if (!zuord.#isObject(obj) || !zuord.#isObject(pattern)) {
+            return obj;
+        }
+
+        const result: any = {};
+
+        for (const key in pattern) {
+            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
+                const patVal = pattern[key];
+                const objVal = (obj as any)[key];
+
+                if (patVal === true) {
+                    result[key] = objVal;
+                } else if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
+                    result[key] = zuord.pick(objVal, patVal);
+                }
             }
         }
 
