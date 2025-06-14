@@ -32,18 +32,18 @@ export class zuord {
         return result as ZuordMerge<U>;
     }
 
-    public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S) {
+    public static pick<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordPick<T, P> {
         if (!isObject(obj)) {
             throw new TypeError("pick: First argument must be a valid object.");
         }
-        if (!isObject(schema)) {
+        if (!isObject(pattern)) {
             throw new TypeError("pick: Second argument must be a valid schema (object).");
         }
 
         const result : any = {};
 
-        for (const key of Object.keys(schema)) {
-            const patVal = (schema as any)[key];
+        for (const key of Object.keys(pattern)) {
+            const patVal = (pattern as any)[key];
             const objVal = (obj as any)[key];
 
             if (patVal === true) {
@@ -53,14 +53,14 @@ export class zuord {
             }
         }
 
-        return result as ZuordPick<T, S>;
+        return result as ZuordPick<T, P>;
     }
 
-    public static omit<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S) {
+    public static omit<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
         if (!isObject(obj)) {
             throw new TypeError("omit: First argument must be a valid object.");
         }
-        if (!isObject(schema)) {
+        if (!isObject(pattern)) {
             throw new TypeError("omit: Second argument must be a valid schema (object).");
         }
 
@@ -68,9 +68,9 @@ export class zuord {
 
         for (const key of Object.keys(obj)) {
             const objVal = (obj as any)[key];
-            const patVal = (schema as any)[key];
+            const patVal = (pattern as any)[key];
 
-            if (Object.prototype.hasOwnProperty.call(schema, key)) {
+            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
                 if (patVal === true) {
                     continue;
                 }
@@ -87,7 +87,7 @@ export class zuord {
             }
         }
 
-        return result as ZuordOmit<T, S>;
+        return result as ZuordOmit<T, P>;
     }
 
     //
