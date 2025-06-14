@@ -1,5 +1,6 @@
 import DeepPartial from "./utils/deepPartial";
 import { ZuordContent } from "./zuordContent";
+import { ZuordOmit } from "./zuordOmit";
 import { ZuordPattern } from "./zuordPattern";
 import { ZuordPick } from "./zuordPick";
 
@@ -49,6 +50,43 @@ export class zuord {
                 } else if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
                     result[key] = zuord.pick(objVal, patVal);
                 }
+            }
+        }
+
+        return result;
+    }
+
+    public static omit<T extends object, P>(obj: T, pattern: P): ZuordOmit<T, P> {
+        if (!zuord.#isObject(obj) || !zuord.#isObject(pattern)) {
+            return obj as ZuordOmit<T, P>;
+        }
+
+        const result: any = {};
+
+        for (const key in obj) {
+            if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+
+            const objVal = obj[key];
+            const patVal = (pattern as any)[key];
+
+            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
+                if (patVal === true) {
+                    // Omit et
+                    continue;
+                }
+
+                if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
+                    const sub = zuord.omit(objVal, patVal);
+                    // Eğer içi boşsa, ekleme
+                    if (zuord.#isObject(sub) && Object.keys(sub).length > 0) {
+                        result[key] = sub;
+                    }
+                    // aksi halde key atlanır (omit)
+                } else {
+                    result[key] = objVal;
+                }
+            } else {
+                result[key] = objVal;
             }
         }
 
