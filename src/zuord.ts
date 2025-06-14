@@ -32,47 +32,48 @@ export class zuord {
         return result as ZuordMerge<U>;
     }
 
-    public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordPick<T, S> {
-        if (!isObject(obj) || !isObject(schema)) {
-            return obj as ZuordPick<T, S>;
+    public static pick<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S) {
+        if (!isObject(obj)) {
+            throw new TypeError("pick: First argument must be a valid object.");
+        }
+        if (!isObject(schema)) {
+            throw new TypeError("pick: Second argument must be a valid schema (object).");
         }
 
-        const result: any = {};
+        const result : any = {};
 
-        for (const key in schema) {
-            if (Object.prototype.hasOwnProperty.call(schema, key)) {
-                const patVal = schema[key];
-                const objVal = (obj as any)[key];
+        for (const key of Object.keys(schema)) {
+            const patVal = (schema as any)[key];
+            const objVal = (obj as any)[key];
 
-                if (patVal === true) {
-                    result[key] = objVal;
-                } else if (isObject(patVal) && isObject(objVal)) {
-                    result[key] = zuord.pick(objVal, patVal);
-                }
+            if (patVal === true) {
+                result[key] = objVal;
+            } else if (isObject(patVal) && isObject(objVal)) {
+                result[key] = zuord.pick(objVal, patVal);
             }
         }
 
-        return result;
+        return result as ZuordPick<T, S>;
     }
 
-    public static omit<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S): ZuordOmit<T, S> {
-        if (!isObject(obj) || !isObject(schema)) {
-            return obj as ZuordOmit<T, S>;
+    public static omit<T extends object, S extends ZuordSchema<T>>(obj: T, schema: S) {
+        if (!isObject(obj)) {
+            throw new TypeError("omit: First argument must be a valid object.");
+        }
+        if (!isObject(schema)) {
+            throw new TypeError("omit: Second argument must be a valid schema (object).");
         }
 
-        const result: any = {};
+        const result : any = {};
 
-        for (const key in obj) {
-            if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
-
-            const objVal = obj[key];
-            const patVal = (schema as any)[key] as ZuordSchema<typeof objVal>;
+        for (const key of Object.keys(obj)) {
+            const objVal = (obj as any)[key];
+            const patVal = (schema as any)[key];
 
             if (Object.prototype.hasOwnProperty.call(schema, key)) {
                 if (patVal === true) {
                     continue;
                 }
-
                 if (isObject(patVal) && isObject(objVal)) {
                     const sub = zuord.omit(objVal, patVal);
                     if (isObject(sub) && Object.keys(sub).length > 0) {
@@ -86,7 +87,7 @@ export class zuord {
             }
         }
 
-        return result;
+        return result as ZuordOmit<T, S>;
     }
 
     //
