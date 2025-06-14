@@ -3,6 +3,7 @@ import { ZuordContent } from "./zuordContent";
 import { ZuordOmit } from "./zuordOmit";
 import { ZuordPattern } from "./zuordPattern";
 import { ZuordPick } from "./zuordPick";
+import ZuordSchema, { ZuordSchemaOf } from "./zuordSchema";
 
 export class zuord {
     private constructor() {
@@ -33,16 +34,16 @@ export class zuord {
         return result;
     }
 
-    public static pick<T extends object, P>(obj: T, pattern: P): ZuordPick<T, P> {
-        if (!zuord.#isObject(obj) || !zuord.#isObject(pattern)) {
-            return obj as ZuordPick<T, P>;
+    public static pick<T extends object, S extends ZuordSchemaOf<T> & ZuordSchema>(obj: T, schema: S): ZuordPick<T, S> {
+        if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
+            return obj as ZuordPick<T, S & ZuordSchema>;
         }
 
         const result: any = {};
 
-        for (const key in pattern) {
-            if (Object.prototype.hasOwnProperty.call(pattern, key)) {
-                const patVal = pattern[key];
+        for (const key in schema) {
+            if (Object.prototype.hasOwnProperty.call(schema, key)) {
+                const patVal = schema[key];
                 const objVal = (obj as any)[key];
 
                 if (patVal === true) {
