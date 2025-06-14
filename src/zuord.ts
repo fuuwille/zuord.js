@@ -34,9 +34,9 @@ export class zuord {
         return result;
     }
 
-    public static pick<T extends object, S extends ZuordSchemaOf<T> & ZuordSchema>(obj: T, schema: S): ZuordPick<T, S> {
+    public static pick<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordPick<T, S> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
-            return obj as ZuordPick<T, S & ZuordSchema>;
+            return obj as ZuordPick<T, S>;
         }
 
         const result: any = {};
@@ -57,7 +57,7 @@ export class zuord {
         return result;
     }
 
-    public static omit<T extends object, S extends ZuordSchemaOf<T> & ZuordSchema>(obj: T, schema: S): ZuordOmit<T, S> {
+    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
             return obj as ZuordOmit<T, S>;
         }
