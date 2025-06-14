@@ -10,7 +10,7 @@ export class zuord {
 
     //
 
-    public static merge<U extends object[]>(...content: U) {
+    public static merge<U extends object[]>(...content: U): ZuordMerge<U> {
         if (content.length === 0) {
             return {} as ZuordMerge<U>;
         }
