@@ -57,38 +57,35 @@ export class zuord {
         return result;
     }
 
-    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S> {
+    public static omit<T extends object, S extends ZuordSchemaOf<T>>(obj: T, schema: S): ZuordOmit<T, S & ZuordSchema> {
         if (!zuord.#isObject(obj) || !zuord.#isObject(schema)) {
-            return obj as ZuordOmit<T, S>;
+            return obj as ZuordOmit<T, S & ZuordSchema>;
         }
 
         const result: any = {};
 
-        for (const key in schema) {
-            if (Object.prototype.hasOwnProperty.call(obj, key)) {
-                const patVal = schema[key];
-                const objVal = (obj as any)[key];
+        for (const key in obj) {
+            if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+
+            const objVal = obj[key];
+            const patVal = (schema as any)[key] as ZuordSchemaOf<typeof objVal>;
 
                 if (Object.prototype.hasOwnProperty.call(schema, key)) {
                     if (patVal === true) {
-                    // Omit et
                     continue;
                 }
 
                 if (zuord.#isObject(patVal) && zuord.#isObject(objVal)) {
                     const sub = zuord.omit(objVal, patVal);
-                    // Eğer içi boşsa, ekleme
                     if (zuord.#isObject(sub) && Object.keys(sub).length > 0) {
                         result[key] = sub;
                     }
-                    // aksi halde key atlanır (omit)
                 } else {
                     result[key] = objVal;
                 }
             } else {
                 result[key] = objVal;
             }
-        }
         }
 
         return result;

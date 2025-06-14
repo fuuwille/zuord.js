@@ -4,7 +4,7 @@ export default ZuordSchema;
 
 //
 
-export type ZuordSchemaOf<T> = ZuordSchema & (T extends object ? {
+export type ZuordSchemaOf<T> = true | (T extends object ? {
     [K in keyof T]?: T[K] extends object
         ? ZuordSchemaOf<T[K]> : true;
 } : never);
