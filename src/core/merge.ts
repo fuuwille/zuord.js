@@ -26,12 +26,12 @@ function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(conten
             const existing = result[key];
 
             // If the key already exists, we need to merge
-            if (Array.isArray(value) && Array.isArray(existing)) {
+            if (Array.isArray(value) && Array.isArray(existing) && mode?.includes("concat" as any)) {
                 // Combine arrays
                 result[key] = [...existing, ...value];
             } else if (zuordUtil.isObject(value) && zuordUtil.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = merge([existing as object, value as object], mode);
+                result[key] = merge([existing, value], mode);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
