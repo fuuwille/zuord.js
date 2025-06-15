@@ -1,3 +1,4 @@
+export { type ZuordIsExtends } from "./extends";
 export { type ZuordIsArray } from "./array";
 export { type ZuordIsPlain } from "./plain";
 export { isObject, type ZuordIsObject } from "./object";
