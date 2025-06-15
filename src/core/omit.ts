@@ -1,5 +1,4 @@
-import { zuordUtil, ZuordUtil } from "../index"
-import { ZuordPattern } from "./pattern";
+import { Zuord, zuordUtil, ZuordUtil } from "../index"
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 
@@ -26,9 +25,9 @@ type OmitRaw<T, U> = {
             : T[K];
 };
 
-type OmitOf<T, U> = Omit<T, ZuordPattern<U>>;
+type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
 
-function omit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : Omit<T, P> {
+function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Omit<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
