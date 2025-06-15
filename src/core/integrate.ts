@@ -32,12 +32,12 @@ type IntegrateArray<A, B, Mode extends IntegrateModeType = ""> = A extends reado
     ) : never
 ) : never;
 
-type IntegrateModeType = "" | IntegrateMode;
+type IntegrateModeType = "" | "concat";
 
 //
 
-enum IntegrateMode {
-    Concat = "concat"
+const integrateMode = {
+    concat: "concat",
 }
 
 //
@@ -45,4 +45,4 @@ enum IntegrateMode {
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateArray as ZuordIntegrateArray };
 export type { IntegrateModeType as ZuordIntegrateModeType };
-export { IntegrateMode as ZuordIntegrateMode };
+export { integrateMode as zuordIntegrateMode };
