@@ -1,3 +1,7 @@
-export type ZuordUtilPartial<T> = {
-    [K in keyof T]?: T[K] extends object ? ZuordUtilPartial<T[K]> : T[K];
+type ZPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? ZPartial<T[K]> : T[K];
 };
+
+//
+
+export type ZuordPartial<T> = ZPartial<T>;
