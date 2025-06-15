@@ -1,6 +1,10 @@
 import { ZuordIs as Is } from "../is/index"
 
-export type ZuordUtilIntegrate<A, B, O extends string = ""> = {
+export type ZuordUtilIntegrate<A, B, O extends string = ""> = Integrate<A, B, O>;
+
+//
+
+type Integrate<A, B, O extends string = ""> = {
   [K in keyof A | keyof B]: K extends keyof B ? (
     K extends keyof A ? (
       Is.Exists<O, "concat"> extends true ? (
@@ -15,7 +19,7 @@ export type ZuordUtilIntegrate<A, B, O extends string = ""> = {
         ) : B[K]
       ) : Is.Plain<A[K]> extends true
           ? Is.Plain<B[K]> extends true
-            ? ZuordUtilIntegrate<A[K], B[K], O>
+            ? Integrate<A[K], B[K], O>
             : B[K]
           : B[K]
     ) : B[K]
