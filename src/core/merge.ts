@@ -10,10 +10,10 @@ type MergeRaw<U extends object[], Mode extends Zuord.IntegrateModeType = ""> = U
     ? Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
     : {};
 
-function merge<U extends object[], const Mode extends Zuord.IntegrateModeType>(content: [...U], mode? : Mode): Merge<U, Mode> {
+function merge<U extends object[], const M extends Zuord.IntegrateModeType[]>(content: [...U], mode?: [...M]): Merge<U, ZuordUtil.UnionOf<M>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Merge<U, Mode>;
+        return {} as Merge<U, ZuordUtil.UnionOf<M>>;
     }
 
     const result: Record<string, unknown> = {};
@@ -40,7 +40,7 @@ function merge<U extends object[], const Mode extends Zuord.IntegrateModeType>(c
     }
 
     // Return the merged result as a normalized object
-    return result as Merge<U, Mode>;
+    return result as Merge<U, ZuordUtil.UnionOf<M>>;
 }
 
 //
