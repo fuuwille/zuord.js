@@ -3,9 +3,17 @@ import * as ZuordUtil from "@/util/alias.types";
 
 type Merge<U extends object[], Mode extends MergeMode | "" = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
 
-type MergeRaw<U extends object[], Mode extends MergeMode | "" = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
-    : {};
+type MergeRaw<U extends object[], Mode extends MergeMode | "" = ""> = ZuordUtil.ArrayDepth<U> extends 1 ? (
+    U extends [...infer Rest extends object[], infer Head extends object] ? (
+        Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
+    ) : {}
+) : (
+    U extends (infer Inner)[]
+    ? Inner extends object[]
+        ? { [K in keyof U]: MergeRaw<[U[K]], Mode> }
+        : U
+    : {}
+);
 
 type MergeMode = Zuord.IntegrateMode;
 
