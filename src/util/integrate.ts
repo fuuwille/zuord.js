@@ -1,7 +1,7 @@
 import { ZuordIsArray } from "../is/isArray";
 import { ZuordIsPlain } from "../is/isPlain";
 
-export type ZuornUtilIntegrate<A, B> = {
+export type ZuordUtilIntegrate<A, B> = {
   [K in keyof A | keyof B]:
     K extends keyof B
       ? K extends keyof A
@@ -17,7 +17,7 @@ export type ZuornUtilIntegrate<A, B> = {
             : B[K]
           : ZuordIsPlain<A[K]> extends true
           ? ZuordIsPlain<B[K]> extends true
-            ? ZuornUtilIntegrate<A[K], B[K]>
+            ? ZuordUtilIntegrate<A[K], B[K]>
             : B[K]
           : B[K]
         : B[K]
