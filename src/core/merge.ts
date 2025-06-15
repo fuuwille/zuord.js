@@ -1,6 +1,6 @@
 import * as Zuord from "@/core/alias.types"
-import * as zuordUtil from "@/util/alias.runtime";
-import * as ZuordUtil from "@/util/alias.compile";
+import * as zuordUtil from "@/util/alias";
+import * as ZuordUtil from "@/util/alias.types";
 
 function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(content: [...U], mode?: [...M]): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
     if (content.length === 0) {
