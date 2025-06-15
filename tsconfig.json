@@ -13,7 +13,12 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
-        "types": ["vitest/globals"]
+        "types": ["vitest/globals"],
+        "baseUrl": ".",
+        "paths": {
+            "@": ["src/index.ts"],
+            "@/*": ["src/*"]
+        }
     },
-    "include": ["src", "tests"],
+    "include": ["src", "src/globals.d.ts", "tests"],
 }
