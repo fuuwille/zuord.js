@@ -7,9 +7,9 @@ export type { ZuordIntegrateModeType as IntegrateModeType } from "./integrate.ty
 export type { ZuordOmit as Omit } from "./omit.types";
 export type { ZuordOmitRaw as OmitRaw } from "./omit.types";
 export type { ZuordOmitOf as OmitOf } from "./omit.types";
-export type { ZuordPick as Pick } from "./pick";
-export type { ZuordPickRaw as PickRaw } from "./pick";
-export type { ZuordPickOf as PickOf } from "./pick";
+export type { ZuordPick as Pick } from "./pick.types";
+export type { ZuordPickRaw as PickRaw } from "./pick.types";
+export type { ZuordPickOf as PickOf } from "./pick.types";
 export type { ZuordPattern as Pattern } from "./pattern";
 export type { ZuordPatternRaw as PatternRaw } from "./pattern";
 export type { ZuordIsPattern as IsPattern } from "./pattern";
