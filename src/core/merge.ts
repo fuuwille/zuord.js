@@ -1,21 +1,11 @@
-import { ZuordUtilIntegrate } from "../util/integrate";
-import { isObject } from "../util/object";
-import { ZuordNormalize } from "../util/normalize";
+import { zuordUtil, ZuordUtil } from "../index"
 
 //
 
-export type ZuordMerge<T extends object[], O extends string = ""> = Merge<T, O>;
-
-export type ZuordMergeRaw<T extends object[], O extends string = ""> = MergeRaw<T, O>;
-
-export const zuordMerge = merge;
-
-//
-
-type Merge<U extends object[], O extends string = ""> = ZuordNormalize<MergeRaw<U, O>>
+type Merge<U extends object[], O extends string = ""> = ZuordUtil.Normalize<MergeRaw<U, O>>
 
 type MergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? ZuordUtilIntegrate<MergeRaw<Rest, O>, Head, O>
+    ? ZuordUtil.Integrate<MergeRaw<Rest, O>, Head, O>
     : {};
 
 function merge<U extends object[], const O extends string>(content: [...U], options? : O): Merge<U, O> {
@@ -27,7 +17,7 @@ function merge<U extends object[], const O extends string>(content: [...U], opti
     const result: Record<string, unknown> = {};
     
     for (const obj of content) {
-        if (!isObject(obj)) continue;
+        if (!zuordUtil.isObject(obj)) continue;
 
         // Iterate over each key-value pair in the object
         for (const [key, value] of Object.entries(obj)) {
@@ -37,7 +27,7 @@ function merge<U extends object[], const O extends string>(content: [...U], opti
             if (Array.isArray(value) && Array.isArray(existing)) {
                 // Combine arrays
                 result[key] = [...existing, ...value];
-            } else if (isObject(value) && isObject(existing)) {
+            } else if (zuordUtil.isObject(value) && zuordUtil.isObject(existing)) {
                 // Recursively merge objects
                 result[key] = merge([existing as object, value as object], options);
             } else {
@@ -50,3 +40,9 @@ function merge<U extends object[], const O extends string>(content: [...U], opti
     // Return the merged result as a normalized object
     return result as Merge<U, O>;
 }
+
+//
+
+export type { Merge as ZuordMerge};
+export type { MergeRaw as ZuordMergeRaw };
+export { merge as zuordMerge };
