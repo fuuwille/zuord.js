@@ -2,13 +2,13 @@ export { type ZuordNormalize } from "./zuordNormalize";
 export { zuordMerge, type ZuordMerge, type ZuordMergeRaw } from "./zuordMerge";
 export { zuordPick, type ZuordPick, type ZuordPickRaw, type ZuordPickOf } from "./zuordPick";
 export { zuordOmit, type ZuordOmit, type ZuordOmitRaw, type ZuordOmitOf } from "./zuordOmit";
-export { zuordSchema, type ZuordSchema, type IsZuordSchema } from "./zuordSchema";
+export { zuordPattern, type ZuordPattern, type IsZuorPattern } from "./zuordPattern";
 
 import { ZuordNormalize } from "./zuordNormalize";
 import { zuordMerge, type ZuordMerge, type ZuordMergeRaw } from "./zuordMerge";
 import { zuordPick, type ZuordPick, type ZuordPickRaw, type ZuordPickOf } from "./zuordPick";
 import { zuordOmit, type ZuordOmit, type ZuordOmitRaw, type ZuordOmitOf } from "./zuordOmit";
-import { zuordSchema, type ZuordSchema } from "./zuordSchema";
+import { zuordPattern, type ZuordPattern } from "./zuordPattern";
 
 export namespace Zuord {
     export type Normalize<T> = ZuordNormalize<T>;
@@ -20,12 +20,12 @@ export namespace Zuord {
     export type Omit<T, U> = ZuordOmit<T, U>;
     export type OmitRaw<T, U> = ZuordOmitRaw<T, U>;
     export type OmitOf<T, U> = ZuordOmitOf<T, U>;
-    export type Schema<T> = ZuordSchema<T>;
+    export type Pattern<T> = ZuordPattern<T>;
 };
 
 export const zuord = {
   merge: zuordMerge,
   pick: zuordPick,
   omit: zuordOmit,
-  schema: zuordSchema,
+  pattern: zuordPattern,
 } as const;

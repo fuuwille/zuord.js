@@ -1,7 +1,7 @@
 import { IsNever } from "./utils/isNever";
 import { isObject } from "./utils/isObject";
 import { ZuordNormalize } from "./zuordNormalize";
-import { ZuordSchema } from "./zuordSchema";
+import { ZuordPattern } from "./zuordPattern";
 
 export type ZuordOmit<T, U> = ZuordNormalize<ZuordOmitRaw<T, U>>;
 
@@ -28,11 +28,11 @@ export type ZuordOmitRaw<T, U> = {
             : T[K];
 };
 
-export type ZuordOmitOf<T, U> = ZuordOmit<T, ZuordSchema<U>>;
+export type ZuordOmitOf<T, U> = ZuordOmit<T, ZuordPattern<U>>;
 
 //
 
-export function zuordOmit<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
+export function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
     if (!isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }

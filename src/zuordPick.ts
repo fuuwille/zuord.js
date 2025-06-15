@@ -1,9 +1,9 @@
 import { isObject } from "./utils/isObject";
 import { ZuordNormalize } from "./zuordNormalize";
-import { IsZuordSchema, ZuordSchema } from "./zuordSchema";
+import { IsZuorPattern, ZuordPattern } from "./zuordPattern";
 
 export type ZuordPick<T, U> = ZuordNormalize<{
-    [K in keyof T & keyof U as IsZuordSchema<U[K]> extends true ? K : never]:
+    [K in keyof T & keyof U as IsZuorPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
             : U[K] extends object
@@ -14,7 +14,7 @@ export type ZuordPick<T, U> = ZuordNormalize<{
 }>;
 
 export type ZuordPickRaw<T, U> = {
-    [K in keyof T & keyof U as IsZuordSchema<U[K]> extends true ? K : never]:
+    [K in keyof T & keyof U as IsZuorPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
             : U[K] extends object
@@ -24,11 +24,11 @@ export type ZuordPickRaw<T, U> = {
                 : never;
 };
 
-export type ZuordPickOf<T, U> = ZuordPick<T, ZuordSchema<U>>;
+export type ZuordPickOf<T, U> = ZuordPick<T, ZuordPattern<U>>;
 
 //
 
-export function zuordPick<T extends object, P extends ZuordSchema<T>>(obj: T, pattern: P) : ZuordPick<T, P> {
+export function zuordPick<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : ZuordPick<T, P> {
     if (!isObject(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }
