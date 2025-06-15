@@ -1,5 +1,5 @@
 import { ZuordIsArray } from "../is/isArray";
-import { ZuordIsPlainObject } from "../is/isPlainObject";
+import { ZuordIsPlain } from "../is/isPlain";
 
 export type DeepMerge<A, B> = {
   [K in keyof A | keyof B]:
@@ -15,8 +15,8 @@ export type DeepMerge<A, B> = {
                   : never
               >
             : B[K]
-          : ZuordIsPlainObject<A[K]> extends true
-          ? ZuordIsPlainObject<B[K]> extends true
+          : ZuordIsPlain<A[K]> extends true
+          ? ZuordIsPlain<B[K]> extends true
             ? DeepMerge<A[K], B[K]>
             : B[K]
           : B[K]
