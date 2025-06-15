@@ -2,16 +2,16 @@ import { ZuordUtilIntegrate } from "./util/integrate";
 import { isObject } from "./is/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 
-export type ZuordMerge<U extends object[]> = ZuordUtilNormalize<ZuordMergeRaw<U>>
+export type ZuordMerge<U extends object[], O extends string = ""> = ZuordUtilNormalize<ZuordMergeRaw<U, O>>
 
-export type ZuordMergeRaw<U extends object[]> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? ZuordUtilIntegrate<ZuordMergeRaw<Rest>, Head>
+export type ZuordMergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
+    ? ZuordUtilIntegrate<ZuordMergeRaw<Rest, O>, Head, O>
     : {};
 
-export function zuordMerge<U extends object[]>(...content: U): ZuordMerge<U> {
+export function zuordMerge<U extends object[], const O extends string>(content: [...U], options? : O): ZuordMerge<U, O> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as ZuordMerge<U>;
+        return {} as ZuordMerge<U, O>;
     }
 
     const result: Record<string, unknown> = {};
@@ -29,7 +29,7 @@ export function zuordMerge<U extends object[]>(...content: U): ZuordMerge<U> {
                 result[key] = [...existing, ...value];
             } else if (isObject(value) && isObject(existing)) {
                 // Recursively merge objects
-                result[key] = zuordMerge(existing as object, value as object);
+                result[key] = zuordMerge([existing as object, value as object], options);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
@@ -38,5 +38,5 @@ export function zuordMerge<U extends object[]>(...content: U): ZuordMerge<U> {
     }
 
     // Return the merged result as a normalized object
-    return result as ZuordMerge<U>;
+    return result as ZuordMerge<U, O>;
 }

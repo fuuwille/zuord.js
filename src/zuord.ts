@@ -9,8 +9,8 @@ import { zuordOmit, type ZuordOmit, type ZuordOmitRaw, type ZuordOmitOf } from "
 import { zuordPattern, type ZuordPattern } from "./zuordPattern";
 
 export namespace Zuord {
-  export type Merge<U extends object[]> = ZuordMerge<U>;
-  export type MergeRaw<U extends object[]> = ZuordMergeRaw<U>;
+  export type Merge<U extends object[], O extends string = ""> = ZuordMerge<U, O>;
+  export type MergeRaw<O extends string, U extends object[]> = ZuordMergeRaw<U, O>;
   export type Pick<T, U> = ZuordPick<T, U>;
   export type PickRaw<T, U> = ZuordPickRaw<T, U>;
   export type PickOf<T, U> = ZuordPickOf<T, U>;
