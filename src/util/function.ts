@@ -1,5 +1,11 @@
-export type ZuordIsFunction<T> = T extends (...args: any[]) => any ? true : false;
+type IsFunction<T> = T extends (...args: any[]) => any ? true : false;
 
-export function isFunction(value: unknown): value is (...args: any[]) => unknown {
+function isFunction(value: unknown): value is (...args: any[]) => unknown {
     return typeof value === 'function';
 }
+
+//
+
+export type ZuordIsFunction<T> = IsFunction<T>;
+
+export { isFunction };
