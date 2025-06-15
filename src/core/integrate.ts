@@ -32,7 +32,9 @@ type IntegrateArray<A, B, Mode extends IntegrateModeType = ""> = A extends reado
     ) : never
 ) : never;
 
-type IntegrateModeType = "" | "concat";
+type IntegrateMode = "concat";
+
+type IntegrateModeType = "" | IntegrateMode;
 
 //
 
@@ -44,5 +46,6 @@ const integrateMode = {
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateArray as ZuordIntegrateArray };
+export type { IntegrateMode as ZuordIntegrateMode };
 export type { IntegrateModeType as ZuordIntegrateModeType };
 export { integrateMode as zuordIntegrateMode };
