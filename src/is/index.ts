@@ -1,14 +1,14 @@
-export { type ZuordIsArray } from "./isArray";
-export { type ZuordIsPlain } from "./isPlain";
-export { isObject, type ZuordIsObject } from "./isObject";
-export { isFunction, type ZuordIsFunction } from "./isFunction";
-export { isNever, type ZuordIsNever } from "./isNever";
+export { type ZuordIsArray } from "./array";
+export { type ZuordIsPlain } from "./plain";
+export { isObject, type ZuordIsObject } from "./object";
+export { isFunction, type ZuordIsFunction } from "./function";
+export { isNever, type ZuordIsNever } from "./never";
 
-import { type ZuordIsArray } from "./isArray";
-import { type ZuordIsPlain } from "./isPlain";
-import { isObject, type ZuordIsObject } from "./isObject";
-import { isFunction, type ZuordIsFunction } from "./isFunction";
-import { isNever, type ZuordIsNever } from "./isNever";
+import { type ZuordIsArray } from "./array";
+import { type ZuordIsPlain } from "./plain";
+import { isObject, type ZuordIsObject } from "./object";
+import { isFunction, type ZuordIsFunction } from "./function";
+import { isNever, type ZuordIsNever } from "./never";
 
 export namespace ZuordIs {
     export type Array<T> = ZuordIsArray<T>;

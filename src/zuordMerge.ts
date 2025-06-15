@@ -1,5 +1,5 @@
 import { ZuordUtilIntegrate } from "./util/integrate";
-import { isObject } from "./is/isObject";
+import { isObject } from "./is/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 
 export type ZuordMerge<U extends object[]> = ZuordUtilNormalize<ZuordMergeRaw<U>>

@@ -1,5 +1,5 @@
-import { ZuordIsNever } from "./is/isNever";
-import { isObject } from "./is/isObject";
+import { ZuordIsNever } from "./is/never";
+import { isObject } from "./is/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 import { ZuordPattern } from "./zuordPattern";
 
