@@ -1,5 +1,5 @@
-export type { ZuordMerge as Merge } from "./merge";
-export type { ZuordMergeRaw as MergeRaw } from "./merge";
+export type { ZuordMerge as Merge } from "./merge.types";
+export type { ZuordMergeRaw as MergeRaw } from "./merge.types";
 export type { ZuordIntegrate as Integrate } from "./integrate";
 export type { ZuordIntegrateArray as IntegrateArray } from "./integrate";
 export type { ZuordIntegrateMode as IntegrateMode } from "./integrate";

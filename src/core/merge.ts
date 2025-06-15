@@ -2,18 +2,10 @@ import * as Zuord from "@/core/alias.compile"
 import * as zuordUtil from "@/util/alias.runtime";
 import * as ZuordUtil from "@/util/alias.compile";
 
-//
-
-type Merge<U extends object[], Mode extends Zuord.IntegrateModeType = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
-
-type MergeRaw<U extends object[], Mode extends Zuord.IntegrateModeType = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
-    : {};
-
-function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(content: [...U], mode?: [...M]): Merge<U, ZuordUtil.UnionOf<M>> {
+function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(content: [...U], mode?: [...M]): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Merge<U, ZuordUtil.UnionOf<M>>;
+        return {} as Zuord.Merge<U, ZuordUtil.UnionOf<M>>;
     }
 
     const result: Record<string, unknown> = {};
@@ -40,11 +32,7 @@ function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(conten
     }
 
     // Return the merged result as a normalized object
-    return result as Merge<U, ZuordUtil.UnionOf<M>>;
+    return result as Zuord.Merge<U, ZuordUtil.UnionOf<M>>;
 }
 
-//
-
-export type { Merge as ZuordMerge};
-export type { MergeRaw as ZuordMergeRaw };
 export { merge as zuordMerge };
