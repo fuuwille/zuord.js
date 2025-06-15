@@ -2,11 +2,11 @@ import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
 export default {
-    input: 'src/zuord.ts',
+    input: 'src/index.ts',
     output: {
         dir: 'dist',
         format: 'esm',
-        preserveModules: true,      // ← işte burada
+        preserveModules: true,
         sourcemap: true,
     },
     plugins: [
