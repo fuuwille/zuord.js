@@ -1,35 +1,7 @@
 import * as Zuord from "@/core/alias.compile"
 import * as zuordUtil from "@/util/alias.runtime";
-import * as ZuordUtil from "@/util/alias.compile";
 
-type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
-
-type OmitRaw<T, U> = {
-    [K in keyof T as
-        K extends keyof U
-            ? U[K] extends true
-                ? never
-                : U[K] extends object
-                    ? T[K] extends object
-                        ? ZuordUtil.IsNever<OmitRaw<T[K], U[K]>> extends true
-                            ? never
-                            : K
-                        : K
-                    : K
-            : K
-    ]:
-        K extends keyof U
-            ? U[K] extends object
-                ? T[K] extends object
-                    ? OmitRaw<T[K], U[K]>
-                    : T[K]
-                : T[K]
-            : T[K];
-};
-
-type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
-
-function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Omit<T, P> {
+function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
@@ -60,12 +32,7 @@ function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) 
         }
     }
 
-    return result as Omit<T, P>;
+    return result as Zuord.Omit<T, P>;
 }
 
-//
-
-export type { Omit as ZuordOmit };
-export type { OmitRaw as ZuordOmitRaw };
-export type { OmitOf as ZuordOmitOf };
 export { omit as zuordOmit };
