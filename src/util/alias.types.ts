@@ -5,7 +5,7 @@ export type { ZuordIsFunction as IsFunction } from "./function.types";
 export type { ZuordIsObject as IsObject } from "./object.types";
 export type { ZuordIsArray as IsArray } from "./array.types";
 export type { ZuordArrayDepth as IsDepth } from "./array.types";
-export type { ZuordIsPlain as IsPlain } from "./plain";
+export type { ZuordIsPlain as IsPlain } from "./plain.types";
 export type { ZuordNormalize as Normalize } from "./normalize.types";
 export type { ZuordOptional as Optional } from "./optional.types";
 export type { ZuordUnionOf as UnionOf } from "./union.types";
