@@ -38,7 +38,7 @@ type IntegrateModeType = "" | "concat";
 
 const integrateMode = {
     concat: "concat",
-}
+} as const;
 
 //
 
