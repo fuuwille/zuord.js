@@ -1,0 +1,21 @@
+import { type ZuordIsNever as IsNever } from "./never";
+import { type ZuordIsExtends as IsExtends } from "./extends";
+import { type ZuordIsExists as IsExists } from "./exists";
+import { type ZuordIsFunction as IsFunction } from "./function";
+import { type ZuordIsObject as IsObject } from "./object";
+import { type ZuordIsArray as IsArray, type ZuordArrayDepth as IsDepth } from "./array";
+import { type ZuordIsPlain as IsPlain } from "./plain";
+import { type ZuordUtilIntegrate as Integrate } from "./integrate";
+import { type ZuordNormalize as Normalize } from "./normalize";
+import { type ZuordPartial as Partial } from "./partial";
+
+export { IsNever };
+export { IsExtends };
+export { IsExists };
+export { IsFunction };
+export { IsObject };
+export { IsArray, IsDepth };
+export { IsPlain };
+export { Integrate };
+export { Normalize };
+export { Partial };
