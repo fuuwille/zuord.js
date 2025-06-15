@@ -1,7 +1,7 @@
 import { ZuordIsArray } from "../is/isArray";
 import { ZuordIsPlain } from "../is/isPlain";
 
-export type DeepMerge<A, B> = {
+export type ZuornUtilIntegrate<A, B> = {
   [K in keyof A | keyof B]:
     K extends keyof B
       ? K extends keyof A
@@ -17,7 +17,7 @@ export type DeepMerge<A, B> = {
             : B[K]
           : ZuordIsPlain<A[K]> extends true
           ? ZuordIsPlain<B[K]> extends true
-            ? DeepMerge<A[K], B[K]>
+            ? ZuornUtilIntegrate<A[K], B[K]>
             : B[K]
           : B[K]
         : B[K]
