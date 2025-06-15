@@ -1,4 +1,4 @@
-import { IsNever } from "./is/isNever";
+import { ZuordIsNever } from "./is/isNever";
 import { isObject } from "./is/isObject";
 import { ZuordUtilNormalize } from "./utils/normalize";
 import { ZuordPattern } from "./zuordPattern";
@@ -12,7 +12,7 @@ export type ZuordOmitRaw<T, U> = {
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? IsNever<ZuordOmitRaw<T[K], U[K]>> extends true
+                        ? ZuordIsNever<ZuordOmitRaw<T[K], U[K]>> extends true
                             ? never
                             : K
                         : K

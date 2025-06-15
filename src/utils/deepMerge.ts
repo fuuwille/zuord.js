@@ -1,12 +1,12 @@
-import { IsArray } from "../is/isArray";
-import { IsPlainObject } from "../is/isPlainObject";
+import { ZuordIsArray } from "../is/isArray";
+import { ZuordIsPlainObject } from "../is/isPlainObject";
 
 export type DeepMerge<A, B> = {
   [K in keyof A | keyof B]:
     K extends keyof B
       ? K extends keyof A
-        ? IsArray<A[K]> extends true
-          ? IsArray<B[K]> extends true
+        ? ZuordIsArray<A[K]> extends true
+          ? ZuordIsArray<B[K]> extends true
             ? Array<
                 A[K] extends readonly (infer U)[] 
                   ? B[K] extends readonly (infer V)[]
@@ -15,8 +15,8 @@ export type DeepMerge<A, B> = {
                   : never
               >
             : B[K]
-          : IsPlainObject<A[K]> extends true
-          ? IsPlainObject<B[K]> extends true
+          : ZuordIsPlainObject<A[K]> extends true
+          ? ZuordIsPlainObject<B[K]> extends true
             ? DeepMerge<A[K], B[K]>
             : B[K]
           : B[K]
