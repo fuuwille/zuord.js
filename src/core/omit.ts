@@ -1,18 +1,16 @@
-import { ZuordIsNever } from "../util/never";
-import { isObject } from "../util/object";
-import { ZuordNormalize } from "../util/normalize";
+import { zuordUtil, ZuordUtil } from "../index"
 import { ZuordPattern } from "./zuordPattern";
 
-export type ZuordOmit<T, U> = ZuordNormalize<ZuordOmitRaw<T, U>>;
+type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 
-export type ZuordOmitRaw<T, U> = {
+type OmitRaw<T, U> = {
     [K in keyof T as
         K extends keyof U
             ? U[K] extends true
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? ZuordIsNever<ZuordOmitRaw<T[K], U[K]>> extends true
+                        ? ZuordUtil.IsNever<OmitRaw<T[K], U[K]>> extends true
                             ? never
                             : K
                         : K
@@ -22,21 +20,19 @@ export type ZuordOmitRaw<T, U> = {
         K extends keyof U
             ? U[K] extends object
                 ? T[K] extends object
-                    ? ZuordOmitRaw<T[K], U[K]>
+                    ? OmitRaw<T[K], U[K]>
                     : T[K]
                 : T[K]
             : T[K];
 };
 
-export type ZuordOmitOf<T, U> = ZuordOmit<T, ZuordPattern<U>>;
+type OmitOf<T, U> = Omit<T, ZuordPattern<U>>;
 
-//
-
-export function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : ZuordOmit<T, P> {
-    if (!isObject(obj)) {
+function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : Omit<T, P> {
+    if (!zuordUtil.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
-    if (!isObject(pattern)) {
+    if (!zuordUtil.isObject(pattern)) {
         throw new TypeError("omit: Second argument must be a valid schema (object).");
     }
 
@@ -50,9 +46,9 @@ export function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, p
             if (patVal === true) {
                 continue;
             }
-            if (isObject(patVal) && isObject(objVal)) {
+            if (zuordUtil.isObject(patVal) && zuordUtil.isObject(objVal)) {
                 const sub = zuordOmit(objVal, patVal);
-                if (isObject(sub) && Object.keys(sub).length > 0) {
+                if (zuordUtil.isObject(sub) && Object.keys(sub).length > 0) {
                     result[key] = sub;
                 }
             } else {
@@ -63,5 +59,12 @@ export function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, p
         }
     }
 
-    return result as ZuordOmit<T, P>;
+    return result as Omit<T, P>;
 }
+
+//
+
+export type { Omit as ZuordOmit };
+export type { OmitRaw as ZuordOmitRaw };
+export type { OmitOf as ZuordOmitOf };
+export { zuordOmit as zuordOmit };
