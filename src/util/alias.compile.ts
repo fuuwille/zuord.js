@@ -8,4 +8,4 @@ export type { ZuordArrayDepth as IsDepth } from "./array";
 export type { ZuordIsPlain as IsPlain } from "./plain";
 export type { ZuordNormalize as Normalize } from "./normalize";
 export type { ZuordPartial as Partial } from "./partial";
-export type { ZuordModeOf as ModeOf } from "./mode";
+export type { ZuordUnionOf as UnionOf } from "./union";
