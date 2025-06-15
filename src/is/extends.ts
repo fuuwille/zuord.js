@@ -1,2 +1,2 @@
-export type ZuordIsExtends<O, T> = [O] extends [never]
-    ? unknown : (O extends any ? (O extends T ? true : never) : never);
+export type ZuordIsExtends<T, E> = [T] extends [never]
+    ? unknown : (T extends any ? (T extends E ? true : never) : never);
