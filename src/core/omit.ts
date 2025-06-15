@@ -1,4 +1,4 @@
-import * as Zuord from "@/core/alias.compile"
+import * as Zuord from "@/core/alias.types"
 import * as zuordUtil from "@/util/alias.runtime";
 import * as ZuordUtil from "@/util/alias.compile";
 
