@@ -1,5 +1,5 @@
 import { DeepMerge } from "./utils/deepMerge";
-import { isObject } from "./utils/isObject";
+import { isObject } from "./is/isObject";
 import { ZuordUtilNormalize } from "./utils/normalize";
 
 export type ZuordMerge<U extends object[]> = ZuordUtilNormalize<ZuordMergeRaw<U>>

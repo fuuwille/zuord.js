@@ -1,5 +1,5 @@
-import { IsArray } from "./isArray";
-import { IsPlainObject } from "./isPlainObject";
+import { IsArray } from "../is/isArray";
+import { IsPlainObject } from "../is/isPlainObject";
 
 export type DeepMerge<A, B> = {
   [K in keyof A | keyof B]:
