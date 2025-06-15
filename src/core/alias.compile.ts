@@ -10,6 +10,3 @@ export type { ZuordOmitOf as OmitOf } from "./omit.types";
 export type { ZuordPick as Pick } from "./pick.types";
 export type { ZuordPickRaw as PickRaw } from "./pick.types";
 export type { ZuordPickOf as PickOf } from "./pick.types";
-export type { ZuordPattern as Pattern } from "./pattern";
-export type { ZuordPatternRaw as PatternRaw } from "./pattern";
-export type { ZuordIsPattern as IsPattern } from "./pattern";

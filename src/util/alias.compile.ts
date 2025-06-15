@@ -9,3 +9,6 @@ export type { ZuordIsPlain as IsPlain } from "./plain";
 export type { ZuordNormalize as Normalize } from "./normalize";
 export type { ZuordPartial as Partial } from "./partial";
 export type { ZuordUnionOf as UnionOf } from "./union";
+export type { ZuordPattern as Pattern } from "./pattern";
+export type { ZuordPatternRaw as PatternRaw } from "./pattern";
+export type { ZuordIsPattern as IsPattern } from "./pattern";

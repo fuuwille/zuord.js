@@ -1,4 +1,4 @@
-import * as Zuord from "@/core/alias.compile"
+
 import * as ZuordUtil from "@/util/alias.compile";
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
@@ -26,7 +26,7 @@ type OmitRaw<T, U> = {
             : T[K];
 };
 
-type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
+type OmitOf<T, U> = Omit<T, ZuordUtil.Pattern<U>>;
 
 export type { Omit as ZuordOmit };
 export type { OmitRaw as ZuordOmitRaw };
