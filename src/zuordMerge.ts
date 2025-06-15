@@ -2,16 +2,26 @@ import { ZuordUtilIntegrate } from "./util/integrate";
 import { isObject } from "./is/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 
-export type ZuordMerge<U extends object[], O extends string = ""> = ZuordUtilNormalize<ZuordMergeRaw<U, O>>
+//
 
-export type ZuordMergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? ZuordUtilIntegrate<ZuordMergeRaw<Rest, O>, Head, O>
+export type ZuordMerge<T extends object[], O extends string = ""> = Merge<T, O>;
+
+export type ZuordMergeRaw<T extends object[], O extends string = ""> = MergeRaw<T, O>;
+
+export const zuordMerge = merge;
+
+//
+
+type Merge<U extends object[], O extends string = ""> = ZuordUtilNormalize<MergeRaw<U, O>>
+
+type MergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
+    ? ZuordUtilIntegrate<MergeRaw<Rest, O>, Head, O>
     : {};
 
-export function zuordMerge<U extends object[], const O extends string>(content: [...U], options? : O): ZuordMerge<U, O> {
+function merge<U extends object[], const O extends string>(content: [...U], options? : O): Merge<U, O> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as ZuordMerge<U, O>;
+        return {} as Merge<U, O>;
     }
 
     const result: Record<string, unknown> = {};
@@ -29,7 +39,7 @@ export function zuordMerge<U extends object[], const O extends string>(content: 
                 result[key] = [...existing, ...value];
             } else if (isObject(value) && isObject(existing)) {
                 // Recursively merge objects
-                result[key] = zuordMerge([existing as object, value as object], options);
+                result[key] = merge([existing as object, value as object], options);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
@@ -38,5 +48,5 @@ export function zuordMerge<U extends object[], const O extends string>(content: 
     }
 
     // Return the merged result as a normalized object
-    return result as ZuordMerge<U, O>;
+    return result as Merge<U, O>;
 }
