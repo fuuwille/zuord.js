@@ -1,6 +1,6 @@
-import { ZuordNormalize } from "./zuordNormalize";
+import { ZuordUtilNormalize } from "./utils/normalize";
 
-export type ZuordPattern<T> = ZuordNormalize<ZuordPatternRaw<T>>
+export type ZuordPattern<T> = ZuordUtilNormalize<ZuordPatternRaw<T>>
 
 export default ZuordPattern;
 
