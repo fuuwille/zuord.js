@@ -1,10 +1,10 @@
 export { type ZuordUtilIntegrate } from "./integrate";
-export { type ZuordUtilNormalize } from "./normalize";
+export { type ZuordNormalize as ZuordUtilNormalize } from "./normalize";
 export { type ZuordUtilPartial } from "./partial";
 
 import { type ZuordArrayDepth, type ZuordIsArray } from "./array";
 import { type ZuordUtilIntegrate } from "./integrate";
-import { type ZuordUtilNormalize } from "./normalize";
+import { type ZuordNormalize } from "./normalize";
 import { type ZuordUtilPartial } from "./partial";
 
 export namespace ZuordUtil {
@@ -16,7 +16,7 @@ export namespace ZuordUtil {
     export type Integrate<A, B> = ZuordUtilIntegrate<A, B>;
 
     // Normalize
-    export type Normalize<T> = ZuordUtilNormalize<T>;
+    export type Normalize<T> = ZuordNormalize<T>;
 
     // Partial
     export type Partial<T> = ZuordUtilPartial<T>;

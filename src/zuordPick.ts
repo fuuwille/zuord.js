@@ -1,8 +1,8 @@
 import { isObject } from "./util/object";
-import { ZuordUtilNormalize } from "./util/normalize";
+import { ZuordNormalize } from "./util/normalize";
 import { IsZuorPattern, ZuordPattern } from "./zuordPattern";
 
-export type ZuordPick<T, U> = ZuordUtilNormalize<{
+export type ZuordPick<T, U> = ZuordNormalize<{
     [K in keyof T & keyof U as IsZuorPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]

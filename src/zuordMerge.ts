@@ -1,6 +1,6 @@
 import { ZuordUtilIntegrate } from "./util/integrate";
 import { isObject } from "./util/object";
-import { ZuordUtilNormalize } from "./util/normalize";
+import { ZuordNormalize } from "./util/normalize";
 
 //
 
@@ -12,7 +12,7 @@ export const zuordMerge = merge;
 
 //
 
-type Merge<U extends object[], O extends string = ""> = ZuordUtilNormalize<MergeRaw<U, O>>
+type Merge<U extends object[], O extends string = ""> = ZuordNormalize<MergeRaw<U, O>>
 
 type MergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
     ? ZuordUtilIntegrate<MergeRaw<Rest, O>, Head, O>
