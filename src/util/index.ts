@@ -6,4 +6,4 @@ export * from "./object";
 export * from "./array";
 export * from "./plain";
 export * from "./normalize.types";
-export * from "./partial";
+export * from "./optional.types";

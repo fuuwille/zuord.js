@@ -7,7 +7,7 @@ export type { ZuordIsArray as IsArray } from "./array";
 export type { ZuordArrayDepth as IsDepth } from "./array";
 export type { ZuordIsPlain as IsPlain } from "./plain";
 export type { ZuordNormalize as Normalize } from "./normalize.types";
-export type { ZuordPartial as Partial } from "./partial";
+export type { ZuordOptional as Optional } from "./optional.types";
 export type { ZuordUnionOf as UnionOf } from "./union.types";
 export type { ZuordPattern as Pattern } from "./pattern";
 export type { ZuordPatternRaw as PatternRaw } from "./pattern";
