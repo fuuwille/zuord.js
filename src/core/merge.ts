@@ -3,12 +3,12 @@ import * as zuordUtil from "@/util/alias";
 import * as ZuordUtil from "@/util/alias.types";
 
 function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
-    return mergeX({
+    return mergeBy({
         content
     }) as Zuord.Merge<U>;
 }
 
-function mergeX<U extends object[], const M extends Zuord.IntegrateMode[]>({ content, mode } : Zuord.MergeOptions<U, M> ): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
+function mergeBy<U extends object[], const M extends Zuord.IntegrateMode[]>({ content, mode } : Zuord.MergeOptions<U, M> ): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
         return {} as Zuord.Merge<U, ZuordUtil.UnionOf<M>>;
@@ -29,7 +29,7 @@ function mergeX<U extends object[], const M extends Zuord.IntegrateMode[]>({ con
                 result[key] = [...existing, ...value];
             } else if (zuordUtil.isObject(value) && zuordUtil.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = mergeX({
+                result[key] = mergeBy({
                     content: [existing as object, value as object],
                     mode
                 });
@@ -45,4 +45,4 @@ function mergeX<U extends object[], const M extends Zuord.IntegrateMode[]>({ con
 }
 
 export { merge as zuordMerge };
-export { mergeX as zuordMergeX };
+export { mergeBy as zuordMergeBy };
