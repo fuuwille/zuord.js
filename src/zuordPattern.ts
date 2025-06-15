@@ -1,4 +1,4 @@
-import { ZuordUtilNormalize } from "./utils/normalize";
+import { ZuordUtilNormalize } from "./util/normalize";
 
 export type ZuordPattern<T> = ZuordUtilNormalize<ZuordPatternRaw<T>>
 

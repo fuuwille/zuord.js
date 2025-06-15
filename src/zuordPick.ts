@@ -1,5 +1,5 @@
 import { isObject } from "./is/isObject";
-import { ZuordUtilNormalize } from "./utils/normalize";
+import { ZuordUtilNormalize } from "./util/normalize";
 import { IsZuorPattern, ZuordPattern } from "./zuordPattern";
 
 export type ZuordPick<T, U> = ZuordUtilNormalize<{

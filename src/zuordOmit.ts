@@ -1,6 +1,6 @@
 import { ZuordIsNever } from "./is/isNever";
 import { isObject } from "./is/isObject";
-import { ZuordUtilNormalize } from "./utils/normalize";
+import { ZuordUtilNormalize } from "./util/normalize";
 import { ZuordPattern } from "./zuordPattern";
 
 export type ZuordOmit<T, U> = ZuordUtilNormalize<ZuordOmitRaw<T, U>>;
