@@ -1,11 +1,11 @@
-import { zuordUtil, ZuordUtil } from "@"
+import { Zuord, zuordUtil, ZuordUtil } from "@"
 
 //
 
 type Merge<U extends object[], O extends string = ""> = ZuordUtil.Normalize<MergeRaw<U, O>>
 
 type MergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? ZuordUtil.Integrate<MergeRaw<Rest, O>, Head, O>
+    ? Zuord.Integrate<MergeRaw<Rest, O>, Head, O>
     : {};
 
 function merge<U extends object[], const O extends string>(content: [...U], options? : O): Merge<U, O> {

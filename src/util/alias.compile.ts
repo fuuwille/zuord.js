@@ -5,6 +5,5 @@ export { type ZuordIsFunction as IsFunction } from "./function";
 export { type ZuordIsObject as IsObject } from "./object";
 export { type ZuordIsArray as IsArray, type ZuordArrayDepth as IsDepth } from "./array";
 export { type ZuordIsPlain as IsPlain } from "./plain";
-export { type ZuordUtilIntegrate as Integrate } from "./integrate";
 export { type ZuordNormalize as Normalize } from "./normalize";
 export { type ZuordPartial as Partial } from "./partial";

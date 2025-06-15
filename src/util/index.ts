@@ -5,6 +5,5 @@ export * from "./function";
 export * from "./object";
 export * from "./array";
 export * from "./plain";
-export * from "./integrate";
 export * from "./normalize";
 export * from "./partial";
