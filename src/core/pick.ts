@@ -1,4 +1,6 @@
-import { Zuord, zuordUtil, ZuordUtil } from "@"
+import * as Zuord from "@/core/alias.compile"
+import * as zuordUtil from "@/util/alias.runtime";
+import * as ZuordUtil from "@/util/alias.compile";
 
 type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
 

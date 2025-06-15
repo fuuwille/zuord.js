@@ -1,4 +1,6 @@
-import { zuordUtil, Zuord, ZuordUtil } from "@";
+import * as Zuord from "@/core/alias.compile"
+import * as zuordUtil from "@/util/alias.runtime";
+import * as ZuordUtil from "@/util/alias.compile";
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 
