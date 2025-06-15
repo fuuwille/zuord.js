@@ -5,7 +5,6 @@ export type { ZuordMergeOptions as MergeOptions } from "./merge.types";
 export type { ZuordIntegrate as Integrate } from "./integrate.types";
 export type { ZuordIntegrateArray as IntegrateArray } from "./integrate.types";
 export type { ZuordIntegrateMode as IntegrateMode } from "./integrate.types";
-export type { ZuordIntegrateModeType as IntegrateModeType } from "./integrate.types";
 export type { ZuordOmit as Omit } from "./omit.types";
 export type { ZuordOmitRaw as OmitRaw } from "./omit.types";
 export type { ZuordOmitOf as OmitOf } from "./omit.types";
