@@ -1,7 +1,5 @@
 import { ZuordUtil } from "@";
 
-//
-
 type Integrate<A, B, Mode extends IntegrateModeType = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
         K extends keyof A ? (
@@ -36,16 +34,7 @@ type IntegrateMode = "concat";
 
 type IntegrateModeType = "" | IntegrateMode;
 
-//
-
-const integrateMode = {
-    concat: "concat",
-} as const;
-
-//
-
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateArray as ZuordIntegrateArray };
 export type { IntegrateMode as ZuordIntegrateMode };
 export type { IntegrateModeType as ZuordIntegrateModeType };
-export { integrateMode as zuordIntegrateMode };
