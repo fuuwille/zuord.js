@@ -7,11 +7,9 @@ export type ZuordUtilIntegrate<A, B, O extends string = ""> = Integrate<A, B, O>
 type Integrate<A, B, O extends string = ""> = {
   [K in keyof A | keyof B]: K extends keyof B ? (
     K extends keyof A ? (
-      Is.Exists<O, "concat"> extends true ? (
-        Is.Array<A[K]> extends true ? (
-          Is.Array<B[K]> extends true ? (
-            IntegrateArray<A[K], B[K], O>
-          ) : B[K]
+      Is.Array<A[K]> extends true ? (
+        Is.Array<B[K]> extends true ? (
+          IntegrateArray<A[K], B[K], O>
         ) : B[K]
       ) : Is.Plain<A[K]> extends true
           ? Is.Plain<B[K]> extends true
@@ -24,7 +22,7 @@ type Integrate<A, B, O extends string = ""> = {
       : never;
 };
 
-type IntegrateArray<A, B, O> = A extends readonly (infer U)[] ? (
+type IntegrateArray<A, B, O extends string = ""> = A extends readonly (infer U)[] ? (
   B extends readonly (infer V)[] ? (
     Is.Exists<O, "concat"> extends true ? (
       Array<U | V>
