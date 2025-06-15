@@ -20,7 +20,7 @@ function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) 
         throw new TypeError("pick: First argument must be a valid object.");
     }
     if (!zuordUtil.isObject(pattern)) {
-        throw new TypeError("pick: Second argument must be a valid schema (object).");
+        throw new TypeError("pick: Second argument must be a valid pattern (object).");
     }
 
     const result : any = {};
