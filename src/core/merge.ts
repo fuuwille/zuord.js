@@ -2,7 +2,11 @@ import * as Zuord from "@/core/alias.types"
 import * as zuordUtil from "@/util/alias";
 import * as ZuordUtil from "@/util/alias.types";
 
-function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(content: [...U], mode?: [...M]): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
+function merge<U extends object[]>(...content: U) : Zuord.Merge<U, ""> {
+    return mergeX(content, []) as Zuord.Merge<U, "">;
+}
+
+function mergeX<U extends object[], const M extends Zuord.IntegrateMode[]>(content: [...U], mode?: [...M]): Zuord.Merge<U, ZuordUtil.UnionOf<M>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
         return {} as Zuord.Merge<U, ZuordUtil.UnionOf<M>>;
@@ -23,7 +27,7 @@ function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(conten
                 result[key] = [...existing, ...value];
             } else if (zuordUtil.isObject(value) && zuordUtil.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = merge([existing, value], mode);
+                result[key] = mergeX([existing, value], mode);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
@@ -36,3 +40,4 @@ function merge<U extends object[], const M extends Zuord.IntegrateMode[]>(conten
 }
 
 export { merge as zuordMerge };
+export { mergeX as zuordMergeX };
