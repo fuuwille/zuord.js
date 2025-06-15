@@ -1,1 +1,1 @@
-export type ZuordIsArray<T> = T extends readonly any[] ? true : false;
+export type ZuordIsArray<T> = T extends Array<unknown> ? true : false;
