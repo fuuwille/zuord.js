@@ -1,5 +1,5 @@
 import { zuordUtil, ZuordUtil } from "../index"
-import { ZuordPattern, ZuordIsPattern } from "./zuordPattern";
+import { ZuordPattern, ZuordIsPattern } from "./pattern";
 
 type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
 

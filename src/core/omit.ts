@@ -1,5 +1,5 @@
 import { zuordUtil, ZuordUtil } from "../index"
-import { ZuordPattern } from "./zuordPattern";
+import { ZuordPattern } from "./pattern";
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 
