@@ -1,7 +1,13 @@
-export type ZuordIsObject<T> = T extends Function ? false
+type IsObject<T> = T extends Function ? false
   : T extends Array<unknown> ? T
   : T extends object ? true : false;
 
-export function isObject(item: any) : item is object {
+function isObject(item: any) : item is object {
     return item !== null && typeof item === 'object' && !Array.isArray(item);
 }
+
+//
+
+export type ZuordIsObject<T> = IsObject<T>;
+
+export { isObject };
