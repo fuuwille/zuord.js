@@ -1,7 +1,7 @@
 export type { ZuordIsNever as IsNever } from "./never";
 export type { ZuordIsExtends as IsExtends } from "./extends.types";
 export type { ZuordIsExists as IsExists } from "./exists.types";
-export type { ZuordIsFunction as IsFunction } from "./function";
+export type { ZuordIsFunction as IsFunction } from "./function.types";
 export type { ZuordIsObject as IsObject } from "./object";
 export type { ZuordIsArray as IsArray } from "./array.types";
 export type { ZuordArrayDepth as IsDepth } from "./array.types";
