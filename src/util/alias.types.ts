@@ -1,4 +1,4 @@
-export type { ZuordIsNever as IsNever } from "./never";
+export type { ZuordIsNever as IsNever } from "./never.types";
 export type { ZuordIsExtends as IsExtends } from "./extends.types";
 export type { ZuordIsExists as IsExists } from "./exists.types";
 export type { ZuordIsFunction as IsFunction } from "./function.types";
