@@ -2,16 +2,16 @@ import { Zuord, zuordUtil, ZuordUtil } from "@"
 
 //
 
-type Merge<U extends object[], O extends string = ""> = ZuordUtil.Normalize<MergeRaw<U, O>>
+type Merge<U extends object[], Mode extends Zuord.IntegrateModeType = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
 
-type MergeRaw<U extends object[], O extends string = ""> = U extends [...infer Rest extends object[], infer Head extends object]
-    ? Zuord.Integrate<MergeRaw<Rest, O>, Head, O>
+type MergeRaw<U extends object[], Mode extends Zuord.IntegrateModeType = ""> = U extends [...infer Rest extends object[], infer Head extends object]
+    ? Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
     : {};
 
-function merge<U extends object[], const O extends string>(content: [...U], options? : O): Merge<U, O> {
+function merge<U extends object[], const Mode extends Zuord.IntegrateModeType>(content: [...U], mode? : Mode): Merge<U, Mode> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Merge<U, O>;
+        return {} as Merge<U, Mode>;
     }
 
     const result: Record<string, unknown> = {};
@@ -29,7 +29,7 @@ function merge<U extends object[], const O extends string>(content: [...U], opti
                 result[key] = [...existing, ...value];
             } else if (zuordUtil.isObject(value) && zuordUtil.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = merge([existing as object, value as object], options);
+                result[key] = merge([existing as object, value as object], mode);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
@@ -38,7 +38,7 @@ function merge<U extends object[], const O extends string>(content: [...U], opti
     }
 
     // Return the merged result as a normalized object
-    return result as Merge<U, O>;
+    return result as Merge<U, Mode>;
 }
 
 //
