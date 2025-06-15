@@ -1,4 +1,4 @@
-import { isObject } from "./is/object";
+import { isObject } from "./util/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 import { IsZuorPattern, ZuordPattern } from "./zuordPattern";
 

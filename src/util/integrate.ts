@@ -1,4 +1,4 @@
-import { ZuordIs as Is } from "../is/index"
+import { ZuordIs as Is } from "./index"
 
 export type ZuordUtilIntegrate<A, B, O extends string = ""> = Integrate<A, B, O>;
 

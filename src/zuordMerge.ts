@@ -1,5 +1,5 @@
 import { ZuordUtilIntegrate } from "./util/integrate";
-import { isObject } from "./is/object";
+import { isObject } from "./util/object";
 import { ZuordUtilNormalize } from "./util/normalize";
 
 //

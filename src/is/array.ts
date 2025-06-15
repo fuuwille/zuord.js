@@ -1,1 +1,0 @@
-export type ZuordIsArray<T> = T extends readonly unknown[] ? true : false;
