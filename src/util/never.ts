@@ -1,5 +1,11 @@
-export type ZuordIsNever<T> = [T] extends [never] ? true : false;
+type IsNever<T> = [T] extends [never] ? true : false;
 
-export function isNever<T>(value: T): value is never {
+function isNever<T>(value: T): value is never {
     return value === undefined && typeof value === 'undefined';
 }
+
+//
+
+export type ZuordIsNever<T> = IsNever<T>;
+
+export { isNever };
