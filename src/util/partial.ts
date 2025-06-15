@@ -1,5 +1,3 @@
-export type ZuornUtilPartial<T> = {
-    [K in keyof T]?: T[K] extends object ? ZuornUtilPartial<T[K]> : T[K];
+export type ZuordUtilPartial<T> = {
+    [K in keyof T]?: T[K] extends object ? ZuordUtilPartial<T[K]> : T[K];
 };
-
-export default ZuornUtilPartial;
