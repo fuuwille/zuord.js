@@ -1,4 +1,4 @@
-import { zuordUtil, ZuordUtil } from "../index"
+import { zuordUtil, ZuordUtil } from "@"
 
 //
 

@@ -1,10 +1,9 @@
-import { zuordUtil, ZuordUtil } from "../index"
-import { ZuordPattern, ZuordIsPattern } from "./pattern";
+import { Zuord, zuordUtil, ZuordUtil } from "@"
 
 type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
 
 type PickRaw<T, U> = {
-    [K in keyof T & keyof U as ZuordIsPattern<U[K]> extends true ? K : never]:
+    [K in keyof T & keyof U as Zuord.IsPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
             : U[K] extends object
@@ -14,9 +13,9 @@ type PickRaw<T, U> = {
                 : never;
 };
 
-type PickOf<T, U> = Pick<T, ZuordPattern<U>>;
+type PickOf<T, U> = Pick<T, Zuord.Pattern<U>>;
 
-function pick<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : Pick<T, P> {
+function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Pick<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }
