@@ -1,10 +1,10 @@
 import { zuordUtil, ZuordUtil } from "../index"
-import { ZuordPattern, IsZuorPattern } from "./zuordPattern";
+import { ZuordPattern, ZuordIsPattern } from "./zuordPattern";
 
 type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
 
 type PickRaw<T, U> = {
-    [K in keyof T & keyof U as IsZuorPattern<U[K]> extends true ? K : never]:
+    [K in keyof T & keyof U as ZuordIsPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
             : U[K] extends object

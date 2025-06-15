@@ -1,26 +1,27 @@
 import { ZuordNormalize } from "../util/normalize";
 
-export type ZuordPattern<T> = ZuordNormalize<ZuordPatternRaw<T>>
+type Pattern<T> = ZuordNormalize<PatternRaw<T>>
 
-export default ZuordPattern;
-
-//
-
-export type ZuordPatternRaw<T> = true | {
+type PatternRaw<T> = true | {
     [K in keyof T]?: T[K] extends Array<unknown>
         ? true
         : T[K] extends object
-            ? ZuordPatternRaw<T[K]>
+            ? PatternRaw<T[K]>
             : T[K] extends undefined
                 ? never
                 : true;
 }
 
-export type IsZuorPattern<T> = T extends true 
+type IsPattern<T> = T extends true 
     ? true : T extends object ? true : false;
+
+function zuordPattern<T extends object, S extends Pattern<T>>(_: T, sch: S): S {
+    return sch;
+}
 
 //
 
-export function zuordPattern<T extends object, S extends ZuordPattern<T>>(_: T, sch: S): S {
-    return sch;
-}
+export type { Pattern as ZuordPattern };
+export type { PatternRaw as ZuordPatternRaw };
+export type { IsPattern as ZuordIsPattern };
+export { zuordPattern as zuordPattern };
