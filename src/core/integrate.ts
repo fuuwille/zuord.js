@@ -32,7 +32,17 @@ type IntegrateArray<A, B, Mode extends string = ""> = A extends readonly (infer 
     ) : never
 ) : never;
 
+type IntegrateModeType = "" | IntegrateMode;
+
+//
+
+enum IntegrateMode {
+    Concat = "concat"
+}
+
 //
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateArray as ZuordIntegrateArray };
+export type { IntegrateModeType as ZuordIntegrateModeType };
+export { IntegrateMode as ZuordIntegrateMode };
