@@ -28,7 +28,7 @@ type OmitRaw<T, U> = {
 
 type OmitOf<T, U> = Omit<T, ZuordPattern<U>>;
 
-function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : Omit<T, P> {
+function omit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern: P) : Omit<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
@@ -47,7 +47,7 @@ function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern:
                 continue;
             }
             if (zuordUtil.isObject(patVal) && zuordUtil.isObject(objVal)) {
-                const sub = zuordOmit(objVal, patVal);
+                const sub = omit(objVal, patVal);
                 if (zuordUtil.isObject(sub) && Object.keys(sub).length > 0) {
                     result[key] = sub;
                 }
@@ -67,4 +67,4 @@ function zuordOmit<T extends object, P extends ZuordPattern<T>>(obj: T, pattern:
 export type { Omit as ZuordOmit };
 export type { OmitRaw as ZuordOmitRaw };
 export type { OmitOf as ZuordOmitOf };
-export { zuordOmit as zuordOmit };
+export { omit as zuordOmit };

@@ -15,7 +15,7 @@ type PatternRaw<T> = true | {
 type IsPattern<T> = T extends true 
     ? true : T extends object ? true : false;
 
-function zuordPattern<T extends object, S extends Pattern<T>>(_: T, sch: S): S {
+function pattern<T extends object, S extends Pattern<T>>(_: T, sch: S): S {
     return sch;
 }
 
@@ -24,4 +24,4 @@ function zuordPattern<T extends object, S extends Pattern<T>>(_: T, sch: S): S {
 export type { Pattern as ZuordPattern };
 export type { PatternRaw as ZuordPatternRaw };
 export type { IsPattern as ZuordIsPattern };
-export { zuordPattern as zuordPattern };
+export { pattern as zuordPattern };
