@@ -1,7 +1,5 @@
-type ZPartial<T> = {
-    [K in keyof T]?: T[K] extends object ? ZPartial<T[K]> : T[K];
+type Optional<T> = {
+    [K in keyof T]?: T[K] extends object ? Optional<T[K]> : T[K];
 };
 
-//
-
-export type { ZPartial as ZuordPartial };
+export type { Optional as ZuordPartial };

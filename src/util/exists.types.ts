@@ -1,4 +1,4 @@
-import { ZuordIsExtends } from "./extends";
+import { ZuordIsExtends } from "./extends.types";
 
 //
 
