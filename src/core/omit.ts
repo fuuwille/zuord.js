@@ -1,4 +1,4 @@
-import { Zuord, zuordUtil, ZuordUtil } from "../index"
+import { zuordUtil, Zuord, ZuordUtil } from "@";
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 
