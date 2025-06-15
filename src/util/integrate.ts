@@ -1,23 +1,21 @@
-import { ZuordIsExists } from "../is/exists"
-import { ZuordIsArray } from "../is/array";
-import { ZuordIsPlain } from "../is/plain";
+import { ZuordIs as Is } from "../is/index"
 
 export type ZuordUtilIntegrate<A, B, O extends string = ""> = {
   [K in keyof A | keyof B]:
     K extends keyof B
       ? K extends keyof A
-        ? ZuordIsExists<O, "concat" | "Lola"> extends true
-          ? ZuordIsArray<A[K]> extends true
-            ? ZuordIsArray<B[K]> extends true
+        ? Is.Exists<O, "concat" | "Lola"> extends true
+          ? Is.Array<A[K]> extends true
+            ? Is.Array<B[K]> extends true
               ? A[K] extends readonly (infer U)[]
                 ? B[K] extends readonly (infer V)[]
-                  ? Array<U | V> // ✅ concat ve her ikisi array
+                  ? Array<U | V>
                   : B[K]
                 : B[K]
               : B[K]
             : B[K]
-          : ZuordIsPlain<A[K]> extends true
-            ? ZuordIsPlain<B[K]> extends true
+          : Is.Plain<A[K]> extends true
+            ? Is.Plain<B[K]> extends true
               ? ZuordUtilIntegrate<A[K], B[K], O>
               : B[K]
             : B[K]
