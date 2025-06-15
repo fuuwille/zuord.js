@@ -5,6 +5,5 @@ type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
 
 //
 
-export type ZuordIsArray<T> = IsArray<T>;
-
-export type ZuordArrayDepth<T> = ArrayDepth<T>;
+export type { IsArray as ZuordIsArray };
+export type { ArrayDepth as ZuordArrayDepth };

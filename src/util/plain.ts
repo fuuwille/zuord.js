@@ -9,6 +9,5 @@ function isPlain(item: any): item is object {
 
 //
 
-export type ZuordIsPlain<T> = IsPlain<T>;
-
+export type { IsPlain as ZuordIsPlain };
 export { isPlain };

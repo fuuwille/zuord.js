@@ -6,4 +6,4 @@ type Normalize<T> = ZuordIsObject<T> extends true ? { [K in keyof T]: Normalize<
 
 //
 
-export type ZuordNormalize<T> = T extends true ? true : Normalize<T>;
+export type { Normalize as ZuordNormalize };

@@ -4,4 +4,4 @@ type ZPartial<T> = {
 
 //
 
-export type ZuordPartial<T> = ZPartial<T>;
+export type { ZPartial as ZuordPartial };

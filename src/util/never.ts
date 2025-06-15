@@ -6,6 +6,5 @@ function isNever<T>(value: T): value is never {
 
 //
 
-export type ZuordIsNever<T> = IsNever<T>;
-
+export type { IsNever as ZuordIsNever };
 export { isNever };

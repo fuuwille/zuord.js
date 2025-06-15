@@ -9,4 +9,4 @@ type IsExists<T, E> = (() => ZuordIsExtends<T, E>) extends (() => infer R) ? (
 
 //
 
-export type ZuordIsExists<T, E> = IsExists<T, E>
+export type { IsExists as ZuordIsExists };

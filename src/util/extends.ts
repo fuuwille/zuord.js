@@ -3,4 +3,4 @@ type IsExtends<T, E> = [T] extends [never]
 
 //
 
-export type ZuordIsExtends<T, E> = IsExtends<T, E>;
+export type { IsExtends as ZuordIsExtends };

@@ -8,6 +8,5 @@ function isObject(item: any) : item is object {
 
 //
 
-export type ZuordIsObject<T> = IsObject<T>;
-
+export type { IsObject as ZuordIsObject }
 export { isObject };

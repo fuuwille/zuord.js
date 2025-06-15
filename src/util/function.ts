@@ -6,6 +6,5 @@ function isFunction(value: unknown): value is (...args: any[]) => unknown {
 
 //
 
-export type ZuordIsFunction<T> = IsFunction<T>;
-
+export type { IsFunction as ZuordIsFunction };
 export { isFunction };
