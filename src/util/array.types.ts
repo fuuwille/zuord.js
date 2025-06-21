@@ -1,4 +1,4 @@
-type IsArray<T> = ArrayDepth<T> extends 0 ? false : true;
+type IsArray<T> = T extends unknown[] ? true : false;
 
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
