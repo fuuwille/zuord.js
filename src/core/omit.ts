@@ -1,4 +1,4 @@
-import { Zuord } from "@/core"
+import { Zuord } from "@/core/alias.types"
 import * as zuordUtil from "@/util/alias";
 import * as ZuordUtil from "@/util/alias.types";
 

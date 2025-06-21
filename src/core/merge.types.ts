@@ -1,4 +1,4 @@
-import { Zuord } from "@/core"
+import { Zuord } from "@/core/alias.types"
 import * as ZuordUtil from "@/util/alias.types";
 
 type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
