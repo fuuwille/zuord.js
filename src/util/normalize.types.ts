@@ -1,15 +1,11 @@
 import * as ZuordUtil from "@/util/alias.types";
 
-type Normalize<T> = NormalizeStructural<T>;
-
-type NormalizeDistributed<T> = T extends any ? NormalizeStructural<T> : never;
-
-type NormalizeStructural<T> = (
+type Normalize<T> = (
     [ZuordUtil.IsObject<T>] extends [true] ? (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
     [ZuordUtil.HasArray<T>] extends [true] ? (
-        NormalizeDistributed<Exclude<T, unknown[]>> | NormalizeStructural<(T extends unknown[] ? T[number] : never)>[]
+        Normalize<Exclude<T, unknown[]>> | Normalize<(T extends unknown[] ? T[number] : never)>[]
     ) : T
 )
 
