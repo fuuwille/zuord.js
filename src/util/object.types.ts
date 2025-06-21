@@ -1,5 +1,10 @@
-type IsObject<T> = T extends Function ? false
-  : T extends Array<unknown> ? false
-  : T extends object ? true : false;
+type IsObject<T> = 
+  [T] extends [object] ? (
+    T extends Function ? (
+      false
+    ) : T extends any[] ? (
+      false
+    ): true
+  ) : false;
 
 export type { IsObject as ZuordIsObject }
