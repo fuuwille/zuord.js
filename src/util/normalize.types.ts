@@ -8,7 +8,7 @@ type NormalizeStructural<T> = (
     [ZuordUtil.IsObject<T>] extends [true] ? (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
-    [ZuordUtil.IsArray<T>] extends [true] ? (
+    [ZuordUtil.HasArray<T>] extends [true] ? (
         NormalizeDistributed<Exclude<T, unknown[]>> | NormalizeStructural<(T extends unknown[] ? T[number] : never)>[]
     ) : T
 )
