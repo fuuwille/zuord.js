@@ -12,3 +12,4 @@ export type { ZuordUnionOf as UnionOf } from "./union.types";
 export type { ZuordPattern as Pattern } from "./pattern.types";
 export type { ZuordPatternRaw as PatternRaw } from "./pattern.types";
 export type { ZuordIsPattern as IsPattern } from "./pattern.types";
+export type { ZuordMode as Mode } from "./mode.types";
