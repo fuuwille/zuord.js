@@ -1,4 +1,4 @@
-import * as Zuord from "@/core/alias.types"
+import { Zuord } from "@/core/alias.types"
 import * as ZuordUtil from "@/util/alias.types";
 
 type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
@@ -15,6 +15,9 @@ type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = (Zuo
     ) : {}
 );
 
+/**
+ * MergeMode defines the modes available for merging objects.
+ */
 type MergeMode = Zuord.IntegrateMode;
 
 type MergeOptions<U extends object[], M extends MergeMode[]> = {

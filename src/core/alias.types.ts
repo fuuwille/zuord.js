@@ -1,13 +1,30 @@
-export type { ZuordMerge as Merge } from "./merge.types";
-export type { ZuordMergeRaw as MergeRaw } from "./merge.types";
-export type { ZuordMergeMode as MergeMode } from "./merge.types";
-export type { ZuordMergeOptions as MergeOptions } from "./merge.types";
-export type { ZuordIntegrate as Integrate } from "./integrate.types";
-export type { ZuordIntegrateArray as IntegrateArray } from "./integrate.types";
-export type { ZuordIntegrateMode as IntegrateMode } from "./integrate.types";
-export type { ZuordOmit as Omit } from "./omit.types";
-export type { ZuordOmitRaw as OmitRaw } from "./omit.types";
-export type { ZuordOmitOf as OmitOf } from "./omit.types";
-export type { ZuordPick as Pick } from "./pick.types";
-export type { ZuordPickRaw as PickRaw } from "./pick.types";
-export type { ZuordPickOf as PickOf } from "./pick.types";
+import * as ZuordUtil from "@/util/alias.types";
+import type { ZuordMerge } from "./merge.types";
+import type { ZuordMergeRaw } from "./merge.types";
+import type { ZuordMergeMode } from "./merge.types";
+import type { ZuordMergeOptions } from "./merge.types";
+import type { ZuordIntegrate } from "./integrate.types";
+import type { ZuordIntegrateArray } from "./integrate.types";
+import type { ZuordIntegrateMode } from "./integrate.types";
+import type { ZuordOmit } from "./omit.types";
+import type { ZuordOmitRaw } from "./omit.types";
+import type { ZuordOmitOf } from "./omit.types";
+import type { ZuordPick } from "./pick.types";
+import type { ZuordPickRaw } from "./pick.types";
+import type { ZuordPickOf } from "./pick.types";
+
+export namespace Zuord {
+    export type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordMerge<U, Mode>;
+    export type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordMergeRaw<U, Mode>;
+    export type MergeMode = ZuordMergeMode;
+    export type MergeOptions<U extends object[], M extends ZuordMergeMode[] = []> = ZuordMergeOptions<U, M>;
+    export type Integrate<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrate<A, B, M>;
+    export type IntegrateArray<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrateArray<A, B, M>;
+    export type IntegrateMode = ZuordIntegrateMode;
+    export type Omit<A, B> = ZuordOmit<A, B>;
+    export type OmitRaw<A, B> = ZuordOmitRaw<A, B>;
+    export type OmitOf<A, B> = ZuordOmitOf<A, B>;
+    export type Pick<A, B> = ZuordPick<A, B>;
+    export type PickRaw<A, B> = ZuordPickRaw<A, B>;
+    export type PickOf<A, B> = ZuordPickOf<A, B>;
+}
