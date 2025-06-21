@@ -1,4 +1,4 @@
-import * as ZuordUtil from "@/util/alias.types";
+import { ZuordUtil } from "@/util/alias.types";
 import type { ZuordMerge } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
 import type { ZuordMergeMode } from "./merge.types";

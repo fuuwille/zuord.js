@@ -1,15 +1,33 @@
-export type { ZuordIsNever as IsNever } from "./never.types";
-export type { ZuordIsExtends as IsExtends } from "./extends.types";
-export type { ZuordIsExists as IsExists } from "./exists.types";
-export type { ZuordIsFunction as IsFunction } from "./function.types";
-export type { ZuordIsObject as IsObject } from "./object.types";
-export type { ZuordHasArray as HasArray } from "./array.types";
-export type { ZuordArrayDepth as ArrayDepth } from "./array.types";
-export type { ZuordIsPlain as IsPlain } from "./plain.types";
-export type { ZuordNormalize as Normalize } from "./normalize.types";
-export type { ZuordOptional as Optional } from "./optional.types";
-export type { ZuordUnionOf as UnionOf } from "./union.types";
-export type { ZuordPattern as Pattern } from "./pattern.types";
-export type { ZuordPatternRaw as PatternRaw } from "./pattern.types";
-export type { ZuordIsPattern as IsPattern } from "./pattern.types";
-export type { ZuordMode as Mode } from "./mode.types";
+import type { ZuordIsNever } from "./never.types";
+import type { ZuordIsExtends } from "./extends.types";
+import type { ZuordIsExists } from "./exists.types";
+import type { ZuordIsFunction } from "./function.types";
+import type { ZuordIsObject } from "./object.types";
+import type { ZuordHasArray } from "./array.types";
+import type { ZuordArrayDepth } from "./array.types";
+import type { ZuordIsPlain } from "./plain.types";
+import type { ZuordNormalize } from "./normalize.types";
+import type { ZuordOptional } from "./optional.types";
+import type { ZuordUnionOf } from "./union.types";
+import type { ZuordPattern } from "./pattern.types";
+import type { ZuordPatternRaw } from "./pattern.types";
+import type { ZuordIsPattern } from "./pattern.types";
+import type { ZuordMode } from "./mode.types";
+
+export namespace ZuordUtil {
+    export type IsNever<T> = ZuordIsNever<T>;
+    export type IsExtends<T, U> = ZuordIsExtends<T, U>;
+    export type IsExists<T, E> = ZuordIsExists<T, E>;
+    export type IsFunction<T> = ZuordIsFunction<T>;
+    export type IsObject<T> = ZuordIsObject<T>;
+    export type HasArray<T> = ZuordHasArray<T>;
+    export type ArrayDepth<T> = ZuordArrayDepth<T>;
+    export type IsPlain<T> = ZuordIsPlain<T>;
+    export type Normalize<T> = ZuordNormalize<T>;
+    export type Optional<T> = ZuordOptional<T>;
+    export type UnionOf<M extends readonly string[]> = ZuordUnionOf<M>;
+    export type Pattern<T> = ZuordPattern<T>;
+    export type PatternRaw<T> = ZuordPatternRaw<T>;
+    export type IsPattern<P> = ZuordIsPattern<P>;
+    export type Mode<M extends string> = ZuordMode<M>;
+}

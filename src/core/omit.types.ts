@@ -1,5 +1,5 @@
 
-import * as ZuordUtil from "@/util/alias.types";
+import { ZuordUtil } from "@/util/alias.types";
 
 type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
 

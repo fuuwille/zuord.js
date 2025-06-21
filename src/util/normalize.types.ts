@@ -1,4 +1,4 @@
-import * as ZuordUtil from "@/util/alias.types";
+import { ZuordUtil } from "@/util/alias.types";
 
 type Normalize<T> = (
     [ZuordUtil.IsObject<T>] extends [true] ? (

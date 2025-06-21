@@ -1,4 +1,4 @@
-import * as ZuordUtil from "@/util/alias.types";
+import { ZuordUtil } from "@/util/alias.types";
 
 type Pattern<T> = ZuordUtil.Normalize<PatternRaw<T>>
 
