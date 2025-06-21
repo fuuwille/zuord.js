@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types"
-import * as zuordUtil from "@/util/alias";
+import { zuordUtil } from "@/util/alias";
 import { ZuordUtil } from "@/util/alias.types";
 
 function pick<T extends object, P extends ZuordUtil.Pattern<T>>(obj: T, pattern: P) : Zuord.Pick<T, P> {
