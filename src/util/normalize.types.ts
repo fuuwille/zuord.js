@@ -5,10 +5,10 @@ type Normalize<T> = NormalizeStructural<T>;
 type NormalizeDistributed<T> = T extends any ? NormalizeStructural<T> : never;
 
 type NormalizeStructural<T> = (
-    ZuordUtil.IsObject<T> extends true ? (
+    [ZuordUtil.IsObject<T>] extends [true] ? (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
-    true extends ZuordUtil.IsArray<T> ? (
+    [ZuordUtil.IsArray<T>] extends [true] ? (
         NormalizeDistributed<Exclude<T, unknown[]>> | NormalizeStructural<(T extends unknown[] ? T[number] : never)>[]
     ) : T
 )
