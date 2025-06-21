@@ -1,9 +1,9 @@
 import * as Zuord from "@/core/alias.types"
 import * as ZuordUtil from "@/util/alias.types";
 
-type Merge<U extends any, Mode extends MergeMode | "" = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
+type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordUtil.Normalize<MergeRaw<U, Mode>>
 
-type MergeRaw<U extends any, Mode extends MergeMode | "" = ""> = ZuordUtil.ArrayDepth<U> extends 1 ? (
+type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordUtil.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
         Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
     ) : {}
