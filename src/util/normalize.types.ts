@@ -1,6 +1,12 @@
 import * as ZuordUtil from "@/util/alias.types";
 
-type Normalize<T> = ZuordUtil.IsArray<T> extends true ? NormalizeStructural<T> :T extends any ? NormalizeStructural<T> : never;
+type Normalize<T> = (
+    ZuordUtil.IsArray<T> extends true ? (
+        NormalizeStructural<T> 
+    ) : T extends any ? (
+        NormalizeStructural<T> 
+    ) : never
+);
 
 type NormalizeDistributed<T> = T extends any ? NormalizeStructural<T> : never;
 
