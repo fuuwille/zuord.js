@@ -1,4 +1,4 @@
-import * as ZuordUtil from "@/util/alias.types";
+import { ZuordUtil } from "@/util/alias.types";
 
 type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
 
