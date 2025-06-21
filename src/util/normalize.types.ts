@@ -15,12 +15,8 @@ type NormalizeStructural<T> = (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
     ZuordUtil.IsArray<T> extends true ? (
-        NormalizeElement<T>| NormalizeCollection<T>
+        NormalizeDistributed<Exclude<T, unknown[]>> | NormalizeStructural<(T extends unknown[] ? T[number] : never)>[]
     ) : T
 )
-
-type NormalizeElement<T> = NormalizeDistributed<Exclude<T, unknown[]>>;
-
-type NormalizeCollection<T> = NormalizeStructural<(T extends unknown[] ? T[number] : never)>[];
 
 export type { Normalize as ZuordNormalize };
