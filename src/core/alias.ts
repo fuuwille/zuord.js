@@ -1,4 +1,38 @@
-export { zuordMerge as merge } from "./merge";
-export { zuordMergeBy as mergeBy } from "./merge";
-export { zuordOmit as omit } from "./omit";
-export { zuordPick as pick } from "./pick";
+import { zuordMerge } from "./merge";
+import { zuordMergeBy } from "./merge";
+import { zuordOmit } from "./omit";
+import { zuordPick } from "./pick";
+
+/**
+ * 
+ */
+export namespace zuord {
+
+    // MERGE
+
+    /**
+     * 
+     */
+    export const merge = zuordMerge;
+
+    /**
+     * 
+     */
+    export const mergeBy = zuordMergeBy;
+
+
+    // OMIT
+
+    /**
+     * 
+     */
+    export const omit = zuordOmit;
+
+
+    // PICK
+
+    /**
+     * 
+     */
+    export const pick = zuordPick;
+}
