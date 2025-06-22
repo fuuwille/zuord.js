@@ -1,9 +1,29 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateRaw<A, B, Mode>>;
+type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateType<A, B, Mode>>;
 
-type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
+type IntegrateType<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = 
+    A extends readonly (infer AX)[] ? (
+        B extends readonly (infer BX)[] ? (
+            ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
+            ? Array<BX>
+            : Array<BX | AX>
+        ) : B
+    ) :                 
+    ZuordUtil.IsPlainObject<A> extends true ? (
+        ZuordUtil.IsPlainObject<B> extends true ? (
+            {
+                [K in keyof A | keyof B]: IntegrateType<
+                    K extends keyof A ? A[K] : never,
+                    K extends keyof B ? B[K] : never,
+                    Mode
+                >
+            }
+        ) : B
+    ) : B;
+
+/*type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
         K extends keyof A ? (
             A[K] extends readonly (infer AX)[] ? (
@@ -24,7 +44,7 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
             A[K]
         ) : never
     )
-};
+};*/
 
 type IntegrateMode = IntegrateNoConcantMode;
 
