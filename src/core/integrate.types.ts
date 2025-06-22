@@ -1,4 +1,4 @@
-import { ZuordUtil } from "@";
+import { ZuordUtil } from "@/util/alias.types";
 
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
