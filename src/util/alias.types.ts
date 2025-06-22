@@ -1,4 +1,4 @@
-import type { ZuordIsKey } from "./key.types";
+import type { ZuordIsKey, ZuordHasKey } from "./key.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
@@ -14,6 +14,7 @@ import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
     export type IsKey<T, K> = ZuordIsKey<T, K>;
+    export type HasKey<T, K> = ZuordHasKey<T, K>;
     export type IsNever<T> = ZuordIsNever<T>;
     export type IsExtends<T, U> = ZuordIsExtends<T, U>;
     export type IsExists<T, E> = ZuordIsExists<T, E>;
