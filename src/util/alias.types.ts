@@ -3,7 +3,7 @@ import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
-import type { ZuordHasArray } from "./array.types";
+import type { ZuordHasArray, ZuordHasAnyArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordIsPlain } from "./plain.types";
 import type { ZuordOptional } from "./optional.types";
@@ -18,6 +18,7 @@ export namespace ZuordUtil {
     export type IsFunction<T> = ZuordIsFunction<T>;
     export type IsObject<T> = ZuordIsObject<T>;
     export type HasArray<T> = ZuordHasArray<T>;
+    export type HasAnyArray<T extends readonly unknown[]> = ZuordHasAnyArray<T>;
     export type ArrayDepth<T> = ZuordArrayDepth<T>;
     export type IsPlain<T> = ZuordIsPlain<T>;
     export type Optional<T> = ZuordOptional<T>;
