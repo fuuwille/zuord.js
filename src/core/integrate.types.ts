@@ -10,8 +10,8 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
                     ) : Array<BX | AX>
                 ) : B[K]
             ) :                 
-            ZuordUtil.IsPlain<A[K]> extends true ? (
-                ZuordUtil.IsPlain<B[K]> extends true ? (
+            ZuordUtil.IsPlainObject<A[K]> extends true ? (
+                ZuordUtil.IsPlainObject<B[K]> extends true ? (
                     Integrate<A[K], B[K], Mode>
                 ) : B[K]
             ) : B[K]
