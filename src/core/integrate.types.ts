@@ -3,9 +3,11 @@ import { ZuordUtil } from "@";
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
         K extends keyof A ? (
-            A[K] extends readonly unknown[] ? (
-                B[K] extends readonly unknown[] ? (
-                    IntegrateArray<A[K], B[K], Mode>
+            A[K] extends readonly (infer AX)[] ? (
+                B[K] extends readonly (infer BX)[] ? (
+                    ZuordUtil.IsExists<Mode, "no-concat"> extends true ? (
+                        Array<BX>
+                    ) : Array<BX | AX>
                 ) : B[K]
             ) :                 
             ZuordUtil.IsPlain<A[K]> extends true ? (
