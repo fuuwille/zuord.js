@@ -1,8 +1,7 @@
 import { ZuordUtil } from "@";
 
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
-    [K in keyof A | keyof B]: K extends keyof B ? (
-        K extends keyof A ? (
+    [K in keyof A | keyof B]: K extends keyof (A | B) ? (
             ZuordUtil.HasArray<A[K]> extends true ? (
                 ZuordUtil.HasArray<B[K]> extends true ? (
                     IntegrateArray<A[K], B[K], Mode>
@@ -14,7 +13,6 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
                     ) : B[K]
                 ) : B[K]
             )
-        ) : B[K]
     ) : (
         K extends keyof A ? (
             A[K]
