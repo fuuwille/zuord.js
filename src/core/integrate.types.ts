@@ -30,7 +30,9 @@ type IntegrateArray<A, B, Mode extends ZuordUtil.Mode<IntegrateMode>  = ""> = A 
     ) : never
 ) : never;
 
-type IntegrateMode = "concat";
+type IntegrateMode = IntegrateConcatMode;
+
+type IntegrateConcatMode = "concat";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateArray as ZuordIntegrateArray };
