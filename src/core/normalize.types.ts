@@ -12,3 +12,4 @@ type NormalizeDirect<T> = (
 )
 
 export type { Normalize as ZuordNormalize };
+export type { NormalizeDirect as ZuordNormalizeDirect };
