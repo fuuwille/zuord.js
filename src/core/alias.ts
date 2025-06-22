@@ -1,4 +1,5 @@
 import { zuordNormalize } from "./normalize";
+import { zuordPattern } from "./pattern";
 import { zuordMerge } from "./merge";
 import { zuordMergeBy } from "./merge";
 import { zuordOmit } from "./omit";
@@ -16,7 +17,15 @@ export namespace zuord {
      */
     export const normalize = zuordNormalize;
 
-    
+
+    // PATTERN
+
+    /**
+     * 
+     */
+    export const pattern = zuordPattern;
+
+
     // MERGE
 
     /**
