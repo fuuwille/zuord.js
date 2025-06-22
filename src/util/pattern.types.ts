@@ -1,6 +1,6 @@
-import { ZuordUtil } from "@/util/alias.types";
+import { Zuord } from "@/core/alias.types"
 
-type Pattern<T> = ZuordUtil.Normalize<PatternRaw<T>>
+type Pattern<T> = Zuord.Normalize<PatternRaw<T>>
 
 type PatternRaw<T> = true | {
     [K in keyof T]?: T[K] extends Array<unknown>

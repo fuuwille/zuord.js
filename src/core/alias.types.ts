@@ -1,4 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
+import type { ZuordNormalize } from "./normalize.types";
 import type { ZuordMerge } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
 import type { ZuordMergeMode } from "./merge.types";
@@ -17,6 +18,11 @@ import type { ZuordPickOf } from "./pick.types";
  * 
  */
 export namespace Zuord {
+
+    // NORMALIZE
+
+    export type Normalize<T> = ZuordNormalize<T>;
+
 
     // MERGE
 

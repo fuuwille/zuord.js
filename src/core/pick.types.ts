@@ -1,6 +1,7 @@
+import { Zuord } from "@/core/alias.types"
 import { ZuordUtil } from "@/util/alias.types";
 
-type Pick<T, U> = ZuordUtil.Normalize<PickRaw<T, U>>;
+type Pick<T, U> = Zuord.Normalize<PickRaw<T, U>>;
 
 type PickRaw<T, U> = {
     [K in keyof T & keyof U as ZuordUtil.IsPattern<U[K]> extends true ? K : never]:

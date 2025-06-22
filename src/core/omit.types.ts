@@ -1,7 +1,7 @@
-
+import { Zuord } from "@/core/alias.types"
 import { ZuordUtil } from "@/util/alias.types";
 
-type Omit<T, U> = ZuordUtil.Normalize<OmitRaw<T, U>>;
+type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;
 
 type OmitRaw<T, U> = {
     [K in keyof T as
