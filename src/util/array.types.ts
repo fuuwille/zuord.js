@@ -1,9 +1,10 @@
 type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? true : false;
 
-type HasAnyArray<U extends readonly unknown[]> =  HasArray<U[number]> extends true ? true : false;
+type HasAnyArray<U extends readonly unknown[]> =  [HasArray<U[number]>] extends [true] ? true : false;
 
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
 
 export type { HasArray as ZuordHasArray };
+export type { HasAnyArray as ZuordHasAnyArray };
 export type { ArrayDepth as ZuordArrayDepth };
