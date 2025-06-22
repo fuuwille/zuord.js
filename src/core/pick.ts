@@ -2,7 +2,7 @@ import { Zuord } from "@/core/alias.types"
 import { zuordUtil } from "@/util/alias";
 import { ZuordUtil } from "@/util/alias.types";
 
-function pick<T extends object, P extends ZuordUtil.Pattern<T>>(obj: T, pattern: P) : Zuord.Pick<T, P> {
+function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Pick<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }

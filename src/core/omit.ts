@@ -2,7 +2,7 @@ import { Zuord } from "@/core/alias.types"
 import { zuordUtil } from "@/util/alias";
 import { ZuordUtil } from "@/util/alias.types";
 
-function omit<T extends object, P extends ZuordUtil.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
+function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
     if (!zuordUtil.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }

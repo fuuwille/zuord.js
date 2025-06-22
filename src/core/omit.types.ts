@@ -26,7 +26,7 @@ type OmitRaw<T, U> = {
             : T[K];
 };
 
-type OmitOf<T, U> = Omit<T, ZuordUtil.Pattern<U>>;
+type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
 
 export type { Omit as ZuordOmit };
 export type { OmitRaw as ZuordOmitRaw };

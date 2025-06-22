@@ -1,6 +1,6 @@
-import { ZuordUtil } from "@/util/alias.types";
+import { Zuord } from "@/core/alias.types";
 
-function pattern<T extends object, S extends ZuordUtil.Pattern<T>>(_: T, sch: S): S {
+function pattern<T extends object, S extends Zuord.Pattern<T>>(_: T, sch: S): S {
     return sch;
 }
 

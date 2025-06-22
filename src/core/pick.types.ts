@@ -14,7 +14,7 @@ type PickRaw<T, U> = {
                 : never;
 };
 
-type PickOf<T, U> = Pick<T, ZuordUtil.Pattern<U>>;
+type PickOf<T, U> = Pick<T, Zuord.Pattern<U>>;
 
 export type { Pick as ZuordPick };
 export type { PickRaw as ZuordPickRaw };

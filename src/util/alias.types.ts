@@ -8,8 +8,6 @@ import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordIsPlain } from "./plain.types";
 import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
-import type { ZuordPattern } from "./pattern.types";
-import type { ZuordPatternRaw } from "./pattern.types";
 import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
 
@@ -24,8 +22,6 @@ export namespace ZuordUtil {
     export type IsPlain<T> = ZuordIsPlain<T>;
     export type Optional<T> = ZuordOptional<T>;
     export type UnionOf<M extends readonly string[]> = ZuordUnionOf<M>;
-    export type Pattern<T> = ZuordPattern<T>;
-    export type PatternRaw<T> = ZuordPatternRaw<T>;
     export type IsPattern<P> = ZuordIsPattern<P>;
     export type Mode<M extends string> = ZuordMode<M>;
 }
