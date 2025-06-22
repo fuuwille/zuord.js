@@ -1,6 +1,9 @@
+import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
+type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateRaw<A, B, Mode>>;
+
+type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
         K extends keyof A ? (
             A[K] extends readonly (infer AX)[] ? (
