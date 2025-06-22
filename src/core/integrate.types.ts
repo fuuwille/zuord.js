@@ -5,7 +5,7 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
         K extends keyof A ? (
             A[K] extends readonly (infer AX)[] ? (
                 B[K] extends readonly (infer BX)[] ? (
-                    ZuordUtil.IsExists<Mode, "no-concat"> extends true ? (
+                    ZuordUtil.IsExists<Mode, "suppressArray"> extends true ? (
                         Array<BX>
                     ) : Array<BX | AX>
                 ) : B[K]
@@ -23,9 +23,9 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     )
 };
 
-type IntegrateMode = IntegrateNoConcatMode;
+type IntegrateMode = IntegrateSuppressArrayMode;
 
-type IntegrateNoConcatMode = "no-concat";
+type IntegrateSuppressArrayMode= "suppressArray";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateMode as ZuordIntegrateMode };
