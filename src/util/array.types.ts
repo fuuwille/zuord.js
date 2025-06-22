@@ -1,4 +1,4 @@
-type HasArray<T> = true extends (T extends any[] ? true : false) ? true : false;
+type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? true : false;
 
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
