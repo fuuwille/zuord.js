@@ -7,7 +7,7 @@ type NormalizeDirect<T> = (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
     [ZuordUtil.HasArray<T>] extends [true] ? (
-        Normalize<Exclude<T, unknown[]>> | NormalizeDirect<(T extends readonly unknown[] ? T[number] : never)>[]
+        Normalize<Exclude<T, readonly unknown[]>> | NormalizeDirect<(T extends readonly unknown[] ? T[number] : never)>[]
     ) : T
 )
 
