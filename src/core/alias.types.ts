@@ -1,5 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
-import type { ZuordNormalize } from "./normalize.types";
+import type { ZuordNormalize, ZuordNormalizeDirect } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
 import type { ZuordMerge } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
@@ -22,7 +22,15 @@ export namespace Zuord {
 
     // NORMALIZE
 
+    /**
+     * 
+     */
     export type Normalize<T> = ZuordNormalize<T>;
+
+    /**
+     * 
+     */
+    export type NormalizeDirect<T> = ZuordNormalizeDirect<T>;
 
 
     // PATTERN
