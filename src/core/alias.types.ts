@@ -32,7 +32,6 @@ export namespace Zuord {
      */
     export type Pattern<T> = ZuordPattern<T>;
 
-
     /**
      * 
      */
