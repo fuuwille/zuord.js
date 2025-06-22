@@ -1,8 +1,8 @@
 type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? true : false;
 
-type HasAnyArray<U extends readonly unknown[]> =  [HasArray<U[number]>] extends [true] ? true : false;
+type HasAnyArray<U extends readonly unknown[]> = U extends readonly [unknown[]] ? true : ([HasArray<U[number]>] extends [true] ? true : false);
 
-type HasAllArray<U extends readonly unknown[] = []> = [HasArray<U[number]>] extends [boolean] ? false : true;
+type HasAllArray<U extends readonly unknown[]> = U extends readonly [unknown[]] ? true : ([HasArray<U[number]>] extends [boolean] ? false : true);
 
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
