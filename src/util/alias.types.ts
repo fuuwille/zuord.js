@@ -20,7 +20,7 @@ export namespace ZuordUtil {
     export type IsExtends<T, U> = ZuordIsExtends<T, U>;
     export type IsExists<T, E> = ZuordIsExists<T, E>;
     export type IsFunction<T> = ZuordIsFunction<T>;
-    export type PlainObject<T> = ZuordPlainObject<T>;
+    export type PlainObject = ZuordPlainObject;
     export type IsObject<T> = ZuordIsObject<T>;
     export type IsPlainObject<T> = ZuordIsPlainObject<T>;
     export type IsArray<T> = ZuordIsArray<T>;
