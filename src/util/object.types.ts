@@ -1,7 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type PlainObject = { [key: string]: unknown } ;
-
 type IsObject<T> = [T] extends [object] ? true : false;
 
 type IsPlainObject<T> = IsObject<T> extends true ? (
@@ -10,9 +8,12 @@ type IsPlainObject<T> = IsObject<T> extends true ? (
   true
 ) : false;
 
-type AsPlainObject<T> = T extends PlainObject ? T : never;
+type AsPlainObject<T> = T extends object
+  ? T extends Function ? never 
+  : T extends unknown[] ? never
+  : T
+  : never;
 
-export type { PlainObject as ZuordPlainObject }
 export type { IsObject as ZuordIsObject }
 export type { IsPlainObject as ZuordIsPlainObject }
 export type { AsPlainObject as ZuordAsPlainObject }
