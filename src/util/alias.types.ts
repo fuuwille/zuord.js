@@ -3,7 +3,7 @@ import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
-import type { ZuordIsObject, ZuordIsPlainObject, ZuordAsPlainObject } from "./object.types";
+import type { ZuordIsObject, ZuordIsPlainObject, ZuordHasPlainObject, ZuordAsPlainObject } from "./object.types";
 import type { ZuordIsArray, ZuordHasArray, ZuordHasAnyArray, ZuordHasAllArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
@@ -22,6 +22,7 @@ export namespace ZuordUtil {
     export type IsFunction<T> = ZuordIsFunction<T>;
     export type IsObject<T> = ZuordIsObject<T>;
     export type IsPlainObject<T> = ZuordIsPlainObject<T>;
+    export type HasPlainObject<T> = ZuordHasPlainObject<T>;
     export type AsPlainObject<T> = ZuordAsPlainObject<T>;
     export type IsArray<T> = ZuordIsArray<T>;
     export type HasArray<T> = ZuordHasArray<T>;
