@@ -10,6 +10,9 @@ type IsPlainObject<T> = IsObject<T> extends true ? (
   true
 ) : false;
 
+type AsPlainObject<T> = T extends PlainObject ? T : never;
+
 export type { PlainObject as ZuordPlainObject }
 export type { IsObject as ZuordIsObject }
 export type { IsPlainObject as ZuordIsPlainObject }
+export type { AsPlainObject as ZuordAsPlainObject }
