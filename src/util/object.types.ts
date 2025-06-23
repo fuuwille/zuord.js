@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-export type PlainObject = { [key: string]: unknown } ;
+type PlainObject = { [key: string]: unknown } ;
 
 type IsObject<T> = [T] extends [object] ? true : false;
 
