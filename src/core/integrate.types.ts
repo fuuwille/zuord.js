@@ -4,6 +4,8 @@ import { ZuordUtil } from "@/util/alias.types";
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateType<A, B, Mode>>;
 
 type IntegrateType<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = 
+    ZuordUtil.IsNever<A> extends true ? B :
+    ZuordUtil.IsNever<B> extends true ? A :
     A extends readonly (infer AX)[] ? (
         B extends readonly (infer BX)[] ? (
             ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
