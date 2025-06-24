@@ -33,7 +33,7 @@ export namespace ZuordUtil {
     export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
     export type ArrayDepth<T> = ZuordArrayDepth<T>;
     export type Optional<T> = ZuordOptional<T>;
-    export type UnionOf<M extends readonly string[]> = ZuordUnionOf<M>;
+    export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
     export type IsPattern<P> = ZuordIsPattern<P>;
     export type Mode<M extends string> = ZuordMode<M>;
     export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
