@@ -11,6 +11,8 @@ type IsPlainObject<T> = IsObject<T> extends true ? (
 
 type HasPlainObject<T> = true extends (T extends any ? IsPlainObject<T> : false) ? true : false;
 
+type HasNotPlainObject<T> = boolean extends (T extends any ? IsPlainObject<T> : false) ? false : true;
+
 type AsPlainObject<T> = T extends object
   ? T extends Function ? never 
   : T extends unknown[] ? never
@@ -20,4 +22,5 @@ type AsPlainObject<T> = T extends object
 export type { IsObject as ZuordIsObject }
 export type { IsPlainObject as ZuordIsPlainObject }
 export type { HasPlainObject as ZuordHasPlainObject }
+export type { HasNotPlainObject as ZuordHasNotPlainObject }
 export type { AsPlainObject as ZuordAsPlainObject }
