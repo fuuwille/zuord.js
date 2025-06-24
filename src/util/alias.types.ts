@@ -56,3 +56,12 @@ type OptionalKeys<U> = {
   [K in UnionKeys<U>]:
     undefined extends PropertyMap<U>[K] ? K : never
 }[UnionKeys<U>];
+
+type MergeUnionObjects<U> =
+  ZuordUtil.IsPlain<U> extends true
+    ? (
+        { [K in RequiredKeys<U>]-?: PropertyMap<U>[K] }
+        &
+        { [K in OptionalKeys<U>]?: PropertyMap<U>[K] }
+      )
+    : never;
