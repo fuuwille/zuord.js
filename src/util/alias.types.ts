@@ -36,6 +36,7 @@ export namespace ZuordUtil {
     export type UnionOf<M extends readonly string[]> = ZuordUnionOf<M>;
     export type IsPattern<P> = ZuordIsPattern<P>;
     export type Mode<M extends string> = ZuordMode<M>;
+    export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
 }
 
 type UnionKeys<U> = U extends object ? keyof U : never;
@@ -57,7 +58,7 @@ type OptionalKeys<U> = {
     undefined extends PropertyMap<U>[K] ? K : never
 }[UnionKeys<U>];
 
-type MergeUnionObjects<U> =
+type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
         { [K in RequiredKeys<U>]-?: PropertyMap<U>[K] }
