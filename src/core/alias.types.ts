@@ -24,7 +24,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Normalize<T> = ZuordNormalize<T>;
+    export type Normalize<T, L extends object[] = []> = ZuordNormalize<T, L>;
 
 
     // PATTERN
