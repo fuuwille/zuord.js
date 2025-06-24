@@ -3,10 +3,10 @@ import { ZuordUtil } from "@/util/alias.types";
 type Normalize<T, L extends object[] = []> = (
     ZuordUtil.HasPlain<T> extends true
     ? (
-        (ZuordUtil.AsNonPlain<T> extends infer V ? V extends any ? NormalizeDirect<V> : never : never) | 
-        (NormalizeDirect<ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>>>)
+        (ZuordUtil.AsNonPlain<T> extends infer V ? V extends any ? NormalizeDirect<V, L> : never : never) | 
+        (NormalizeDirect<ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>>, L>)
       )
-    : T extends any ? NormalizeDirect<T> : never
+    : T extends any ? NormalizeDirect<T, L> : never
 );
 
 type NormalizeDirect<T, L extends object[] = []> = (
