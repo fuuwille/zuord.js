@@ -51,3 +51,8 @@ type PropertyMap<U> = {
 type RequiredKeys<U> = {
   [K in UnionKeys<U>]: undefined extends PropertyMap<U>[K] ? never : K
 }[UnionKeys<U>];
+
+type OptionalKeys<U> = {
+  [K in UnionKeys<U>]:
+    undefined extends PropertyMap<U>[K] ? K : never
+}[UnionKeys<U>];
