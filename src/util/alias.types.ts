@@ -39,3 +39,7 @@ export namespace ZuordUtil {
 }
 
 type UnionKeys<U> = U extends object ? keyof U : never;
+
+type ValuesOfKey<U, K extends PropertyKey> = U extends any
+  ? (K extends keyof U ? U[K] : never)
+  : never;
