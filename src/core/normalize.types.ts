@@ -4,7 +4,7 @@ type Normalize<T> = T extends any ? NormalizeDirect<T> : never;
 
 type NormalizeDirect<T> = (
     [ZuordUtil.IsPlainObject<T>] extends [true] ? (
-        { [K in keyof T]: Normalize<T[K]> }
+        NormalizePlainObject<T>
     ) :
     [ZuordUtil.HasArray<T>] extends [true] ? (
         Normalize<Exclude<T, readonly unknown[]>> | NormalizeDirect<(T extends readonly unknown[] ? T[number] : never)>[]
