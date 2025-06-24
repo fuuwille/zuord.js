@@ -47,3 +47,7 @@ type ValuesOfKey<U, K extends PropertyKey> = U extends any
 type PropertyMap<U> = {
   [K in UnionKeys<U>]: ValuesOfKey<U, K>;
 };
+
+type RequiredKeys<U> = {
+  [K in UnionKeys<U>]: undefined extends PropertyMap<U>[K] ? never : K
+}[UnionKeys<U>];
