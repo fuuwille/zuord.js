@@ -3,13 +3,13 @@ import { ZuordUtil } from "@/util/alias.types";
 type Normalize<T> = (
     ZuordUtil.HasPlain<T> extends true
     ? (
-        (ZuordUtil.AsNonPlain<T> extends infer V ? V extends any ? NormalizeRaw<V> : never : never) | 
-        (NormalizeRaw<ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>>>)
+        (ZuordUtil.AsNonPlain<T> extends infer V ? V extends any ? NormalizeDirect<V> : never : never) | 
+        (NormalizeDirect<ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>>>)
       )
-    : T extends any ? NormalizeRaw<T> : never
+    : T extends any ? NormalizeDirect<T> : never
 );
 
-type NormalizeRaw<T> = (
+type NormalizeDirect<T> = (
     [ZuordUtil.IsPlain<T>] extends [true] ? (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
@@ -19,3 +19,4 @@ type NormalizeRaw<T> = (
 )
 
 export type { Normalize as ZuordNormalize };
+export type { NormalizeDirect as ZuordNormalizeDirect };
