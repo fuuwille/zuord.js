@@ -15,8 +15,11 @@ type HasNotPlainObject<T> = boolean extends (T extends any ? IsPlainObject<T> : 
 
 type AsPlainObject<T> = T extends any ? (IsPlainObject<T> extends true ? T : never) : never;
 
+type AsNonPlainObject<T> = T extends any ? (IsPlainObject<T> extends true ? never : T) : never;
+
 export type { IsObject as ZuordIsObject }
 export type { IsPlainObject as ZuordIsPlainObject }
 export type { HasPlainObject as ZuordHasPlainObject }
 export type { HasNotPlainObject as ZuordHasNotPlainObject }
 export type { AsPlainObject as ZuordAsPlainObject }
+export type { AsNonPlainObject as ZuordAsNonPlainObject }
