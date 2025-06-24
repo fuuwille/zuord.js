@@ -11,5 +11,9 @@ type NormalizeDirect<T> = (
     ) : T
 )
 
+type NormalizePlainObject<T> = (     
+    { [K in keyof T]: Normalize<T[K]> }
+)
+
 export type { Normalize as ZuordNormalize };
 export type { NormalizeDirect as ZuordNormalizeDirect };
