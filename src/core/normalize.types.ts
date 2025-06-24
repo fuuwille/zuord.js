@@ -1,7 +1,7 @@
 import { ZuordUtil } from "@/util/alias.types";
 
 type Normalize<T> = (
-    [ZuordUtil.IsPlainObject<T>] extends [true] ? (
+    [ZuordUtil.IsPlain<T>] extends [true] ? (
         { [K in keyof T]: Normalize<T[K]> }
     ) :
     [ZuordUtil.IsArray<T>] extends [true] ? (
