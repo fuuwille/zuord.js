@@ -37,3 +37,5 @@ export namespace ZuordUtil {
     export type IsPattern<P> = ZuordIsPattern<P>;
     export type Mode<M extends string> = ZuordMode<M>;
 }
+
+type UnionKeys<U> = U extends object ? keyof U : never;
