@@ -17,3 +17,4 @@ type NormalizePlainObject<T> = (
 
 export type { Normalize as ZuordNormalize };
 export type { NormalizeDirect as ZuordNormalizeDirect };
+export type { NormalizePlainObject as ZuordNormalizePlainObject };
