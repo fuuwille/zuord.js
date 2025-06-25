@@ -6,7 +6,10 @@ type AnyHasKey<U extends readonly unknown[], K> = [HasKey<U[number], K>] extends
 
 type AllHasKey<U extends readonly unknown[], K> = [HasKey<U[number], K>] extends [boolean] ? false : true;
 
+type KeysOf<U> = U extends any ? keyof U : never;
+
 export type { IsKey as ZuordIsKey };
 export type { HasKey as ZuordHasKey };
 export type { AnyHasKey as ZuordAnyHasKey };
 export type { AllHasKey as ZuordAllHasKey };
+export type { KeysOf as ZuordKeysOf };
