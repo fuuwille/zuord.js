@@ -62,6 +62,7 @@ export namespace ZuordUtil {
   export type HasNonPlain<T> = ZuordHasNonPlain<T>;
   export type AsPlain<T> = ZuordAsPlain<T>;
   export type AsNonPlain<T> = ZuordAsNonPlain<T>;
+  export type AsOnePlain<U> = ZuordAsOnePlain<U>;
 
 
   // FUNCTION
@@ -110,5 +111,4 @@ export namespace ZuordUtil {
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
   export type Mode<M extends string> = ZuordMode<M>;
-  export type AsOnePlain<U> = ZuordAsOnePlain<U>;
 }
