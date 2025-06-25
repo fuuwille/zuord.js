@@ -40,6 +40,11 @@ export namespace ZuordUtil {
   // UNKNOWN
 
 
+  // ANY
+
+  export type AsAny<T> = ZuordAsAny<T>;
+
+  
   // ARRAY
 
   export type ArrayDepth<T> = ZuordArrayDepth<T>;
@@ -50,7 +55,6 @@ export namespace ZuordUtil {
 
   // UNORDEREDS
 
-  export type AsAny<T> = ZuordAsAny<T>;
   export type Ignored<U extends object[] = []> = ZuordIgnored<U>;
   export type HasIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordHasIgnored<T, I>;
   export type AsIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordAsIgnored<T, I>;
