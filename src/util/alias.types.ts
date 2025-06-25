@@ -17,7 +17,7 @@ import type { ZuordMode } from "./mode.types";
 export namespace ZuordUtil {
     export type AsAny<T> = ZuordAsAny<T>;
     export type Ignore<U extends object[] = []> = ZuordIgnore<U>;
-    export type ShouldIgnore<T, I extends ZuordUtil.Ignore = ZuordUtil.Ignore> = ZuordShouldIgnore<T, I>;
+    export type ShouldIgnore<T, I extends object[] = ZuordUtil.Ignore> = ZuordShouldIgnore<T, I>;
     export type IsKey<T, K> = ZuordIsKey<T, K>;
     export type HasKey<T, K> = ZuordHasKey<T, K>;
     export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;

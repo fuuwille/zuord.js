@@ -24,7 +24,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Normalize<T, L extends ZuordUtil.Ignore = ZuordUtil.Ignore> = ZuordNormalize<T, L>;
+    export type Normalize<T, L extends object[] = ZuordUtil.Ignore> = ZuordNormalize<T, L>;
 
 
     // PATTERN

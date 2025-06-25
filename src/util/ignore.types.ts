@@ -27,7 +27,7 @@ type Ignore<U extends object[] = []> = [
     BigUint64Array
 ]
 
-type ShouldIgnore<T, I extends Ignore = Ignore> = T extends ZuordUtil.UnionOf<I> ? true : false;
+type ShouldIgnore<T, I extends object[] = Ignore> = T extends ZuordUtil.UnionOf<I> ? true : false;
 
 export type { Ignore as ZuordIgnore };
 export type { ShouldIgnore as ZuordShouldIgnore };
