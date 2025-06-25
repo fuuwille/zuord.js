@@ -3,6 +3,7 @@ import { ZuordUtil } from "@/util/alias.types";
 type Ignore<U extends object[] = []> = [
     ...U,
     Date,
+    Function,
     RegExp,
     Function,
     Error,
