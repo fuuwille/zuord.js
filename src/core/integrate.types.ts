@@ -4,11 +4,11 @@ import { ZuordUtil } from "@/util/alias.types";
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateRaw<A, B, Mode>>;
 
 type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = ZuordUtil.SomeIsNever<[A, B]> extends false ? (
-    A extends readonly (infer AX)[] ? (
-        B extends readonly (infer BX)[] ? (
+    A extends readonly unknown[] ? (
+        B extends readonly unknown[] ? (
             ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
-            ? Array<BX>
-            : Array<BX | AX>
+            ? Array<ZuordUtil.ArrayIn<B>>
+            : Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
         ) : B
     ) : 
     ZuordUtil.IsAllPlain<[A, B]> extends false ? B : ( 
