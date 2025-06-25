@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type Normalize<T, L extends object[] = ZuordUtil.Ignored > = ZuordUtil.ShouldIgnored<T, L> extends false ? (
+type Normalize<T, L extends object[] = ZuordUtil.Ignored > = ZuordUtil.HasIgnored<T, L> extends false ? (
     ZuordUtil.HasPlain<T> extends true ? (
         (ZuordUtil.AsNonPlain<T> extends infer V ? Normalize<V, L> : never) | 
         (ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>> extends infer T ? {

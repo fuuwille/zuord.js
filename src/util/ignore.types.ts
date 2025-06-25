@@ -28,13 +28,13 @@ type Ignored<U extends object[] = []> = [
     BigUint64Array
 ]
 
-type ShouldIgnored<T, I extends object[] = Ignored> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
+type HasIgnored<T, I extends object[] = Ignored> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
 
-type AsIgnored<T, I extends object[] = Ignored> = T extends any ? (ShouldIgnored<T, I> extends true ? T : never) : never;
+type AsIgnored<T, I extends object[] = Ignored> = T extends any ? (HasIgnored<T, I> extends true ? T : never) : never;
 
-type AsNonIgnored<T, I extends object[] = Ignored> = T extends any ? (ShouldIgnored<T, I> extends true ? never : T) : never;
+type AsNonIgnored<T, I extends object[] = Ignored> = T extends any ? (HasIgnored<T, I> extends true ? never : T) : never;
 
 export type { Ignored as ZuordIgnored };
-export type { ShouldIgnored as ZuordShouldIgnored };
+export type { HasIgnored as ZuordHasIgnored };
 export type { AsIgnored as ZuordAsIgnored };
 export type { AsNonIgnored as ZuordAsNonIgnored };

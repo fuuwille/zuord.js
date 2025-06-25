@@ -1,5 +1,5 @@
 import type { ZuordAsAny } from "./any.types";
-import type { ZuordIgnored, ZuordShouldIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
+import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
 import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey } from "./key.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
@@ -17,7 +17,7 @@ import type { ZuordMode } from "./mode.types";
 export namespace ZuordUtil {
     export type AsAny<T> = ZuordAsAny<T>;
     export type Ignored<U extends object[] = []> = ZuordIgnored<U>;
-    export type ShouldIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordShouldIgnored<T, I>;
+    export type HasIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordHasIgnored<T, I>;
     export type AsIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordAsIgnored<T, I>;
     export type AsNonIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordAsNonIgnored<T, I>;
     export type IsKey<T, K> = ZuordIsKey<T, K>;
