@@ -13,10 +13,10 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = [Zuor
         [K in keyof A | keyof B]: (
             ZuordUtil.IsExists<Mode, IntegrateShallowMode> extends false ? (
                 IntegrateRaw<
-            K extends keyof A ? A[K] : never,
-            K extends keyof B ? B[K] : never,
-            Mode
-        >
+                    K extends keyof A ? A[K] : never,
+                    K extends keyof B ? B[K] : never,
+                    Mode
+                > 
             ) : K extends keyof B ? B[K] : never
         )
     }) : B
@@ -30,5 +30,3 @@ type IntegrateShallowMode = "shallow";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateMode as ZuordIntegrateMode };
-
-type Result = Zuord.Normalize<ZuordUtil.AsOnePlain<{ a?: string} | {a: string, b: number}>>;
