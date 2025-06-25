@@ -3,10 +3,10 @@ import { ZuordUtil } from "@/util/alias.types";
 type Normalize<T, L extends ZuordUtil.Ignore = ZuordUtil.Ignore > = ZuordUtil.ShouldIgnore<T, L> extends true ? T : (
     ZuordUtil.HasPlain<T> extends true
     ? (
-        (ZuordUtil.AsNonPlain<T> extends infer V ? V extends any ? NormalizeDirect<V, L> : never : never) | 
+        (ZuordUtil.AsNonPlain<T> extends infer V ? ZuordUtil.AsAny<NormalizeDirect<V, L>> : never) | 
         (NormalizeDirect<ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>>, L>)
       )
-    : T extends any ? NormalizeDirect<T, L> : never
+    : ZuordUtil.AsAny<NormalizeDirect<T, L>>
 );
 
 type NormalizeDirect<T, L extends ZuordUtil.Ignore = ZuordUtil.Ignore > = ZuordUtil.ShouldIgnore<T, L> extends true ? T: (
