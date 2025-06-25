@@ -74,17 +74,21 @@ export namespace ZuordUtil {
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
 
 
+  // KEY
+
+  export type IsKey<T, K> = ZuordIsKey<T, K>;
+  export type HasKey<T, K> = ZuordHasKey<T, K>;
+  export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
+  export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
+  export type KeysOf<U> = ZuordKeysOf<U>;
+
+
   // UNORDEREDS
 
   export type Ignored<U extends object[] = []> = ZuordIgnored<U>;
   export type HasIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordHasIgnored<T, I>;
   export type AsIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordAsIgnored<T, I>;
   export type AsNonIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordAsNonIgnored<T, I>;
-  export type IsKey<T, K> = ZuordIsKey<T, K>;
-  export type HasKey<T, K> = ZuordHasKey<T, K>;
-  export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
-  export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
-  export type KeysOf<U> = ZuordKeysOf<U>;
   export type IsExtends<T, U> = ZuordIsExtends<T, U>;
   export type IsExists<T, E> = ZuordIsExists<T, E>;
   export type Optional<T> = ZuordOptional<T>;
