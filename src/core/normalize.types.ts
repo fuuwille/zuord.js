@@ -6,7 +6,8 @@ type Normalize<T, I extends object[] = ZuordUtil.Ignored> = ZuordUtil.HasIgnored
         (ZuordUtil.MergeUnionObjects<ZuordUtil.AsPlain<T>> extends infer T ? {
             [K in keyof T]: Normalize<T[K], I> 
         } : never)
-    ) : ZuordUtil.HasArray<T> extends true ? (
+    ) : 
+    ZuordUtil.HasArray<T> extends true ? (
         (Normalize<Exclude<T, readonly unknown[]>>) |
         (Normalize<(T extends readonly unknown[] ? T[number] : never)>[])
     ) : T
