@@ -1,4 +1,5 @@
-type NormalizeIgnore = [
+type NormalizeIgnore<U extends object[] = []> = [
+    ...U,
     Date,
     RegExp,
     Function,
