@@ -3,7 +3,7 @@ import type { ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
-import type { ZuordIsNever } from "./never.types";
+import type { ZuordIsNever, ZuordSomeIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
@@ -22,13 +22,15 @@ export namespace ZuordUtil {
 
   export type IsNever<T> = ZuordIsNever<T>;
 
+  export type SomeIsNever<U extends object[]> = ZuordSomeIsNever<U>;
+
 
   // VOID
 
   // UNDEFINED
 
   export type AsNonUndefined<T> = ZuordAsNonUndefined<T>;
-  
+
 
   // NULL
 
