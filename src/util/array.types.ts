@@ -9,8 +9,11 @@ type HasAnyArray<U extends readonly unknown[]> = U extends readonly [unknown[]] 
 
 type HasAllArray<U extends readonly unknown[]> = U extends readonly [unknown[]] ? true : ([HasArray<U[number]>] extends [boolean] ? false : true);
 
+type AsArray<T> = T extends readonly unknown[] ? T : never;
+
 export type { ArrayDepth as ZuordArrayDepth };
 export type { IsArray as ZuordIsArray };
 export type { HasArray as ZuordHasArray };
 export type { HasAnyArray as ZuordHasAnyArray };
 export type { HasAllArray as ZuordHasAllArray };
+export type { AsArray as ZuordAsArray };
