@@ -3,9 +3,7 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateType<A, B, Mode>>;
 
-type IntegrateType<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = 
-    ZuordUtil.IsNever<A> extends true ? B :
-    ZuordUtil.IsNever<B> extends true ? A :
+type IntegrateType<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = ZuordUtil.SomeIsNever<[A, B]> extends false ? (
     A extends readonly (infer AX)[] ? (
         B extends readonly (infer BX)[] ? (
             ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
@@ -23,7 +21,8 @@ type IntegrateType<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> =
                 >
             }
         ) : B
-    ) : B;
+    ) : B
+) : ZuordUtil.AsSomeNonNever<[A, B]>;
 
 /*type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = {
     [K in keyof A | keyof B]: K extends keyof B ? (
