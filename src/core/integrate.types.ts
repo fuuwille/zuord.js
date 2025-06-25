@@ -5,7 +5,7 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.No
 
 type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = ZuordUtil.SomeIsNever<[A, B]> extends false ? (
     ZuordUtil.IsAllArray<[A, B]> extends true ? (
-            ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
+        ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
             ? Array<ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
     ) : 
