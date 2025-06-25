@@ -13,6 +13,9 @@ type HasPlain<T> = true extends (T extends any ? IsPlain<T> : false) ? true : fa
 
 type HasNonPlain<T> = boolean extends (T extends any ? IsPlain<T> : false) ? false : true;
 
+type SomeIsPlain<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
+    ? (IsPlain<First> extends true ? true : SomeIsPlain<Rest>) : false;
+
 type AsPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
 
 type AsNonPlain<T> = T extends any ? (IsPlain<T> extends true ? never : T) : never;
@@ -26,6 +29,7 @@ export type { Plain as ZuordPlain };
 export type { IsPlain as ZuordIsPlain };
 export type { HasPlain as ZuordHasPlain }
 export type { HasNonPlain as ZuordHasNonPlain }
+export type { SomeIsPlain as ZuordSomeIsPlain }
 export type { AsPlain as ZuordAsPlain }
 export type { AsNonPlain as ZuordAsNonPlain }
 export type { AsOnePlain as ZuordAsOnePlain };
