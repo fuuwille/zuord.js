@@ -49,7 +49,7 @@ export namespace ZuordUtil {
 
   export type IsObject<T> = ZuordIsObject<T>;
 
-
+  
   // PLAIN
 
   export type Plain<T> = ZuordPlain<T>;
@@ -72,6 +72,7 @@ export namespace ZuordUtil {
   export type HasArray<T> = ZuordHasArray<T>;
   export type HasAnyArray<T extends readonly unknown[]> = ZuordHasAnyArray<T>;
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
+
 
   // UNORDEREDS
 
