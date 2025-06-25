@@ -38,7 +38,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Normalize<T, L extends object[] = ZuordUtil.DefaultIgnored> = ZuordNormalize<T, L>;
+    export type Normalize<T, O extends Zuord.Options = Zuord.DefaultOptions> = ZuordNormalize<T, O>;
 
 
     // PATTERN
