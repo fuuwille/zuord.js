@@ -1,5 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
-import type { ZuordOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
+import type { ZuordOptions, ZuordPartialOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
 import type { ZuordIgnored, ZuordDefaultIgnored, ZuordWithIgnored } from "./ignored.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeWithOptions } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
@@ -27,6 +27,11 @@ export namespace Zuord {
      * 
      */
     export type Options = ZuordOptions;
+
+    /**
+     * 
+     */
+    export type PartialOptions = ZuordPartialOptions
 
     /**
      * 
