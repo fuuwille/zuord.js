@@ -1,7 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type CanIgnore<T, I extends Ignore = Ignore> = T extends ZuordUtil.UnionOf<I> ? false : true;
-
 type Ignore<U extends object[] = []> = [
     ...U,
     Date,
@@ -29,5 +27,7 @@ type Ignore<U extends object[] = []> = [
     BigUint64Array
 ]
 
-export type { CanIgnore as ZuordCanIgnore };
+type ShouldIgnore<T, I extends Ignore = Ignore> = T extends ZuordUtil.UnionOf<I> ? true : false;
+
 export type { Ignore as ZuordIgnore };
+export type { ShouldIgnore as ZuordShouldIgnore };
