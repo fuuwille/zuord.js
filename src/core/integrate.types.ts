@@ -9,7 +9,7 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord
             ? Array<ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
     ) : 
-    ZuordUtil.IsAllPlain<[A, B]> extends false ? B : ( 
+    ZuordUtil.IsAllPlain<[A, B]> extends true ? ( 
         {
             [K in keyof A | keyof B]: IntegrateRaw<
                 K extends keyof A ? A[K] : never,
@@ -17,7 +17,7 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord
                 Mode
             >
         }
-    )
+    ) : B
 ) : ZuordUtil.SomeAsNonNever<[A, B]>;
 
 type IntegrateMode = IntegrateNoConcantMode;
