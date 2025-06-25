@@ -8,7 +8,7 @@ type Normalize<T, O extends Zuord.Options = Zuord.DefaultOptions> = ZuordUtil.Ha
     ) : 
     ZuordUtil.HasArray<T> extends true ? (
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, O> : never) |
-        (ZuordUtil.AsOneArray<T> extends infer T ? Normalize<Extract<T, readonly unknown[]>[number], O>[] : never)
+        (([O["lite"]] extends [true] ? ZuordUtil.AsArray<T> : ZuordUtil.AsOneArray<T>) extends infer T ? Normalize<Extract<T, readonly unknown[]>[number], O>[] : never)
     ) : T
 ) : Normalize<ZuordUtil.AsNonIgnored<T, O["ignored"]>, O> | ZuordUtil.AsIgnored<T, O["ignored"]>;
 
