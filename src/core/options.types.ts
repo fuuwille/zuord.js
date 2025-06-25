@@ -1,11 +1,11 @@
-import { ZuordUtil } from "@/util/alias.types";
+import { Zuord } from "@/core/alias.types";
 
 type Options = {
-    ignored: object[]
+    ignored: Zuord.Ignored
 }
 
 type DefaultOptions = {
-    ignored: ZuordUtil.DefaultIgnored
+    ignored: Zuord.DefaultIgnored
 }
 
 export type { Options as ZuordOptions };
