@@ -1,4 +1,5 @@
 import type { ZuordAsAny } from "./any.types";
+import type { ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
@@ -25,6 +26,8 @@ export namespace ZuordUtil {
   // VOID
 
   // UNDEFINED
+
+  export type AsNonUndefined<T> = ZuordAsNonUndefined<T>;
 
   // NULL
 
@@ -107,13 +110,11 @@ export namespace ZuordUtil {
   export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
 }
 
-type NonUndefined<T> = T extends undefined ? never : T;
-
 type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
         { [K in ZuordUtil.RequiredKeysOf<U>]-?: ZuordUtil.ValueAt<U, K> }
         &
-        { [K in ZuordUtil.OptionalKeysOf<U>]?: NonUndefined<ZuordUtil.ValueAt<U, K>> }
+        { [K in ZuordUtil.OptionalKeysOf<U>]?: ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<U, K>> }
       )
     : never;
