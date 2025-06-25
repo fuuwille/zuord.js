@@ -1,6 +1,7 @@
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
 import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf } from "./key.types";
+import type { ZuordValueAt } from "./value.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
@@ -83,6 +84,11 @@ export namespace ZuordUtil {
   export type KeysOf<U> = ZuordKeysOf<U>;
 
 
+  // VALUE
+
+  export type ValueAt<T, K extends PropertyKey> = ZuordValueAt<T, K>;
+
+
   // UNORDEREDS
 
   export type Ignored<U extends object[] = []> = ZuordIgnored<U>;
@@ -98,11 +104,8 @@ export namespace ZuordUtil {
   export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
 }
 
-type ValueAt<U, K extends PropertyKey> =
-  U extends any ? (K extends keyof U ? U[K] : never) : never;
-
 type IsRequiredKey<U, K extends PropertyKey> =
-  undefined extends ValueAt<U, K> ? false : true;
+  undefined extends ZuordUtil.ValueAt<U, K> ? false : true;
 
 type RequiredKeys<U> = {
   [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends true ? K : never
@@ -117,8 +120,8 @@ type NonUndefined<T> = T extends undefined ? never : T;
 type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
-        { [K in RequiredKeys<U>]-?: ValueAt<U, K> }
+        { [K in RequiredKeys<U>]-?: ZuordUtil.ValueAt<U, K> }
         &
-        { [K in OptionalKeys<U>]?: NonUndefined<ValueAt<U, K>> }
+        { [K in OptionalKeys<U>]?: NonUndefined<ZuordUtil.ValueAt<U, K>> }
       )
     : never;
