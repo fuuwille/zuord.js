@@ -6,8 +6,8 @@ type SomeIsNever<U extends readonly unknown[]> = U extends readonly [infer First
     ? (IsNever<First> extends true ? true : SomeIsNever<Rest>) 
     : false;
 
-type AsSomeNonNever<U extends unknown[]> = ZuordUtil.UnionOf<U>;
+type SomeAsNonNever<U extends unknown[]> = ZuordUtil.UnionOf<U>;
 
 export type { IsNever as ZuordIsNever };
 export type { SomeIsNever as ZuordSomeIsNever };
-export type { AsSomeNonNever as ZuordAsSomeNonNever };
+export type { SomeAsNonNever as ZuordSomeAsNonNever };
