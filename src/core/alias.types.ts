@@ -1,4 +1,5 @@
 import { ZuordUtil } from "@/util/alias.types";
+import type { ZuordOptions } from "./options.types";
 import type { ZuordNormalize } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
 import type { ZuordMerge } from "./merge.types";
@@ -18,6 +19,13 @@ import type { ZuordPickOf } from "./pick.types";
  * 
  */
 export namespace Zuord {
+
+    // OPTIONS
+
+    /**
+     * 
+     */
+    export type Options = ZuordOptions;
 
     // NORMALIZE
 
