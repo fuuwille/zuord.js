@@ -52,21 +52,26 @@ type UnionKeys<U> = U extends object ? keyof U : never;
 type AllKeys<U> = U extends any ? keyof U : never;
 
 type ValueAt<U, K extends PropertyKey> =
-  U extends any ? (K extends keyof U ? U[K] : undefined) : never;
+  U extends any ? (K extends keyof U ? U[K] : never) : never;
+
+type IsRequiredKey<U, K extends PropertyKey> =
+  undefined extends ValueAt<U, K> ? false : true;
 
 type RequiredKeys<U> = {
-  [K in AllKeys<U>]-?: undefined extends ValueAt<U, K> ? never : K;
+  [K in AllKeys<U>]-?: IsRequiredKey<U, K> extends true ? K : never
 }[AllKeys<U>];
 
 type OptionalKeys<U> = {
-  [K in AllKeys<U>]-?: undefined extends ValueAt<U, K> ? K : never;
+  [K in AllKeys<U>]-?: IsRequiredKey<U, K> extends false ? K : never
 }[AllKeys<U>];
+
+type NonUndefined<T> = T extends undefined ? never : T;
 
 type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
         { [K in RequiredKeys<U>]-?: ValueAt<U, K> }
         &
-        { [K in OptionalKeys<U>]?: ValueAt<U, K> }
+        { [K in OptionalKeys<U>]?: NonUndefined<ValueAt<U, K>> }
       )
     : never;
