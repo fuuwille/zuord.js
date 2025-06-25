@@ -41,7 +41,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type ResolvedOptions<T extends Partial<Zuord.Options>> = ZuordResolvedOptions<T>;
+    export type ResolvedOptions<T extends Zuord.PartialOptions> = ZuordResolvedOptions<T>;
 
 
     // IGNORED
