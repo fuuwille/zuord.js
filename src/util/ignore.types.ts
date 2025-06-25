@@ -29,5 +29,11 @@ type Ignore<U extends object[] = []> = [
 
 type ShouldIgnore<T, I extends object[] = Ignore> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
 
+type AsIgnore<T, I extends object[] = Ignore> = T extends any ? (ShouldIgnore<T, I> extends true ? T : never) : never;
+
+type AsNonIgnore<T, I extends object[] = Ignore> = T extends any ? (ShouldIgnore<T, I> extends true ? never : T) : never;
+
 export type { Ignore as ZuordIgnore };
 export type { ShouldIgnore as ZuordShouldIgnore };
+export type { AsIgnore as ZuordAsIgnore };
+export type { AsNonIgnore as ZuordAsNonIgnore };
