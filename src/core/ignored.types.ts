@@ -27,11 +27,11 @@ type DefaultIgnored = [
     BigUint64Array
 ]
 
-type WithIgnored<T extends Ignored> = [
+type ResolveIgnored<T extends Ignored> = [
     ...T,
     ...DefaultIgnored
 ]
 
 export type { Ignored as ZuordIgnored };
 export type { DefaultIgnored as ZuordDefaultIgnored };
-export type { WithIgnored as ZuordWithIgnored };
+export type { ResolveIgnored as ZuordResolveIgnored };
