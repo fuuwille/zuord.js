@@ -1,6 +1,6 @@
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
-import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf } from "./key.types";
+import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
@@ -78,10 +78,13 @@ export namespace ZuordUtil {
   // KEY
 
   export type IsKey<T, K> = ZuordIsKey<T, K>;
+  export type IsRequiredKey<T, K extends PropertyKey> = ZuordIsRequiredKey<T, K>;
   export type HasKey<T, K> = ZuordHasKey<T, K>;
   export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
   export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
   export type KeysOf<U> = ZuordKeysOf<U>;
+  export type RequiredKeysOf<T> = ZuordRequiredKeysOf<T>;
+  export type OptionalKeysOf<T> = ZuordOptionalKeysOf<T>;
 
 
   // VALUE
@@ -104,24 +107,13 @@ export namespace ZuordUtil {
   export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
 }
 
-type IsRequiredKey<U, K extends PropertyKey> =
-  undefined extends ZuordUtil.ValueAt<U, K> ? false : true;
-
-type RequiredKeys<U> = {
-  [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends true ? K : never
-}[ZuordUtil.KeysOf<U>];
-
-type OptionalKeys<U> = {
-  [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends false ? K : never
-}[ZuordUtil.KeysOf<U>];
-
 type NonUndefined<T> = T extends undefined ? never : T;
 
 type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
-        { [K in RequiredKeys<U>]-?: ZuordUtil.ValueAt<U, K> }
+        { [K in ZuordUtil.RequiredKeysOf<U>]-?: ZuordUtil.ValueAt<U, K> }
         &
-        { [K in OptionalKeys<U>]?: NonUndefined<ZuordUtil.ValueAt<U, K>> }
+        { [K in ZuordUtil.OptionalKeysOf<U>]?: NonUndefined<ZuordUtil.ValueAt<U, K>> }
       )
     : never;
