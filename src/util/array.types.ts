@@ -5,8 +5,8 @@ type IsArray<T> = [T]extends [readonly unknown[]] ? true : false;
 
 type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? true : false;
 
-type HasAnyArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (HasArray<First> extends true ? true : HasAnyArray<Rest>) : false;
+type HasSomeArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
+    ? (HasArray<First> extends true ? true : HasSomeArray<Rest>) : false;
 
 type HasAllArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (HasArray<First> extends true ? HasAllArray<Rest> : false) : true;
@@ -20,7 +20,7 @@ type AsOneArray<T> = (T extends readonly unknown[] ? T[number] : never)[];
 export type { ArrayDepth as ZuordArrayDepth };
 export type { IsArray as ZuordIsArray };
 export type { HasArray as ZuordHasArray };
-export type { HasAnyArray as ZuordHasAnyArray };
+export type { HasSomeArray as ZuordHasSomeArray };
 export type { HasAllArray as ZuordHasAllArray };
 export type { AsArray as ZuordAsArray };
 export type { AsNonArray as ZuordAsNonArray };
