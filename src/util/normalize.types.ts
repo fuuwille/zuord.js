@@ -1,3 +1,7 @@
+import { ZuordUtil } from "@/util/alias.types";
+
+type CanNormalize<T, I extends NormalizeIgnore = NormalizeIgnore> = T extends ZuordUtil.UnionOf<I> ? true : false;
+
 type NormalizeIgnore<U extends object[] = []> = [
     ...U,
     Date,
@@ -25,4 +29,5 @@ type NormalizeIgnore<U extends object[] = []> = [
     BigUint64Array
 ]
 
+export type { CanNormalize as ZuordCanNormalize };
 export type { NormalizeIgnore as ZuordNormalizeIgnore };
