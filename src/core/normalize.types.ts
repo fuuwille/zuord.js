@@ -7,7 +7,7 @@ type Normalize<T, I extends object[] = ZuordUtil.Ignored> = ZuordUtil.HasIgnored
     ) : 
     ZuordUtil.HasArray<T> extends true ? (
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, I> : never) |
-        (Normalize<(T extends readonly unknown[] ? T[number] : never)>[])
+        (ZuordUtil.AsOneArray<T> extends infer T ? Normalize<Extract<T, unknown[]>[number], I>[] : never)
     ) : T
 ) : Normalize<ZuordUtil.AsNonIgnored<T, I>> | ZuordUtil.AsIgnored<T, I>;
 
