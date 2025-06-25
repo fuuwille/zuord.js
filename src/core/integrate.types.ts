@@ -3,7 +3,7 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateRaw<A, B, Mode>>;
 
-type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = ZuordUtil.IsSomeNever<[A, B]> extends false ? (
+type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
     [ZuordUtil.IsAllArray<[A, B]>] extends [true] ? (
         ZuordUtil.IsExists<Mode, IntegrateConcantMode> extends true 
             ? Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
