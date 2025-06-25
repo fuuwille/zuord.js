@@ -17,7 +17,7 @@ type AsPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
 
 type AsNonPlain<T> = T extends any ? (IsPlain<T> extends true ? never : T) : never;
 
-type AsOnePlain<T>  = ZuordUtil.IsPlain<T> extends true ? (
+type AsOnePlain<T>  = ZuordUtil.AsPlain<T> extends infer T ? (
   { [K in ZuordUtil.RequiredKeysOf<T>]-?: ZuordUtil.ValueAt<T, K> } &
   { [K in ZuordUtil.OptionalKeysOf<T>]?: ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<T, K>> }
 ) : never;
