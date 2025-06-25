@@ -8,7 +8,7 @@ import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
-import type { ZuordPlain, ZuordIsPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain } from "./plain.types";
+import type { ZuordPlain, ZuordIsPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain, ZuordAsOnePlain } from "./plain.types";
 import type { ZuordIsArray, ZuordHasArray, ZuordHasAnyArray, ZuordHasAllArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
@@ -107,14 +107,5 @@ export namespace ZuordUtil {
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
   export type Mode<M extends string> = ZuordMode<M>;
-  export type MergeUnionObjects<U> = _MergeUnionObjects<U>;
+  export type AsOnePlain<U> = ZuordAsOnePlain<U>;
 }
-
-type _MergeUnionObjects<U> =
-  ZuordUtil.IsPlain<U> extends true
-    ? (
-        { [K in ZuordUtil.RequiredKeysOf<U>]-?: ZuordUtil.ValueAt<U, K> }
-        &
-        { [K in ZuordUtil.OptionalKeysOf<U>]?: ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<U, K>> }
-      )
-    : never;
