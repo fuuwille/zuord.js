@@ -16,6 +16,11 @@ type HasNonPlain<T> = boolean extends (T extends any ? IsPlain<T> : false) ? fal
 type AsPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
 
 type AsNonPlain<T> = T extends any ? (IsPlain<T> extends true ? never : T) : never;
+
+type AsOnePlain<T>  = ZuordUtil.IsPlain<T> extends true ? (
+  { [K in ZuordUtil.RequiredKeysOf<T>]-?: ZuordUtil.ValueAt<T, K> } &
+  { [K in ZuordUtil.OptionalKeysOf<T>]?: ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<T, K>> }
+) : never;
     
 export type { Plain as ZuordPlain };
 export type { IsPlain as ZuordIsPlain };
@@ -23,3 +28,4 @@ export type { HasPlain as ZuordHasPlain }
 export type { HasNonPlain as ZuordHasNonPlain }
 export type { AsPlain as ZuordAsPlain }
 export type { AsNonPlain as ZuordAsNonPlain }
+export type { AsOnePlain as ZuordAsOnePlain };
