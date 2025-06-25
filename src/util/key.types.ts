@@ -1,4 +1,8 @@
+import { ZuordUtil } from "@/util/alias.types";
+
 type IsKey<T, K> = K extends keyof T ? true : false;
+
+type IsRequiredKey<T, K extends PropertyKey> = undefined extends ZuordUtil.ValueAt<T, K> ? false : true;
 
 type HasKey<T, K> = true extends (K extends keyof T ? true : false) ? true : false;
 
@@ -9,6 +13,7 @@ type AllHasKey<U extends readonly unknown[], K> = [HasKey<U[number], K>] extends
 type KeysOf<U> = U extends any ? keyof U : never;
 
 export type { IsKey as ZuordIsKey };
+export type { IsRequiredKey as ZuordIsRequiredKey };
 export type { HasKey as ZuordHasKey };
 export type { AnyHasKey as ZuordAnyHasKey };
 export type { AllHasKey as ZuordAllHasKey };
