@@ -22,7 +22,7 @@ export namespace ZuordUtil {
 
   export type IsNever<T> = ZuordIsNever<T>;
 
-  export type SomeIsNever<U extends object[]> = ZuordSomeIsNever<U>;
+  export type SomeIsNever<U extends unknown[]> = ZuordSomeIsNever<U>;
 
 
   // VOID
