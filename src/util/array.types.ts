@@ -1,3 +1,5 @@
+type ArrayIn<T> = T extends readonly (infer T)[] ? T : never;
+
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
 
@@ -23,6 +25,7 @@ type AsNonArray<T> = T extends any ? (IsArray<T> extends true ? never : T) : nev
 
 type AsOneArray<T> = (T extends readonly unknown[] ? T[number] : never)[];
 
+export type { ArrayIn as ZuordArrayIn };
 export type { ArrayDepth as ZuordArrayDepth };
 export type { IsArray as ZuordIsArray };
 export type { IsSomeArray as ZuordIsSomeArray };
