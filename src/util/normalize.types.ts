@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type CanNormalize<T, I extends NormalizeIgnore = NormalizeIgnore> = T extends ZuordUtil.UnionOf<I> ? true : false;
+type CanNormalize<T, I extends NormalizeIgnore = NormalizeIgnore> = T extends ZuordUtil.UnionOf<I> ? false : true;
 
 type NormalizeIgnore<U extends object[] = []> = [
     ...U,
