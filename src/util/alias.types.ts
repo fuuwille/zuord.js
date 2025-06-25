@@ -9,7 +9,7 @@ import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain, ZuordAsOnePlain } from "./plain.types";
-import type { ZuordIsArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
+import type { ZuordIsArray, ZuordIsSomeArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
@@ -81,6 +81,7 @@ export namespace ZuordUtil {
 
   export type ArrayDepth<T> = ZuordArrayDepth<T>;
   export type IsArray<T> = ZuordIsArray<T>;
+  export type IsSomeArray<U extends readonly unknown[]> = ZuordIsSomeArray<U>;
   export type HasArray<T> = ZuordHasArray<T>;
   export type HasSomeArray<T extends readonly unknown[]> = ZuordHasSomeArray<T>;
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
