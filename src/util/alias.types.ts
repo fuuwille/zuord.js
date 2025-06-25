@@ -41,28 +41,24 @@ export namespace ZuordUtil {
 
 type UnionKeys<U> = U extends object ? keyof U : never;
 
-type ValuesOfKey<U, K extends PropertyKey> = U extends any
-  ? (K extends keyof U ? U[K] : never)
-  : never;
+type AllKeys<U> = U extends any ? keyof U : never;
 
-type PropertyMap<U> = {
-  [K in UnionKeys<U>]: ValuesOfKey<U, K>;
-};
+type ValueAt<U, K extends PropertyKey> =
+  U extends any ? (K extends keyof U ? U[K] : undefined) : never;
 
 type RequiredKeys<U> = {
-  [K in UnionKeys<U>]: undefined extends PropertyMap<U>[K] ? never : K
-}[UnionKeys<U>];
+  [K in AllKeys<U>]-?: undefined extends ValueAt<U, K> ? never : K;
+}[AllKeys<U>];
 
 type OptionalKeys<U> = {
-  [K in UnionKeys<U>]:
-    undefined extends PropertyMap<U>[K] ? K : never
-}[UnionKeys<U>];
+  [K in AllKeys<U>]-?: undefined extends ValueAt<U, K> ? K : never;
+}[AllKeys<U>];
 
 type _MergeUnionObjects<U> =
   ZuordUtil.IsPlain<U> extends true
     ? (
-        { [K in RequiredKeys<U>]-?: PropertyMap<U>[K] }
+        { [K in RequiredKeys<U>]-?: ValueAt<U, K> }
         &
-        { [K in OptionalKeys<U>]?: PropertyMap<U>[K] }
+        { [K in OptionalKeys<U>]?: ValueAt<U, K> }
       )
     : never;
