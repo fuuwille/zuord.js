@@ -1,6 +1,6 @@
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIgnored, ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
-import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey } from "./key.types";
+import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf } from "./key.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
@@ -84,6 +84,7 @@ export namespace ZuordUtil {
   export type HasKey<T, K> = ZuordHasKey<T, K>;
   export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
   export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
+  export type KeysOf<U> = ZuordKeysOf<U>;
   export type IsExtends<T, U> = ZuordIsExtends<T, U>;
   export type IsExists<T, E> = ZuordIsExists<T, E>;
   export type Optional<T> = ZuordOptional<T>;
@@ -95,8 +96,6 @@ export namespace ZuordUtil {
 
 type UnionKeys<U> = U extends object ? keyof U : never;
 
-type AllKeys<U> = U extends any ? keyof U : never;
-
 type ValueAt<U, K extends PropertyKey> =
   U extends any ? (K extends keyof U ? U[K] : never) : never;
 
@@ -104,12 +103,12 @@ type IsRequiredKey<U, K extends PropertyKey> =
   undefined extends ValueAt<U, K> ? false : true;
 
 type RequiredKeys<U> = {
-  [K in AllKeys<U>]-?: IsRequiredKey<U, K> extends true ? K : never
-}[AllKeys<U>];
+  [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends true ? K : never
+}[ZuordUtil.KeysOf<U>];
 
 type OptionalKeys<U> = {
-  [K in AllKeys<U>]-?: IsRequiredKey<U, K> extends false ? K : never
-}[AllKeys<U>];
+  [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends false ? K : never
+}[ZuordUtil.KeysOf<U>];
 
 type NonUndefined<T> = T extends undefined ? never : T;
 
