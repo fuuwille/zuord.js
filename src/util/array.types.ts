@@ -7,7 +7,8 @@ type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? 
 
 type HasAnyArray<U extends readonly unknown[]> = U extends readonly [unknown[]] ? true : ([HasArray<U[number]>] extends [true] ? true : false);
 
-type HasAllArray<U extends readonly unknown[]> = U extends readonly [unknown[]] ? true : ([HasArray<U[number]>] extends [boolean] ? false : true);
+type HasAllArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
+    ? (HasArray<First> extends true ? HasAllArray<Rest> : false) : true;
 
 type AsArray<T> = T extends any ? (IsArray<T> extends true ? T : never) : never;
 
