@@ -44,6 +44,16 @@ export namespace ZuordUtil {
 
   export type AsAny<T> = ZuordAsAny<T>;
 
+
+  // PLAIN
+
+  export type Plain<T> = ZuordPlain<T>;
+  export type IsPlain<T> = ZuordIsPlain<T>;
+  export type HasPlain<T> = ZuordHasPlain<T>;
+  export type HasNonPlain<T> = ZuordHasNonPlain<T>;
+  export type AsPlain<T> = ZuordAsPlain<T>;
+  export type AsNonPlain<T> = ZuordAsNonPlain<T>;
+
   
   // ARRAY
 
@@ -67,12 +77,6 @@ export namespace ZuordUtil {
   export type IsExists<T, E> = ZuordIsExists<T, E>;
   export type IsFunction<T> = ZuordIsFunction<T>;
   export type IsObject<T> = ZuordIsObject<T>;
-  export type Plain<T> = ZuordPlain<T>;
-  export type IsPlain<T> = ZuordIsPlain<T>;
-  export type HasPlain<T> = ZuordHasPlain<T>;
-  export type HasNonPlain<T> = ZuordHasNonPlain<T>;
-  export type AsPlain<T> = ZuordAsPlain<T>;
-  export type AsNonPlain<T> = ZuordAsNonPlain<T>;
   export type Optional<T> = ZuordOptional<T>;
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
