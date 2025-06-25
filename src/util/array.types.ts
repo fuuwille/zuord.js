@@ -25,4 +25,4 @@ export type { HasAllArray as ZuordHasAllArray };
 export type { AsArray as ZuordAsArray };
 export type { AsNonArray as ZuordAsNonArray };
 export type { AsOneArray as ZuordAsOneArray };
-export type { AsOneArrayIn as ZuordAsOneArratIn };
+export type { AsOneArrayIn as ZuordAsOneArrayIn };
