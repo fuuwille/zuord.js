@@ -16,8 +16,13 @@ import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
 
-  // ARRAY
+  // NEVER
   
+  export type IsNever<T> = ZuordIsNever<T>;
+
+
+  // ARRAY
+
   export type ArrayDepth<T> = ZuordArrayDepth<T>;
   export type IsArray<T> = ZuordIsArray<T>;
   export type HasArray<T> = ZuordHasArray<T>;
@@ -35,7 +40,6 @@ export namespace ZuordUtil {
   export type HasKey<T, K> = ZuordHasKey<T, K>;
   export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
   export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
-  export type IsNever<T> = ZuordIsNever<T>;
   export type IsExtends<T, U> = ZuordIsExtends<T, U>;
   export type IsExists<T, E> = ZuordIsExists<T, E>;
   export type IsFunction<T> = ZuordIsFunction<T>;
