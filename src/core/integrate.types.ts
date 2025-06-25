@@ -28,3 +28,5 @@ type IntegrateNoConcantMode= "no concat";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateMode as ZuordIntegrateMode };
+
+type Result = Zuord.Normalize<ZuordUtil.AsOnePlain<{ a?: string} | {a: string, b: number}>>;
