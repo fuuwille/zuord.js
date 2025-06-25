@@ -16,6 +16,10 @@ type RequiredKeysOf<T> = {
   [K in ZuordUtil.KeysOf<T>]-?: IsRequiredKey<T, K> extends true ? K : never
 }[ZuordUtil.KeysOf<T>];
 
+type OptionalKeysOf<U> = {
+  [K in ZuordUtil.KeysOf<U>]-?: IsRequiredKey<U, K> extends false ? K : never
+}[ZuordUtil.KeysOf<U>];
+
 export type { IsKey as ZuordIsKey };
 export type { IsRequiredKey as ZuordIsRequiredKey };
 export type { HasKey as ZuordHasKey };
@@ -23,3 +27,4 @@ export type { AnyHasKey as ZuordAnyHasKey };
 export type { AllHasKey as ZuordAllHasKey };
 export type { KeysOf as ZuordKeysOf };
 export type { RequiredKeysOf as ZuordRequiredKeysOf };
+export type { OptionalKeysOf as ZuordOptionalKeysOf };
