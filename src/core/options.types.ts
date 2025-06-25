@@ -10,5 +10,8 @@ type DefaultOptions = {
     lite: false
 }
 
+type WithOptions<T extends Partial<Zuord.Options>> = Omit<DefaultOptions, keyof T> & T;
+
 export type { Options as ZuordOptions };
 export type { DefaultOptions as ZuordDefaultOptions };
+export type { WithOptions as ZuordWithOptions };
