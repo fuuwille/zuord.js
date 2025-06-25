@@ -1,3 +1,4 @@
+import { Zuord } from "@/core/alias.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
@@ -15,7 +16,6 @@ import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
 import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
-import { Zuord } from "@/core/alias.types";
 
 export namespace ZuordUtil {
 
