@@ -13,7 +13,9 @@ type AsArray<T> = T extends any ? (IsArray<T> extends true ? T : never) : never;
 
 type AsNonArray<T> = T extends any ? (IsArray<T> extends true ? never : T) : never;
 
-type AsOneArray<T> = (T extends readonly unknown[] ? T[number] : never)[];
+type AsOneArray<T> = AsOneArrayIn<T>[];
+
+type AsOneArrayIn<T> = T extends readonly unknown[] ? T[number] : never;
 
 export type { ArrayDepth as ZuordArrayDepth };
 export type { IsArray as ZuordIsArray };
@@ -23,3 +25,4 @@ export type { HasAllArray as ZuordHasAllArray };
 export type { AsArray as ZuordAsArray };
 export type { AsNonArray as ZuordAsNonArray };
 export type { AsOneArray as ZuordAsOneArray };
+export type { AsOneArrayIn as ZuordAsOneArratIn };
