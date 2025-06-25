@@ -1,7 +1,7 @@
 import { ZuordUtil } from "@/util/alias.types";
 import type { ZuordOptions, ZuordDefaultOptions, ZuordWithOptions } from "./options.types";
 import type { ZuordIgnored, ZuordDefaultIgnored, ZuordWithIgnored } from "./ignored.types";
-import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions } from "./normalize.types";
+import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeWithOptions } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
 import type { ZuordMerge } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
@@ -73,6 +73,11 @@ export namespace Zuord {
      * 
      */
     export type NormalizeDefaultOptions = ZuordNormalizeDefaultOptions;
+
+    /**
+     * 
+     */
+    export type NormalizeWithOptions<T extends Partial<Zuord.NormalizeOptions>> = ZuordNormalizeWithOptions<T>;
 
 
     // PATTERN
