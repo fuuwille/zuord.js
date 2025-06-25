@@ -17,8 +17,27 @@ import type { ZuordMode } from "./mode.types";
 export namespace ZuordUtil {
 
   // NEVER
-  
+
   export type IsNever<T> = ZuordIsNever<T>;
+
+
+  // VOID
+
+  // UNDEFINED
+
+  // NULL
+
+  // SYMBOL
+
+  // BOOLEAN
+
+  // BIGINT
+
+  // NUMBER
+
+  // STRING
+
+  // UNKNOWN
 
 
   // ARRAY
