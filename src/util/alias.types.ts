@@ -15,7 +15,15 @@ import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
+
+  // ARRAY
   
+  export type ArrayDepth<T> = ZuordArrayDepth<T>;
+  export type IsArray<T> = ZuordIsArray<T>;
+  export type HasArray<T> = ZuordHasArray<T>;
+  export type HasAnyArray<T extends readonly unknown[]> = ZuordHasAnyArray<T>;
+  export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
+
   // UNORDEREDS
 
   export type AsAny<T> = ZuordAsAny<T>;
@@ -38,11 +46,6 @@ export namespace ZuordUtil {
   export type HasNonPlain<T> = ZuordHasNonPlain<T>;
   export type AsPlain<T> = ZuordAsPlain<T>;
   export type AsNonPlain<T> = ZuordAsNonPlain<T>;
-  export type ArrayDepth<T> = ZuordArrayDepth<T>;
-  export type IsArray<T> = ZuordIsArray<T>;
-  export type HasArray<T> = ZuordHasArray<T>;
-  export type HasAnyArray<T extends readonly unknown[]> = ZuordHasAnyArray<T>;
-  export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
   export type Optional<T> = ZuordOptional<T>;
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
