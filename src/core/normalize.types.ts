@@ -9,6 +9,6 @@ type Normalize<T, I extends object[] = ZuordUtil.Ignored> = ZuordUtil.HasIgnored
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, I> : never) |
         (ZuordUtil.AsOneArray<T> extends infer T ? Normalize<Extract<T, readonly unknown[]>[number], I>[] : never)
     ) : T
-) : Normalize<ZuordUtil.AsNonIgnored<T, I>> | ZuordUtil.AsIgnored<T, I>;
+) : Normalize<ZuordUtil.AsNonIgnored<T, I>, I> | ZuordUtil.AsIgnored<T, I>;
 
 export type { Normalize as ZuordNormalize };
