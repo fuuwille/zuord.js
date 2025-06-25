@@ -14,7 +14,7 @@ import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
-    export type NormalizeIgnore = ZuordNormalizeIgnore;
+    export type NormalizeIgnore<U extends object[] = []> = ZuordNormalizeIgnore<U>;
     export type IsKey<T, K> = ZuordIsKey<T, K>;
     export type HasKey<T, K> = ZuordHasKey<T, K>;
     export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
