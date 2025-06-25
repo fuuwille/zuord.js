@@ -45,6 +45,11 @@ export namespace ZuordUtil {
   export type AsAny<T> = ZuordAsAny<T>;
 
 
+  // OBJECT 
+
+  export type IsObject<T> = ZuordIsObject<T>;
+
+  
   // PLAIN
 
   export type Plain<T> = ZuordPlain<T>;
