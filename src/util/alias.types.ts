@@ -1,3 +1,4 @@
+import type { ZuordNormalizeIgnore } from "./normalize.types";
 import type { ZuordIsKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey } from "./key.types";
 import type { ZuordIsNever } from "./never.types";
 import type { ZuordIsExtends } from "./extends.types";
@@ -13,6 +14,7 @@ import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
+    export type NormalizeIgnore = ZuordNormalizeIgnore;
     export type IsKey<T, K> = ZuordIsKey<T, K>;
     export type HasKey<T, K> = ZuordHasKey<T, K>;
     export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
