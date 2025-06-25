@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type Ignored<U extends object[] = []> = [
+type DefaultIgnored<U extends object[] = []> = [
     ...U,
     Date,
     Function,
@@ -28,13 +28,13 @@ type Ignored<U extends object[] = []> = [
     BigUint64Array
 ]
 
-type HasIgnored<T, I extends object[] = Ignored> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
+type HasIgnored<T, I extends object[] = DefaultIgnored> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
 
-type AsIgnored<T, I extends object[] = Ignored> = T extends any ? (HasIgnored<T, I> extends true ? T : never) : never;
+type AsIgnored<T, I extends object[] = DefaultIgnored> = T extends any ? (HasIgnored<T, I> extends true ? T : never) : never;
 
-type AsNonIgnored<T, I extends object[] = Ignored> = T extends any ? (HasIgnored<T, I> extends true ? never : T) : never;
+type AsNonIgnored<T, I extends object[] = DefaultIgnored> = T extends any ? (HasIgnored<T, I> extends true ? never : T) : never;
 
-export type { Ignored as ZuordIgnored };
+export type { DefaultIgnored as ZuordDefaultIgnored };
 export type { HasIgnored as ZuordHasIgnored };
 export type { AsIgnored as ZuordAsIgnored };
 export type { AsNonIgnored as ZuordAsNonIgnored };
