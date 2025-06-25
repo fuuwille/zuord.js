@@ -18,7 +18,7 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord
             >
         }
     ) : B
-) : ZuordUtil.SomeAsNonNever<[A, B]>;
+) : ZuordUtil.AsNonNever<[A, B]>;
 
 type IntegrateMode = IntegrateNoConcantMode;
 
