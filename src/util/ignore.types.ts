@@ -1,8 +1,8 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type CanNormalize<T, I extends NormalizeIgnore = NormalizeIgnore> = T extends ZuordUtil.UnionOf<I> ? false : true;
+type CanIgnore<T, I extends Ignore = Ignore> = T extends ZuordUtil.UnionOf<I> ? false : true;
 
-type NormalizeIgnore<U extends object[] = []> = [
+type Ignore<U extends object[] = []> = [
     ...U,
     Date,
     RegExp,
@@ -29,5 +29,5 @@ type NormalizeIgnore<U extends object[] = []> = [
     BigUint64Array
 ]
 
-export type { CanNormalize as ZuordCanNormalize };
-export type { NormalizeIgnore as ZuordNormalizeIgnore };
+export type { CanIgnore as ZuordCanIgnore };
+export type { Ignore as ZuordIgnore };
