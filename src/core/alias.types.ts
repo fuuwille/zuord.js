@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 import type { ZuordOptions, ZuordDefaultOptions } from "./options.types";
-import type { ZuordIgnored } from "./ignored.types";
+import type { ZuordIgnored, ZuordDefaultIgnored } from "./ignored.types";
 import type { ZuordNormalize } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
 import type { ZuordMerge } from "./merge.types";
@@ -40,6 +40,11 @@ export namespace Zuord {
      * 
      */
     export type Ignored = ZuordIgnored;
+
+    /**
+     * 
+     */
+    export type DefaultIgnored = ZuordDefaultIgnored;
 
 
     // NORMALIZE
