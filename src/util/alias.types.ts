@@ -15,6 +15,9 @@ import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
 
 export namespace ZuordUtil {
+  
+  // UNORDEREDS
+
   export type AsAny<T> = ZuordAsAny<T>;
   export type Ignored<U extends object[] = []> = ZuordIgnored<U>;
   export type HasIgnored<T, I extends object[] = ZuordUtil.Ignored> = ZuordHasIgnored<T, I>;
