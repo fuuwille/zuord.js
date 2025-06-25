@@ -5,9 +5,9 @@ type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.No
 
 type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = ZuordUtil.IsSomeNever<[A, B]> extends false ? (
     ZuordUtil.IsAllArray<[A, B]> extends true ? (
-        ZuordUtil.IsExists<Mode, IntegrateNoConcantMode> extends true 
-            ? Array<ZuordUtil.ArrayIn<B>>
-            : Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
+        ZuordUtil.IsExists<Mode, IntegrateConcantMode> extends true 
+            ? Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
+            : Array<ZuordUtil.ArrayIn<B>>
     ) : 
     ZuordUtil.IsAllPlain<[A, B]> extends true ? ({
         [K in keyof A | keyof B]: IntegrateRaw<
@@ -18,9 +18,9 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord
     }) : B
 ) : ZuordUtil.AsNonNever<[A, B]>;
 
-type IntegrateMode = IntegrateNoConcantMode;
+type IntegrateMode = IntegrateConcantMode;
 
-type IntegrateNoConcantMode= "no concat";
+type IntegrateConcantMode= "concat";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateMode as ZuordIntegrateMode };
