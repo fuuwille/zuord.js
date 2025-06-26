@@ -5,8 +5,8 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     [ZuordUtil.HasPlain<T>] extends [true] ? (
         (ZuordUtil.AsNonPlain<T> extends infer TNonPlain ? Normalize<TNonPlain, Options> : unknown) | 
         (
-            ([Options["mode"]["lite"]] extends [true] ? ZuordUtil.AsPlain<T> : ZuordUtil.AsOnePlain<T>) extends infer T ? { 
-                [K in keyof T]: Normalize<T[K], Options> 
+            ([Options["mode"]["lite"]] extends [true] ? ZuordUtil.AsPlain<T> : ZuordUtil.AsOnePlain<T>) extends infer TPlain ? { 
+                [K in keyof TPlain]: Normalize<TPlain[K], Options> 
             } : unknown
         )
     ) : 
