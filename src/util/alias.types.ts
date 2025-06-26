@@ -16,7 +16,7 @@ import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
 import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
-import type { ZuordInstanceOf } from "./instance.types";
+import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
 
@@ -114,6 +114,7 @@ export namespace ZuordUtil {
   // INSTANCE
 
   export type InstanceOf<T> = ZuordInstanceOf<T>;
+  export type InstanceTuple<T extends readonly object[]> = ZuordInstanceTuple<T>;
 
 
   // UNORDEREDS
