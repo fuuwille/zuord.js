@@ -6,7 +6,7 @@ type Data = {
     mode?: Zuord.Mode;
 };
 
-type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode> = {
+type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode> = Data & {
     content: [...U];
     outcasts?: [...C];
     mode?: M;
