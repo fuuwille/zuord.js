@@ -1,6 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 
-type Options<Mode extends Zuord.Mode = Zuord.Mode> = {
+type Options<Mode extends Zuord.PartialMode = Zuord.PartialMode> = {
     outcasts: Zuord.Outcasts
     mode : Mode
 }
