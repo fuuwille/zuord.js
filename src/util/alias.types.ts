@@ -16,6 +16,7 @@ import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
 import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordMode } from "./mode.types";
+import type { ZuordInstanceOf } from "./instance.types";
 
 export namespace ZuordUtil {
 
@@ -108,6 +109,11 @@ export namespace ZuordUtil {
   // VALUE
 
   export type ValueAt<T, K extends PropertyKey> = ZuordValueAt<T, K>;
+
+
+  // INSTANCE
+
+  export type InstanceOf<T> = ZuordInstanceOf<T>;
 
 
   // UNORDEREDS
