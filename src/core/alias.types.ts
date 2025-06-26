@@ -1,4 +1,4 @@
-import type { ZuordMode, ZuordLiteMode, ZuordPartialMode, ZuordDefaultMode } from "./mode.types";
+import type { ZuordMode, ZuordLiteMode, ZuordDefaultMode } from "./mode.types";
 import type { ZuordOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
 import type { ZuordData, ZuordDataOf } from "./data.types";
 import type { ZuordOutcast, ZuordOutcastConstructor, ZuordOutcasts, ZuordOutcastConstructors, ZuordDefaultOutcasts, ZuordResolveOutcasts } from "./outcast.types";
@@ -32,11 +32,6 @@ export namespace Zuord {
      * 
      */
     export type LiteMode = ZuordLiteMode;
-
-    /**
-     * 
-     */
-    export type PartialMode = ZuordPartialMode;
 
     /**
      * 
