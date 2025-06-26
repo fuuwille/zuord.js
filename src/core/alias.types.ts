@@ -197,7 +197,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type IntegrateOptions = ZuordIntegrateOptions;
+    export type IntegrateOptions<Mode extends IntegrateMode = IntegrateMode> = ZuordIntegrateOptions<Mode>;
 
     /**
      * 
