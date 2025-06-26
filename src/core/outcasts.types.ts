@@ -1,6 +1,6 @@
-type Ignored = object[];
+type Outcasts = object[];
 
-type DefaultIgnored = [
+type DefaultOutcasts = [
     Date,
     Function,
     RegExp,
@@ -27,11 +27,11 @@ type DefaultIgnored = [
     BigUint64Array
 ]
 
-type ResolveIgnored<T extends Ignored> = [
+type ResolveOutcasts<T extends Outcasts> = [
     ...T,
-    ...DefaultIgnored
+    ...DefaultOutcasts
 ]
 
-export type { Ignored as ZuordIgnored };
-export type { DefaultIgnored as ZuordDefaultIgnored };
-export type { ResolveIgnored as ZuordResolveIgnored };
+export type { Outcasts as ZuordOutcasts };
+export type { DefaultOutcasts as ZuordDefaultOutcasts };
+export type { ResolveOutcasts as ZuordResolveOutcasts };

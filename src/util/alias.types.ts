@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordAsNonUndefined } from "./undefined.types";
-import type { ZuordHasIgnored, ZuordAsIgnored, ZuordAsNonIgnored } from "./ignore.types";
+import type { ZuordHasOutcasts, ZuordAsOutcasts, ZuordAsNonOutcasts } from "./outcasts.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
 import type { ZuordIsNever, ZuordIsSomeNever, ZuordAsNonNever } from "./never.types";
@@ -112,9 +112,9 @@ export namespace ZuordUtil {
 
   // UNORDEREDS
 
-  export type HasIgnored<T, I extends Zuord.Ignored = Zuord.DefaultIgnored> = ZuordHasIgnored<T, I>;
-  export type AsIgnored<T, I extends Zuord.Ignored = Zuord.DefaultIgnored> = ZuordAsIgnored<T, I>;
-  export type AsNonIgnored<T, I extends Zuord.Ignored = Zuord.DefaultIgnored> = ZuordAsNonIgnored<T, I>;
+  export type HasOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordHasOutcasts<T, I>;
+  export type AsOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordAsOutcasts<T, I>;
+  export type AsNonOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordAsNonOutcasts<T, I>;
   export type IsExtends<T, U> = ZuordIsExtends<T, U>;
   export type IsExists<T, E> = ZuordIsExists<T, E>;
   export type Optional<T> = ZuordOptional<T>;

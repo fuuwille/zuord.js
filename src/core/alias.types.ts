@@ -1,6 +1,6 @@
 import { ZuordUtil } from "@/util/alias.types";
 import type { ZuordOptions, ZuordPartialOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
-import type { ZuordIgnored, ZuordDefaultIgnored, ZuordResolveIgnored } from "./ignored.types";
+import type { ZuordOutcasts, ZuordDefaultOutcasts, ZuordResolveOutcasts } from "./outcasts.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
 import type { ZuordMerge, ZuordMergeOptions, ZuordMergeDefaultOptions, ZuordMergeResolveOptions } from "./merge.types";
@@ -49,17 +49,17 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Ignored = ZuordIgnored;
+    export type Outcasts = ZuordOutcasts;
 
     /**
      * 
      */
-    export type DefaultIgnored = ZuordDefaultIgnored;
+    export type DefaultOutcasts = ZuordDefaultOutcasts;
 
     /**
      * 
      */
-    export type ResolveIgnored<T extends Zuord.Ignored> = ZuordResolveIgnored<T>;
+    export type ResolveOutcasts<T extends Zuord.Outcasts> = ZuordResolveOutcasts<T>;
 
 
     // NORMALIZE
