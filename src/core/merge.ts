@@ -7,10 +7,10 @@ function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
         content
     }) as Zuord.Merge<U>;
 }
-function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[], const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>({ content, mode } : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: M }, Zuord.MergeDefaultOptions>> {
+function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[], const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>({ content, mode } : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: M }, Zuord.MergeDefaultOptions>>;
+        return {} as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>>;
     }
 
     const result: Record<string, unknown> = {};
@@ -40,7 +40,7 @@ function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[],
     }
 
     // Return the merged result as a normalized object
-    return result as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: M}, Zuord.MergeDefaultOptions>>;
+    return result as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>>;
 }
 
 export { merge as zuordMerge };

@@ -11,7 +11,7 @@ type DefaultOptions = {
     mode: Zuord.DefaultMode
 }
 
-type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Options = DefaultOptions> = R & (Omit<R, keyof T> & T);
+type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
 export type { Options as ZuordOptions };
 export type { DefaultOptions as ZuordDefaultOptions };
