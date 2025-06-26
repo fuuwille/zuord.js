@@ -1,5 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 
-type Data = Zuord.Options & {
+type Data = {
     content: object[];
-}
+} & Zuord.Options;
+
+export type { Data as ZuordData };
