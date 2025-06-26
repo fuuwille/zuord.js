@@ -2,7 +2,7 @@ import { Zuord } from "@/core/alias.types";
 
 type Options = {
     ignored: Zuord.Ignored
-    lite? : boolean
+    lite : boolean
 }
 
 type PartialOptions = Partial<Options>;
