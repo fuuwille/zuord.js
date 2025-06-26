@@ -114,7 +114,7 @@ export namespace ZuordUtil {
   // INSTANCE
 
   export type InstanceOf<T> = ZuordInstanceOf<T>;
-  export type InstanceTuple<T extends readonly object[]> = ZuordInstanceTuple<T>;
+  export type InstanceTuple<T> = ZuordInstanceTuple<T>;
 
 
   // UNORDEREDS
