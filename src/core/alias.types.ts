@@ -103,12 +103,12 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordMerge<U, Mode>;
+    export type Merge<U extends any, Options extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMerge<U, Options>;
 
     /**
      * 
      */
-    export type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordMergeRaw<U, Mode>;
+    export type MergeRaw<U extends any, Options extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMergeRaw<U, Options>;
 
     /**
      * 

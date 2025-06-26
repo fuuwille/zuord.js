@@ -1,16 +1,16 @@
 import { Zuord } from "@/core/alias.types"
 import { ZuordUtil } from "@/util/alias.types";
 
-type Merge<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = Zuord.Normalize<MergeRaw<U, Mode>>
+type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = Zuord.Normalize<MergeRaw<U, Options>>
 
-type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = (ZuordUtil.ArrayDepth<U> extends 1 ? (
+type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordUtil.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
-        Zuord.Integrate<MergeRaw<Rest, Mode>, Head, Mode>
+        Zuord.Integrate<MergeRaw<Rest, Options>, Head, ZuordUtil.UnionOf<Options["mode"]>>
     ) : {}
 ) :
     U extends (infer Inner)[] ? (
         Inner extends object[] ? (
-            { [K in keyof U]: MergeRaw<U[K], Mode> }
+            { [K in keyof U]: MergeRaw<U[K], Options> }
         ) : U
     ) : {}
 );
