@@ -19,9 +19,6 @@ type MergeOptions = Zuord.ResolveOptions<{
     mode: MergeMode[];
 }, Zuord.Options>;
 
-/**
- * MergeMode defines the modes available for merging objects.
- */
 type MergeMode = Zuord.IntegrateMode;
 
 type MergeData<U extends object[], M extends MergeMode[]> = {
