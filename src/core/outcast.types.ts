@@ -1,4 +1,6 @@
-type Outcasts = object[];
+type Outcast = object;
+
+type Outcasts = Outcast[];
 
 type DefaultOutcasts = [
     Date,
@@ -32,6 +34,7 @@ type ResolveOutcasts<T extends Outcasts> = [
     ...DefaultOutcasts
 ]
 
+export type { Outcast as ZuordOutcast };
 export type { Outcasts as ZuordOutcasts };
 export type { DefaultOutcasts as ZuordDefaultOutcasts };
 export type { ResolveOutcasts as ZuordResolveOutcasts };
