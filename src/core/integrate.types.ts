@@ -22,6 +22,10 @@ type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = [Zuor
     }) : B
 ) : ZuordUtil.AsNonNever<[A, B]>;
 
+type IntegrateOptions = Zuord.ResolveOptions<{
+    mode: IntegrateMode[];
+}, Zuord.Options>;
+
 type IntegrateMode = IntegrateConcantMode | IntegrateShallowMode;
 
 type IntegrateConcantMode= "concat";
@@ -30,4 +34,5 @@ type IntegrateShallowMode = "shallow";
 
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateRaw as ZuordIntegrateRaw };
+export type { IntegrateOptions as ZuordIntegrateOptions };
 export type { IntegrateMode as ZuordIntegrateMode };
