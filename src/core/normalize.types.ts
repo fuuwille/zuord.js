@@ -1,16 +1,16 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Normalize<T, O extends NormalizeOptions = NormalizeDefaultOptions> = ZuordUtil.HasIgnored<T, O["ignored"]> extends false ? (
+type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = ZuordUtil.HasIgnored<T, Options["ignored"]> extends false ? (
     ZuordUtil.HasPlain<T> extends true ? (
-        (ZuordUtil.AsNonPlain<T> extends infer T ? Normalize<T, O> : never) | 
-        (([O["lite"]] extends [true] ? ZuordUtil.AsPlain<T> : ZuordUtil.AsOnePlain<T>) extends infer T ? { [K in keyof T]: Normalize<T[K], O> } : never)
+        (ZuordUtil.AsNonPlain<T> extends infer T ? Normalize<T, Options> : never) | 
+        (([Options["lite"]] extends [true] ? ZuordUtil.AsPlain<T> : ZuordUtil.AsOnePlain<T>) extends infer T ? { [K in keyof T]: Normalize<T[K], Options> } : never)
     ) : 
     ZuordUtil.HasArray<T> extends true ? (
-        (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, O> : never) |
-        (([O["lite"]] extends [true] ? ZuordUtil.AsArray<T> : ZuordUtil.AsOneArray<T>) extends infer T ? Normalize<Extract<T, readonly unknown[]>[number], O>[] : never)
+        (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, Options> : never) |
+        (([Options["lite"]] extends [true] ? ZuordUtil.AsArray<T> : ZuordUtil.AsOneArray<T>) extends infer T ? Normalize<Extract<T, readonly unknown[]>[number], Options>[] : never)
     ) : T
-) : Normalize<ZuordUtil.AsNonIgnored<T, O["ignored"]>, O> | ZuordUtil.AsIgnored<T, O["ignored"]>;
+) : Normalize<ZuordUtil.AsNonIgnored<T, Options["ignored"]>, Options> | ZuordUtil.AsIgnored<T, Options["ignored"]>;
 
 type NormalizeOptions = Zuord.Options
 
