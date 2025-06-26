@@ -159,7 +159,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type MergeOptions = ZuordMergeOptions;
+    export type MergeOptions<Mode extends MergeMode = MergeMode> = ZuordMergeOptions<Mode>;
 
     /**
      * 

@@ -15,9 +15,7 @@ type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions>
     ) : {}
 );
 
-type MergeOptions = Zuord.ResolveOptions<{
-    mode: MergeMode;
-}, Zuord.Options>;
+type MergeOptions<Mode extends MergeMode = MergeMode> = Zuord.Options<Mode>;
 
 type MergePartialOptions = Partial<MergeOptions>;
 
