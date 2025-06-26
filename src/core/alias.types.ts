@@ -1,6 +1,6 @@
 import type { ZuordMode, ZuordLiteMode, ZuordDefaultMode } from "./mode.types";
 import type { ZuordOptions, ZuordPartialOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
-import type { ZuordData } from "./data.types";
+import type { ZuordData, ZuordDataOf } from "./data.types";
 import type { ZuordOutcast, ZuordOutcastConstructor, ZuordOutcasts, ZuordOutcastConstructors, ZuordDefaultOutcasts, ZuordResolveOutcasts } from "./outcast.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
@@ -69,6 +69,11 @@ export namespace Zuord {
      * 
      */
     export type Data = ZuordData;
+
+    /**
+     * 
+     */
+    export type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode> = ZuordDataOf<U, C, M>;
 
 
     // OUTCAST
