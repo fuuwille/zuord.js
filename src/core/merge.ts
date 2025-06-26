@@ -8,7 +8,7 @@ function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
     }) as Zuord.Merge<U>;
 }
 
-function mergeBy<U extends object[], const M extends Zuord.MergeMode[] = []>({ content, mode } : Zuord.MergeData<U, M> ): Zuord.Merge<U, Zuord.MergeResolveOptions<{ mode: typeof mode }, Zuord.MergeDefaultOptions>> {
+function mergeBy<U extends object[], const M extends Zuord.MergeMode[] = Zuord.MergeDefaultMode>({ content, mode } : Zuord.MergeData<U, M> ): Zuord.Merge<U, Zuord.MergeResolveOptions<{ mode: typeof mode }, Zuord.MergeDefaultOptions>> {
     if (content.length === 0) {
         // If no content is provided, return an empty object
         return {} as Zuord.Merge<U, Zuord.MergeResolveOptions<{ mode: typeof mode }, Zuord.MergeDefaultOptions>>;
