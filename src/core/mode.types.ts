@@ -1,6 +1,6 @@
-type Mode = string[];
+type Mode = string | undefined;
 
-type DefaultMode = [];
+type DefaultMode = undefined;
 
 export type { Mode as ZuordMode };
 export type { DefaultMode as ZuordDefaultMode };
