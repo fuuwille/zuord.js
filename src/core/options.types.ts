@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 
 type Options = {
-    ignored: Zuord.Outcasts
+    outcasts: Zuord.Outcasts
     lite : boolean,
     mode : Zuord.Mode
 }
@@ -9,7 +9,7 @@ type Options = {
 type PartialOptions = Partial<Options>;
 
 type DefaultOptions = {
-    ignored: Zuord.DefaultOutcasts
+    outcasts: Zuord.DefaultOutcasts
     lite: false,
     mode: undefined
 }
