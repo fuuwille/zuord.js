@@ -16,7 +16,7 @@ type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions>
 );
 
 type MergeOptions = Zuord.ResolveOptions<{
-    mode: MergeMode[];
+    mode: MergeMode;
 }, Zuord.Options>;
 
 type MergePartialOptions = Partial<MergeOptions>;
@@ -29,7 +29,7 @@ type MergeResolveOptions<T extends Partial<MergeOptions>, R extends MergeOptions
 
 type MergeMode = Zuord.IntegrateMode;
 
-type MergeDefaultMode = ["concat"];
+type MergeDefaultMode = "concat";
 
 type MergeData<U extends object[], M extends MergeMode[]> = {
     content : [...U];

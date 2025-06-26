@@ -3,7 +3,7 @@ import { Zuord } from "@/core/alias.types";
 type Options = {
     ignored: Zuord.Outcasts
     lite : boolean,
-    mode : string[]
+    mode : Zuord.Mode
 }
 
 type PartialOptions = Partial<Options>;
@@ -11,7 +11,7 @@ type PartialOptions = Partial<Options>;
 type DefaultOptions = {
     ignored: Zuord.DefaultOutcasts
     lite: false,
-    mode: []
+    mode: undefined
 }
 
 type ResolveOptions<T extends PartialOptions, R extends Options = DefaultOptions> = Options & (Omit<R, keyof T> & T);

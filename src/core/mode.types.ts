@@ -1,4 +1,4 @@
-type Mode = LiteMode | undefined;
+type Mode = string | undefined;
 
 type LiteMode = "lite";
 

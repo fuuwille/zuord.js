@@ -5,13 +5,13 @@ type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions>
 
 type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
     [ZuordUtil.IsAllArray<[A, B]>] extends [true] ? (
-        ZuordUtil.IsExists<ZuordUtil.UnionOf<Options["mode"]>, IntegrateConcantMode> extends true 
+        ZuordUtil.IsExists<Options["mode"], IntegrateConcantMode> extends true 
             ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<A>>
     ) : 
     [ZuordUtil.IsAllPlain<[A, B]>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
-            ZuordUtil.IsExists<ZuordUtil.UnionOf<Options["mode"]>, IntegrateShallowMode> extends false ? (
+            ZuordUtil.IsExists<Options["mode"], IntegrateShallowMode> extends false ? (
                 IntegrateRaw<
                     K extends keyof A ? A[K] : never,
                     K extends keyof B ? B[K] : never,
@@ -23,7 +23,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
 ) : ZuordUtil.AsNonNever<[A, B]>;
 
 type IntegrateOptions = Zuord.ResolveOptions<{
-    mode: IntegrateMode[];
+    mode: IntegrateMode;
 }, Zuord.Options>;
 
 type IntegratePartialOptions = Partial<IntegrateOptions>;
@@ -35,9 +35,9 @@ type IntegrateDefaultOptions = Zuord.ResolveOptions<{
 type IntegrateResolveOptions<T extends Partial<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
     = IntegrateOptions & Zuord.ResolveOptions<T, R>;
 
-type IntegrateMode = IntegrateConcantMode | IntegrateShallowMode;
+type IntegrateMode = Zuord.Mode | IntegrateConcantMode | IntegrateShallowMode;
 
-type IntegrateDefaultMode = [IntegrateConcantMode];
+type IntegrateDefaultMode = IntegrateConcantMode;
 
 type IntegrateConcantMode= "concat";
 
