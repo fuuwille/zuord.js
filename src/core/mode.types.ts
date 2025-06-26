@@ -1,10 +1,17 @@
 type Mode = string | undefined;
 
-type LiteMode = "lite";
+type LiteMode = {
+    lite : true;
+};
 
-type ShallowMode = "shallow";
+type ShallowMode = {
+    shallow: true;
+};
 
-type DefaultMode = undefined;
+type DefaultMode = {
+    lite: false;
+    shallow: false;
+};
 
 export type { Mode as ZuordMode };
 export type { LiteMode as ZuordLiteMode };
