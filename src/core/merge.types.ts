@@ -20,7 +20,7 @@ type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = (Zuo
  */
 type MergeMode = Zuord.IntegrateMode;
 
-type MergeOptions<U extends object[], M extends MergeMode[]> = {
+type MergeData<U extends object[], M extends MergeMode[]> = {
     content : [...U];
     mode? : [...M];
 }
@@ -28,4 +28,4 @@ type MergeOptions<U extends object[], M extends MergeMode[]> = {
 export type { Merge as ZuordMerge};
 export type { MergeRaw as ZuordMergeRaw };
 export type { MergeMode as ZuordMergeMode };
-export type { MergeOptions as ZuordMergeOptions };
+export type { MergeData as ZuordMergeData };
