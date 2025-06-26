@@ -5,7 +5,7 @@ type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions>
 
 type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
     [ZuordUtil.IsAllArray<[A, B]>] extends [true] ? (
-        ZuordUtil.IsExists<Options["mode"], IntegrateConcantMode> extends true 
+        [Options["mode"]["concat"]] extends [true] 
             ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<A>>
     ) : 
