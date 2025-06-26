@@ -19,6 +19,10 @@ type MergeOptions = Zuord.ResolveOptions<{
     mode: MergeMode[];
 }, Zuord.Options>;
 
+type MergeDefaultOptions = Zuord.ResolveOptions<{
+    mode: ["concat"];
+}>;
+
 type MergeMode = Zuord.IntegrateMode;
 
 type MergeData<U extends object[], M extends MergeMode[]> = {
@@ -29,5 +33,6 @@ type MergeData<U extends object[], M extends MergeMode[]> = {
 export type { Merge as ZuordMerge};
 export type { MergeRaw as ZuordMergeRaw };
 export type { MergeOptions as ZuordMergeOptions };
+export type { MergeDefaultOptions as ZuordMergeDefaultOptions };
 export type { MergeMode as ZuordMergeMode };
 export type { MergeData as ZuordMergeData };
