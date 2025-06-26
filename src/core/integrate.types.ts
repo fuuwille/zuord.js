@@ -31,7 +31,7 @@ type IntegrateDefaultOptions = Zuord.ResolveOptions<{
 }, Zuord.DefaultOptions>;
 
 type IntegrateResolveOptions<T extends Partial<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
-    = IntegrateOptions & Zuord.ResolveOptions<T, R>;
+    = Zuord.ResolveOptions<T, R>;
 
 type IntegrateMode = Zuord.Mode & IntegrateConcantMode;
 

@@ -31,7 +31,7 @@ type NormalizeOptions = Zuord.Options
 
 type NormalizeDefaultOptions = Zuord.DefaultOptions;
 
-type NormalizeResolveOptions<T extends Partial<NormalizeOptions>> = Omit<NormalizeDefaultOptions, keyof T> & T;
+type NormalizeResolveOptions<T extends Partial<NormalizeOptions>> = Omit<NormalizeDefaultOptions, keyof T>;
 
 export type { Normalize as ZuordNormalize };
 export type { NormalizeOptions as ZuordNormalizeOptions };

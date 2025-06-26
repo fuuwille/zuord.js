@@ -23,7 +23,7 @@ type MergeDefaultOptions = Zuord.ResolveOptions<{
     mode: MergeDefaultMode;
 }, Zuord.DefaultOptions>;
 
-type MergeResolveOptions<T extends ZuordUtil.Optional<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = MergeOptions & Zuord.ResolveOptions<T, R>;
+type MergeResolveOptions<T extends ZuordUtil.Optional<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = Zuord.ResolveOptions<T, R>;
 
 type MergeMode = Zuord.IntegrateMode;
 
