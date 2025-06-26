@@ -12,7 +12,7 @@ type DefaultOptions = {
     lite: false
 }
 
-type ResolveOptions<T extends Zuord.PartialOptions> = Omit<DefaultOptions, keyof T> & T;
+type ResolveOptions<T extends Zuord.PartialOptions, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
 export type { Options as ZuordOptions };
 export type { PartialOptions as ZuordPartialOptions };
