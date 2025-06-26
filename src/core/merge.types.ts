@@ -5,7 +5,7 @@ type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = 
 
 type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordUtil.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
-        Zuord.Integrate<MergeRaw<Rest, Options>, Head, Options>
+        Zuord.IntegrateRaw<MergeRaw<Rest, Options>, Head, Options>
     ) : {}
 ) :
     U extends (infer Inner)[] ? (
