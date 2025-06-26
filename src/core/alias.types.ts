@@ -44,7 +44,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Options = ZuordOptions;
+    export type Options<Mode extends Zuord.Mode = Zuord.Mode> = ZuordOptions<Mode>;
 
     /**
      * 
