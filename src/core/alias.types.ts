@@ -15,6 +15,7 @@ import type { ZuordOmitOf } from "./omit.types";
 import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
+import { ZuordUtil } from "@/util/alias.types";
 
 /**
  * 
@@ -54,7 +55,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type ResolveOptions<T extends Partial<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
+    export type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
 
 
     // DATA
@@ -67,7 +68,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode> = ZuordDataOf<U, C, M>;
+    export type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Partial<Zuord.Mode>> = ZuordDataOf<U, C, M>;
 
 
     // OUTCAST
@@ -164,7 +165,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type MergeResolveOptions<T extends Partial<Zuord.MergeOptions>, R extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMergeResolveOptions<T, R>;
+    export type MergeResolveOptions<T extends ZuordUtil.Optional<Zuord.MergeOptions>, R extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMergeResolveOptions<T, R>;
 
     /**
      * 
