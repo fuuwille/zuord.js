@@ -8,7 +8,7 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ) : 
     [ZuordUtil.HasArray<T>] extends [true] ? (
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, Options> : never) |
-        ([Options["mode"]["lite"]] extends [true] ? Normalize<ZuordUtil.AsArray<T>, Options>: Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
+        ([Options["mode"]["lite"]] extends [true] ? ZuordUtil.AsArray<T> : Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
     ) : T
 ) : Normalize<ZuordUtil.AsNonOutcasts<T, Options["outcasts"]>, Options> | ZuordUtil.AsOutcasts<T, Options["outcasts"]>;
 
