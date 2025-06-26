@@ -67,7 +67,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode[]> = ZuordDataOf<U, C, M>;
+    export type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Zuord.Mode> = ZuordDataOf<U, C, M>;
 
 
     // OUTCAST
