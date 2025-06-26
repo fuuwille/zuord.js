@@ -49,7 +49,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Options<Mode extends Zuord.Mode = Zuord.Mode> = ZuordOptions<Mode>;
+    export type Options<Mode extends Partial<Zuord.Mode> = Partial<Zuord.Mode>> = ZuordOptions<Mode>;
 
     /**
      * 
