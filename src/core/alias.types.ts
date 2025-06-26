@@ -3,7 +3,7 @@ import type { ZuordOptions, ZuordPartialOptions, ZuordDefaultOptions, ZuordResol
 import type { ZuordIgnored, ZuordDefaultIgnored, ZuordResolveIgnored } from "./ignored.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
 import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
-import type { ZuordMerge } from "./merge.types";
+import type { ZuordMerge, ZuordMergeOptions } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
 import type { ZuordMergeMode } from "./merge.types";
 import type { ZuordMergeData } from "./merge.types";
@@ -109,6 +109,11 @@ export namespace Zuord {
      * 
      */
     export type MergeRaw<U extends any, Mode extends ZuordUtil.Mode<MergeMode> = ""> = ZuordMergeRaw<U, Mode>;
+
+    /**
+     * 
+     */
+    export type MergeOptions = ZuordMergeOptions;
 
     /**
      * 
