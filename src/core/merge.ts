@@ -7,15 +7,15 @@ function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
         content
     }) as Zuord.Merge<U>;
 }
-function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[], const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>({ content, mode } : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>> {
-    if (content.length === 0) {
+function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[], const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>(data : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.OptionsOf<typeof data>> {
+    if (data.content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>>;
+        return {} as Zuord.Merge<U, Zuord.OptionsOf<typeof data>>;
     }
 
     const result: Record<string, unknown> = {};
     
-    for (const obj of content) {
+    for (const obj of data.content) {
         if (!zuordUtil.isObject(obj)) continue;
 
         // Iterate over each key-value pair in the object
@@ -30,7 +30,7 @@ function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[],
                 // Recursively merge objects
                 result[key] = mergeBy({
                     content: [existing as object, value as object],
-                    mode
+                    mode: data.mode
                 });
             } else {
                 // In other cases, just set the value
@@ -40,7 +40,7 @@ function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[],
     }
 
     // Return the merged result as a normalized object
-    return result as Zuord.Merge<U, Zuord.MergeResolveOptions<{ outcasts: ZuordUtil.InstanceTuple<C>, mode: (M extends infer M ? Omit<Zuord.MergeDefaultMode, keyof M> & M : never) }, Zuord.MergeDefaultOptions>>;
+    return result as Zuord.Merge<U, Zuord.OptionsOf<typeof data>>;
 }
 
 export { merge as zuordMerge };
