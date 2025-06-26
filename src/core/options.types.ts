@@ -14,7 +14,7 @@ type DefaultOptions = {
     mode: []
 }
 
-type ResolveOptions<T extends PartialOptions, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
+type ResolveOptions<T extends PartialOptions, R extends Options = DefaultOptions> = Options & (Omit<R, keyof T> & T);
 
 export type { Options as ZuordOptions };
 export type { PartialOptions as ZuordPartialOptions };
