@@ -1,5 +1,5 @@
 import type { ZuordMode, ZuordLiteMode, ZuordDefaultMode } from "./mode.types";
-import type { ZuordOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
+import type { ZuordOptions, ZuordDefaultOptions, ZuordResolvedOptions, ZuordOptionsOf } from "./options.types";
 import type { ZuordData, ZuordDataOf } from "./data.types";
 import type { ZuordOutcast, ZuordOutcastConstructor, ZuordOutcasts, ZuordOutcastConstructors, ZuordDefaultOutcasts, ZuordResolveOutcasts } from "./outcast.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
@@ -56,6 +56,11 @@ export namespace Zuord {
      * 
      */
     export type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
+
+    /**
+     * 
+     */
+    export type OptionsOf<T extends Zuord.Data> = ZuordOptionsOf<T>;
 
 
     // DATA
