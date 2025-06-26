@@ -54,17 +54,12 @@ export namespace Zuord {
     /**
      * 
      */
-    export type PartialOptions = ZuordPartialOptions
-
-    /**
-     * 
-     */
     export type DefaultOptions = ZuordDefaultOptions;
 
     /**
      * 
      */
-    export type ResolveOptions<T extends Zuord.PartialOptions, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
+    export type ResolveOptions<T extends Partial<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
 
 
     // DATA
