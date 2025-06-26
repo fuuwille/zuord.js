@@ -1,4 +1,4 @@
-import type { ZuordMode } from "./mode.types";
+import type { ZuordMode, ZuordDefaultMode } from "./mode.types";
 import type { ZuordOptions, ZuordPartialOptions, ZuordDefaultOptions, ZuordResolvedOptions } from "./options.types";
 import type { ZuordOutcasts, ZuordDefaultOutcasts, ZuordResolveOutcasts } from "./outcasts.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
@@ -27,6 +27,12 @@ export namespace Zuord {
      * 
      */
     export type Mode = ZuordMode;
+
+    /**
+     * 
+     */
+    export type DefaultMode = ZuordDefaultMode;
+    
 
     // OPTIONS
 
