@@ -26,6 +26,8 @@ type IntegrateOptions = Zuord.ResolveOptions<{
     mode: IntegrateMode[];
 }, Zuord.Options>;
 
+type IntegratePartialOptions = Partial<IntegrateOptions>;
+
 type IntegrateDefaultOptions = Zuord.ResolveOptions<{
     mode: IntegrateDefaultMode;
 }>;
@@ -41,6 +43,7 @@ type IntegrateShallowMode = "shallow";
 export type { Integrate as ZuordIntegrate };
 export type { IntegrateRaw as ZuordIntegrateRaw };
 export type { IntegrateOptions as ZuordIntegrateOptions };
+export type { IntegratePartialOptions as ZuordIntegratePartialOptions };
 export type { IntegrateDefaultOptions as ZuordIntegrateDefaultOptions };
 export type { IntegrateMode as ZuordIntegrateMode };
 export type { IntegrateDefaultMode as ZuordIntegrateDefaultMode };
