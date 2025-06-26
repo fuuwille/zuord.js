@@ -12,7 +12,12 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ) : 
     [ZuordUtil.HasArray<T>] extends [true] ? (
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, Options> : never) |
-        ([Options["mode"]["lite"]] extends [true] ? (ZuordUtil.AsArray<T> extends infer T ? { [K in keyof T]: Normalize<T[K], Options> } : never) : Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
+        (
+            [Options["mode"]["lite"]] extends [true] ? (
+                ZuordUtil.AsArray<T> extends infer T ? { 
+                    [K in keyof T]: Normalize<T[K], Options> 
+                } : never
+            ) : Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
     ) : T
 ) : Normalize<ZuordUtil.AsNonOutcasts<T, Options["outcasts"]>, Options> | ZuordUtil.AsOutcasts<T, Options["outcasts"]>;
 
