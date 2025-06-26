@@ -29,4 +29,5 @@ type IntegrateConcantMode= "concat";
 type IntegrateShallowMode = "shallow";
 
 export type { Integrate as ZuordIntegrate };
+export type { IntegrateRaw as ZuordIntegrateRaw };
 export type { IntegrateMode as ZuordIntegrateMode };
