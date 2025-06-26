@@ -28,7 +28,7 @@ type IntegratePartialOptions = Partial<IntegrateOptions>;
 
 type IntegrateDefaultOptions = Zuord.ResolveOptions<{
     mode: IntegrateDefaultMode;
-}>;
+}, Zuord.Options<IntegrateMode>>;
 
 type IntegrateResolveOptions<T extends Partial<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
     = IntegrateOptions & Zuord.ResolveOptions<T, R>;
