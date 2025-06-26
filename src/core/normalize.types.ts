@@ -19,7 +19,13 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
                 } : unknown
             ) : Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
     ) : T
-) : Normalize<ZuordUtil.AsNonOutcasts<T, Options["outcasts"]>, Options> | ZuordUtil.AsOutcasts<T, Options["outcasts"]>;
+) : (
+    ZuordUtil.AsNonOutcasts<T, Options["outcasts"]> extends infer TNonOutcasts
+        ? ZuordUtil.AsOutcasts<T, Options["outcasts"]> extends infer TOutcasts
+            ? Normalize<TNonOutcasts, Options> | TOutcasts
+            : unknown
+    : unknown
+)
 
 type NormalizeOptions = Zuord.Options
 
