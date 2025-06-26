@@ -4,6 +4,8 @@ type OutcastConstructor = new (...args: any[]) => Outcast;
 
 type Outcasts = Outcast[];
 
+type OutcastConstructors = OutcastConstructor[];
+
 type DefaultOutcasts = [
     Date,
     Function,
@@ -38,5 +40,6 @@ type ResolveOutcasts<T extends Outcasts> = [
 export type { Outcast as ZuordOutcast };
 export type { OutcastConstructor as ZuordOutcastConstructor };
 export type { Outcasts as ZuordOutcasts };
+export type { OutcastConstructors as ZuordOutcastConstructors };
 export type { DefaultOutcasts as ZuordDefaultOutcasts };
 export type { ResolveOutcasts as ZuordResolveOutcasts };
