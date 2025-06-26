@@ -3,7 +3,7 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
     [ZuordUtil.HasPlain<T>] extends [true] ? (
-        (ZuordUtil.AsNonPlain<T> extends infer T ? Normalize<T, Options> : unknown) | 
+        (ZuordUtil.AsNonPlain<T> extends infer TNonPlain ? Normalize<TNonPlain, Options> : unknown) | 
         (
             ([Options["mode"]["lite"]] extends [true] ? ZuordUtil.AsPlain<T> : ZuordUtil.AsOnePlain<T>) extends infer T ? { 
                 [K in keyof T]: Normalize<T[K], Options> 
