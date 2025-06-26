@@ -32,6 +32,9 @@ type IntegrateDefaultOptions = Zuord.ResolveOptions<{
     mode: IntegrateDefaultMode;
 }>;
 
+type IntegrateResolveOptions<T extends Partial<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
+    = IntegrateOptions & Zuord.ResolveOptions<T, R>;
+
 type IntegrateMode = IntegrateConcantMode | IntegrateShallowMode;
 
 type IntegrateDefaultMode = [IntegrateConcantMode];
@@ -45,5 +48,6 @@ export type { IntegrateRaw as ZuordIntegrateRaw };
 export type { IntegrateOptions as ZuordIntegrateOptions };
 export type { IntegratePartialOptions as ZuordIntegratePartialOptions };
 export type { IntegrateDefaultOptions as ZuordIntegrateDefaultOptions };
+export type { IntegrateResolveOptions as ZuordIntegrateResolveOptions };
 export type { IntegrateMode as ZuordIntegrateMode };
 export type { IntegrateDefaultMode as ZuordIntegrateDefaultMode };
