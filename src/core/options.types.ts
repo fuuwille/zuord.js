@@ -5,10 +5,7 @@ type Options<Mode extends Partial<Zuord.Mode> = Partial<Zuord.Mode>> = {
     mode : Mode
 }
 
-type DefaultOptions = {
-    outcasts: Zuord.DefaultOutcasts
-    mode: undefined
-}
+type DefaultOptions = Options<Zuord.DefaultMode>
 
 type ResolveOptions<T extends Partial<Zuord.Options>, R extends Options = DefaultOptions> = Options<R["mode"]> & (Omit<R, keyof T> & T);
 

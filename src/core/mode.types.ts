@@ -1,11 +1,11 @@
-type Mode = string | undefined;
+type Mode = LiteMode & ShallowMode;
 
 type LiteMode = {
-    lite : true;
+    lite : boolean;
 };
 
 type ShallowMode = {
-    shallow: true;
+    shallow: boolean;
 };
 
 type DefaultMode = {

@@ -27,7 +27,7 @@ type MergeResolveOptions<T extends Partial<MergeOptions>, R extends MergeOptions
 
 type MergeMode = Zuord.IntegrateMode;
 
-type MergeDefaultMode = "concat";
+type MergeDefaultMode = Zuord.DefaultMode;
 
 export type { Merge as ZuordMerge};
 export type { MergeRaw as ZuordMergeRaw };

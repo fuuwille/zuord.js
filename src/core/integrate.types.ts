@@ -22,7 +22,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
     }) : B
 ) : ZuordUtil.AsNonNever<[A, B]>;
 
-type IntegrateOptions<Mode extends IntegrateMode = IntegrateMode> = Zuord.Options<Mode>;
+type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = Zuord.Options<Mode>;
 
 type IntegratePartialOptions = Partial<IntegrateOptions>;
 
@@ -33,9 +33,9 @@ type IntegrateDefaultOptions = Zuord.ResolveOptions<{
 type IntegrateResolveOptions<T extends Partial<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
     = IntegrateOptions & Zuord.ResolveOptions<T, R>;
 
-type IntegrateMode = Zuord.Mode | IntegrateConcantMode | IntegrateShallowMode;
+type IntegrateMode = Zuord.Mode;
 
-type IntegrateDefaultMode = IntegrateConcantMode;
+type IntegrateDefaultMode = Zuord.DefaultMode;
 
 type IntegrateConcantMode= "concat";
 
