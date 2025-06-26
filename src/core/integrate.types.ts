@@ -40,7 +40,7 @@ type IntegrateDefaultMode = Zuord.DefaultMode & {
 };
 
 type IntegrateConcantMode = {
-    concant: boolean;
+    concat: boolean;
 };
 
 export type { Integrate as ZuordIntegrate };
