@@ -11,7 +11,7 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
         )
     ) : 
     [ZuordUtil.HasArray<T>] extends [true] ? (
-        (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, Options> : unknown) |
+        (ZuordUtil.AsNonArray<T> extends infer TNonArray ? Normalize<TNonArray, Options> : unknown) |
         (
             [Options["mode"]["lite"]] extends [true] ? (
                 ZuordUtil.AsArray<T> extends infer T ? { 
