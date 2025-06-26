@@ -7,7 +7,7 @@ import type { ZuordMerge, ZuordMergeOptions, ZuordMergeDefaultOptions, ZuordMerg
 import type { ZuordMergeRaw } from "./merge.types";
 import type { ZuordMergeMode, ZuordMergeDefaultMode } from "./merge.types";
 import type { ZuordMergeData } from "./merge.types";
-import type { ZuordIntegrate } from "./integrate.types";
+import type { ZuordIntegrate, ZuordIntegrateRaw } from "./integrate.types";
 import type { ZuordIntegrateMode } from "./integrate.types";
 import type { ZuordOmit } from "./omit.types";
 import type { ZuordOmitRaw } from "./omit.types";
@@ -146,6 +146,11 @@ export namespace Zuord {
      * 
      */
     export type Integrate<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrate<A, B, M>;
+
+    /**
+     * 
+     */
+    export type IntegrateRaw<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrateRaw<A, B, M>;
 
     /**
      * 
