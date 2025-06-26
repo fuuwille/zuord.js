@@ -4,11 +4,11 @@ import { ZuordUtil } from "@/util/alias.types";
 type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
     [ZuordUtil.HasPlain<T>] extends [true] ? (
         (ZuordUtil.AsNonPlain<T> extends infer T ? Normalize<T, Options> : never) | 
-        ([Options["mode"]["lite"]] extends [true] ? Normalize<ZuordUtil.AsPlain<T>> : (ZuordUtil.AsOnePlain<T> extends infer T ? { [K in keyof T]: Normalize<T[K], Options> } : never))
+        ([Options["mode"]["lite"]] extends [true] ? Normalize<ZuordUtil.AsPlain<T>, Options> : (ZuordUtil.AsOnePlain<T> extends infer T ? { [K in keyof T]: Normalize<T[K], Options> } : never))
     ) : 
     [ZuordUtil.HasArray<T>] extends [true] ? (
         (ZuordUtil.AsNonArray<T> extends infer T ? Normalize<T, Options> : never) |
-        ([Options["mode"]["lite"]] extends [true] ? Normalize<ZuordUtil.AsArray<T>>: Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
+        ([Options["mode"]["lite"]] extends [true] ? Normalize<ZuordUtil.AsArray<T>, Options>: Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[])
     ) : T
 ) : Normalize<ZuordUtil.AsNonOutcasts<T, Options["outcasts"]>, Options> | ZuordUtil.AsOutcasts<T, Options["outcasts"]>;
 
