@@ -8,7 +8,6 @@ type DefaultOutcasts = [
     Date,
     Function,
     RegExp,
-    Function,
     Error,
     Map<any, any>,
     Set<any>,
