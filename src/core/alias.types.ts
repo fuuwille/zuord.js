@@ -67,7 +67,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Normalize<T, O extends Zuord.Options = Zuord.DefaultOptions> = ZuordNormalize<T, O>;
+    export type Normalize<T, Options extends Zuord.Options = Zuord.DefaultOptions> = ZuordNormalize<T, Options>;
 
     /**
      * 
