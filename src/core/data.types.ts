@@ -2,11 +2,11 @@ import { Zuord } from "@/core/alias.types";
 
 type Data = {
     content: object[];
-    outcasts?: Zuord.OutcastConstructors;
-    mode?: Zuord.Mode[];
+    outcasts?: Zuord.OutcastConstructor[];
+    mode?: Partial<Zuord.Mode>;
 };
 
-type DataOf<U extends object[], C extends Zuord.OutcastConstructors, M extends Partial<Zuord.Mode>> = {
+type DataOf<U extends object[], C extends Zuord.OutcastConstructor[], M extends Partial<Zuord.Mode>> = {
     content: [...U];
     outcasts?: [...C];
     mode?: M;
