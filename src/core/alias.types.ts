@@ -145,12 +145,12 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Integrate<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrate<A, B, M>;
+    export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = ZuordIntegrate<A, B, Options>;
 
     /**
      * 
      */
-    export type IntegrateRaw<A, B, M extends ZuordUtil.Mode<Zuord.IntegrateMode> = ""> = ZuordIntegrateRaw<A, B, M>;
+    export type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = ZuordIntegrateRaw<A, B, Options>;
 
     /**
      * 

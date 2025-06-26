@@ -1,21 +1,21 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Integrate<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = Zuord.Normalize<IntegrateRaw<A, B, Mode>>;
+type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = Zuord.Normalize<IntegrateRaw<A, B, Options>>;
 
-type IntegrateRaw<A, B, Mode extends ZuordUtil.Mode<IntegrateMode> = ""> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
+type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
     [ZuordUtil.IsAllArray<[A, B]>] extends [true] ? (
-        ZuordUtil.IsExists<Mode, IntegrateConcantMode> extends true 
+        ZuordUtil.IsExists<ZuordUtil.UnionOf<Options["mode"]>, IntegrateConcantMode> extends true 
             ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<A>>
     ) : 
     [ZuordUtil.IsAllPlain<[A, B]>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
-            ZuordUtil.IsExists<Mode, IntegrateShallowMode> extends false ? (
+            ZuordUtil.IsExists<ZuordUtil.UnionOf<Options["mode"]>, IntegrateShallowMode> extends false ? (
                 IntegrateRaw<
                     K extends keyof A ? A[K] : never,
                     K extends keyof B ? B[K] : never,
-                    Mode
+                    Options
                 > 
             ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
         )
