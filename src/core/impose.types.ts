@@ -9,7 +9,7 @@ type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends
         ({
             [K in keyof TBase]: K extends keyof TPatch ? Required<Omit<TCurrent[K], keyof NonNullable<TPatch[K]>> & TPatch[K]> : ImposeRaw<TBase[K], TCurrent[K], TCurrent[K]>
         })) : never ) : never ) : never
-    ) : TPatch
+    ) : [ZuordUtil.IsUndefined<TPatch>] extends [true] ? TCurrent : ZuordUtil.AsNonUndefined<TPatch>
 ) : TCurrent;
 
 export type { Impose as ZuordImpose };
