@@ -20,7 +20,7 @@ type HasPlain<T> = true extends (T extends any ? IsPlain<T> : false) ? true : fa
 
 type HasNonPlain<T> = boolean extends (T extends any ? IsPlain<T> : false) ? false : true;
 
-type AsPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
+type ExtractPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
 
 type AsNonPlain<T> = T extends any ? (IsPlain<T> extends true ? never : T) : never;
     
@@ -30,5 +30,5 @@ export type { IsSomePlain as ZuordIsSomePlain }
 export type { IsAllPlain as ZuordIsAllPlain }
 export type { HasPlain as ZuordHasPlain }
 export type { HasNonPlain as ZuordHasNonPlain }
-export type { AsPlain as ZuordAsPlain }
+export type { ExtractPlain as ZuordExtractPlain }
 export type { AsNonPlain as ZuordAsNonPlain }
