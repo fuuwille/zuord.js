@@ -21,7 +21,7 @@ type HasAllArray<U extends readonly unknown[]> = U extends [infer First, ...infe
 
 type ExtractArray<T> = T extends any ? (IsArray<T> extends true ? T : never) : never;
 
-type AsNonArray<T> = T extends any ? (IsArray<T> extends true ? never : T) : never;
+type ExcludeArray<T> = T extends any ? (IsArray<T> extends true ? never : T) : never;
 
 export type { ArrayIn as ZuordArrayIn };
 export type { ArrayDepth as ZuordArrayDepth };
@@ -32,4 +32,4 @@ export type { HasArray as ZuordHasArray };
 export type { HasSomeArray as ZuordHasSomeArray };
 export type { HasAllArray as ZuordHasAllArray };
 export type { ExtractArray as ZuordExtractArray };
-export type { AsNonArray as ZuordAsNonArray };
+export type { ExcludeArray as ZuordExcludeArray };
