@@ -7,7 +7,7 @@ function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
         content
     }) as Zuord.Merge<U>;
 }
-function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[], const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>(data : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.OptionsOf<typeof data>> {
+function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[] = Zuord.DefaultOutcastConstructors, const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>(data : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.OptionsOf<typeof data>> {
     if (data.content.length === 0) {
         // If no content is provided, return an empty object
         return {} as Zuord.Merge<U, Zuord.OptionsOf<typeof data>>;
