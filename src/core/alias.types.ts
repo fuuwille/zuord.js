@@ -15,6 +15,7 @@ import type { ZuordOmitOf } from "./omit.types";
 import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
+import type { ZuordOverride } from "./override.types";
 import { ZuordUtil } from "@/util/alias.types";
 
 /**
@@ -258,4 +259,12 @@ export namespace Zuord {
      * 
      */
     export type PickOf<A, B> = ZuordPickOf<A, B>;
+
+
+    // OVERRIDE
+
+    /**
+     * 
+     */
+    export type Override<T, O extends ZuordUtil.Optional<T>> = ZuordOverride<T, O>;
 }
