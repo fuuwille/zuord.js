@@ -9,7 +9,7 @@ import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
-import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordAsNonPlain } from "./plain.types";
+import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain } from "./plain.types";
 import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
 import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
@@ -71,7 +71,7 @@ export namespace ZuordUtil {
   export type HasPlain<T> = ZuordHasPlain<T>;
   export type HasNonPlain<T> = ZuordHasNonPlain<T>;
   export type ExtractPlain<T> = ZuordExtractPlain<T>;
-  export type AsNonPlain<T> = ZuordAsNonPlain<T>;
+  export type ExcludePlain<T> = ZuordExcludePlain<T>;
 
 
   // FUNCTION
