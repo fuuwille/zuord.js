@@ -16,7 +16,6 @@ import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
 import type { ZuordImpose, ZuordImposeRaw } from "./impose.types";
-import type { ZuordOverride } from "./override.types";
 import { ZuordUtil } from "@/util/alias.types";
 
 /**
@@ -273,12 +272,4 @@ export namespace Zuord {
      * 
      */
     export type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImposeRaw<TBase, TPatch, TCurrent>;
-
-
-    // OVERRIDE
-
-    /**
-     * 
-     */
-    export type Override<TBase, TContent extends ZuordUtil.Optional<TBase>> = ZuordOverride<TBase, TContent>;
 }
