@@ -5,7 +5,11 @@ type Impose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<Imp
 
 type ImposeRaw<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil.IsNever<TPatch>] extends [false] ? (
     ZuordUtil.IsPlain<TBase> extends true ? ({
-        [K in keyof TBase]: ImposeRaw<TBase[K], K extends keyof ZuordUtil.AsNonUndefined<TPatch> ? ZuordUtil.AsNonUndefined<TPatch>[K] : TCurrent[K], TCurrent[K]>
+        [K in keyof TBase]: ImposeRaw<
+        TBase[K],  
+        ZuordUtil.IsUndefined<TPatch> extends true ? TCurrent[K] :
+        (K extends keyof ZuordUtil.AsNonUndefined<TPatch> ? ZuordUtil.AsNonUndefined<TPatch>[K] : TCurrent[K]),
+        TCurrent[K]>
     }) : [ZuordUtil.IsUndefined<TPatch>] extends [true] ? TCurrent : NonNullable<TPatch>
 ) : TCurrent;
 
