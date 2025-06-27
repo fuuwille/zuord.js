@@ -23,6 +23,10 @@ type HasNonPlain<T> = boolean extends (T extends any ? IsPlain<T> : false) ? fal
 type ExtractPlain<T> = T extends any ? (IsPlain<T> extends true ? T : never) : never;
 
 type ExcludePlain<T> = T extends any ? (IsPlain<T> extends true ? never : T) : never;
+
+type ExtractPlainList<T extends unknown[]> = {
+  [K in keyof T]: ExtractPlain<T[K]>;
+};
     
 export type { Plain as ZuordPlain };
 export type { IsPlain as ZuordIsPlain };
@@ -32,3 +36,4 @@ export type { HasPlain as ZuordHasPlain }
 export type { HasNonPlain as ZuordHasNonPlain }
 export type { ExtractPlain as ZuordExtractPlain }
 export type { ExcludePlain as ZuordExcludePlain }
+export type { ExtractPlainList as ZuordExtractPlainList };
