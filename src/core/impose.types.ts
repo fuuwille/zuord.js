@@ -5,10 +5,9 @@ type Impose<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TB
 
 type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = [ZuordUtil.IsNever<TPatch>] extends [false] ? (
     ZuordUtil.HasPlain<TBase> extends true ? (
-        [TBase] extends [object] ? ( [TPatch] extends [object] ? ( [TCurrent] extends [object] ? (
         ({
             [K in keyof TBase]: K extends keyof TPatch ? Required<Omit<TCurrent[K], keyof NonNullable<TPatch[K]>> & TPatch[K]> : ImposeRaw<TBase[K], TCurrent[K], TCurrent[K]>
-        })) : never ) : never ) : never
+        })
     ) : [ZuordUtil.IsUndefined<TPatch>] extends [true] ? TCurrent : ZuordUtil.AsNonUndefined<TPatch>
 ) : TCurrent;
 
