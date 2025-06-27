@@ -10,7 +10,7 @@ import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain, ZuordAsOnePlain, ZuordToPlainWithOptions } from "./plain.types";
-import type { ZuordIsTuple } from "./tuple.types";
+import type { ZuordIsTuple, ZuordIsSomeTuple } from "./tuple.types";
 import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
@@ -84,6 +84,8 @@ export namespace ZuordUtil {
   // TUPLE
 
   export type IsTuple<T> = ZuordIsTuple<T>;
+
+  export type IsSomeTuple<U extends readonly unknown[]> = ZuordIsSomeTuple<U>;
   
   
   // ARRAY
