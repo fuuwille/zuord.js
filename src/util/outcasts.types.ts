@@ -5,8 +5,8 @@ type HasOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = true ext
 
 type ExtractOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = T extends any ? (HasOutcasts<T, I> extends true ? T : never) : never;
 
-type AsNonOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = T extends any ? (HasOutcasts<T, I> extends true ? never : T) : never;
+type ExcludeOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = T extends any ? (HasOutcasts<T, I> extends true ? never : T) : never;
 
 export type { HasOutcasts as ZuordHasOutcasts };
 export type { ExtractOutcasts as ZuordExtractOutcasts };
-export type { AsNonOutcasts as ZuordAsNonOutcasts };
+export type { ExcludeOutcasts as ZuordExcludeOutcasts };
