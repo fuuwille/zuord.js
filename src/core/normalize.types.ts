@@ -8,6 +8,12 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
             [K in keyof TPlain]: Normalize<TPlain[K], Options>;
         }) : never )
     ) : 
+    [ZuordUtil.HasTuple<T>] extends true ? (
+        (ZuordUtil.ExcludeTuple<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
+        (ZuordUtil.ExtractTuple<T> extends infer TExtracted ? ({  
+            [K in keyof TExtracted]: Normalize<TExtracted[K], Options> 
+        }) : never )
+    ) :
     [ZuordUtil.HasArray<T>] extends [true] ? (
         (ZuordUtil.AsNonArray<T> extends infer TNonArray ? Normalize<TNonArray, Options> : unknown) |
         (              
