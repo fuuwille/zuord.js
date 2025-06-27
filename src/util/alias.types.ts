@@ -1,6 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordAsAny } from "./any.types";
-import type { ZuordAsNonUndefined } from "./undefined.types";
+import type { ZuordIsUndefined, ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
@@ -33,6 +33,8 @@ export namespace ZuordUtil {
   // VOID
 
   // UNDEFINED
+
+  export type IsUndefined<T> = ZuordIsUndefined<T>;
 
   export type AsNonUndefined<T> = ZuordAsNonUndefined<T>;
 
