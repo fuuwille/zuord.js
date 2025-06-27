@@ -16,7 +16,7 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ) :
     [ZuordUtil.HasArray<T>] extends [true] ? (
         (ZuordUtil.ExcludeArray<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
-        (ZuordUtil.ExtractArray<T> extends infer TArray ? Normalize<Extract<TArray, readonly unknown[]>[number], Options>[] : never)
+        (ZuordUtil.ExtractArray<T> extends infer TExtracted ? Normalize<Extract<TExtracted, readonly unknown[]>[number], Options>[] : never)
     ) : T
 ) : (
     ZuordUtil.AsNonOutcasts<T, Options["outcasts"]> extends infer TNonOutcasts
