@@ -3,9 +3,9 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
     [ZuordUtil.HasPlain<T>] extends [true] ? (
-        (ZuordUtil.ExcludePlain<T> extends infer TNonPlain ? Normalize<TNonPlain, Options> : unknown) | 
-        (ZuordUtil.ExtractPlain<T> extends infer TPlain ? ({
-            [K in keyof TPlain]: Normalize<TPlain[K], Options>;
+        (ZuordUtil.ExcludePlain<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) | 
+        (ZuordUtil.ExtractPlain<T> extends infer TExtracted ? ({
+            [K in keyof TExtracted]: Normalize<TExtracted[K], Options>;
         }) : never )
     ) : 
     [ZuordUtil.HasTuple<T>] extends [true] ? (
