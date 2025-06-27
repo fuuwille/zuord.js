@@ -14,7 +14,7 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
             [Options["mode"]["lite"]] extends [true] ? (
                 ZuordUtil.AsArray<T> extends infer TArray ? ({ 
                     [K in keyof TArray]: Normalize<TArray[K], Options> 
-                }) : unknown
+                }) : never
             ) : Normalize<Extract<ZuordUtil.AsOneArray<T>, readonly unknown[]>[number], Options>[]
         )
     ) : T
