@@ -13,9 +13,9 @@ type DefaultOptions = {
 
 type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
-type OptionsOf<T extends Zuord.Data> = Zuord.Override<Zuord.MergeDefaultOptions,T extends { outcasts?: infer O, mode?: infer M }
-    ? { outcasts: O extends unknown[] ? ZuordUtil.InstanceTuple<O> : undefined, mode: Required<Omit<Zuord.MergeDefaultMode, keyof M> & M> }
-    : {}>;
+type OptionsOf<T extends Zuord.Data> = Zuord.ImposeRaw<Zuord.MergeOptions, { 
+    mode: Omit<Zuord.MergeDefaultMode, keyof T["mode"]> & T["mode"]  
+}, Zuord.MergeDefaultOptions>;
 
 export type { Options as ZuordOptions };
 export type { DefaultOptions as ZuordDefaultOptions };
