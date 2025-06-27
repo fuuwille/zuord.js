@@ -7,7 +7,7 @@ type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends
     ZuordUtil.IsPlain<TBase> extends true ? ({
         [K in keyof TCurrent]: K extends keyof TBase ? (
             TCurrent[K] extends object ? (TPatch[K] extends object ? (
-                Impose<TBase[K], TPatch[K], TCurrent[K]>
+                ImposeRaw<TBase[K], TPatch[K], TCurrent[K]>
             ) : TCurrent[K] ) : K extends keyof TPatch ? TPatch[K] : TCurrent[K]
         ) : unknown;
     }) : TPatch
