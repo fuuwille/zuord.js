@@ -22,8 +22,8 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ZuordUtil.ExcludeOutcasts<T, Options["outcasts"]> extends infer TExcluded
         ? ZuordUtil.ExtractOutcasts<T, Options["outcasts"]> extends infer TExtracted
             ? Normalize<TExcluded, Options> | TExtracted
-            : unknown
-    : unknown
+            : never
+    : never
 )
 
 type NormalizeOptions = Zuord.Options
