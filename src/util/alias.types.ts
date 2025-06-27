@@ -37,7 +37,7 @@ export namespace ZuordUtil {
   export type IsUndefined<T> = ZuordIsUndefined<T>;
   
   export type HasUndefined<T> = ZuordHasUndefined<T>;
-
+  
   export type AsNonUndefined<T> = ZuordAsNonUndefined<T>;
 
 
@@ -137,7 +137,7 @@ export namespace ZuordUtil {
   // INSTANCE
 
   export type InstanceOf<T> = ZuordInstanceOf<T>;
-  export type InstanceTuple<T extends any[]> = ZuordInstanceTuple<T>;
+  export type InstanceTuple<T> = ZuordInstanceTuple<T>;
 
 
   // UNORDEREDS

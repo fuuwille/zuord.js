@@ -2,7 +2,7 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type InstanceOf<T> = T extends new (...args: any[]) => infer R ? R : never;
 
-type InstanceTuple<T extends any[]> = {
+type InstanceTuple<T> = {
     [K in keyof T]: InstanceOf<T[K]>
 };
 
