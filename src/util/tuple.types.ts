@@ -8,7 +8,7 @@ type IsSomeTuple<U extends readonly unknown[]> = U extends [infer First, ...infe
 type IsAllTuple<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (IsTuple<First> extends true ? IsAllTuple<Rest> : false) : true;
 
-type HasTuple<T> = true extends (T extends any ? IsTuple<T> : false) ? true : false;
+type HasTuple<T> = [T] extends [never] ? false : ((T extends any ? IsTuple<T> : false) extends true ? true : false);
 
 type HasSomeTuple<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (HasTuple<First> extends true ? true : HasSomeTuple<Rest>) : false;
