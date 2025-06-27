@@ -7,11 +7,11 @@ type Outcasts = Outcast[];
 type OutcastConstructors = OutcastConstructor[];
 
 type DefaultOutcasts = [
-    String,
-    Number,
-    Boolean,
-    BigInt,
-    Symbol,
+    //String,
+    //Number,
+    //Boolean,
+    //BigInt,
+    //Symbol,
     Date,
     Function,
     RegExp,
