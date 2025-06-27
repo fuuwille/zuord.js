@@ -9,7 +9,7 @@ import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
-import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain, ZuordAsOnePlain, ZuordToPlainWithOptions } from "./plain.types";
+import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordAsPlain, ZuordAsNonPlain, ZuordAsOnePlain } from "./plain.types";
 import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
 import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
@@ -73,7 +73,6 @@ export namespace ZuordUtil {
   export type AsPlain<T> = ZuordAsPlain<T>;
   export type AsNonPlain<T> = ZuordAsNonPlain<T>;
   export type AsOnePlain<U> = ZuordAsOnePlain<U>;
-  export type ToPlainWithOptions<T, Options extends Zuord.Options = Zuord.DefaultOptions> = ZuordToPlainWithOptions<T, Options>;
 
 
   // FUNCTION
