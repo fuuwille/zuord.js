@@ -12,3 +12,6 @@ type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends
         ) : unknown;
     }) : TPatch
 );
+
+export type { Impose as ZuordImpose };
+export type { ImposeRaw as ZuordImposeRaw };
