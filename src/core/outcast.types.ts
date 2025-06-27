@@ -37,6 +37,37 @@ type DefaultOutcasts = [
     BigUint64Array
 ]
 
+type DefaultOutcastContructors = [
+    //StringConstructor,
+    //NumberConstructor,
+    //BooleanConstructor,
+    //BigIntConstructor,
+    //SymbolConstructor,
+    DateConstructor,
+    FunctionConstructor,
+    RegExpConstructor,
+    ErrorConstructor,
+    MapConstructor,
+    SetConstructor,
+    WeakMapConstructor,
+    WeakSetConstructor,
+    ArrayBufferConstructor,
+    SharedArrayBufferConstructor,
+    DataViewConstructor,
+    PromiseConstructor,
+    Int8ArrayConstructor,
+    Uint8ArrayConstructor,
+    Uint8ClampedArrayConstructor,
+    Int16ArrayConstructor,
+    Uint16ArrayConstructor,
+    Int32ArrayConstructor,
+    Uint32ArrayConstructor,
+    Float32ArrayConstructor,
+    Float64ArrayConstructor,
+    BigInt64ArrayConstructor,
+    BigUint64ArrayConstructor
+]
+
 type ResolveOutcasts<T extends Outcasts> = [
     ...T,
     ...DefaultOutcasts
@@ -47,4 +78,5 @@ export type { OutcastConstructor as ZuordOutcastConstructor };
 export type { Outcasts as ZuordOutcasts };
 export type { OutcastConstructors as ZuordOutcastConstructors };
 export type { DefaultOutcasts as ZuordDefaultOutcasts };
+export type { DefaultOutcastContructors as ZuordDefaultOutcastConstructors };
 export type { ResolveOutcasts as ZuordResolveOutcasts };
