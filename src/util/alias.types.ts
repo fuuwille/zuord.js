@@ -11,7 +11,7 @@ import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain } from "./plain.types";
 import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
-import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray, ZuordAsOneArray } from "./array.types";
+import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordAsArray, ZuordAsNonArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
@@ -110,7 +110,6 @@ export namespace ZuordUtil {
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
   export type AsArray<T> = ZuordAsArray<T>;
   export type AsNonArray<T> = ZuordAsNonArray<T>;
-  export type AsOneArray<T> = ZuordAsOneArray<T>;
 
 
   // KEY
