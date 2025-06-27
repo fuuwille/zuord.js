@@ -1,3 +1,4 @@
+import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
 type Plain<T> = IsPlain<T> extends true ? T : never;
@@ -27,6 +28,10 @@ type AsOnePlain<T>  = ZuordUtil.AsPlain<T> extends infer T ? (
   { [K in ZuordUtil.RequiredKeysOf<T>]-?: ZuordUtil.ValueAt<T, K> } &
   { [K in ZuordUtil.OptionalKeysOf<T>]?: ZuordUtil.ValueAt<T, K> }
 ) : never; // ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<T, K>>
+
+type ToPlainWithOptions<T, Options extends Zuord.NormalizeOptions = Zuord.NormalizeDefaultOptions> = [Options["mode"]["lite"]] extends [true]
+  ? ZuordUtil.AsPlain<T>
+  : ZuordUtil.AsOnePlain<T>;
     
 export type { Plain as ZuordPlain };
 export type { IsPlain as ZuordIsPlain };
@@ -37,3 +42,4 @@ export type { HasNonPlain as ZuordHasNonPlain }
 export type { AsPlain as ZuordAsPlain }
 export type { AsNonPlain as ZuordAsNonPlain }
 export type { AsOnePlain as ZuordAsOnePlain };
+export type { ToPlainWithOptions as ZuordToPlainWithOptions };
