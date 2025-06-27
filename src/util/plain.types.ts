@@ -29,7 +29,7 @@ type AsOnePlain<T>  = ZuordUtil.AsPlain<T> extends infer T ? (
   { [K in ZuordUtil.OptionalKeysOf<T>]?: ZuordUtil.ValueAt<T, K> }
 ) : never; // ZuordUtil.AsNonUndefined<ZuordUtil.ValueAt<T, K>>
 
-type ToPlainWithOptions<T, Options extends Zuord.NormalizeOptions = Zuord.NormalizeDefaultOptions> = [Options["mode"]["lite"]] extends [true]
+type ToPlainWithOptions<T, Options extends Zuord.Options = Zuord.DefaultOptions> = [Options["mode"]["lite"]] extends [true]
   ? ZuordUtil.AsPlain<T>
   : ZuordUtil.AsOnePlain<T>;
     
