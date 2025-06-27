@@ -20,7 +20,7 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ) : T
 ) : (
     ZuordUtil.AsNonOutcasts<T, Options["outcasts"]> extends infer TNonOutcasts
-        ? ZuordUtil.AsOutcasts<T, Options["outcasts"]> extends infer TOutcasts
+        ? ZuordUtil.ExtractOutcasts<T, Options["outcasts"]> extends infer TOutcasts
             ? Normalize<TNonOutcasts, Options> | TOutcasts
             : unknown
     : unknown
