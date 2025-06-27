@@ -1,12 +1,12 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Impose<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeRaw<TBase, TPatch, TCurrent>>;
+type Impose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeRaw<TBase, TPatch, TCurrent>>;
 
-type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = [ZuordUtil.IsNever<TPatch>] extends [false] ? (
-    ZuordUtil.HasPlain<TBase> extends true ? ({
-        [K in keyof TBase]: K extends keyof TPatch ? Required<Omit<TCurrent[K], keyof NonNullable<TPatch[K]>> & TPatch[K]> : ImposeRaw<TBase[K], TCurrent[K], TCurrent[K]>
-    }) : TCurrent
+type ImposeRaw<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil.IsNever<TPatch>] extends [false] ? (
+    ZuordUtil.IsPlain<TBase> extends true ? ({
+        [K in keyof TBase]: ImposeRaw<TBase[K], K extends keyof ZuordUtil.AsNonUndefined<TPatch> ? ZuordUtil.AsNonUndefined<TPatch>[K] : TCurrent[K], TCurrent[K]>
+    }) : [ZuordUtil.IsUndefined<TPatch>] extends [true] ? TCurrent : NonNullable<TPatch>
 ) : TCurrent;
 
 export type { Impose as ZuordImpose };
