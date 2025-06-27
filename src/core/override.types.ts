@@ -1,13 +1,13 @@
 import { ZuordUtil } from "@/util/alias.types";
 
-type Override<TSource, TContent extends ZuordUtil.Optional<TSource>> = {
-    [K in keyof TSource]: K extends keyof TContent
-    ? TSource[K] extends object
+type Override<TBase, TContent extends ZuordUtil.Optional<TBase>> = {
+    [K in keyof TBase]: K extends keyof TContent
+    ? TBase[K] extends object
       ? TContent[K] extends object
-        ? Override<TSource[K], TContent[K]>
+        ? Override<TBase[K], TContent[K]>
         : TContent[K]
       : TContent[K]
-    : TSource[K];
+    : TBase[K];
 } 
 
 export type { Override as ZuordOverride };

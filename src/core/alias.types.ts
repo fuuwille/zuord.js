@@ -266,5 +266,5 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Override<TSource, TContent extends ZuordUtil.Optional<TSource>> = ZuordOverride<TSource, TContent>;
+    export type Override<TBase, TContent extends ZuordUtil.Optional<TBase>> = ZuordOverride<TBase, TContent>;
 }
