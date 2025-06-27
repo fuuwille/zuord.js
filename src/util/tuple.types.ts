@@ -16,9 +16,12 @@ type HasSomeTuple<U extends readonly unknown[]> = U extends [infer First, ...inf
 type HasAllTuple<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (HasTuple<First> extends true ? HasAllTuple<Rest> : false) : true;
 
+type ExtractTuple<T> = T extends any ? (IsTuple<T> extends true ? T : never) : never;
+
 export type { IsTuple as ZuordIsTuple };
 export type { IsSomeTuple as ZuordIsSomeTuple };
 export type { IsAllTuple as ZuordIsAllTuple };
 export type { HasTuple as ZuordHasTuple };
 export type { HasSomeTuple as ZuordHasSomeTuple };
 export type { HasAllTuple as ZuordHasAllTuple };
+export type { ExtractTuple as ZuordExtractTuple };
