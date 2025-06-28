@@ -30,6 +30,7 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
     { type: undefined, expected: undefined },
     { type: null, expected: null },
     { type: void, expected: void },
+    { type: any, expected: any },
     { type: boolean, expected: boolean },
     { type: string, expected: string },
     { type: number, expected: number },
@@ -37,5 +38,7 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
     { type: symbol, expected: symbol },
     { type: object, expected: object },
     { type: [], expected: [] },
+    { type: ["hello", "world", string, number], expected: ["hello", "world", string, number] },
     { type: {}, expected: {} },
+    { type: { hello: { world: string }}, expected: { hello: { world: string } } },
 ]>>;
