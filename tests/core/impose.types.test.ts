@@ -20,7 +20,7 @@ export type ImposeLooseComparison<TBase, TCurrent extends TBase, TComparisons ex
 /**
  * Test-100: The expected result is the patch when the base and current types are `never`.
  * 
- * All patch types should impose to themselves (identity), since nothing exists to override them.
+ * Each patch type should impose to itself (identity), since nothing exists to override them.
  *
  * base: `never` – patch `all`  – current `never`
  * @returns `ImposeLoose<never, T, never> === T`
