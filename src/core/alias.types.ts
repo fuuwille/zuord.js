@@ -15,7 +15,7 @@ import type { ZuordOmitOf } from "./omit.types";
 import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
-import type { ZuordImpose, ZuordImposeRaw, ZuordImposeLoose } from "./impose.types";
+import type { ZuordImpose, ZuordImposeRaw, ZuordImposeLoose, ZuordImposeLooseRaw } from "./impose.types";
 import { ZuordUtil } from "@/util/alias.types";
 
 /**
@@ -282,4 +282,9 @@ export namespace Zuord {
      * 
      */
     export type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = ZuordImposeLoose<TBase, TPatch, TCurrent>;
+
+    /**
+     * 
+     */
+    export type ImposeLooseRaw<TBase, TPatch, TCurrent extends TBase = TBase> = ZuordImposeLooseRaw<TBase, TPatch, TCurrent>;
 }
