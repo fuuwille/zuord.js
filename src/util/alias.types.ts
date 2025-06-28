@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
-import type { ZuordIsBoolean } from "./boolean.types";
+import type { ZuordIsBoolean, ZuordIsBooleanTrue } from "./boolean.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
@@ -49,6 +49,8 @@ export namespace ZuordUtil {
   // BOOLEAN
 
   export type IsBoolean<T> = ZuordIsBoolean<T>;
+
+  export type IsBooleanTrue<T> = ZuordIsBooleanTrue<T>;
 
   // BIGINT
 
