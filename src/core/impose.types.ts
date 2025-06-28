@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordUtil } from "@/util/alias.types";
 
-type Impose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeRaw<TBase, TPatch, TCurrent>>;
+type Impose<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeRaw<TBase, TPatch, TCurrent>>;
 
 type ImposeRaw<TBase, TPatch, TCurrent extends TBase = TBase> = ImposeLoose<TBase, TPatch, TCurrent>;
 
