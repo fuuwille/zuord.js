@@ -1,6 +1,6 @@
 import { ZuordAssert } from "./assert.types";
 import { ZuordIsEqual } from "./isEqual.types";
-import { ZuordComparison, ZuordComparisonSelf } from "./comparison.types";
+import { ZuordComparison, ZuordComparisonSelf, ZuordComparisonSelfList } from "./comparison.types";
 
 export namespace ZuordTest {
 
@@ -11,4 +11,6 @@ export namespace ZuordTest {
     export type Comparison = ZuordComparison;
 
     export type ComparisonSelf<T> = ZuordComparisonSelf<T>;
+
+    export type ComparisonSelfList<U extends unknown[]> = ZuordComparisonSelfList<U>;
 }
