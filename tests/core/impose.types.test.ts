@@ -18,8 +18,12 @@ export type ImposeLooseComparison<TBase, TCurrent extends TBase, TComparisons ex
 //
 
 /**
+ * Test-100: The expected result is the patch when the base and current types are `never`.
+ * 
+ * All patch types should impose to themselves (identity), since nothing exists to override them.
+ *
  * base: `never` – patch `all`  – current `never`
- * @returns `patch self`
+ * @returns `ImposeLoose<never, T, never> === T`
  */
 export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, never, [
     { type: never, expected: never },
