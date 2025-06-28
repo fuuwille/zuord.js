@@ -30,3 +30,13 @@ export type ImposeLoose102 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose102S,
 type ImposeLoose102S = Zuord.ImposeLoose<never, null, never>;
 
 type ImposeLoose102E = null;
+
+/**
+ * base: `never` – patch `boolean` – current `never`
+ * @returns `boolean`
+ */
+export type ImposeLoose103 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose103S, ImposeLoose103E>>;
+
+type ImposeLoose103S = Zuord.ImposeLoose<never, boolean, never>;
+
+type ImposeLoose103E = boolean;
