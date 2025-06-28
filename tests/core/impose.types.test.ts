@@ -20,3 +20,13 @@ export type ImposeLoose101 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose101S,
 type ImposeLoose101S = Zuord.ImposeLoose<never, undefined, never>;
 
 type ImposeLoose101E = undefined;
+
+/**
+ * base: `never` – patch `null` – current `never`
+ * @returns `null`
+ */
+export type ImposeLoose102 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose102S, ImposeLoose102E>>;
+
+type ImposeLoose102S = Zuord.ImposeLoose<never, null, never>;
+
+type ImposeLoose102E = null;
