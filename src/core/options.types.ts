@@ -13,7 +13,7 @@ type DefaultOptions = {
 
 type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
-type OptionsOf<T extends Zuord.Data> = Zuord.ImposeRaw<Zuord.MergeOptions, { 
+type OptionsOf<T extends Zuord.Data> = Zuord.ImposeBase<Zuord.MergeOptions, { 
     mode: T["mode"],
     outcasts: ZuordUtil.InstanceTuple<NonNullable<T["outcasts"]>>[]
 }, Zuord.MergeDefaultOptions>;
