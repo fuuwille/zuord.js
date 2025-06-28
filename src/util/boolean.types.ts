@@ -14,6 +14,8 @@ type HasSomeBoolean<U extends readonly unknown[]> = U extends [infer First, ...i
 type HasAllBoolean<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (HasBoolean<First> extends true ? HasAllBoolean<Rest> : false) : true;
 
+type ExtractBoolean<T> = HasBoolean<T> extends true ? T : never;
+
 export type { IsBoolean as ZuordIsBoolean };
 
 export type { IsSomeBoolean as ZuordIsSomeBoolean };
@@ -25,3 +27,5 @@ export type { HasBoolean as ZuordHasBoolean };
 export type { HasSomeBoolean as ZuordHasSomeBoolean };
 
 export type { HasAllBoolean as ZuordHasAllBoolean };
+
+export type { ExtractBoolean as ZuordExtractBoolean };
