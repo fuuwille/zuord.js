@@ -22,10 +22,10 @@ type ImposeLoose_Test2Expected = { a: 222 };
 
 
 /**
- * Patch is a plain object, should recursively impose
+ * Patch is an empty object, should return TCurrent
  */
 export type ImposeLoose_Test3 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose_Test3Sample, ImposeLoose_Test3Expected>>;
 
-type ImposeLoose_Test3Sample = Zuord.ImposeLoose<{ a: number; b: string }, { a: 7 }, { a: 222; b: "test" }>;
+type ImposeLoose_Test3Sample = Zuord.ImposeLoose<{ a: number; b: string }, { }, { a: 222; b: "test" }>;
 
-type ImposeLoose_Test3Expected = { a: 7; b: "test" };
+type ImposeLoose_Test3Expected = { a: 222; b: "test" };
