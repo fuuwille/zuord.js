@@ -2,7 +2,7 @@ import { Zuord } from "@";
 import { ZuordTest } from "@/test";
 
 /**
- * mode: `loose` – base: `never` – patch `never` – current `never`
+ * base: `never` – patch `never` – current `never`
  * @returns `never`
  */
 export type ImposeLoose100 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose100S, ImposeLoose100E>>;
