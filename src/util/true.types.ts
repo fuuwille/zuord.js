@@ -16,6 +16,8 @@ type HasAllTrue<U extends readonly unknown[]> = U extends [infer First, ...infer
 
 type ExtractTrue<T> = HasTrue<T> extends true ? true : never;
 
+type ExcludeTrue<T> = T extends any ? (IsTrue<T> extends false ? T : never) : never;
+
 export type { IsTrue as ZuordIsTrue };
 
 export type { IsSomeTrue as ZuordIsSomeTrue };
@@ -29,3 +31,5 @@ export type { HasSomeTrue as ZuordHasSomeTrue };
 export type { HasAllTrue as ZuordHasAllTrue };
 
 export type { ExtractTrue as ZuordExtractTrue };
+
+export type { ExcludeTrue as ZuordExcludeTrue };
