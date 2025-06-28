@@ -2,6 +2,20 @@ import { Zuord } from "@";
 import { ZuordTest } from "@/test";
 
 /**
+ * Checks if imposing a patch type onto a base type results in all of the expected outcomes.
+ *
+ * @param TBase - The base type to impose upon.
+ * @param TCurrent - The current type, defaults to TBase.
+ * @param TComparisons - An array of comparisons to validate the imposed result.
+ * @returns `true` if all imposed results match the expected values; otherwise, `false`.
+ */
+export type ImposeLooseComparison<TBase, TCurrent extends TBase, TComparisons extends ZuordTest.Comparison[] = []> = ZuordUtil.HasAllTrue<{
+    [K in keyof TComparisons]: 
+        ZuordTest.IsEqual<Zuord.ImposeLoose<TBase, TComparisons[K]["type"], TCurrent>, TComparisons[K]["expected"]
+    >
+}> extends true ? true : false;
+
+/**
  * base: `never` – patch `never` – current `never`
  * @returns `never`
  */
