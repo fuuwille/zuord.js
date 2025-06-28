@@ -32,27 +32,15 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
 ]>>>;
 
 /**
- * Test-101: The expected result is the patch when the base and current types are `undefined`.
+ * Test-101: The expected result is the patch when the base type is `undefined` and current type is `never`.
  * 
  * Each patch type should impose to itself (identity), since nothing exists to override them.
  *
  * base: `undefined` – patch `*`  – current `undefined`
- * @returns `ImposeLoose<undefined, T, undefined> === T`
+ * @returns `ImposeLoose<undefined, T, never> === T`
  */
-export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, never, [
-    ZuordTest.ComparisonSelf<never>,
-    ZuordTest.ComparisonSelf<undefined>,
-    ZuordTest.ComparisonSelf<null>,
-    ZuordTest.ComparisonSelf<void>,
-    ZuordTest.ComparisonSelf<any>,
-    ZuordTest.ComparisonSelf<boolean>,
-    ZuordTest.ComparisonSelf<string>,
-    ZuordTest.ComparisonSelf<number>,
-    ZuordTest.ComparisonSelf<bigint>,
-    ZuordTest.ComparisonSelf<symbol>,
-    ZuordTest.ComparisonSelf<object>,
-    ZuordTest.ComparisonSelf<[]>,
-    ZuordTest.ComparisonSelf<["hello", "world", string, number]>,
-    ZuordTest.ComparisonSelf<{}>,
-    ZuordTest.ComparisonSelf<{ hello: { world: string } }>,
-]>>;
+export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, never, ZuordTest.ComparisonSelfList<[
+    undefined, null, void, any, boolean, string, number, bigint, symbol, object,
+    [], ["hello", "world", string, number],
+    {}, { hello: { world: string } },
+]>>>;
