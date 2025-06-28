@@ -36,7 +36,7 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
  * 
  * Each patch type should impose to itself (identity), since nothing exists to override them.
  *
- * base: `undefined` – patch `*`  – current `undefined`
+ * base: `undefined` – patch `*`  – current `never`
  * @returns `ImposeLoose<undefined, T, never> === T`
  */
 export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, never, ZuordTest.ComparisonSelfList<[
