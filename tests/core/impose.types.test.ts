@@ -52,8 +52,8 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
  * base: `undefined` – patch `all`  – current `undefined`
  * @returns `ImposeLoose<undefined, T, undefined> === T`
  */
-export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, undefined, [
-    { type: never, expected: undefined },
+export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, never, [
+    { type: never, expected: never },
     { type: undefined, expected: undefined },
     { type: null, expected: null },
     { type: void, expected: void },
