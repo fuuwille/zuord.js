@@ -1,4 +1,4 @@
-import { Zuord } from "@";
+import { Zuord, ZuordUtil } from "@";
 import { ZuordTest } from "@/test";
 
 /**
@@ -61,8 +61,7 @@ type ImposeLoose103E = boolean;
  * base: `never` – patch `void` – current `never`
  * @returns `void`
  */
-export type ImposeLoose104 = ZuordTest.Assert<ZuordTest.IsEqual<ImposeLoose104S, ImposeLoose104E>>;
-
-type ImposeLoose104S = Zuord.ImposeLoose<never, void, never>;
-
-type ImposeLoose104E = void;
+export type ImposeLoose104 = ZuordTest.Assert<ImposeLooseComparison<never, never, [
+    { type: void, expected: void },
+    { type: undefined, expected: undefined },
+]>>;
