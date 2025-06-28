@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
-import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue } from "./true.types";
+import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue } from "./true.types";
 import type { ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExtractBoolean, ZuordExcludeBoolean } from "./boolean.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
@@ -54,6 +54,8 @@ export namespace ZuordUtil {
   export type IsSomeTrue<U extends readonly unknown[]> = ZuordIsSomeTrue<U>;
 
   export type IsAllTrue<U extends readonly unknown[]> = ZuordIsAllTrue<U>;
+
+  export type HasTrue<T> = ZuordHasTrue<T>;
 
   // BOOLEAN
 
