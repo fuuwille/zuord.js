@@ -3,7 +3,7 @@ import { ZuordTest } from "@/test";
 
 /**
  * Loose mode with primitive base:
- * Patch is `never`, should return current value
+ * Patch is `never`, should return current
  */
 export type T101 = ZuordTest.Assert<ZuordTest.IsEqual<T101S, T101E>>;
 
@@ -13,7 +13,7 @@ type T101E = "test";
 
 /**
  * Loose mode with primitive base:
- * Patch is `undefined`, should return current value
+ * Patch is `undefined`, should return current
  */
 export type T102 = ZuordTest.Assert<ZuordTest.IsEqual<T102S, T102E>>;
 
@@ -23,7 +23,7 @@ type T102E = "test";
 
 /**
  * Loose mode with primitive base:
- * Patch is exact primitive, should return patch value
+ * Patch is exact primitive, should return patch
  */
 export type T103 = ZuordTest.Assert<ZuordTest.IsEqual<T103S, T103E>>;
 
