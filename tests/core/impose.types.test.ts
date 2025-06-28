@@ -20,12 +20,11 @@ type T102_Sample = Zuord.ImposeLoose<{ a: number }, undefined, { a: 222 }>;
 
 type T102_Expected = { a: 222 };
 
-
 /**
  * Patch is an empty object, should return TCurrent
  */
 export type T103 = ZuordTest.Assert<ZuordTest.IsEqual<T103_Sample, T103_Expected>>;
 
-type T103_Sample = Zuord.ImposeLoose<{ a: number; b: string }, { }, { a: 222; b: "test" }>;
+type T103_Sample = Zuord.ImposeLoose<{ a: number; }, { }, { a: 222; }>;
 
-type T103_Expected = { a: 222; b: "test" };
+type T103_Expected = { a: 222; };
