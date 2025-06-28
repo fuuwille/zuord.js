@@ -15,6 +15,8 @@ export type ImposeLooseComparison<TBase, TCurrent extends TBase, TComparisons ex
     >
 }> extends true ? true : false;
 
+//
+
 /**
  * base: `never` – patch `never` – current `never`
  * @returns `never`
