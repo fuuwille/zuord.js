@@ -8,6 +8,9 @@ type IsAllTrue<U extends readonly unknown[]> = U extends [infer First, ...infer 
 
 type HasTrue<T> = true extends (T extends any ? IsTrue<T> : false) ? true : false;
 
+type HasSomeTrue<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
+    ? (HasTrue<First> extends true ? true : HasSomeTrue<Rest>) : false;
+
 export type { IsTrue as ZuordIsTrue };
 
 export type { IsSomeTrue as ZuordIsSomeTrue };
@@ -15,3 +18,5 @@ export type { IsSomeTrue as ZuordIsSomeTrue };
 export type { IsAllTrue as ZuordIsAllTrue };
 
 export type { HasTrue as ZuordHasTrue };
+
+export type { HasSomeTrue as ZuordHasSomeTrue };
