@@ -26,22 +26,21 @@ export type ImposeLooseComparison<TBase, TCurrent extends TBase, TComparisons ex
  * @returns `ImposeLoose<never, T, never> === T`
  */
 export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, never, [
-    { type: never, expected: never },
-    { type: undefined, expected: undefined },
-    { type: null, expected: null },
-    { type: void, expected: void },
-    { type: any, expected: any },
-    { type: boolean, expected: boolean },
-    { type: string, expected: string },
-    { type: number, expected: number },
-    { type: bigint, expected: bigint },
-    { type: symbol, expected: symbol },
-    { type: object, expected: object },
-    { type: [], expected: [] },
-    { type: ["hello", "world", string, number], expected: ["hello", "world", string, number] },
-    { type: {}, expected: {} },
-    { type: { hello: { world: string }}, expected: { hello: { world: string } } },
-    { type: null | void | boolean | string | number | bigint | symbol | object | {} | [], expected: null | void | boolean | string | number | bigint | symbol | object | {} | [] },
+    ZuordTest.ComparisonSelf<never>,
+    ZuordTest.ComparisonSelf<undefined>,
+    ZuordTest.ComparisonSelf<null>,
+    ZuordTest.ComparisonSelf<void>,
+    ZuordTest.ComparisonSelf<any>,
+    ZuordTest.ComparisonSelf<boolean>,
+    ZuordTest.ComparisonSelf<string>,
+    ZuordTest.ComparisonSelf<number>,
+    ZuordTest.ComparisonSelf<bigint>,
+    ZuordTest.ComparisonSelf<symbol>,
+    ZuordTest.ComparisonSelf<object>,
+    ZuordTest.ComparisonSelf<[]>,
+    ZuordTest.ComparisonSelf<["hello", "world", string, number]>,
+    ZuordTest.ComparisonSelf<{}>,
+    ZuordTest.ComparisonSelf<{ hello: { world: string } }>,
 ]>>;
 
 /**
