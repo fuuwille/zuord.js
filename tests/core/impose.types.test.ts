@@ -40,7 +40,7 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
  * @returns `ImposeLoose<undefined, *, never> === TPatch`
  */
 export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, never, ZuordTest.ComparisonSelfList<[
-    undefined, null, void, any, boolean, string, number, bigint, symbol, object,
+    never, undefined, null, void, any, boolean, string, number, bigint, symbol, object,
     [], ["hello", "world", string, number],
     {}, { hello: { world: string } },
 ]>>>;
