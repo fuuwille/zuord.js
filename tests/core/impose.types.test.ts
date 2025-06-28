@@ -41,4 +41,5 @@ export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, neve
     { type: ["hello", "world", string, number], expected: ["hello", "world", string, number] },
     { type: {}, expected: {} },
     { type: { hello: { world: string }}, expected: { hello: { world: string } } },
+    { type: null | void | boolean | string | number | bigint | symbol | object | {} | [], expected: null | void | boolean | string | number | bigint | symbol | object | {} | [] },
 ]>>;
