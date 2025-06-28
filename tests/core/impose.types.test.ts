@@ -2,6 +2,16 @@ import { Zuord } from "@";
 import { ZuordTest } from "@/test";
 
 /**
+ * Loose mode with never base:
+ * Patch is `never`, should return never
+ */
+export type T100 = ZuordTest.Assert<ZuordTest.IsEqual<T100S, T100E>>;
+
+type T100S = Zuord.ImposeLoose<never, never, never>;
+
+type T100E = never;
+
+/**
  * Loose mode with primitive base:
  * Patch is `never`, should return current
  */
