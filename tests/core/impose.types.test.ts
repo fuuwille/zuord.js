@@ -23,6 +23,16 @@ type T102E = "test";
 
 /**
  * Loose mode with primitive base:
+ * Patch is `null`, should return patch
+ */
+export type T103 = ZuordTest.Assert<ZuordTest.IsEqual<T103S, T103E>>;
+
+type T103S = Zuord.ImposeLoose<string, null, "test">;
+
+type T103E = null;
+
+/**
+ * Loose mode with primitive base:
  * Patch is exact general primitive, should return patch
  */
 export type T104 = ZuordTest.Assert<ZuordTest.IsEqual<T104S, T104E>>;
