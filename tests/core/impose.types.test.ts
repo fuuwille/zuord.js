@@ -6,7 +6,7 @@ import { ZuordTest } from "@/test";
  */
 export type Test1 = ZuordTest.Assert<ZuordTest.IsEqual<Test1Sample, Test1Expected>>;
 
-type Test1Sample = Zuord.ImposeRaw<{ a: number }, never, { a: 222 }>;
+type Test1Sample = Zuord.ImposeLooseRaw<{ a: number }, never, { a: 222 }>;
 
 type Test1Expected = { a: 222 };
 
@@ -16,7 +16,7 @@ type Test1Expected = { a: 222 };
  */
 export type Test2 = ZuordTest.Assert<ZuordTest.IsEqual<Test2Sample, Test2Expected>>;
 
-type Test2Sample = Zuord.ImposeRaw<{ a: number }, undefined, { a: 222 }>;
+type Test2Sample = Zuord.ImposeLooseRaw<{ a: number }, undefined, { a: 222 }>;
 
 type Test2Expected = { a: 222 };
 
@@ -26,6 +26,6 @@ type Test2Expected = { a: 222 };
  */
 export type Test3 = ZuordTest.Assert<ZuordTest.IsEqual<Test3Sample, Test3Expected>>;
 
-type Test3Sample = Zuord.ImposeRaw<{ a: number; b: string }, { a: 7 }, { a: 222; b: "test" }>;
+type Test3Sample = Zuord.ImposeLooseRaw<{ a: number; b: string }, { a: 7 }, { a: 222; b: "test" }>;
 
 type Test3Expected = { a: 7; b: "test" };
