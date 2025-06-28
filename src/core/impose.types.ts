@@ -3,7 +3,7 @@ import { ZuordUtil } from "@/util/alias.types";
 
 type Impose<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeRaw<TBase, TPatch, TCurrent>>;
 
-type ImposeRaw<TBase, TPatch, TCurrent extends TBase = TBase> = ImposeLoose<TBase, TPatch, TCurrent>;
+type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = ImposeLoose<TBase, TPatch, TCurrent>;
 
 type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil.IsNever<TPatch>] extends [false] ? (
     ZuordUtil.IsPlain<TBase> extends true ? ({

@@ -276,7 +276,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type ImposeRaw<TBase, TPatch, TCurrent extends TBase = TBase> = ZuordImposeRaw<TBase, TPatch, TCurrent>;
+    export type ImposeRaw<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImposeRaw<TBase, TPatch, TCurrent>;
 
     /**
      * 
