@@ -12,6 +12,10 @@ type IsAll<U extends readonly unknown[], B> = U extends [infer First, ...infer R
 
 type Has<A, B> = true extends (A extends any ? Is<A, B> : never) ? true : false;
 
+type HasSome<U extends readonly unknown[], B> = U extends [infer First, ...infer Rest] ? (
+    Has<First, B> extends true ? true : HasSome<Rest, B>
+) : false;
+
 export type { Eq as ZuordEq };
 
 export type { Is as ZuordIs };
@@ -21,3 +25,5 @@ export type { IsSome as ZuordIsSome };
 export type { IsAll as ZuordIsAll };
 
 export type { Has as ZuordHas };
+
+export type { HasSome as ZuordHasSome };
