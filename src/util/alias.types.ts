@@ -24,12 +24,9 @@ import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
 
-  // EQ
+  // ABSTRACT
 
   export type Eq<A, B> = ZuordEq<A, B>;
-
-
-  // IS
 
   export type Is<A, B> = ZuordIs<A, B>;
 
