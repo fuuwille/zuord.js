@@ -16,7 +16,7 @@ import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
 import type { ZuordImpose, ZuordImposeBase, ZuordImposeLoose, ZuordImposeLooseBase } from "./impose.types";
-import { ZuordUtil } from "@/util/alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 /**
  * 

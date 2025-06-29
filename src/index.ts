@@ -1,7 +1,7 @@
 import { zuord } from "./core/alias";
 import { zuordUtil } from "./util/alias";
 import { Zuord } from "./core/alias.types";
-import { ZuordUtil } from "./util/alias.types";
+import { ZuordUtil } from "./util/_alias.types";
 
 export { zuord };
 export { zuordUtil };

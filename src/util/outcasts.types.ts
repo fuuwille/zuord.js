@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/util/alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 type HasOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = true extends (T extends (ZuordUtil.UnionOf<I> extends infer T ? T | readonly T[] : never) ? true : false) ? true : false;
 

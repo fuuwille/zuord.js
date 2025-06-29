@@ -1,4 +1,4 @@
-import { ZuordUtil } from "./alias.types";
+import { ZuordUtil } from "./_alias.types";
 
 type EqUndefined<T> = ZuordUtil.Eq<T, undefined>;
 
