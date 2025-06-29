@@ -1,5 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq } from "./eq.types";
+import type { ZuordIs } from "./is.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordEqUndefined, ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
@@ -27,6 +28,11 @@ export namespace ZuordUtil {
   // EQ
 
   export type Eq<A, B> = ZuordEq<A, B>;
+
+
+  // IS
+
+  export type Is<A, B> = ZuordIs<A, B>;
 
 
   // NEVER
