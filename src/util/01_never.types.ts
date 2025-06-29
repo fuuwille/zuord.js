@@ -10,6 +10,8 @@ type AsNonNever<U extends unknown[]> = ZuordUtil.UnionOf<U>;
 
 type HasNever<T> = ZuordUtil.Has<T, never>;
 
+type HasSomeNever<U extends readonly unknown[]> = ZuordUtil.HasSome<U, never>;
+
 export type { IsNever as ZuordIsNever };
 
 export type { IsSomeNever as ZuordIsSomeNever };
@@ -17,5 +19,7 @@ export type { IsSomeNever as ZuordIsSomeNever };
 export type { IsAllNever as ZuordIsAllNever };
 
 export type { HasNever as ZuordHasNever };
+
+export type { HasSomeNever as ZuordHasSomeNever };
 
 export type { AsNonNever as ZuordAsNonNever };
