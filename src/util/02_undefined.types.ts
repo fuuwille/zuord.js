@@ -22,6 +22,8 @@ type ExcludeUndefined<T> = ZuordUtil.Exclude<T, undefined>;
 
 type ExcludeExactUndefined<T> = ZuordUtil.ExcludeExact<T, undefined>;
 
+type ExtractUndefined<T> = ZuordUtil.Extract<T, undefined>;
+
 export type { EqUndefined as ZuordEqUndefined };
 
 export type { EqSomeUndefined as ZuordEqSomeUndefined };
@@ -43,3 +45,5 @@ export type { HasAllUndefined as ZuordHasAllUndefined };
 export type { ExcludeUndefined as ZuordExcludeUndefined };
 
 export type { ExcludeExactUndefined as ZuordExcludeExactUndefined };
+
+export type { ExtractUndefined as ZuordExtractUndefined };
