@@ -30,6 +30,8 @@ type HasAll<U extends readonly unknown[], B> = U extends [infer First, ...infer 
 
 type Exclude<A, B> = A extends any ? (Is<A, B> extends false ? A : never) : never;
 
+type ExcludeExact<A, B> = A extends any ? (Eq<A, B> extends false ? A : never) : never;
+
 type Extract<A, B> = A extends any ? (Is<A, B> extends true ? A : never) : never;
 
 export type { Eq as ZuordEq };
@@ -51,5 +53,7 @@ export type { HasSome as ZuordHasSome };
 export type { HasAll as ZuordHasAll };
 
 export type { Exclude as ZuordExclude };
+
+export type { ExcludeExact as ZuordExcludeExact };
 
 export type { Extract as ZuordExtract };
