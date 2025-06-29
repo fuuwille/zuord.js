@@ -55,11 +55,14 @@ export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, 
  * base: `undefined` – patch: any – current: `undefined`
  * @returns `ImposeLoose<undefined, *, undefined> === TPatch extends never ? TCurrent : TPatch`
  */
-export type ImposeLooseT102 = ZuordTest.Assert<ImposeLooseComparison<undefined, undefined, [...ZuordTest.ComparisonSelfList<[
-    undefined, null, void, any, boolean, string, number, bigint, symbol, object,
-    [], ["hello", "world", string, number],
-    {}, { hello: { world: string } },
-]>, { type: never, expected: undefined}]>>;
+export type ImposeLooseT102 = ZuordTest.Assert<ImposeLooseComparison<undefined, undefined, [
+    ...ZuordTest.ComparisonSelfList<[
+        undefined, null, void, any, boolean, string, number, bigint, symbol, object,
+        [], ["hello", "world", string, number],
+        {}, { hello: { world: string } },
+    ]>, 
+    { type: never, expected: undefined}
+]>>;
 
 /**
  * Test-103: The expected result is the patch when the base type is `null` and current type is `never`.
@@ -85,8 +88,11 @@ export type ImposeLooseT103 = ZuordTest.Assert<ImposeLooseComparison<null, never
  * base: `null` – patch: any – current: `null`
  * @returns `ImposeLoose<null, *, null> === TPatch extends never ? TCurrent : TPatch`
  */
-export type ImposeLooseT104 = ZuordTest.Assert<ImposeLooseComparison<null, null, [...ZuordTest.ComparisonSelfList<[
-    null, void, boolean, string, number, bigint, symbol, object,
-    [], ["hello", "world", string, number],
-    {}, { hello: { world: string } },
-]>, { type: never, expected: null}]>>;
+export type ImposeLooseT104 = ZuordTest.Assert<ImposeLooseComparison<null, null, [
+    ...ZuordTest.ComparisonSelfList<[
+        null, void, boolean, string, number, bigint, symbol, object,
+        [], ["hello", "world", string, number],
+        {}, { hello: { world: string } },
+    ]>, 
+    { type: never, expected: null}
+]>>;
