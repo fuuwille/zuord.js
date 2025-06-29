@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExtract } from "./abstract.types";
+import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExtract } from "./00_.types";
 import type { ZuordEqNever, ZuordEqSomeNever, ZuordEqAllNever, ZuordIsNever, ZuordIsSomeNever, ZuordIsAllNever, ZuordHasNever, ZuordHasSomeNever, ZuordHasAllNever, ZuordAsNonNever } from "./01_never.types";
 import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, ZuordIsUndefined, ZuordIsSomeUndefined, ZuordIsAllUndefined, ZuordHasUndefined, ZuordHasSomeUndefined, ZuordHasAllUndefined, ZuordAsNonUndefined } from "./02_undefined.types";
 import type { ZuordAsAny } from "./any.types";
