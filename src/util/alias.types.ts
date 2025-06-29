@@ -189,4 +189,9 @@ export namespace ZuordUtil {
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
   export type Mode<M extends string> = ZuordMode<M>;
+
+
+  // 
+
+  export type Eq<A, B> = (<T>() => T extends A ? 0 : 1) extends (<T>() => T extends B ? 0 : 1) ? true : false;
 }
