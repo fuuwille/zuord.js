@@ -18,6 +18,8 @@ type HasSomeUndefined<U extends readonly unknown[]> = ZuordUtil.HasSome<U, undef
 
 type HasAllUndefined<U extends readonly unknown[]> = ZuordUtil.HasAll<U, undefined>;
 
+type ExcludeUndefined<T> = ZuordUtil.Exclude<T, undefined>;
+
 type ExcludeExactUndefined<T> = ZuordUtil.ExcludeExact<T, undefined>;
 
 export type { EqUndefined as ZuordEqUndefined };
@@ -37,5 +39,7 @@ export type { HasUndefined as ZuordHasUndefined };
 export type { HasSomeUndefined as ZuordHasSomeUndefined };
 
 export type { HasAllUndefined as ZuordHasAllUndefined };
+
+export type { ExcludeUndefined as ZuordExcludeUndefined };
 
 export type { ExcludeExactUndefined as ZuordExcludeExactUndefined };
