@@ -1,6 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import type { ZuordEq } from "./eq.types";
-import type { ZuordIs } from "./is.types";
+import type { ZuordEq, ZuordIs } from "./abstract.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordEqUndefined, ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
