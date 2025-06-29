@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types"
-import { zuordUtil } from "@/util/alias";
+import { zuordUtil } from "@/util/_alias";
 import { ZuordUtil } from "@/util/_alias.types";
 
 function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
