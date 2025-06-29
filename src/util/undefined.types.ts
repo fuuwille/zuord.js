@@ -2,9 +2,9 @@ import { ZuordUtil } from "./alias.types";
 
 type EqUndefined<T> = ZuordUtil.Eq<T, undefined>;
 
-type IsUndefined<T> = [T] extends [undefined] ? true : false;
+type IsUndefined<T> = ZuordUtil.Is<T, undefined>;
 
-type HasUndefined<T> = true extends (T extends any ? IsUndefined<T> : never) ? true : false;
+type HasUndefined<T> = ZuordUtil.Has<T, undefined>;
 
 type AsNonUndefined<T> = T extends any ? (EqUndefined<T> extends true ? never : T) : never;
 
