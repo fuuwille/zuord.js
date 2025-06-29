@@ -62,8 +62,6 @@ export namespace ZuordUtil {
   export type AsNonNever<U extends unknown[]> = ZuordAsNonNever<U>;
 
 
-  // VOID
-
   // UNDEFINED
 
   export type EqUndefined<T> = ZuordEqUndefined<T>;
@@ -86,6 +84,8 @@ export namespace ZuordUtil {
   
   export type AsNonUndefined<T> = ZuordAsNonUndefined<T>;
 
+
+  // VOID
 
   // NULL
 
@@ -234,3 +234,11 @@ export namespace ZuordUtil {
   export type IsPattern<P> = ZuordIsPattern<P>;
   export type Mode<M extends string> = ZuordMode<M>;
 }
+
+const symA = Symbol('key');
+const symB = Symbol('key');
+
+const obj = {
+  [symA]: 'valueA',
+  [symB]: 'valueB',
+};
