@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import type { ZuordEq, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome } from "./abstract.types";
+import type { ZuordEq, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll } from "./abstract.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordEqUndefined, ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
@@ -37,6 +37,8 @@ export namespace ZuordUtil {
   export type Has<A, B> = ZuordHas<A, B>;
 
   export type HasSome<U extends readonly unknown[], B> = ZuordHasSome<U, B>;
+
+  export type HasAll<U extends readonly unknown[], B> = ZuordHasAll<U, B>;
 
 
   // NEVER
