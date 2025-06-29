@@ -74,3 +74,19 @@ export type ImposeLooseT103 = ZuordTest.Assert<ImposeLooseComparison<null, never
     [], ["hello", "world", string, number],
     {}, { hello: { world: string } },
 ]>>>;
+
+/**
+ * Test-104: The expected result is the patch (except when it is `never`) when the base and current types are `null`.
+ * 
+ * Each patch type (except `never`) should impose to itself (identity), since nothing exists to override it.
+ * 
+ * If the patch type is `never`, then the result must be the current type `null`.
+ *
+ * base: `null` – patch: any – current: `null`
+ * @returns `ImposeLoose<null, *, null> === TPatch extends never ? TCurrent : TPatch`
+ */
+export type ImposeLooseT104 = ZuordTest.Assert<ImposeLooseComparison<null, null, [...ZuordTest.ComparisonSelfList<[
+    null, void, boolean, string, number, bigint, symbol, object,
+    [], ["hello", "world", string, number],
+    {}, { hello: { world: string } },
+]>, { type: never, expected: null}]>>;
