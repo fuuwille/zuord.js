@@ -1,7 +1,7 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll } from "./abstract.types";
 import type { ZuordIsNever, ZuordIsSomeNever, ZuordIsAllNever, ZuordHasNever, ZuordHasSomeNever, ZuordHasAllNever, ZuordAsNonNever } from "./01_never.types";
-import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, ZuordIsUndefined, ZuordIsSomeUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./02_undefined.types";
+import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, ZuordIsUndefined, ZuordIsSomeUndefined, ZuordIsAllUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./02_undefined.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExtractBoolean, ZuordExcludeBoolean } from "./boolean.types";
@@ -75,6 +75,8 @@ export namespace ZuordUtil {
   export type IsUndefined<T> = ZuordIsUndefined<T>;
 
   export type IsSomeUndefined<U extends readonly unknown[]> = ZuordIsSomeUndefined<U>;
+
+  export type IsAllUndefined<U extends readonly unknown[]> = ZuordIsAllUndefined<U>;
   
   export type HasUndefined<T> = ZuordHasUndefined<T>;
   
