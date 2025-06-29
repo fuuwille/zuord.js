@@ -1,5 +1,9 @@
 type Eq<A, B> = (<T>() => T extends A ? 0 : 1) extends (<T>() => T extends B ? 0 : 1) ? true : false;
 
+type EqSome<U extends readonly unknown[], B> = U extends [infer First, ...infer Rest] ? (
+    Eq<First, B> extends true ? true : EqSome<Rest, B>
+) : false;
+
 type Is<A, B> = [A] extends [B] ? true : false;
 
 type IsSome<U extends readonly unknown[], B> = U extends [infer First, ...infer Rest] ? (
@@ -21,6 +25,8 @@ type HasAll<U extends readonly unknown[], B> = U extends [infer First, ...infer 
 ) : true;
 
 export type { Eq as ZuordEq };
+
+export type { EqSome as ZuordEqSome };
 
 export type { Is as ZuordIs };
 
