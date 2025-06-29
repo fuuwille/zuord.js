@@ -15,7 +15,7 @@ type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Optio
 
 type OptionsOf<T extends Zuord.Data> = Zuord.ImposeBase<Zuord.MergeOptions, { 
     mode: T["mode"],
-    outcasts: ZuordUtil.InstanceTuple<NonNullable<T["outcasts"]>>[]
+    outcasts: ZuordUtil.InstanceTuple<NonNullable<T["outcasts"]>>
 }, Zuord.MergeDefaultOptions>;
 
 export type { Options as ZuordOptions };
