@@ -1,4 +1,5 @@
 import { Zuord } from "@/core/alias.types";
+import type { ZuordEq } from "./eq.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordEqUndefined, ZuordIsUndefined, ZuordHasUndefined, ZuordAsNonUndefined } from "./undefined.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
@@ -22,6 +23,11 @@ import type { ZuordMode } from "./mode.types";
 import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
+
+  // EQ
+
+  export type Eq<A, B> = ZuordEq<A, B>;
+
 
   // NEVER
 
@@ -191,9 +197,4 @@ export namespace ZuordUtil {
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
   export type Mode<M extends string> = ZuordMode<M>;
-
-
-  // 
-
-  export type Eq<A, B> = (<T>() => T extends A ? 0 : 1) extends (<T>() => T extends B ? 0 : 1) ? true : false;
 }
