@@ -18,7 +18,7 @@ type HasSomeUndefined<U extends readonly unknown[]> = ZuordUtil.HasSome<U, undef
 
 type HasAllUndefined<U extends readonly unknown[]> = ZuordUtil.HasAll<U, undefined>;
 
-type ExcludeExactUndefined<T> = T extends any ? (EqUndefined<T> extends true ? never : T) : never;
+type ExcludeExactUndefined<T> = ZuordUtil.ExcludeExact<T, undefined>;
 
 export type { EqUndefined as ZuordEqUndefined };
 
