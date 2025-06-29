@@ -1,4 +1,4 @@
-export * from "./never";
+export * from "./01_never";
 export * from "./extends.types";
 export * from "./exists.types";
 export * from "./function";
