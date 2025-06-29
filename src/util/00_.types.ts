@@ -34,6 +34,8 @@ type ExcludeExact<A, B> = A extends any ? (Eq<A, B> extends false ? A : never) :
 
 type Extract<A, B> = A extends any ? (Is<A, B> extends true ? A : never) : never;
 
+type ExtractExact<A, B> = A extends any ? (Eq<A, B> extends true ? A : never) : never;
+
 export type { Eq as ZuordEq };
 
 export type { EqSome as ZuordEqSome };
@@ -57,3 +59,5 @@ export type { Exclude as ZuordExclude };
 export type { ExcludeExact as ZuordExcludeExact };
 
 export type { Extract as ZuordExtract };
+
+export type { ExtractExact as ZuordExtractExact };
