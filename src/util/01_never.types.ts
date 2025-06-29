@@ -1,5 +1,7 @@
 import { ZuordUtil } from "@/util/alias.types";
 
+type EqNever<T> = ZuordUtil.Eq<T, never>;
+
 type IsNever<T> = ZuordUtil.Is<T, never>;
 
 type IsSomeNever<U extends readonly unknown[]> = ZuordUtil.IsSome<U, never>;
@@ -13,6 +15,8 @@ type HasNever<T> = ZuordUtil.Has<T, never>;
 type HasSomeNever<U extends readonly unknown[]> = ZuordUtil.HasSome<U, never>;
 
 type HasAllNever<U extends readonly unknown[]> = ZuordUtil.HasAll<U, never>;
+
+export type { EqNever as ZuordEqNever };
 
 export type { IsNever as ZuordIsNever };
 
