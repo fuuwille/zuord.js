@@ -11,12 +11,12 @@ type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil
     ZuordUtil.IsPlain<TBase> extends true ? ({
         [K in keyof TBase]: ImposeLooseBase<
         TBase[K],  
-        (K extends keyof ZuordUtil.AsNonUndefined<TPatch> ? ZuordUtil.AsNonUndefined<TPatch>[K] : TCurrent[K]),
+        (K extends keyof ZuordUtil.ExcludeUndefined<TPatch> ? ZuordUtil.ExcludeUndefined<TPatch>[K] : TCurrent[K]),
         TCurrent[K]>
     }) : (
         [ZuordUtil.EqUndefined<TPatch>] extends [true] ? (
             ZuordUtil.IsUndefined<TCurrent> extends true ? TPatch : TCurrent
-        ) : ZuordUtil.AsNonUndefined<TPatch>
+        ) : ZuordUtil.ExcludeUndefined<TPatch>
     )
 ) : TCurrent;
 
