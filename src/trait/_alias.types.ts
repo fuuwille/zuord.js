@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_.types";
+import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
 import type { ZuordEqNever, ZuordEqSomeNever, ZuordEqAllNever, ZuordIsNever, ZuordIsSomeNever, ZuordIsAllNever, ZuordHasNever, ZuordHasSomeNever, ZuordHasAllNever, ZuordAsNonNever } from "./01_never.types";
 import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, ZuordIsUndefined, ZuordIsSomeUndefined, ZuordIsAllUndefined, ZuordHasUndefined, ZuordHasSomeUndefined, ZuordHasAllUndefined, ZuordExcludeUndefined, ZuordExcludeExactUndefined , ZuordExtractUndefined, ZuordExtractExactUndefined } from "./02_undefined.types";
 import type { ZuordAsAny } from "./any.types";
@@ -15,7 +15,7 @@ import type { ZuordArrayDepth } from "./array.types";
 
 export namespace ZuordTrait {
 
-  // ABSTRACT
+  // MAIN
 
   export type Eq<A, B> = ZuordEq<A, B>;
 
