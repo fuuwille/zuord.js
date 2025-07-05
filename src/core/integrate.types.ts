@@ -1,5 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordTrait } from "@/trait/_alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = Zuord.Normalize<IntegrateRaw<A, B, Options>>;
 
@@ -20,7 +21,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
             ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
         )
     }) : B
-) : ZuordTrait.AsNonNever<[A, B]>;
+) : ZuordUtil.UnionOf<[A, B]>;
 
 type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = Zuord.Options<Mode>;
 

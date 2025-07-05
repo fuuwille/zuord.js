@@ -1,5 +1,4 @@
 import { ZuordTrait as ZuordTrait } from "@/trait/_alias.types";
-import { ZuordUtil } from "@/util/_alias.types";
 
 type EqNever<T> = ZuordTrait.Eq<T, never>;
 
@@ -12,8 +11,6 @@ type IsNever<T> = ZuordTrait.Is<T, never>;
 type IsSomeNever<U extends readonly unknown[]> = ZuordTrait.IsSome<U, never>;
 
 type IsAllNever<U extends readonly unknown[]> = ZuordTrait.IsAll<U, never>;
-
-type AsNonNever<U extends unknown[]> = ZuordUtil.UnionOf<U>;
 
 type HasNever<T> = ZuordTrait.Has<T, never>;
 
@@ -38,5 +35,3 @@ export type { HasNever as ZuordHasNever };
 export type { HasSomeNever as ZuordHasSomeNever };
 
 export type { HasAllNever as ZuordHasAllNever };
-
-export type { AsNonNever as ZuordAsNonNever };
