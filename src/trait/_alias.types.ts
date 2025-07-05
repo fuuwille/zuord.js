@@ -17,7 +17,7 @@ import type { ZuordArrayDepth } from "./array.types";
 
 export namespace ZuordTrait {
 
-  // MAIN
+  // 00 - MAIN
 
   export type Eq<A, B> = ZuordEq<A, B>;
 
@@ -46,7 +46,7 @@ export namespace ZuordTrait {
   export type ExtractExact<A, B> = ZuordExtractExact<A, B>;
 
 
-  // NEVER
+  // 01 -NEVER
 
   export type EqNever<T> = ZuordEqNever<T>;
 
@@ -67,7 +67,7 @@ export namespace ZuordTrait {
   export type HasAllNever<U extends readonly unknown[]> = ZuordHasAllNever<U>;
 
 
-  // UNDEFINED
+  // 02 - UNDEFINED
 
   export type EqUndefined<T> = ZuordEqUndefined<T>;
 
@@ -96,7 +96,7 @@ export namespace ZuordTrait {
   export type ExtractExactUndefined<T> = ZuordExtractExactUndefined<T>;
 
 
-  // VOID
+  // 03 - VOID
 
   export type EqVoid<T> = ZuordEqVoid<T>;
 
@@ -125,7 +125,7 @@ export namespace ZuordTrait {
   export type ExtractExactVoid<T> = ZuordExtractExactVoid<T>;
 
 
-  // NULL
+  // 04 - NULL
 
   export type EqNull<T> = ZuordEqNull<T>;
 
@@ -154,7 +154,7 @@ export namespace ZuordTrait {
   export type ExtractExactNull<T> = ZuordExtractExactNull<T>;
 
 
-  // BOOLEAN
+  // 05 - BOOLEAN
 
   export type EqBoolean<T> = ZuordEqBoolean<T>;
 
