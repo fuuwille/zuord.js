@@ -3,7 +3,7 @@ import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll
 import type { ZuordEqNever, ZuordEqSomeNever, ZuordEqAllNever, ZuordIsNever, ZuordIsSomeNever, ZuordIsAllNever, ZuordHasNever, ZuordHasSomeNever, ZuordHasAllNever } from "./01_never.types";
 import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, ZuordIsUndefined, ZuordIsSomeUndefined, ZuordIsAllUndefined, ZuordHasUndefined, ZuordHasSomeUndefined, ZuordHasAllUndefined, ZuordExcludeUndefined, ZuordExcludeExactUndefined , ZuordExtractUndefined, ZuordExtractExactUndefined } from "./02_undefined.types";
 import type { ZuordEqVoid, ZuordEqSomeVoid, ZuordEqAllVoid, ZuordIsVoid, ZuordIsSomeVoid, ZuordIsAllVoid, ZuordHasVoid, ZuordHasSomeVoid, ZuordHasAllVoid, ZuordExcludeVoid, ZuordExcludeExactVoid, ZuordExtractVoid, ZuordExtractExactVoid } from "./03_void.types";
-import type { ZuordEqNull, ZuordEqSomeNull, ZuordEqAllNull, ZuordIsNull, ZuordIsSomeNull, ZuordIsAllNull, ZuordHasNull, ZuordHasSomeNull } from "./04_null.types";
+import type { ZuordEqNull, ZuordEqSomeNull, ZuordEqAllNull, ZuordIsNull, ZuordIsSomeNull, ZuordIsAllNull, ZuordHasNull, ZuordHasSomeNull, ZuordHasAllNull } from "./04_null.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExtractBoolean, ZuordExcludeBoolean } from "./boolean.types";
@@ -142,6 +142,8 @@ export namespace ZuordTrait {
   export type HasNull<T> = ZuordHasNull<T>;
 
   export type HasSomeNull<U extends readonly unknown[]> = ZuordHasSomeNull<U>;
+
+  export type HasAllNull<U extends readonly unknown[]> = ZuordHasAllNull<U>;
 
 
   // SYMBOL
