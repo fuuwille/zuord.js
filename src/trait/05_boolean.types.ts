@@ -18,6 +18,8 @@ type ExtractExactBoolean<T> = ZuordTrait.ExtractExact<T, boolean>;
 
 type ExcludeBoolean<T> = ZuordTrait.Exclude<T, boolean>;
 
+type ExcludeExactBoolean<T> = ZuordTrait.ExcludeExact<T, boolean>;
+
 export type { IsBoolean as ZuordIsBoolean };
 
 export type { IsSomeBoolean as ZuordIsSomeBoolean };
@@ -35,3 +37,5 @@ export type { ExtractBoolean as ZuordExtractBoolean };
 export type { ExtractExactBoolean as ZuordExtractExactBoolean };
 
 export type { ExcludeBoolean as ZuordExcludeBoolean };
+
+export type { ExcludeExactBoolean as ZuordExcludeExactBoolean };
