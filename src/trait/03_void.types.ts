@@ -20,6 +20,8 @@ type HasAllVoid<U extends readonly unknown[]> = ZuordTrait.HasAll<U, void>;
 
 type ExcludeVoid<T> = ZuordTrait.Exclude<T, void>;
 
+type ExcludeExactVoid<T> = ZuordTrait.ExcludeExact<T, void>;
+
 export type { EqVoid as ZuordEqVoid };
 
 export type { EqSomeVoid as ZuordEqSomeVoid };
@@ -39,3 +41,5 @@ export type { HasSomeVoid as ZuordHasSomeVoid };
 export type { HasAllVoid as ZuordHasAllVoid };
 
 export type { ExcludeVoid as ZuordExcludeVoid };
+
+export type { ExcludeExactVoid as ZuordExcludeExactVoid };
