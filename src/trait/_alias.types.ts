@@ -12,7 +12,6 @@ import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, Zuord
 import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
 import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordExtractArray, ZuordExcludeArray as ZuordExcludeArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
-import type { ZuordIsPattern } from "./pattern.types";
 import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
@@ -223,7 +222,6 @@ export namespace ZuordUtil {
   export type HasOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordHasOutcasts<T, I>;
   export type ExtractOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordExtractOutcasts<T, I>;
   export type ExcludeOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordExcludeOutcasts<T, I>;
-  export type IsPattern<P> = ZuordIsPattern<P>;
 }
 
 const symA = Symbol('key');

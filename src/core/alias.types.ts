@@ -3,7 +3,7 @@ import type { ZuordOptions, ZuordDefaultOptions, ZuordResolvedOptions, ZuordOpti
 import type { ZuordData, ZuordDataOf } from "./data.types";
 import type { ZuordOutcast, ZuordOutcastConstructor, ZuordOutcasts, ZuordOutcastConstructors, ZuordDefaultOutcasts, ZuordDefaultOutcastConstructors, ZuordResolveOutcasts } from "./outcast.types";
 import type { ZuordNormalize, ZuordNormalizeOptions, ZuordNormalizeDefaultOptions, ZuordNormalizeResolveOptions } from "./normalize.types";
-import type { ZuordPattern, ZuordPatternRaw } from "./pattern.types";
+import type { ZuordPattern, ZuordPatternRaw, ZuordIsPattern } from "./pattern.types";
 import type { ZuordMerge, ZuordMergeOptions, ZuordMergeDefaultOptions, ZuordMergeResolveOptions } from "./merge.types";
 import type { ZuordMergeRaw } from "./merge.types";
 import type { ZuordMergeMode, ZuordMergeDefaultMode } from "./merge.types";
@@ -149,6 +149,11 @@ export namespace Zuord {
      * 
      */
     export type PatternRaw<T> = ZuordPatternRaw<T>;
+
+    /**
+     * 
+     */  
+    export type IsPattern<P> = ZuordIsPattern<P>;
 
 
     // MERGE

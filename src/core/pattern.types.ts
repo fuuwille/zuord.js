@@ -12,5 +12,9 @@ type PatternRaw<T> = true | {
                 : true;
 }
 
+type IsPattern<T> = T extends true 
+    ? true : T extends object ? true : false;
+
 export type { Pattern as ZuordPattern };
 export type { PatternRaw as ZuordPatternRaw };
+export type { IsPattern as ZuordIsPattern };
