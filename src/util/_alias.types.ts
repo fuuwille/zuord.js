@@ -1,6 +1,7 @@
 import { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import { ZuordValueAt } from "./value.types";
 import { ZuordUnionOf } from "./union.types";
+import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
 
@@ -30,4 +31,11 @@ export namespace ZuordUtil {
     // UNION
 
     export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
+
+
+    // INSTANCE
+
+    export type InstanceOf<T> = ZuordInstanceOf<T>;
+    
+    export type InstanceTuple<T> = ZuordInstanceTuple<T>;
 }

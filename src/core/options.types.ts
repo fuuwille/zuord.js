@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 type Options<Mode extends Partial<Zuord.Mode> = Partial<Zuord.Mode>> = {
     outcasts: Zuord.Outcasts
