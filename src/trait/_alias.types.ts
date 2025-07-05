@@ -216,11 +216,3 @@ export namespace ZuordTrait {
   export type ExtractOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordExtractOutcasts<T, I>;
   export type ExcludeOutcasts<T, I extends Zuord.Outcasts = Zuord.DefaultOutcasts> = ZuordExcludeOutcasts<T, I>;
 }
-
-const symA = Symbol('key');
-const symB = Symbol('key');
-
-const obj = {
-  [symA]: 'valueA',
-  [symB]: 'valueB',
-};
