@@ -1,5 +1,7 @@
 import { ZuordTrait } from "@/trait/_alias.types";
 
+type EqBoolean<T> = ZuordTrait.Eq<T, boolean>;
+
 type IsBoolean<T> = ZuordTrait.Is<T, boolean>;
 
 type IsSomeBoolean<U extends readonly unknown[]> = ZuordTrait.IsSome<U, boolean>;
@@ -19,6 +21,8 @@ type ExcludeExactBoolean<T> = ZuordTrait.ExcludeExact<T, boolean>;
 type ExtractBoolean<T> = ZuordTrait.Extract<T, boolean>;
 
 type ExtractExactBoolean<T> = ZuordTrait.ExtractExact<T, boolean>;
+
+export type { EqBoolean as ZuordEqBoolean };
 
 export type { IsBoolean as ZuordIsBoolean };
 
