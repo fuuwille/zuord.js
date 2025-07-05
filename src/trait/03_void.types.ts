@@ -12,6 +12,8 @@ type IsSomeVoid<U extends readonly unknown[]> = ZuordTrait.IsSome<U, void>;
 
 type IsAllVoid<U extends readonly unknown[]> = ZuordTrait.IsAll<U, void>;
 
+type HasVoid<T> = ZuordTrait.Has<T, void>;
+
 export type { EqVoid as ZuordEqVoid };
 
 export type { EqSomeVoid as ZuordEqSomeVoid };
@@ -23,3 +25,5 @@ export type { IsVoid as ZuordIsVoid };
 export type { IsSomeVoid as ZuordIsSomeVoid };
 
 export type { IsAllVoid as ZuordIsAllVoid };
+
+export type { HasVoid as ZuordHasVoid };
