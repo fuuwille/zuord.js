@@ -2,6 +2,8 @@ import { ZuordTrait } from "@/trait/_alias.types";
 
 type EqBigInt<T> = ZuordTrait.Eq<T, bigint>;
 
+type EqSomeBigInt<U extends readonly unknown[]> = ZuordTrait.EqSome<U, bigint>;
+
 type IsBigInt<T> = ZuordTrait.Is<T, bigint>;
 
 type IsSomeBigInt<U extends readonly unknown[]> = ZuordTrait.IsSome<U, bigint>;
@@ -15,6 +17,8 @@ type HasSomeBigInt<U extends readonly unknown[]> = ZuordTrait.HasSome<U, bigint>
 type HasAllBigInt<U extends readonly unknown[]> = ZuordTrait.HasAll<U, bigint>;
 
 export type { EqBigInt as ZuordEqBigInt };
+
+export type { EqSomeBigInt as ZuordEqSomeBigInt };
 
 export type { IsBigInt as ZuordIsBigInt };
 
