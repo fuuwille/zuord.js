@@ -4,6 +4,8 @@ type EqNull<T> = ZuordTrait.Eq<T, null>;
 
 type EqSomeNull<U extends readonly unknown[]> = ZuordTrait.EqSome<U, null>;
 
+type EqAllNull<U extends readonly unknown[]> = ZuordTrait.EqAll<U, null>;
+
 type IsNull<T> = ZuordTrait.Is<T, null>;
 
 type IsSomeNull<U extends readonly unknown[]> = ZuordTrait.IsSome<U, null>;
@@ -19,6 +21,8 @@ type HasAllNull<U extends readonly unknown[]> = ZuordTrait.HasAll<U, null>;
 export type { EqNull as ZuordEqNull };
 
 export type { EqSomeNull as ZuordEqSomeNull };
+
+export type { EqAllNull as ZuordEqAllNull };
 
 export type { IsNull as ZuordIsNull };
 
