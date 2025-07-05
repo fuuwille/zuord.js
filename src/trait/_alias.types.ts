@@ -6,7 +6,6 @@ import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExtractBoolean, ZuordExcludeBoolean } from "./boolean.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
-import type { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
 import type { ZuordValueAt } from "./value.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
@@ -217,19 +216,6 @@ export namespace ZuordUtil {
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
   export type ExtractArray<T> = ZuordExtractArray<T>;
   export type ExcludeArray<T> = ZuordExcludeArray<T>;
-
-
-  // KEY
-
-  export type IsKey<T, K> = ZuordIsKey<T, K>;
-  export type IsRequiredKey<T, K extends PropertyKey> = ZuordIsRequiredKey<T, K>;
-  export type HasKey<T, K> = ZuordHasKey<T, K>;
-  export type AnyHasKey<U extends readonly unknown[], K> = ZuordAnyHasKey<U, K>;
-  export type AllHasKey<U extends readonly unknown[], K> = ZuordAllHasKey<U, K>;
-  export type KeysOf<U> = ZuordKeysOf<U>;
-  export type RequiredKeysOf<T> = ZuordRequiredKeysOf<T>;
-  export type OptionalKeysOf<T> = ZuordOptionalKeysOf<T>;
-
 
   // VALUE
 
