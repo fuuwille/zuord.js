@@ -22,6 +22,8 @@ type ExcludeVoid<T> = ZuordTrait.Exclude<T, void>;
 
 type ExcludeExactVoid<T> = ZuordTrait.ExcludeExact<T, void>;
 
+type ExtractVoid<T> = ZuordTrait.Extract<T, void>;
+
 export type { EqVoid as ZuordEqVoid };
 
 export type { EqSomeVoid as ZuordEqSomeVoid };
@@ -43,3 +45,5 @@ export type { HasAllVoid as ZuordHasAllVoid };
 export type { ExcludeVoid as ZuordExcludeVoid };
 
 export type { ExcludeExactVoid as ZuordExcludeExactVoid };
+
+export type { ExtractVoid as ZuordExtractVoid };
