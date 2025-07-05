@@ -5,4 +5,4 @@ export * from "./function";
 export * from "./object";
 export * from "./array.types";
 export * from "./plain";
-export * from "./optional.types";
+export * from "../core/optional.types";

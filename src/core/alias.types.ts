@@ -16,7 +16,7 @@ import type { ZuordPick } from "./pick.types";
 import type { ZuordPickRaw } from "./pick.types";
 import type { ZuordPickOf } from "./pick.types";
 import type { ZuordImpose, ZuordImposeBase, ZuordImposeLoose, ZuordImposeLooseBase } from "./impose.types";
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordOptional } from "./optional.types";
 
 /**
  * 
@@ -56,7 +56,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type ResolveOptions<T extends ZuordUtil.Optional<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
+    export type ResolveOptions<T extends Zuord.Optional<Zuord.Options>, R extends Zuord.Options = Zuord.DefaultOptions> = ZuordResolvedOptions<T, R>;
 
     /**
      * 
@@ -176,7 +176,7 @@ export namespace Zuord {
     /**
      * 
      */
-    export type MergeResolveOptions<T extends ZuordUtil.Optional<Zuord.MergeOptions>, R extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMergeResolveOptions<T, R>;
+    export type MergeResolveOptions<T extends Zuord.Optional<Zuord.MergeOptions>, R extends Zuord.MergeOptions = Zuord.MergeDefaultOptions> = ZuordMergeResolveOptions<T, R>;
 
     /**
      * 
@@ -271,12 +271,12 @@ export namespace Zuord {
     /**
      * 
      */
-    export type Impose<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImpose<TBase, TPatch, TCurrent>;
+    export type Impose<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImpose<TBase, TPatch, TCurrent>;
 
     /**
      * 
      */
-    export type ImposeBase<TBase, TPatch extends ZuordUtil.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImposeBase<TBase, TPatch, TCurrent>;
+    export type ImposeBase<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = ZuordImposeBase<TBase, TPatch, TCurrent>;
 
     /**
      * 
@@ -287,4 +287,9 @@ export namespace Zuord {
      * 
      */
     export type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = ZuordImposeLooseBase<TBase, TPatch, TCurrent>;
+
+
+    // OPTIONAL
+
+    export type Optional<T> = ZuordOptional<T>;
 }
