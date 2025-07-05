@@ -24,6 +24,8 @@ type ExcludeExactBigInt<T> = ZuordTrait.ExcludeExact<T, bigint>;
 
 type ExtractBigInt<T> = ZuordTrait.Extract<T, bigint>;
 
+type ExtractExactBigInt<T> = ZuordTrait.ExtractExact<T, bigint>;
+
 export type { EqBigInt as ZuordEqBigInt };
 
 export type { EqSomeBigInt as ZuordEqSomeBigInt };
@@ -47,3 +49,5 @@ export type { ExcludeBigInt as ZuordExcludeBigInt };
 export type { ExcludeExactBigInt as ZuordExcludeExactBigInt };
 
 export type { ExtractBigInt as ZuordExtractBigInt };
+
+export type { ExtractExactBigInt as ZuordExtractExactBigInt };
