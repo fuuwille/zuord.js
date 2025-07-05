@@ -183,7 +183,7 @@ export namespace ZuordTrait {
   export type ExtractExactBoolean<T> = ZuordExtractExactBoolean<T>;
 
 
-  // TRUE
+  // xB - TRUE
 
   export type IsTrue<T> = ZuordIsTrue<T>;
 
