@@ -1,4 +1,4 @@
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 type IsKey<T, K> = K extends keyof T ? true : false;
 

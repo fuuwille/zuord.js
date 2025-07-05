@@ -1,4 +1,5 @@
 import { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHasKey, ZuordKeysOf, ZuordRequiredKeysOf, ZuordOptionalKeysOf } from "./key.types";
+import { ZuordValueAt } from "./value.types";
 
 export namespace ZuordUtil {
 
@@ -17,6 +18,11 @@ export namespace ZuordUtil {
     export type KeysOf<U> = ZuordKeysOf<U>;
 
     export type RequiredKeysOf<T> = ZuordRequiredKeysOf<T>;
-    
+
     export type OptionalKeysOf<T> = ZuordOptionalKeysOf<T>;
+
+    
+    // VALUE
+
+    export type ValueAt<T, K extends PropertyKey> = ZuordValueAt<T, K>;
 }

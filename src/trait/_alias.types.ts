@@ -6,7 +6,6 @@ import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExtractBoolean, ZuordExcludeBoolean } from "./boolean.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
-import type { ZuordValueAt } from "./value.types";
 import type { ZuordIsExtends } from "./extends.types";
 import type { ZuordIsExists } from "./exists.types";
 import type { ZuordIsFunction } from "./function.types";
@@ -216,10 +215,6 @@ export namespace ZuordUtil {
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
   export type ExtractArray<T> = ZuordExtractArray<T>;
   export type ExcludeArray<T> = ZuordExcludeArray<T>;
-
-  // VALUE
-
-  export type ValueAt<T, K extends PropertyKey> = ZuordValueAt<T, K>;
 
 
   // INSTANCE
