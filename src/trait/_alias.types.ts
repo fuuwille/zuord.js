@@ -5,7 +5,7 @@ import type { ZuordEqUndefined, ZuordEqSomeUndefined, ZuordEqAllUndefined, Zuord
 import type { ZuordEqVoid, ZuordEqSomeVoid, ZuordEqAllVoid, ZuordIsVoid, ZuordIsSomeVoid, ZuordIsAllVoid, ZuordHasVoid, ZuordHasSomeVoid, ZuordHasAllVoid, ZuordExcludeVoid, ZuordExcludeExactVoid, ZuordExtractVoid, ZuordExtractExactVoid } from "./03_void.types";
 import type { ZuordEqNull, ZuordEqSomeNull, ZuordEqAllNull, ZuordIsNull, ZuordIsSomeNull, ZuordIsAllNull, ZuordHasNull, ZuordHasSomeNull, ZuordHasAllNull, ZuordExcludeNull, ZuordExcludeExactNull, ZuordExtractNull, ZuordExtractExactNull } from "./04_null.types";
 import type { ZuordEqBoolean, ZuordEqSomeBoolean, ZuordEqAllBoolean, ZuordIsBoolean, ZuordIsSomeBoolean, ZuordIsAllBoolean, ZuordHasBoolean, ZuordHasSomeBoolean, ZuordHasAllBoolean, ZuordExcludeBoolean, ZuordExcludeExactBoolean, ZuordExtractBoolean, ZuordExtractExactBoolean } from "./05_boolean.types";
-import type { ZuordEqBigInt, ZuordEqSomeBigInt, ZuordEqAllBigInt, ZuordIsBigInt, ZuordIsSomeBigInt , ZuordIsAllBigInt, ZuordHasBigInt } from "./06_bigint.types";
+import type { ZuordEqBigInt, ZuordEqSomeBigInt, ZuordEqAllBigInt, ZuordIsBigInt, ZuordIsSomeBigInt , ZuordIsAllBigInt, ZuordHasBigInt, ZuordHasSomeBigInt } from "./06_bigint.types";
 import type { ZuordAsAny } from "./any.types";
 import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
@@ -199,6 +199,8 @@ export namespace ZuordTrait {
   export type IsAllBigInt<U extends readonly unknown[]> = ZuordIsAllBigInt<U>;
 
   export type HasBigInt<T> = ZuordHasBigInt<T>;
+
+  export type HasSomeBigInt<U extends readonly unknown[]> = ZuordHasSomeBigInt<U>;
 
 
   // xB - TRUE
