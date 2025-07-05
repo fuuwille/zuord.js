@@ -1,5 +1,7 @@
 import { ZuordTrait } from "./_alias.types";
 
+type EqNull<T> = ZuordTrait.Eq<T, null>;
+
 type IsNull<T> = ZuordTrait.Is<T, null>;
 
 type IsSomeNull<U extends readonly unknown[]> = ZuordTrait.IsSome<U, null>;
@@ -11,6 +13,8 @@ type HasNull<T> = ZuordTrait.Has<T, null>;
 type HasSomeNull<U extends readonly unknown[]> = ZuordTrait.HasSome<U, null>;
 
 type HasAllNull<U extends readonly unknown[]> = ZuordTrait.HasAll<U, null>;
+
+export type { EqNull as ZuordEqNull };
 
 export type { IsNull as ZuordIsNull };
 
