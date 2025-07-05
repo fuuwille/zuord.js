@@ -1,4 +1,3 @@
-import { zuordIsNever } from "./01_never";
 import { zuordIsFunction } from "./function";
 import { zuordIsObject } from "./object";
 import { zuordIsPlain } from "./plain";
@@ -7,14 +6,6 @@ import { zuordIsPlain } from "./plain";
  * 
  */
 export namespace zuordUtil {
-
-    // NEVER
-
-    /**
-     * 
-     */
-    export const isNever = zuordIsNever;
-
 
     // FUNCTION
 
