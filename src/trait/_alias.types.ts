@@ -15,7 +15,6 @@ import type { ZuordArrayDepth } from "./array.types";
 import type { ZuordOptional } from "./optional.types";
 import type { ZuordUnionOf } from "./union.types";
 import type { ZuordIsPattern } from "./pattern.types";
-import type { ZuordMode } from "./mode.types";
 import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
@@ -229,7 +228,6 @@ export namespace ZuordUtil {
   export type Optional<T> = ZuordOptional<T>;
   export type UnionOf<M extends readonly any[]> = ZuordUnionOf<M>;
   export type IsPattern<P> = ZuordIsPattern<P>;
-  export type Mode<M extends string> = ZuordMode<M>;
 }
 
 const symA = Symbol('key');
