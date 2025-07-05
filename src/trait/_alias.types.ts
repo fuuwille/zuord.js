@@ -154,8 +154,6 @@ export namespace ZuordTrait {
   export type ExtractExactNull<T> = ZuordExtractExactNull<T>;
 
 
-  // SYMBOL
-
   // TRUE
 
   export type IsTrue<T> = ZuordIsTrue<T>;
@@ -200,9 +198,11 @@ export namespace ZuordTrait {
 
   // STRING
 
+  // SYMBOL
+
   // UNKNOWN
 
-
+  
   // ANY
 
   export type AsAny<T> = ZuordAsAny<T>;
