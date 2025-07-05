@@ -1,5 +1,3 @@
-import { ZuordUtil } from "@/trait/_alias.types";
-
 type InstanceOf<T> = T extends new (...args: any[]) => infer R ? R : never;
 
 type InstanceTuple<T> = {
