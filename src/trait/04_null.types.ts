@@ -2,4 +2,8 @@ import { ZuordTrait } from "./_alias.types";
 
 type IsNull<T> = ZuordTrait.Is<T, null>;
 
+type IsSomeNull<U extends readonly unknown[]> = ZuordTrait.IsSome<U, null>;
+
 export type { IsNull as ZuordIsNull };
+
+export type { IsSomeNull as ZuordIsSomeNull };
