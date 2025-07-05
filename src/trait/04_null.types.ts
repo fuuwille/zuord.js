@@ -24,6 +24,8 @@ type ExcludeExactNull<T> = ZuordTrait.ExcludeExact<T, null>;
 
 type ExtractNull<T> = ZuordTrait.Extract<T, null>;
 
+type ExtractExactNull<T> = ZuordTrait.ExtractExact<T, null>;
+
 export type { EqNull as ZuordEqNull };
 
 export type { EqSomeNull as ZuordEqSomeNull };
@@ -47,3 +49,5 @@ export type { ExcludeNull as ZuordExcludeNull };
 export type { ExcludeExactNull as ZuordExcludeExactNull };
 
 export type { ExtractNull as ZuordExtractNull };
+
+export type { ExtractExactNull as ZuordExtractExactNull };
