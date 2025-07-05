@@ -10,6 +10,8 @@ type HasBigInt<T> = ZuordTrait.Has<T, bigint>;
 
 type HasSomeBigInt<U extends readonly unknown[]> = ZuordTrait.HasSome<U, bigint>;
 
+type HasAllBigInt<U extends readonly unknown[]> = ZuordTrait.HasAll<U, bigint>;
+
 export type { IsBigInt as ZuordIsBigInt };
 
 export type { IsSomeBigInt as ZuordIsSomeBigInt };
@@ -19,3 +21,5 @@ export type { IsAllBigInt as ZuordIsAllBigInt };
 export type { HasBigInt as ZuordHasBigInt };
 
 export type { HasSomeBigInt as ZuordHasSomeBigInt };
+
+export type { HasAllBigInt as ZuordHasAllBigInt };
