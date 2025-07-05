@@ -4,8 +4,7 @@ type IsBoolean<T> = ZuordTrait.Is<T, boolean>;
 
 type IsSomeBoolean<U extends readonly unknown[]> = ZuordTrait.IsSome<U, boolean>;
 
-type IsAllBoolean<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (IsBoolean<First> extends true ? IsAllBoolean<Rest> : false) : true;
+type IsAllBoolean<U extends readonly unknown[]> = ZuordTrait.IsAll<U, boolean>;
 
 type HasBoolean<T> = ZuordTrait.Has<T, boolean>;
 
