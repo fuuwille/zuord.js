@@ -1,4 +1,4 @@
-import { ZuordUtil } from "@/util/_alias.types";
+import { ZuordUtil } from "@/trait/_alias.types";
 
 type InstanceOf<T> = T extends new (...args: any[]) => infer R ? R : never;
 

@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/util/_alias.types";
+import { ZuordUtil } from "@/trait/_alias.types";
 
 type Plain<T> = IsPlain<T> extends true ? T : never;
 

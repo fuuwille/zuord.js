@@ -1,4 +1,4 @@
-import { ZuordUtil } from "@/util/_alias.types";
+import { ZuordUtil } from "@/trait/_alias.types";
 
 type IsBoolean<T> = ZuordUtil.Is<T, boolean>;
 
