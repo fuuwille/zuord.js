@@ -14,7 +14,7 @@ type HasAllBoolean<U extends readonly unknown[]> = ZuordTrait.HasAll<U, boolean>
 
 type ExtractBoolean<T> = ZuordTrait.Extract<T, boolean>;
 
-type ExcludeBoolean<T> = T extends any ? (IsBoolean<T> extends false ? T : never) : never;
+type ExcludeBoolean<T> = ZuordTrait.Exclude<T, boolean>;
 
 export type { IsBoolean as ZuordIsBoolean };
 
