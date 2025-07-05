@@ -1,6 +1,6 @@
 import { Zuord } from "@/core/alias.types"
 import { zuordUtil } from "@/trait/_alias";
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordTrait } from "@/trait/_alias.types";
 
 function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Pick<T, P> {
     if (!zuordUtil.isObject(obj)) {

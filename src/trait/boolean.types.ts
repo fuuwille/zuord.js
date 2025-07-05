@@ -1,6 +1,6 @@
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordTrait } from "@/trait/_alias.types";
 
-type IsBoolean<T> = ZuordUtil.Is<T, boolean>;
+type IsBoolean<T> = ZuordTrait.Is<T, boolean>;
 
 type IsSomeBoolean<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (IsBoolean<First> extends true ? true : IsSomeBoolean<Rest>) : false;
@@ -8,7 +8,7 @@ type IsSomeBoolean<U extends readonly unknown[]> = U extends [infer First, ...in
 type IsAllBoolean<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (IsBoolean<First> extends true ? IsAllBoolean<Rest> : false) : true;
 
-type HasBoolean<T> = ZuordUtil.Has<T, boolean>;
+type HasBoolean<T> = ZuordTrait.Has<T, boolean>;
 
 type HasSomeBoolean<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
     ? (HasBoolean<First> extends true ? true : HasSomeBoolean<Rest>) : false;

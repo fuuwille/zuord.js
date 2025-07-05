@@ -1,15 +1,15 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordTrait } from "@/trait/_alias.types";
 
 type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = Zuord.Normalize<IntegrateRaw<A, B, Options>>;
 
-type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsSomeNever<[A, B]>] extends [false] ? (
-    [ZuordUtil.IsAllArray<[A, B]>] extends [true] ? (
+type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordTrait.IsSomeNever<[A, B]>] extends [false] ? (
+    [ZuordTrait.IsAllArray<[A, B]>] extends [true] ? (
         [Options["mode"]["concat"]] extends [true] 
-            ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
-            : Array<ZuordUtil.ArrayIn<A>>
+            ? Array<ZuordTrait.ArrayIn<A> | ZuordTrait.ArrayIn<B>>
+            : Array<ZuordTrait.ArrayIn<A>>
     ) : 
-    [ZuordUtil.IsAllPlain<[A, B]>] extends [true] ? ({
+    [ZuordTrait.IsAllPlain<[A, B]>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
             [Options["mode"]["shallow"]] extends [false] ? (
                 IntegrateRaw<
@@ -20,7 +20,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
             ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
         )
     }) : B
-) : ZuordUtil.AsNonNever<[A, B]>;
+) : ZuordTrait.AsNonNever<[A, B]>;
 
 type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = Zuord.Options<Mode>;
 

@@ -13,7 +13,7 @@ import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, Zu
 import type { ZuordArrayIn, ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordExtractArray, ZuordExcludeArray as ZuordExcludeArray } from "./array.types";
 import type { ZuordArrayDepth } from "./array.types";
 
-export namespace ZuordUtil {
+export namespace ZuordTrait {
 
   // ABSTRACT
 

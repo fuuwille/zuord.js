@@ -1,4 +1,4 @@
-import { ZuordUtil as ZuordTrait } from "@/trait/_alias.types";
+import { ZuordTrait as ZuordTrait } from "@/trait/_alias.types";
 import { ZuordUtil } from "@/util/_alias.types";
 
 type EqNever<T> = ZuordTrait.Eq<T, never>;

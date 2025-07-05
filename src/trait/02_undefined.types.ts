@@ -1,30 +1,30 @@
-import { ZuordUtil } from "./_alias.types";
+import { ZuordTrait } from "./_alias.types";
 
-type EqUndefined<T> = ZuordUtil.Eq<T, undefined>;
+type EqUndefined<T> = ZuordTrait.Eq<T, undefined>;
 
-type EqSomeUndefined<U extends readonly unknown[]> = ZuordUtil.EqSome<U, undefined>;
+type EqSomeUndefined<U extends readonly unknown[]> = ZuordTrait.EqSome<U, undefined>;
 
-type EqAllUndefined<U extends readonly unknown[]> = ZuordUtil.EqAll<U, undefined>;
+type EqAllUndefined<U extends readonly unknown[]> = ZuordTrait.EqAll<U, undefined>;
 
-type IsUndefined<T> = ZuordUtil.Is<T, undefined>;
+type IsUndefined<T> = ZuordTrait.Is<T, undefined>;
 
-type IsSomeUndefined<U extends readonly unknown[]> = ZuordUtil.IsSome<U, undefined>;
+type IsSomeUndefined<U extends readonly unknown[]> = ZuordTrait.IsSome<U, undefined>;
 
-type IsAllUndefined<U extends readonly unknown[]> = ZuordUtil.IsAll<U, undefined>;
+type IsAllUndefined<U extends readonly unknown[]> = ZuordTrait.IsAll<U, undefined>;
 
-type HasUndefined<T> = ZuordUtil.Has<T, undefined>;
+type HasUndefined<T> = ZuordTrait.Has<T, undefined>;
 
-type HasSomeUndefined<U extends readonly unknown[]> = ZuordUtil.HasSome<U, undefined>;
+type HasSomeUndefined<U extends readonly unknown[]> = ZuordTrait.HasSome<U, undefined>;
 
-type HasAllUndefined<U extends readonly unknown[]> = ZuordUtil.HasAll<U, undefined>;
+type HasAllUndefined<U extends readonly unknown[]> = ZuordTrait.HasAll<U, undefined>;
 
-type ExcludeUndefined<T> = ZuordUtil.Exclude<T, undefined>;
+type ExcludeUndefined<T> = ZuordTrait.Exclude<T, undefined>;
 
-type ExcludeExactUndefined<T> = ZuordUtil.ExcludeExact<T, undefined>;
+type ExcludeExactUndefined<T> = ZuordTrait.ExcludeExact<T, undefined>;
 
-type ExtractUndefined<T> = ZuordUtil.Extract<T, undefined>;
+type ExtractUndefined<T> = ZuordTrait.Extract<T, undefined>;
 
-type ExtractExactUndefined<T> = ZuordUtil.ExtractExact<T, undefined>
+type ExtractExactUndefined<T> = ZuordTrait.ExtractExact<T, undefined>
 
 export type { EqUndefined as ZuordEqUndefined };
 

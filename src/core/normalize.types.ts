@@ -1,26 +1,26 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/trait/_alias.types";
+import { ZuordTrait } from "@/trait/_alias.types";
 
-type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
-    [ZuordUtil.HasPlain<T>] extends [true] ? (
-        (ZuordUtil.ExcludePlain<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) | 
-        (ZuordUtil.ExtractPlain<T> extends infer TExtracted ? ({
+type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordTrait.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
+    [ZuordTrait.HasPlain<T>] extends [true] ? (
+        (ZuordTrait.ExcludePlain<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) | 
+        (ZuordTrait.ExtractPlain<T> extends infer TExtracted ? ({
             [K in keyof TExtracted]: Normalize<TExtracted[K], Options>;
         }) : never )
     ) : 
-    [ZuordUtil.HasTuple<T>] extends [true] ? (
-        (ZuordUtil.ExcludeTuple<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
-        (ZuordUtil.ExtractTuple<T> extends infer TExtracted ? ({  
+    [ZuordTrait.HasTuple<T>] extends [true] ? (
+        (ZuordTrait.ExcludeTuple<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
+        (ZuordTrait.ExtractTuple<T> extends infer TExtracted ? ({  
             [K in keyof TExtracted]: Normalize<TExtracted[K], Options> 
         }) : never )
     ) :
-    [ZuordUtil.HasArray<T>] extends [true] ? (
-        (ZuordUtil.ExcludeArray<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
-        (ZuordUtil.ExtractArray<T> extends infer TExtracted ? Normalize<Extract<TExtracted, readonly unknown[]>[number], Options>[] : never)
+    [ZuordTrait.HasArray<T>] extends [true] ? (
+        (ZuordTrait.ExcludeArray<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
+        (ZuordTrait.ExtractArray<T> extends infer TExtracted ? Normalize<Extract<TExtracted, readonly unknown[]>[number], Options>[] : never)
     ) : T
 ) : (
-    ZuordUtil.ExcludeOutcasts<T, Options["outcasts"]> extends infer TExcluded
-        ? ZuordUtil.ExtractOutcasts<T, Options["outcasts"]> extends infer TExtracted
+    ZuordTrait.ExcludeOutcasts<T, Options["outcasts"]> extends infer TExcluded
+        ? ZuordTrait.ExtractOutcasts<T, Options["outcasts"]> extends infer TExtracted
             ? Normalize<TExcluded, Options> | TExtracted
             : never
     : never
