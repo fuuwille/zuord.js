@@ -8,6 +8,8 @@ type IsAllNull<U extends readonly unknown[]> = ZuordTrait.IsAll<U, null>;
 
 type HasNull<T> = ZuordTrait.Has<T, null>;
 
+type HasSomeNull<U extends readonly unknown[]> = ZuordTrait.HasSome<U, null>;
+
 export type { IsNull as ZuordIsNull };
 
 export type { IsSomeNull as ZuordIsSomeNull };
@@ -15,3 +17,5 @@ export type { IsSomeNull as ZuordIsSomeNull };
 export type { IsAllNull as ZuordIsAllNull };
 
 export type { HasNull as ZuordHasNull };
+
+export type { HasSomeNull as ZuordHasSomeNull };
