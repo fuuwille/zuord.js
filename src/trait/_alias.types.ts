@@ -1,6 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
-import type { ZuordEqFunction, ZuordEqSomeFunction, ZuordEqAllFunction, ZuordIsFunction, ZuordIsSomeFunction, ZuordIsAllFunction } from "./function.types";
+import type { ZuordEqFunction, ZuordEqSomeFunction, ZuordEqAllFunction, ZuordIsFunction, ZuordIsSomeFunction, ZuordIsAllFunction, ZuordHasFunction } from "./function.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
@@ -51,6 +51,8 @@ export namespace ZuordTrait {
   export type IsSomeFunction<T extends readonly unknown[]> = ZuordIsSomeFunction<T>;
 
   export type IsAllFunction<T extends readonly unknown[]> = ZuordIsAllFunction<T>;
+
+  export type HasFunction<T> = ZuordHasFunction<T>;
 
 
   // BIGINT
