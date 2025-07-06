@@ -10,7 +10,7 @@ type OmitRaw<T, U> = {
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? ZuordTrait.IsNever<OmitRaw<T[K], U[K]>> extends true
+                        ? ZuordTrait.Is<OmitRaw<T[K], U[K]>, never> extends true
                             ? never
                             : K
                         : K
