@@ -4,6 +4,8 @@ type EqFunction<T> = ZuordTrait.Eq<T, Function>;
 
 type EqSomeFunction<U extends readonly unknown[]> = ZuordTrait.EqSome<U, Function>;
 
+type EqAllFunction<U extends readonly unknown[]> = ZuordTrait.EqAll<U, Function>;
+
 type IsFunction<T> = ZuordTrait.Is<T, Function>;
 
 type IsSomeFunction<U extends readonly unknown[]> = ZuordTrait.IsSome<U, Function>;
@@ -19,6 +21,8 @@ type HasAllFunction<U extends readonly unknown[]> = ZuordTrait.HasAll<U, Functio
 export type { EqFunction as ZuordEqFunction };
 
 export type { EqSomeFunction as ZuordEqSomeFunction };
+
+export type { EqAllFunction as ZuordEqAllFunction };
 
 export type { IsFunction as ZuordIsFunction };
 
