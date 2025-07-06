@@ -1,6 +1,5 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
-import type { ZuordEqFunction, ZuordEqSomeFunction, ZuordEqAllFunction, ZuordIsFunction, ZuordIsSomeFunction, ZuordIsAllFunction, ZuordHasFunction, ZuordHasSomeFunction, ZuordHasAllFunction, ZuordExcludeFunction, ZuordExcludeExactFunction, ZuordExtractFunction, ZuordExtractExactFunction } from "./01_function.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
@@ -36,35 +35,6 @@ export namespace ZuordTrait {
   export type Extract<A, B> = ZuordExtract<A, B>;
 
   export type ExtractExact<A, B> = ZuordExtractExact<A, B>;
-
-
-  // 01 - FUNCTION
-
-  export type EqFunction<T> = ZuordEqFunction<T>;
-
-  export type EqSomeFunction<T extends readonly unknown[]> = ZuordEqSomeFunction<T>;
-
-  export type EqAllFunction<T extends readonly unknown[]> = ZuordEqAllFunction<T>;
-
-  export type IsFunction<T> = ZuordIsFunction<T>;
-
-  export type IsSomeFunction<T extends readonly unknown[]> = ZuordIsSomeFunction<T>;
-
-  export type IsAllFunction<T extends readonly unknown[]> = ZuordIsAllFunction<T>;
-
-  export type HasFunction<T> = ZuordHasFunction<T>;
-
-  export type HasSomeFunction<T extends readonly unknown[]> = ZuordHasSomeFunction<T>;
-
-  export type HasAllFunction<T extends readonly unknown[]> = ZuordHasAllFunction<T>;
-
-  export type ExcludeFunction<T> = ZuordExcludeFunction<T>;
-
-  export type ExcludeExactFunction<T> = ZuordExcludeExactFunction<T>;
-
-  export type ExtractFunction<T> = ZuordExtractFunction<T>;
-
-  export type ExtractExactFunction<T> = ZuordExtractExactFunction<T>;
 
 
   // BIGINT
