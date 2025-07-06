@@ -1,4 +1,4 @@
-import { zuordIsFunction } from "./function";
+import { zuordIsFunction } from "./01_function";
 import { zuordIsObject } from "./object";
 import { zuordIsPlain } from "./plain";
 

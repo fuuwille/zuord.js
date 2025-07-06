@@ -1,6 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
-import type { ZuordEqFunction, ZuordEqSomeFunction, ZuordEqAllFunction, ZuordIsFunction, ZuordIsSomeFunction, ZuordIsAllFunction, ZuordHasFunction, ZuordHasSomeFunction, ZuordHasAllFunction } from "./function.types";
+import type { ZuordEqFunction, ZuordEqSomeFunction, ZuordEqAllFunction, ZuordIsFunction, ZuordIsSomeFunction, ZuordIsAllFunction, ZuordHasFunction, ZuordHasSomeFunction, ZuordHasAllFunction } from "./01_function.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
