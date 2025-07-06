@@ -1,4 +1,4 @@
-import { ZuordTrait } from "./_alias.types";
+import { ZuordTrait } from "@/trait/_alias.types";
 
 type IsFunction<T> = ZuordTrait.Is<T, Function>;
 
