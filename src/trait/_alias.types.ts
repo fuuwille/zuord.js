@@ -40,7 +40,7 @@ export namespace ZuordTrait {
 
   // 01 - FUNCTION
 
-  export type EqFunction<T extends readonly unknown[]> = ZuordEqFunction<T>;
+  export type EqFunction<T> = ZuordEqFunction<T>;
 
   export type EqSomeFunction<T extends readonly unknown[]> = ZuordEqSomeFunction<T>;
 
