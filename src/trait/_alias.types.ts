@@ -1,6 +1,5 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
-import type { ZuordAsAny } from "./any.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
@@ -49,11 +48,6 @@ export namespace ZuordTrait {
   // SYMBOL
 
   // UNKNOWN
-
-  
-  // ANY
-
-  export type AsAny<T> = ZuordAsAny<T>;
 
 
   // OBJECT 
