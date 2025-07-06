@@ -24,6 +24,8 @@ type ExcludeExactArray<T> = ZuordTrait.ExcludeExact<T, readonly unknown[]>;
 
 type ExtractArray<T> = ZuordTrait.Extract<T, readonly unknown[]>;
 
+type ExtractExactArray<T> = ZuordTrait.ExtractExact<T, readonly unknown[]>;
+
 export type { EqArray as ZuordEqArray };
 
 export type { EqSomeArray as ZuordEqSomeArray };
@@ -47,3 +49,5 @@ export type { ExcludeArray as ZuordExcludeArray };
 export type { ExcludeExactArray as ZuordExcludeExactArray };
 
 export type { ExtractArray as ZuordExtractArray };
+
+export type { ExtractExactArray as ZuordExtractExactArray };
