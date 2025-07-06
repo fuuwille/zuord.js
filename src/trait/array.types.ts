@@ -2,6 +2,8 @@ import { ZuordTrait } from "@/trait/_alias.types";
 
 type EqArray<T> = ZuordTrait.Eq<T, readonly unknown[]>;
 
+type EqSomeArray<U extends readonly unknown[]> = ZuordTrait.EqSome<U, readonly unknown[]>;
+
 type IsArray<T> = ZuordTrait.Is<T, readonly unknown[]>
 
 type IsSomeArray<U extends readonly unknown[]> = ZuordTrait.IsSome<U, readonly unknown[]>;
@@ -19,6 +21,8 @@ type ExcludeArray<T> = ZuordTrait.Exclude<T, readonly unknown[]>;
 type ExtractArray<T> = ZuordTrait.Extract<T, readonly unknown[]>;
 
 export type { EqArray as ZuordEqArray };
+
+export type { EqSomeArray as ZuordEqSomeArray };
 
 export type { IsArray as ZuordIsArray };
 
