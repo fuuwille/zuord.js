@@ -7,16 +7,16 @@ type ImposeBase<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TB
 
 type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeLooseBase<TBase, TPatch, TCurrent>>;
 
-type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordTrait.IsNever<TPatch>] extends [false] ? (
+type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordTrait.Is<TPatch, never>] extends [false] ? (
     ZuordTrait.IsPlain<TBase> extends true ? ({
         [K in keyof TBase]: ImposeLooseBase<
         TBase[K],  
-        (K extends keyof ZuordTrait.ExcludeExactUndefined<TPatch> ? ZuordTrait.ExcludeExactUndefined<TPatch>[K] : TCurrent[K]),
+        (K extends keyof ZuordTrait.ExcludeExact<TPatch, undefined> ? ZuordTrait.ExcludeExact<TPatch, undefined>[K] : TCurrent[K]),
         TCurrent[K]>
     }) : (
-        [ZuordTrait.EqUndefined<TPatch>] extends [true] ? (
-            ZuordTrait.IsUndefined<TCurrent> extends true ? TPatch : TCurrent
-        ) : ZuordTrait.ExcludeExactUndefined<TPatch>
+        [ZuordTrait.Eq<TPatch, undefined>] extends [true] ? (
+            ZuordTrait.Is<TCurrent, undefined> extends true ? TPatch : TCurrent
+        ) : ZuordTrait.ExcludeExact<TPatch, undefined>
     )
 ) : TCurrent;
 
