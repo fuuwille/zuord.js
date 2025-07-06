@@ -2,6 +2,7 @@ import { ZuordIsKey, ZuordIsRequiredKey, ZuordHasKey, ZuordAnyHasKey, ZuordAllHa
 import { ZuordValueAt } from "./value.types";
 import { ZuordUnionOf } from "./union.types";
 import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
+import { ZuordArrayDepth, ZuordArrayIn } from "./array.types";
 
 export namespace ZuordUtil {
 
@@ -38,4 +39,11 @@ export namespace ZuordUtil {
     export type InstanceOf<T> = ZuordInstanceOf<T>;
     
     export type InstanceTuple<T> = ZuordInstanceTuple<T>;
+
+    
+    // ARRAY
+
+    export type ArrayIn<T> = ZuordArrayIn<T>;
+    
+    export type ArrayDepth<T> = ZuordArrayDepth<T>;
 }
