@@ -1,5 +1,7 @@
 import { ZuordTrait } from "@/trait/_alias.types";
 
+type EqFunction<T> = ZuordTrait.Eq<T, Function>;
+
 type IsFunction<T> = ZuordTrait.Is<T, Function>;
 
 type IsSomeFunction<U extends readonly unknown[]> = ZuordTrait.IsSome<U, Function>;
@@ -11,6 +13,8 @@ type HasFunction<T> = ZuordTrait.Has<T, Function>;
 type HasSomeFunction<U extends readonly unknown[]> = ZuordTrait.HasSome<U, Function>;
 
 type HasAllFunction<U extends readonly unknown[]> = ZuordTrait.HasAll<U, Function>;
+
+export type { EqFunction as ZuordEqFunction };
 
 export type { IsFunction as ZuordIsFunction };
 
