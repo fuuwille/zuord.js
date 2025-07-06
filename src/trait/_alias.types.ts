@@ -1,7 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
 import type { ZuordAsAny } from "./any.types";
-import type { ZuordIsTrue, ZuordIsSomeTrue, ZuordIsAllTrue, ZuordHasTrue, ZuordHasSomeTrue, ZuordHasAllTrue, ZuordExtractTrue, ZuordExcludeTrue } from "./true.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordIsFunction } from "./function.types";
 import type { ZuordIsObject } from "./object.types";
@@ -39,25 +38,6 @@ export namespace ZuordTrait {
   export type Extract<A, B> = ZuordExtract<A, B>;
 
   export type ExtractExact<A, B> = ZuordExtractExact<A, B>;
-
-
-  // xB - TRUE
-
-  export type IsTrue<T> = ZuordIsTrue<T>;
-
-  export type IsSomeTrue<U extends readonly unknown[]> = ZuordIsSomeTrue<U>;
-
-  export type IsAllTrue<U extends readonly unknown[]> = ZuordIsAllTrue<U>;
-
-  export type HasTrue<T> = ZuordHasTrue<T>;
-
-  export type HasSomeTrue<U extends readonly unknown[]> = ZuordHasSomeTrue<U>;
-
-  export type HasAllTrue<U extends readonly unknown[]> = ZuordHasAllTrue<U>;
-
-  export type ExtractTrue<T> = ZuordExtractTrue<T>;
-
-  export type ExcludeTrue<T> = ZuordExcludeTrue<T>;
 
 
   // BIGINT

@@ -9,11 +9,11 @@ import { ZuordTest } from "@/test";
  * @param TComparisons - An array of comparisons to validate the imposed result.
  * @returns `true` if all imposed results match the expected values; otherwise, `false`.
  */
-export type ImposeLooseComparison<TBase, TCurrent extends TBase = TBase, TComparisons extends ZuordTest.Comparison[] = []> = ZuordUtil.HasAllTrue<{
+export type ImposeLooseComparison<TBase, TCurrent extends TBase = TBase, TComparisons extends ZuordTest.Comparison[] = []> = ZuordUtil.HasAll<{
     [K in keyof TComparisons]: 
         ZuordTest.IsEqual<Zuord.ImposeLoose<TBase, TComparisons[K]["type"], TCurrent>, TComparisons[K]["expected"]
     >
-}> extends true ? true : false;
+}, true> extends true ? true : false;
 
 //
 
