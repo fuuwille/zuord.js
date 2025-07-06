@@ -4,6 +4,10 @@ type IsFunction<T> = ZuordTrait.Is<T, Function>;
 
 type IsSomeFunction<U extends readonly unknown[]> = ZuordTrait.IsSome<U, Function>;
 
+type IsAllFunction<U extends readonly unknown[]> = ZuordTrait.IsAll<U, Function>;
+
 export type { IsFunction as ZuordIsFunction };
 
 export type { IsSomeFunction as ZuordIsSomeFunction };
+
+export type { IsAllFunction as ZuordIsAllFunction };
