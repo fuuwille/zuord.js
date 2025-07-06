@@ -1,4 +1,3 @@
-import { Zuord } from "@/core/alias.types";
 import { ZuordTrait } from "@/trait/_alias.types";
 
 type Plain<T> = IsPlain<T> extends true ? T : never;
@@ -7,7 +6,6 @@ type IsPlain<T> = ZuordTrait.IsObject<T> extends true ? (
   ZuordTrait.Is<T, Function> extends true ? false :
   ZuordTrait.Is<T, readonly unknown[]> extends true ? false :
   true
-
 ) : false;
 
 type IsSomePlain<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
