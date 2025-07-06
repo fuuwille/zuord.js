@@ -12,9 +12,10 @@ type HasSomeArray<U extends readonly unknown[]> = ZuordTrait.HasSome<U, readonly
 
 type HasAllArray<U extends readonly unknown[]> = ZuordTrait.HasAll<U, readonly unknown[]>;
 
+type ExcludeArray<T> = ZuordTrait.Exclude<T, readonly unknown[]>;
+
 type ExtractArray<T> = ZuordTrait.Extract<T, readonly unknown[]>;
 
-type ExcludeArray<T> = ZuordTrait.Exclude<T, readonly unknown[]>;
 export type { IsArray as ZuordIsArray };
 export type { IsSomeArray as ZuordIsSomeArray };
 export type { IsAllArray as ZuordIsAllArray };
