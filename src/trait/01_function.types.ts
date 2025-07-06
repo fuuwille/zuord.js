@@ -18,6 +18,8 @@ type HasSomeFunction<U extends readonly unknown[]> = ZuordTrait.HasSome<U, Funct
 
 type HasAllFunction<U extends readonly unknown[]> = ZuordTrait.HasAll<U, Function>;
 
+type ExcludeFunction<T> = ZuordTrait.Exclude<T, Function>;
+
 export type { EqFunction as ZuordEqFunction };
 
 export type { EqSomeFunction as ZuordEqSomeFunction };
@@ -35,3 +37,5 @@ export type { HasFunction as ZuordHasFunction };
 export type { HasSomeFunction as ZuordHasSomeFunction };
 
 export type { HasAllFunction as ZuordHasAllFunction };
+
+export type { ExcludeFunction as ZuordExcludeFunction };
