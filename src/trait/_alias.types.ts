@@ -5,7 +5,7 @@ import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } fro
 import type { ZuordIsObject } from "./object.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
 import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
-import type { ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordExtractArray, ZuordExcludeArray as ZuordExcludeArray } from "./array.types";
+import type { ZuordIsArray, ZuordIsSomeArray, ZuordIsAllArray, ZuordHasArray, ZuordHasSomeArray, ZuordHasAllArray, ZuordExcludeArray, ZuordExtractArray } from "./array.types";
 
 export namespace ZuordTrait {
 
@@ -123,8 +123,8 @@ export namespace ZuordTrait {
   export type HasArray<T> = ZuordHasArray<T>;
   export type HasSomeArray<T extends readonly unknown[]> = ZuordHasSomeArray<T>;
   export type HasAllArray<T extends readonly unknown[]> = ZuordHasAllArray<T>;
-  export type ExtractArray<T> = ZuordExtractArray<T>;
   export type ExcludeArray<T> = ZuordExcludeArray<T>;
+  export type ExtractArray<T> = ZuordExtractArray<T>;
 
 
   // UNORDEREDS
