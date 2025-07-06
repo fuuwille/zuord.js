@@ -24,6 +24,8 @@ type ExcludeExactFunction<T> = ZuordTrait.ExcludeExact<T, Function>;
 
 type ExtractFunction<T> = ZuordTrait.Extract<T, Function>;
 
+type ExtractExactFunction<T> = ZuordTrait.ExtractExact<T, Function>;
+
 export type { EqFunction as ZuordEqFunction };
 
 export type { EqSomeFunction as ZuordEqSomeFunction };
@@ -47,3 +49,5 @@ export type { ExcludeFunction as ZuordExcludeFunction };
 export type { ExcludeExactFunction as ZuordExcludeExactFunction };
 
 export type { ExtractFunction as ZuordExtractFunction };
+
+export type { ExtractExactFunction as ZuordExtractExactFunction };
