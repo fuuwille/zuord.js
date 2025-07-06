@@ -17,10 +17,17 @@ type ExcludeArray<T> = ZuordTrait.Exclude<T, readonly unknown[]>;
 type ExtractArray<T> = ZuordTrait.Extract<T, readonly unknown[]>;
 
 export type { IsArray as ZuordIsArray };
+
 export type { IsSomeArray as ZuordIsSomeArray };
+
 export type { IsAllArray as ZuordIsAllArray };
+
 export type { HasArray as ZuordHasArray };
+
 export type { HasSomeArray as ZuordHasSomeArray };
+
 export type { HasAllArray as ZuordHasAllArray };
+
 export type { ExtractArray as ZuordExtractArray };
+
 export type { ExcludeArray as ZuordExcludeArray };
