@@ -1,27 +1,25 @@
+import { ZuordTrait } from "@/trait/_alias.types";
+
 type ArrayIn<T> = T extends readonly (infer T)[] ? T : never;
 
 type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[]
     ? ArrayDepth<U, [unknown, ...D]> : D['length'];
 
-type IsArray<T> = [T]extends [readonly unknown[]] ? true : false;
+type IsArray<T> = ZuordTrait.Is<T, readonly unknown[]>
 
-type IsSomeArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (IsArray<First> extends true ? true : IsSomeArray<Rest>) : false;
+type IsSomeArray<U extends readonly unknown[]> = ZuordTrait.IsSome<U, readonly unknown[]>;
 
-type IsAllArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (IsArray<First> extends true ? IsAllArray<Rest> : false) : true;
+type IsAllArray<U extends readonly unknown[]> = ZuordTrait.IsAll<U, readonly unknown[]>;
 
-type HasArray<T> = true extends (T extends readonly unknown[] ? true : false) ? true : false;
+type HasArray<T> = ZuordTrait.Has<T, readonly unknown[]>;
 
-type HasSomeArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (HasArray<First> extends true ? true : HasSomeArray<Rest>) : false;
+type HasSomeArray<U extends readonly unknown[]> = ZuordTrait.HasSome<U, readonly unknown[]>;
 
-type HasAllArray<U extends readonly unknown[]> = U extends [infer First, ...infer Rest]
-    ? (HasArray<First> extends true ? HasAllArray<Rest> : false) : true;
+type HasAllArray<U extends readonly unknown[]> = ZuordTrait.HasAll<U, readonly unknown[]>;
 
-type ExtractArray<T> = T extends any ? (IsArray<T> extends true ? T : never) : never;
+type ExtractArray<T> = ZuordTrait.Extract<T, readonly unknown[]>;
 
-type ExcludeArray<T> = T extends any ? (IsArray<T> extends true ? never : T) : never;
+type ExcludeArray<T> = ZuordTrait.Exclude<T, readonly unknown[]>;
 
 export type { ArrayIn as ZuordArrayIn };
 export type { ArrayDepth as ZuordArrayDepth };
