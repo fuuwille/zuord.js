@@ -9,9 +9,9 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
             [K in keyof TExtracted]: Normalize<TExtracted[K], Options>;
         }) : never )
     ) : 
-    [ZuordTrait.HasTuple<T>] extends [true] ? (
-        (ZuordTrait.ExcludeTuple<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
-        (ZuordTrait.ExtractTuple<T> extends infer TExtracted ? ({  
+    [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
+        (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
+        (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted ? ({  
             [K in keyof TExtracted]: Normalize<TExtracted[K], Options> 
         }) : never )
     ) :
