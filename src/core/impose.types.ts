@@ -1,5 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordTrait } from "@/trait/_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Impose<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeBase<TBase, TPatch, TCurrent>>;
 
@@ -8,7 +9,7 @@ type ImposeBase<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TB
 type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeLooseBase<TBase, TPatch, TCurrent>>;
 
 type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordTrait.Is<TPatch, never>] extends [false] ? (
-    ZuordTrait.IsPlain<TBase> extends true ? ({
+    ZuordTrait.Is<TBase, ZuordType.Plain> extends true ? ({
         [K in keyof TBase]: ImposeLooseBase<
         TBase[K],  
         (K extends keyof ZuordTrait.ExcludeExact<TPatch, undefined> ? ZuordTrait.ExcludeExact<TPatch, undefined>[K] : TCurrent[K]),
