@@ -1,3 +1,3 @@
-type Tuple = readonly [unknown, ...unknown[]] | readonly unknown[];
+type Tuple = readonly [unknown, ...unknown[]] | [];
 
 export type { Tuple as ZuordTuple };
