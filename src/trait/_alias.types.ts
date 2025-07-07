@@ -1,7 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
-import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
 
 export namespace ZuordTrait {
 
@@ -43,19 +42,6 @@ export namespace ZuordTrait {
   // SYMBOL
 
   // UNKNOWN
-
-  
-  // PLAIN
-
-  export type Plain<T> = ZuordPlain<T>;
-  export type IsPlain<T> = ZuordIsPlain<T>;
-  export type IsSomePlain<U extends readonly unknown[]> = ZuordIsSomePlain<U>;
-  export type IsAllPlain<U extends readonly unknown[]> = ZuordIsAllPlain<U>;
-  export type HasPlain<T> = ZuordHasPlain<T>;
-  export type HasNonPlain<T> = ZuordHasNonPlain<T>;
-  export type ExtractPlain<T> = ZuordExtractPlain<T>;
-  export type ExcludePlain<T> = ZuordExcludePlain<T>;
-  export type ExtractPlainList<T extends unknown[]> = ZuordExtractPlainList<T>;
   
 
   // UNORDEREDS
