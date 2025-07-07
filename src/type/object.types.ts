@@ -1,4 +1,4 @@
-import { ZuordType } from "./_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Object = ZuordType.Function | ZuordType.Tuple | ZuordType.Array | ZuordType.Plain;
 
