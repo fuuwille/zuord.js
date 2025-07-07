@@ -11,7 +11,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
             ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
             : Array<ZuordUtil.ArrayIn<A>>
     ) : 
-    [ZuordTrait.IsAllPlain<[A, B]>] extends [true] ? ({
+    [ZuordTrait.IsAll<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
             [Options["mode"]["shallow"]] extends [false] ? (
                 IntegrateRaw<
