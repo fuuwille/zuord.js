@@ -3,6 +3,7 @@ import type { ZuordFunction } from "./function.types";
 import type { ZuordTuple } from "./tuple.types";
 import type { ZuordArray } from "./array.types";
 import type { ZuordPlain } from "./plain.types";
+import type { ZuordObject } from "./object.types";
 
 export namespace ZuordType {
 
@@ -15,4 +16,6 @@ export namespace ZuordType {
     export type Array = ZuordArray;
 
     export type Plain = ZuordPlain;
+
+    export type Object = ZuordObject;
 }
