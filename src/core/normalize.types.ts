@@ -1,5 +1,6 @@
 import { Zuord } from "@/core/alias.types";
 import { ZuordTrait } from "@/trait/_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordTrait.HasOutcasts<T, Options["outcasts"]>] extends [false]? (
     [ZuordTrait.HasPlain<T>] extends [true] ? (
@@ -14,9 +15,9 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
             [K in keyof TExtracted]: Normalize<TExtracted[K], Options> 
         }) : never )
     ) :
-    [ZuordTrait.HasArray<T>] extends [true] ? (
-        (ZuordTrait.ExcludeArray<T> extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
-        (ZuordTrait.ExtractArray<T> extends infer TExtracted ? Normalize<Extract<TExtracted, readonly unknown[]>[number], Options>[] : never)
+    [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? (
+        (ZuordTrait.Exclude<T, ZuordType.Array > extends infer TExcluded ? Normalize<TExcluded, Options> : unknown) |
+        (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted ? Normalize<Extract<TExtracted, readonly unknown[]>[number], Options>[] : never)
     ) : T
 ) : (
     ZuordTrait.ExcludeOutcasts<T, Options["outcasts"]> extends infer TExcluded
