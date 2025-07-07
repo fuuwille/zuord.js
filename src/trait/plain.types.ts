@@ -5,7 +5,7 @@ type Plain<T> = IsPlain<T> extends true ? T : never;
 
 type IsPlain<T> = ZuordTrait.Is<T, object> extends true ? (
   ZuordTrait.Is<T, ZuordType.Function> extends true ? false :
-  ZuordTrait.Is<T, readonly unknown[]> extends true ? false :
+  ZuordTrait.Is<T, ZuordType.Array> extends true ? false :
   true
 ) : false;
 
