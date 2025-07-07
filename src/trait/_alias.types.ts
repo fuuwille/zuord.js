@@ -2,7 +2,6 @@ import { Zuord } from "@/core/alias.types";
 import type { ZuordEq, ZuordEqSome, ZuordEqAll, ZuordIs, ZuordIsSome, ZuordIsAll, ZuordHas, ZuordHasSome, ZuordHasAll, ZuordExclude, ZuordExcludeExact, ZuordExtract, ZuordExtractExact } from "./00_main.types";
 import type { ZuordHasOutcasts, ZuordExtractOutcasts, ZuordExcludeOutcasts } from "./outcasts.types";
 import type { ZuordPlain, ZuordIsPlain, ZuordIsSomePlain, ZuordIsAllPlain, ZuordHasPlain, ZuordHasNonPlain, ZuordExtractPlain, ZuordExcludePlain, ZuordExtractPlainList } from "./plain.types";
-import type { ZuordIsTuple, ZuordIsSomeTuple, ZuordIsAllTuple, ZuordHasTuple, ZuordHasSomeTuple, ZuordHasAllTuple, ZuordExtractTuple, ZuordExcludeTuple } from "./tuple.types";
 
 export namespace ZuordTrait {
 
@@ -57,25 +56,6 @@ export namespace ZuordTrait {
   export type ExtractPlain<T> = ZuordExtractPlain<T>;
   export type ExcludePlain<T> = ZuordExcludePlain<T>;
   export type ExtractPlainList<T extends unknown[]> = ZuordExtractPlainList<T>;
-
-
-  // TUPLE
-
-  export type IsTuple<T> = ZuordIsTuple<T>;
-
-  export type IsSomeTuple<U extends readonly unknown[]> = ZuordIsSomeTuple<U>;
-
-  export type IsAllTuple<U extends readonly unknown[]> = ZuordIsAllTuple<U>;
-
-  export type HasTuple<T> = ZuordHasTuple<T>;
-
-  export type HasSomeTuple<U extends readonly unknown[]> = ZuordHasSomeTuple<U>;
-
-  export type HasAllTuple<U extends readonly unknown[]> = ZuordHasAllTuple<U>;
-
-  export type ExtractTuple<T> = ZuordExtractTuple<T>;
-
-  export type ExcludeTuple<T> = ZuordExcludeTuple<T>;
   
 
   // UNORDEREDS
