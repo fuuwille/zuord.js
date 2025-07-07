@@ -1,9 +1,10 @@
 import { ZuordTrait } from "@/trait/_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Plain<T> = IsPlain<T> extends true ? T : never;
 
 type IsPlain<T> = ZuordTrait.Is<T, object> extends true ? (
-  ZuordTrait.Is<T, Function> extends true ? false :
+  ZuordTrait.Is<T, ZuordType.Function> extends true ? false :
   ZuordTrait.Is<T, readonly unknown[]> extends true ? false :
   true
 ) : false;
