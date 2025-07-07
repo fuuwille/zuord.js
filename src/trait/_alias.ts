@@ -1,5 +1,4 @@
 import { zuordIsObject } from "./object";
-import { zuordIsPlain } from "./plain";
 
 /**
  * 
@@ -14,12 +13,4 @@ export namespace zuordUtil {
      * 
      */
     export const isObject = zuordIsObject;
-
-
-    // PLAIN
-
-    /**
-     * 
-     */
-    export const isPlain = zuordIsPlain;
 }
