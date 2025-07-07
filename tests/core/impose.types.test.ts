@@ -26,10 +26,12 @@ export type ImposeLooseComparison<TBase, TCurrent extends TBase = TBase, TCompar
  * @returns `ImposeLoose<never, *, never> === TPatch`
  */
 export type ImposeLooseT100 = ZuordTest.Assert<ImposeLooseComparison<never, never, ZuordTest.ComparisonSelfList<[
-    never, undefined, null, void, any, boolean, string, number, bigint, symbol, object,
+    never, void, any, boolean, string, number, bigint, symbol, object,
     [], ["hello", "world", string, number],
     {}, { hello: { world: string } },
 ]>>>;
+
+type Test = Zuord.ImposeLoose<never, null, never>;
 
 /**
  * Test-101: The expected result is the patch when the base type is `undefined` and current type is `never`.

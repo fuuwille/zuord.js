@@ -9,14 +9,14 @@ type ImposeBase<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TB
 type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeLooseBase<TBase, TPatch, TCurrent>>;
 
 type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordTrait.Is<TPatch, never>] extends [false] ? (
-    ZuordTrait.Is<TBase, ZuordType.Plain> extends true ? ({
+    [ZuordTrait.Is<TBase, ZuordType.Plain>] extends [true] ? ({
         [K in keyof TBase]: ImposeLooseBase<
         TBase[K],  
         (K extends keyof ZuordTrait.ExcludeExact<TPatch, undefined> ? ZuordTrait.ExcludeExact<TPatch, undefined>[K] : TCurrent[K]),
         TCurrent[K]>
     }) : (
         [ZuordTrait.Eq<TPatch, undefined>] extends [true] ? (
-            ZuordTrait.Is<TCurrent, undefined> extends true ? TPatch : TCurrent
+            [ZuordTrait.Is<TCurrent, undefined>] extends [true] ? TPatch : TCurrent
         ) : ZuordTrait.ExcludeExact<TPatch, undefined>
     )
 ) : TCurrent;
