@@ -6,6 +6,12 @@ type EqAny<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] 
     [Eq<T1, T2>] extends [true] ? true : EqAny<R1, T2>
 ) : false;
 
+type EqToAny<T1, U2 extends ZuordType.Array> = U2 extends [infer T2, ...infer R2] ? (
+    [Eq<T1, T2>] extends [true] ? true : EqToAny<T1, R2>
+) : false;
+
 export type { Eq as ZuordEq };
 
 export type { EqAny as ZuordEqAny };
+
+export type { EqToAny as ZuordEqToAny };
