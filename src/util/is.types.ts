@@ -1,13 +1,13 @@
 import { ZuordType } from "@/type/_alias.types";
 
-type Is<T1, T2> = [T1] extends [T2] ? true : false;
+type Is<TSource, TBase> = [TSource] extends [TBase] ? true : false;
 
-type IsAny<U1 extends ZuordType.Array, T2> = U1 extends [infer First, ...infer Rest] ? (
-    Is<First, T2> extends true ? true : IsAny<Rest, T2>
+type IsAny<TSources extends ZuordType.Array, TBase> = TSources extends [infer First, ...infer Rest] ? (
+    Is<First, TBase> extends true ? true : IsAny<Rest, TBase>
 ) : false;
 
-type IsEvery<U1 extends ZuordType.Array, T2> = U1 extends [infer First, ...infer Rest] ? (
-    [Is<First, T2>] extends [true] ? (Rest extends readonly [infer __f, ...infer __r] ? IsEvery<Rest, T2> : true) : false
+type IsEvery<TSources extends ZuordType.Array, TBase> = TSources extends [infer First, ...infer Rest] ? (
+    [Is<First, TBase>] extends [true] ? (Rest extends readonly [infer __f, ...infer __r] ? IsEvery<Rest, TBase> : true) : false
 ) : false;
 
 export type { Is as ZuordIs };
