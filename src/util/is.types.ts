@@ -6,7 +6,12 @@ type IsAny<U1 extends ZuordType.Array, T2> = U1 extends [infer First, ...infer R
     Is<First, T2> extends true ? true : IsAny<Rest, T2>
 ) : false;
 
+type IsEvery<U1 extends ZuordType.Array, T2> = U1 extends [infer First, ...infer Rest] ? (
+    [Is<First, T2>] extends [true] ? (Rest extends readonly [infer __f, ...infer __r] ? IsEvery<Rest, T2> : true) : false
+) : false;
 
 export type { Is as ZuordIs };
 
 export type { IsAny as ZuordIsAny };
+
+export type { IsEvery as ZuordIsEvery };
