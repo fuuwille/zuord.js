@@ -9,7 +9,7 @@ import { ZuordTest } from "@/test";
  * @param TComparisons - An array of comparisons to validate the imposed result.
  * @returns `true` if all imposed results match the expected values; otherwise, `false`.
  */
-export type ImposeLooseComparison<TBase, TCurrent extends TBase = TBase, TComparisons extends ZuordTest.Comparison[] = []> = ZuordUtil.HasAll<{
+export type ImposeLooseComparison<TBase, TCurrent extends TBase = TBase, TComparisons extends ZuordTest.Comparison[] = []> = ZuordUtil.HasEvery<{
     [K in keyof TComparisons]: 
         ZuordTest.IsEqual<Zuord.ImposeLoose<TBase, TComparisons[K]["type"], TCurrent>, TComparisons[K]["expected"]
     >
@@ -46,6 +46,8 @@ export type ImposeLooseT101 = ZuordTest.Assert<ImposeLooseComparison<undefined, 
     [], ["hello", "world", string, number],
     {}, { hello: { world: string } },
 ]>>>;
+
+type Result = Zuord.ImposeLoose<undefined, any, never>;
 
 /**
  * Test-102: The expected result is the patch (except when it is `never`) when the base and current types are `undefined`.
