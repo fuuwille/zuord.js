@@ -34,3 +34,12 @@ type HasToAny<TSource, TBases extends ZuordType.Array> = TBases extends [infer T
 ) : false;
 
 export type { HasToAny as ZuordHasToAny };
+
+
+// HAS TO EVERY
+
+type HasToEvery<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Has<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.EmptyArray ? true : HasToEvery<TSource, TRestBases>) : false
+) : false;
+
+export type { HasToEvery as ZuordHasToEvery };
