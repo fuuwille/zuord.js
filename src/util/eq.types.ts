@@ -18,6 +18,10 @@ type EqAnyToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 ext
     EqToAny<T1, U2> extends true ? true : EqAnyToAny<R1, U2>
 ) : false;
 
+type EqEveryToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
+    [EqToAny<T1, U2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEveryToAny<R1, U2>) : false
+) : false;
+
 export type { Eq as ZuordEq };
 
 export type { EqAny as ZuordEqAny };
@@ -27,3 +31,5 @@ export type { EqEvery as ZuordEqEvery };
 export type { EqToAny as ZuordEqToAny };
 
 export type { EqAnyToAny as ZuordEqAnyToAny };
+
+export type { EqEveryToAny as ZuordEqEveryToAny };
