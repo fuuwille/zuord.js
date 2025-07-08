@@ -8,8 +8,8 @@ type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions>
 type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordTrait.IsSome<[A, B], never>] extends [false] ? (
     [ZuordTrait.IsAll<[A, B], ZuordType.Array>] extends [true] ? (
         [Options["mode"]["concat"]] extends [true] 
-            ? Array<ZuordUtil.ArrayIn<A> | ZuordUtil.ArrayIn<B>>
-            : Array<ZuordUtil.ArrayIn<A>>
+            ? Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
+            : Array<ZuordUtil.ArrayIn<B>>
     ) : 
     [ZuordTrait.IsAll<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
