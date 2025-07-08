@@ -7,7 +7,7 @@ type EqAny<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] 
 ) : false;
 
 type EqEvery<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] ? (
-    [Eq<T1, T2>] extends [true] ? EqEvery<R1, T2> : false
+    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEvery<R1, T2>) : false
 ) : true;
 
 type EqToAny<T1, U2 extends ZuordType.Array> = U2 extends [infer T2, ...infer R2] ? (
