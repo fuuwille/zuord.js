@@ -1,12 +1,12 @@
 import { Zuord } from "@/core/alias.types"
-import { zuordUtil } from "@/trait/_alias";
-import { ZuordTrait } from "@/trait/_alias.types";
+import { zuordType } from "@/type/_alias";
+
 
 function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Pick<T, P> {
-    if (!zuordUtil.isObject(obj)) {
+    if (!zuordType.isObject(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }
-    if (!zuordUtil.isObject(pattern)) {
+    if (!zuordType.isObject(pattern)) {
         throw new TypeError("pick: Second argument must be a valid pattern (object).");
     }
 
@@ -18,7 +18,7 @@ function pick<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) 
 
         if (patVal === true) {
             result[key] = objVal;
-        } else if (zuordUtil.isObject(patVal) && zuordUtil.isObject(objVal)) {
+        } else if (zuordType.isObject(patVal) && zuordType.isObject(objVal)) {
             result[key] = pick(objVal, patVal);
         }
     }
