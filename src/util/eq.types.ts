@@ -7,6 +7,7 @@ type Eq<T1, T2> = (<T>() => T extends T1 ? 0 : 1) extends (<T>() => T extends T2
 
 export type { Eq as ZuordEq };
 
+
 // EQ ANY
 
 type EqAny<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] ? (
@@ -14,6 +15,7 @@ type EqAny<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] 
 ) : false;
 
 export type { EqAny as ZuordEqAny };
+
 
 // EQ EVERY
 
@@ -23,6 +25,7 @@ type EqEvery<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1
 
 export type { EqEvery as ZuordEqEvery };
 
+
 // EQ TO ANY
 
 type EqToAny<T1, U2 extends ZuordType.Array> = U2 extends [infer T2, ...infer R2] ? (
@@ -31,6 +34,7 @@ type EqToAny<T1, U2 extends ZuordType.Array> = U2 extends [infer T2, ...infer R2
 
 export type { EqToAny as ZuordEqToAny };
 
+
 // EQ ANY TO ANY
 
 type EqAnyToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
@@ -38,6 +42,7 @@ type EqAnyToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 ext
 ) : false;
 
 export type { EqAnyToAny as ZuordEqAnyToAny };
+
 
 // EQ EVERY TO ANY
 
