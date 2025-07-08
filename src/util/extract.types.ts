@@ -1,0 +1,8 @@
+import { ZuordUtil } from "./_alias.types";
+
+
+// EXTRACT
+
+type Extract<TSource, TBase> = TSource extends any ? ([ZuordUtil.Eq<TSource, TBase>] extends [true] ? TSource : never) : never;
+
+export type { Extract as ZuordExtract };
