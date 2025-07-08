@@ -1,3 +1,4 @@
+import type { ZuordDummy } from "./dummy.types";
 import type { ZuordAbsence } from "./absence.types";
 import type { ZuordFunction } from "./function.types";
 import type { ZuordTuple } from "./tuple.types";
@@ -6,6 +7,8 @@ import type { ZuordPlain, ZuordPlainOf } from "./plain.types";
 import type { ZuordObject } from "./object.types";
 
 export namespace ZuordType {
+
+    export type Dummy = ZuordDummy;
 
     export type Absence = ZuordAbsence;
 
