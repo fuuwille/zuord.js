@@ -26,6 +26,10 @@ type IsAnyToEvery<TSources extends ZuordType.Array, TBases extends ZuordType.Arr
     IsToEvery<TCurrent, TBases> extends true ? true : IsAnyToEvery<TRest, TBases>
 ) : false;
 
+type IsEveryToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TCurrent, ...infer TRest] ? (
+    IsToAny<TCurrent, TBases> extends true ? (TRest extends readonly [infer _f, ...infer _r] ? IsEveryToAny<TRest, TBases> : true) : false
+) : false;
+
 export type { Is as ZuordIs };
 
 export type { IsAny as ZuordIsAny };
@@ -39,3 +43,5 @@ export type { IsToEvery as ZuordIsToEvery };
 export type { IsAnyToAny as ZuordIsAnyToAny };
 
 export type { IsAnyToEvery as ZuordIsAnyToEvery };
+
+export type { IsEveryToAny as ZuordIsEveryToAny };
