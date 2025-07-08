@@ -1,9 +1,15 @@
+import type { ZuordEq } from "./eq.types";
 import { ZuordValueAt } from "./value.types";
 import { ZuordUnionOf } from "./union.types";
 import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 import { ZuordArrayDepth, ZuordArrayIn } from "./array.types";
 
 export namespace ZuordUtil {
+
+    // EQ
+
+    export type Eq<T1, T2> = ZuordEq<T1, T2>;
+
     
     // VALUE
 
