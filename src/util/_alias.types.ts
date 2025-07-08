@@ -1,6 +1,6 @@
 import { ZuordType } from "@/type/_alias.types";
 import type { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqToAny, ZuordEqAnyToAny, ZuordEqEveryToAny } from "./eq.types";
-import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsToAny, ZuordIsToEvery } from "./is.types";
+import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsToAny, ZuordIsToEvery, ZuordIsAnyToAny } from "./is.types";
 import { ZuordValueAt } from "./value.types";
 import { ZuordUnionOf } from "./union.types";
 import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
@@ -34,6 +34,8 @@ export namespace ZuordUtil {
     export type IsToAny<TSource, TBases extends ZuordType.Array> = ZuordIsToAny<TSource, TBases>;
 
     export type IsToEvery<TSource, TBases extends ZuordType.Array> = ZuordIsToEvery<TSource, TBases>;
+
+    export type IsAnyToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordIsAnyToAny<TSources, TBases>;
 
     
     // VALUE
