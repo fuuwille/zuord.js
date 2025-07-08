@@ -1,12 +1,11 @@
 import { Zuord } from "@/core/alias.types"
-import { zuordUtil } from "@/trait/_alias";
-import { ZuordTrait } from "@/trait/_alias.types";
+import { zuordType } from "@/type/_alias";
 
 function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
-    if (!zuordUtil.isObject(obj)) {
+    if (!zuordType.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
-    if (!zuordUtil.isObject(pattern)) {
+    if (!zuordType.isObject(pattern)) {
         throw new TypeError("omit: Second argument must be a valid pattern (object).");
     }
 
@@ -20,9 +19,9 @@ function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) 
             if (patVal === true) {
                 continue;
             }
-            if (zuordUtil.isObject(patVal) && zuordUtil.isObject(objVal)) {
+            if (zuordType.isObject(patVal) && zuordType.isObject(objVal)) {
                 const sub = omit(objVal, patVal);
-                if (zuordUtil.isObject(sub) && Object.keys(sub).length > 0) {
+                if (zuordType.isObject(sub) && Object.keys(sub).length > 0) {
                     result[key] = sub;
                 }
             } else {
