@@ -16,7 +16,7 @@ type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil
     }) : (
         [ZuordUtil.EqToAny<TPatch, [undefined, never]>] extends [true] ? (
             [ZuordUtil.EqToAny<TCurrent, [undefined, never]>] extends [true] ? TPatch : TCurrent
-        ) : ZuordTrait.ExcludeExact<TPatch, undefined>
+        ) : ZuordUtil.ExcludeEq<TPatch, undefined>
     )
 ) : TCurrent;
 
