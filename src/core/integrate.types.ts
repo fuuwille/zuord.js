@@ -5,13 +5,13 @@ import { ZuordUtil } from "@/util/_alias.types";
 
 type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = Zuord.Normalize<IntegrateRaw<A, B, Options>>;
 
-type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordTrait.IsSome<[A, B], never>] extends [false] ? (
-    [ZuordTrait.IsAll<[A, B], ZuordType.Array>] extends [true] ? (
+type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsAny<[A, B], never>] extends [false] ? (
+    [ZuordUtil.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         [Options["mode"]["concat"]] extends [true] 
             ? Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
             : Array<ZuordUtil.ArrayIn<B>>
     ) : 
-    [ZuordTrait.IsAll<[A, B], ZuordType.Plain>] extends [true] ? ({
+    [ZuordUtil.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
             [Options["mode"]["shallow"]] extends [false] ? (
                 IntegrateRaw<
