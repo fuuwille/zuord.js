@@ -1,6 +1,6 @@
 import { ZuordType } from "@/type/_alias.types";
 import type { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqToAny, ZuordEqAnyToAny, ZuordEqEveryToAny } from "./eq.types";
-import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsSome, ZuordIsToEvery, ZuordIsAnyToAny, ZuordIsAnyToEvery, ZuordIsEveryToAny, ZuordIsEveryToEvery } from "./is.types";
+import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsSome, ZuordIsEach, ZuordIsAnyToAny, ZuordIsAnyToEvery, ZuordIsEveryToAny, ZuordIsEveryToEvery } from "./is.types";
 import type { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasToAny, ZuordHasToEvery, ZuordHasAnyToAny, ZuordHasAnyToEvery, ZuordHasEveryToAny, ZuordHasEveryToEvery } from "./has.types";
 import type { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
 import type { ZuordExtract, ZuordExtractEq } from "./extract.types";
@@ -35,7 +35,7 @@ export namespace ZuordUtil {
 
     export type IsSome<TSource, TBases extends ZuordType.Array> = ZuordIsSome<TSource, TBases>;
 
-    export type IsToEvery<TSource, TBases extends ZuordType.Array> = ZuordIsToEvery<TSource, TBases>;
+    export type IsEach<TSource, TBases extends ZuordType.Array> = ZuordIsEach<TSource, TBases>;
 
     export type IsAnyToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordIsAnyToAny<TSources, TBases>;
 

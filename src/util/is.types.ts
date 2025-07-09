@@ -37,13 +37,13 @@ type IsSome<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBa
 export type { IsSome as ZuordIsSome };
 
 
-// IS TO EVERY
+// IS EACH
 
-type IsToEvery<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    [Is<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.EmptyArray ? true : IsToEvery<TSource, TRestBases>) : false
+type IsEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Is<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.EmptyArray ? true : IsEach<TSource, TRestBases>) : false
 ) : false;
 
-export type { IsToEvery as ZuordIsToEvery };
+export type { IsEach as ZuordIsEach };
 
 
 // IS ANY TO ANY
@@ -58,7 +58,7 @@ export type { IsAnyToAny as ZuordIsAnyToAny };
 // IS ANY TO EVERY
 
 type IsAnyToEvery<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsToEvery<TSource, TBases> extends true ? true : IsAnyToEvery<TRestSources, TBases>
+    IsEach<TSource, TBases> extends true ? true : IsAnyToEvery<TRestSources, TBases>
 ) : false;
 
 export type { IsAnyToEvery as ZuordIsAnyToEvery };
@@ -76,7 +76,7 @@ export type { IsEveryToAny as ZuordIsEveryToAny };
 // IS EVERY TO EVERY
 
 type IsEveryToEvery<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsToEvery<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryToEvery<TRestSources, TBases>) : false
+    IsEach<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryToEvery<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEveryToEvery as ZuordIsEveryToEvery };
