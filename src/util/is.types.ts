@@ -49,7 +49,7 @@ export type { IsEach as ZuordIsEach };
 // IS ANY SOME
 
 type IsAnySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsSome<TSource, TBases> extends true ? true : IsAnySome<TRestSources, TBases>
+    [IsSome<TSource, TBases>] extends [true] ? true : IsAnySome<TRestSources, TBases>
 ) : false;
 
 export type { IsAnySome as ZuordIsAnySome };
@@ -58,7 +58,7 @@ export type { IsAnySome as ZuordIsAnySome };
 // IS ANY EACH
 
 type IsAnyEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsEach<TSource, TBases> extends true ? true : IsAnyEach<TRestSources, TBases>
+    [IsEach<TSource, TBases>] extends [true] ? true : IsAnyEach<TRestSources, TBases>
 ) : false;
 
 export type { IsAnyEach as ZuordIsAnyEach };
@@ -67,7 +67,7 @@ export type { IsAnyEach as ZuordIsAnyEach };
 // IS EVERY SOME
 
 type IsEverySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsSome<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEverySome<TRestSources, TBases>) : false
+    [IsSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEverySome<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEverySome as ZuordIsEverySome };
@@ -76,7 +76,7 @@ export type { IsEverySome as ZuordIsEverySome };
 // IS EVERY EACH
 
 type IsEveryEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsEach<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryEach<TRestSources, TBases>) : false
+    [IsEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryEach<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEveryEach as ZuordIsEveryEach };
