@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types";
-import { ZuordUtil } from "@/util/_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Options<Mode extends Partial<Zuord.Mode> = Partial<Zuord.Mode>> = {
     outcasts: Zuord.Outcasts
@@ -15,7 +15,7 @@ type ResolveOptions<T extends Zuord.Optional<Zuord.Options>, R extends Options =
 
 type OptionsOf<T extends Zuord.Data> = Zuord.ImposeBase<Zuord.MergeOptions, { 
     mode: T["mode"],
-    outcasts: ZuordUtil.InstanceTuple<NonNullable<T["outcasts"]>>
+    outcasts: ZuordType.InstanceTuple<NonNullable<T["outcasts"]>>
 }, Zuord.MergeDefaultOptions>;
 
 export type { Options as ZuordOptions };
