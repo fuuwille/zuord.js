@@ -63,3 +63,5 @@ const mergedObject: {
     d: number;
 }
 ```
+
+As can be seen, we can naturally extract types without using a schema.
