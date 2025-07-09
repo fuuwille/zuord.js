@@ -35,13 +35,13 @@ type EqSome<T1, U2 extends ZuordType.Array> = U2 extends [infer T2, ...infer R2]
 export type { EqSome as ZuordEqSome };
 
 
-// EQ ANY TO ANY
+// EQ ANY SOME
 
-type EqAnyToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
-    [EqSome<T1, U2>] extends [true] ? true : EqAnyToAny<R1, U2>
+type EqAnySome<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
+    [EqSome<T1, U2>] extends [true] ? true : EqAnySome<R1, U2>
 ) : false;
 
-export type { EqAnyToAny as ZuordEqAnyToAny };
+export type { EqAnySome as ZuordEqAnySome };
 
 
 // EQ EVERY TO ANY
