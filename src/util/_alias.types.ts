@@ -4,7 +4,6 @@ import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsSome, ZuordIsEach, Zuord
 import type { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasSome, ZuordHasEach, ZuordHasAnySome, ZuordHasAnyEach, ZuordHasEverySome, ZuordHasEveryEach } from "./has.types";
 import type { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
 import type { ZuordExtract, ZuordExtractEach, ZuordExtractEq, ZuordExtractEqEach } from "./extract.types";
-import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordUtil {
 
@@ -85,11 +84,4 @@ export namespace ZuordUtil {
     export type ExtractEq<TSource, TBase> = ZuordExtractEq<TSource, TBase>;
 
     export type ExtractEqEach<TSource, TBases extends ZuordType.Array> = ZuordExtractEqEach<TSource, TBases>;
-
-
-    // INSTANCE
-
-    export type InstanceOf<T> = ZuordInstanceOf<T>;
-    
-    export type InstanceTuple<T> = ZuordInstanceTuple<T>;
 }
