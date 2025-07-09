@@ -46,13 +46,13 @@ type IsEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBa
 export type { IsEach as ZuordIsEach };
 
 
-// IS ANY TO ANY
+// IS ANY SOME
 
-type IsAnyToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsSome<TSource, TBases> extends true ? true : IsAnyToAny<TRestSources, TBases>
+type IsAnySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    IsSome<TSource, TBases> extends true ? true : IsAnySome<TRestSources, TBases>
 ) : false;
 
-export type { IsAnyToAny as ZuordIsAnyToAny };
+export type { IsAnySome as ZuordIsAnySome };
 
 
 // IS ANY TO EVERY
