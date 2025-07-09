@@ -3,7 +3,6 @@ import type { ZuordFunction } from "./function.types";
 import type { ZuordTuple } from "./tuple.types";
 import type { ZuordArray, ZuordEmptyArray, ZuordArrayInfer, ZuordArrayDepth } from "./array.types";
 import type { ZuordPlain } from "./plain.types";
-import type { ZuordObject } from "./object.types";
 import type { ZuordUnionOf } from "./union.types";
 import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
