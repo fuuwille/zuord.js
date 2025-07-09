@@ -1,11 +1,14 @@
 import { zuord } from "./core/alias";
-import { Zuord } from "./core/alias.types";
-import { zuordType } from "./type/_alias";
-import { ZuordType } from "./type/_alias.types";
-import { ZuordUtil } from "./util/_alias.types";
-
 export { zuord };
-export type { Zuord };
+
+import { zuordType } from "./type/_alias";
 export { zuordType };
+
+import { Zuord } from "./core/alias.types";
+export type { Zuord };
+
+import { ZuordType } from "./type/_alias.types";
 export type { ZuordType };
+
+import { ZuordUtil } from "./util/_alias.types";
 export type { ZuordUtil };
