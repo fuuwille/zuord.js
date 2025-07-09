@@ -28,13 +28,13 @@ type IsEvery<TSources extends ZuordType.Array, TBase> = TSources extends [infer 
 export type { IsEvery as ZuordIsEvery };
 
 
-// IS TO ANY
+// IS SOME
 
-type IsToAny<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    [Is<TSource, TBase>] extends [true] ? true : IsToAny<TSource, TRestBases>
+type IsSome<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Is<TSource, TBase>] extends [true] ? true : IsSome<TSource, TRestBases>
 ) : false;
 
-export type { IsToAny as ZuordIsToAny };
+export type { IsSome as ZuordIsSome };
 
 
 // IS TO EVERY
@@ -49,7 +49,7 @@ export type { IsToEvery as ZuordIsToEvery };
 // IS ANY TO ANY
 
 type IsAnyToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsToAny<TSource, TBases> extends true ? true : IsAnyToAny<TRestSources, TBases>
+    IsSome<TSource, TBases> extends true ? true : IsAnyToAny<TRestSources, TBases>
 ) : false;
 
 export type { IsAnyToAny as ZuordIsAnyToAny };
@@ -67,7 +67,7 @@ export type { IsAnyToEvery as ZuordIsAnyToEvery };
 // IS EVERY TO ANY
 
 type IsEveryToAny<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    IsToAny<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryToAny<TRestSources, TBases>) : false
+    IsSome<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : IsEveryToAny<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEveryToAny as ZuordIsEveryToAny };
@@ -93,9 +93,9 @@ type Test4 = IsEvery<[1, 2, 3], 3>; // false
 type Test5 = IsEvery<[3, 3, 3], 3>; // true
 type Test6 = IsEvery<[], 3>;        // false (boş tuple)
 
-type Test7 = IsToAny<1, [1, 2, 3]>; // true
-type Test8 = IsToAny<4, [1, 2, 3]>; // false
-type Test9 = IsToAny<1, []>;        // false (boş tuple)
+type Test7 = IsSome<1, [1, 2, 3]>; // true
+type Test8 = IsSome<4, [1, 2, 3]>; // false
+type Test9 = IsSome<1, []>;        // false (boş tuple)
 
 type Test10 = IsToEvery<{ hello: string, world: string }, [{ hello: string }, { world: string} ]>; // true
 type Test11 = IsToEvery<{ hello: string, world: string }, [{ hello: string }, { world: number} ]>; // false
