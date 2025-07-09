@@ -29,7 +29,7 @@ npm install zuord
 
 # Samples
 
-Let's merge several plain objects and see if the compiler can deduce the type.
+Let's merge several plain objects and observe how the compiler infers the resulting type.
 
 ```typescript
 const mergedObject = zuord.merge(
@@ -41,8 +41,8 @@ const mergedObject = zuord.merge(
 );
 ```
 
-In the typescript ecosystem, all popular libraries prefer to leave the type of mergedObject as any or do not perform type inference.
-But zuord provides type inference naturally without performance concerns.
+In the TypeScript ecosystem, most popular libraries either leave the merged object's type as any or provide limited type inference.
+Zuord, however, offers natural and precise type inference without compromising performance.
 
 The result:
 
@@ -64,4 +64,4 @@ const mergedObject: {
 }
 ```
 
-As can be seen, we can naturally extract types without using a schema.
+As demonstrated, types are inferred naturally without requiring explicit schemas.
