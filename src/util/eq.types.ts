@@ -10,11 +10,13 @@ export type { Eq as ZuordEq };
 
 // EQ ANY
 
-type EqAny<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] ? (
-    [Eq<T1, T2>] extends [true] ? true : EqAny<R1, T2>
-) : false;
+type EqAny<U1 extends ZuordType.Tuple, T2> = __EqAnyImpl<U1, T2>;
 
 export type { EqAny as ZuordEqAny };
+
+type __EqAnyImpl<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
+    [Eq<T1, T2>] extends [true] ? true : __EqAnyImpl<R1, T2>
+) : false;
 
 
 // EQ EVERY

@@ -11,7 +11,7 @@ export namespace ZuordUtil {
 
     export type Eq<T1, T2> = ZuordEq<T1, T2>;
 
-    export type EqAny<U1 extends ZuordType.Array, T2> = ZuordEqAny<U1, T2>;
+    export type EqAny<U1 extends ZuordType.Tuple, T2> = ZuordEqAny<U1, T2>;
 
     export type EqEvery<U1 extends ZuordType.Array, T2> = ZuordEqEvery<U1, T2>;
 
