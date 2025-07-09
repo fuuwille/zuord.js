@@ -74,8 +74,8 @@ export type { HasEverySome as ZuordHasEverySome };
 
 // HAS EVERY TO EVERY
 
-type HasEveryToEvery<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    HasEach<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : HasEveryToEvery<TRestSources, TBases>) : false
+type HasEveryEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    HasEach<TSource, TBases> extends true ? (TRestSources extends ZuordType.EmptyArray ? true : HasEveryEach<TRestSources, TBases>) : false
 ) : false;
 
-export type { HasEveryToEvery as ZuordHasEveryToEvery };
+export type { HasEveryEach as ZuordHasEveryEach };
