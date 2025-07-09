@@ -54,13 +54,13 @@ type HasAnySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array
 export type { HasAnySome as ZuordHasAnySome };
 
 
-// HAS ANY TO EVERY
+// HAS ANY EACH
 
-type HasAnyToEvery<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    HasEach<TSource, TBases> extends true ? true : HasAnyToEvery<TRestSources, TBases>
+type HasAnyEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    HasEach<TSource, TBases> extends true ? true : HasAnyEach<TRestSources, TBases>
 ) : false;
 
-export type { HasAnyToEvery as ZuordHasAnyToEvery };
+export type { HasAnyEach as ZuordHasAnyEach };
 
 
 // HAS EVERY TO ANY
