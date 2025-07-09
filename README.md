@@ -1,12 +1,17 @@
-# Zuord
+## 🚧 Early Access Notice
 
-> **Note:** This is an early access release and does **not** guarantee API stability.
+Zuord is currently in an **early access** phase. While the foundations are solid, the API is still evolving and **not stable**.
 
-> **Also Note:** Unfortunately, contributions will not be accepted unless stated otherwise.
+At this stage, **contributions are not being accepted**, unless explicitly stated otherwise.  
+However, **feedback, suggestions, and issue reports are highly welcome** and will be taken into consideration with great care.
+
+If you're passionate about TypeScript's type system and want to explore its limits — now is the perfect time to get involved.
 
 ---
 
-## Overview
+<br/>
+
+# Overview
 
 Zuord is the most powerful utility type system designed to fill critical gaps in the TypeScript ecosystem.  
 It enables precise compile-time type differentiation and normalization to enhance type safety and developer experience.
