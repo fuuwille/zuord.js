@@ -23,3 +23,12 @@ export type { ExcludeEach as ZuordExcludeEach };
 type ExcludeEq<TSource, TBase> = TSource extends any ? ([ZuordUtil.Eq<TSource, TBase>] extends [false] ? TSource : never) : never;
 
 export type { ExcludeEq as ZuordExcludeEq };
+
+
+// EXCLUDE EQ EACH
+
+type ExcludeEqEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    ExcludeEqEach<ExcludeEq<TSource, TBase>, TRestBases>
+) : TSource;
+
+export type { ExcludeEqEach as ZuordExcludeEqEach };
