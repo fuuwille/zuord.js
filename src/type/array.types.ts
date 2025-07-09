@@ -26,6 +26,6 @@ type ArrayDepth<T> = ArrayDepthImpl<T, []>;
 
 export type { ArrayDepth as ZuordArrayDepth };
 
-type ArrayDepthImpl<T, D extends any[]> = T extends readonly (infer U)[] ? (
+type ArrayDepthImpl<T, D extends Array> = T extends readonly (infer U)[] ? (
     ArrayDepthImpl<U, [unknown, ...D]>
 ) : D['length'];
