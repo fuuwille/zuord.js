@@ -7,8 +7,8 @@ type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions>
 type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsAny<[A, B], never>] extends [false] ? (
     [ZuordUtil.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         [Options["mode"]["concat"]] extends [true] 
-            ? Array<ZuordUtil.ArrayIn<B> | ZuordUtil.ArrayIn<A>>
-            : Array<ZuordUtil.ArrayIn<B>>
+            ? Array<ZuordType.ArrayInfer<B> | ZuordType.ArrayInfer<A>>
+            : Array<ZuordType.ArrayInfer<B>>
     ) : 
     [ZuordUtil.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
