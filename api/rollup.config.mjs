@@ -1,21 +1,7 @@
-import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import { createBaseConfig } from '../rollup.base.config.mjs';
 
-export default {
+export default createBaseConfig({
     input: 'src/index.ts',
-    output: {
-        dir: 'dist',
-        format: 'esm',
-        preserveModules: true,
-        sourcemap: true,
-    },
-    plugins: [
-        resolve(),
-        typescript({
-            tsconfig: './tsconfig.dist.json',
-            declaration: true,
-            declarationMap: true,
-            emitDeclarationOnly: false,
-        }),
-    ],
-};
+    tsconfig: './tsconfig.json',
+    //external: ['@zuord/internal']
+});
