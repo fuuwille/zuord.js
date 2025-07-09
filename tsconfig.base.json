@@ -15,8 +15,8 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["api/src/index.ts"],
-      "@zuord/internal": ["internal/src/index.ts"]
+      "@": ["src/index.ts"],
+      "@/*": ["src/*"]
     }
   }
 }
