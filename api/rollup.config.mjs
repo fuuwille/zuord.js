@@ -1,6 +1,6 @@
-import { createBaseConfig } from '../rollup.base.config.mjs';
+import { createConfig } from '../rollup.base.config.mjs';
 
-export default createBaseConfig({
+export default createConfig({
     input: 'src/index.ts',
     tsconfig: './tsconfig.json',
     //external: ['@zuord/internal']
