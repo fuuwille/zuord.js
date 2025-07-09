@@ -1,5 +1,5 @@
 import { Zuord } from "@/core/alias.types"
-import { ZuordTrait } from "@/trait/_alias.types";
+import { ZuordUtil } from "@/util/_alias.types";
 
 type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;
 
@@ -10,7 +10,7 @@ type OmitRaw<T, U> = {
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? ZuordTrait.Is<OmitRaw<T[K], U[K]>, never> extends true
+                        ? ZuordUtil.Is<OmitRaw<T[K], U[K]>, never> extends true
                             ? never
                             : K
                         : K
