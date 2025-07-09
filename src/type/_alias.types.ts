@@ -25,8 +25,6 @@ export namespace ZuordType {
 
     export type Plain = ZuordPlain;
 
-    export type Object = ZuordObject;
-
     export type UnionOf<U extends ZuordType.Tuple> = ZuordUnionOf<U>;
 
     export type InstanceOf<T> = ZuordInstanceOf<T>;
