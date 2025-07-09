@@ -44,10 +44,10 @@ type EqAnySome<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 exte
 export type { EqAnySome as ZuordEqAnySome };
 
 
-// EQ EVERY TO ANY
+// EQ EVERY SOME
 
-type EqEveryToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
-    [EqSome<T1, U2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEveryToAny<R1, U2>) : false
+type EqEverySome<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = U1 extends [infer T1, ...infer R1] ? (
+    [EqSome<T1, U2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEverySome<R1, U2>) : false
 ) : false;
 
-export type { EqEveryToAny as ZuordEqEveryToAny };
+export type { EqEverySome as ZuordEqEverySome };
