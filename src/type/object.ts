@@ -1,9 +1,7 @@
-import { ZuordType } from "./_alias.types";
-
 
 // IS OBJECT
 
-function isObject(item: any) : item is ZuordType.Object {
+function isObject(item: any) : item is object {
     return item !== null && typeof item === 'object';
 }
 
