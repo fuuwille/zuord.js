@@ -4,7 +4,6 @@ import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsToAny, ZuordIsToEvery, Z
 import type { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasToAny, ZuordHasToEvery, ZuordHasAnyToAny, ZuordHasAnyToEvery, ZuordHasEveryToAny, ZuordHasEveryToEvery } from "./has.types";
 import type { ZuordExclude, ZuordExcludeEq } from "./exclude.types";
 import type { ZuordExtract, ZuordExtractEq } from "./extract.types";
-import { ZuordValueAt } from "./value.types";
 import { ZuordUnionOf } from "./union.types";
 import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 import { ZuordArrayDepth, ZuordArrayIn } from "./array.types";
@@ -85,7 +84,6 @@ export namespace ZuordUtil {
     
     // VALUE
 
-    export type ValueAt<T, K extends PropertyKey> = ZuordValueAt<T, K>;
 
     // UNION
 
