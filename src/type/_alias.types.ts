@@ -5,6 +5,7 @@ import type { ZuordArray, ZuordEmptyArray, ZuordArrayInfer, ZuordArrayDepth } fr
 import type { ZuordPlain } from "./plain.types";
 import type { ZuordObject } from "./object.types";
 import type { ZuordUnionOf } from "./union.types";
+import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
 
 export namespace ZuordType {
     
@@ -27,4 +28,8 @@ export namespace ZuordType {
     export type Object = ZuordObject;
 
     export type UnionOf<U extends ZuordType.Tuple> = ZuordUnionOf<U>;
+
+    export type InstanceOf<T> = ZuordInstanceOf<T>;
+
+    export type InstanceTuple<T> = ZuordInstanceTuple<T>;
 }
