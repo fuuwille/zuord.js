@@ -21,11 +21,13 @@ type __EqAnyImpl<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
 
 // EQ EVERY
 
-type EqEvery<U1 extends ZuordType.Array, T2> = U1 extends [infer T1, ...infer R1] ? (
-    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEvery<R1, T2>) : false
-) : false;
+type EqEvery<U1 extends ZuordType.Tuple, T2> = __EqEveryImpl<U1, T2>;
 
 export type { EqEvery as ZuordEqEvery };
+
+type __EqEveryImpl<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
+    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : __EqEveryImpl<R1, T2>) : false
+) : false;
 
 
 // EQ SOME

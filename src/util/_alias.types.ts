@@ -13,7 +13,7 @@ export namespace ZuordUtil {
 
     export type EqAny<U1 extends ZuordType.Tuple, T2> = ZuordEqAny<U1, T2>;
 
-    export type EqEvery<U1 extends ZuordType.Array, T2> = ZuordEqEvery<U1, T2>;
+    export type EqEvery<U1 extends ZuordType.Tuple, T2> = ZuordEqEvery<U1, T2>;
 
     export type EqSome<T1, U2 extends ZuordType.Array> = ZuordEqSome<T1, U2>;
 
