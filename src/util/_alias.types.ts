@@ -15,11 +15,11 @@ export namespace ZuordUtil {
 
     export type EqEvery<U1 extends ZuordType.Tuple, T2> = ZuordEqEvery<U1, T2>;
 
-    export type EqSome<T1, U2 extends ZuordType.Array> = ZuordEqSome<T1, U2>;
+    export type EqSome<T1, U2 extends ZuordType.Tuple> = ZuordEqSome<T1, U2>;
 
-    export type EqAnySome<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = ZuordEqAnySome<U1, U2>;
+    export type EqAnySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = ZuordEqAnySome<U1, U2>;
 
-    export type EqEverySome<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = ZuordEqEverySome<U1, U2>;
+    export type EqEverySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = ZuordEqEverySome<U1, U2>;
 
 
     // IS
