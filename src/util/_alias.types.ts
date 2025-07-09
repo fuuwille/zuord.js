@@ -6,7 +6,6 @@ import type { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach
 import type { ZuordExtract, ZuordExtractEach, ZuordExtractEq, ZuordExtractEqEach } from "./extract.types";
 import { ZuordUnionOf } from "./union.types";
 import { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
-import { ZuordArrayDepth, ZuordArrayIn } from "./array.types";
 
 export namespace ZuordUtil {
 
@@ -99,11 +98,4 @@ export namespace ZuordUtil {
     export type InstanceOf<T> = ZuordInstanceOf<T>;
     
     export type InstanceTuple<T> = ZuordInstanceTuple<T>;
-
-
-    // ARRAY
-
-    export type ArrayIn<T> = ZuordArrayIn<T>;
-    
-    export type ArrayDepth<T> = ZuordArrayDepth<T>;
 }
