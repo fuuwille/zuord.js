@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "zuord-monorepo",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1"
+  }
+}
