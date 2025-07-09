@@ -1,0 +1,8 @@
+node_modules
+src
+tests
+.gitignore
+rollup.config.mjs
+tsconfig.json
+tsconfig.dist.json
+vitest.config.js
