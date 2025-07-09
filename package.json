@@ -1,6 +1,6 @@
 {
   "name": "zuord",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha",
   "description": "Type-safe deep merge utility for producing merged content from multiple objects with full TypeScript support.",
   "main": "dist/zuord.js",
   "scripts": {
