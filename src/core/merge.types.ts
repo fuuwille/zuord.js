@@ -1,9 +1,9 @@
 import { Zuord } from "@/core/alias.types"
-import { ZuordUtil } from "@/util/_alias.types";
+import { ZuordType } from "@/type/_alias.types";
 
 type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = Zuord.Normalize<MergeRaw<U, Options>, Options>
 
-type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordUtil.ArrayDepth<U> extends 1 ? (
+type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordType.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
         Zuord.IntegrateRaw<MergeRaw<Rest, Options>, Head, Options>
     ) : {}
