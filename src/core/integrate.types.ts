@@ -21,7 +21,7 @@ type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptio
             ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
         )
     }) : B
-) : ZuordUtil.UnionOf<[A, B]>;
+) : ZuordType.UnionOf<[A, B]>;
 
 type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = Zuord.Options<Mode>;
 
