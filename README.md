@@ -22,7 +22,7 @@ It enables precise compile-time type differentiation and normalization to enhanc
 ## Installation
 
 ```bash
-npm install zuord
+npm install zuord@0.1.0-alpha
 ```
 
 <br/><br/>
