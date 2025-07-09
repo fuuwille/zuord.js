@@ -1,5 +1,5 @@
 import { ZuordType } from "@/type/_alias.types";
-import type { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqToAny, ZuordEqAnyToAny, ZuordEqEveryToAny } from "./eq.types";
+import type { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome, ZuordEqAnyToAny, ZuordEqEveryToAny } from "./eq.types";
 import type { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsSome, ZuordIsEach, ZuordIsAnySome, ZuordIsAnyEach, ZuordIsEverySome, ZuordIsEveryEach } from "./is.types";
 import type { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasSome, ZuordHasEach, ZuordHasAnySome, ZuordHasAnyEach, ZuordHasEverySome, ZuordHasEveryEach } from "./has.types";
 import type { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
@@ -18,7 +18,7 @@ export namespace ZuordUtil {
 
     export type EqEvery<U1 extends ZuordType.Array, T2> = ZuordEqEvery<U1, T2>;
 
-    export type EqToAny<T1, U2 extends ZuordType.Array> = ZuordEqToAny<T1, U2>;
+    export type EqSome<T1, U2 extends ZuordType.Array> = ZuordEqSome<T1, U2>;
 
     export type EqAnyToAny<U1 extends ZuordType.Array, U2 extends ZuordType.Array> = ZuordEqAnyToAny<U1, U2>;
 

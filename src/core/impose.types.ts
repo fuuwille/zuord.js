@@ -13,8 +13,8 @@ type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil
         [K in keyof TBase]: ImposeLooseBase<TBase[K], NonNullable<TPatch> extends infer TInfer ?
             (K extends keyof TInfer ? TInfer[K] : TCurrent[K]) : never, TCurrent[K]>
     }) : (
-        [ZuordUtil.EqToAny<TPatch, [undefined, never]>] extends [true] ? (
-            [ZuordUtil.EqToAny<TCurrent, [undefined, never]>] extends [true] ? TPatch : TCurrent
+        [ZuordUtil.EqSome<TPatch, [undefined, never]>] extends [true] ? (
+            [ZuordUtil.EqSome<TCurrent, [undefined, never]>] extends [true] ? TPatch : TCurrent
         ) : ZuordUtil.ExcludeEq<TPatch, undefined>
     )
 ) : TCurrent;
