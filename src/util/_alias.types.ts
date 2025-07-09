@@ -81,9 +81,6 @@ export namespace ZuordUtil {
 
     export type ExtractEq<TSource, TBase> = ZuordExtractEq<TSource, TBase>;
 
-    
-    // VALUE
-
 
     // UNION
 
