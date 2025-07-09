@@ -15,11 +15,13 @@ export type { ArrayInfer as ZuordArrayInfer };
 
 // ARRAY DEPTH
 
-type ArrayDepth<T, D extends unknown[] = []> = T extends readonly (infer U)[] ? (
-    ArrayDepth<U, [unknown, ...D]> 
-) : D['length'];
+type ArrayDepth<T> = ArrayDepthImpl<T, []>;
 
 export type { ArrayDepth as ZuordArrayDepth };
+
+type ArrayDepthImpl<T, D extends any[]> = T extends readonly (infer U)[] ? (
+    ArrayDepthImpl<U, [unknown, ...D]>
+) : D['length'];
 
 
 // EMPTY ARRAY
