@@ -23,6 +23,4 @@ It enables precise compile-time type differentiation and normalization to enhanc
 
 ```bash
 npm install zuord
-# or
-yarn add zuord
 ```
