@@ -1,3 +1,28 @@
+# Zuord  
+**Advanced Type Utilities for TypeScript Power Users**
+
+“Zuord” comes from the German word *zuordnen*, meaning “to assign”.  
+This library helps you assign meaning and structure to your types — clearly, powerfully, and safely.
+
+> _A lightweight utility type system that bridges the missing gaps in the TypeScript ecosystem, offering expressive, safe, and deeply composable typings._
+
+---
+
+## ✨ Why Zuord?
+
+TypeScript provides great type safety, but when it comes to *type normalization*, *deep merging*, or *class vs plain object distinction*, it still leaves much to be desired. That’s where **Zuord** comes in.
+
+With Zuord, you get:
+
+- 📦 **Compile-time safety** for advanced object operations  
+- ⚙️ **Zero runtime cost** — it's entirely static  
+- 💡 **Better readability** with cleaner types  
+- 🧩 **Highly composable utilities** like `Eq`, `Is`, `Exclude`, `Has`, `Extract`
+
+Whether you're building complex libraries, type-driven APIs, or just want more expressive power in your TypeScript project — Zuord will likely save you hours of frustration.
+
+---
+
 ## 🚧 Early Access Notice
 
 Zuord is currently in an **early access** phase. While the foundations are solid, the API is still evolving and **not stable**.
@@ -5,70 +30,47 @@ Zuord is currently in an **early access** phase. While the foundations are solid
 At this stage, **contributions are not being accepted**, unless explicitly stated otherwise.  
 However, **feedback, suggestions, and issue reports are highly welcome** and will be taken into consideration with great care.
 
-If you're passionate about TypeScript's type system and want to explore its limits — now is the perfect time to get involved.
-
 ---
 
-<br/>
-
-# Overview
-
-Zuord is the most powerful utility type system designed to fill critical gaps in the TypeScript ecosystem.  
-It enables precise compile-time type differentiation and normalization to enhance type safety and developer experience.
-
----
-
-## Key Features
-
-- **Advanced Normalization:** Streamlines complex types into clean, optimized forms.  
-- **Class vs. Plain Object Differentiation:** Accurately distinguishes between class instances and plain objects.  
-- **Robust Utility Types:** Includes essential helpers like `Eq`, `Is`, `Has`, `Exclude`, and `Extract` for expressive and precise type logic.  
-
----
-
-## Installation
+## 📦 Installation
 
 ```bash
 npm install zuord@0.1.1-alpha
 ```
 
-<br/><br/>
+## Quick example
+Deeply merge types — with zero schemas and fully inferred results.
+Just hover over merged to see the full, static type.
 
-# Samples
-
-Let's merge several plain objects and observe how the compiler infers the resulting type.
-
-```typescript
-const mergedObject = zuord.merge(
-  { hahah: 1, b: 2, hello: { a: {a : new Date()}, b: 2 }, cici: [[[true]], ["stringg"]]},
-  { hahah: "falsseeee", c: 4 },
-  { b: 5, d: 6, hello: { a: {b: "s"}, c: 4 } },
-  { hahah: () => null },
-  { hahah: "string", cici: [[1, 2, [3, 2]], ["cici", 3]] }
+```ts
+// 🧠 No schema, no casting — fully inferred deep merge:
+const merged = zuord.merge(
+  { user: { name: "Alice", meta: { age: 30, hobbies: ["reading"] } }, active: true },
+  { user: { id: 42, meta: { hobbies: ["gaming"], verified: false } }, tags: ["admin"] },
+  { user: { registeredAt: new Date() }, settings: { theme: "dark" } }
 );
 ```
 
-In the TypeScript ecosystem, most popular libraries either leave the merged object's type as any or provide limited type inference.
-Zuord, however, offers natural and precise type inference without compromising performance.
+✅ Hover to see the full static type:
 
-The result:
-
-```typescript
-const mergedObject: {
-    hahah: string;
-    b: number;
-    hello: {
-        a: {
-            a: Date;
-            b: string;
+```ts
+const merged: {
+    user: {
+        name: string;
+        meta: {
+            age: number;
+            hobbies: string[];
+            verified: boolean;
         };
-        b: number;
-        c: number;
+        id: number;
+        registeredAt: Date;
     };
-    cici: (string | number | (number | boolean)[])[][];
-    c: number;
-    d: number;
+    active: boolean;
+    tags: string[];
+    settings: {
+        theme: string;
+    };
 }
 ```
 
-As demonstrated, types are inferred naturally without requiring explicit schemas.
+Also, classes are not normalized (expressed by name) because Zuord clearly distinguishes between class instances and plain objects.
