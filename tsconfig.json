@@ -17,6 +17,7 @@
       "@": ["src/index.ts"],
       "@/*": ["src/*"],
       "zuord": ["../api/src/index.ts"],
+      "@zuord/types": ["../type/src/index.ts"],
     }
   }
 }
