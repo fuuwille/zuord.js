@@ -1,4 +1,4 @@
-import { ZuordType } from "../type/_alias.types";
+import { ZuordType } from "@zuord/types";
 
 
 // EQ
