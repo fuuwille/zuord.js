@@ -1,6 +1,6 @@
 {
   "name": "zuord",
-  "version": "0.2.0-alpha",
+  "version": "0.3.0-alpha",
   "description": "The most powerful TypeScript utility type system designed to fill critical gaps in the type ecosystem, providing advanced normalization, class-plain differentiation, and robust helper types.",
   "main": "dist/index.js",
   "scripts": {
