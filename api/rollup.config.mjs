@@ -1,4 +1,4 @@
-import { createConfig } from '../rollup.base.config.mjs';
+import { createConfig } from '../rollup.config.mjs';
 
 export default createConfig({
     input: 'src/index.ts',
