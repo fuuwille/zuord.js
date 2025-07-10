@@ -5,7 +5,6 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "dist",
     "rootDir": ".",
     "strict": true,
     "moduleResolution": "node",
@@ -13,10 +12,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "paths": {
       "@": ["src/index.ts"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "zuord": ["../api/src/index.ts"],
     }
   }
 }
