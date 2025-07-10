@@ -1,9 +1,13 @@
 {
   "name": "@zuord/test",
-  "version": "0.1.0",
+  "version": "0.5.0-alpha",
   "description": "",
   "main": "src/index.js",
-  "scripts": {},
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "rollup -c",
+    "prepare": "npm run clean && npm run build"
+  },
   "keywords": [],
   "author": "k4yr2",
   "license": "ISC",
