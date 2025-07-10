@@ -1,6 +1,10 @@
 {
   "private": true,
   "name": "zuord-monorepo",
+  "scripts": {
+    "prerelase:do" : "npm version prerelease --preid alpha",
+    "publish:do" : "npm run prerelase:do && npm publish --access public --tag alpha"
+  },
   "dependencies": {
     "@zuord/type": "0.3.0-alpha"
   },
