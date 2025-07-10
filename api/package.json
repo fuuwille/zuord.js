@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/k4yr2/zuord/issues"
   },
-  "homepage": "https://github.com/k4yr2/zuord#readme"
+  "homepage": "https://github.com/k4yr2/zuord#readme",
+  "dependencies": {
+    "@zuord/util": "0.3.0-alpha"
+  }
 }
