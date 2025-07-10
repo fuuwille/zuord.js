@@ -1,4 +1,4 @@
-import { Zuord } from "../core/alias.types"
+import { Zuord } from "./alias.types"
 import { ZuordUtil } from "../util/_alias.types";
 
 type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;

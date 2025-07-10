@@ -1,4 +1,4 @@
-import { Zuord } from "../core/alias.types";
+import { Zuord } from "./alias.types";
 
 type Data = {
     content: object[];
