@@ -3,4 +3,5 @@
 packages:
   - "api"
   - "type"
+  - "util"
   - "test"
