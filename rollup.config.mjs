@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
-export function createConfig({ input, tsconfig, external = [] }) {
+export function createConfig({ input, tsconfig }) {
     return {
         input,
             output: {
@@ -10,7 +10,7 @@ export function createConfig({ input, tsconfig, external = [] }) {
             preserveModules: true,
             sourcemap: true,
         },
-        external,
+        external: ["zuord", "@zuord/type"],
         plugins: [
             resolve(),
             typescript({
