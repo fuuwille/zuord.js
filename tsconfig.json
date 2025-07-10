@@ -18,10 +18,5 @@
       "zuord": ["../api/src/index.ts"],
       "@zuord/types": ["../type/src/index.ts"],
     }
-  },
-  "files": [],
-  "references": [
-    { "path": "./api" },
-    { "path": "./type" }
-  ]
+  }
 }
