@@ -35,7 +35,7 @@ However, **feedback, suggestions, and issue reports are highly welcome** and wil
 ## 📦 Installation
 
 ```bash
-npm install zuord@0.1.1-alpha
+npm install zuord@0.3.0-alpha
 ```
 
 ## Quick example
