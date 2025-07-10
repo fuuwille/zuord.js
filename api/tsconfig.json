@@ -1,9 +1,7 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-  },
-  "include": ["src"],
-  "references": []
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "dist",
+    }
 }
