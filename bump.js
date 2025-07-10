@@ -84,6 +84,13 @@ for (const pkg of targetPackages) {
     console.log(`📦 ${pkg} publishing as ${newVersion}...`);
     try {
       execSync(`cd ${pkg} && npm publish --access public --tag ${preid}`, { stdio: 'inherit' });
+
+      if (preid) {
+        console.log(`🔖 Updating latest tag for ${pkg} to version ${newVersion}...`);
+
+        const pkgName = pkg === "api" ? "zuord" : `@zuord/${pkg}`;
+        execSync(`npm dist-tag add ${pkgName}@${newVersion} latest`, { stdio: 'inherit' });
+      }
     } catch (err) {
       console.error(`❌ ${pkg} publish failed:`, err.message);
     }
