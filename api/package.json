@@ -1,12 +1,13 @@
 {
   "name": "zuord",
-  "version": "0.3.0-alpha",
+  "version": "0.5.0-alpha",
   "description": "The most powerful TypeScript utility type system designed to fill critical gaps in the type ecosystem, providing advanced normalization, class-plain differentiation, and robust helper types.",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "prepare": "pnpm install @zuord/type@latest @zuord/util@latest && npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build",
+    "prepublishOnly": "pnpm install @zuord/type@latest @zuord/util@latest"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   },
   "homepage": "https://github.com/k4yr2/zuord#readme",
   "dependencies": {
-    "@zuord/type": "0.3.0-alpha",
-    "@zuord/util": "0.3.0-alpha"
+    "@zuord/type": "0.5.0-alpha",
+    "@zuord/util": "0.5.0-alpha"
   }
 }

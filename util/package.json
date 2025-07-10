@@ -1,18 +1,19 @@
 {
   "name": "@zuord/util",
-  "version": "0.3.3-alpha",
+  "version": "0.5.0-alpha",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "prepare": "pnpm install @zuord/type@latest && npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build",
+    "prepublishOnly": "pnpm install @zuord/type@latest "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@zuord/type": "^0.3.0-alpha"
+    "@zuord/type": "0.4.0-alpha"
   }
 }
