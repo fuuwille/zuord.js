@@ -4,7 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-
+    "clean": "rimraf dist",
+    "build": "rollup -c",
+    "prepare": "npm run clean && npm run build"
   },
   "keywords": ["zuord"],
   "author": "k4yr2",
