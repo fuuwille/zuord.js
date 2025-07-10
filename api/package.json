@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/k4yr2/zuord#readme",
   "dependencies": {
+    "@zuord/type": "0.3.0-alpha",
     "@zuord/util": "0.3.0-alpha"
   }
 }
