@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@zuord/type':
+        specifier: 0.3.0-alpha
+        version: 0.3.0-alpha
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -36,6 +40,8 @@ importers:
         version: 3.2.4(@types/node@24.0.4)
 
   type: {}
+
+  util: {}
 
 packages:
 
@@ -378,6 +384,9 @@ packages:
 
   '@vitest/utils@3.2.4':
     resolution: {integrity: sha512-fB2V0JFrQSMsCo9HiSq3Ezpdv4iYaXRG1Sx8edX3MwxfyNn83mKiGzOcH+Fkxt4MHxr3y42fQi1oeAInqgX2QA==}
+
+  '@zuord/type@0.3.0-alpha':
+    resolution: {integrity: sha512-F3ph7QICtSpvcr03KTv4TwQTg2mblNKQgtAMfVD6Qcx23frFR8qdQaqMfUFYuqW85+feiQLWir4JaV44d232QA==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -997,6 +1006,8 @@ snapshots:
       '@vitest/pretty-format': 3.2.4
       loupe: 3.1.4
       tinyrainbow: 2.0.0
+
+  '@zuord/type@0.3.0-alpha': {}
 
   ansi-regex@5.0.1: {}
 

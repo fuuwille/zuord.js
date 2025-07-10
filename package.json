@@ -1,6 +1,9 @@
 {
   "private": true,
   "name": "zuord-monorepo",
+  "dependencies": {
+    "@zuord/type": "0.3.0-alpha"
+  },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.3",
