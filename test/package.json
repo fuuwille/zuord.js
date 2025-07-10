@@ -1,0 +1,14 @@
+{
+  "name": "@zuord/test",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "k4yr2",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}
