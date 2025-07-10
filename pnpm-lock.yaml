@@ -31,7 +31,11 @@ importers:
         specifier: ^2.8.1
         version: 2.8.1
 
-  api: {}
+  api:
+    dependencies:
+      '@zuord/util':
+        specifier: 0.3.0-alpha
+        version: 0.3.0-alpha
 
   test:
     devDependencies:
@@ -387,6 +391,9 @@ packages:
 
   '@zuord/type@0.3.0-alpha':
     resolution: {integrity: sha512-F3ph7QICtSpvcr03KTv4TwQTg2mblNKQgtAMfVD6Qcx23frFR8qdQaqMfUFYuqW85+feiQLWir4JaV44d232QA==}
+
+  '@zuord/util@0.3.0-alpha':
+    resolution: {integrity: sha512-m5iasHI64xikLPLqwW/lMcE9Z/9vligDAR+36dWl66GASqhGFJeJB/SSlXCvyBt1przwg8W9kbXjN93iDqGuoA==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -1008,6 +1015,8 @@ snapshots:
       tinyrainbow: 2.0.0
 
   '@zuord/type@0.3.0-alpha': {}
+
+  '@zuord/util@0.3.0-alpha': {}
 
   ansi-regex@5.0.1: {}
 
