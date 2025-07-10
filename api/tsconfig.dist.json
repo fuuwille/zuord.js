@@ -1,8 +1,12 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "rootDir": "src"
+        "rootDir": "src",
+        "outDir": "dist",
+        "paths": {
+            
+        }
     },
-    "include": ["src"],
-    "exclude": ["src/test", "tests/**/*"],
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "@zuord/types"]
 }
