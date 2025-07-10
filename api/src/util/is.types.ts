@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/types";
+import { ZuordType } from "@zuord/type";
 
 
 // IS

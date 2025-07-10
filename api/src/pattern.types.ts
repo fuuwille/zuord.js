@@ -1,5 +1,5 @@
 import { Zuord } from "./alias.types"
-import { ZuordType } from "@zuord/types";
+import { ZuordType } from "@zuord/type";
 
 type Pattern<T> = Zuord.Normalize<PatternRaw<T>>
 

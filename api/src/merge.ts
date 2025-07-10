@@ -1,5 +1,5 @@
 import { Zuord } from "./alias.types"
-import { zuordType } from "@zuord/types";
+import { zuordType } from "@zuord/type";
 
 function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
     return mergeBy({

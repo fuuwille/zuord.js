@@ -1,5 +1,5 @@
 import { Zuord } from "./alias.types";
-import { ZuordType } from "@zuord/types";
+import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "./util/_alias.types";
 
 type Impose<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeBase<TBase, TPatch, TCurrent>>;

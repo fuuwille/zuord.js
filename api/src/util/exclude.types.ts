@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/types";
+import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "./_alias.types";
 
 
