@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "prepare": "npm run clean && npm run build"
+    "prepare": "pnpm install @zuord/type@latest @zuord/util@latest && npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
