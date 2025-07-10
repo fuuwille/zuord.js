@@ -2,7 +2,7 @@
   "name": "@zuord/util",
   "version": "0.3.0-alpha",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
