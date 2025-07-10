@@ -26,12 +26,12 @@ const bumpType = args.mode ?? 'patch';
 const preid = args.preid ?? (bumpType === 'prerelease' ? 'alpha' : undefined);
 const shouldPublish = args.publish === true;
 
-const validPackages = ['type', 'util', 'api'];
+const validPackages = ['type', 'util', 'api', 'test'];
 const targetPackages = target === '.' ? validPackages : [target];
 
 // Geçerlilik kontrolü
 if (!target || !targetPackages.every(p => validPackages.includes(p))) {
-  console.error(`⛔ Paket adı 'type', 'util', 'api' veya '.' olmalı.`);
+  console.error(`⛔ Paket adı 'type', 'util', 'api', 'test' veya '.' olmalı.`);
   process.exit(1);
 }
 
