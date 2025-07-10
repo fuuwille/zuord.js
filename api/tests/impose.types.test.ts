@@ -1,6 +1,6 @@
 import { Zuord } from "zuord";
 import { ZuordUtil } from "@zuord/util";
-import { ZuordTest } from "../../test/src/index";
+import { ZuordTest } from "@zuord/test";
 
 /**
  * Checks if imposing a patch type onto a base type results in all of the expected outcomes.
