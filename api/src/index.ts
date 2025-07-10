@@ -1,10 +1,10 @@
-import { zuord } from "./core/alias";
+import { zuord } from "./alias";
 export { zuord };
 
 import { zuordType } from "./type/_alias";
 export { zuordType };
 
-import { Zuord } from "./core/alias.types";
+import { Zuord } from "./alias.types";
 export type { Zuord };
 
 import { ZuordType } from "./type/_alias.types";
