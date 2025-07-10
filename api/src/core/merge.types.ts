@@ -1,5 +1,5 @@
-import { Zuord } from "@/core/alias.types"
-import { ZuordType } from "@/type/_alias.types";
+import { Zuord } from "../core/alias.types"
+import { ZuordType } from "../type/_alias.types";
 
 type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = Zuord.Normalize<MergeRaw<U, Options>, Options>
 
