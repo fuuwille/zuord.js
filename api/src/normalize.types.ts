@@ -1,6 +1,6 @@
 import { Zuord } from "./alias.types";
 import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "./util/_alias.types";
+import { ZuordUtil } from "@zuord/util";
 
 type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.Eq<T, any>] extends [false] ? (
     [ZuordUtil.Has<T, ZuordType.Tuple>] extends [true] ? (
