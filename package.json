@@ -3,13 +3,11 @@
   "name": "zuord-monorepo",
   "scripts": {
     "prerelase:do" : "npm version prerelease --preid alpha",
-    "prerelase:api" : "cd api && npm run prerelease:do",
-    "prerelase:util" : "cd util && npm run prerelease:do",
-    "prerelase:type" : "cd type && npm run prerelease:do",
     "publish:do" : "npm run prerelase:do && npm publish --access public --tag alpha",
-    "publish:api" : "cd api && npm run publish:do",
+    "publish:type" : "cd type && npm run publish:do",
     "publish:util" : "cd util && npm run publish:do",
-    "publish:type" : "cd type && npm run publish:do"
+    "publish:api" : "cd api && npm run publish:do",
+    "publish:repo" : "npm run publish:api && npm run publish:util && npm run publish:type"
   },
   "dependencies": {
     "@zuord/type": "0.3.0-alpha"
