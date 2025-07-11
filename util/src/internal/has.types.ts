@@ -70,3 +70,12 @@ type HasEverySome<TSources, TBases> = TSources extends [infer TSource, ...infer 
 ) : false;
 
 export type { HasEverySome as ZuordHasEverySome };
+
+
+// HAS EVERY EACH
+
+type HasEveryEach<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    [HasEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : HasEveryEach<TRestSources, TBases>) : false
+) : false;
+
+export type { HasEveryEach as ZuordHasEveryEach };
