@@ -1,6 +1,8 @@
 import { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome, ZuordEqAnySome, ZuordEqEverySome } from "./eq.types";
 
 export namespace InternalZuordUtil {
+
+    // EQ
     
     export type Eq<T1, T2> = ZuordEq<T1, T2>;
 
