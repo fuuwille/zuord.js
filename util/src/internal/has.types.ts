@@ -34,3 +34,12 @@ type HasSome<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases
 ) : false;
 
 export type { HasSome as ZuordHasSome };
+
+
+// HAS EACH
+
+type HasEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Has<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.EmptyArray ? true : HasEach<TSource, TRestBases>) : false
+) : false;
+
+export type { HasEach as ZuordHasEach };
