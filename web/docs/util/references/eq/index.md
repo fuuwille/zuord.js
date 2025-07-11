@@ -3,34 +3,28 @@ sidebar_label: Eq
 title: Eq Utilities
 ---
 
-# Eq Utility Types
+# Eq Utilities
 
-The `Eq` utility types family offers strict, structural equality checks between types. These types operate entirely at compile-time and help assert whether types or collections of types are **exactly the same**.
+The `Eq` category provides utilities for checking strict equality between entries — covering both types and values, at compile time and runtime.
 
-All utilities are re-exported from `@zuord/util`.
-
----
-
-## Table of Contents
-
-- [ZuordEq](#zuordeq)
-- [ZuordEqAny](#zuordeqany)
-- [ZuordEqEvery](#zuordeqevery)
-- [ZuordEqSome](#zuordeqsome)
-- [ZuordEqAnySome](#zuordeqanysome)
-- [ZuordEqEverySome](#zuordeqeverysome)
-- [Import Path](#import-path)
-- [See Also](#see-also)
+Explore the available utilities below:
 
 ---
 
-## `ZuordEq<T1, T2>`
+- **[ZuordEq](./zuord-eq.md)**  
+  Check if two entries are exactly equal.
 
-Returns `true` if `T1` and `T2` are **strictly equal** types.
+- **[ZuordEqAny](./zuord-eq-any.md)**  
+  Check if any entry in a set is equal to a given entry.
 
-```ts
-type A = ZuordEq<"a", "a">;                      // true
-type B = ZuordEq<"a", "b">;                      // false
-type C = ZuordEq<{ x: number }, { x: number }>;  // true
-type D = ZuordEq<{ x: number }, { x: 1 }>;       // false
-```
+- **[ZuordEqEvery](./zuord-eq-every.md)**  
+  Check if every entry in a set is equal to a given entry.
+
+- **[ZuordEqSome](./zuord-eq-some.md)**  
+  Check if one entry is equal to any entry in a set.
+
+- **[ZuordEqAnySome](./zuord-eq-any-some.md)**  
+  Check if any entry in one set is equal to any entry in another set.
+
+- **[ZuordEqEverySome](./zuord-eq-every-some.md)**  
+  Check if every entry in one set is equal to an entry in another set.
