@@ -19,7 +19,7 @@ export type { ExtractEach as ZuordExtractEach };
 
 // EXTRACT EQ
 
-type ExtractEq<TSource, TBase> = TSource extends any ? ([ZuordUtil.Eq<TSource, TBase>] extends [true] ? TSource : never) : never;
+type ExtractEq<TSource, TBase> = InternalZuordUtil.ExtractEq<TSource, TBase>;
 
 export type { ExtractEq as ZuordExtractEq };
 

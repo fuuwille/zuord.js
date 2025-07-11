@@ -17,3 +17,12 @@ type ExtractEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestB
 ) : TSource;
 
 export type { ExtractEach as ZuordExtractEach };
+
+
+// EXTRACT EQ
+
+type ExtractEq<TSource, TBase> = TSource extends any ? (
+    [InternalZuordUtil.Eq<TSource, TBase>] extends [true] ? TSource : never
+) : never;
+
+export type { ExtractEq as ZuordExtractEq };
