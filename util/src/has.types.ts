@@ -25,41 +25,41 @@ export type { HasEvery as ZuordHasEvery };
 
 // HAS SOME
 
-type HasSome<TSource, TBases extends ZuordType.Array> = InternalZuordUtil.HasSome<TSource, TBases>;
+type HasSome<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasSome<TSource, TBases>;
 
 export type { HasSome as ZuordHasSome };
 
 
 // HAS EACH
 
-type HasEach<TSource, TBases extends ZuordType.Array> = InternalZuordUtil.HasEach<TSource, TBases>;
+type HasEach<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasEach<TSource, TBases>;
 
 export type { HasEach as ZuordHasEach };
 
 
 // HAS ANY SOME
 
-type HasAnySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = InternalZuordUtil.HasAnySome<TSources, TBases>;
+type HasAnySome<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasAnySome<TSources, TBases>;
 
 export type { HasAnySome as ZuordHasAnySome };
 
 
 // HAS ANY EACH
 
-type HasAnyEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = InternalZuordUtil.HasAnyEach<TSources, TBases>;
+type HasAnyEach<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasAnyEach<TSources, TBases>;
 
 export type { HasAnyEach as ZuordHasAnyEach };
 
 
 // HAS EVERY SOME
 
-type HasEverySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = InternalZuordUtil.HasEverySome<TSources, TBases>;
+type HasEverySome<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasEverySome<TSources, TBases>;
 
 export type { HasEverySome as ZuordHasEverySome };
 
 
 // HAS EVERY EACH
 
-type HasEveryEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = InternalZuordUtil.HasEveryEach<TSources, TBases>;
+type HasEveryEach<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.HasEveryEach<TSources, TBases>;
 
 export type { HasEveryEach as ZuordHasEveryEach };
