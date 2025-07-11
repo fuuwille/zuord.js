@@ -18,9 +18,7 @@ export type { HasAny as ZuordHasAny };
 
 // HAS EVERY
 
-type HasEvery<TSources extends ZuordType.Array, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [Has<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : HasEvery<TRestSources, TBase>) : false
-) : false;
+type HasEvery<TSources extends ZuordType.Tuple, TBase> = InternalZuordUtil.HasEvery<TSources, TBase>;
 
 export type { HasEvery as ZuordHasEvery };
 

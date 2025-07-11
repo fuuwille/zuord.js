@@ -49,7 +49,7 @@ export namespace ZuordUtil {
 
     export type HasAny<TSources extends ZuordType.Tuple, TBase> = ZuordHasAny<TSources, TBase>;
 
-    export type HasEvery<TSources extends ZuordType.Array, TBase> = ZuordHasEvery<TSources, TBase>;
+    export type HasEvery<TSources extends ZuordType.Tuple, TBase> = ZuordHasEvery<TSources, TBase>;
 
     export type HasSome<TSource, TBases extends ZuordType.Array> = ZuordHasSome<TSource, TBases>;
 

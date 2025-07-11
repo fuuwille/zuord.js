@@ -1,3 +1,4 @@
+import { ZuordType } from "@zuord/type";
 import { InternalZuordUtil } from ".";
 
 
@@ -15,3 +16,12 @@ type HasAny<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSo
 ) : false;
 
 export type { HasAny as ZuordHasAny };
+
+
+// HAS EVERY
+
+type HasEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    [Has<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : HasEvery<TRestSources, TBase>) : false
+) : false;
+
+export type { HasEvery as ZuordHasEvery };
