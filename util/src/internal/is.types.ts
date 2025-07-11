@@ -44,3 +44,12 @@ type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases]
 ) : false;
 
 export type { IsEach as ZuordIsEach };
+
+
+// IS ANY SOME
+
+type IsAnySome<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    [IsSome<TSource, TBases>] extends [true] ? true : IsAnySome<TRestSources, TBases>
+) : false;
+
+export type { IsAnySome as ZuordIsAnySome };
