@@ -1,11 +1,10 @@
 import { ZuordType } from "@zuord/type";
+import { InternalZuordUtil } from "./internal/alias.types";
 
 
 // IS
 
-type Is<TSource, TBase> = [TSource] extends [TBase] ? (
-    [TSource] extends [never] ? ([TBase] extends [never] ? true : false) : true
-) : false;
+type Is<TSource, TBase> = InternalZuordUtil.Is<TSource, TBase>;
 
 export type { Is as ZuordIs };
 
