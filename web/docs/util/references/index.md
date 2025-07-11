@@ -21,8 +21,8 @@ Zuord Util organizes its utilities into the following categories, covering both 
 
 - **[Exclude](./exclude/)**  
   Utilities and functions to remove types or values matching a certain criterion from unions or objects.  
-  _Effect: Removes matching parts from the source._
+  _Effect: `Removes matching parts from the source.`_
 
 - **[Extract](./extract/)**  
   Utilities and functions to extract types or values matching a specific pattern from unions or objects.  
-  _Effect: Selects matching parts from the source._
+  _Effect: `Selects matching parts from the source.`_
