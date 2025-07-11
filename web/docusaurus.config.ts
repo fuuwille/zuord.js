@@ -63,12 +63,23 @@ const config: Config = {
   themeConfig: {
     navbar: {
       title: 'Zuord',
+      logo: {
+        alt: 'Zuord Logo',
+        src: 'img/logo.svg',
+        href: '/docs',
+      },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'api',
           position: 'left',
           label: 'API',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'util',
+          position: 'left',
+          label: 'Utils',
         },
         {
           href: 'https://github.com/k4yr2/zuord',
