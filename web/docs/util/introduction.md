@@ -2,13 +2,13 @@
 sidebar_label: Introduction
 ---
 
-# Zuord Util Introduction
+# Introduction to Zuord Util
 
-**Zuord Util** is a robust collection of advanced TypeScript utility types designed to simplify complex type operations and enhance type safety in your projects. It builds on the foundational primitives provided by @zuord/type and serves as a logical layer that powers core features of the main zuord system.
+**Zuord Util** is a performance-focused and type-safe library containing commonly used helper functions (JS) and types (TS) for JavaScript and TypeScript projects. Designed to simplify complex type operations, it significantly accelerates the development process.
 
 ## Purpose
 
-This utility set aims to make TypeScript's static typing system more expressive and flexible by offering modular, composable types that cover common and advanced use cases. Whether you need to verify type equality, check assignability, include or exclude specific properties, or operate on tuples of types, Zuord Util provides precise and performant solutions that form the backbone of Zuord's type-level logic.
+It aims to reduce code duplication, standardize common type checks, and enable writing more readable and maintainable code. By simplifying complex type manipulations, it helps developers increase productivity and ensure type safety throughout their projects.
 
 ## Main Categories
 
