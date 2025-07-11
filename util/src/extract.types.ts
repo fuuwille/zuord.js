@@ -1,6 +1,5 @@
 import { ZuordType } from "@zuord/type";
 import { InternalZuordUtil } from "./internal";
-import { ZuordUtil } from ".";
 
 
 // EXTRACT
@@ -26,8 +25,6 @@ export type { ExtractEq as ZuordExtractEq };
 
 // EXTRACT EQ EACH
 
-type ExtractEqEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    ExtractEqEach<ExtractEq<TSource, TBase>, TRestBases>
-) : TSource;
+type ExtractEqEach<TSource, TBases extends ZuordType.Array> = InternalZuordUtil.ExtractEqEach<TSource, TBases>;
 
 export type { ExtractEqEach as ZuordExtractEqEach };

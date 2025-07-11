@@ -83,5 +83,5 @@ export namespace ZuordUtil {
 
     export type ExtractEq<TSource, TBase> = ZuordExtractEq<TSource, TBase>;
 
-    export type ExtractEqEach<TSource, TBases extends ZuordType.Array> = ZuordExtractEqEach<TSource, TBases>;
+    export type ExtractEqEach<TSource, TBases extends ZuordType.Tuple> = ZuordExtractEqEach<TSource, TBases>;
 }
