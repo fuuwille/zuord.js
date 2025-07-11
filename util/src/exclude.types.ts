@@ -19,7 +19,7 @@ export type { ExcludeEach as ZuordExcludeEach };
 
 // EXCLUDE EQ
 
-type ExcludeEq<TSource, TBase> = TSource extends any ? ([ZuordUtil.Eq<TSource, TBase>] extends [false] ? TSource : never) : never;
+type ExcludeEq<TSource, TBase> = InternalZuordUtil.ExcludeEq<TSource, TBase>;
 
 export type { ExcludeEq as ZuordExcludeEq };
 

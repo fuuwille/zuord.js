@@ -17,3 +17,12 @@ type ExcludeEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestB
 ) : TSource;
 
 export type { ExcludeEach as ZuordExcludeEach };
+
+
+// EXCLUDE EQ
+
+type ExcludeEq<TSource, TBase> = TSource extends any ? (
+    [InternalZuordUtil.Eq<TSource, TBase>] extends [false] ? TSource : never
+) : never;
+
+export type { ExcludeEq as ZuordExcludeEq };
