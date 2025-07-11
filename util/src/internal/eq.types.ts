@@ -24,3 +24,12 @@ type EqEvery<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
 ) : false;
 
 export type { EqEvery as ZuordEqEvery };
+
+
+// EQ SOME
+
+type EqSome<T1, U2> = U2 extends [infer T2, ...infer R2] ? (
+    [Eq<T1, T2>] extends [true] ? true : EqSome<T1, R2>
+) : false;
+
+export type { EqSome as ZuordEqSome };
