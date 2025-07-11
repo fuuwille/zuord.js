@@ -39,10 +39,6 @@ export type { EqAnySome as ZuordEqAnySome };
 
 // EQ EVERY SOME
 
-type EqEverySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = __EqEverySomeImpl<U1, U2>;
+type EqEverySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = InternalZuordUtil.EqEverySome<U1, U2>;
 
 export type { EqEverySome as ZuordEqEverySome };
-
-type __EqEverySomeImpl<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
-    [InternalZuordUtil.EqSome<T1, U2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : __EqEverySomeImpl<R1, U2>) : false
-) : false;

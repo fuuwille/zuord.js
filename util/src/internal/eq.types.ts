@@ -42,3 +42,12 @@ type EqAnySome<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
 ) : false;
 
 export type { EqAnySome as ZuordEqAnySome };
+
+
+// EQ EVERY SOME
+
+type EqEverySome<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
+    [EqSome<T1, U2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEverySome<R1, U2>) : false
+) : false;
+
+export type { EqEverySome as ZuordEqEverySome };
