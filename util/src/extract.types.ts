@@ -1,12 +1,11 @@
-import { ZuordUtil } from ".";
 import { ZuordType } from "@zuord/type";
+import { InternalZuordUtil } from "./internal";
+import { ZuordUtil } from ".";
 
 
 // EXTRACT
 
-type Extract<TSource, TBase> = TSource extends any ? (
-    [ZuordUtil.Is<TSource, TBase>] extends [true] ? TSource : never
-) : never;
+type Extract<TSource, TBase> = InternalZuordUtil.Extract<TSource, TBase>;
 
 export type { Extract as ZuordExtract };
 
