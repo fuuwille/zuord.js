@@ -1,6 +1,5 @@
 import { ZuordType } from "@zuord/type";
 import { InternalZuordUtil } from "./internal";
-import { ZuordUtil } from ".";
 
 
 // EXCLUDE
@@ -26,8 +25,6 @@ export type { ExcludeEq as ZuordExcludeEq };
 
 // EXCLUDE EQ EACH
 
-type ExcludeEqEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    ExcludeEqEach<ExcludeEq<TSource, TBase>, TRestBases>
-) : TSource;
+type ExcludeEqEach<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.ExcludeEqEach<TSource, TBases>;
 
 export type { ExcludeEqEach as ZuordExcludeEqEach };

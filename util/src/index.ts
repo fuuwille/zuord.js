@@ -72,7 +72,7 @@ export namespace ZuordUtil {
 
     export type ExcludeEq<TSource, TBase> = ZuordExcludeEq<TSource, TBase>;
 
-    export type ExcludeEqEach<TSource, TBases extends ZuordType.Array> = ZuordExcludeEqEach<TSource, TBases>;
+    export type ExcludeEqEach<TSource, TBases extends ZuordType.Tuple> = ZuordExcludeEqEach<TSource, TBases>;
 
 
     // EXTRACT
