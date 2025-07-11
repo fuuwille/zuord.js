@@ -40,7 +40,7 @@ export namespace ZuordUtil {
 
     export type IsEverySome<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = ZuordIsEverySome<TSources, TBases>;
     
-    export type IsEveryEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordIsEveryEach<TSources, TBases>;
+    export type IsEveryEach<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = ZuordIsEveryEach<TSources, TBases>;
 
 
     // HAS
