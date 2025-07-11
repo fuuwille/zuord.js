@@ -1,5 +1,5 @@
+import { ZuordUtil } from ".";
 import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "./_alias.types";
 
 
 // HAS
