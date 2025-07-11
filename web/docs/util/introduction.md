@@ -30,7 +30,7 @@ Zuord Util organizes its utilities into the following categories, covering both 
 
 - **[Has](./references/has/)**  
   Utilities and functions that determine if a type or value includes another, including membership within unions.  
-  _Example: `TSource extends any ? (TSource extends TBase)`_
+  Type-level check: `TSource extends any ? (TSource extends TBase)`_
 
 - **[Exclude](./references/exclude/)**  
   Utilities and functions to remove types or values matching a certain criterion from unions or objects.  
