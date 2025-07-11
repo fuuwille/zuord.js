@@ -66,11 +66,10 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'home',
+          sidebarId: 'api',
           position: 'left',
-          label: 'Docs',
+          label: 'API',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/k4yr2/zuord',
           label: 'GitHub',
