@@ -12,9 +12,9 @@ The library makes type operations more readable and manageable, covering both si
 
 ## Purpose
 
-It aims to simplify type-related logic and reduce the overhead of managing custom utilities across projects. Its goal is to eliminate common pitfalls in type handling by offering a well-structured set of reusable and consistent tools.
+It aims to help developers write clearer, safer, and more maintainable code by reducing repetitive patterns and standardizing common type checks and utilities. This eliminates the need to recreate the same solutions across different projects.
 
-By reducing boilerplate and standardizing type operations like comparisons and validations, Zuord Util helps teams write code that’s easier to understand, safer to refactor, and faster to scale. It supports clean, maintainable development workflows without sacrificing type safety or clarity.
+By providing reliable and reusable tools, Zuord Util streamlines type-related workflows, improves developer productivity, and ensures consistent type safety throughout the codebase.
 
 ## Features
 - **Type safety:** Ensures compile-time type correctness and reduces runtime errors.  
