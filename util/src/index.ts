@@ -59,7 +59,7 @@ export namespace ZuordUtil {
 
     export type HasAnyEach<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = ZuordHasAnyEach<TSources, TBases>;
 
-    export type HasEverySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordHasEverySome<TSources, TBases>;
+    export type HasEverySome<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = ZuordHasEverySome<TSources, TBases>;
 
     export type HasEveryEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordHasEveryEach<TSources, TBases>;
 
