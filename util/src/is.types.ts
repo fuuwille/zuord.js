@@ -18,9 +18,7 @@ export type { IsAny as ZuordIsAny };
 
 // IS EVERY
 
-type IsEvery<TSources extends ZuordType.Array, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [Is<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEvery<TRestSources, TBase>) : false
-) : false;
+type IsEvery<TSources extends ZuordType.Tuple, TBase> = InternalZuordUtil.IsEvery<TSources, TBase>;
 
 export type { IsEvery as ZuordIsEvery };
 

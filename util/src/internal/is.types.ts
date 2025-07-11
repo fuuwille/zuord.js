@@ -1,3 +1,5 @@
+import { ZuordType } from "@zuord/type";
+
 
 // IS
 
@@ -15,3 +17,12 @@ type IsAny<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSou
 ) : false;
 
 export type { IsAny as ZuordIsAny };
+
+
+// IS EVERY
+
+type IsEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    [Is<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEvery<TRestSources, TBase>) : false
+) : false;
+
+export type { IsEvery as ZuordIsEvery };
