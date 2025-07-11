@@ -1,4 +1,4 @@
-import { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome } from "./eq.types";
+import { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome, ZuordEqAnySome } from "./eq.types";
 
 export namespace InternalZuordUtil {
     
@@ -9,4 +9,6 @@ export namespace InternalZuordUtil {
     export type EqEvery<U1, T2> = ZuordEqEvery<U1, T2>;
 
     export type EqSome<T1, U2> = ZuordEqSome<T1, U2>;
+
+    export type EqAnySome<U1, U2> = ZuordEqAnySome<U1, U2>;
 }
