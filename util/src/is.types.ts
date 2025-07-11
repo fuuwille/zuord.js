@@ -11,7 +11,7 @@ export type { Is as ZuordIs };
 
 // IS ANY
 
-type IsAny<TSources extends ZuordType.Array, TBase> = InternalZuordUtil.IsAny<TSources, TBase>;
+type IsAny<TSources extends ZuordType.Tuple, TBase> = InternalZuordUtil.IsAny<TSources, TBase>;
 
 export type { IsAny as ZuordIsAny };
 
