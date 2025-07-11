@@ -25,3 +25,12 @@ type HasEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRest
 ) : false;
 
 export type { HasEvery as ZuordHasEvery };
+
+
+// HAS SOME
+
+type HasSome<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Has<TSource, TBase>] extends [true] ? true : HasSome<TSource, TRestBases>
+) : false;
+
+export type { HasSome as ZuordHasSome };
