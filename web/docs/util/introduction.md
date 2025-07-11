@@ -12,8 +12,8 @@ This utility set aims to make TypeScript's static typing system more expressive 
 
 ## Main Categories
 
-- [Eq](../types/eq.md) — Exact type equality checks, including comparisons over tuples.  
-- [Is](../types/is.md) — Type compatibility and assignability checks.  
-- [Has](../types/has.md) — Property existence and key containment checks.  
-- [Exclude](../types/exclude.md) — Removing types or properties from other types.  
-- [Extract](../types/extract.md) — Selecting matching types or properties from source types.
+- [Eq](../util/types/eq) — Exact type equality checks, including comparisons over tuples.  
+- [Is](../util/types/is) — Type compatibility and assignability checks.  
+- [Has](../util/types/has) — Property existence and key containment checks.  
+- [Exclude](../util/types/exclude) — Removing types or properties from other types.  
+- [Extract](../util/types/extract) — Selecting matching types or properties from source types.
