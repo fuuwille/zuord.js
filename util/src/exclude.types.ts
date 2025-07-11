@@ -1,12 +1,11 @@
-import { ZuordUtil } from ".";
 import { ZuordType } from "@zuord/type";
+import { InternalZuordUtil } from "./internal";
+import { ZuordUtil } from ".";
 
 
 // EXCLUDE
 
-type Exclude<TSource, TBase> = TSource extends any ? (
-    [ZuordUtil.Is<TSource, TBase>] extends [false] ? TSource : never
-) : never;
+type Exclude<TSource, TBase> = InternalZuordUtil.Exclude<TSource, TBase>;
 
 export type { Exclude as ZuordExclude };
 
