@@ -1,3 +1,5 @@
+import { ZuordType } from "@zuord/type";
+
 
 // EQ
 
@@ -13,3 +15,12 @@ type EqAny<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
 ) : false;
 
 export type { EqAny as ZuordEqAny };
+
+
+// EQ EVERY
+
+type EqEvery<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
+    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordType.EmptyArray ? true : EqEvery<R1, T2>) : false
+) : false;
+
+export type { EqEvery as ZuordEqEvery };
