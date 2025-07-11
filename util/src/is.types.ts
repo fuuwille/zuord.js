@@ -46,9 +46,7 @@ export type { IsAnySome as ZuordIsAnySome };
 
 // IS ANY EACH
 
-type IsAnyEach<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [IsEach<TSource, TBases>] extends [true] ? true : IsAnyEach<TRestSources, TBases>
-) : false;
+type IsAnyEach<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.IsAnyEach<TSources, TBases>;
 
 export type { IsAnyEach as ZuordIsAnyEach };
 
