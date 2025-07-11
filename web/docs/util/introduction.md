@@ -22,23 +22,23 @@ Zuord Util organizes its utilities into the following categories, covering both 
 
 - **[Eq](./references/eq/)**  
   Utilities and functions for checking exact equality between types or values.  
-  _Type-level check: `T1 === T2`_
+  _Check: `T1 === T2`_
 
 - **[Is](./references/is/)**  
   Utilities and functions to verify whether one type extends another or whether a value conforms to a type.  
-  _Type-level check: `TSource extends TBase`_
+  _Check: `TSource extends TBase`_
 
 - **[Has](./references/has/)**  
   Utilities and functions that determine if a type or value includes another, including membership within unions.  
-  Type-level check: `TSource extends any ? (TSource extends TBase)`_
+  _Check: `TSource extends any ? (TSource extends TBase)`_
 
 - **[Exclude](./references/exclude/)**  
   Utilities and functions to remove types or values matching a certain criterion from unions or objects.  
-  _Equivalent to: ``_
+  _Effect: Removes matching parts from the source._
 
 - **[Extract](./references/extract/)**  
   Utilities and functions to extract types or values matching a specific pattern from unions or objects.  
-  _Equivalent to: ``_
+  _Effect: Selects matching parts from the source._
 
 ## Features
 - **Type safety:** Ensures compile-time type correctness and reduces runtime errors.  
