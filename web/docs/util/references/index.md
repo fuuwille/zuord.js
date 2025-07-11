@@ -5,21 +5,24 @@ title: Utility References
 
 # Utility References
 
-This section provides detailed documentation for the utility types included in the `@zuord/util` package. These types form the logical foundation of the Zuord system, enabling powerful type-level operations such as comparison, validation, filtering, and structural reasoning.
+Zuord Util organizes its utilities into the following categories, covering both type-level operations and runtime functions:
 
-Each utility type is presented with its type signature, behavior, constraints, and usage examples.
+- **[Eq](./references/eq/)**  
+  Utilities and functions for checking exact equality between types or values.  
+  _Check: `T1 === T2`_
 
-## Included Utilities
+- **[Is](./references/is/)**  
+  Utilities and functions to verify whether one type extends another or whether a value conforms to a type.  
+  _Check: `TSource extends TBase`_
 
-- [`Eq<T1, T2>`](./eq): Compile-time type equality checker
-- [`Is<T, Pattern>`](./is): Pattern-based type matching
-- [`Has<T, Key>`](./has): Property existence and structural validation
+- **[Has](./references/has/)**  
+  Utilities and functions that determine if a type or value includes another, including membership within unions.  
+  _Check: `TSource extends any ? (TSource extends TBase)`_
 
-> These utilities are designed to be modular and composable. They work in harmony with the core normalization system to simplify complex type logic.
+- **[Exclude](./references/exclude/)**  
+  Utilities and functions to remove types or values matching a certain criterion from unions or objects.  
+  _Effect: Removes matching parts from the source._
 
----
-
-## Navigation
-
-- 🔙 [Introduction](../introduction.md)
-- ⏭️ [Eq Reference](./eq.md)
+- **[Extract](./references/extract/)**  
+  Utilities and functions to extract types or values matching a specific pattern from unions or objects.  
+  _Effect: Selects matching parts from the source._
