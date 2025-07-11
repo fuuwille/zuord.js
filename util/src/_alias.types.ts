@@ -32,7 +32,7 @@ export namespace ZuordUtil {
 
     export type IsSome<TSource, TBases extends ZuordType.Tuple> = ZuordIsSome<TSource, TBases>;
 
-    export type IsEach<TSource, TBases extends ZuordType.Array> = ZuordIsEach<TSource, TBases>;
+    export type IsEach<TSource, TBases extends ZuordType.Tuple> = ZuordIsEach<TSource, TBases>;
 
     export type IsAnySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = ZuordIsAnySome<TSources, TBases>;
 

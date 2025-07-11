@@ -32,9 +32,7 @@ export type { IsSome as ZuordIsSome };
 
 // IS EACH
 
-type IsEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    [Is<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.EmptyArray ? true : IsEach<TSource, TRestBases>) : false
-) : false;
+type IsEach<TSource, TBases extends ZuordType.Array> = InternalZuordUtil.IsEach<TSource, TBases>;
 
 export type { IsEach as ZuordIsEach };
 
