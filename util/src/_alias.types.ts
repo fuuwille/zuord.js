@@ -26,7 +26,7 @@ export namespace ZuordUtil {
 
     export type Is<TSource, TBase> = ZuordIs<TSource, TBase>;
 
-    export type IsAny<TSources extends ZuordType.Array, TBase> = ZuordIsAny<TSources, TBase>;
+    export type IsAny<TSources extends ZuordType.Tuple, TBase> = ZuordIsAny<TSources, TBase>;
 
     export type IsEvery<TSources extends ZuordType.Array, TBase> = ZuordIsEvery<TSources, TBase>;
 
