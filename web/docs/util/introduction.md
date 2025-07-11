@@ -12,10 +12,8 @@ sidebar_label: Introduction
 
 It aims to reduce code duplication, standardize common type checks, and enable writing more readable and maintainable code. By simplifying complex type manipulations, it helps developers increase productivity and ensure type safety throughout their projects.
 
-## Main Categories
-
-- [Eq](../util/types/eq) — Exact type equality checks, including comparisons over tuples.  
-- [Is](../util/types/is) — Type compatibility and assignability checks.  
-- [Has](../util/types/has) — Property existence and key containment checks.  
-- [Exclude](../util/types/exclude) — Removing types or properties from other types.  
-- [Extract](../util/types/extract) — Selecting matching types or properties from source types.
+## Features
+- **Type safety:** Ensures compile-time type correctness and reduces runtime errors.  
+- **High performance:** Optimized implementations with zero runtime type inference overhead.  
+- **Seamless integration:** Easily integrates with existing TypeScript and JavaScript projects.  
+- **Improves code quality:** Reduces boilerplate and promotes consistent type checking patterns.  
