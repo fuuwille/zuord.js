@@ -1,5 +1,5 @@
 import { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome, ZuordEqAnySome, ZuordEqEverySome } from "./eq.types";
-import { ZuordIs } from "./is.types";
+import { ZuordIs, ZuordIsAny } from "./is.types";
 
 export namespace InternalZuordUtil {
 
@@ -21,4 +21,6 @@ export namespace InternalZuordUtil {
     // IS
 
     export type Is<TSource, TBase> = ZuordIs<TSource, TBase>;
+
+    export type IsAny<TSources, TBase> = ZuordIsAny<TSources, TBase>;
 }

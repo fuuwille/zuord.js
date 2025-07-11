@@ -11,9 +11,7 @@ export type { Is as ZuordIs };
 
 // IS ANY
 
-type IsAny<TSources extends ZuordType.Array, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [Is<TSource, TBase>] extends [true] ? true : IsAny<TRestSources, TBase>
-) : false;
+type IsAny<TSources extends ZuordType.Array, TBase> = InternalZuordUtil.IsAny<TSources, TBase>;
 
 export type { IsAny as ZuordIsAny };
 
