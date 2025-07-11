@@ -26,3 +26,12 @@ type IsEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRestS
 ) : false;
 
 export type { IsEvery as ZuordIsEvery };
+
+
+// IS SOME
+
+type IsSome<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    [Is<TSource, TBase>] extends [true] ? true : IsSome<TSource, TRestBases>
+) : false;
+
+export type { IsSome as ZuordIsSome };
