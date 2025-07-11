@@ -12,9 +12,7 @@ export type { Exclude as ZuordExclude };
 
 // EXCLUDE EACH
 
-type ExcludeEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    ExcludeEach<Exclude<TSource, TBase>, TRestBases>
-) : TSource;
+type ExcludeEach<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.ExcludeEach<TSource, TBases>;
 
 export type { ExcludeEach as ZuordExcludeEach };
 

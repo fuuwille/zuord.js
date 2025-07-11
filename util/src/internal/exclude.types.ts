@@ -8,3 +8,12 @@ type Exclude<TSource, TBase> = TSource extends any ? (
 ) : never;
 
 export type { Exclude as ZuordExclude };
+
+
+// EXCLUDE EACH
+
+type ExcludeEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    ExcludeEach<Exclude<TSource, TBase>, TRestBases>
+) : TSource;
+
+export type { ExcludeEach as ZuordExcludeEach };
