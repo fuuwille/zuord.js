@@ -8,3 +8,12 @@ type Extract<TSource, TBase> = TSource extends any ? (
 ) : never;
 
 export type { Extract as ZuordExtract };
+
+
+// EXTRACT EACH
+
+type ExtractEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
+    ExtractEach<Extract<TSource, TBase>, TRestBases>
+) : TSource;
+
+export type { ExtractEach as ZuordExtractEach };

@@ -2,7 +2,7 @@ import { ZuordEq, ZuordEqAny, ZuordEqEvery, ZuordEqSome, ZuordEqAnySome, ZuordEq
 import { ZuordIs, ZuordIsAny, ZuordIsEvery, ZuordIsSome, ZuordIsEach, ZuordIsAnySome, ZuordIsAnyEach, ZuordIsEverySome, ZuordIsEveryEach } from "./is.types";
 import { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasSome, ZuordHasEach, ZuordHasAnySome, ZuordHasAnyEach, ZuordHasEverySome, ZuordHasEveryEach } from "./has.types";
 import { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
-import { ZuordExtract } from "./extract.types";
+import { ZuordExtract, ZuordExtractEach } from "./extract.types";
 
 export namespace InternalZuordUtil {
 
@@ -77,4 +77,6 @@ export namespace InternalZuordUtil {
     // EXTRACT
 
     export type Extract<TSource, TBase> = ZuordExtract<TSource, TBase>;
+
+    export type ExtractEach<TSource, TBases> = ZuordExtractEach<TSource, TBases>;
 }

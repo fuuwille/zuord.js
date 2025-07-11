@@ -12,9 +12,7 @@ export type { Extract as ZuordExtract };
 
 // EXTRACT EACH
 
-type ExtractEach<TSource, TBases extends ZuordType.Array> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    ExtractEach<Extract<TSource, TBase>, TRestBases>
-) : TSource;
+type ExtractEach<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.ExtractEach<TSource, TBases>;
 
 export type { ExtractEach as ZuordExtractEach };
 
