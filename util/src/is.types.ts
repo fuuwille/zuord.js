@@ -1,5 +1,5 @@
 import { ZuordType } from "@zuord/type";
-import { InternalZuordUtil } from "./internal/alias.types";
+import { InternalZuordUtil } from "./internal";
 
 
 // IS
