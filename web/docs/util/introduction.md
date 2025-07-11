@@ -12,7 +12,9 @@ By providing clear, consistent, and efficient tools, **Zuord Util** - accelerate
 
 ## Purpose
 
-It aims to reduce code duplication, standardize common type checks, and enable writing more readable and maintainable code. By simplifying complex type manipulations, it helps developers increase productivity and ensure type safety throughout their projects.
+It aims to simplify type-related logic and reduce the overhead of managing custom utilities across projects. Its goal is to eliminate common pitfalls in type handling by offering a well-structured set of reusable and consistent tools.
+
+By reducing boilerplate and standardizing type operations like comparisons and validations, Zuord Util helps teams write code that’s easier to understand, safer to refactor, and faster to scale. It supports clean, maintainable development workflows without sacrificing type safety or clarity.
 
 ## Features
 - **Type safety:** Ensures compile-time type correctness and reduces runtime errors.  
