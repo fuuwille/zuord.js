@@ -8,7 +8,7 @@ sidebar_label: Introduction
 
 **Zuord Util** is a simple and type-safe utility library designed for JavaScript and TypeScript projects. It offers a broad set of helper functions for JavaScript alongside advanced type utilities for TypeScript. The library makes type operations more readable and manageable, covering both simple and complex use cases while reducing repetitive and error-prone code.
 
-By providing clear, consistent, and efficient tools, **Zuord Util***- accelerates development and enhances code quality, making it easier to build maintainable and robust applications within the JS/TS ecosystem.
+By providing clear, consistent, and efficient tools, **Zuord Util** - accelerates development and enhances code quality, making it easier to build maintainable and robust applications within the JS/TS ecosystem.
 
 ## Purpose
 
