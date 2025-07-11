@@ -5,3 +5,4 @@ packages:
   - "type"
   - "util"
   - "test"
+  - "web"
