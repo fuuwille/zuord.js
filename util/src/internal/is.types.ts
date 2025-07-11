@@ -62,3 +62,12 @@ type IsAnyEach<TSources, TBases> = TSources extends [infer TSource, ...infer TRe
 ) : false;
 
 export type { IsAnyEach as ZuordIsAnyEach };
+
+
+// IS EVERY SOME
+
+type IsEverySome<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
+    [IsSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEverySome<TRestSources, TBases>) : false
+) : false;
+
+export type { IsEverySome as ZuordIsEverySome };

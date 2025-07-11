@@ -25,7 +25,7 @@ export type { IsEvery as ZuordIsEvery };
 
 // IS SOME
 
-type IsSome<TSource, TBases extends ZuordType.Array> = InternalZuordUtil.IsSome<TSource, TBases>;
+type IsSome<TSource, TBases extends ZuordType.Tuple> = InternalZuordUtil.IsSome<TSource, TBases>;
 
 export type { IsSome as ZuordIsSome };
 
@@ -53,9 +53,7 @@ export type { IsAnyEach as ZuordIsAnyEach };
 
 // IS EVERY SOME
 
-type IsEverySome<TSources extends ZuordType.Array, TBases extends ZuordType.Array> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [IsSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.EmptyArray ? true : IsEverySome<TRestSources, TBases>) : false
-) : false;
+type IsEverySome<TSources extends ZuordType.Tuple, TBases extends ZuordType.Tuple> = InternalZuordUtil.IsEverySome<TSources, TBases>;
 
 export type { IsEverySome as ZuordIsEverySome };
 
