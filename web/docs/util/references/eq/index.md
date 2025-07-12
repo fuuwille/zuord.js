@@ -11,20 +11,20 @@ Explore the available utilities below:
 
 ---
 
-- **[ZuordEq](./zuord-eq.md)**  
+- **[ZuordEq](./zuord-eq)**  
   Check if two entries are exactly equal.
 
-- **[ZuordEqAny](./zuord-eq-any.md)**  
+- **[ZuordEqAny](./zuord-eq-any)**  
   Check if any entry in a set is equal to a given entry.
 
-- **[ZuordEqEvery](./zuord-eq-every.md)**  
+- **[ZuordEqEvery](./zuord-eq-every)**  
   Check if every entry in a set is equal to a given entry.
 
-- **[ZuordEqSome](./zuord-eq-some.md)**  
+- **[ZuordEqSome](./zuord-eq-some)**  
   Check if one entry is equal to any entry in a set.
 
-- **[ZuordEqAnySome](./zuord-eq-any-some.md)**  
+- **[ZuordEqAnySome](./zuord-eq-any-some)**  
   Check if any entry in one set is equal to any entry in another set.
 
-- **[ZuordEqEverySome](./zuord-eq-every-some.md)**  
+- **[ZuordEqEverySome](./zuord-eq-every-some)**  
   Check if every entry in one set is equal to an entry in another set.
