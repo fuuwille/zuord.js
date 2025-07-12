@@ -16,11 +16,11 @@ In Zuord's core, each operation exists in two synchronized forms:
 - A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
 
 ```typescript
-type Output = Zuord.Merge<[{ a: 314}, { a: true, b: string }]>
-//     => { a: 314 | true, b: string }
-
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 //     => { a: number, b: 'text' }
+
+type Output = Zuord.Merge<[{ x: 314}, { x: true, y: string }]>
+//     => { a: 314 | true, b: string }
 ```
 
 Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
