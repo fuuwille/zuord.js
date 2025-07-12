@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## Function + Type Synchronization
 
-In Core Zuord, each operation exists in two synchronized forms:
+In Zuord's core, each operation exists in two synchronized forms:
 
 - A **runtime function** (e.g., `merge`, `pick`, `omit`)
 - A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`)
@@ -26,6 +26,10 @@ const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 The return type of each function is fully integrated with its corresponding TypeScript type, ensuring type-level accuracy at runtime.
 ```typescript
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
+
+// Type defined by the function:
 // output : Zuord.Merge<[{ a: 1 }, { b: 'text' }]>
+
+// Type returned after normalization:
 // output : { a: number, b: 'text' }
 ```
