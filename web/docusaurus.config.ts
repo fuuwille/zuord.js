@@ -77,12 +77,6 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'api',
-          position: 'left',
-          label: 'API',
-        },
-        {
-          type: 'docSidebar',
           sidebarId: 'util',
           position: 'left',
           label: 'Utils',
