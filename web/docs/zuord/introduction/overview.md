@@ -17,6 +17,8 @@ In Zuord's core, each operation exists in two synchronized forms:
 - A **runtime function** (e.g., `merge`, `pick`, `omit`, `normalize`)
 
 ```ts
+// JS/TS
+
 const fee = zuord.merge({ a: 222 }, { a: 'hello', b: null }, { c: 'world' } as const)
 // value & type => { a: string, b: null, c: 'world' }
 ```
@@ -24,6 +26,8 @@ const fee = zuord.merge({ a: 222 }, { a: 'hello', b: null }, { c: 'world' } as c
 - A **compile-time type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
 
 ```ts
+// TS Only
+
 type Foo = Zuord.Merge<[{ x: 'kayra' }, { x: 314, y: boolean }, { z: string | 42 }]>
 // type only => { x: 'kayra' | 314, y: boolean, z: string | 42 }
 ```
