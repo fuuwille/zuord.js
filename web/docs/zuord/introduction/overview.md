@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## Function + Type Synchronization
 
-In Zuord, each operation exists in two synchronized forms:
+In Core Zuord, each operation exists in two synchronized forms:
 
 - A **runtime function** (e.g., `merge`, `pick`, `omit`)
 - A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`)
