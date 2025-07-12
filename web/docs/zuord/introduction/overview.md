@@ -14,7 +14,7 @@ sidebar_position: 1
 
 In Zuord's core, each operation exists in two synchronized forms:
 
--**Runtime functions** (e.g., `merge`, `pick`, `omit`, `normalize`)
+- **Runtime functions** (e.g., `merge`, `pick`, `omit`, `normalize`)
 
 ```ts
 const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
