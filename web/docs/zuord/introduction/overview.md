@@ -8,3 +8,5 @@ sidebar_position: 1
 
 # Zuord
 **Zuord** (German for: 'assign', 'map') is a fully featured library offering consistent deep data manipulations in JavaScript projects, along with full, precise type inference in TypeScript projects.
+
+### Zuord makes deep manipulations smarter
