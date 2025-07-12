@@ -13,14 +13,15 @@ sidebar_position: 1
 In Zuord's core, each operation exists in two synchronized forms:
 
 - A **runtime function** (e.g., `merge`, `pick`, `omit`, `normalize`)
-- A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
 
-```typescript
-const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
+- A **compile-time type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
+
+```ts
+const foo = zuord.merge({ a: 1 }, { b: 'text' } as const)
 //     => { a: number, b: 'text' }
 
-type Output = Zuord.Merge<[{ x: 314}, { x: true, y: string }]>
-//     => { a: 314 | true, b: string }
+type Fee = Zuord.Merge<[{ x: 314}, { x: true, y: string }]>
+//     => { x: 314 | true, y: string }
 ```
 
 Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
@@ -33,17 +34,4 @@ const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 
 // Returned type
 // output: { a: number, b: 'text' }
-```
-
-## Type Normalization
-
-In Zuord's core, all types are wrapped with `Normalize` to provide a clear and simplified type representation. This normalization enables intelligent type inference, making complex types easier to understand and work with.
-
-By applying Normalize, Zuord ensures that types are presented in their most explicit form while maintaining full type accuracy and usability.
-
-```typescript
-// Merge is wrapped with normalize
-type Output = Zuord.Merge<[{ a: 314}, { a: true, b: string }]>
-
-// With normalize: 
 ```
