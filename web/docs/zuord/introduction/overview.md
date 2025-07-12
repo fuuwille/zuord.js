@@ -27,7 +27,7 @@ type Foo = Zuord.Merge<[{ x: 314 }, { x: 'zuord', y: boolean }, { z: string | 42
 // Foo : { x: 'zuord', y: boolean, z: string | 42 }
 ```
 
-Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
+Each return type is fully connected to its matching Zuord type, ensuring type correctness is preserved throughout development and runtime
 
 ```typescript
 const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
