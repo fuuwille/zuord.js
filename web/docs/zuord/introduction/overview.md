@@ -27,7 +27,12 @@ Each function’s return type is fully connected to its matching Zuord type, gua
 
 ```typescript
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
+
+// Defined type
 // output: Zuord.Merge<[{ a: 1 }, { b: 'text' }]>
+
+// Returned type
+// output: { a: number, b: 'text' }
 ```
 
 ## Type Normalization
@@ -35,3 +40,10 @@ const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 In Zuord's core, all types are wrapped with `Normalize` to provide a clear and simplified type representation. This normalization enables intelligent type inference, making complex types easier to understand and work with.
 
 By applying Normalize, Zuord ensures that types are presented in their most explicit form while maintaining full type accuracy and usability.
+
+```typescript
+// Merge is wrapped with normalize
+type Output = Zuord.Merge<[{ a: 314}, { a: true, b: string }]>
+
+// With normalize: 
+```
