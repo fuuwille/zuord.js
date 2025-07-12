@@ -15,7 +15,7 @@ TypeScript provides strong and flexible type inference, enabling safer and more 
 
 However, TypeScript has a key limitation: **it cannot statically infer return types of runtime data manipulations.** Especially in functions like merge, pick, and omit, static type checking becomes difficult when types depend on runtime data shapes.
 
-## Existing Solutions: Runtime Schemas
+## Existing Workarounds: Runtime Schemas
 
 Many solutions address this limitation by relying on explicitly defined runtime schemas. Schemas describe the data structure and enhance type safety for transformation operations. But these approaches:
 
