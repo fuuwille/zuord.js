@@ -17,11 +17,11 @@ In Zuord's core, each operation exists in two synchronized forms:
 - A **compile-time type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
 
 ```ts
-const foo = zuord.merge({ a: 1 }, { b: 'text' } as const)
-//     => { a: number, b: 'text' }
+const fee = zuord.merge({ a: 222 }, { a: 'hello', b: null }, { c: 'world' } as const)
+//     => { a: string, b: null, c: 'world' }
 
-type Fee = Zuord.Merge<[{ x: 314}, { x: true, y: string }]>
-//     => { x: 314 | true, y: string }
+type Foo = Zuord.Merge<[{ x: 'kayra' }, { x: 314, y: boolean }, { z: string | 42 }]>
+//     => { x: 'kayra' | 314, y: boolean, z: string | 42 }
 ```
 
 Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
