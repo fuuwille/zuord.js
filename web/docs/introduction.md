@@ -1,10 +1,11 @@
 ---
-sidebar_label: Overview  
-title: Overview of Zuord  
+id: introduction
+sidebar_label: Introduction  
+title: Introduction to Zuord  
 sidebar_position: 1  
 ---
 
-# Overview of Zuord
+# Introduction to Zuord
 
 **Zuord** (German for 'assign' or 'map') is a TypeScript library focused on deep object manipulations and type inferences, providing full synchronization between runtime functions and compile-time types.
 
