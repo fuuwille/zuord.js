@@ -12,8 +12,8 @@ sidebar_position: 1
 
 In Zuord's core, each operation exists in two synchronized forms:
 
-- A **runtime function** (e.g., `merge`, `pick`, `omit`)
-- A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`)
+- A **runtime function** (e.g., `merge`, `pick`, `omit`, `normalize`)
+- A **TypeScript type** (e.g., `Merge`, `Pick`, `Omit`, `Normalize`)
 
 ```typescript
 type Output = Zuord.Merge<[{ a: 314}, { a: true, b: string }]>
@@ -23,13 +23,9 @@ const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 //     => { a: number, b: 'text' }
 ```
 
-The return type of each function is fully integrated with its corresponding TypeScript type, ensuring type-level accuracy at runtime.
+And the return type of each function is fully integrated with its corresponding TypeScript type, ensuring type-level accuracy at runtime.
 ```typescript
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 
-// Type defined by the function:
-// output : Zuord.Merge<[{ a: 1 }, { b: 'text' }]>
-
-// Type returned after normalization:
-// output : { a: number, b: 'text' }
+// output (type): Zuord.Merge<[{ a: 1 }, { b: 'text' }]>
 ```
