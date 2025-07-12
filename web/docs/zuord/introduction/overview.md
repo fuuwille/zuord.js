@@ -18,10 +18,10 @@ In Zuord's core, each operation exists in two synchronized forms:
 
 ```ts
 const fee = zuord.merge({ a: 222 }, { a: 'hello', b: null }, { c: 'world' } as const)
-//     => { a: string, b: null, c: 'world' }
+// value & type => { a: string, b: null, c: 'world' }
 
 type Foo = Zuord.Merge<[{ x: 'kayra' }, { x: 314, y: boolean }, { z: string | 42 }]>
-//     => { x: 'kayra' | 314, y: boolean, z: string | 42 }
+//   type only  => { x: 'kayra' | 314, y: boolean, z: string | 42 }
 ```
 
 Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
