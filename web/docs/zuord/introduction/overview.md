@@ -38,3 +38,7 @@ const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 // Returned type
 // output: { foo: number, bar: 'text' }
 ```
+
+## Smart Manipulations
+
+Zuord provides smarter manipulation and type inference than native builds and popular solutions
