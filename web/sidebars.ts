@@ -4,7 +4,7 @@ const sidebars: SidebarsConfig = {
   docs: [
     {
       type: 'doc',
-      id: 'intro',
+      id: 'introduction',
     }
   ],
   api: [
