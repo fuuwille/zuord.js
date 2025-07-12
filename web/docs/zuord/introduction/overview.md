@@ -5,26 +5,38 @@ title: Motivation of Zuord
 
 # Motivation of Zuord
 
-## Why Runtime Type Inference Matters?
+### Power and Limitations of TypeScript
+TypeScript provides flexible and reliable type inference that helps catch errors early and improves overall code quality. Its static type system automatically understands many types during development. For example:
 
-Modern applications frequently manipulate complex and dynamic data at runtime. Operations like merging objects, selecting specific fields, or omitting properties are common. However, because these transformations occur during execution, the resulting data types are not known at compile time. This creates a significant challenge in maintaining type safety throughout the development process.
+However, when dealing with complex data operations like deep manipulations, TypeScript struggles. Dynamic actions such as merge, omit, or pick return any or lose precise type information, creating significant gaps in type safety.
 
-## The Strengths and Limitations of TypeScript
+In practice, many runtime utilities used for deep data manipulations—such as merging, picking, or omitting properties—offer flexible ways to transform objects. However, even though these tools aim to preserve type information, TypeScript’s inference often becomes imprecise or overly broad with complex or deeply nested operations. As a result, the exact resulting types may not be fully known at compile time, which weakens type safety in real-world applications.
 
-TypeScript offers robust static typing and flexible type inference, helping developers catch errors early and improve code quality. Despite this, TypeScript cannot fully infer types for results of runtime data manipulations such as `merge`, `pick`, or `omit`. This gap leaves room for type safety issues in real-world applications where data shapes frequently change.
+### The Effect of Type Loss to Developer
+In many TypeScript projects, deep data manipulations often cause original type information to be lost or blurred. Examples like merging objects (merge), removing fields (omit), or picking properties (pick) make it difficult for TypeScript to fully infer types during compilation. This loss of type information increases the risk of bugs and challenges the reliability of applications. As a result, safely managing complex and dynamic data structures becomes a serious challenge.
 
-## Existing Solutions and Their Drawbacks
+### Existing Solutions and Their Drawbacks
+Popular libraries often address runtime data manipulation through utility functions or schema-driven validation systems. While helpful, many of these tools rely heavily on TypeScript’s intersection (&) types when combining structures—especially during deep merging operations.
 
-To bridge this gap, many developers use runtime schema libraries like Zod or Yup. These tools define explicit schemas that describe data shapes and provide type inference from those schemas. While effective, they often require verbose definitions, add runtime overhead, and limit flexibility when dealing with highly dynamic or unpredictable data structures.
+This approach has critical limitations:
 
-## The Need for a Better Approach
+- **Overuse of `&` Leads to Unrealistic Types**  
+  Combining two object types using `A & B` assumes that all fields from both types will always coexist at runtime.  
+  However, in practice, merge operations often override fields. The resulting runtime shape does not reflect this intersection, creating a mismatch between type and reality.
 
-The ideal solution would provide precise static type inference aligned with runtime operations without requiring explicit schemas or excessive boilerplate. This would enable developers to maintain type safety while enjoying the flexibility of dynamic data transformations.
+- **Problematic with Arrays**  
+  In deeply nested structures, merging two different array types (e.g. `string[]` and `number[]`) results in a type like `string[] & number[]`, which is logically impossible—no value can simultaneously be both.  
+  This makes the resulting type unusable or misleading:
 
-## Zuord’s Role
+```ts
+const merged: string[] & number[]; // ← unusable
+```
 
-Zuord addresses this need by synchronizing compile-time types with runtime data manipulations without requiring schemas. It enables full type safety in dynamic, deep data operations while preserving TypeScript’s flexibility — closing a longstanding gap in static typing for runtime transformations.
+- Optional Fields Become Unsafe
+In deeply nested structures with optional properties, TypeScript’s default merge typing does not guarantee their presence. The type system may indicate a field exists, but it can still be undefined or missing due to the runtime behavior of merging:
 
----
-
-With Zuord, developers no longer have to compromise between flexibility and type safety.
+```ts
+type A = { settings?: { theme: string } };
+type B = { settings: { mode: string } };
+const merged : { settings: { theme: string, mode: string } };; // TypeScript: A & B — but `theme` is not safe
+```
