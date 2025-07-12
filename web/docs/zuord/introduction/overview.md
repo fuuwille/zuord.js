@@ -41,4 +41,4 @@ const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 
 ## Smarter Manipulations & Inferences
 
-Zuord provides smarter manipulation and type inference than native builds and popular solutions
+Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
