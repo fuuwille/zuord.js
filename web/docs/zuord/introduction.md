@@ -7,7 +7,7 @@ title: Introduction to Zuord
 
 # Zuord
 
-Zuord (German for: assign, map) is a highly abstracted library that enables compile-time type inference for runtime operations without requiring schema definitions.
+Zuord (from the German word for 'assign' or 'map') is a highly abstracted library that enables compile-time type inference for runtime operations without requiring schema definitions.
 
 ## The Power and Limits of TypeScript
 
