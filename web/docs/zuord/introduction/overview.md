@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Overview of Zuord
 
-**Zuord** (German for “assign” or “map”) is a JS/TS utility library that provides **full synchronization between compile-time types and runtime functions** for deep object manipulation and structural transformations.
+**Zuord** (German for 'assign' or 'map') is a TypeScript library focused on deep object manipulation and structural transformations, providing full synchronization between compile-time types and runtime functions.
 
 ### Function + Type Synchronization
 
