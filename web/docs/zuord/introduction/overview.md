@@ -1,11 +1,11 @@
 ---
 sidebar_label: Motivation
-title: Motivation
+title: Motivation of Zuord
 ---
 
-# Motivation
+# Motivation of Zuord
 
-## Why Runtime Type Inference Matters
+## Why Runtime Type Inference Matters?
 
 Modern applications frequently manipulate complex and dynamic data at runtime. Operations like merging objects, selecting specific fields, or omitting properties are common. However, because these transformations occur during execution, the resulting data types are not known at compile time. This creates a significant challenge in maintaining type safety throughout the development process.
 
