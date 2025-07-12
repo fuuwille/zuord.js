@@ -1,9 +1,9 @@
 ---
-sidebar_label: Introduction
-title: Introduction to Zuord
+sidebar_label: Overview
+title: Overview of Zuord
 ---
 
-# Introduction to Zuord
+# Overview of Zuord
 
 ## Motivation
 
