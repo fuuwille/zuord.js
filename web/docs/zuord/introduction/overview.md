@@ -22,3 +22,9 @@ type Output = Zuord.Merge<[{ a: 314}, { a: true, b: string }]>
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 //     => { a: number, b: 'text' }
 ```
+
+The return type of each function is fully integrated with its corresponding TypeScript type, ensuring type-level accuracy at runtime.
+```typescript
+const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
+//    output : Zuord.Merge<[{ a: 1 }, { b: 'text' }]>
+```
