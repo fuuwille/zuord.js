@@ -5,40 +5,35 @@ title: Overview of Zuord
 
 # Overview of Zuord
 
-## Motivation
+## The Need for Runtime Type Inference
 
-Modern applications often involve complex and dynamic data transformations — merging structures, picking fields, omitting branches — all done at runtime.
+Modern applications often require manipulating and transforming data dynamically at runtime. Common operations include merging objects, picking specific fields, or omitting others. Because these transformations happen at runtime, the resulting data shapes are not known at compile time. This creates a significant challenge for maintaining accurate and reliable type inference. Ensuring type safety during runtime data manipulation is essential for building robust applications.
 
-Ensuring type safety in these operations is essential, yet challenging.
+## TypeScript’s Strengths and Limitations
 
-## The Limits of TypeScript
+TypeScript offers a powerful and flexible static type system that helps developers catch errors early, improve code readability, and maintainability. However, TypeScript cannot statically infer the types of data resulting from runtime transformations. Functions like `merge`, `pick`, and `omit` produce new data shapes dynamically, and TypeScript’s static analysis cannot fully track these changes. This limitation leaves a gap in type safety when working with runtime data manipulations.
 
-TypeScript provides strong and flexible type inference, enabling safer and more efficient software development. It catches errors early, improves editor tooling, and supports scalable refactoring.
+## Popular Solution: Runtime Schemas and Their Limitations
 
-However, it has a key limitation: **TypeScript cannot statically infer the result types of runtime data manipulations.**  
-Functions like `merge`, `pick`, and `omit` produce new shapes based on dynamic input, and TypeScript’s static analysis isn’t designed to trace those shapes without explicit type annotations.
+To address this issue, many libraries rely on runtime schemas. Tools like Zod and Yup provide schema definitions that describe data structures explicitly and enable type inference based on those schemas. While effective, these approaches have drawbacks:
 
-## Schema-Based Workarounds
+- They require verbose and repetitive schema definitions,  
+- Introduce runtime overhead,  
+- Reduce flexibility when dealing with highly dynamic or unpredictable data structures.
 
-To address this gap, many developers rely on **runtime schema libraries**. These tools (like Zod or Yup) define data structures explicitly and infer types from them.
+Therefore, schema-based solutions are not always ideal in dynamic scenarios.
 
-While helpful, schema-driven approaches come with trade-offs:
+## The Natural Solution: Zuord
 
-- They require verbose and repetitive definitions  
-- They introduce runtime overhead  
-- They limit flexibility in truly dynamic scenarios  
+Zuord, derived from the German word *zuordnen* meaning “to assign” or “to map,” is designed to solve this exact problem. Zuord offers a schema-free approach that synchronizes compile-time type inference with runtime data operations. This allows developers to perform complex, dynamic data transformations while maintaining full static type safety — without the need for explicit schema definitions.
 
-## Enter Zuord
+## Why Zuord Is Unique
 
-**Zuord** (from the German word *zuordnen*, meaning “to assign” or “map”) was created to solve this exact problem.
+Zuord provides several unique advantages:
 
-It is a highly abstracted library that enables **precise compile-time type inference for runtime operations — without requiring any schemas.** Zuord bridges the gap between runtime flexibility and static type safety.
+- Automatic and precise type inference for deeply nested and dynamic runtime operations,  
+- Eliminates the need for manual type annotations or verbose schemas,  
+- Maintains full runtime flexibility without sacrificing static type safety,  
+- Seamlessly aligns TypeScript’s static analysis with runtime behavior in a natural and efficient way.
 
-## What Zuord Enables
-
-- ⚡ **Deep and dynamic data transformations**, fully type-safe  
-- 🧠 **Compile-time inference** of runtime operations  
-- 🧩 **Schema-free development** with minimal boilerplate  
-- 🧵 **Full alignment between runtime behavior and compile-time understanding**
-
-> With Zuord, you don’t have to choose between flexibility and type safety — you get both, by default.
+With Zuord, developers no longer have to choose between flexibility and type safety — they get both effortlessly.
