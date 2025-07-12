@@ -23,7 +23,7 @@ const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 //     => { a: number, b: 'text' }
 ```
 
-And the return type of each function is fully integrated with its corresponding TypeScript type, ensuring type-level accuracy at runtime.
+Each function’s return type is fully connected to its matching Zuord type, guaranteeing accurate types even at runtime.
 ```typescript
 const output = zuord.merge({ a: 1 }, { b: 'text' } as const)
 
