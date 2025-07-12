@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ### Function + Type Synchronization
 
-In Zuord's core, each operation exists in two synchronized forms:
+In Zuord, each operation exists in two synchronized forms:
 
 - **Runtime functions** (e.g., `merge`, `pick`, `omit`, `normalize`)
 
