@@ -13,7 +13,7 @@ sidebar_position: 1
 
 In Zuord, each operation exists in two synchronized forms:
 
-- **Runtime functions** (e.g., `integrate`, `merge`, `pick`, `omit`)
+- **Runtime functions** (`integrate`, `merge`, `pick`, `omit`, etc.)
 
 ```ts
 const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
@@ -21,7 +21,7 @@ const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as
 // type  => { a: string , b: number, c: 'world' }
 ```
 
-- **Compile-time types** (e.g., `Integrate`, `Merge`, `Pick`, `Omit`)
+- **Compile-time types** (`Integrate`, `Merge`, `Pick`, `Omit`, etc.)
 
 ```ts
 type Foo = Zuord.Merge<[{ x: 314 }, { x: 'zuord', y: boolean }, { z: string | 42 }]>
@@ -40,6 +40,11 @@ const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 // output: { foo: number, bar: 'text' }
 ```
 
+Thus, the possibility of falling back to any or losing type safety is effectively eliminated.
+
 ## Smarter Manipulations & Inferences
 
 Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
+
+- **Recursive by Nature**  
+  Zuord handles nested structures recursively, enabling deep merging and type-safe transformations by default.
