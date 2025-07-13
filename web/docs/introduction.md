@@ -72,4 +72,4 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (overridden)
   ```
 
-  For all custom behaviors, see all: [Custom Behaviors](#smarter-manipulations--inferences)
+  For all custom behaviors, see: [Custom Behaviors](#smarter-manipulations--inferences)
