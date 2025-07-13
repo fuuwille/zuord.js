@@ -52,15 +52,11 @@ const config: Config = {
     },
     navbar: {
       title: 'Zuord',
-      logo: {
-        alt: 'Zuord Logo',
-        src: '/img/logo.png'
-      },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'docs',
-          position: 'left',
+          position: 'right',
           label: 'Docs',
         },
         {
