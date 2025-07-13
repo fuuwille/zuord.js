@@ -60,8 +60,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'docs',
+          to: '#',
           position: 'right',
           label: 'API',
         },
