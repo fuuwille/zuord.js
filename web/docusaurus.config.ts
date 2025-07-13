@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Zuord',
   tagline: 'Typescript is cool, but type utilities are cooler',
-  favicon: 'img/logo.svg',
+  favicon: 'img/logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -73,7 +73,7 @@ const config: Config = {
       title: 'Zuord',
       logo: {
         alt: 'Zuord Logo',
-        src: 'img/logo.svg'
+        src: '/img/logo.png'
       },
       items: [
         {
