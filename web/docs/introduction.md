@@ -33,11 +33,9 @@ Each return type precisely matches its Zuord type, ensuring compile-time type sa
 ```typescript
 const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 
-// Defined type
-// output: Zuord.Merge<[{ foo: 1 }, { bar: 'text' }]>
+// Defined: Zuord.Merge<[{ foo: 1 }, { bar: 'text' }]>
 
-// Returned type
-// output: { foo: number, bar: 'text' }
+// Returned: { foo: number, bar: 'text' }
 ```
 
 This effectively eliminates any fallback to any and ensures complete type safety.
