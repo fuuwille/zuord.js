@@ -63,12 +63,12 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   For example, the merge function concatenates arrays by default:
 
   ```typescript
-  const foo = { h: ["zuord", "is"], l: [1, [2, 3]] };
+  const foo = { h: ["zuord", "is"], l: [2, [2, 2]] };
   const bar = { h: ["cool"], l: [4, [5, 6]] };
 
   const out = zuord.merge(foo, bar);
 
-  // Zuord behavior: { h: ["zuord", "is", "cool"], l: [1, [2, 3], 4, [5, 6]] }
+  // Zuord behavior: { h: ["zuord", "is", "cool"], l: [2, [2, 2], 4, [5, 6]] }
   // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (overridden)
   ```
 
