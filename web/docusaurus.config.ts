@@ -60,6 +60,12 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'docs',
+          position: 'right',
+          label: 'API',
+        },
+        {
           href: 'https://github.com/k4yr2/zuord',
           label: 'GitHub',
           position: 'right',
