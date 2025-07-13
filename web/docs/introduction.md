@@ -47,4 +47,12 @@ Thus, the possibility of falling back to any or losing type safety is effectivel
 Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
 
 - **Recursive by Nature**  
-  Zuord handles nested structures recursively, enabling deep merging and type-safe transformations by default.
+  Zuord handles nested structures recursively, enabling deep operations and preserving type accuracy by default.
+
+  ```typescript
+  const foo = { first: "Kayra", data: { x: 31, y: 42, abyss: { a: "recursive" } } };
+  const bar = { last: "Özkaya", data: { z: 69, abyss: { b: "nature" } } };
+
+  const out = zuord.merge(foo, bar);
+  // value => { first: "Kayra", data: { x: 31, y: 42, abyss: { a: "resursive", b: "nature }, z: 69 }, last: "Özkaya" }
+  ```
