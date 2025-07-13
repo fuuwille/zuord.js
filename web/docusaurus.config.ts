@@ -83,12 +83,6 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'util',
-          position: 'left',
-          label: 'Utils',
-        },
-        {
           href: 'https://github.com/k4yr2/zuord',
           label: 'GitHub',
           position: 'right',
