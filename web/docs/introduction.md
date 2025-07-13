@@ -47,7 +47,7 @@ Thus, the possibility of falling back to any or losing type safety is effectivel
 Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
 
 - **Recursive by Nature**  
-  Zuord operates recursively by default, handling nested objects and arrays at all levels while maintaining full type integrity.
+  Zuord operates recursively, applying deep operations across all levels by default
 
   ```typescript
   const foo = { a: { b: { x: "zuord", y: "is" } } };
@@ -55,4 +55,17 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
 
   const out = zuord.merge(foo, bar);
   // { a: { b: { x: "zuord", y: "is", z: "cool" } } }
+  ```
+
+- **Custom Behaviors**  
+  Zuord supports custom behaviors to better align with real-world use cases. [see](#smarter-manipulations--inferences)
+
+  For example, the merge function concatenates arrays by default:
+
+  ```typescript
+  const foo = { h: ["zuord", "is"] };
+  const bar = { h: ["cool"] };
+
+  const out = zuord.merge(foo, bar);
+  // { h: ["zuord", "is", "cool"] }
   ```
