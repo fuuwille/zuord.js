@@ -47,7 +47,7 @@ Thus, the possibility of falling back to any or losing type safety is effectivel
 Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
 
 - **Recursive by Nature**  
-  Zuord handles nested structures recursively, applying deep operations across all levels by default. This allows nested objects and arrays to be seamlessly processed while maintaining full type integrity.
+  Zuord operates recursively by default, handling nested objects and arrays at all levels while maintaining full type integrity.
 
   ```typescript
   const foo = { a: { b: { x: "zuord", y: "is" } } };
