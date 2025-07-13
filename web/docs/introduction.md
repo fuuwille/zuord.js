@@ -17,7 +17,7 @@ In Zuord, each operation exists in two synchronized forms:
 
   ```ts
   const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
-  
+
   // Value: { a: 'hello', b: 101.05, c: 'world' }
   // Type: { a: string , b: number, c: 'world' }
   ```
@@ -71,3 +71,6 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   ```
 
   For all custom behaviors, see: [Custom Behaviors](#smarter-manipulations--inferences)
+
+- **Configurable Usage**    
+  You can adjust these behaviors at runtime using functions and at compile-time using types to suit your specific needs.
