@@ -62,19 +62,18 @@ const config: Config = {
 
   themeConfig: {
     announcementBar: {
-      id: 'early_access_notice',
+      id: 'early_access',
       content:
         '<strong>🚧 Zuord is currently in early access 🚧</strong> <em><span style="font-size: 0.9em;">Features and content will change over time.</span></em>',
       backgroundColor: '#20232a',
       textColor: '#ffffff',
-      isCloseable: true,
+      isCloseable: false,
     },
     navbar: {
       title: 'Zuord',
       logo: {
         alt: 'Zuord Logo',
-        src: 'img/logo.svg',
-        href: '/docs',
+        src: 'img/logo.svg'
       },
       items: [
         {
