@@ -40,7 +40,7 @@ const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 // output: { foo: number, bar: 'text' }
 ```
 
-Thus, the possibility of falling back to any or losing type safety is effectively eliminated.
+This effectively eliminates any fallback to any and ensures complete type safety.
 
 ## Smarter Manipulations & Inferences
 
