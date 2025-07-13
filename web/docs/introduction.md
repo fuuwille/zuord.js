@@ -17,6 +17,7 @@ In Zuord, each operation exists in two synchronized forms:
 
   ```ts
   const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
+  
   // Value: { a: 'hello', b: 101.05, c: 'world' }
   // Type: { a: string , b: number, c: 'world' }
   ```
@@ -34,7 +35,6 @@ Each return type precisely matches its Zuord type, ensuring compile-time type sa
 const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
 
 // Defined: Zuord.Merge<[{ foo: 1 }, { bar: 'text' }]>
-
 // Returned: { foo: number, bar: 'text' }
 ```
 
