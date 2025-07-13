@@ -32,7 +32,9 @@
   background-color: var(--ifm-color-primary);
   color: var(--ifm-navbar-background-color);
   padding: 0.25rem 0.6rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 1.2rem;
   display: inline-block;
   line-height: 1.4;
+  border-radius: 6px;
 }
