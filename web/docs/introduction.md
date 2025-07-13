@@ -67,9 +67,9 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   const bar = { h: ["cool"], l: [4, [5, 6]] };
 
   const out = zuord.merge(foo, bar);
-  
+
   // Zuord behavior: { h: ["zuord", "is", "cool"], l: [1, [2, 3], 4, [5, 6]] }
-  // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (Overrided)
+  // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (overridden)
   ```
 
   For all custom behaviors, see all: [Custom Behaviors](#smarter-manipulations--inferences)
