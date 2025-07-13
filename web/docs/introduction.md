@@ -17,15 +17,15 @@ In Zuord, each operation exists in two synchronized forms:
 
   ```ts
   const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
-  // value => { a: 'hello', b: 101.05, c: 'world' }
-  // type  => { a: string , b: number, c: 'world' }
+  // Value: { a: 'hello', b: 101.05, c: 'world' }
+  // Type: { a: string , b: number, c: 'world' }
   ```
 
 - **Compile-time types** (`Integrate`, `Merge`, `Pick`, `Omit`, etc.)
 
   ```ts
   type Foo = Zuord.Merge<[{ x: 314 }, { x: 'zuord', y: boolean }, { z: string | 42 }]>
-  // Foo : { x: 'zuord', y: boolean, z: string | 42 }
+  // Type: { x: 'zuord', y: boolean, z: string | 42 }
   ```
 
 Each return type is fully connected to its matching Zuord type, ensuring type correctness is preserved throughout development and runtime:
