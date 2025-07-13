@@ -28,7 +28,7 @@ In Zuord, each operation exists in two synchronized forms:
   // Type: { x: 'zuord', y: boolean, z: string | 42 }
   ```
 
-Each return type is fully connected to its matching Zuord type, ensuring type correctness is preserved throughout development and runtime:
+Each return type precisely matches its Zuord type, ensuring compile-time type safety throughout development:
 
 ```typescript
 const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
