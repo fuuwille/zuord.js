@@ -8,7 +8,7 @@ const config: Config = {
   title: 'Zuord',
   tagline: 'Type-synced operations, helper utilities, and precise distinctions.',
   favicon: 'img/logo.png',
-  url: 'https://zuordjs.github.io',
+  url: 'https://www.zuordjs.org',
   baseUrl: '/',
   organizationName: 'k4yr2',
   projectName: 'zuord',
