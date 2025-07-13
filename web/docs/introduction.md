@@ -44,7 +44,7 @@ This effectively eliminates any fallback to any and ensures complete type safety
 
 ## Smarter Manipulations & Inferences
 
-Zuord delivers smarter runtime manipulations and compile-time type inferences than native implementations and popular alternatives.
+Zuord delivers smarter and more precise runtime manipulations and compile-time type inferences compared to native implementations and popular alternatives.
 
 - **Recursive by Nature**  
   Zuord operates recursively, applying deep operations across all levels by default
