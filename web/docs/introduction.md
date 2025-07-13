@@ -50,9 +50,9 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   It handles nested structures recursively, applying deep operations across all levels by default. This allows nested objects and arrays to be seamlessly processed while maintaining full type integrity.
 
   ```typescript
-  const foo = { a: { b: { x: "recursive" } } };
-  const bar = { a: { b: { y: "nature" } } };
+  const foo = { a: { b: { x: "zuord", y: "is" } } };
+  const bar = { a: { b: { y: "cool" } } };
 
   const out = zuord.merge(foo, bar);
-  // { a: { b: { x: "resursive", y: "nature } } }
+  // { a: { b: { x: "zuord", y: "is", z: "cool" } } }
   ```
