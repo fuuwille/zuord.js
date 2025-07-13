@@ -55,8 +55,8 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   // { a: { b: { x: "zuord", y: "is", z: "cool" } } }
   ```
 
-- **Custom Behaviors**  
-  Zuord supports custom behaviors to better align with real-world use cases.
+- **Special Behaviors**  
+  Zuord includes built-in special behaviors, designed to match real-world use cases.
 
   For example, the merge function concatenates arrays by default:
 
@@ -70,7 +70,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (overridden)
   ```
 
-  For all custom behaviors, see: [Custom Behaviors](#smarter-manipulations--inferences)
+  For all special behaviors, see: [Special Behaviors](#smarter-manipulations--inferences)
 
 - **Configurable Usage**    
   You can adjust these behaviors at runtime using functions and at compile-time using types to suit your specific needs.
