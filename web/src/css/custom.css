@@ -31,10 +31,9 @@
 .navbar__title {
   background-color: var(--ifm-color-primary);
   color: var(--ifm-navbar-background-color);
-  padding: 0.25rem 0.6rem;
-  font-weight: 500;
-  font-size: 1.2rem;
+  padding: 0rem 0.6rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  border-radius: 4px;
   display: inline-block;
-  line-height: 1.4;
-  border-radius: 6px;
 }
