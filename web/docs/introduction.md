@@ -58,7 +58,7 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   ```
 
 - **Custom Behaviors**  
-  Zuord supports custom behaviors to better align with real-world use cases. [see](#smarter-manipulations--inferences)
+  Zuord supports custom behaviors to better align with real-world use cases.
 
   For example, the merge function concatenates arrays by default:
 
@@ -69,3 +69,5 @@ Zuord delivers smarter runtime manipulations and compile-time type inferences th
   const out = zuord.merge(foo, bar);
   // { h: ["zuord", "is", "cool"] }
   ```
+
+  see all: [Custom Behaviors](#smarter-manipulations--inferences)
