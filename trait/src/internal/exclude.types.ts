@@ -1,10 +1,10 @@
-import { InternalZuordUtil } from ".";
+import { InternalZuordTrait } from ".";
 
 
 // EXCLUDE
 
 type Exclude<TSource, TBase> = TSource extends any ? (
-    [InternalZuordUtil.Is<TSource, TBase>] extends [false] ? TSource : never
+    [InternalZuordTrait.Is<TSource, TBase>] extends [false] ? TSource : never
 ) : never;
 
 export type { Exclude as ZuordExclude };
@@ -22,7 +22,7 @@ export type { ExcludeEach as ZuordExcludeEach };
 // EXCLUDE EQ
 
 type ExcludeEq<TSource, TBase> = TSource extends any ? (
-    [InternalZuordUtil.Eq<TSource, TBase>] extends [false] ? TSource : never
+    [InternalZuordTrait.Eq<TSource, TBase>] extends [false] ? TSource : never
 ) : never;
 
 export type { ExcludeEq as ZuordExcludeEq };

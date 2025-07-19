@@ -5,7 +5,7 @@ import type { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasSome, ZuordHasEach, 
 import type { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
 import type { ZuordExtract, ZuordExtractEach, ZuordExtractEq, ZuordExtractEqEach } from "./extract.types";
 
-export namespace ZuordUtil {
+export namespace ZuordTrait {
 
     // EQ
 

@@ -1,10 +1,10 @@
 import { ZuordType } from "@zuord/type";
-import { InternalZuordUtil } from ".";
+import { InternalZuordTrait } from ".";
 
 
 // HAS
 
-type Has<TSource, TBase> = true extends (TSource extends any ? InternalZuordUtil.Is<TSource, TBase> : never) ? true : false;
+type Has<TSource, TBase> = true extends (TSource extends any ? InternalZuordTrait.Is<TSource, TBase> : never) ? true : false;
 
 export type { Has as ZuordHas };
 

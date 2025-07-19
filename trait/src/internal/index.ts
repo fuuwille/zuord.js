@@ -4,7 +4,7 @@ import { ZuordHas, ZuordHasAny, ZuordHasEvery, ZuordHasSome, ZuordHasEach, Zuord
 import { ZuordExclude, ZuordExcludeEach, ZuordExcludeEq, ZuordExcludeEqEach } from "./exclude.types";
 import { ZuordExtract, ZuordExtractEach, ZuordExtractEq, ZuordExtractEqEach } from "./extract.types";
 
-export namespace InternalZuordUtil {
+export namespace InternalZuordTrait {
 
     // EQ
     

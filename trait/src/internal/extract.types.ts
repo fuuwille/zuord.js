@@ -1,10 +1,10 @@
-import { InternalZuordUtil } from ".";
+import { InternalZuordTrait } from ".";
 
 
 // EXTRACT
 
 type Extract<TSource, TBase> = TSource extends any ? (
-    [InternalZuordUtil.Is<TSource, TBase>] extends [true] ? TSource : never
+    [InternalZuordTrait.Is<TSource, TBase>] extends [true] ? TSource : never
 ) : never;
 
 export type { Extract as ZuordExtract };
@@ -22,7 +22,7 @@ export type { ExtractEach as ZuordExtractEach };
 // EXTRACT EQ
 
 type ExtractEq<TSource, TBase> = TSource extends any ? (
-    [InternalZuordUtil.Eq<TSource, TBase>] extends [true] ? TSource : never
+    [InternalZuordTrait.Eq<TSource, TBase>] extends [true] ? TSource : never
 ) : never;
 
 export type { ExtractEq as ZuordExtractEq };
