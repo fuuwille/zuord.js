@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/type";
+import { ZuordType } from "../type";
 import { ZuordUtil } from "@zuord/util";
 
 export type Impose<TBase, TPatch, TCurrent extends TBase> = [ZuordUtil.Is<TPatch, never>] extends [false] ? (

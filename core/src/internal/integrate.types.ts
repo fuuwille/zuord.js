@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index";
-import { ZuordType } from "@zuord/type";
+import { ZuordType } from "../type";
 import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = InternalZuord.Normalize<IntegrateRaw<A, B, Options>>;

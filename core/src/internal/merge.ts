@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index"
-import { zuordType } from "@zuord/type";
+import { zuordType } from "../type";
 
 export function merge<U extends object[]>(...content: U) : InternalZuord.Merge<U> {
     return mergeBy({
