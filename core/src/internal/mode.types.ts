@@ -6,4 +6,4 @@ export type ModeOf<TOf> = TOf extends [infer TFirst, ...infer TRest]
   ? TFirst & ModeOf<TRest extends Mode[] ? TRest : []>
   : {};
 
-export type ModeFrom<TMode, TOptions extends TMode> = TOptions;
+export type ModeFrom<TFrom, TMode extends TFrom> = TMode;
