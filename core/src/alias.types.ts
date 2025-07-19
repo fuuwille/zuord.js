@@ -1,1 +1,1 @@
-export * from "./impose";
+export * from "./impose.types";
