@@ -17,5 +17,5 @@ export type ShallowMode = Mode<"shallow">;
 export type BaseMode = ModeOf<[ShallowMode]>;
 
 export type DefaultMode = ModeFrom<BaseMode, {
-    shallow: true;
+    shallow: false;
 }>;
