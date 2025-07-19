@@ -1,5 +1,10 @@
 import { Zuord } from "zuord";
-import { internalZuord } from "./internal";
+import { InternalZuord, internalZuord } from "./internal";
 
-export const merge = <TContent extends object[], const TMode extends Zuord.MergeBaseMode = Zuord.MergeDefaultMode>
-    (content: [...TContent], mode?: TMode) : Zuord.Merge<TContent, TMode> => internalZuord.merge(content, mode);
+type MergeModeWithDefault<T extends Partial<InternalZuord.MergeBaseMode>> =
+  Required<Omit<InternalZuord.MergeDefaultMode, keyof T> & T>;
+
+export const merge = <TContent extends object[], TMode extends Partial<Zuord.MergeBaseMode> = Zuord.MergeDefaultMode>
+    (content: [...TContent], mode?: TMode) : InternalZuord.Normalize<MergeModeWithDefault<TMode>> => internalZuord.merge(content, mode);
+
+    
