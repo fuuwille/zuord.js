@@ -1,21 +1,15 @@
-/*import { InternalZuord } from "./index"
+import { InternalZuord } from "./index"
 import { zuordType } from "@zuord/type";
 
-export function merge<U extends object[]>(...content: U) : InternalZuord.Merge<U> {
-    return mergeBy({
-        content
-    }) as InternalZuord.Merge<U>;
-}
-
-export function mergeBy<U extends object[], const C extends InternalZuord.OutcastConstructor[] = InternalZuord.DefaultOutcastConstructors, const M extends Partial<InternalZuord.MergeBaseMode> = InternalZuord.MergeDefaultMode>(data : InternalZuord.DataOf<U, C, M> ): InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>> {
-    if (data.content.length === 0) {
+export function merge<TContent extends object[], const TMode extends InternalZuord.MergeBaseMode = InternalZuord.MergeDefaultMode>(content: TContent, mode : TMode ) : InternalZuord.Merge<TContent, TMode> {
+    if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>>;
+        return {} as InternalZuord.Merge<TContent, TMode>;
     }
 
     const result: Record<string, unknown> = {};
     
-    for (const obj of data.content) {
+    for (const obj of content) {
         if (!zuordType.isObject(obj)) continue;
 
         // Iterate over each key-value pair in the object
@@ -23,15 +17,12 @@ export function mergeBy<U extends object[], const C extends InternalZuord.Outcas
             const existing = result[key];
 
             // If the key already exists, we need to merge
-            if (Array.isArray(value) && Array.isArray(existing) && mode?.includes("concat" as any)) {
+            if (Array.isArray(value) && Array.isArray(existing) && mode["concat"]) {
                 // Combine arrays
                 result[key] = [...existing, ...value];
             } else if (zuordType.isObject(value) && zuordType.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = mergeBy({
-                    content: [existing as object, value as object],
-                    mode: data.mode
-                });
+                result[key] = merge(content, mode);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
@@ -40,5 +31,5 @@ export function mergeBy<U extends object[], const C extends InternalZuord.Outcas
     }
 
     // Return the merged result as a normalized object
-    return result as InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>>;
-}*/
+    return result as InternalZuord.Merge<TContent, TMode>;
+}
