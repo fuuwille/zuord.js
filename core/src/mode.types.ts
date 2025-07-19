@@ -18,6 +18,8 @@ export type DefaultMode = ModeFrom<BaseMode, {
     shallow: false;
 }>;
 
+export type ResolveMode<TMode extends Partial<BaseMode>> = ModeFrom<BaseMode, TMode, DefaultMode>;
+
 export type ShallowMode = Mode<"shallow">;
 
 export type ConcatMode = Mode<"concat">;
