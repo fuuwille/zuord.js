@@ -37,3 +37,8 @@
   border-radius: 4px;
   display: inline-block;
 }
+
+.tabs__item {
+  padding: 6px 18px;
+  border-radius: 0px;
+}
