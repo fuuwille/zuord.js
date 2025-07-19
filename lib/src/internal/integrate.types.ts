@@ -21,9 +21,7 @@ export type Integrate<A, B, Options extends IntegrateBaseMode = IntegrateDefault
     }) : B
 ) : ZuordType.UnionOf<[A, B]>;
 
-export type IntegrateConcatMode = { concat: boolean };
-
-export type IntegrateBaseMode = ZuordCore.ModeOf<[ZuordCore.BaseMode, IntegrateConcatMode]>;
+export type IntegrateBaseMode = ZuordCore.ModeOf<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
 
 export type IntegrateDefaultMode = ZuordCore.ModeFrom<IntegrateBaseMode, {
     concat: true;
