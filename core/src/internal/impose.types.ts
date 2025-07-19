@@ -1,13 +1,13 @@
 import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "@zuord/util";
+import { ZuordTrait } from "@zuord/trait";
 
-export type Impose<TBase, TPatch, TCurrent extends TBase> = [ZuordUtil.Is<TPatch, never>] extends [false] ? (
-    [ZuordUtil.Is<TBase, ZuordType.Plain>] extends [true] ? ({
+export type Impose<TBase, TPatch, TCurrent extends TBase> = [ZuordTrait.Is<TPatch, never>] extends [false] ? (
+    [ZuordTrait.Is<TBase, ZuordType.Plain>] extends [true] ? ({
         [K in keyof TBase]: Impose<TBase[K], NonNullable<TPatch> extends infer TInfer ?
             (K extends keyof TInfer ? TInfer[K] : TCurrent[K]) : never, TCurrent[K]>
     }) : (
-        [ZuordUtil.EqSome<TPatch, [undefined, never]>] extends [true] ? (
-            [ZuordUtil.EqSome<TCurrent, [undefined, never]>] extends [true] ? TPatch : TCurrent
-        ) : ZuordUtil.ExcludeEq<TPatch, undefined>
+        [ZuordTrait.EqSome<TPatch, [undefined, never]>] extends [true] ? (
+            [ZuordTrait.EqSome<TCurrent, [undefined, never]>] extends [true] ? TPatch : TCurrent
+        ) : ZuordTrait.ExcludeEq<TPatch, undefined>
     )
 ) : TCurrent;

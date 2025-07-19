@@ -1,16 +1,16 @@
 import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "@zuord/util";
+import { ZuordTrait } from "@zuord/trait";
 
 export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = InternalZuord.Normalize<IntegrateRaw<A, B, Options>>;
 
-export type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsAny<[A, B], never>] extends [false] ? (
-    [ZuordUtil.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
+export type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
+    [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         [Options["mode"]["concat"]] extends [true] 
             ? Array<ZuordType.ArrayInfer<B> | ZuordType.ArrayInfer<A>>
             : Array<ZuordType.ArrayInfer<B>>
     ) : 
-    [ZuordUtil.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
+    [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
             [Options["mode"]["shallow"]] extends [false] ? (
                 IntegrateRaw<

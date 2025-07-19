@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index"
-import { ZuordUtil } from "@zuord/util";
+import { ZuordTrait } from "@zuord/trait";
 
 export type Omit<T, U> = InternalZuord.Normalize<OmitRaw<T, U>>;
 
@@ -10,7 +10,7 @@ export type OmitRaw<T, U> = {
                 ? never
                 : U[K] extends object
                     ? T[K] extends object
-                        ? ZuordUtil.Is<OmitRaw<T[K], U[K]>, never> extends true
+                        ? ZuordTrait.Is<OmitRaw<T[K], U[K]>, never> extends true
                             ? never
                             : K
                         : K
