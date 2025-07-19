@@ -16,7 +16,6 @@
       "zuord": ["../core/src/index.ts"],
       "@zuord/type": ["../type/src/index.ts"],
       "@zuord/trait": ["../trait/src/index.ts"],
-      "@zuord/test": ["../test/src/index.ts"]
     }
   }
 }
