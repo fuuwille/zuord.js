@@ -1,18 +1,16 @@
-import { InternalZuord } from "./index";
 import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "@zuord/util";
 import { ZuordTrait } from "@zuord/trait";
 
-export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
+export type Integrate<A, B, Options extends IntegrateBaseMode = IntegrateDefaultMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-        [Options["mode"]["concat"]] extends [true] 
+        [Options["concat"]] extends [true] 
             ? Array<ZuordType.ArrayInfer<B> | ZuordType.ArrayInfer<A>>
             : Array<ZuordType.ArrayInfer<B>>
     ) : 
     [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
-            [Options["mode"]["shallow"]] extends [false] ? (
+            [Options["shallow"]] extends [false] ? (
                 Integrate<
                     K extends keyof A ? A[K] : never,
                     K extends keyof B ? B[K] : never,
@@ -23,23 +21,10 @@ export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultO
     }) : B
 ) : ZuordType.UnionOf<[A, B]>;
 
-export type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = InternalZuord.Options<Mode>;
+export type IntegrateConcatMode = { concat: boolean };
 
-export type IntegratePartialOptions = Partial<IntegrateOptions>;
+export type IntegrateBaseMode = ZuordCore.ModeOf<[ZuordCore.BaseMode, IntegrateConcatMode]>;
 
-export type IntegrateDefaultOptions = InternalZuord.ResolveOptions<{
-    mode: IntegrateDefaultMode;
-}, InternalZuord.DefaultOptions>;
-
-export type IntegrateResolveOptions<T extends ZuordUtil.Partialize<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
-    = InternalZuord.ResolveOptions<T, R>;
-
-export type IntegrateMode = ZuordCore.BaseMode & IntegrateConcantMode;
-
-export type IntegrateDefaultMode = ZuordCore.DefaultMode & {
+export type IntegrateDefaultMode = ZuordCore.ModeFrom<IntegrateBaseMode, {
     concat: true;
-};
-
-export type IntegrateConcantMode = {
-    concat: boolean;
-};
+}, ZuordCore.DefaultMode>;
