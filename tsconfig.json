@@ -13,8 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["../api/src/index.ts"],
-      "zuord/type": ["../api/src/type/index.ts"],
+      "zuord": ["../core/src/index.ts"],
+      "zuord/type": ["../core/src/type/index.ts"],
       "@zuord/util": ["../util/src/index.ts"],
       "@zuord/test": ["../test/src/index.ts"]
     }
