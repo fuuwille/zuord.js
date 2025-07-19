@@ -51,7 +51,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   const foo = { a: { b: { x: "zuord", y: "is" } } };
   const bar = { a: { b: { z: "cool" } } };
 
-  const out = zuord.merge(foo, bar);
+  const out = zuord.merge([foo, bar]);
   // { a: { b: { x: "zuord", y: "is", z: "cool" } } }
   ```
 
@@ -64,7 +64,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   const foo = { h: ["zuord", "is"], l: [2, [2, 2]] };
   const bar = { h: ["cool"], l: [4, [5, 6]] };
 
-  const out = zuord.merge(foo, bar);
+  const out = zuord.merge([foo, bar]);
 
   // Zuord behavior: { h: ["zuord", "is", "cool"], l: [2, [2, 2], 4, [5, 6]] }
   // Other libraries: { h: ["cool"], l: [4, [5, 6]] } (overridden)
