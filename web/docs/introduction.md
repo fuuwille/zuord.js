@@ -94,4 +94,5 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 
   const out = zuord.merge([foo, bar], options);
   // Value: { a: { b: { z: "cool" } }, l: [4, [5, 6]] }
+  // Type: { a: { b: { z: string } }, l: [number, [number, number]] }
   ```
