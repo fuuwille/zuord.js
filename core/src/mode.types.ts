@@ -19,3 +19,5 @@ export type DefaultMode = ModeFrom<BaseMode, {
 }>;
 
 export type ShallowMode = Mode<"shallow">;
+
+export type ConcatMode = Mode<"concat">;
