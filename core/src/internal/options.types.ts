@@ -13,7 +13,7 @@ export type DefaultOptions = {
 
 export type ResolveOptions<T extends InternalZuord.Optional<InternalZuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
-export type OptionsOf<T extends InternalZuord.Data> = InternalZuord.ImposeBase<InternalZuord.MergeOptions, { 
+export type OptionsOf<T extends InternalZuord.Data> = InternalZuord.Impose<InternalZuord.MergeOptions, { 
     mode: T["mode"],
     outcasts: ZuordType.InstanceTuple<NonNullable<T["outcasts"]>>
 }, InternalZuord.MergeDefaultOptions>;
