@@ -8,8 +8,8 @@ export type Merge<U, Options extends MergeOptions = MergeDefaultOptions> = (Zuor
         InternalZuord.IntegrateRaw<Merge<Rest, Options>, Head, Options>
     ) : {}
 ) :
-    U extends (infer Inner)[] ? (
-        Inner extends object[] ? (
+    ZuordType.ArrayInfer<U> extends infer TInfer ? (
+        TInfer extends ZuordType.Array ? (
             { [K in keyof U]: Merge<U[K], Options> }
         ) : U
     ) : {}
