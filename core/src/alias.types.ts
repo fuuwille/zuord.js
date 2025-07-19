@@ -1,1 +1,1 @@
-export * from "./mode";
+export * from "./options";

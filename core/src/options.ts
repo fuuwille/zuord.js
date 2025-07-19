@@ -1,4 +1,4 @@
-export type Mode = ShallowMode;
+export type Options = ShallowMode;
 
 export type ShallowMode = {
     shallow: boolean;
