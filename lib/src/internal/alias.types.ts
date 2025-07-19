@@ -16,4 +16,3 @@ export type * from "./pick.types";
 export type * from "./pick.types";
 export type * from "./pick.types";
 export type * from "./impose.types";
-export type * from "./optional.types";
