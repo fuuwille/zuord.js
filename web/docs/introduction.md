@@ -73,4 +73,4 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   For all special behaviors, see: [Special Behaviors](#smarter-manipulations--inferences)
 
 - **Configurable Usage**    
-  You can adjust these behaviors at runtime using functions and at compile-time using types to suit your specific needs.
+  Zuord enables you to override default behaviors according to your specific use cases.
