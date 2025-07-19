@@ -47,7 +47,8 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 - **Recursive by Nature**  
   Zuord operates recursively, applying deep operations across all levels by default:
 
-  ```typescript title="In Function"
+  - **Function**:
+  ```typescript
   const foo = { a: { b: { x: "zuord", y: "is" } } };
   const bar = { a: { b: { z: "cool" } } } as const;
 
@@ -56,7 +57,8 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   // Type: { a: { b: { x: string, y: string, z: "cool" } } }
   ```
 
-  ```typescript title="In Type"
+  - **Type**:
+  ```typescript
   type Foo = { a: { b: { x: "zuord", y: "is" } } };
   type Bar = { a: { b: { z: "cool" } } };
 
