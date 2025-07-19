@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index";
-import { ZuordType } from "../type";
+import { ZuordType } from "zuord/type";
 
 export type Options<Mode extends Partial<InternalZuord.Mode> = Partial<InternalZuord.Mode>> = {
     outcasts: InternalZuord.Outcasts

@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index";
-import { ZuordType } from "../type";
+import { ZuordType } from "zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
 export type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.Eq<T, any>] extends [false] ? (
