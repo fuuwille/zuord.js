@@ -11,8 +11,8 @@ export type ModeFrom<TFrom extends Mode, TMode extends TFrom> = InternalZuordCor
 
 export type ShallowMode = Mode<"shallow">;
 
-export type LibOptions = ShallowMode;
+export type ModeConfig = ModeOf<[ShallowMode]>;
 
-export type DefaultMode = {
-    shallow: false;
-};
+export type DefaultMode = ModeFrom<ModeConfig, {
+    shallow: true;
+}>;
