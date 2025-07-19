@@ -86,13 +86,25 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 - **Configurable Usage**    
   Zuord enables you to override default behaviors according to your specific use cases.
 
-  ```typescript
-  const foo = { a: { b: { x: "zuord", y: "is" } }, l: [2, [2, 2]] };
-  const bar = { a: { b: { z: "cool" } }, l: [4, [5, 6]] };
+  - **Function**:
+    ```typescript
+    const foo = { a: { b: { x: "zuord", y: "is" } }, l: [2, [2, 2]] };
+    const bar = { a: { b: { z: "cool" } }, l: [4, [5, 6]] };
 
-  const options : Zuord.MergeOptions = { shallow: true, concat : false }
+    const options : Zuord.MergeOptions = { shallow: true, concat : false }
 
-  const out = zuord.merge([foo, bar], options);
-  // Value: { a: { b: { z: "cool" } }, l: [4, [5, 6]] }
-  // Type: { a: { b: { z: string } }, l: [number, [number, number]] }
-  ```
+    const out = zuord.merge([foo, bar], options);
+    // Value: { a: { b: { z: "cool" } }, l: [4, [5, 6]] }
+    // Type: { a: { b: { z: string } }, l: [number, [number, number]] }
+    ```
+  
+  - **Type**:
+    ```typescript
+    type Foo = { a: { b: { x: "zuord", y: "is" } }, l: [2, [2, 2]] };
+    type Bar = { a: { b: { z: "cool" } }, l: [4, [5, 6]] };
+
+    type Options = Zuord.MergeOptionsOf<{ shallow: true, concat : false }>
+
+    type Out = Zuord.Merge([Foo, Bar], Options);
+    // Type: { a: { b: { z: "cool" } }, l: [4, [5, 6]] }
+    ```
