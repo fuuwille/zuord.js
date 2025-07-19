@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index"
-import { ZuordType } from "zuord/type";
+import { ZuordType } from "@zuord/type";
 
 export type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = InternalZuord.Normalize<MergeRaw<U, Options>, Options>
 
