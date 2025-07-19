@@ -3,16 +3,14 @@ import { ZuordCore } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
-export type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = InternalZuord.Normalize<MergeRaw<U, Options>, Options>
-
-export type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordType.ArrayDepth<U> extends 1 ? (
+export type Merge<U, Options extends MergeOptions = MergeDefaultOptions> = (ZuordType.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
-        InternalZuord.IntegrateRaw<MergeRaw<Rest, Options>, Head, Options>
+        InternalZuord.IntegrateRaw<Merge<Rest, Options>, Head, Options>
     ) : {}
 ) :
     U extends (infer Inner)[] ? (
         Inner extends object[] ? (
-            { [K in keyof U]: MergeRaw<U[K], Options> }
+            { [K in keyof U]: Merge<U[K], Options> }
         ) : U
     ) : {}
 );
