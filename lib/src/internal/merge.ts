@@ -1,4 +1,4 @@
-import { InternalZuord } from "./index"
+/*import { InternalZuord } from "./index"
 import { zuordType } from "@zuord/type";
 
 export function merge<U extends object[]>(...content: U) : InternalZuord.Merge<U> {
@@ -23,7 +23,7 @@ export function mergeBy<U extends object[], const C extends InternalZuord.Outcas
             const existing = result[key];
 
             // If the key already exists, we need to merge
-            if (Array.isArray(value) && Array.isArray(existing)/* && mode?.includes("concat" as any)*/) {
+            if (Array.isArray(value) && Array.isArray(existing) && mode?.includes("concat" as any)) {
                 // Combine arrays
                 result[key] = [...existing, ...value];
             } else if (zuordType.isObject(value) && zuordType.isObject(existing)) {
@@ -41,4 +41,4 @@ export function mergeBy<U extends object[], const C extends InternalZuord.Outcas
 
     // Return the merged result as a normalized object
     return result as InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>>;
-}
+}*/
