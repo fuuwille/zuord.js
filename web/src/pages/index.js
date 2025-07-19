@@ -23,8 +23,8 @@ export default function Home() {
             fontWeight: '500',
             transition: 'background-color 0.2s ease-in-out',
           }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#1976D2')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#2196F3')}
+          onMouseOver={(e) => (e.target.style.backgroundColor = 'var(--ifm-color-primary)')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = 'var(--ifm-color-primary-dark)')}
         >
           Get Started
         </Link>
