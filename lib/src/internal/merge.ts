@@ -7,7 +7,7 @@ export function merge<U extends object[]>(...content: U) : InternalZuord.Merge<U
     }) as InternalZuord.Merge<U>;
 }
 
-export function mergeBy<U extends object[], const C extends InternalZuord.OutcastConstructor[] = InternalZuord.DefaultOutcastConstructors, const M extends Partial<InternalZuord.MergeMode> = InternalZuord.MergeDefaultMode>(data : InternalZuord.DataOf<U, C, M> ): InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>> {
+export function mergeBy<U extends object[], const C extends InternalZuord.OutcastConstructor[] = InternalZuord.DefaultOutcastConstructors, const M extends Partial<InternalZuord.MergeBaseMode> = InternalZuord.MergeDefaultMode>(data : InternalZuord.DataOf<U, C, M> ): InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>> {
     if (data.content.length === 0) {
         // If no content is provided, return an empty object
         return {} as InternalZuord.Merge<U, InternalZuord.OptionsOf<typeof data>>;
