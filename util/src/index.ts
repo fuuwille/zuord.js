@@ -1,0 +1,1 @@
+export * as ZuordUtil from "./alias.types";
