@@ -1,1 +1,2 @@
-export * from "./mode";
+export * from "./mode.types";
+export * from "./options.types";
