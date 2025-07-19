@@ -74,3 +74,13 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 
 - **Configurable Usage**    
   Zuord enables you to override default behaviors according to your specific use cases.
+
+  ```typescript
+  const foo = { a: { b: { x: "zuord", y: "is" } }, l: [2, [2, 2]] };
+  const bar = { a: { b: { z: "cool" } }, l: [4, [5, 6]] };
+
+  const options : Zuord.MergeOptions =  { shallow: true, concat : false }
+
+  const out = zuord.merge([foo, bar], options);
+  // Value: { a: { b: { z: "cool" } }, l: [4, [5, 6]] }
+  ```
