@@ -6,7 +6,7 @@ export type ModeOf<TOf extends Mode[]> = InternalZuordCore.ModeOf<TOf> extends i
     [K in keyof TOptions]: [TOptions[K]] extends [never] ? never : TOptions[K];
 } : never;
 
-export type ModeFrom<TFrom extends Mode, TMode extends TFrom> = InternalZuordCore.ModeFrom<TFrom, TMode>;
+export type ModeFrom<TFrom extends Mode, TMode extends Partial<TFrom>, TCurrent extends Omit<TFrom, keyof TMode> = TFrom> = InternalZuordCore.ModeFrom<TFrom, TMode, TCurrent>;
 
 // Define specific modes
 
