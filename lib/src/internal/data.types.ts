@@ -4,10 +4,10 @@ import { ZuordCore } from "@zuord/core";
 export type Data = {
     content: object[];
     outcasts?: InternalZuord.OutcastConstructor[];
-    mode?: Partial<ZuordCore.Options>;
+    mode?: Partial<ZuordCore.LibOptions>;
 };
 
-export type DataOf<U extends object[], C extends InternalZuord.OutcastConstructor[], M extends Partial<ZuordCore.Options>> = {
+export type DataOf<U extends object[], C extends InternalZuord.OutcastConstructor[], M extends Partial<ZuordCore.LibOptions>> = {
     content: [...U];
     outcasts?: [...C];
     mode?: M;

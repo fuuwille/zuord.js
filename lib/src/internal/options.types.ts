@@ -3,7 +3,7 @@ import { ZuordCore } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
-export type Options<Mode extends Partial<ZuordCore.Options> = Partial<ZuordCore.Options>> = {
+export type Options<Mode extends Partial<ZuordCore.LibOptions> = Partial<ZuordCore.LibOptions>> = {
     outcasts: InternalZuord.Outcasts
     mode : Mode
 }

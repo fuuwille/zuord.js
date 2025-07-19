@@ -1,8 +1,6 @@
-export type Options = ShallowMode;
+import { ShallowMode } from "./mode.types";
 
-export type ShallowMode = {
-    shallow: boolean;
-};
+export type LibOptions = ShallowMode;
 
 export type DefaultMode = {
     shallow: false;
