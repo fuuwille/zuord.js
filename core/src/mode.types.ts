@@ -8,6 +8,7 @@ export type ModeOf<TOf extends Mode[]> = InternalZuordCore.ModeOf<TOf> extends i
 
 export type ModeFrom<TFrom extends Mode, TMode extends TFrom> = InternalZuordCore.ModeFrom<TFrom, TMode>;
 
+// Define specific modes
 
 export type ShallowMode = Mode<"shallow">;
 
