@@ -1,9 +1,9 @@
-import { Zuord } from "./index"
+import { InternalZuord } from "./index"
 
-export type Pick<T, U> = Zuord.Normalize<PickRaw<T, U>>;
+export type Pick<T, U> = InternalZuord.Normalize<PickRaw<T, U>>;
 
 export type PickRaw<T, U> = {
-    [K in keyof T & keyof U as Zuord.IsPattern<U[K]> extends true ? K : never]:
+    [K in keyof T & keyof U as InternalZuord.IsPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
             : U[K] extends object
@@ -13,4 +13,4 @@ export type PickRaw<T, U> = {
                 : never;
 };
 
-export type PickOf<T, U> = Pick<T, Zuord.Pattern<U>>;
+export type PickOf<T, U> = Pick<T, InternalZuord.Pattern<U>>;

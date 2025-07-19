@@ -1,11 +1,11 @@
-import { Zuord } from "./index"
+import { InternalZuord } from "./index"
 import { ZuordType } from "@zuord/type";
 
-export type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = Zuord.Normalize<MergeRaw<U, Options>, Options>
+export type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = InternalZuord.Normalize<MergeRaw<U, Options>, Options>
 
 export type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultOptions> = (ZuordType.ArrayDepth<U> extends 1 ? (
     U extends [...infer Rest extends object[], infer Head extends object] ? (
-        Zuord.IntegrateRaw<MergeRaw<Rest, Options>, Head, Options>
+        InternalZuord.IntegrateRaw<MergeRaw<Rest, Options>, Head, Options>
     ) : {}
 ) :
     U extends (infer Inner)[] ? (
@@ -15,18 +15,18 @@ export type MergeRaw<U extends any, Options extends MergeOptions = MergeDefaultO
     ) : {}
 );
 
-export type MergeOptions<Mode extends MergeMode = MergeMode> = Zuord.Options<Mode>;
+export type MergeOptions<Mode extends MergeMode = MergeMode> = InternalZuord.Options<Mode>;
 
 export type MergePartialOptions = Partial<MergeOptions>;
 
-export type MergeDefaultOptions = Zuord.ResolveOptions<{
+export type MergeDefaultOptions = InternalZuord.ResolveOptions<{
     mode: MergeDefaultMode;
-}, Zuord.DefaultOptions>;
+}, InternalZuord.DefaultOptions>;
 
-export type MergeResolveOptions<T extends Zuord.Optional<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = Zuord.ResolveOptions<T, R>;
+export type MergeResolveOptions<T extends InternalZuord.Optional<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = InternalZuord.ResolveOptions<T, R>;
 
-export type MergeMode = Zuord.IntegrateMode;
+export type MergeMode = InternalZuord.IntegrateMode;
 
-export type MergeDefaultMode = Zuord.DefaultMode & {
+export type MergeDefaultMode = InternalZuord.DefaultMode & {
     concat: true;
 };

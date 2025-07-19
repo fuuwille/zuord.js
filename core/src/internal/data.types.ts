@@ -1,12 +1,12 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 
 export type Data = {
     content: object[];
-    outcasts?: Zuord.OutcastConstructor[];
-    mode?: Partial<Zuord.Mode>;
+    outcasts?: InternalZuord.OutcastConstructor[];
+    mode?: Partial<InternalZuord.Mode>;
 };
 
-export type DataOf<U extends object[], C extends Zuord.OutcastConstructor[], M extends Partial<Zuord.Mode>> = {
+export type DataOf<U extends object[], C extends InternalZuord.OutcastConstructor[], M extends Partial<InternalZuord.Mode>> = {
     content: [...U];
     outcasts?: [...C];
     mode?: M;

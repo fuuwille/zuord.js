@@ -1,12 +1,12 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
-export type Impose<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeBase<TBase, TPatch, TCurrent>>;
+export type Impose<TBase, TPatch extends InternalZuord.Optional<TBase>, TCurrent extends TBase = TBase> = InternalZuord.Normalize<ImposeBase<TBase, TPatch, TCurrent>>;
 
-export type ImposeBase<TBase, TPatch extends Zuord.Optional<TBase>, TCurrent extends TBase = TBase> = ImposeLooseBase<TBase, TPatch, TCurrent>;
+export type ImposeBase<TBase, TPatch extends InternalZuord.Optional<TBase>, TCurrent extends TBase = TBase> = ImposeLooseBase<TBase, TPatch, TCurrent>;
 
-export type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = Zuord.Normalize<ImposeLooseBase<TBase, TPatch, TCurrent>>;
+export type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = InternalZuord.Normalize<ImposeLooseBase<TBase, TPatch, TCurrent>>;
 
 export type ImposeLooseBase<TBase, TPatch, TCurrent extends TBase = TBase> = [ZuordUtil.Is<TPatch, never>] extends [false] ? (
     [ZuordUtil.Is<TBase, ZuordType.Plain>] extends [true] ? ({

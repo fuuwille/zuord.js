@@ -1,5 +1,5 @@
-import * as zuord from "./alias";
-export { zuord };
+import * as internalZuord from "./alias";
+export { internalZuord };
 
-import * as Zuord from "./alias.types";
-export type { Zuord };
+import * as InternalZuord from "./alias.types";
+export type { InternalZuord };

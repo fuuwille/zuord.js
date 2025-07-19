@@ -1,8 +1,8 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
-export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = Zuord.Normalize<IntegrateRaw<A, B, Options>>;
+export type Integrate<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = InternalZuord.Normalize<IntegrateRaw<A, B, Options>>;
 
 export type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefaultOptions> = [ZuordUtil.IsAny<[A, B], never>] extends [false] ? (
     [ZuordUtil.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
@@ -23,20 +23,20 @@ export type IntegrateRaw<A, B, Options extends IntegrateOptions = IntegrateDefau
     }) : B
 ) : ZuordType.UnionOf<[A, B]>;
 
-export type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = Zuord.Options<Mode>;
+export type IntegrateOptions<Mode extends Partial<IntegrateMode> = Partial<IntegrateMode>> = InternalZuord.Options<Mode>;
 
 export type IntegratePartialOptions = Partial<IntegrateOptions>;
 
-export type IntegrateDefaultOptions = Zuord.ResolveOptions<{
+export type IntegrateDefaultOptions = InternalZuord.ResolveOptions<{
     mode: IntegrateDefaultMode;
-}, Zuord.DefaultOptions>;
+}, InternalZuord.DefaultOptions>;
 
-export type IntegrateResolveOptions<T extends Zuord.Optional<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
-    = Zuord.ResolveOptions<T, R>;
+export type IntegrateResolveOptions<T extends InternalZuord.Optional<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
+    = InternalZuord.ResolveOptions<T, R>;
 
-export type IntegrateMode = Zuord.Mode & IntegrateConcantMode;
+export type IntegrateMode = InternalZuord.Mode & IntegrateConcantMode;
 
-export type IntegrateDefaultMode = Zuord.DefaultMode & {
+export type IntegrateDefaultMode = InternalZuord.DefaultMode & {
     concat: true;
 };
 

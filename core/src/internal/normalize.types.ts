@@ -1,4 +1,4 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
@@ -21,8 +21,8 @@ export type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOpti
     ) : T
 ) : any;
 
-export type NormalizeOptions = Zuord.Options
+export type NormalizeOptions = InternalZuord.Options
 
-export type NormalizeDefaultOptions = Zuord.DefaultOptions;
+export type NormalizeDefaultOptions = InternalZuord.DefaultOptions;
 
 export type NormalizeResolveOptions<T extends Partial<NormalizeOptions>> = Omit<NormalizeDefaultOptions, keyof T>;

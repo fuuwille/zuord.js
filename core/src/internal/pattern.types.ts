@@ -1,7 +1,7 @@
-import { Zuord } from "./index"
+import { InternalZuord } from "./index"
 import { ZuordType } from "@zuord/type";
 
-export type Pattern<T> = Zuord.Normalize<PatternRaw<T>>
+export type Pattern<T> = InternalZuord.Normalize<PatternRaw<T>>
 
 export type PatternRaw<T> = true | {
     [K in keyof T]?: T[K] extends Array<unknown>

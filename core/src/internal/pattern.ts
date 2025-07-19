@@ -1,5 +1,5 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 
-export function pattern<T extends object, P extends Zuord.Pattern<T> = Zuord.Pattern<T>>(pattern: P) {
+export function pattern<T extends object, P extends InternalZuord.Pattern<T> = InternalZuord.Pattern<T>>(pattern: P) {
     return pattern as P;
 }

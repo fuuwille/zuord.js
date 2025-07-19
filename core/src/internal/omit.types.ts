@@ -1,7 +1,7 @@
-import { Zuord } from "./index"
+import { InternalZuord } from "./index"
 import { ZuordUtil } from "@zuord/util";
 
-export type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;
+export type Omit<T, U> = InternalZuord.Normalize<OmitRaw<T, U>>;
 
 export type OmitRaw<T, U> = {
     [K in keyof T as
@@ -26,4 +26,4 @@ export type OmitRaw<T, U> = {
             : T[K];
 };
 
-export type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
+export type OmitOf<T, U> = Omit<T, InternalZuord.Pattern<U>>;

@@ -1,7 +1,7 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 
 const normalize = <T>(obj : T) => {
-    return obj as Zuord.Normalize<T>;
+    return obj as InternalZuord.Normalize<T>;
 }
 
 export { normalize as zuordNormalize };

@@ -1,19 +1,19 @@
-import { Zuord } from "./index";
+import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
 
-export type Options<Mode extends Partial<Zuord.Mode> = Partial<Zuord.Mode>> = {
-    outcasts: Zuord.Outcasts
+export type Options<Mode extends Partial<InternalZuord.Mode> = Partial<InternalZuord.Mode>> = {
+    outcasts: InternalZuord.Outcasts
     mode : Mode
 }
 
 export type DefaultOptions = {
-    outcasts: Zuord.DefaultOutcasts,
-    mode: Zuord.DefaultMode
+    outcasts: InternalZuord.DefaultOutcasts,
+    mode: InternalZuord.DefaultMode
 }
 
-export type ResolveOptions<T extends Zuord.Optional<Zuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
+export type ResolveOptions<T extends InternalZuord.Optional<InternalZuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
-export type OptionsOf<T extends Zuord.Data> = Zuord.ImposeBase<Zuord.MergeOptions, { 
+export type OptionsOf<T extends InternalZuord.Data> = InternalZuord.ImposeBase<InternalZuord.MergeOptions, { 
     mode: T["mode"],
     outcasts: ZuordType.InstanceTuple<NonNullable<T["outcasts"]>>
-}, Zuord.MergeDefaultOptions>;
+}, InternalZuord.MergeDefaultOptions>;
