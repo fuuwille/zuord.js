@@ -1,4 +1,5 @@
 import { InternalZuord } from "./index";
+import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
 export type Options<Mode extends Partial<InternalZuord.Mode> = Partial<InternalZuord.Mode>> = {
@@ -11,7 +12,7 @@ export type DefaultOptions = {
     mode: InternalZuord.DefaultMode
 }
 
-export type ResolveOptions<T extends InternalZuord.Optional<InternalZuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
+export type ResolveOptions<T extends ZuordUtil.Partialize<InternalZuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;
 
 export type OptionsOf<T extends InternalZuord.Data> = InternalZuord.Impose<InternalZuord.MergeOptions, { 
     mode: T["mode"],

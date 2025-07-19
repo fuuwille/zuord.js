@@ -1,4 +1,5 @@
 import { InternalZuord } from "./index"
+import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
 export type Merge<U extends any, Options extends MergeOptions = MergeDefaultOptions> = InternalZuord.Normalize<MergeRaw<U, Options>, Options>
@@ -23,7 +24,7 @@ export type MergeDefaultOptions = InternalZuord.ResolveOptions<{
     mode: MergeDefaultMode;
 }, InternalZuord.DefaultOptions>;
 
-export type MergeResolveOptions<T extends InternalZuord.Optional<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = InternalZuord.ResolveOptions<T, R>;
+export type MergeResolveOptions<T extends ZuordUtil.Partialize<MergeOptions>, R extends MergeOptions = MergeDefaultOptions> = InternalZuord.ResolveOptions<T, R>;
 
 export type MergeMode = InternalZuord.IntegrateMode;
 

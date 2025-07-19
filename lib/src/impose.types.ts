@@ -1,5 +1,6 @@
 import { InternalZuord } from "./internal";
+import { ZuordUtil } from "@zuord/util";
 
-export type Impose<TBase, TPatch extends InternalZuord.Optional<TBase>, TCurrent extends TBase = TBase> = InternalZuord.Impose<TBase, TPatch, TCurrent>;
+export type Impose<TBase, TPatch extends ZuordUtil.Partialize<TBase>, TCurrent extends TBase = TBase> = InternalZuord.Impose<TBase, TPatch, TCurrent>;
 
 export type ImposeLoose<TBase, TPatch, TCurrent extends TBase = TBase> = InternalZuord.Impose<TBase, TPatch, TCurrent>;
