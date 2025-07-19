@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 **Zuord** (German for 'assign' or 'map') is a TypeScript library focused on deep object manipulations and type inferences, providing full synchronization between runtime functions and compile-time types. This means what you write at runtime will always reflect exactly in your types — and vice versa.
 
-## Function & Type Synchronization
+## Runtime & Type Synchronization
 
 In Zuord, each operation exists in two synchronized forms:
 
@@ -53,7 +53,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   Zuord operates recursively, applying deep operations across all levels by default:
 
   <Tabs>
-    <TabItem value="function" label="Function" default>
+    <TabItem value="runtime" label="Runtime" default>
 
     ```ts
     const foo = { a: { b: { x: "zuord", y: "is" } } };
@@ -101,7 +101,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
   Zuord enables you to override default behaviors according to your specific use cases.
 
   <Tabs>
-    <TabItem value="function" label="Function" default>
+    <TabItem value="runtime" label="Runtime" default>
 
     ```ts
     const foo = { a: { b: { x: "zuord", y: "is" } }, l: [2, [2, 2]] };
