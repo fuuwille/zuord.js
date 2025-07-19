@@ -120,7 +120,7 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 
     type Options = Zuord.MergeOptionsOf<{ shallow: true, concat : false }>
 
-    type Out = Zuord.Merge([Foo, Bar], Options);
+    type Out = Zuord.Merge<[Foo, Bar], Options>;
 
     // Value: (not available – this is a type-only evaluation)
     // Type: { a: { b: { z: "cool" } }, l: (4 | 2 | [2, 2] | [5, 6])[] }
