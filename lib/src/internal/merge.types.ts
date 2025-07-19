@@ -1,9 +1,8 @@
 import { InternalZuord } from "./index"
-import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 
 export type Merge<U, TMode extends MergeBaseMode = MergeDefaultMode> = (ZuordType.ArrayDepth<U> extends 1 ? (
-    U extends [...infer Rest extends object[], infer Head extends object] ? (
+    U extends [...infer Rest, infer Head] ? (
         InternalZuord.Integrate<Merge<Rest, TMode>, Head, TMode>
     ) : {}
 ) :
@@ -14,8 +13,6 @@ export type Merge<U, TMode extends MergeBaseMode = MergeDefaultMode> = (ZuordTyp
     ) : {}
 );
 
-export type MergeBaseMode = ZuordCore.ModeOf<[InternalZuord.IntegrateBaseMode]>;
+export type MergeBaseMode = InternalZuord.IntegrateBaseMode;
 
-export type MergeDefaultMode = ZuordCore.ModeFrom<MergeBaseMode, {
-    concat: true;
-}, InternalZuord.IntegrateDefaultMode>;
+export type MergeDefaultMode = InternalZuord.IntegrateDefaultMode;
