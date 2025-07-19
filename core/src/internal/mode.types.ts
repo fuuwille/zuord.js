@@ -2,8 +2,8 @@ export type Mode<K extends string = string, V extends unknown = boolean> = {
     [P in K]: V;
 }
 
-export type ModeOf<TModes> = TModes extends [infer First, ...infer Rest]
-  ? First & ModeOf<Rest extends Mode[] ? Rest : []>
+export type ModeOf<TOf> = TOf extends [infer TFirst, ...infer TRest]
+  ? TFirst & ModeOf<TRest extends Mode[] ? TRest : []>
   : {};
 
 export type ModeFrom<TMode, TOptions extends TMode> = TOptions;
