@@ -1,7 +1,8 @@
 import { InternalZuord } from "./index"
 import { zuordType } from "@zuord/type";
 
-export function merge<TContent extends object[], const TMode extends InternalZuord.MergeBaseMode = InternalZuord.MergeDefaultMode>(content: TContent, mode?: TMode ) : InternalZuord.Merge<TContent, TMode> {
+export const merge = <TContent extends object[], const TMode extends InternalZuord.MergeBaseMode = InternalZuord.MergeDefaultMode>
+(content: TContent, mode?: TMode ) : InternalZuord.Merge<TContent, TMode> => {
     if (content.length === 0) {
         // If no content is provided, return an empty object
         return {} as InternalZuord.Merge<TContent, TMode>;
