@@ -1,4 +1,3 @@
-import { InternalZuord } from "./index";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
