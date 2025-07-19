@@ -1,13 +1,13 @@
-import { Zuord } from "./alias.types"
+import { Zuord } from "./index"
 import { zuordType } from "@zuord/type";
 
-function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
+export function merge<U extends object[]>(...content: U) : Zuord.Merge<U> {
     return mergeBy({
         content
     }) as Zuord.Merge<U>;
 }
 
-function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[] = Zuord.DefaultOutcastConstructors, const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>(data : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.OptionsOf<typeof data>> {
+export function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[] = Zuord.DefaultOutcastConstructors, const M extends Partial<Zuord.MergeMode> = Zuord.MergeDefaultMode>(data : Zuord.DataOf<U, C, M> ): Zuord.Merge<U, Zuord.OptionsOf<typeof data>> {
     if (data.content.length === 0) {
         // If no content is provided, return an empty object
         return {} as Zuord.Merge<U, Zuord.OptionsOf<typeof data>>;
@@ -42,6 +42,3 @@ function mergeBy<U extends object[], const C extends Zuord.OutcastConstructor[] 
     // Return the merged result as a normalized object
     return result as Zuord.Merge<U, Zuord.OptionsOf<typeof data>>;
 }
-
-export { merge as zuordMerge };
-export { mergeBy as zuordMergeBy };

@@ -1,8 +1,8 @@
-import { Zuord } from "./alias.types"
+import { Zuord } from "./index"
 
-type Pick<T, U> = Zuord.Normalize<PickRaw<T, U>>;
+export type Pick<T, U> = Zuord.Normalize<PickRaw<T, U>>;
 
-type PickRaw<T, U> = {
+export type PickRaw<T, U> = {
     [K in keyof T & keyof U as Zuord.IsPattern<U[K]> extends true ? K : never]:
         U[K] extends true
             ? T[K]
@@ -13,8 +13,4 @@ type PickRaw<T, U> = {
                 : never;
 };
 
-type PickOf<T, U> = Pick<T, Zuord.Pattern<U>>;
-
-export type { Pick as ZuordPick };
-export type { PickRaw as ZuordPickRaw };
-export type { PickOf as ZuordPickOf };
+export type PickOf<T, U> = Pick<T, Zuord.Pattern<U>>;

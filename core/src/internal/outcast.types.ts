@@ -1,12 +1,12 @@
-type Outcast = object;
+export type Outcast = object;
 
-type OutcastConstructor = new (...args: any[]) => Outcast;
+export type OutcastConstructor = new (...args: any[]) => Outcast;
 
-type Outcasts = Outcast[];
+export type Outcasts = Outcast[];
 
-type OutcastConstructors = OutcastConstructor[];
+export type OutcastConstructors = OutcastConstructor[];
 
-type DefaultOutcasts = [
+export type DefaultOutcasts = [
     //String,
     //Number,
     //Boolean,
@@ -37,7 +37,7 @@ type DefaultOutcasts = [
     BigUint64Array
 ]
 
-type DefaultOutcastContructors = [
+export type DefaultOutcastConstructors = [
     //StringConstructor,
     //NumberConstructor,
     //BooleanConstructor,
@@ -68,15 +68,7 @@ type DefaultOutcastContructors = [
     BigUint64ArrayConstructor
 ]
 
-type ResolveOutcasts<T extends Outcasts> = [
+export type ResolveOutcasts<T extends Outcasts> = [
     ...T,
     ...DefaultOutcasts
 ]
-
-export type { Outcast as ZuordOutcast };
-export type { OutcastConstructor as ZuordOutcastConstructor };
-export type { Outcasts as ZuordOutcasts };
-export type { OutcastConstructors as ZuordOutcastConstructors };
-export type { DefaultOutcasts as ZuordDefaultOutcasts };
-export type { DefaultOutcastContructors as ZuordDefaultOutcastConstructors };
-export type { ResolveOutcasts as ZuordResolveOutcasts };

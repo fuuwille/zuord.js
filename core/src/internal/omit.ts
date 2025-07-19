@@ -1,7 +1,7 @@
-import { Zuord } from "./alias.types"
+import { Zuord } from "./index"
 import { zuordType } from "@zuord/type";
 
-function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
+export function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) : Zuord.Omit<T, P> {
     if (!zuordType.isObject(obj)) {
         throw new TypeError("omit: First argument must be a valid object.");
     }
@@ -34,5 +34,3 @@ function omit<T extends object, P extends Zuord.Pattern<T>>(obj: T, pattern: P) 
 
     return result as Zuord.Omit<T, P>;
 }
-
-export { omit as zuordOmit };

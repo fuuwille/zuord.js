@@ -1,9 +1,9 @@
-import { Zuord } from "./alias.types"
+import { Zuord } from "./index"
 import { ZuordUtil } from "@zuord/util";
 
-type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;
+export type Omit<T, U> = Zuord.Normalize<OmitRaw<T, U>>;
 
-type OmitRaw<T, U> = {
+export type OmitRaw<T, U> = {
     [K in keyof T as
         K extends keyof U
             ? U[K] extends true
@@ -26,8 +26,4 @@ type OmitRaw<T, U> = {
             : T[K];
 };
 
-type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;
-
-export type { Omit as ZuordOmit };
-export type { OmitRaw as ZuordOmitRaw };
-export type { OmitOf as ZuordOmitOf };
+export type OmitOf<T, U> = Omit<T, Zuord.Pattern<U>>;

@@ -1,9 +1,9 @@
-import { Zuord } from "./alias.types"
+import { Zuord } from "./index"
 import { ZuordType } from "@zuord/type";
 
-type Pattern<T> = Zuord.Normalize<PatternRaw<T>>
+export type Pattern<T> = Zuord.Normalize<PatternRaw<T>>
 
-type PatternRaw<T> = true | {
+export type PatternRaw<T> = true | {
     [K in keyof T]?: T[K] extends Array<unknown>
         ? true
         : T[K] extends ZuordType.Plain
@@ -13,9 +13,5 @@ type PatternRaw<T> = true | {
                 : true;
 }
 
-type IsPattern<T> = T extends true 
+export type IsPattern<T> = T extends true 
     ? true : T extends object ? true : false;
-
-export type { Pattern as ZuordPattern };
-export type { PatternRaw as ZuordPatternRaw };
-export type { IsPattern as ZuordIsPattern };

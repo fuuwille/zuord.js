@@ -1,19 +1,14 @@
-type Mode = LiteMode & ShallowMode;
+export type Mode = LiteMode & ShallowMode;
 
-type LiteMode = {
+export type LiteMode = {
     lite : boolean;
 };
 
-type ShallowMode = {
+export type ShallowMode = {
     shallow: boolean;
 };
 
-type DefaultMode = {
+export type DefaultMode = {
     lite: false;
     shallow: false;
 };
-
-export type { Mode as ZuordMode };
-export type { LiteMode as ZuordLiteMode };
-export type { ShallowMode as ZuordShallowMode };
-export type { DefaultMode as ZuordDefaultMode };

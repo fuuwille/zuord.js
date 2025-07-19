@@ -1,8 +1,8 @@
-import { Zuord } from "./alias.types";
+import { Zuord } from "./index";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
-type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.Eq<T, any>] extends [false] ? (
+export type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = [ZuordUtil.Eq<T, any>] extends [false] ? (
     [ZuordUtil.Has<T, ZuordType.Tuple>] extends [true] ? (
         (ZuordUtil.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, Options> : never) |
         (ZuordUtil.Extract<T, ZuordType.Tuple> extends infer TExtracted ? ({  
@@ -21,13 +21,8 @@ type Normalize<T, Options extends NormalizeOptions = NormalizeDefaultOptions> = 
     ) : T
 ) : any;
 
-type NormalizeOptions = Zuord.Options
+export type NormalizeOptions = Zuord.Options
 
-type NormalizeDefaultOptions = Zuord.DefaultOptions;
+export type NormalizeDefaultOptions = Zuord.DefaultOptions;
 
-type NormalizeResolveOptions<T extends Partial<NormalizeOptions>> = Omit<NormalizeDefaultOptions, keyof T>;
-
-export type { Normalize as ZuordNormalize };
-export type { NormalizeOptions as ZuordNormalizeOptions };
-export type { NormalizeDefaultOptions as ZuordNormalizeDefaultOptions };
-export type { NormalizeResolveOptions as ZuordNormalizeResolveOptions };
+export type NormalizeResolveOptions<T extends Partial<NormalizeOptions>> = Omit<NormalizeDefaultOptions, keyof T>;

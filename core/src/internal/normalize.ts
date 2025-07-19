@@ -1,4 +1,4 @@
-import { Zuord } from "./alias.types";
+import { Zuord } from "./index";
 
 const normalize = <T>(obj : T) => {
     return obj as Zuord.Normalize<T>;
