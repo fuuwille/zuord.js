@@ -12,10 +12,10 @@ export type ModeFrom<TFrom extends Mode, TMode extends Partial<TFrom>, TCurrent 
 
 // Define specific modes
 
-export type ShallowMode = Mode<"shallow">;
-
 export type BaseMode = ModeOf<[ShallowMode]>;
 
 export type DefaultMode = ModeFrom<BaseMode, {
     shallow: false;
 }>;
+
+export type ShallowMode = Mode<"shallow">;
