@@ -1,4 +1,5 @@
 import { InternalZuord } from "./index"
+import { ZuordCore } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
@@ -28,6 +29,6 @@ export type MergeResolveOptions<T extends ZuordUtil.Partialize<MergeOptions>, R 
 
 export type MergeMode = InternalZuord.IntegrateMode;
 
-export type MergeDefaultMode = InternalZuord.DefaultMode & {
+export type MergeDefaultMode = ZuordCore.DefaultMode & {
     concat: true;
 };

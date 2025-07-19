@@ -1,15 +1,16 @@
 import { InternalZuord } from "./index";
+import { ZuordCore } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
-export type Options<Mode extends Partial<InternalZuord.Mode> = Partial<InternalZuord.Mode>> = {
+export type Options<Mode extends Partial<ZuordCore.Mode> = Partial<ZuordCore.Mode>> = {
     outcasts: InternalZuord.Outcasts
     mode : Mode
 }
 
 export type DefaultOptions = {
     outcasts: InternalZuord.DefaultOutcasts,
-    mode: InternalZuord.DefaultMode
+    mode: ZuordCore.DefaultMode
 }
 
 export type ResolveOptions<T extends ZuordUtil.Partialize<InternalZuord.Options>, R extends Options = DefaultOptions> = Omit<R, keyof T> & T;

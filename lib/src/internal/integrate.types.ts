@@ -1,4 +1,5 @@
 import { InternalZuord } from "./index";
+import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 import { ZuordTrait } from "@zuord/trait";
@@ -35,9 +36,9 @@ export type IntegrateDefaultOptions = InternalZuord.ResolveOptions<{
 export type IntegrateResolveOptions<T extends ZuordUtil.Partialize<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
     = InternalZuord.ResolveOptions<T, R>;
 
-export type IntegrateMode = InternalZuord.Mode & IntegrateConcantMode;
+export type IntegrateMode = ZuordCore.Mode & IntegrateConcantMode;
 
-export type IntegrateDefaultMode = InternalZuord.DefaultMode & {
+export type IntegrateDefaultMode = ZuordCore.DefaultMode & {
     concat: true;
 };
 

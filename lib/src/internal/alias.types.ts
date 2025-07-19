@@ -1,4 +1,3 @@
-export type * from "./mode.types";
 export type * from "./options.types";
 export type * from "./data.types";
 export type * from "./outcast.types";
