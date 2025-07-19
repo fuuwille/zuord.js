@@ -36,7 +36,7 @@ export type IntegrateDefaultOptions = InternalZuord.ResolveOptions<{
 export type IntegrateResolveOptions<T extends ZuordUtil.Partialize<IntegrateOptions>, R extends IntegrateOptions = IntegrateDefaultOptions> 
     = InternalZuord.ResolveOptions<T, R>;
 
-export type IntegrateMode = ZuordCore.ModeConfig & IntegrateConcantMode;
+export type IntegrateMode = ZuordCore.BaseMode & IntegrateConcantMode;
 
 export type IntegrateDefaultMode = ZuordCore.DefaultMode & {
     concat: true;
