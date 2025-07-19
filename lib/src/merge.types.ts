@@ -5,3 +5,6 @@ export type Merge<TContent, TMode extends MergeBaseMode = MergeDefaultMode> = In
 export type MergeBaseMode = InternalZuord.MergeBaseMode;
 
 export type MergeDefaultMode = InternalZuord.MergeDefaultMode;
+
+export type MergeResolvedMode<TMode extends Partial<MergeBaseMode>>
+= InternalZuord.MergeResolvedMode<TMode>;
