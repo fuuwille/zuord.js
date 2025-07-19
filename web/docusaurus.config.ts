@@ -42,6 +42,9 @@ const config: Config = {
     ],
   ],
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark'
+    },
     announcementBar: {
       id: 'early_access',
       content:
