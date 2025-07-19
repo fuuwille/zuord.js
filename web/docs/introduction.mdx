@@ -5,6 +5,9 @@ title: Introduction to Zuord
 sidebar_position: 1  
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Introduction to Zuord
 
 **Zuord** (German for 'assign' or 'map') is a TypeScript library focused on deep object manipulations and type inferences, providing full synchronization between runtime functions and compile-time types.
@@ -47,24 +50,28 @@ Zuord delivers smarter and more precise runtime manipulations and compile-time t
 - **Recursive by Nature**  
   Zuord operates recursively, applying deep operations across all levels by default:
 
-  - **Function**:
-  ```typescript
-  const foo = { a: { b: { x: "zuord", y: "is" } } };
-  const bar = { a: { b: { z: "cool" } } } as const;
+  <Tabs>
+    <TabItem value="function" label="Function" default>
 
-  const out = zuord.merge([foo, bar]);
-  // Value: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
-  // Type: { a: { b: { x: string, y: string, z: "cool" } } }
-  ```
+    ```ts
+    const foo = { a: { b: { x: "zuord", y: "is" } } };
+    const bar = { a: { b: { z: "cool" } } } as const;
 
-  - **Type**:
-  ```typescript
-  type Foo = { a: { b: { x: "zuord", y: "is" } } };
-  type Bar = { a: { b: { z: "cool" } } };
+    const out = zuord.merge([foo, bar]);
+    // Value: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
+    // Type: { a: { b: { x: string, y: string, z: "cool" } } }
+    ```
+    </TabItem> 
+    <TabItem value="type" label="Type">
+    ```ts
+    type Foo = { a: { b: { x: "zuord", y: "is" } } };
+    type Bar = { a: { b: { z: "cool" } } };
 
-  type Out = Zuord.Merge<[Foo, Bar]>;
-  // Type: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
-  ```
+    type Out = Zuord.Merge<[Foo, Bar]>;
+    // Type: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
+    ```
+    </TabItem>
+  </Tabs>
 
 - **Special Behaviors**  
   Zuord includes built-in special behaviors, designed to match real-world use cases.
