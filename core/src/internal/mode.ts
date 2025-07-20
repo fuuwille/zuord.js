@@ -15,12 +15,12 @@ export const modeResolve = <const TModes extends Internal.Mode[]>(modes: TModes)
     return Object.assign({}, ...modes);
 };
 
-export const shallowMode : Internal.ShallowMode = {
+export const shallowMode: Internal.ShallowMode = {
     shallow: false,
 }
 
-export const concatMode : Internal.ConcatMode = {
+export const concatMode: Internal.ConcatMode = {
     concat: false,
 }
 
-export const defaultMode : Internal.DefaultMode = modeResolve([shallowMode]);
+export const defaultMode: Internal.DefaultMode = modeResolve([shallowMode]);
