@@ -1,12 +1,6 @@
 import { InternalZuordCore as Internal } from "./index";
 
-export function mode <K extends string>(key: K, value?: boolean) : Internal.Mode<K>
-
-export function mode <K extends string>(key: K[], value?: boolean) : Internal.Mode<K>
-
-export function mode <K extends string>(key: K | K[], value?: boolean) : Internal.Mode<K>;
-
-export function mode <K extends string>(key: K | K[], value: boolean = false) : Internal.Mode<K> {
+export const mode = <K extends string>(key: K | K[], value: boolean = false) : Internal.Mode<K> => {
     if (Array.isArray(key)) {
         const obj = {} as Internal.Mode<K>;   
         for (const k of key) 
