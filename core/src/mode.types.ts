@@ -4,16 +4,8 @@ export type Mode<K extends string = string> = Internal.Mode<K>;
 
 export type ModeResolve<TModes extends Mode[]> = Internal.ModeResolve<TModes>;
 
-// Define specific modes
+export type ShallowMode = Internal.ShallowMode;
 
-export type BaseMode = ModeResolve<[ShallowMode]>;
+export type ConcatMode = Internal.ConcatMode;
 
-export type DefaultMode = {
-    shallow: false;
-};
-
-export type ResolvedMode<TMode extends Partial<BaseMode>> = ModeResolve<[DefaultMode, TMode]>;
-
-export type ShallowMode = Mode<"shallow">;
-
-export type ConcatMode = Mode<"concat">;
+export type DefaultMode = Internal.DefaultMode;
