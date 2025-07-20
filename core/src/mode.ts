@@ -1,8 +1,8 @@
 import { Mode, ModeOf } from "./mode.types";
 
-export function mode <K extends string>(key: K, value: boolean) : Mode<K>
+export function mode <K extends string>(key: K, value?: boolean) : Mode<K>
 
-export function mode <K extends string>(key: K[], value: boolean) : Mode<K>
+export function mode <K extends string>(key: K[], value?: boolean) : Mode<K>
 
 export function mode <K extends string>(key: K | K[], value: boolean = false) : Mode<K> {
     if (Array.isArray(key)) {
