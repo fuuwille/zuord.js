@@ -1,16 +1,16 @@
 import { ZuordCore } from ".";
 import { internalZuordCore as internal } from "./internal";
 
-export function mode <K extends string>(key: K, value?: boolean) : ZuordCore.Mode<K>
+export function modeField <K extends string>(key: K, value?: boolean) : ZuordCore.ModeField<K>
 
-export function mode <K extends string>(key: K[], value?: boolean) : ZuordCore.Mode<K>
+export function modeField <K extends string>(key: K[], value?: boolean) : ZuordCore.ModeField<K>
 
-export function mode <K extends string>(key: K | K[], value?: boolean) : ZuordCore.Mode<K>;
+export function modeField <K extends string>(key: K | K[], value?: boolean) : ZuordCore.ModeField<K>;
 
-export function mode <K extends string>(key: K | K[], value: boolean = false) : ZuordCore.Mode<K> {
-    return internal.mode(key, value);
+export function modeField <K extends string>(key: K | K[], value: boolean = false) : ZuordCore.ModeField<K> {
+    return internal.modeField(key, value);
 }
 
-export function modeResolve <const TModes extends ZuordCore.Mode[]>(modes: TModes): ZuordCore.ModeResolve<TModes> {
+export function modeResolve <const TModes extends ZuordCore.ModeField[]>(modes: TModes): ZuordCore.ModeResolve<TModes> {
     return internal.modeResolve(modes);
 };

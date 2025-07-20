@@ -1,17 +1,17 @@
 import { InternalZuordCore as Internal } from "./index";
 
-export const mode = <K extends string>(key: K | K[], value: boolean = false): Internal.Mode<K> => {
+export const modeField = <K extends string>(key: K | K[], value: boolean = false): Internal.ModeField<K> => {
     if (Array.isArray(key)) {
-        const obj = {} as Internal.Mode<K>;   
+        const obj = {} as Internal.ModeField<K>;   
         for (const k of key) 
             obj[k] = value;
         return obj;
     } else {
-        return { [key]: value } as Internal.Mode<K>;
+        return { [key]: value } as Internal.ModeField<K>;
     }
 }
 
-export const modeResolve = <const TModes extends Internal.Mode[]>(modes: TModes): Internal.ModeResolve<TModes> => {
+export const modeResolve = <const TModes extends Internal.ModeField[]>(modes: TModes): Internal.ModeResolve<TModes> => {
     return Object.assign({}, ...modes);
 };
 
