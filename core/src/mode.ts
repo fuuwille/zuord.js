@@ -11,6 +11,6 @@ export function mode <K extends string>(key: K | K[], value: boolean = false) : 
     return internal.mode(key, value);
 }
 
-export function modeOf <const TModes extends ZuordCore.Mode[]>(modes: TModes): ZuordCore.ModeResolve<TModes> {
-    return internal.modeOf(modes);
+export function modeResolve <const TModes extends ZuordCore.Mode[]>(modes: TModes): ZuordCore.ModeResolve<TModes> {
+    return internal.modeResolve(modes);
 };
