@@ -19,4 +19,4 @@ export const shallowMode = internal.shallowMode satisfies ZuordCore.ShallowMode;
 
 export const concatMode = internal.concatMode satisfies ZuordCore.ConcatMode;
 
-export const defaultMode = internal.defaultMode satisfies ZuordCore.BaseMode;
+export const baseMode = internal.baseMode satisfies ZuordCore.BaseMode;

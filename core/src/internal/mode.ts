@@ -19,4 +19,4 @@ export const shallowMode = modeField("shallow", false) satisfies Internal.Shallo
 
 export const concatMode = modeField("concat", false) satisfies Internal.ConcatMode;
 
-export const defaultMode = modeResolve([shallowMode]) satisfies Internal.BaseMode;
+export const baseMode = modeResolve([shallowMode]) satisfies Internal.BaseMode;
