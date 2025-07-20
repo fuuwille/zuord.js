@@ -23,7 +23,7 @@ export const merge = <TContent extends object[], TMode extends Partial<Internal.
                 result[key] = [...existing, ...value];
             } else if (zuordType.isObject(value) && zuordType.isObject(existing)) {
                 // Recursively merge objects
-                result[key] = merge(content, mode);
+                result[key] = merge([existing, value], mode);
             } else {
                 // In other cases, just set the value
                 result[key] = value;
