@@ -1,6 +1,4 @@
-export type Mode<K extends string = string> = {
-    [P in K]: boolean;
-}
+export type Mode<K extends string = string> = Record<K, boolean>;
 
 export type ModeOf<TOf> = TOf extends [infer TFirst, ...infer TRest]
   ? TFirst & ModeOf<TRest extends Mode[] ? TRest : []>
