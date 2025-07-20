@@ -2,7 +2,7 @@ import { InternalZuord } from "./index"
 import { zuordType } from "@zuord/type";
 
 export const merge = <TContent extends object[], TMode extends Partial<InternalZuord.MergeBaseMode>>
-(content: [...TContent], mode: TMode = { shallow: true, concat: true} as TMode ) : InternalZuord.Merge<TContent, InternalZuord.MergeResolvedMode<TMode>> => {
+(content: [...TContent], mode?: TMode) : InternalZuord.Merge<TContent, InternalZuord.MergeResolvedMode<TMode>> => {
 
     if (content.length === 0) {
         // If no content is provided, return an empty object
