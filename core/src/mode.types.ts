@@ -1,11 +1,11 @@
-import { InternalZuordCore } from "./internal";
+import { InternalZuordCore as Internal } from "./internal";
 
-export type Mode<K extends string = string> = InternalZuordCore.Mode<K>;
+export type Mode<K extends string = string> = Internal.Mode<K>;
 
-export type ModeOf<TModes extends Mode[]> = InternalZuordCore.ModeOf<TModes>;
+export type ModeOf<TModes extends Mode[]> = Internal.ModeOf<TModes>;
 
 export type ModeFrom<TFrom extends Mode, TMode extends Partial<TFrom>, TCurrent extends Omit<TFrom, keyof TMode> = TFrom> 
-= InternalZuordCore.ModeFrom<TFrom, TMode, TCurrent>;
+= Internal.ModeFrom<TFrom, TMode, TCurrent>;
 
 // Define specific modes
 
