@@ -19,4 +19,4 @@ export type MergeBaseMode = InternalZuord.IntegrateBaseMode;
 export type MergeDefaultMode = InternalZuord.IntegrateDefaultMode;
 
 export type MergeResolvedMode<TMode extends Partial<MergeBaseMode>> 
-= ZuordCore.ModeFrom<MergeBaseMode, TMode, MergeDefaultMode>;
+= ZuordCore.ModeOf<[MergeDefaultMode, TMode]>;
