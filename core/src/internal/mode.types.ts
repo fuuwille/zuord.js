@@ -8,4 +8,7 @@ export type ShallowMode = ModeField<"shallow">;
 
 export type ConcatMode = ModeField<"concat">;
 
-export type DefaultMode = ModeResolve<[ShallowMode]>;
+/**
+ * @puretype
+ */
+export type BaseMode = ModeResolve<[ShallowMode]>;

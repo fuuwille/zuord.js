@@ -23,4 +23,4 @@ export const concatMode: Internal.ConcatMode = {
     concat: false,
 }
 
-export const defaultMode: Internal.DefaultMode = modeResolve([shallowMode]);
+export const defaultMode: Internal.BaseMode = modeResolve([shallowMode]);

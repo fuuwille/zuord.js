@@ -8,4 +8,7 @@ export type ShallowMode = Internal.ShallowMode;
 
 export type ConcatMode = Internal.ConcatMode;
 
-export type DefaultMode = Internal.DefaultMode;
+/**
+ * @puretype
+ */
+export type BaseMode = Internal.BaseMode;
