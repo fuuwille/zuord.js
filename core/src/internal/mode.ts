@@ -1,13 +1,13 @@
 import { InternalZuordCore as Internal } from "./index";
 
-export const modeField = <K extends string>(key: K | K[], value: boolean = false): Internal.ModeField<K> => {
+export const modeField = <const K extends string, const V extends boolean>(key: K | K[], value: V): Internal.ModeField<K, V> => {
     if (Array.isArray(key)) {
-        const obj = {} as Internal.ModeField<K>;   
+        const obj = {} as Internal.ModeField<K, V>;   
         for (const k of key) 
             obj[k] = value;
         return obj;
     } else {
-        return { [key]: value } as Internal.ModeField<K>;
+        return { [key]: value } as Internal.ModeField<K ,V>;
     }
 }
 
