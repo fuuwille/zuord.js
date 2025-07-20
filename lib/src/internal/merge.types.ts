@@ -1,6 +1,6 @@
 import { ZuordCore } from "@zuord/core";
-import { InternalZuord as Internal } from "./index"
 import { ZuordType } from "@zuord/type";
+import { InternalZuord as Internal } from "./index"
 
 export type Merge<TContent, TMode extends MergeBaseMode = MergeDefaultMode> = (ZuordType.ArrayDepth<TContent> extends 1 ? (
     TContent extends [...infer Rest, infer Head] ? (
