@@ -11,6 +11,6 @@ export const mode = <K extends string>(key: K | K[], value: boolean = false) : I
     }
 }
 
-export function modeOf <const TOf extends Internal.Mode[]>(modes: TOf): Internal.ModeOf<TOf> {
+export const modeOf = <const TOf extends Internal.Mode[]>(modes: TOf): Internal.ModeOf<TOf> => {
     return Object.assign({}, ...modes);
 };
