@@ -10,9 +10,9 @@ export type ModeResolve<TModes extends Mode[]> = Internal.ModeResolve<TModes>;
 
 export type BaseMode = ModeResolve<[ShallowMode]>;
 
-export type DefaultMode = {
+export type DefaultMode = ModeFrom<{
     shallow: false;
-};
+}, BaseMode>;
 
 export type ResolvedMode<TMode extends Partial<BaseMode>> = ModeResolve<[DefaultMode, TMode]>;
 
