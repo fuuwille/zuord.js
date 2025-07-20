@@ -12,5 +12,5 @@ export function mode <K extends string>(key: K | K[], value: boolean = false) : 
 }
 
 export function modeOf <const TOf extends ZuordCore.Mode[]>(modes: TOf): ZuordCore.ModeOf<TOf> {
-    return Object.assign({}, ...modes);
+    return internal.modeOf(modes);
 };
