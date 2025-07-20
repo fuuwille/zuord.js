@@ -22,6 +22,6 @@ export type Normalize<T, TMode extends NormalizeBaseMode = NormalizeDefaultMode>
     ) : T
 ) : any;
 
-export type NormalizeBaseMode = ZuordCore.ModeOf<[ZuordCore.BaseMode]>;
+export type NormalizeBaseMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode]>;
 
 export type NormalizeDefaultMode = ZuordCore.DefaultMode;

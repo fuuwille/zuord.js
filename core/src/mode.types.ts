@@ -2,17 +2,17 @@ import { InternalZuordCore as Internal } from "./internal";
 
 export type Mode<K extends string = string> = Internal.Mode<K>;
 
-export type ModeOf<TModes extends Mode[]> = Internal.ModeOf<TModes>;
+export type ModeResolve<TModes extends Mode[]> = Internal.ModeResolve<TModes>;
 
 // Define specific modes
 
-export type BaseMode = ModeOf<[ShallowMode]>;
+export type BaseMode = ModeResolve<[ShallowMode]>;
 
 export type DefaultMode = {
     shallow: false;
 };
 
-export type ResolveMode<TMode extends Partial<BaseMode>> = ModeOf<[DefaultMode, TMode]>;
+export type ResolveMode<TMode extends Partial<BaseMode>> = ModeResolve<[DefaultMode, TMode]>;
 
 export type ShallowMode = Mode<"shallow">;
 
