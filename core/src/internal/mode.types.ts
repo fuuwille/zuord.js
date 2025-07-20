@@ -1,7 +1,7 @@
 export type Mode<K extends string = string> = Record<K, boolean>;
 
 export type ModeOf<TModes> = TModes extends [...infer TRest, infer TLast]
-  ? Omit<ModeOf<TRest>, keyof TLast> & TLast
+  ? Required<Omit<ModeOf<TRest>, keyof TLast> & TLast>
   : {};
 
 export type ModeFrom<TFrom, TMode extends Partial<TFrom>, TCurrent> 
