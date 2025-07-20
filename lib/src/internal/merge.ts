@@ -1,12 +1,11 @@
 import { InternalZuord as Internal, internalZuord as internal } from "./index"
 import { zuordType } from "@zuord/type";
 
-export const merge = <TContent extends object[], TMode extends Partial<Internal.MergeBaseMode>>
-(content: [...TContent], mode?: TMode) : Internal.Merge<TContent, Internal.MergeResolvedMode<TMode>> => {
+export const merge = <TContent extends object[], TMode extends Partial<Internal.MergeBaseMode>> (content: [...TContent], mode?: TMode) => {
 
     if (content.length === 0) {
         // If no content is provided, return an empty object
-        return {} as Internal.Merge<TContent, Internal.MergeResolvedMode<TMode>>;
+        return {};
     }
 
     const result: Record<string, unknown> = {};
@@ -33,7 +32,7 @@ export const merge = <TContent extends object[], TMode extends Partial<Internal.
     }
 
     // Return the merged result as a normalized object
-    return result as Internal.Merge<TContent, Internal.MergeResolvedMode<TMode>>;
+    return result;
 }
 
 export const mergeBaseMode = internal.integrateBaseMode satisfies Internal.MergeBaseMode;
