@@ -12,7 +12,7 @@ export type DefaultMode = {
     shallow: false;
 };
 
-export type ResolveMode<TMode extends Partial<BaseMode>> = ModeResolve<[DefaultMode, TMode]>;
+export type ResolvedMode<TMode extends Partial<BaseMode>> = ModeResolve<[DefaultMode, TMode]>;
 
 export type ShallowMode = Mode<"shallow">;
 

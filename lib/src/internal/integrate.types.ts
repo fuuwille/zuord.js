@@ -23,6 +23,6 @@ export type Integrate<A, B, TMode extends IntegrateBaseMode = IntegrateDefaultMo
 
 export type IntegrateBaseMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
 
-export type IntegrateDefaultMode = ZuordCore.ModeFrom<IntegrateBaseMode, {
+export type IntegrateDefaultMode = ZuordCore.ModeResolve<[ZuordCore.DefaultMode, {
     concat: true;
-}, ZuordCore.DefaultMode>;
+}]>;
