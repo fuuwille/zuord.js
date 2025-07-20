@@ -1,8 +1,9 @@
 import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
+import { internalZuord as internal } from ".";
 
-export type Integrate<A, B, TMode extends IntegrateBaseMode = IntegrateDefaultMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
+export type Integrate<A, B, TMode extends IntegrateBaseMode = typeof internal.integrateDefaultMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         [TMode["concat"]] extends [true] 
             ? Array<ZuordType.ArrayInfer<B> | ZuordType.ArrayInfer<A>>
@@ -22,7 +23,3 @@ export type Integrate<A, B, TMode extends IntegrateBaseMode = IntegrateDefaultMo
 ) : ZuordType.UnionOf<[A, B]>;
 
 export type IntegrateBaseMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
-
-export type IntegrateDefaultMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, {
-    concat: true;
-}]>;
