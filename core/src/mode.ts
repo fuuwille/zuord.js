@@ -1,22 +1,16 @@
-import { Mode, ModeOf } from "./mode.types";
+import { ZuordCore } from ".";
+import { internalZuordCore as internal } from "./internal";
 
-export function mode <K extends string>(key: K, value?: boolean) : Mode<K>
+export function mode <K extends string>(key: K, value?: boolean) : ZuordCore.Mode<K>
 
-export function mode <K extends string>(key: K[], value?: boolean) : Mode<K>
+export function mode <K extends string>(key: K[], value?: boolean) : ZuordCore.Mode<K>
 
-export function mode <K extends string>(key: K | K[], value?: boolean) : Mode<K>;
+export function mode <K extends string>(key: K | K[], value?: boolean) : ZuordCore.Mode<K>;
 
-export function mode <K extends string>(key: K | K[], value: boolean = false) : Mode<K> {
-    if (Array.isArray(key)) {
-        const obj = {} as Mode<K>;   
-        for (const k of key) 
-            obj[k] = value;
-        return obj;
-    } else {
-        return { [key]: value } as Mode<K>;
-    }
+export function mode <K extends string>(key: K | K[], value: boolean = false) : ZuordCore.Mode<K> {
+    return internal.mode(key, value);
 }
 
-export function modeOf <const TOf extends Mode[]>(modes: TOf): ModeOf<TOf> {
+export function modeOf <const TOf extends ZuordCore.Mode[]>(modes: TOf): ZuordCore.ModeOf<TOf> {
     return Object.assign({}, ...modes);
 };
