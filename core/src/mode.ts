@@ -15,8 +15,8 @@ export function modeResolve <const TModes extends ZuordCore.ModeField[]>(modes: 
     return internal.modeResolve(modes);
 };
 
-export const shallowMode: ZuordCore.ShallowMode = internal.shallowMode;
+export const shallowMode = internal.shallowMode satisfies ZuordCore.ShallowMode;
 
-export const concatMode: ZuordCore.ConcatMode = internal.concatMode;
+export const concatMode = internal.concatMode satisfies ZuordCore.ConcatMode;
 
-export const defaultMode: ZuordCore.BaseMode = internal.defaultMode;
+export const defaultMode = internal.defaultMode satisfies ZuordCore.BaseMode;
