@@ -4,6 +4,8 @@ export function mode <K extends string>(key: K, value?: boolean) : Mode<K>
 
 export function mode <K extends string>(key: K[], value?: boolean) : Mode<K>
 
+export function mode <K extends string>(key: K | K[], value?: boolean) : Mode<K>;
+
 export function mode <K extends string>(key: K | K[], value: boolean = false) : Mode<K> {
     if (Array.isArray(key)) {
         const obj = {} as Mode<K>;   
