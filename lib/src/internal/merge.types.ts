@@ -16,7 +16,7 @@ export type Merge<TContent, TMode extends MergeBaseMode = MergeDefaultMode> = (Z
 
 export type MergeBaseMode = InternalZuord.IntegrateBaseMode;
 
-export type MergeDefaultMode = InternalZuord.IntegrateDefaultMode;
+export type MergeDefaultMode = InternalZuord.IntegrateBaseMode;
 
 export type MergeResolvedMode<TMode extends Partial<MergeBaseMode>> 
 = ZuordCore.ModeResolve<[MergeDefaultMode, TMode]>;
