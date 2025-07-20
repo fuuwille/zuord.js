@@ -2,14 +2,14 @@
   "private": true,
   "name": "zuord-monorepo",
   "scripts": {
-    "install:util" : "npm install @zuord/type@latest",
-    "install:api" : "npm install @zuord/type@latest @zuord/util@latest",
-    "prerelease:do" : "npm version prerelease --preid alpha",
+    "install:util": "npm install @zuord/type@latest",
+    "install:api": "npm install @zuord/type@latest @zuord/util@latest",
+    "prerelease:do": "npm version prerelease --preid alpha",
     "publish:do": "npm run prerelease:do && npm publish --access public --tag alpha && npm dist-tag add @zuord/type@$(node -p \"require('./package.json').version\") latest",
-    "publish:type" : "cd type && npm run publish:do",
-    "publish:util" : "cd util && npm run install:util && npm run publish:do",
-    "publish:api" : "cd api && npm run install:api && npm run publish:do",
-    "publish:repo" : "npm run publish:type && npm run publish:util && npm run publish:api"
+    "publish:type": "cd type && npm run publish:do",
+    "publish:util": "cd util && npm run install:util && npm run publish:do",
+    "publish:api": "cd api && npm run install:api && npm run publish:do",
+    "publish:repo": "npm run publish:type && npm run publish:util && npm run publish:api"
   },
   "dependencies": {
     "@zuord/type": "0.3.0-alpha"
@@ -20,6 +20,8 @@
     "@types/node": "^24.0.4",
     "rimraf": "^6.0.1",
     "rollup": "^4.44.1",
-    "tslib": "^2.8.1"
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "~5.6.3"
   }
 }
