@@ -1,5 +1,5 @@
-import { internalZuord as internal, InternalZuord } from "./internal";
+import { internalZuord as internal, InternalZuord as Internal } from "./internal";
 
-export type Integrate<A, B, TMode extends IntegrateBaseMode = typeof internal.integrateBaseMode> = InternalZuord.Integrate<A, B, TMode>;
+export type Integrate<A, B, TMode extends IntegrateBaseMode = typeof internal.integrateBaseMode> = Internal.Integrate<A, B, TMode>;
 
-export type IntegrateBaseMode = InternalZuord.IntegrateBaseMode;
+export type IntegrateBaseMode = Internal.IntegrateBaseMode;
