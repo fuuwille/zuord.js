@@ -1,30 +1,10 @@
+export type Array = readonly unknown[];
 
-// ARRAY
+export type EmptyArray = readonly [];
 
-type Array = readonly unknown[];
+export type ArrayInfer<T> = T extends readonly (infer TInfer)[] ? TInfer : never;
 
-export type { Array as ZuordArray };
-
-
-// EMPTY ARRAY
-
-type EmptyArray = readonly [];
-
-export type { EmptyArray as ZuordEmptyArray };
-
-
-// ARRAY INFER
-
-type ArrayInfer<T> = T extends readonly (infer TInfer)[] ? TInfer : never;
-
-export type { ArrayInfer as ZuordArrayInfer };
-
-
-// ARRAY DEPTH
-
-type ArrayDepth<T> = ArrayDepthImpl<T, []>;
-
-export type { ArrayDepth as ZuordArrayDepth };
+export type ArrayDepth<T> = ArrayDepthImpl<T, []>;
 
 type ArrayDepthImpl<T, D extends Array> = T extends readonly (infer U)[] ? (
     ArrayDepthImpl<U, [unknown, ...D]>

@@ -1,3 +1,1 @@
-type Absence = undefined | void | null;
-
-export type { Absence as ZuordAbsence };
+export type Absence = undefined | void | null;

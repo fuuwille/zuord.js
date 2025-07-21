@@ -1,32 +1,7 @@
-import type { ZuordAbsence } from "./absence.types";
-import type { ZuordFunction } from "./function.types";
-import type { ZuordTuple } from "./tuple.types";
-import type { ZuordArray, ZuordEmptyArray, ZuordArrayInfer, ZuordArrayDepth } from "./array.types";
-import type { ZuordPlain } from "./plain.types";
-import type { ZuordUnionOf } from "./union.types";
-import type { ZuordInstanceOf, ZuordInstanceTuple } from "./instance.types";
-
-export namespace ZuordType {
-    
-    export type Absence = ZuordAbsence;
-
-    export type Function = ZuordFunction;
-
-    export type Tuple = ZuordTuple;
-
-    export type Array = ZuordArray;
-
-    export type EmptyArray = ZuordEmptyArray;
-
-    export type ArrayInfer<T> = ZuordArrayInfer<T>;
-
-    export type ArrayDepth<T> = ZuordArrayDepth<T>;
-
-    export type Plain = ZuordPlain;
-
-    export type UnionOf<U extends ZuordType.Tuple> = ZuordUnionOf<U>;
-
-    export type InstanceOf<T> = ZuordInstanceOf<T>;
-
-    export type InstanceTuple<T> = ZuordInstanceTuple<T>;
-}
+export type * from "./absence.types";
+export type * from "./function.types";
+export type * from "./tuple.types";
+export type * from "./array.types";
+export type * from "./plain.types";
+export type * from "./union.types";
+export type * from "./instance.types";

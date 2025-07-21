@@ -1,3 +1,1 @@
-type Function = (...args: unknown[]) => unknown;
-
-export type { Function as ZuordFunction };
+export type Function = (...args: unknown[]) => unknown;

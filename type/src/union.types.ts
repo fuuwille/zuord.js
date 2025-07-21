@@ -1,5 +1,3 @@
-import { ZuordType } from "./_alias.types";
+import { ZuordType } from ".";
 
-type UnionOf<U extends ZuordType.Tuple> = U[number]
-
-export type { UnionOf as ZuordUnionOf };
+export type UnionOf<U extends ZuordType.Tuple> = U[number]
