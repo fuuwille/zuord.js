@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/type";
+import { ZuordType } from "../../packages/type/src";
 import { InternalZuordTrait } from "./internal";
 
 

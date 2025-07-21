@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/type";
+import { ZuordType } from "../../../type/src";
 
 export type ModeField<K extends string = string, V extends boolean = boolean> = Record<K, V>;
 
