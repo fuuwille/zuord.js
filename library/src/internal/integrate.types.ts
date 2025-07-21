@@ -3,14 +3,16 @@ import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 import { internalZuord as internal } from ".";
 
-export type Integrate<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
-    [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-        IntegrateArray<A, B, TMode>
-    ) : 
-    [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
-        IntegratePlain<A, B, TMode>
-    ) : B
-) : ZuordType.UnionOf<[A, B]>;
+export type Integrate<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
+    [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
+        [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
+            IntegrateArray<A, B, TMode>
+        ) : 
+        [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
+            IntegratePlain<A, B, TMode>
+        ) : B
+    ) : ZuordType.UnionOf<[A, B]>
+);
 
 export type IntegrateArray<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
     A extends ZuordType.Array ? (
