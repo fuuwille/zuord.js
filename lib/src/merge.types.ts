@@ -1,8 +1,8 @@
-import { internalZuord, InternalZuord } from "./internal";
+import { internalZuord as internal, InternalZuord as Internal } from "./internal";
 
-export type Merge<TContent, TMode extends MergeBaseMode = typeof internalZuord.mergeBaseMode> = InternalZuord.Merge<TContent, TMode>;
+export type Merge<TContent, TMode extends MergeBaseMode = typeof internal.mergeBaseMode> = Internal.Merge<TContent, TMode>;
 
-export type MergeBaseMode = InternalZuord.MergeBaseMode;
+export type MergeBaseMode = Internal.MergeBaseMode;
 
 export type MergeResolvedMode<TMode extends Partial<MergeBaseMode>>
-= InternalZuord.MergeResolvedMode<TMode>;
+= Internal.MergeResolvedMode<TMode>;
