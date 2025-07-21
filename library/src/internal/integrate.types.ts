@@ -24,4 +24,16 @@ export type Integrate<A, B, TMode extends IntegrateMode> = [ZuordTrait.IsAny<[A,
 export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends IntegrateMode> = 
     [TMode["concat"]] extends [true] ? [...A, ...B] : B;
 
+export type IntegratePlain<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends IntegrateMode> = {
+    [K in (keyof A | keyof B)]: (
+        [TMode["shallow"]] extends [false] ? (
+            Integrate<
+                K extends keyof A ? A[K] : never,
+                K extends keyof B ? B[K] : never,
+                TMode
+            >
+        ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
+    )
+};
+
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
