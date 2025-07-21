@@ -5,3 +5,4 @@ export type * from "./array.types";
 export type * from "./plain.types";
 export type * from "./union.types";
 export type * from "./instance.types";
+export type * from "./required.types";
