@@ -4,9 +4,7 @@ import { ZuordTrait } from "@zuord/trait";
 
 export type Integrate<A, B, TMode extends IntegrateMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-        [TMode["concat"]] extends [true] 
-            ? Array<ZuordType.ArrayInfer<B> | ZuordType.ArrayInfer<A>>
-            : Array<ZuordType.ArrayInfer<B>>
+        IntegrateArray<A & ZuordType.Array, B & ZuordType.Array, TMode>
     ) : 
     [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
         [K in (keyof A | keyof B)]: (
