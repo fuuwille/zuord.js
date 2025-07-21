@@ -35,4 +35,4 @@ export const merge = <TContent extends object[], TMode extends Partial<Internal.
     return result;
 }
 
-export const mergeBaseMode = internal.integrateBaseMode satisfies Internal.MergeBaseMode;
+export const mergeBaseMode = internal.integrateMode satisfies Internal.MergeBaseMode;
