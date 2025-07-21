@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index"
-import { ZuordType } from "../../../packages/type/src";
+import { ZuordType } from "@zuord/type";
 
 export type Pattern<T> = InternalZuord.Normalize<PatternRaw<T>>
 

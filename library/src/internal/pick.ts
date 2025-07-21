@@ -1,5 +1,5 @@
 import { InternalZuord } from "./index"
-import { zuordType } from "../../../packages/type/src";
+import { zuordType } from "@zuord/type";
 
 export function pick<T extends object, P extends InternalZuord.Pattern<T>>(obj: T, pattern: P) : InternalZuord.Pick<T, P> {
     if (!zuordType.isObject(obj)) {

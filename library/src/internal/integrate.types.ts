@@ -1,5 +1,5 @@
 import { ZuordCore } from "@zuord/core";
-import { ZuordType } from "../../../packages/type/src";
+import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 
 export type Integrate<A, B, TMode extends IntegrateMode> = [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (

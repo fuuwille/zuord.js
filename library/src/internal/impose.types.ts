@@ -1,4 +1,4 @@
-import { ZuordType } from "../../../packages/type/src";
+import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 
 export type Impose<TBase, TPatch, TCurrent extends TBase> = [ZuordTrait.Is<TPatch, never>] extends [false] ? (
