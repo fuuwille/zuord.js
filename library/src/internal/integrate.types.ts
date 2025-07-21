@@ -6,17 +6,9 @@ export type Integrate<A, B, TMode extends IntegrateMode> = [ZuordTrait.IsAny<[A,
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         IntegrateArray<A & ZuordType.Array, B & ZuordType.Array, TMode>
     ) : 
-    [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? ({
-        [K in (keyof A | keyof B)]: (
-            [TMode["shallow"]] extends [false] ? (
-                Integrate<
-                    K extends keyof A ? A[K] : never,
-                    K extends keyof B ? B[K] : never,
-                    TMode
-                > 
-            ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
-        )
-    }) : B
+    [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
+        IntegratePlain<A & ZuordType.Plain, B & ZuordType.Plain, TMode>
+    ) : B
 ) : ZuordType.UnionOf<[A, B]>;
 
 export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends IntegrateMode> = 
