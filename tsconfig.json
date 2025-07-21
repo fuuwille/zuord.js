@@ -13,12 +13,12 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["../lib/src/index.ts"],
-      "zuord/internal": ["../lib/src/internal/index.ts"],
-      "@zuord/type": ["../packages/type/src/index.ts"],
-      "@zuord/core": ["../packages/core/src/index.ts"],
-      "@zuord/util": ["../packages/util/src/index.ts"],
-      "@zuord/trait": ["../packages/trait/src/index.ts"],
+      "zuord": ["../lib/src"],
+      "zuord/internal": ["../lib/src/internal"],
+      "@zuord/type": ["../packages/type/src"],
+      "@zuord/core": ["../packages/core/src"],
+      "@zuord/util": ["../packages/util/src"],
+      "@zuord/trait": ["../packages/trait/src"],
     }
   }
 }
