@@ -2,10 +2,10 @@ import { InternalZuord } from "./index"
 import { zuordType } from "@zuord/type";
 
 export function pick<T extends object, P extends InternalZuord.Pattern<T>>(obj: T, pattern: P) : InternalZuord.Pick<T, P> {
-    if (!zuordType.isObject(obj)) {
+    if (!zuordType.object(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }
-    if (!zuordType.isObject(pattern)) {
+    if (!zuordType.object(pattern)) {
         throw new TypeError("pick: Second argument must be a valid pattern (object).");
     }
 
@@ -17,7 +17,7 @@ export function pick<T extends object, P extends InternalZuord.Pattern<T>>(obj: 
 
         if (patVal === true) {
             result[key] = objVal;
-        } else if (zuordType.isObject(patVal) && zuordType.isObject(objVal)) {
+        } else if (zuordType.object(patVal) && zuordType.object(objVal)) {
             result[key] = pick(objVal, patVal);
         }
     }

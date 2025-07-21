@@ -11,7 +11,7 @@ export const merge = <TContent extends object[], TMode extends Partial<Internal.
     const result: Record<string, unknown> = {};
     
     for (const obj of content) {
-        if (!zuordType.isObject(obj)) continue;
+        if (!zuordType.object(obj)) continue;
 
         // Iterate over each key-value pair in the object
         for (const [key, value] of Object.entries(obj)) {
@@ -21,7 +21,7 @@ export const merge = <TContent extends object[], TMode extends Partial<Internal.
             if (Array.isArray(value) && Array.isArray(existing) && mode?.["concat"]) {
                 // Combine arrays
                 result[key] = [...existing, ...value];
-            } else if (zuordType.isObject(value) && zuordType.isObject(existing)) {
+            } else if (zuordType.object(value) && zuordType.object(existing)) {
                 // Recursively merge objects
                 result[key] = merge([existing, value], mode);
             } else {
