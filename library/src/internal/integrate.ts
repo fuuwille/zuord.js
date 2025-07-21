@@ -13,6 +13,8 @@ export const integrate = <A, B, TMode extends Internal.IntegrateMode>(a: A, b: B
     if(zuordType.plain(a) && zuordType.plain(b)) {
         return integratePlain(a, b, mode);
     }
+
+    return b;
 }
 
 export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
