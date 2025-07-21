@@ -1,4 +1,3 @@
-import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { InternalZuord as Internal, internalZuord as internal } from "./index"
 
@@ -9,6 +8,3 @@ export type Merge<TContent, TMode extends MergeBaseMode = typeof internal.mergeB
 ) : never;
 
 export type MergeBaseMode = Internal.IntegrateMode;
-
-export type MergeResolvedMode<TMode extends Partial<MergeBaseMode>> 
-= ZuordCore.ModeResolve<[typeof internal.mergeBaseMode, TMode]>;
