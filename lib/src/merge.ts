@@ -9,4 +9,4 @@ export function merge <TContent extends object[], TMode extends Partial<Zuord.Me
     return internal.merge(content, resolvedMode) as Zuord.Merge<TContent, ResolvedMode>;
 }
 
-export const mergeMode = internal.mergeBaseMode satisfies Zuord.MergeMode;
+export const mergeMode = internal.mergeMode satisfies Zuord.MergeMode;
