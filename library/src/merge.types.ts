@@ -1,4 +1,4 @@
-import { zuord } from "zuord";
+import { zuord } from "src";
 import { InternalZuord as Internal } from "./internal";
 import { ZuordType } from "@zuord/type";
 
