@@ -50,7 +50,7 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
         }
     }
 
-    return integrated;
+    return integrated as Internal.IntegratePlain<A, B, TMode>;
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode]) satisfies Internal.IntegrateMode;
