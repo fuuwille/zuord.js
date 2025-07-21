@@ -1,6 +1,8 @@
 # pnpm-workspace.yaml
 
 packages:
+  - "library"
+  - "website"
   - "packages/type"
   - "packages/core"
   - "packages/util"
