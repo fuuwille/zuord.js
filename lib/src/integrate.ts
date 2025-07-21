@@ -1,3 +1,3 @@
 import { internalZuord as internal, InternalZuord as Internal } from "./internal";
 
-export const integrateBaseMode = internal.integrateBaseMode satisfies Internal.IntegrateBaseMode;
+export const integrateMode = internal.integrateMode satisfies Internal.IntegrateMode;
