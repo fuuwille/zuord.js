@@ -20,9 +20,9 @@ Zuord (from the German word for "assign" or "map") is a TypeScript-first toolbel
 
 ## Schema-less Harmony Between Runtime and Types
 
-In Zuord, each operation exists in two synchronized forms:
+In Zuord, every operation comes in two synchronized forms:
 
-- **Runtime functions** (`integrate`, `merge`, `pick`, `omit`, etc.)
+- `zuord`: **Runtime functions** like (`integrate`, `merge`, `evolve`, `pick`, `omit`, etc.)
 
   ```ts
   const fee = zuord.merge([{ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const])
