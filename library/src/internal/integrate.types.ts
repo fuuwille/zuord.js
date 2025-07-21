@@ -21,4 +21,7 @@ export type Integrate<A, B, TMode extends IntegrateMode> = [ZuordTrait.IsAny<[A,
     }) : B
 ) : ZuordType.UnionOf<[A, B]>;
 
+export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends IntegrateMode> = 
+    [TMode["concat"]] extends [true] ? [...A, ...B] : B;
+
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
