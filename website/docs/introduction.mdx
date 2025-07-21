@@ -25,27 +25,19 @@ In Zuord, every operation comes in two synchronized forms:
 - `zuord`: **Runtime functions** — `integrate`, `merge`, `evolve`, `pick`, `omit`, etc.
 
   ```ts
-  const result = zuord.merge([
-    { id: 1, name: 'Alice' },
-    { id: 1, age: 30 },
-    { name: 'Alice Smith', active: true } as const
-  ]);
+  const result = zuord.merge([{ first: 'Kayra' }, { last: 'Özkaya' }, { active: true } as const]);
 
-  // Value: { id: 1, name: 'Alice Smith', age: 30, active: true }
-  // Type: { id: number; name: 'Alice Smith'; age: number; active: true }
+  // Value: { first: 'Kayra', last: 'Özkaya', active: true }
+  // Type: { first: string; last: string; active: true }
   ```
 
 - `Zuord`: **Compile-time types** — `Integrate`, `Merge`, `Evolve`, `Pick`, `Omit`, etc.
 
   ```ts
-  type Result = Zuord.Merge<[
-    { id: number, name: string },
-    { id: number, age: number },
-    { name: 'Alice Smith', active: true }
-  ]>;
+  type Result = Zuord.Merge<[{ first: string}, { last: string }, { active: true }]>;
 
   // Value: (not available – this is a type-only evaluation)
-  // Type: { id: number; name: 'Alice Smith'; age: number; active: true }
+  // Type: { first: string; last: string; active: true }
   ```
 
 Each returned type exactly matches its Zuord type, guaranteeing type safety during development:
