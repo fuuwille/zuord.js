@@ -4,10 +4,10 @@
         "paths": {
             "zuord": ["../../lib/src/index.ts"],
             "zuord/internal": ["../../lib/src/internal/index.ts"],
-            "@zuord/core": ["../../core/src/index.ts"],
-            "@zuord/type": ["../../type/src/index.ts"],
-            "@zuord/util": ["../../util/src/index.ts"],
-            "@zuord/trait": ["../../trait/src/index.ts"],
+            "@zuord/core": ["../core/src/index.ts"],
+            "@zuord/type": ["../type/src/index.ts"],
+            "@zuord/util": ["../util/src/index.ts"],
+            "@zuord/trait": ["../trait/src/index.ts"],
         }
     }
 }
