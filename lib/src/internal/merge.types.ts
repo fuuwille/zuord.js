@@ -1,4 +1,3 @@
-import { ZuordType } from "@zuord/type";
 import { InternalZuord as Internal, internalZuord as internal } from "./index"
 
 export type Merge<TContent, TMode extends MergeMode = typeof internal.mergeMode> = TContent extends [...infer Rest, infer Head] ? (
