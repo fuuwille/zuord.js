@@ -13,24 +13,24 @@ export type Integrate<A, B, TMode extends IntegrateMode = typeof internal.integr
 ) : ZuordType.UnionOf<[A, B]>;
 
 export type IntegrateArray<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
-    A extends infer ArrayA extends ZuordType.Array ? (
-        B extends infer ArrayB extends ZuordType.Array ? (
-            [TMode["concat"]] extends [true] ? [...ArrayA, ...ArrayB] : ArrayB
+    A extends ZuordType.Array ? (
+        B extends ZuordType.Array ? (
+            [TMode["concat"]] extends [true] ? [...A, ...B] : B
         ) : never
     ) : never
 )
 
 export type IntegratePlain<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
-    A extends infer PlainA extends ZuordType.Plain ? (
-        B extends infer PlainB extends ZuordType.Plain ? ({
-            [K in (keyof PlainA | keyof PlainB)]: (
+    A extends ZuordType.Plain ? (
+        B extends ZuordType.Plain ? ({
+            [K in (keyof A | keyof B)]: (
                 [TMode["shallow"]] extends [false] ? (
                     Integrate<
-                        K extends keyof PlainA ? PlainA[K] : never,
-                        K extends keyof PlainB ? PlainB[K] : never,
+                        K extends keyof A ? A[K] : never,
+                        K extends keyof B ? B[K] : never,
                         TMode
                     >
-                ) : K extends keyof PlainA ? PlainA[K] : K extends keyof PlainB ? PlainB[K] : never
+                ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
             )
         }) : never
     ) : never
