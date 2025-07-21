@@ -1,38 +1,20 @@
 import { InternalZuord as Internal, internalZuord as internal } from "./index"
-import { zuordType } from "@zuord/type";
+import { ZuordType, zuordType } from "@zuord/type";
 
-export const merge = <TContent extends object[], TMode extends Partial<Internal.MergeMode>> (content: TContent, mode?: TMode) => {
+export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<Internal.MergeMode>> (content: TContent, mode?: TMode) : ZuordType.Plain => {
+    if (content.length === 0) return {};
 
-    if (content.length === 0) {
-        // If no content is provided, return an empty object
-        return {};
+    const [head, ...rest] = content;
+
+    if(rest.length === 0) {
+        return head;
     }
-
-    const result: Record<string, unknown> = {};
-    
-    for (const obj of content) {
-        if (!zuordType.object(obj)) continue;
-
-        // Iterate over each key-value pair in the object
-        for (const [key, value] of Object.entries(obj)) {
-            const existing = result[key];
-
-            // If the key already exists, we need to merge
-            if (Array.isArray(value) && Array.isArray(existing) && mode?.["concat"]) {
-                // Combine arrays
-                result[key] = [...existing, ...value];
-            } else if (zuordType.object(value) && zuordType.object(existing)) {
-                // Recursively merge objects
-                result[key] = merge([existing, value], mode);
-            } else {
-                // In other cases, just set the value
-                result[key] = value;
-            }
-        }
+    else if(rest.length === 0) {
+        return internal.integratePlain(head, rest[0], mode);
     }
-
-    // Return the merged result as a normalized object
-    return result;
+    else {
+        return internal.integratePlain(head, merge(rest, mode), mode);
+    }
 }
 
 export const mergeMode = internal.integrateMode satisfies Internal.MergeMode;
