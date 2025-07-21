@@ -20,16 +20,20 @@ export type IntegrateArray<A, B, TMode extends IntegrateMode = typeof internal.i
     ) : never
 )
 
-export type IntegratePlain<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = {
-    [K in (keyof A | keyof B)]: (
-        [TMode["shallow"]] extends [false] ? (
-            Integrate<
-                K extends keyof A ? A[K] : never,
-                K extends keyof B ? B[K] : never,
-                TMode
-            >
-        ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
-    )
-};
+export type IntegratePlain<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
+    A extends infer PlainA extends ZuordType.Plain ? (
+        B extends infer PlainB extends ZuordType.Plain ? ({
+            [K in (keyof PlainA | keyof PlainB)]: (
+                [TMode["shallow"]] extends [false] ? (
+                    Integrate<
+                        K extends keyof PlainA ? PlainA[K] : never,
+                        K extends keyof PlainB ? PlainB[K] : never,
+                        TMode
+                    >
+                ) : K extends keyof PlainA ? PlainA[K] : K extends keyof PlainB ? PlainB[K] : never
+            )
+        }) : never
+    ) : never
+)
 
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
