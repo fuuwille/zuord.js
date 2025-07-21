@@ -4,4 +4,4 @@ packages:
   - "packages/type"
   - "packages/core"
   - "packages/util"
-  - "packages//trait"
+  - "packages/trait"
