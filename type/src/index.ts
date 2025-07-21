@@ -1,2 +1,2 @@
 export * as zuordType from "./alias";
-export * as ZuordType from "./_alias.types";
+export * as ZuordType from "./alias.types";
