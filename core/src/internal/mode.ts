@@ -9,8 +9,8 @@ export const modeField = <const K extends string, const V extends boolean>(key: 
     return field;
 }
 
-export const modeResolve = <const TModes extends Internal.ModeField[]>(modes: TModes): Internal.ModeResolve<TModes> => {
-    return Object.assign({}, ...modes);
+export const modeResolve = <const TModes extends Internal.ModeField[]>(modes: TModes) => {
+    return Object.assign({}, ...modes) as Internal.ModeResolve<TModes>;
 };
 
 export const shallowMode = modeField("shallow", false) satisfies Internal.ShallowMode;
