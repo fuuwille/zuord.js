@@ -25,10 +25,14 @@ In Zuord, every operation comes in two synchronized forms:
 - `zuord`: **Runtime functions** — `integrate`, `merge`, `evolve`, `pick`, `omit`, etc.
 
   ```ts
-  const fee = zuord.merge([{ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const])
+  const result = zuord.merge([
+    { id: 1, name: 'Alice' },
+    { id: 1, age: 30 },
+    { name: 'Alice Smith', active: true } as const
+  ]);
 
-  // Value: { a: 'hello', b: 101.05, c: 'world' }
-  // Type: { a: string , b: number, c: 'world' }
+  // Value: { id: 1, name: 'Alice Smith', age: 30, active: true }
+  // Type: { id: number; name: 'Alice Smith'; age: number; active: true }
   ```
 
 - `Zuord`: **Compile-time types** — `Integrate`, `Merge`, `Evolve`, `Pick`, `Omit`, etc.
