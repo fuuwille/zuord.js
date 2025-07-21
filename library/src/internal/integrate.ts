@@ -7,15 +7,19 @@ export const integrate = <A, B, TMode extends Internal.IntegrateMode>(a: A, b: B
     const shallow = mode.shallow ?? false;
 
     if (Array.isArray(a) && Array.isArray(b)) {
-        if (concat) {
-            return [...a, ...b];
-        } else {
-            return b;
-        }
+        return integrateArray(a, b, mode);
     }
 
     if(zuordType.plain(a) && zuordType.plain(b)) {
-        integratePlain(a, b, mode);
+        return integratePlain(a, b, mode);
+    }
+}
+
+export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
+    if (mode.concat) {
+        return [...a, ...b];
+    } else {
+        return b;
     }
 }
 
