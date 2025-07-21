@@ -3,7 +3,5 @@
 packages:
   - "packages/type"
   - "packages/core"
-  - "api"
-  - "util"
-  - "test"
-  - "web"
+  - "packages/util"
+  - "packages//trait"
