@@ -2,40 +2,41 @@ import { zuordCore } from "@zuord/core";
 import { InternalZuord as Internal } from ".";
 import { ZuordType, zuordType } from "@zuord/type";
 
-export const integrate = <A, B, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
-    const concat = mode.concat ?? false;
-    const shallow = mode.shallow ?? false;
+export const integrate = <A, B, TMode extends Partial<Internal.IntegrateMode>>(a: A, b: B, mode?: TMode) => {
+    let integrated;
 
     if (Array.isArray(a) && Array.isArray(b)) {
-        return integrateArray(a, b, mode);
+        integrated = integrateArray(a, b, mode);
+    }
+    else if(zuordType.plain(a) && zuordType.plain(b)) {
+        integrated = integratePlain(a, b, mode);
+    }
+    else {
+        integrated = b;
     }
 
-    if(zuordType.plain(a) && zuordType.plain(b)) {
-        return integratePlain(a, b, mode);
-    }
-
-    return b;
+    return integrated;
 }
 
-export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
+export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Partial<Internal.IntegrateMode>>(a: A, b: B, mode?: TMode) => {
     let integrated : ZuordType.Array;
 
-    if (mode.concat) {
+    if (mode?.concat) {
         integrated = [...a, ...b];
     } else {
         integrated = b;
     }
 
-    return integrated as Internal.IntegrateArray<A, B, TMode>;
+    return integrated;
 }
 
-export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
+export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<Internal.IntegrateMode>>(a: A, b: B, mode?: TMode) => {
     const integrated : ZuordType.Plain = {};
 
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
 
     for (const key of keys) {
-        if (!mode.shallow) { // ? CHECK LATER
+        if (!mode?.shallow) { // ? CHECK LATER
             integrated[key] = integrate(
                 key in a ? a[key] : undefined,
                 key in b ? b[key] : undefined,
@@ -50,7 +51,7 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
         }
     }
 
-    return integrated as Internal.IntegratePlain<A, B, TMode>;
+    return integrated;
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode]) satisfies Internal.IntegrateMode;
