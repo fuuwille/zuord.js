@@ -18,11 +18,15 @@ export const integrate = <A, B, TMode extends Internal.IntegrateMode>(a: A, b: B
 }
 
 export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
+    let integrated : ZuordType.Array;
+
     if (mode.concat) {
-        return [...a, ...b];
+        integrated = [...a, ...b];
     } else {
-        return b;
+        integrated = b;
     }
+
+    return integrated as Internal.IntegrateArray<A, B, TMode>;
 }
 
 export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Internal.IntegrateMode>(a: A, b: B, mode: TMode) => {
