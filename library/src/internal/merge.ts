@@ -1,5 +1,5 @@
 import { InternalZuord as Internal, internalZuord as internal } from "./index"
-import { ZuordType, zuordType } from "@zuord/type";
+import { ZuordType } from "@zuord/type";
 
 export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<Internal.MergeMode>> (content: TContent, mode?: TMode) : ZuordType.Plain => {
     if (content.length === 0) {
