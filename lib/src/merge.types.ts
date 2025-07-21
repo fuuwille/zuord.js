@@ -1,6 +1,9 @@
 import { zuord } from "zuord";
 import { InternalZuord as Internal } from "./internal";
+import { ZuordType } from "@zuord/type";
 
-export type Merge<TContent, TMode extends MergeMode = typeof zuord.mergeMode> = Internal.Merge<TContent, TMode>;
+export type Merge<TContent, TMode extends MergeMode = typeof zuord.mergeMode> = ZuordType.ArrayDepth<TContent> extends 1 ? (
+    Internal.Merge<TContent, TMode>
+) : never;
 
 export type MergeMode = Internal.MergeMode;
