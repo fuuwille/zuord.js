@@ -24,5 +24,9 @@
   "dependencies": {
     "@zuord/type": "0.5.0-alpha",
     "@zuord/util": "0.5.0-alpha"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^3.2.4",
+    "vitest": "^3.2.4"
   }
 }
