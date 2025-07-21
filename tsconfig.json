@@ -17,7 +17,7 @@
       "zuord/internal": ["../lib/src/internal/index.ts"],
       "@zuord/type": ["../packages/type/src/index.ts"],
       "@zuord/core": ["../packages/core/src/index.ts"],
-      "@zuord/util": ["../util/src/index.ts"],
+      "@zuord/util": ["../packages/util/src/index.ts"],
       "@zuord/trait": ["../trait/src/index.ts"],
     }
   }
