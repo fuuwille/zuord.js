@@ -1,6 +1,7 @@
 # pnpm-workspace.yaml
 
 packages:
+  - "packages/core"
   - "api"
   - "type"
   - "util"
