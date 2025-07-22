@@ -1,4 +1,3 @@
-export type * from "./data.types";
 export type * from "./outcast.types";
 export type * from "./normalize.types";
 export type * from "./pattern.types";
