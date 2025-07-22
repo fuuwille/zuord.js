@@ -6,6 +6,10 @@ export type NormalizeArray<T> = T extends ZuordType.Array ? {
   [K in keyof T[number]]: T[number] extends { [P in K]?: infer V } ? V : never;
 } : never;
 
+export type NormalizePlain<T> = T extends ZuordType.Plain ? {
+  [K in keyof T]: T[K];
+} : never;
+
 /*export type Normalize<T, TMode extends NormalizeBaseMode = NormalizeDefaultMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
     [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
