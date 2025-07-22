@@ -58,6 +58,8 @@ importers:
 
   packages/util: {}
 
+  tests: {}
+
   website:
     dependencies:
       '@docusaurus/core':
