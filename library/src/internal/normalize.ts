@@ -1,7 +1,7 @@
-import { Normalize } from "./normalize.types";
+/*import { Normalize } from "./normalize.types";
 
 const normalize = <T>(obj : T) => {
     return obj as Normalize<T>;
 }
 
-export { normalize as zuordNormalize };
+export { normalize as zuordNormalize };*/

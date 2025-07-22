@@ -1,4 +1,4 @@
-export * from "./normalize";
+//export * from "./normalize";
 export * from "./pattern";
 export * from "./integrate";
 export * from "./merge";
