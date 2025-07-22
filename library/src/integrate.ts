@@ -1,13 +1,12 @@
-import { zuord, Zuord } from ".";
-import { internalZuord as internal, InternalZuord as Internal } from "./internal";
+import { internalZuord as internal } from "./internal";
 import { ZuordCore, zuordCore } from "@zuord/core";
+import { Integrate, IntegrateMode } from "./integrate.types";
 
-export function integrate <A extends unknown, B extends unknown, TMode extends Partial<Zuord.IntegrateMode>> (a: A, b: B, mode?: TMode) {
-    const resolvedMode = zuordCore.modeResolve([zuord.integrateMode, mode ?? {}]);
-    type ResolvedMode = ZuordCore.ModeResolve<[typeof zuord.integrateMode, TMode]>;
+export function integrate <A extends unknown, B extends unknown, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode?: TMode) {
+    const resolvedMode = zuordCore.modeResolve([integrateMode, mode ?? {}]);
+    type ResolvedMode = ZuordCore.ModeResolve<[typeof integrateMode, TMode]>;
 
-    return internal.integrate(a, b, resolvedMode) as Zuord.Integrate<A, B, ResolvedMode>;
+    return internal.integrate(a, b, resolvedMode) as Integrate<A, B, ResolvedMode>;
 }
 
-
-export const integrateMode = internal.integrateMode satisfies Internal.IntegrateMode;
+export const integrateMode = internal.integrateMode satisfies IntegrateMode;
