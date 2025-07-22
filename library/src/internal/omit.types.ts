@@ -1,4 +1,4 @@
-import { InternalZuord } from "./index"
+import { InternalZuord } from "."
 import { ZuordTrait } from "@zuord/trait";
 
 export type Omit<T, U> = {

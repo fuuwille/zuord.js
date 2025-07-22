@@ -1,4 +1,4 @@
-import { InternalZuord } from "./index"
+import { InternalZuord } from "."
 
 export type Pick<T, U> = InternalZuord.Normalize<PickRaw<T, U>>;
 

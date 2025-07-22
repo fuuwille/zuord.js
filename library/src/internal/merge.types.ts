@@ -1,5 +1,5 @@
 import { ZuordUtil } from "@zuord/util";
-import { InternalZuord as Internal } from "./index"
+import { InternalZuord as Internal } from "."
 
 export type Merge<TContent, TMode extends ZuordUtil.Partialize<MergeMode>> = TContent extends [...infer Rest, infer Head] ? (
     Rest["length"] extends 0 ? (

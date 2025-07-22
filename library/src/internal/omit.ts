@@ -1,4 +1,4 @@
-import { InternalZuord } from "./index"
+import { InternalZuord } from "."
 import { zuordType } from "@zuord/type";
 
 export function omit<T extends object, P extends InternalZuord.Pattern<T>>(obj: T, pattern: P) : InternalZuord.Omit<T, P> {

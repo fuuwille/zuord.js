@@ -1,4 +1,4 @@
-import { InternalZuord } from "./index";
+import { InternalZuord } from ".";
 import { ZuordCore } from "@zuord/core";
 
 export type Data = {
