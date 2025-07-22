@@ -2,6 +2,11 @@ import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 import { ZuordCore } from "@zuord/core";
 
+export type Normalize<T> =(
+   [ZuordTrait.Is<T, ZuordType.Array>] extends [true] ? NormalizeArray<T> :
+   [ZuordTrait.Is<T, ZuordType.Plain>] extends [true] ? NormalizePlain<T> : T
+)
+
 export type NormalizeArray<T> = T extends ZuordType.Array ? {
   [K in keyof T[number]]: T[number] extends { [P in K]?: infer V } ? V : never;
 } : never;
