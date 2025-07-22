@@ -45,10 +45,7 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
                 integrated[key] = b[key];
             }
         } else {
-            const valA = key in a ? a[key] : undefined;
-            const valB = key in b ? b[key] : undefined;
-
-            integrated[key] = valB == undefined ? valA : integrate(valA, valB, mode);
+            integrated[key] = key in b ? integrate(a[key], b[key], mode) : a[key];
         }
     });
 
