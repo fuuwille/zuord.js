@@ -1,7 +1,8 @@
-import { InternalZuord as Internal, internalZuord as internal } from "."
 import { ZuordType } from "@zuord/type";
+import { integratePlain, integrateMode } from "./integrate";
+import { MergeMode } from "./merge.types";
 
-export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<Internal.MergeMode>> (content: TContent, mode?: TMode) : ZuordType.Plain => {
+export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: TContent, mode?: TMode) : ZuordType.Plain => {
     if (content.length === 0) {
         return {};
     }
@@ -14,13 +15,13 @@ export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<
         merged = head;
     }
     else if(rest.length === 1) {
-        merged = internal.integratePlain(head, rest[0], mode);
+        merged = integratePlain(head, rest[0], mode);
     }
     else {
-        merged = internal.integratePlain(head, merge(rest, mode), mode);
+        merged = integratePlain(head, merge(rest, mode), mode);
     }
 
     return merged;
 }
 
-export const mergeMode = internal.integrateMode satisfies Internal.MergeMode;
+export const mergeMode = integrateMode satisfies MergeMode;
