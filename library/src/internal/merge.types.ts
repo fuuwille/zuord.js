@@ -6,9 +6,9 @@ export type Merge<TContent, TMode extends ZuordUtil.Partialize<MergeMode>> = TCo
         Head
     ) : 
     Rest["length"] extends 1 ? (
-        Integrate<Head, Rest[0], TMode>
+        Integrate<Rest[0], Head, TMode>
     ) : (
-        Integrate<Head, Merge<Rest, TMode>, TMode>
+        Integrate<Merge<Rest, TMode>, Head, TMode>
     )
 ) : {};
 
