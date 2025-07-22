@@ -1,13 +1,10 @@
 import { ZuordType } from "@zuord/type";
-import { Normalize } from "./normalize.types";
 
-export type Pattern<T> = Normalize<PatternRaw<T>>
-
-export type PatternRaw<T> = true | {
+export type Pattern<T> = true | {
     [K in keyof T]?: T[K] extends Array<unknown>
         ? true
         : T[K] extends ZuordType.Plain
-            ? PatternRaw<T[K]>
+            ? Pattern<T[K]>
             : T[K] extends undefined
                 ? never
                 : true;
