@@ -4,14 +4,14 @@ import { ZuordTrait } from "@zuord/trait";
 import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
-    [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
+    [ZuordTrait.IsSome<A, [never, undefined]>] extends [false] ? (
         [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
             IntegrateArray<A, B, TMode>
         ) : 
         [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
             IntegratePlain<A, B, TMode>
-        ) : B
-    ) : ZuordType.UnionOf<[A, B]>
+        ) : A
+    ) : B
 );
 
 export type IntegrateArray<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
