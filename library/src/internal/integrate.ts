@@ -15,7 +15,7 @@ export const integrate = <A, B, TMode extends Partial<Internal.IntegrateMode>>(a
         integrated = b;
     }
 
-    return integrated;
+    return integrated as Internal.Integrate<A, B, TMode>;
 }
 
 export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Partial<Internal.IntegrateMode>>(a: A, b: B, mode?: TMode) => {
@@ -27,7 +27,7 @@ export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Ar
         integrated = b;
     }
 
-    return integrated;
+    return integrated as Internal.IntegrateArray<A, B, TMode>;
 }
 
 export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<Internal.IntegrateMode>>(a: A, b: B, mode?: TMode) => {
@@ -51,7 +51,7 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
         }
     }
 
-    return integrated;
+    return integrated as Internal.IntegratePlain<A, B, TMode>;
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode]) satisfies Internal.IntegrateMode;
