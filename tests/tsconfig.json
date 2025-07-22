@@ -8,6 +8,7 @@
             "@zuord/type": ["../type/src"],
             "@zuord/util": ["../util/src"],
             "@zuord/trait": ["../trait/src"],
-        }
+        },
+        "types": ["vitest/globals"]
     }
 }
