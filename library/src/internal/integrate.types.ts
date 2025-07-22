@@ -1,9 +1,9 @@
 import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
-import { internalZuord as internal } from ".";
+import { ZuordUtil } from "@zuord/util";
 
-export type Integrate<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
+export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
     [ZuordTrait.IsAny<[A, B], never>] extends [false] ? (
         [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
             IntegrateArray<A, B, TMode>
@@ -14,7 +14,7 @@ export type Integrate<A, B, TMode extends IntegrateMode = typeof internal.integr
     ) : ZuordType.UnionOf<[A, B]>
 );
 
-export type IntegrateArray<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
+export type IntegrateArray<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
     A extends ZuordType.Array ? (
         B extends ZuordType.Array ? (
             [TMode["concat"]] extends [true] ? [...A, ...B] : B
@@ -22,7 +22,7 @@ export type IntegrateArray<A, B, TMode extends IntegrateMode = typeof internal.i
     ) : never
 )
 
-export type IntegratePlain<A, B, TMode extends IntegrateMode = typeof internal.integrateMode> = (
+export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
     A extends ZuordType.Plain ? (
         B extends ZuordType.Plain ? ({
             [K in (keyof A | keyof B)]: (
