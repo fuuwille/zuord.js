@@ -64,6 +64,8 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.0.4)(jiti@1.21.7)(terser@5.43.1)
 
+  tests/lib: {}
+
   website:
     dependencies:
       '@docusaurus/core':
