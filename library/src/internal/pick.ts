@@ -1,7 +1,8 @@
-import { InternalZuord } from "."
 import { zuordType } from "@zuord/type";
+import { Pattern } from "./pattern.types";
+import { Pick } from "./pick.types";
 
-export function pick<T extends object, P extends InternalZuord.Pattern<T>>(obj: T, pattern: P) : InternalZuord.Pick<T, P> {
+export function pick<T extends object, P extends Pattern<T>>(obj: T, pattern: P) : Pick<T, P> {
     if (!zuordType.object(obj)) {
         throw new TypeError("pick: First argument must be a valid object.");
     }
@@ -22,5 +23,5 @@ export function pick<T extends object, P extends InternalZuord.Pattern<T>>(obj: 
         }
     }
 
-    return result as InternalZuord.Pick<T, P>;
+    return result as Pick<T, P>;
 }
