@@ -4,3 +4,4 @@ packages:
   - "library"
   - "website"
   - "packages/**"
+  - "tests/**"
