@@ -3,13 +3,13 @@ import { ZuordType } from "@zuord/type";
 import { ZuordCore, zuordCore } from "@zuord/core";
 import { MergeMode, Merge } from "./merge.types";
 
-export function merge <TContent extends ZuordType.Plain[]> (content: [...TContent]) 
+export function merge <TContent extends ZuordType.TupleLike<ZuordType.Plain>> (content: [...TContent]) 
     : Merge<TContent>;
 
-export function merge <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: [...TContent], mode: TMode)
+export function merge <TContent extends ZuordType.TupleLike<ZuordType.Plain>, TMode extends Partial<MergeMode>> (content: [...TContent], mode: TMode)
     : Merge<TContent, ZuordCore.ModeResolve<[typeof mergeMode, TMode]>>;
 
-export function merge <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
+export function merge <TContent extends ZuordType.TupleLike<ZuordType.Plain>, TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
     const resolvedMode = zuordCore.modeResolve([mergeMode, mode ?? {}]);
     type ResolvedMode = ZuordCore.ModeResolve<[typeof mergeMode, TMode]>;
 
