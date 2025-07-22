@@ -13,7 +13,7 @@ export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<
     if(rest.length === 0) {
         merged = head;
     }
-    else if(rest.length === 0) {
+    else if(rest.length === 1) {
         merged = internal.integratePlain(head, rest[0], mode);
     }
     else {
