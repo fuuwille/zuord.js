@@ -5,7 +5,7 @@ import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./inte
 export const integrate = <A, B, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
     let integrated;
 
-    if (Array.isArray(a) && Array.isArray(b)) {
+    if (zuordType.array(a) && zuordType.array(b)) {
         integrated = integrateArray(a, b, mode);
     }
     else if(zuordType.plain(a) && zuordType.plain(b)) {
