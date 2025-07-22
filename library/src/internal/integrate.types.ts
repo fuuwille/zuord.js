@@ -26,13 +26,14 @@ export type IntegratePlain<A, B, TMode extends IntegrateMode = typeof internal.i
     A extends ZuordType.Plain ? (
         B extends ZuordType.Plain ? ({
             [K in (keyof A | keyof B)]: (
-                [TMode["shallow"]] extends [false] ? (
-                    Integrate<
-                        K extends keyof A ? A[K] : never,
-                        K extends keyof B ? B[K] : never,
-                        TMode
-                    >
-                ) : K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
+                [TMode["shallow"]] extends [true] ? (
+                    K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
+                ) : 
+                Integrate<
+                    K extends keyof A ? A[K] : never,
+                    K extends keyof B ? B[K] : never,
+                    TMode
+                >
             )
         }) : never
     ) : never
