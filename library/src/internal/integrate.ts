@@ -3,17 +3,18 @@ import { ZuordType, zuordType } from "@zuord/type";
 import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./integrate.types";
 
 export const integrate = <A, B, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
-    if(a == undefined) {
-        return b;
-    }
-
     let integrated;
 
-    if (Array.isArray(a) && Array.isArray(b)) {
-        integrated = integrateArray(a, b, mode);
-    }
-    else if(zuordType.plain(a) && zuordType.plain(b)) {
-        integrated = integratePlain(a, b, mode);
+    if(a != undefined) {
+        if (Array.isArray(a) && Array.isArray(b)) {
+            integrated = integrateArray(a, b, mode);
+        }
+        else if(zuordType.plain(a) && zuordType.plain(b)) {
+            integrated = integratePlain(a, b, mode);
+        }   
+        else {
+            integrated = a;
+        } 
     }
     else {
         integrated = b;
