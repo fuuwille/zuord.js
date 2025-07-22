@@ -1,14 +1,14 @@
 import { ZuordUtil } from "@zuord/util";
 import { Integrate, IntegrateMode } from "./integrate.types";
 
-export type Merge<TContent, TMode extends ZuordUtil.Partialize<MergeMode>> = TContent extends [...infer Rest, infer Head] ? (
-    Rest["length"] extends 0 ? (
-        Head
+export type Merge<TContent, TMode extends ZuordUtil.Partialize<MergeMode>> = TContent extends [...infer TRest, infer TLast] ? (
+    TRest["length"] extends 0 ? (
+        TLast
     ) : 
-    Rest["length"] extends 1 ? (
-        Integrate<Rest[0], Head, TMode>
+    TRest["length"] extends 1 ? (
+        Integrate<TRest[0], TLast, TMode>
     ) : (
-        Integrate<Merge<Rest, TMode>, Head, TMode>
+        Integrate<Merge<TRest, TMode>, TLast, TMode>
     )
 ) : {};
 
