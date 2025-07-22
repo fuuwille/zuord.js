@@ -4,10 +4,10 @@
         "paths": {
             "zuord": ["../../library/src"],
             "zuord/internal": ["../../library/src/internal"],
-            "@zuord/core": ["../core/src"],
-            "@zuord/type": ["../type/src"],
-            "@zuord/util": ["../util/src"],
-            "@zuord/trait": ["../trait/src"],
+            "@zuord/core": ["../../packages/core/src"],
+            "@zuord/type": ["../../packages/type/src"],
+            "@zuord/util": ["../../packages/util/src"],
+            "@zuord/trait": ["../../packages/trait/src"],
         },
         "types": ["vitest/globals"]
     }
