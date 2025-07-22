@@ -1,4 +1,7 @@
 {
   "private": true,
-  "name": "tests"
+  "name": "tests",
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
 }
