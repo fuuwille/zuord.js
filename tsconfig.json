@@ -13,8 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["../lib/src"],
-      "zuord/internal": ["../lib/src/internal"],
+      "zuord": ["../library/src"],
+      "zuord/internal": ["../library/src/internal"],
       "@zuord/type": ["../packages/type/src"],
       "@zuord/core": ["../packages/core/src"],
       "@zuord/util": ["../packages/util/src"],
