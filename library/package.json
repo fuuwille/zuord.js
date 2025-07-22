@@ -6,7 +6,6 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "prepare": "npm run clean && npm run build",
     "prepublishOnly": "pnpm install @zuord/type@latest @zuord/util@latest"
   },
   "repository": {
@@ -26,7 +25,6 @@
     "@zuord/util": "0.5.0-alpha"
   },
   "devDependencies": {
-    "@vitest/ui": "^3.2.4",
     "vitest": "^3.2.4"
   }
 }

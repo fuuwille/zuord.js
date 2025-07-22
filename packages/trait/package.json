@@ -6,7 +6,6 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "prepare": "npm run clean && npm run build",
     "prepublishOnly": "pnpm install @zuord/type@latest "
   },
   "keywords": [],

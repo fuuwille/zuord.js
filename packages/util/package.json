@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "rollup -c",
-    "prepare": "npm run clean && npm run build"
+    "build": "rollup -c"
   },
   "keywords": [
     "zuord"
