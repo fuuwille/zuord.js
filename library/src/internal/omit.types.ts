@@ -1,5 +1,5 @@
-import { InternalZuord } from "."
 import { ZuordTrait } from "@zuord/trait";
+import { Pattern } from "./pattern.types";
 
 export type Omit<T, U> = {
     [K in keyof T as
@@ -24,4 +24,4 @@ export type Omit<T, U> = {
             : T[K];
 };
 
-export type OmitOf<T, U> = Omit<T, InternalZuord.Pattern<U>>;
+export type OmitOf<T, U> = Omit<T, Pattern<U>>;
