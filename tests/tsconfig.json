@@ -2,8 +2,8 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
         "paths": {
-            "zuord": ["../../lib/src"],
-            "zuord/internal": ["../../lib/src/internal"],
+            "zuord": ["../../library/src"],
+            "zuord/internal": ["../../library/src/internal"],
             "@zuord/core": ["../core/src"],
             "@zuord/type": ["../type/src"],
             "@zuord/util": ["../util/src"],
