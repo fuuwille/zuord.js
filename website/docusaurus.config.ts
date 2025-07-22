@@ -124,6 +124,9 @@ const config: Config = {
       darkTheme: prismThemes.vsDark,
     },
   } satisfies Preset.ThemeConfig,
+  plugins: [
+    'vercel-analytics'
+  ]
 };
 
 export default config;
