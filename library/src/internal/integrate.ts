@@ -52,8 +52,6 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
             const valA = key in a ? a[key] : undefined;
             const valB = key in b ? b[key] : undefined;
 
-            console.log(`Integrating key: ${key}`, valA, valB);
-
             integrated[key] = integrate(valA, valB, mode);
         }
     });
