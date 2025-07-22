@@ -4,13 +4,11 @@ import { ZuordTrait } from "@zuord/trait";
 import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
-    [ZuordTrait.IsSome<A, [never, undefined]>] extends [false] ? (
-        [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-            IntegrateArray<A, B, TMode>
-        ) : 
-        [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
-            IntegratePlain<A, B, TMode>
-        ) : A
+    [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
+        IntegrateArray<A, B, TMode>
+    ) : 
+    [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
+        IntegratePlain<A, B, TMode>
     ) : B
 );
 
@@ -29,11 +27,9 @@ export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMod
                 [TMode["shallow"]] extends [true] ? (
                     K extends keyof A ? A[K] : K extends keyof B ? B[K] : never
                 ) : 
-                Integrate<
-                    K extends keyof A ? A[K] : never,
-                    K extends keyof B ? B[K] : never,
-                    TMode
-                >
+                K extends keyof B ? (
+                    Integrate<A[K], B[K], TMode>
+                ) : A[K]
             )
         }) : never
     ) : never
