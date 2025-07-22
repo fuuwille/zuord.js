@@ -5,20 +5,15 @@ import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./inte
 export const integrate = <A, B, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
     let integrated;
 
-    if(a != undefined) {
-        if (Array.isArray(a) && Array.isArray(b)) {
-            integrated = integrateArray(a, b, mode);
-        }
-        else if(zuordType.plain(a) && zuordType.plain(b)) {
-            integrated = integratePlain(a, b, mode);
-        }   
-        else {
-            integrated = a;
-        } 
+    if (Array.isArray(a) && Array.isArray(b)) {
+        integrated = integrateArray(a, b, mode);
     }
+    else if(zuordType.plain(a) && zuordType.plain(b)) {
+        integrated = integratePlain(a, b, mode);
+    }   
     else {
         integrated = b;
-    }
+    } 
 
     return integrated as Integrate<A, B, TMode>;
 }
@@ -53,7 +48,7 @@ export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Pl
             const valA = key in a ? a[key] : undefined;
             const valB = key in b ? b[key] : undefined;
 
-            integrated[key] = integrate(valA, valB, mode);
+            integrated[key] = valB == undefined ? valA : integrate(valA, valB, mode);
         }
     });
 
