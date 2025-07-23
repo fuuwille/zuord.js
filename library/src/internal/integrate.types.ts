@@ -20,12 +20,10 @@ export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array,
     [TMode["concat"]] extends [true] ? [...A, ...B] : B
 )
 
-export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
-    A extends ZuordType.Plain ? B extends ZuordType.Plain ? (
-        (IntegratePlainOverlap<A, B, TMode> & IntegratePlainExtras<A, B, TMode>) extends infer TIntegrated ? ({
-            [K in keyof TIntegrated]: TIntegrated[K];
-        }) : never
-    ) : never : never
+export type IntegratePlain<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
+    (IntegratePlainOverlap<A, B, TMode> & IntegratePlainExtras<A, B, TMode>) extends infer TIntegrated ? ({
+        [K in keyof TIntegrated]: TIntegrated[K];
+    }) : never
 )
 
 export type IntegratePlainOverlap<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
