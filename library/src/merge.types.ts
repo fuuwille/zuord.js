@@ -8,6 +8,6 @@ export type Merge<TContent extends ZuordType.Plain[], TMode extends MergeMode = 
     ZuordType.ArrayDepth<TContent> extends 1 ? (
         Internal.Merge<TContent, TMode>
     ) : never
-) : ZuordUtil.Normalize<TContent>;
+) : ZuordUtil.Normalize<TContent, TMode>;
 
 export type MergeMode = Internal.MergeMode;
