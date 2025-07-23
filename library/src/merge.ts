@@ -11,9 +11,8 @@ export function merge <TContent extends ZuordType.Plain[], TMode extends Partial
 
 export function merge <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
     const resolvedMode = zuordCore.modeResolve([mergeMode, mode ?? {}]);
-    type ResolvedMode = ZuordCore.ModeResolve<[typeof mergeMode, TMode]>;
 
-    return internal.merge(content, resolvedMode) as Merge<TContent, ResolvedMode>;
+    return internal.merge(content, resolvedMode) as Merge<TContent, TMode>;
 }
 
 export const mergeMode = internal.mergeMode satisfies MergeMode;
