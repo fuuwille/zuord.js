@@ -3,9 +3,9 @@ import { IntegrateMode, Integrate } from "./integrate.types";
 import { ZuordTrait } from "@zuord/trait";
 import { ZuordType } from "@zuord/type";
 
-export type Merge<TContent, TMode extends Partial<MergeMode>> = ZuordTrait.Is<TContent, ZuordType.Tuple> extends true ? (
+export type Merge<TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> = ZuordTrait.Is<TContent, ZuordType.Tuple> extends true ? (
     ZuordType.ArrayDepth<TContent> extends 1 ? (
-        TContent extends [...infer TRest, infer TLast] ? (
+        TContent extends [...infer TRest extends ZuordType.Plain[], infer TLast extends ZuordType.Plain] ? (
             TRest["length"] extends 0 ? (
                 TLast
             ) : 
