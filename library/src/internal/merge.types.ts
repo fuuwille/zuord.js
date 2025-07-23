@@ -9,7 +9,7 @@ export type Merge<TContent extends ZuordType.Plain[], TMode extends Partial<Merg
     TContent extends ZuordType.PlainArray ? (
         MergeFromArray<TContent, TMode>
     ) : never
-);
+) extends infer TMerged extends ZuordType.Plain ? TMerged : never;
 
 export type MergeFromTuple<TContent extends ZuordType.PlainTuple, TMode extends Partial<MergeMode>> = (
     TContent extends [...infer TRest extends ZuordType.PlainTuple, infer TLast extends ZuordType.Plain] ? (
@@ -17,7 +17,7 @@ export type MergeFromTuple<TContent extends ZuordType.PlainTuple, TMode extends 
         TRest["length"] extends 1 ? IntegratePlain<TRest[0], TLast, TMode> 
         : IntegratePlain<MergeFromTuple<TRest, TMode>, TLast, TMode>
     ) : {}
-) extends infer TMerged extends ZuordType.Plain ? TMerged : never;
+);
 
 export type MergeFromArray<TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> = TContent extends readonly (infer TInfer)[] ? (
     ZuordType.PlainOnlyRequired<TInfer> extends infer TPlain extends ZuordType.Plain ? (
