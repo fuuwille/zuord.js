@@ -5,7 +5,7 @@ import { ZuordCore } from "@zuord/core";
 export type Normalize<T, TMode extends NormalizeBaseMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
     [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
-        (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted ? {
+        (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? {
             [K in keyof TExtracted]: Normalize<TExtracted[K], TMode> 
         } : never )
     ) :
@@ -17,7 +17,7 @@ export type Normalize<T, TMode extends NormalizeBaseMode> = [ZuordTrait.Eq<T, an
     ) :     
     [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) | 
-        (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? {
+        (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted extends ZuordType.Plain ? {
             [K in TExtracted extends any ? keyof TExtracted : never]: K extends keyof TExtracted ? Normalize<TExtracted[K], TMode> : never;
         } : never )
     ) : T
