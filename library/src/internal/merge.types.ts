@@ -1,4 +1,3 @@
-import { ZuordUtil } from "@zuord/util";
 import { IntegrateMode, IntegratePlain } from "./integrate.types";
 import { ZuordType } from "@zuord/type";
 
