@@ -17,7 +17,7 @@ export type MergeSpecific<TContent extends ZuordType.PlainTuple, TMode extends P
 ) extends infer TMerged extends ZuordType.Plain ? TMerged : never;
 
 export type MergeCommon<TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> = (
-    ZuordUtil.Normalize<TContent, TMode>
-);
+    ZuordType.ArrayInfer<ZuordUtil.Normalize<TContent, TMode>>
+) extends infer TNormalized extends ZuordType.Plain ? TNormalized : never;
 
 export type MergeMode = IntegrateMode;
