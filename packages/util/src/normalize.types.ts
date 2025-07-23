@@ -22,7 +22,7 @@ export type NormalizeTuple<T, TMode extends NormalizeBaseMode> = T extends Zuord
 } : never;
 
 export type NormalizeArray<T, TMode extends NormalizeBaseMode> = T extends ZuordType.Array ? (
-    Normalize<Extract<T, ZuordType.Array>[number], TMode>[]
+    Normalize<T[number], TMode>[]
 ) : never;
 
 export type NormalizePlain<T, TMode extends NormalizeBaseMode> = T extends ZuordType.Plain ? {
