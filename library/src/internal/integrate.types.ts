@@ -37,4 +37,8 @@ export type IntegratePlainA<A, B, TMode extends ZuordUtil.Partialize<IntegrateMo
     ) : A[K];
 });
 
+export type IntegratePlainB<A, B> = ({
+    [K in Exclude<keyof B, keyof A>]: B[K];
+});
+
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
