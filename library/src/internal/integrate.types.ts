@@ -13,11 +13,9 @@ export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> =
 );
 
 export type IntegrateArray<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
-    A extends ZuordType.Array ? (
-        B extends ZuordType.Array ? (
-            [TMode["concat"]] extends [true] ? [...A, ...B] : B
-        ) : never
-    ) : never
+    A extends ZuordType.Array ? B extends ZuordType.Array ? (
+        [TMode["concat"]] extends [true] ? [...A, ...B] : B
+    ) : never : never
 )
 
 export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
