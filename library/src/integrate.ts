@@ -4,9 +4,8 @@ import { Integrate, IntegrateMode } from "./integrate.types";
 
 export function integrate <A extends unknown, B extends unknown, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode?: TMode) {
     const resolvedMode = zuordCore.modeResolve([integrateMode, mode ?? {}]);
-    type ResolvedMode = ZuordCore.ModeResolve<[typeof integrateMode, TMode]>;
 
-    return internal.integrate(a, b, resolvedMode) as Integrate<A, B, ResolvedMode>;
+    return internal.integrate(a, b, resolvedMode) as Integrate<A, B, TMode>;
 }
 
 export const integrateMode = internal.integrateMode satisfies IntegrateMode;
