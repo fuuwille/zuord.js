@@ -5,17 +5,19 @@ import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-        IntegrateArray<A, B, TMode>
+        A extends ZuordType.Array ? B extends ZuordType.Array ? (
+            IntegrateArray<A, B, TMode>
+        ) : never : never
     ) : 
     [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
-        IntegratePlain<A, B, TMode>
+        A extends ZuordType.Plain ? B extends ZuordType.Plain ? (
+            IntegratePlain<A, B, TMode>
+        ) : never : never
     ) : B
 );
 
-export type IntegrateArray<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
-    A extends ZuordType.Array ? B extends ZuordType.Array ? (
-        [TMode["concat"]] extends [true] ? [...A, ...B] : B
-    ) : never : never
+export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
+    [TMode["concat"]] extends [true] ? [...A, ...B] : B
 )
 
 export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
