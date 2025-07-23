@@ -20,13 +20,13 @@ export type IntegrateArray<A, B, TMode extends ZuordUtil.Partialize<IntegrateMod
 
 export type IntegratePlain<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
     A extends ZuordType.Plain ? B extends ZuordType.Plain ? (
-        (IntegratePlainA<A, B, TMode> & IntegratePlainB<A, B>) extends infer TIntegrated ? ({
+        (IntegratePlainOverlap<A, B, TMode> & IntegratePlainB<A, B>) extends infer TIntegrated ? ({
             [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     ) : never : never
 )
 
-export type IntegratePlainA<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
+export type IntegratePlainOverlap<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
     [K in keyof A]: K extends keyof B ? (
         [TMode["shallow"]] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
     ) : A[K];
