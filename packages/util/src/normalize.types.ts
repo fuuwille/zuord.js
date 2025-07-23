@@ -9,7 +9,7 @@ export type Normalize<T, TMode extends NormalizeBaseMode> = [ZuordTrait.Eq<T, an
     ) :
     [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Array> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
-        (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted ? NormalizeArray<TExtracted, TMode> : never)
+        (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted ? NormalizeArray<TExtracted, TMode> : never )
     ) :     
     [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) | 
