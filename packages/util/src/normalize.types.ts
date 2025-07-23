@@ -21,6 +21,10 @@ export type Normalize<T, TMode extends NormalizeBaseMode> = [ZuordTrait.Eq<T, an
     ) : T
 ) : any;
 
+export type NormalizeTuple<T, TMode extends NormalizeBaseMode> = T extends ZuordType.Tuple ? {
+    [K in keyof T]: Normalize<T[K], TMode> 
+} : never;
+
 export type NormalizeBaseMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode]>;
 
 export type NormalizeDefaultMode = ZuordCore.BaseMode;
