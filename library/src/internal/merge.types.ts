@@ -1,5 +1,5 @@
 import { ZuordUtil } from "@zuord/util";
-import { IntegrateMode, IntegratePlain } from "./integrate.types";
+import { IntegrateMode, Integrate } from "./integrate.types";
 import { ZuordTrait } from "@zuord/trait";
 import { ZuordType } from "@zuord/type";
 
@@ -10,9 +10,9 @@ export type Merge<TContent, TMode extends Partial<MergeMode>> = ZuordTrait.Is<TC
                 TLast
             ) : 
             TRest["length"] extends 1 ? (
-                IntegratePlain<TRest[0], TLast, TMode>
+                Integrate<TRest[0], TLast, TMode>
             ) : (
-                IntegratePlain<Merge<TRest, TMode>, TLast, TMode>
+                Integrate<Merge<TRest, TMode>, TLast, TMode>
             )
         ) : {}
     ) : never
