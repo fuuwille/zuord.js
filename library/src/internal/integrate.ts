@@ -3,9 +3,9 @@ import { ZuordType, zuordType } from "@zuord/type";
 import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./integrate.types";
 
 export function integrate<A extends object, B extends object>(a: A, b: B, mode?: Partial<IntegrateMode>) {
-    const shallow = mode?.shallow === true;
+    const { shallow, concat } = mode ?? {};
+
     if (shallow) {
-        // shallow moddaysa direkt üst seviye merge yap
         return { ...a, ...b };
     }
 
@@ -22,15 +22,14 @@ export function integrate<A extends object, B extends object>(a: A, b: B, mode?:
             const valA = sourceA?.[key];
             const valB = sourceB?.[key];
 
-            // Eğer valB varsa ve her ikisi de plain object ise
-            if (valB !== undefined && zuordType.plain(valA) && zuordType.plain(valB)) {
+            if (concat && Array.isArray(valA) && Array.isArray(valB)) {
+                target[key] = [...valA, ...valB];
+            } else if (valB !== undefined && zuordType.plain(valA) && zuordType.plain(valB)) {
                 target[key] = {};
                 stack.push({ target: target[key], sourceA: valA, sourceB: valB });
             } else if (valB !== undefined) {
-                // valB varsa, onu al
                 target[key] = valB;
             } else {
-                // yoksa valA'yı al
                 target[key] = valA;
             }
         });
