@@ -17,7 +17,7 @@ export type Integrate<A, B, TMode extends Partial<IntegrateMode>> = (
 
 export type IntegrateArray<A, B, TMode extends Partial<IntegrateMode>> = (
     A extends ZuordType.Array ? B extends ZuordType.Array ? (
-        [TMode["concat"]] extends [true] ? [...A, ...B] : B
+        [ZuordCore.ModeOn<TMode, "shallow">] extends [true] ? [...A, ...B] : B
     ) : never : never
 )
 
@@ -29,7 +29,7 @@ export type IntegratePlain<A, B, TMode extends Partial<IntegrateMode>> = (
 
 export type IntegrateOverlap<A, B, TMode extends Partial<IntegrateMode>> = ({
     [K in keyof A]: K extends keyof B ? (
-        [TMode["shallow"]] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
+        [ZuordCore.ModeOn<TMode, "shallow">] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
     ) : A[K];
 });
 
