@@ -1,8 +1,10 @@
+import { TupleLike } from "./tuple";
+
 export type Plain = {
   [key: PropertyKey]: unknown;
 };
 
-export type PlainTuple = readonly [Plain, ...Plain[]];
+export type PlainTuple = TupleLike<Plain>;
 
 export type PlainArray = readonly Plain[];
 
