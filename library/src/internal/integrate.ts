@@ -2,7 +2,7 @@ import { zuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { IntegrateMode, IntegrateShape } from "./integrate.types";
 
-export function integrate<TShape extends IntegrateShape, A extends TShape, B extends TShape, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) {
+export function integrate<A extends IntegrateShape, B extends IntegrateShape, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) {
     const { shallow, concat } = mode ?? {};
 
     if (shallow) {
