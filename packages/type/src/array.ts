@@ -2,6 +2,8 @@ export type Array = readonly unknown[];
 
 export type ArrayEmpty = readonly [];
 
+export type ArrayLike<T> = readonly T[];
+
 export type ArrayInfer<T> = T extends readonly (infer TInfer)[] ? TInfer : never;
 
 export type ArrayDepth<T> = ArrayDepthImpl<T, []>;
