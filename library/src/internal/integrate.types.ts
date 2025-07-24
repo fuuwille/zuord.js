@@ -32,7 +32,7 @@ export type IntegratePlainOverlap<A, B, TMode extends ZuordUtil.Partialize<Integ
     ) : A[K];
 });
 
-export type IntegratePlainExtras<A, B, _TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
+export type IntegratePlainExtras<A extends ZuordType.Plain, B extends ZuordType.Plain, _TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
     [K in Exclude<keyof B, keyof A>]: B[K];
 });
 
