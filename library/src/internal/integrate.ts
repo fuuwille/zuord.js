@@ -2,54 +2,41 @@ import { zuordCore } from "@zuord/core";
 import { ZuordType, zuordType } from "@zuord/type";
 import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./integrate.types";
 
-export const integrate = <A, B, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
-    let integrated;
-
-    if (zuordType.array(a) && zuordType.array(b)) {
-        integrated = integrateArray(a, b, mode);
-    }
-    else if(zuordType.plain(a) && zuordType.plain(b)) {
-        integrated = integratePlain(a, b, mode);
-    }   
-    else {
-        integrated = b;
-    } 
-
-    return integrated as Integrate<A, B, TMode>;
-}
-
-export const integrateArray = <A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
-    let integrated : ZuordType.Array;
-
-    if (mode?.concat) {
-        integrated = [...a, ...b];
-    } else {
-        integrated = b;
-    }
-
-    return integrated as IntegrateArray<A, B, TMode>;
-}
-
-export const integratePlain = <A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) => {
-    const integrated : ZuordType.Plain = {};
-
+export function integrate<A extends object, B extends object>(a: A, b: B, mode?: Partial<IntegrateMode>) {
     const shallow = mode?.shallow === true;
+    if (shallow) {
+        // shallow moddaysa direkt üst seviye merge yap
+        return { ...a, ...b };
+    }
 
-    const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+    const result: any = {};
+    const stack: Array<{ target: any; sourceA: any; sourceB: any }> = [{ target: result, sourceA: a, sourceB: b }];
 
-    keys.forEach((key) => {
-        if (shallow) {
-            if (key in a) {
-                integrated[key] = a[key];
-            } else if (key in b) {
-                integrated[key] = b[key];
+    while (stack.length) {
+        const { target, sourceA, sourceB } = stack.pop()!;
+
+        // Tüm keyler union'u
+        const keys = new Set([...Object.keys(sourceA || {}), ...Object.keys(sourceB || {})]);
+
+        keys.forEach(key => {
+            const valA = sourceA?.[key];
+            const valB = sourceB?.[key];
+
+            // Eğer valB varsa ve her ikisi de plain object ise
+            if (valB !== undefined && zuordType.plain(valA) && zuordType.plain(valB)) {
+                target[key] = {};
+                stack.push({ target: target[key], sourceA: valA, sourceB: valB });
+            } else if (valB !== undefined) {
+                // valB varsa, onu al
+                target[key] = valB;
+            } else {
+                // yoksa valA'yı al
+                target[key] = valA;
             }
-        } else {
-            integrated[key] = key in b ? integrate(a[key], b[key], mode) : a[key];
-        }
-    });
+        });
+    }
 
-    return integrated as IntegratePlain<A, B, TMode>;
+    return result;
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode]) satisfies IntegrateMode;

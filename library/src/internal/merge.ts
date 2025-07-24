@@ -1,5 +1,5 @@
 import { ZuordType } from "@zuord/type";
-import { integratePlain, integrateMode } from "./integrate";
+import { integrate, integrateMode } from "./integrate";
 import { MergeMode } from "./merge.types";
 
 export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: TContent, mode?: TMode) : ZuordType.Plain => {
@@ -7,7 +7,7 @@ export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<
 
     return content.reduce((acc, current) => {
         if (acc === undefined) return current;
-        return integratePlain(acc, current, mode);
+        return integrate(acc, current, mode);
     });
 }
 
