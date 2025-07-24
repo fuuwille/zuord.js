@@ -26,7 +26,7 @@ export type IntegratePlain<A extends ZuordType.Plain, B extends ZuordType.Plain,
     }) : never
 )
 
-export type IntegratePlainOverlap<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
+export type IntegratePlainOverlap<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
     [K in keyof A]: K extends keyof B ? (
         [TMode["shallow"]] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
     ) : A[K];
