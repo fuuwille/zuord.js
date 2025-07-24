@@ -6,4 +6,7 @@ export type Integrate<A extends IntegrateShape, B extends IntegrateShape, TMode 
 
 export type IntegrateMode = Internal.IntegrateMode;
 
+/**
+ * @puretype
+ */
 export type IntegrateShape = Internal.IntegrateShape;
