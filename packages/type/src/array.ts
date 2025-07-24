@@ -1,8 +1,8 @@
 export type Array = readonly unknown[];
 
-export type ArrayEmpty = readonly [];
+export type ArrayOf<T> = readonly T[];
 
-export type ArrayLike<T> = readonly T[];
+export type ArrayEmpty = readonly [];
 
 export type ArrayInfer<T> = T extends readonly (infer TInfer)[] ? TInfer : never;
 
