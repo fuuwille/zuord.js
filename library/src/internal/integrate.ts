@@ -2,8 +2,8 @@ import { zuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { IntegrateMode } from "./integrate.types";
 
-export function integrate<A, B, TMode extends Partial<IntegrateMode>>(a: A, b: B, mode?: TMode) {
-    const { shallow, concat } = mode ?? {};
+export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
+    const { shallow, concat } = mode as IntegrateMode;
 
     if (shallow) {
         return { ...a, ...b };
