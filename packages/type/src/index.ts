@@ -1,1 +1,1 @@
-export * as ZuordType from "./alias.types";
+export * as ZuordType from "./alias";
