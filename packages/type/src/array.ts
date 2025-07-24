@@ -1,4 +1,4 @@
-export type Array = readonly unknown[];
+export type Array = ArrayOf<unknown>;
 
 export type ArrayOf<T> = readonly T[];
 
