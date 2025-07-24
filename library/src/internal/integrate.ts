@@ -1,6 +1,6 @@
 import { zuordCore } from "@zuord/core";
-import { ZuordType, zuordType } from "@zuord/type";
-import { IntegrateMode, Integrate, IntegratePlain, IntegrateArray } from "./integrate.types";
+import { zuordType } from "@zuord/type";
+import { IntegrateMode } from "./integrate.types";
 
 export function integrate<A extends object, B extends object>(a: A, b: B, mode?: Partial<IntegrateMode>) {
     const { shallow, concat } = mode ?? {};
