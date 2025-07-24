@@ -1,6 +1,6 @@
 export type Array = readonly unknown[];
 
-export type EmptyArray = readonly [];
+export type ArrayEmpty = readonly [];
 
 export type ArrayInfer<T> = T extends readonly (infer TInfer)[] ? TInfer : never;
 
