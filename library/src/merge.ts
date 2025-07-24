@@ -1,5 +1,4 @@
 import { internalZuord as internal } from "./internal";
-import { ZuordType } from "@zuord/type";
 import { zuordCore } from "@zuord/core";
 import { MergeMode, Merge, MergeShape } from "./merge.types";
 
