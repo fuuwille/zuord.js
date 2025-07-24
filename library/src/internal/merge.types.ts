@@ -1,7 +1,7 @@
 import { IntegrateMode, IntegratePlain } from "./integrate.types";
 import { ZuordType } from "@zuord/type";
 
-export type Merge<TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> = (
+export type Merge<TContent, TMode extends Partial<MergeMode>> = (
     TContent extends ZuordType.PlainTuple ? (
         MergeFromTuple<TContent, TMode>
     ) : 
@@ -10,7 +10,7 @@ export type Merge<TContent extends ZuordType.Plain[], TMode extends Partial<Merg
     ) : never
 ) extends infer TMerged extends ZuordType.Plain ? TMerged : never;
 
-export type MergeFromTuple<TContent extends ZuordType.PlainTuple, TMode extends Partial<MergeMode>> = (
+export type MergeFromTuple<TContent, TMode extends Partial<MergeMode>> = (
     TContent extends [...infer TRest extends ZuordType.PlainTuple, infer TLast extends ZuordType.Plain] ? (
         TRest["length"] extends 0 ? TLast : 
         TRest["length"] extends 1 ? IntegratePlain<TRest[0], TLast, TMode> 
@@ -18,7 +18,7 @@ export type MergeFromTuple<TContent extends ZuordType.PlainTuple, TMode extends 
     ) : {}
 );
 
-export type MergeFromArray<TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> = TContent extends readonly (infer TInfer)[] ? (
+export type MergeFromArray<TContent, TMode extends Partial<MergeMode>> = TContent extends readonly (infer TInfer)[] ? (
     ZuordType.PlainAsRequired<TInfer> extends infer TPlain extends ZuordType.Plain ? (
         ZuordType.UnionToTuple<TPlain> extends infer TNormalized extends ZuordType.PlainTuple ? (
             MergeFromTuple<TNormalized, TMode> 
