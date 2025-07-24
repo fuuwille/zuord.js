@@ -15,8 +15,10 @@ export type Integrate<A, B, TMode extends Partial<IntegrateMode>> = (
     ) : B
 );
 
-export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends Partial<IntegrateMode>> = (
-    [TMode["concat"]] extends [true] ? [...A, ...B] : B
+export type IntegrateArray<A, B, TMode extends Partial<IntegrateMode>> = (
+    A extends ZuordType.Array ? B extends ZuordType.Array ? (
+        [TMode["concat"]] extends [true] ? [...A, ...B] : B
+    ) : never : never
 )
 
 export type IntegratePlain<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<IntegrateMode>> = (
