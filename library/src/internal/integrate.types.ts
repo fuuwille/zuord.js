@@ -33,7 +33,7 @@ export type IntegratePlainOverlap<A extends ZuordType.Plain, B extends ZuordType
 });
 
 export type IntegratePlainExtras<A extends ZuordType.Plain, B extends ZuordType.Plain, _TMode extends ZuordUtil.Partialize<IntegrateMode>> = ({
-    [K in Exclude<keyof B, keyof A>]: B[K];
+    [K in Exclude<keyof B, keyof A>]: K extends keyof B ? B[K] : never;
 });
 
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode]>;
