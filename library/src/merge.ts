@@ -1,15 +1,15 @@
 import { internalZuord as internal } from "./internal";
 import { ZuordType } from "@zuord/type";
 import { zuordCore } from "@zuord/core";
-import { MergeMode, Merge } from "./merge.types";
+import { MergeMode, Merge, MergeShape } from "./merge.types";
 
-export function merge <TContent extends ZuordType.Plain[]> (content: [...TContent]) 
+export function merge <TContent extends MergeShape> (content: [...TContent]) 
     : Merge<TContent>;
 
-export function merge <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: [...TContent], mode: TMode)
+export function merge <TContent extends MergeShape, TMode extends Partial<MergeMode>> (content: [...TContent], mode: TMode)
     : Merge<TContent, TMode>;
 
-export function merge <TContent extends ZuordType.Plain[], TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
+export function merge <TContent extends MergeShape, TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
     return internal.merge(content, zuordCore.modeResolve([mergeMode, mode ?? {}])) as Merge<TContent, TMode>;
 }
 
