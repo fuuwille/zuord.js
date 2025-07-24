@@ -1,5 +1,4 @@
 export type * from "./outcast.types";
-export type * from "./pattern.types";
 export type * from "./merge.types";
 export type * from "./merge.types";
 export type * from "./merge.types";
