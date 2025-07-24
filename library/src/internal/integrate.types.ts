@@ -2,7 +2,7 @@ import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 
-export type Integrate<A, B, TMode extends Partial<IntegrateMode>> = (
+export type Integrate<A, B, TMode> = (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         A extends ZuordType.Array ? B extends ZuordType.Array ? (
             IntegrateArray<A, B, TMode>
@@ -15,25 +15,25 @@ export type Integrate<A, B, TMode extends Partial<IntegrateMode>> = (
     ) : B
 );
 
-export type IntegrateArray<A, B, TMode extends Partial<IntegrateMode>> = (
+export type IntegrateArray<A, B, TMode> = (
     A extends ZuordType.Array ? B extends ZuordType.Array ? (
         [ZuordCore.ModeOn<TMode, "shallow">] extends [true] ? [...A, ...B] : B
     ) : never : never
 )
 
-export type IntegratePlain<A, B, TMode extends Partial<IntegrateMode>> = (
-    (IntegrateOverlap<A, B, TMode> & IntegrateExtras<A, B, TMode>) extends infer TIntegrated ? ({
+export type IntegratePlain<A, B, TMode> = (
+    (IntegrateOverlap<A, B, TMode> & IntegrateExtras<A, B>) extends infer TIntegrated ? ({
         [K in keyof TIntegrated]: TIntegrated[K];
     }) : never
 )
 
-export type IntegrateOverlap<A, B, TMode extends Partial<IntegrateMode>> = ({
+export type IntegrateOverlap<A, B, TMode> = ({
     [K in keyof A]: K extends keyof B ? (
         [ZuordCore.ModeOn<TMode, "shallow">] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
     ) : A[K];
 });
 
-export type IntegrateExtras<A, B, _TMode extends Partial<IntegrateMode>> = ({
+export type IntegrateExtras<A, B> = ({
     [K in keyof B as K extends keyof A ? never : K]: B[K];
 });
 
