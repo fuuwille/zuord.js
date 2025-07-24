@@ -6,6 +6,9 @@ import { IntegrateShape } from "./internal/integrate.types";
 export function integrate <A extends IntegrateShape, B extends IntegrateShape> (a: A, b: B)
     : Integrate<A, B>;
 
+export function integrate <A extends IntegrateShape, B extends IntegrateShape, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode: TMode)
+    : Integrate<A, B, TMode>;
+
 export function integrate <A extends IntegrateShape, B extends IntegrateShape, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode?: TMode) {
     if(!(internal.integrateShape(a))) {
         throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
