@@ -7,21 +7,10 @@ export const merge = <TContent extends ZuordType.Plain[], TMode extends Partial<
         return {};
     }
 
-    const [head, ...rest] = content;
-
-    let merged;
-
-    if(rest.length === 0) {
-        merged = head;
-    }
-    else if(rest.length === 1) {
-        merged = integratePlain(head, rest[0], mode);
-    }
-    else {
-        merged = integratePlain(head, merge(rest, mode), mode);
-    }
-
-    return merged;
+    return content.reduce((acc, current) => {
+        if (acc === undefined) return current;
+        return integratePlain(acc, current, mode);
+    });
 }
 
 export const mergeMode = integrateMode satisfies MergeMode;
