@@ -1,4 +1,3 @@
-import { ZuordType } from "@zuord/type";
 import { integrate, integrateMode } from "./integrate";
 import { MergeMode } from "./merge.types";
 
