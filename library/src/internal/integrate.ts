@@ -15,7 +15,6 @@ export function integrate<T extends IntegrateShape, A extends T, B extends T>(a:
     while (stack.length) {
         const { target, sourceA, sourceB } = stack.pop()!;
 
-        // Tüm keyler union'u
         const keys = new Set([...Object.keys(sourceA || {}), ...Object.keys(sourceB || {})]);
 
         keys.forEach(key => {
