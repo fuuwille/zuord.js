@@ -31,8 +31,7 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) : IntegrateShape
                 if (concat && Array.isArray(valA) && Array.isArray(valB)) {
                     target[key] = [...valA, ...valB];
                 } else if (valB !== undefined && isPlain(valA) && isPlain(valB)) {
-                    target[key] = {};
-                    stack.push({ target: target[key], sourceA: valA, sourceB: valB });
+                    stack.push({ target: target[key] = {}, sourceA: valA, sourceB: valB });
                 } else if (valB !== undefined) {
                     target[key] = valB;
                 } else {
