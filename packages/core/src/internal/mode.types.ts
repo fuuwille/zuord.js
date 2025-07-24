@@ -12,6 +12,10 @@ export type ModeResolveRequired<T> = {
   [K in keyof T]-?: T[K] extends undefined ? false : T[K] extends boolean ? T[K] : false;
 };
 
+export type ModeOn<TMode, TKey> = TKey extends keyof TMode ? (
+  [TMode[TKey]] extends [true] ? true : false
+) : false;
+
 export type ShallowMode = ModeField<"shallow">;
 
 export type ConcatMode = ModeField<"concat">;
