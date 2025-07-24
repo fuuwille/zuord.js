@@ -1,7 +1,7 @@
 import { integrate, integrateMode } from "./integrate";
 import { MergeMode } from "./merge.types";
 
-export const merge = <TContent, TMode> (content: TContent, mode: TMode)=> {
+export const merge = <TContent, TMode>(content: TContent, mode: TMode)=> {
     if (!Array.isArray(content) || content.length == 0) return {};
 
     return content.reduce((acc, current) => {
