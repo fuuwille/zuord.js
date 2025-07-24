@@ -1,19 +1,21 @@
 import { zuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
-import { IntegrateMode } from "./integrate.types";
+import { IntegrateMode, IntegrateShape } from "./integrate.types";
 
-export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
+export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) : IntegrateShape {
     const { shallow, concat } = mode as IntegrateMode;
-
-    if (shallow) {
-        return { ...a, ...b };
-    }
 
     const result: any = {};
     const stack: Array<{ target: any; sourceA: any; sourceB: any }> = [{ target: result, sourceA: a, sourceB: b }];
 
     while (stack.length) {
         const { target, sourceA, sourceB } = stack.pop()!;
+
+        // shallow ise burada sadece yüzeysel merge yapıyoruz
+        if (shallow) {
+            Object.assign(target, sourceA, sourceB);
+            continue; // derinlemesine gitmeden döngünün sonraki elemanına geç
+        }
 
         const keys = new Set([...Object.keys(sourceA || {}), ...Object.keys(sourceB || {})]);
 
