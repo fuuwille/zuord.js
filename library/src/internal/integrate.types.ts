@@ -3,7 +3,7 @@ import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 import { ZuordUtil } from "@zuord/util";
 
-export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
+export type Integrate<A, B, TMode extends Partial<IntegrateMode>> = (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
         A extends ZuordType.Array ? B extends ZuordType.Array ? (
             IntegrateArray<A, B, TMode>
