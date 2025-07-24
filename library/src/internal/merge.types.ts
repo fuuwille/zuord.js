@@ -28,4 +28,4 @@ export type MergeFromArray<TContent, TMode extends Partial<MergeMode>> = TConten
 
 export type MergeMode = IntegrateMode;
 
-export type MergeShape = IntegrateShape;
+export type MergeShape = ZuordType.Plain[] | ZuordType.Array[];
