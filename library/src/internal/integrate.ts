@@ -5,8 +5,16 @@ import { IntegrateMode, IntegrateShape } from "./integrate.types";
 export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) : IntegrateShape {
     const { shallow, concat } = mode as IntegrateMode;
 
+    if(!(integrateShape(a))) {
+        throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
+    }
+
+    if(!(integrateShape(b))) {
+        throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
+    }
+
     const result: any = {};
-    const stack: Array<{ target: any; sourceA: any; sourceB: any }> = [{ target: result, sourceA: a, sourceB: b }];
+    const stack: Array<{ target: IntegrateShape; sourceA: IntegrateShape; sourceB: IntegrateShape }> = [{ target: result, sourceA: a, sourceB: b }];
 
     while (stack.length) {
         const { target, sourceA, sourceB } = stack.pop()!;
@@ -46,4 +54,8 @@ export function isPlain(obj: unknown) : obj is ZuordType.Plain {
     if (typeof obj !== "object" || obj === null) return false;
 
     return Object.getPrototypeOf(obj) === Object.prototype;
+}
+
+export const integrateShape = (obj: unknown) : obj is IntegrateShape => {
+    return isPlain(obj) || Array.isArray(obj);
 }
