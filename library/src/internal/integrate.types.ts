@@ -21,19 +21,19 @@ export type IntegrateArray<A, B, TMode extends Partial<IntegrateMode>> = (
     ) : never : never
 )
 
-export type IntegratePlain<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<IntegrateMode>> = (
+export type IntegratePlain<A, B, TMode extends Partial<IntegrateMode>> = (
     (IntegratePlainOverlap<A, B, TMode> & IntegratePlainExtras<A, B, TMode>) extends infer TIntegrated ? ({
         [K in keyof TIntegrated]: TIntegrated[K];
     }) : never
 )
 
-export type IntegratePlainOverlap<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode extends Partial<IntegrateMode>> = ({
+export type IntegratePlainOverlap<A, B, TMode extends Partial<IntegrateMode>> = ({
     [K in keyof A]: K extends keyof B ? (
         [TMode["shallow"]] extends [true] ? B[K] : Integrate<A[K], B[K], TMode>
     ) : A[K];
 });
 
-export type IntegratePlainExtras<A extends ZuordType.Plain, B extends ZuordType.Plain, _TMode extends Partial<IntegrateMode>> = ({
+export type IntegratePlainExtras<A, B, _TMode extends Partial<IntegrateMode>> = ({
     [K in keyof B as K extends keyof A ? never : K]: B[K];
 });
 
