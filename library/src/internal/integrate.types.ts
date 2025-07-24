@@ -13,7 +13,8 @@ export type Integrate<A, B, TMode extends ZuordUtil.Partialize<IntegrateMode>> =
         A extends ZuordType.Plain ? B extends ZuordType.Plain ? (
             IntegratePlain<A, B, TMode>
         ) : never : never
-    ) : B
+    ) : 
+    [ZuordTrait.IsEvery<[A, B], IntegrateShape>] extends [true] ? B : never
 );
 
 export type IntegrateArray<A extends ZuordType.Array, B extends ZuordType.Array, TMode extends ZuordUtil.Partialize<IntegrateMode>> = (
