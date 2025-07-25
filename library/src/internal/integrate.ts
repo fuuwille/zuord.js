@@ -6,7 +6,10 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
     const { shallow, concat, unique } = mode as IntegrateMode;
 
     if(Array.isArray(a) && Array.isArray(b)) {
-        return concat ? [...a, ...b] : b;
+        return concat ? ( unique 
+            ? Array.from(new Set([...a, ...b])) 
+            : [...a, ...b]
+        ) : b;
     }
 
     if(isPlain(a) && isPlain(b)) {
