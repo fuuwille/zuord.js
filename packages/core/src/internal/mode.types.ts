@@ -8,8 +8,8 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
       ) : 
       K extends keyof TResolvedRest ? (
         TResolvedRest[K]
-      ) : false
-    )
+      ) : never
+    ) extends true ? true : false;
   } : never
 ) : {};
 
