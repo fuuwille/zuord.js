@@ -1,4 +1,4 @@
 import { ZuordType } from "@zuord/type";
-import { Integrate } from "./integrate.types";
+import { IntegrateElement } from "./integrate.types";
 
-export type MergeContent = ZuordType.ArrayOf<Integrate>;
+export type MergeContent = ZuordType.ArrayOf<IntegrateElement>;

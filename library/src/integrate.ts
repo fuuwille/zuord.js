@@ -3,18 +3,18 @@ import { zuordCore } from "@zuord/core";
 import { Integrate, IntegrateMode } from "./integrate.types";
 import { zuordShape, ZuordShape } from "./shape";
 
-export function integrate <A extends ZuordShape.Integrate, B extends ZuordShape.Integrate> (a: A, b: B)
+export function integrate <A extends ZuordShape.IntegrateElement, B extends ZuordShape.IntegrateElement> (a: A, b: B)
     : Integrate<A, B>;
 
-export function integrate <A extends ZuordShape.Integrate, B extends ZuordShape.Integrate, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode: TMode)
+export function integrate <A extends ZuordShape.IntegrateElement, B extends ZuordShape.IntegrateElement, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode: TMode)
     : Integrate<A, B, TMode>;
 
-export function integrate <A extends ZuordShape.Integrate, B extends ZuordShape.Integrate, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode?: TMode) {
-    if(!(zuordShape.integrate(a))) {
+export function integrate <A extends ZuordShape.IntegrateElement, B extends ZuordShape.IntegrateElement, TMode extends Partial<IntegrateMode>> (a: A, b: B, mode?: TMode) {
+    if(!(zuordShape.integrateElement(a))) {
         throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
     }
 
-    if(!(zuordShape.integrate(b))) {
+    if(!(zuordShape.integrateElement(b))) {
         throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
     }
 
