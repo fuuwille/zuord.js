@@ -7,7 +7,7 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
         TLast[K]
       ) : 
       K extends keyof TResolvedRest ? (
-        TResolvedRest[K]
+        TResolvedRest[K] extends infer TValue extends boolean ? TValue : false
       ) : never
     )
   } : never
