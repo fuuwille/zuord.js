@@ -14,7 +14,3 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
 export type ModeOn<TMode, TKey> = TKey extends keyof TMode ? (
   [TMode[TKey]] extends [true] ? true : false
 ) : false;
-
-export type ModeOff<TMode, TKey> = TKey extends keyof TMode ? (
-  [TMode[TKey]] extends [true] ? false : true
-) : true;
