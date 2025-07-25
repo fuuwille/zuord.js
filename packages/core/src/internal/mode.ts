@@ -20,9 +20,30 @@ export const modeOn = <TMode, TKey>(mode: TMode, key: TKey | TKey[]) => {
         throw new TypeError("Mode must be an object.");
     }
 
+    let result = false;
+
     if(typeof key == "string") {
-        return mode[key] ?? false as ModeOn<TMode, TKey>;
+        result = mode[key] ?? false;
     }
+    else if(Array.isArray(key)) {
+        result = true;
+
+        for (const key in mode) {
+            if (typeof key != "string") {
+                throw new TypeError("Each key must be a string.");
+            }
+
+            if(mode[key] === false) {
+                result = false;
+                break;
+            }   
+        }
+    }
+    else {
+        throw new TypeError("Key must be a string or an array of strings.");
+    }
+
+    return result as ModeOn<TMode, TKey>;
 }
 
 const isModeField = (value: unknown): value is ModeField => {
