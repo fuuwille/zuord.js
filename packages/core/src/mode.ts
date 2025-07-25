@@ -1,11 +1,11 @@
 import { internalZuordCore as internal } from "./internal";
 import { ModeField, ModeResolve, ShallowMode, ConcatMode, BaseMode } from "./mode.types";
 
-export function modeField <K extends string, const V extends boolean>(key: K, value?: V) : ModeField<K>
+export function modeField <K extends string, const V extends boolean>(key: K, value?: V) : ModeField<K, V>
 
-export function modeField <K extends string, const V extends boolean>(key: K[], value?: V) : ModeField<K>
+export function modeField <K extends string, const V extends boolean>(key: K[], value?: V) : ModeField<K, V>
 
-export function modeField <K extends string, const V extends boolean>(key: K | K[], value?: V) : ModeField<K>;
+export function modeField <K extends string, const V extends boolean>(key: K | K[], value?: V) : ModeField<K, V>;
 
 export function modeField <K extends string, const V extends boolean>(key: K | K[], value?: V) {
     return internal.modeField(key, value ?? false) as ModeField<K, V>;
