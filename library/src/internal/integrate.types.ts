@@ -1,6 +1,7 @@
 import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
+import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<A, B, TMode> = (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
@@ -16,7 +17,7 @@ export type IntegrateArray<A, B, TMode> = (
             [...A, ...B]
         ) : B
     ) : never : never
-) extends infer TIntegrated extends ZuordType.Array ? TIntegrated[number][] : never;
+) extends infer TIntegrated extends ZuordType.Array ? ZuordUtil.Mutable<TIntegrated[number][]> : never;
 
 export type IntegratePlain<A, B, TMode> = (
     (IntegrateOverlap<A, B, TMode> & IntegrateExtras<A, B>) extends infer TIntegrated ? ({
