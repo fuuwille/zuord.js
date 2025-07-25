@@ -1,2 +1,2 @@
-export * as zuordShape from "./alias";
-export * as ZuordShape from "./alias.types";
+export * as shapeZuord from "./alias";
+export * as ShapeZuord from "./alias.types";
