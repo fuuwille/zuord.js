@@ -1,6 +1,6 @@
 import { zuordCore } from "@zuord/core";
 import { zuordType, ZuordType } from "@zuord/type";
-import { IntegrateMode, IntegrateShape } from "./integrate.types";
+import { IntegrateMode } from "./integrate.types";
 
 export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
     const { shallow, concat, unique } = mode as IntegrateMode;
@@ -53,7 +53,3 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies IntegrateMode;
-
-export const integrateShape = (obj: unknown) : obj is IntegrateShape => {
-    return zuordType.plain(obj) || zuordType.array(obj);
-}

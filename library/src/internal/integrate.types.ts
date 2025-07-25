@@ -43,8 +43,3 @@ export type IntegrateExtras<A, B> = ({
 });
 
 export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode, ZuordCore.UniqueMode]>;
-
-/**
- * @puretype
- */
-export type IntegrateShape = ZuordType.Array | ZuordType.Plain;
