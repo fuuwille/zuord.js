@@ -33,7 +33,7 @@ export const modeOn = <TMode, TKey>(mode: TMode, key: TKey | TKey[]) => {
                 throw new TypeError("Each key must be a string.");
             }
 
-            if(mode[key] === false) {
+            if(!mode[key]) {
                 result = false;
                 break;
             }   
