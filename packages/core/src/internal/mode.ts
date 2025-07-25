@@ -1,12 +1,14 @@
 import { BaseMode, ConcatMode, ModeField, ModeResolve, ShallowMode } from "./mode.types";
 
-export const modeField = <const K extends string, const V extends boolean>(key: K | K[], value: V) => {
-    let field = {} as ModeField<K, V>;
+export const modeField = <const K, const V>(key: K | K[], value: V) => {
+    let field : Record<string, boolean> = {};
 
     const keys = Array.isArray(key) ? key : [key];
-    for (const k of keys) field[k] = value;
+    for (const k of keys) {
+        field[k as string] = value as boolean;
+    }
 
-    return field;
+    return field as ModeField<K, V>;
 }
 
 export const modeResolve = <const TModes extends ModeField[]>(modes: TModes) => {
