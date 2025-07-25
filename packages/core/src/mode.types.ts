@@ -6,8 +6,8 @@ export type ModeResolve<TModes extends ModeField[]> = Internal.ModeResolve<TMode
 
 export type ModeOn<TMode, TKey> = Internal.ModeOn<TMode, TKey>;
 
-export type ShallowMode = Internal.ShallowMode;
+export type ShallowMode = ModeField<"shallow">;
 
-export type ConcatMode = Internal.ConcatMode;
+export type ConcatMode = ModeField<"concat">;
 
-export type BaseMode = Internal.BaseMode;
+export type BaseMode = ModeResolve<[ShallowMode]>;
