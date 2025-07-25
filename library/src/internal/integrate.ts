@@ -53,6 +53,7 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
 }
 
 export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies IntegrateMode;
+
 export const integrateShape = (obj: unknown) : obj is IntegrateShape => {
-    return zuordType.plain(obj) || Array.isArray(obj);
+    return zuordType.plain(obj) || zuordType.array(obj);
 }
