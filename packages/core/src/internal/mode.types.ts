@@ -1,11 +1,9 @@
 export type ModeField<K extends string = string, V extends boolean = boolean> = Record<K, V>;
 
 export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ? (
-  ModeResolve<TRest> extends infer TResolvedRest ? (
-    ModeResolveRequired<{
-      [K in keyof TResolvedRest | keyof TLast]: K extends keyof TLast ? TLast[K] : K extends keyof TResolvedRest ? TResolvedRest[K] : never;
-    }>
-  ) : never
+  ModeResolve<TRest> extends infer TResolvedRest ? {
+    [K in keyof TResolvedRest | keyof TLast]: K extends keyof TLast ? TLast[K] : K extends keyof TResolvedRest ? TResolvedRest[K] : never;
+  } : never
 ) : {};
 
 export type ModeResolveRequired<T> = {
