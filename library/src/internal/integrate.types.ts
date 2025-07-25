@@ -4,14 +4,10 @@ import { ZuordTrait } from "@zuord/trait";
 
 export type Integrate<A, B, TMode> = (
     [ZuordTrait.IsEvery<[A, B], ZuordType.Array>] extends [true] ? (
-        A extends ZuordType.Array ? B extends ZuordType.Array ? (
-            IntegrateArray<A, B, TMode>
-        ) : never : never
+        IntegrateArray<A, B, TMode>
     ) : 
     [ZuordTrait.IsEvery<[A, B], ZuordType.Plain>] extends [true] ? (
-        A extends ZuordType.Plain ? B extends ZuordType.Plain ? (
-            IntegratePlain<A, B, TMode>
-        ) : never : never
+        IntegratePlain<A, B, TMode>
     ) : B
 );
 
