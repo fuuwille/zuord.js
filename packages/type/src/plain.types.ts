@@ -1,5 +1,5 @@
-import { ArrayOf } from "./array";
-import { TupleOf } from "./tuple";
+import { ArrayOf } from "./array.types";
+import { TupleOf } from "./tuple.types";
 
 export type Plain = {
   [key: PropertyKey]: unknown;
