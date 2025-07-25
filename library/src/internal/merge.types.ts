@@ -15,7 +15,7 @@ export type MergeFromTuple<TContent, TMode> = (
         TRest["length"] extends 0 ? TLast : 
         TRest["length"] extends 1 ? Integrate<TRest[0], TLast, TMode> 
         : Integrate<MergeFromTuple<TRest, TMode>, TLast, TMode>
-    ) : {}
+    ) : never
 );
 
 export type MergeFromArray<TContent, TMode> = TContent extends readonly (infer TInfer)[] ? (
