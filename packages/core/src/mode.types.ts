@@ -1,6 +1,6 @@
 import { InternalZuordCore as Internal } from "./internal";
 
-export type ModeField<K extends string = string> = Internal.ModeField<K>;
+export type ModeField<K extends string = string, V extends boolean = boolean> = Internal.ModeField<K, V>;
 
 export type ModeResolve<TModes extends ModeField[]> = Internal.ModeResolve<TModes>;
 
