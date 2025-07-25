@@ -11,13 +11,20 @@ export type Integrate<A, B, TMode> = (
         IntegratePlain<A, B, TMode>
     ) : B
 );
+
 export type IntegrateArray<A, B, TMode> = (
+    IntegrateArrayOnly<A, B, TMode> extends infer TIntegrated extends ZuordType.Array ? (
+        ZuordUtil.Mutable<TIntegrated[number][]>
+    ) : never
+);
+
+export type IntegrateArrayOnly<A, B, TMode> = (
     A extends ZuordType.Array ? B extends ZuordType.Array ? (
         TMode extends { concat: true } ? (
             [...A, ...B]
         ) : B
     ) : never : never
-) extends infer TIntegrated extends ZuordType.Array ? ZuordUtil.Mutable<TIntegrated[number][]> : never;
+);
 
 export type IntegratePlain<A, B, TMode> = (
     (IntegrateOverlap<A, B, TMode> & IntegrateExtras<A, B>) extends infer TIntegrated ? ({
