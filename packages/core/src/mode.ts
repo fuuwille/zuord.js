@@ -15,6 +15,15 @@ export function modeResolve <const TModes extends ModeField[]>(modes: TModes): M
     return internal.modeResolve(modes);
 };
 
+export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMode, key: TKey) 
+    : ModeOn<TMode, TKey>;
+
+export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMode, key: TKey[])
+    : ModeOn<TMode, TKey>;
+
+export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMode, key: TKey | TKey[])
+    : ModeOn<TMode, TKey>;
+
 export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMode, key: TKey | TKey[]) : ModeOn<TMode, TKey> {
     return internal.modeOn(mode, key);
 }
