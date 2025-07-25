@@ -1,3 +1,3 @@
 import { ZuordType } from "@zuord/type";
 
-export type IntegrateShape = ZuordType.Array | ZuordType.Plain;
+export type Integrate = ZuordType.Array | ZuordType.Plain;
