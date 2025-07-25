@@ -3,7 +3,7 @@ import { ZuordType } from "@zuord/type";
 import { IntegrateMode, IntegrateShape } from "./integrate.types";
 
 export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
-    const { shallow, concat } = mode as IntegrateMode;
+    const { shallow, concat, unique } = mode as IntegrateMode;
 
     if(Array.isArray(a) && Array.isArray(b)) {
         return concat ? [...a, ...b] : b;
@@ -29,7 +29,10 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
                 const valB = sourceB?.[key];
 
                 if (Array.isArray(valA) && Array.isArray(valB)) {
-                    target[key] = concat ? [...valA, ...valB] : valB;
+                    target[key] = concat ? (
+                        unique ? Array.from(new Set([...valA, ...valB])) 
+                        : [...valA, ...valB]
+                    ) : valB;
                 } else if (valB !== undefined && isPlain(valA) && isPlain(valB)) {
                     stack.push({ target: target[key] = {}, sourceA: valA, sourceB: valB });
                 } else if (valB !== undefined) {
