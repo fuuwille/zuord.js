@@ -28,8 +28,8 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
                 const valA = sourceA?.[key];
                 const valB = sourceB?.[key];
 
-                if (concat && Array.isArray(valA) && Array.isArray(valB)) {
-                    target[key] = [...valA, ...valB];
+                if (Array.isArray(valA) && Array.isArray(valB)) {
+                    target[key] = concat ? [...valA, ...valB] : valB;
                 } else if (valB !== undefined && isPlain(valA) && isPlain(valB)) {
                     stack.push({ target: target[key] = {}, sourceA: valA, sourceB: valB });
                 } else if (valB !== undefined) {
