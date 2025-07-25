@@ -5,7 +5,7 @@ import { IntegrateMode } from "./integrate.types";
 export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
     const { shallow, concat, unique } = mode as IntegrateMode;
 
-    if(Array.isArray(a) && Array.isArray(b)) {
+    if(zuordType.array(a) && zuordType.array(b)) {
         return concat ? ( unique 
             ? Array.from(new Set([...a, ...b])) 
             : [...a, ...b]
