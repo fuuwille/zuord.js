@@ -46,7 +46,7 @@ export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
     throw new TypeError("Both arguments must be either plain objects or arrays.");
 }
 
-export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode]) satisfies IntegrateMode;
+export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies IntegrateMode;
 
 
 export function isPlain(obj: unknown) : obj is ZuordType.Plain {
