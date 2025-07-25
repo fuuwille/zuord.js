@@ -28,7 +28,7 @@ export type IntegrateCollection<A, B, TMode> = (
 
 export type IntegratePlain<A, B, TMode> = (
     (IntegrateOverlap<A, B, TMode> & IntegrateExtras<A, B>) extends infer TIntegrated ? ({
-        [K in keyof TIntegrated]: TIntegrated[K];
+        -readonly [K in keyof TIntegrated]: TIntegrated[K];
     }) : never
 )
 
