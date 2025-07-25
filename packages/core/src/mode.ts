@@ -1,5 +1,5 @@
 import { internalZuordCore as internal } from "./internal";
-import { ModeField, ModeResolve, ModeOn, ShallowMode, ConcatMode, BaseMode } from "./mode.types";
+import { ModeField, ModeResolve, ModeOn, ShallowMode, ConcatMode, BaseMode, UniqueMode } from "./mode.types";
 
 export function modeField <K extends string, const V extends boolean = false>(key: K, value?: V) 
     : ModeField<K, V>
@@ -34,5 +34,7 @@ export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMod
 export const shallowMode = modeField("shallow", false) satisfies ShallowMode;
 
 export const concatMode = modeField("concat", false) satisfies ConcatMode;
+
+export const uniqueMode = modeField("unique", false) satisfies UniqueMode;
 
 export const baseMode = modeResolve([shallowMode]) satisfies BaseMode;
