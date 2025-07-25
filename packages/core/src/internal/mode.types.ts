@@ -18,9 +18,3 @@ export type ModeOn<TMode, TKey> = TKey extends keyof TMode ? (
 export type ModeOff<TMode, TKey> = TKey extends keyof TMode ? (
   [TMode[TKey]] extends [true] ? false : true
 ) : true;
-
-export type ShallowMode = ModeField<"shallow">;
-
-export type ConcatMode = ModeField<"concat">;
-
-export type BaseMode = ModeResolve<[ShallowMode]>;
