@@ -17,7 +17,7 @@ export type Integrate<A, B, TMode> = (
 
 export type IntegrateArray<A, B, TMode> = (
     A extends ZuordType.Array ? B extends ZuordType.Array ? (
-        [ZuordCore.ModeOn<TMode, "concat">] extends [true] ? [...A, ...B] : B
+        TMode extends { concat: true } ? [...A, ...B] : B
     ) : never : never
 )
 
