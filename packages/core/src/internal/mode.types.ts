@@ -7,15 +7,11 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
         TLast[K]
       ) : 
       K extends keyof TResolvedRest ? (
-        TResolvedRest[K] extends infer TValue extends boolean ? TValue : false
-      ) : never
+        TResolvedRest[K]
+      ) : false
     )
   } : never
 ) : {};
-
-export type ModeResolveRequired<T> = {
-  [K in keyof T]-?: T[K] extends undefined ? false : T[K] extends boolean ? T[K] : false;
-};
 
 export type ModeOn<TMode, TKey> = TKey extends keyof TMode ? (
   [TMode[TKey]] extends [true] ? true : false
