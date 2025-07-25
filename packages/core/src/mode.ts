@@ -15,8 +15,8 @@ export function modeResolve <const TModes extends ModeField[]>(modes: TModes): M
     return internal.modeResolve(modes);
 };
 
-export const shallowMode = internal.shallowMode satisfies ShallowMode;
+export const shallowMode = modeField("shallow", false) satisfies ShallowMode;
 
-export const concatMode = internal.concatMode satisfies ConcatMode;
+export const concatMode = modeField("concat", false) satisfies ConcatMode;
 
-export const baseMode = internal.baseMode satisfies BaseMode;
+export const baseMode = modeResolve([shallowMode]) satisfies BaseMode;
