@@ -10,4 +10,6 @@ export type ShallowMode = ModeField<"shallow">;
 
 export type ConcatMode = ModeField<"concat">;
 
+export type UniqueMode = ModeField<"unique">;
+
 export type BaseMode = ModeResolve<[ShallowMode]>;
