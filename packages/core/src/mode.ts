@@ -1,5 +1,5 @@
 import { internalZuordCore as internal } from "./internal";
-import { ModeField, ModeResolve, ShallowMode, ConcatMode, BaseMode } from "./mode.types";
+import { ModeField, ModeResolve, ModeOn, ShallowMode, ConcatMode, BaseMode } from "./mode.types";
 
 export function modeField <K extends string, const V extends boolean>(key: K, value?: V) : ModeField<K, V>
 
@@ -14,6 +14,10 @@ export function modeField <K extends string, const V extends boolean>(key: K | K
 export function modeResolve <const TModes extends ModeField[]>(modes: TModes): ModeResolve<TModes> {
     return internal.modeResolve(modes);
 };
+
+export function modeOn <TMode extends ModeField, TKey extends string>(mode: TMode, key: TKey | TKey[]) : ModeOn<TMode, TKey> {
+    return internal.modeOn(mode, key);
+}
 
 export const shallowMode = modeField("shallow", false) satisfies ShallowMode;
 
