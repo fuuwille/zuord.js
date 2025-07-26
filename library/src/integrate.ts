@@ -10,7 +10,7 @@ import { ZuordUtil as Util } from "@zuord/util";
  *
  * @template TBase - The base plain to integrate into.
  * @template TInput - The input plain providing new or overriding values.
- * @returns The integrated result value.
+ * @returns The integrated result plain.
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
@@ -22,7 +22,7 @@ export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKe
  * 
  * @template TBase - The base array to integrate into.
  * @template TInput - The input array providing new or overriding values.
- * @returns The integrated result value.
+ * @returns The integrated result array.
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
