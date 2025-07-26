@@ -1,9 +1,9 @@
 import { InternalZuord as Internal } from "./internal";
 import { ZuordCore } from "@zuord/core";
 import { mergeMode } from "./merge";
-import { ShapeZuord } from "./shape";
+import { ShapeZuord as Shape } from "./shape";
 
-export type Merge<TContent extends ShapeZuord.MergeContent, TMode extends Partial<MergeMode> = {}> 
+export type Merge<TContent extends Shape.MergeContent, TMode extends Shape.MergeMode = {}> 
     = Internal.Merge<TContent, ZuordCore.ModeResolve<[typeof mergeMode, TMode]>>;
 
 export type MergeMode = Internal.MergeMode;
