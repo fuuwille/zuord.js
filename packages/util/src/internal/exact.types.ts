@@ -1,9 +1,7 @@
 import { ZuordType } from "@zuord/type";
 
 export type ExactKeys<TBase, TInput> = TBase extends ZuordType.Plain ? (
-    (ExactSharedKeys<TBase, TInput> & ExactNoExtraKeys<TBase, TInput>) extends infer TExact ? {
-        [K in keyof TExact]: TExact[K] 
-    } : never
+    ExactSharedKeys<TBase, TInput> & ExactNoExtraKeys<TBase, TInput>
 ) : never;
 
 export type ExactSharedKeys<TBase, TInput> = {
