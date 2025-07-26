@@ -111,6 +111,20 @@ export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Pl
 export function integrateLoose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
+/**
+ * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
+ * 
+ * @template TBase - The base array to integrate into.
+ * @template TInput - The input array providing new or overriding values.
+ * @template TMode - Integration mode for customizing the behavior.
+ * @returns The integrated result array.
+ * 
+ * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
+ * @throws {TypeError} If `mode` is not a valid mode.
+ */
+export function integrateLoose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+    : Integrate<TBase, TInput>;
+
 export function integrateLoose <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
