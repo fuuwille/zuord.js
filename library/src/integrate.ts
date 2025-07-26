@@ -15,8 +15,19 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 export function integrate <TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
-export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (a: A, b: B, mode: TMode)
-    : Integrate<A, B, TMode>;
+/**
+ * Integrates two elements by applying the values from `input` onto `base` with custom mode.
+ *
+ * @template TBase - The base element to integrate into.
+ * @template TInput - The element providing new or overriding values.
+ * @template TMode - Integration mode for customizing the behavior.
+ * @returns The integrated result value.
+ *
+ * @throws {TypeError} If either `a` or `b` is not a valid `IntegrateElement (plain object or array).
+ * @throws {TypeError} If `mode` is not a valid `IntegrateMode.
+ */
+export function integrate <TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+    : Integrate<TBase, TInput, TMode>;
 
 export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (a: A, b: B, mode?: TMode) {
     if(!shape.integrateElement(a)) {
