@@ -12,5 +12,7 @@ import { ShapeZuord as Shape } from "./shape";
  */
 export type Integrate<TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode = {}> = Internal.Integrate<TBase, TInput, ZuordCore.ModeResolve<[typeof integrateMode, TMode]>>;
 
-
+/**
+ * Represents the integration mode for customizing behavior.
+ */
 export type IntegrateMode = Internal.IntegrateMode;
