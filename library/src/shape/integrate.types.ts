@@ -8,4 +8,7 @@ import { InternalZuord as Internal } from "zuord/internal";
 */
 export type IntegrateElement = Type.Array | Type.Plain;
 
+/**
+ * Partial mode settings to customize the behavior of the `integrate` operation.
+*/
 export type IntegrateMode = Partial<Internal.IntegrateMode>;
