@@ -14,6 +14,10 @@ export function merge <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
 
+    if(!shape.mergeMode(mode)) {
+        throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
+    }
+
     return internal.merge(content, zuord.modeResolve([mergeMode, mode ?? {}])) as Merge<TContent, TMode>;
 }
 
