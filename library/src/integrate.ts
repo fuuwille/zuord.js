@@ -3,6 +3,7 @@ import { zuordCore as core } from "@zuord/core";
 import { Integrate, IntegrateMode } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType as Type } from "@zuord/type";
+import { ZuordUtil as Util } from "@zuord/util";
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
@@ -13,7 +14,7 @@ import { ZuordType as Type } from "@zuord/type";
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-export function integrate <TBase extends Type.Plain, TInput extends Shape.IntegrateExactInput<TBase, TInput>> (base: TBase, input: TInput)
+export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
