@@ -25,7 +25,7 @@ In Zuord, each operation exists in two synchronized forms:
 - **Runtime functions** (`integrate`, `merge`, `pick`, `omit`, etc.)
 
   ```ts
-  const fee = zuord.merge({ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const)
+  const fee = zuord.merge([{ a: 222 }, { a: 'hello', b: 101.05 }, { c: 'world' } as const])
 
   // Value: { a: 'hello', b: 101.05, c: 'world' }
   // Type: { a: string , b: number, c: 'world' }
@@ -43,7 +43,7 @@ In Zuord, each operation exists in two synchronized forms:
 Each returned type exactly matches its Zuord type, guaranteeing type safety during development:
 
 ```typescript
-const output = zuord.merge({ foo: 1 }, { bar: 'text' } as const)
+const output = zuord.merge([{ foo: 1 }, { bar: 'text' } as const])
 
 // Defined: Zuord.Merge<[{ foo: 1 }, { bar: 'text' }]>
 // Returned: { foo: number, bar: 'text' }
