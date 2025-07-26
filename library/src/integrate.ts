@@ -2,17 +2,18 @@ import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
 import { Integrate, IntegrateMode } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
+import { ZuordType as Type } from "@zuord/type";
 
 /**
- * Integrates two elements by applying the values from `input` onto `base`.
+ * Integrates two plains by applying the values from `input` onto `base`.
  *
- * @template TBase - The base element to integrate into.
- * @template TInput - The element providing new or overriding values.
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input providing new or overriding values.
  * @returns The integrated result value.
  *
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-export function integrate <TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement> (base: TBase, input: TInput)
+export function integrate <TBase extends Type.Plain, TInput extends Shape.IntegrateExactInput<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
