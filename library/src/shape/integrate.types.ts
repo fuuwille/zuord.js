@@ -4,7 +4,7 @@ import { InternalZuord as Internal } from "zuord/internal";
 
 export type IntegrateBase = Type.Array | Type.Plain;
 
-export type IntegrateInput<TBase extends IntegrateBase, TInput extends Type.Array | Type.Plain> 
+export type IntegrateInput<TBase extends IntegrateBase, TInput extends IntegrateInputLoose> 
     = TBase extends Type.Plain ? TInput extends Type.Plain ? Util.ExactKeys<TBase, TInput> : TInput : TInput;
 
 export type IntegrateInputLoose = Type.Array | Type.Plain;
