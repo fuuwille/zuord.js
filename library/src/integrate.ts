@@ -18,6 +18,19 @@ export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKe
     : Integrate<TBase, TInput>;
 
 /**
+ * Integrates two plains by applying the values from `input` onto `base` with custom mode.
+ *
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input plain providing new or overriding values.
+ * @returns The integrated result plain.
+ *
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
+ * @throws {TypeError} If `mode` is not a valid mode.
+ */
+export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+    : Integrate<TBase, TInput>;
+
+/**
  * Integrates two arrays by applying the values from `input` onto `base`.
  * 
  * @template TBase - The base array to integrate into.
@@ -28,21 +41,7 @@ export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKe
  */
 export function integrate <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
-
-/**
- * Integrates two elements by applying the values from `input` onto `base` with custom mode.
- *
- * @template TBase - The base element to integrate into.
- * @template TInput - The element providing new or overriding values.
- * @template TMode - Integration mode for customizing the behavior.
- * @returns The integrated result value.
- *
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement (plain object or array).
- * @throws {TypeError} If `mode` is not a valid `IntegrateMode.
- */
-export function integrate <TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate<TBase, TInput, TMode>;
-
+    
 export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (a: A, b: B, mode?: TMode) {
     if(!shape.integrateElement(a)) {
         throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
