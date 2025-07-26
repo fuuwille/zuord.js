@@ -6,10 +6,10 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 export function merge <TContent extends Shape.MergeContent> (content: [...TContent]) 
     : Merge<TContent>;
 
-export function merge <TContent extends Shape.MergeContent, TMode extends Partial<MergeMode>> (content: [...TContent], mode: TMode)
+export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
     : Merge<TContent, TMode>;
 
-export function merge <TContent extends Shape.MergeContent, TMode extends Partial<MergeMode>> (content: [...TContent], mode?: TMode) {
+export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
     if(!(shape.mergeContent(content))) {
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
