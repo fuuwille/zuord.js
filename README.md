@@ -13,6 +13,6 @@
 ## Documentation
 
 <p align="center">
-  Visit the early access documentation <br/>
+  Visit the early access documentation: 
   <a href="https://www.zuordjs.org">zuordjs.org</a><br/>
 </p>
