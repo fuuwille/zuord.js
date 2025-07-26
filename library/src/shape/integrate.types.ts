@@ -1,4 +1,5 @@
 import { ZuordType as Type } from "@zuord/type";
+import { ZuordUtil as Util } from "@zuord/util";
 import { InternalZuord as Internal } from "zuord/internal";
 
 export type IntegrateBase = Type.Array | Type.Plain;
@@ -6,6 +7,8 @@ export type IntegrateBase = Type.Array | Type.Plain;
 export type IntegrateBaseStrict = Type.Plain;
 
 export type IntegrateInput = IntegrateBase;
+
+export type IntegrateInputStrict<TBase extends IntegrateBaseStrict, TInput extends Type.Plain> = Util.ExactKeys<TBase, TInput>
 
 /**
  * Allowed element types for the `integrate` operations.
