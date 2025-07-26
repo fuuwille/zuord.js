@@ -1,5 +1,4 @@
-import { ZuordType } from "@zuord/type";
-import { ZuordUtil } from "@zuord/util";
 import { InternalZuord as Internal } from "./internal";
+import { ShapeZuord as Shape } from "./shape";
 
-export type Pick<TShape extends ZuordType.Plain, TPattern extends ZuordUtil.ExactKeys<ZuordUtil.Pattern<TShape>, TPattern>> = Internal.Pick<TShape, TPattern>;
+export type Pick<TPlain extends Shape.PickPlain, TPattern extends Shape.PickPattern<TPlain>> = Internal.Pick<TPlain, TPattern>;
