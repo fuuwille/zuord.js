@@ -1,9 +1,6 @@
+import { ZuordTrait } from "@zuord/trait";
 import { ZuordType } from "@zuord/type";
 
-export type Pick<T, P> = (
-    T extends ZuordType.Plain ? P extends ZuordType.Plain ? ({
-        [K in keyof T as K extends keyof P ? K : never]: (
-            [P[K]] extends [true] ? T[K] : Pick<T[K], P[K]>
-        )
-    }) : never : never
-);
+export type Pick<T, P> = P extends ZuordType.Plain ? {
+    -readonly [K in keyof T as [ZuordTrait.IsAny<[unknown, never], P[K]>] extends [true] ? never : K]: Pick<T[K], P[K]>;
+} : T
