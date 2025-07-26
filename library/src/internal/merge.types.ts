@@ -27,5 +27,3 @@ export type MergeFromArray<TContent, TMode> = TContent extends readonly (infer T
 ) : never;
 
 export type MergeMode = IntegrateMode;
-
-export type MergeShape = ZuordType.Plain[] | ZuordType.Array[];
