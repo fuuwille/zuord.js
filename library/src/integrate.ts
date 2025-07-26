@@ -73,4 +73,8 @@ export function integrate <TBase extends Shape.IntegrateBase, TInput extends Sha
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
 
+export function integrateLoose <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
+    return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
+}
+
 export const integrateMode = internal.integrateMode satisfies IntegrateMode;
