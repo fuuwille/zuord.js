@@ -12,6 +12,6 @@ export type ExactContent<TBase, TInput> = TBase extends ZuordType.Plain ? {
     )
 } : never;
 
-export type ExactExtra<TBase, TInput> = TBase extends ZuordType.Plain ? {
+export type ExactExtra<TBase, TInput> = {
     [K in Exclude<keyof TInput, keyof TBase>]: never;
-} : never;
+}
