@@ -3,6 +3,8 @@ import { InternalZuord as Internal } from "zuord/internal";
 
 export type IntegrateBase = Type.Array | Type.Plain;
 
+export type IntegrateBaseStrict = Type.Plain;
+
 export type IntegrateInput = IntegrateBase;
 
 /**
