@@ -18,6 +18,10 @@ export function integrate <A extends Shape.IntegrateElement, B extends Shape.Int
         throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
     }
 
+    if (!shape.integrateMode(mode)) {
+        throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
+    }
+
     return internal.integrate(a, b, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<A, B, TMode>;
 }
 
