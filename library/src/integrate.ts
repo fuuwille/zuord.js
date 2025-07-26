@@ -8,10 +8,10 @@ import { ZuordType as Type } from "@zuord/type";
  * Integrates two plains by applying the values from `input` onto `base`.
  *
  * @template TBase - The base plain to integrate into.
- * @template TInput - The input providing new or overriding values.
+ * @template TInput - The input plain providing new or overriding values.
  * @returns The integrated result value.
  *
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function integrate <TBase extends Type.Plain, TInput extends Shape.IntegrateExactInput<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
