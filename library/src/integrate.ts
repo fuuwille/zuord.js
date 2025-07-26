@@ -3,8 +3,17 @@ import { zuordCore as core } from "@zuord/core";
 import { Integrate, IntegrateMode } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 
-export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement> (a: A, b: B)
-    : Integrate<A, B>;
+/**
+ * Integrates two elements by applying the values from `b` onto `a`.
+ *
+ * @template TBase - The base element to integrate into.
+ * @template TInput - The element providing new or overriding values.
+ * @returns The integrated result value.
+ *
+ * @throws {TypeError} If either `a` or `b` is not a valid `IntegrateElement` (plain object or array).
+ */
+export function integrate <TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement> (base: TBase, input: TInput)
+    : Integrate<TBase, TInput>;
 
 export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (a: A, b: B, mode: TMode)
     : Integrate<A, B, TMode>;
