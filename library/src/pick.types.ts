@@ -3,8 +3,8 @@ import { ShapeZuord as Shape } from "./shape";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
-export type Pick<TPlain extends Shape.PickSource, TPattern extends PickPattern<TPlain, TPattern>> = Internal.Pick<TPlain, TPattern>;
+export type Pick<TSouce extends Shape.PickSource, TPattern extends PickPattern<TSouce, TPattern>> = Internal.Pick<TSouce, TPattern>;
 
-export type PickLoose<TPlain extends Shape.PickSource, TPattern extends Shape.PickPattern<TPlain>> = Internal.Pick<TPlain, TPattern>;
+export type PickLoose<TSouce extends Shape.PickSource, TPattern extends Shape.PickPattern<TSouce>> = Internal.Pick<TSouce, TPattern>;
 
-export type PickPattern<TPlain extends Shape.PickSource, TPattern extends Type.Plain> = Util.ExactKeys<Shape.PickPattern<TPlain>, TPattern>
+export type PickPattern<TSouce extends Shape.PickSource, TPattern extends Type.Plain> = Util.ExactKeys<Shape.PickPattern<TSouce>, TPattern>
