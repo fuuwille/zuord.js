@@ -7,6 +7,8 @@ export type IntegrateBase = Type.Array | Type.Plain;
 export type IntegrateInput<TBase extends IntegrateBase, TInput extends Type.Array | Type.Plain> 
     = TBase extends Type.Plain ? TInput extends Type.Plain ? Util.ExactKeys<TBase, TInput> : TInput : TInput;
 
+export type IntegrateInputLoose = Type.Array | Type.Plain;
+
 /**
  * Allowed element types for the `integrate` operations.
  * 
