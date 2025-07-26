@@ -10,7 +10,7 @@ import { ShapeZuord as Shape } from "./shape";
  * @template TInput - The element providing new or overriding types.
  * @template TMode - Optional integration mode for customizing behavior.
  */
-export type Integrate<TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode = {}> = Internal.Integrate<TBase, TInput, ZuordCore.ModeResolve<[typeof integrateMode, TMode]>>;
+export type Integrate<TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode = {}> = Internal.Integrate<TBase, TInput, ZuordCore.ModeResolve<[typeof integrateMode, TMode]>>;
 
 /**
  * Represents the integration mode for customizing behavior.
