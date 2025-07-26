@@ -57,13 +57,13 @@ export function integrate <TBase extends Type.Array, TInput extends Type.Array> 
 export function integrate <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
-export function integrate <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
-    if (!shape.integrateElement(base)) {
-        throw new TypeError("Integrate function expects the base to be a valid IntegrateBase.");
+export function integrate <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
+    if (!shape.integrateSource(base)) {
+        throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
     }
 
-    if (!shape.integrateElement(input)) {
-        throw new TypeError("Integrate function expects the input to be a valid IntegrateInput.");
+    if (!shape.integrateSource(input)) {
+        throw new TypeError("Integrate function expects the input to be a valid IntegrateSource.");
     }
 
     if (!shape.integrateMode(mode)) {
@@ -125,7 +125,7 @@ export function integrateLoose <TBase extends Type.Array, TInput extends Type.Ar
 export function integrateLoose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
-export function integrateLoose <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
+export function integrateLoose <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
 
