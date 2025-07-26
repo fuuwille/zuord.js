@@ -22,6 +22,7 @@ export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKe
  *
  * @template TBase - The base plain to integrate into.
  * @template TInput - The input plain providing new or overriding values.
+ * @template TMode - Integration mode for customizing the behavior.
  * @returns The integrated result plain.
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
