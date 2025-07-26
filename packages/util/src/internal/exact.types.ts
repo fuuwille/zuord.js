@@ -1,7 +1,7 @@
 import { ZuordType } from "@zuord/type";
 
-export type Exact<Base, Input> = Base extends ZuordType.Plain ? (
-    (ExactContent<Base, Input> & ExactExtra<Base, Input>) extends infer TExact ? {
+export type Exact<TBase, TInput> = TBase extends ZuordType.Plain ? (
+    (ExactContent<TBase, TInput> & ExactExtra<TBase, TInput>) extends infer TExact ? {
         [K in keyof TExact]: TExact[K] 
     } : never
 ) : never;
