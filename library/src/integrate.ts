@@ -73,6 +73,18 @@ export function integrate <TBase extends Shape.IntegrateBase, TInput extends Sha
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
 
+/**
+ * Integrates two plains by applying the values from `input` onto `base`.
+ *
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input plain providing new or overriding values.
+ * @returns The integrated result plain.
+ *
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
+ */
+export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
+    : Integrate<TBase, TInput>;
+
 export function integrateLoose <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
