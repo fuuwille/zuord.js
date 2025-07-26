@@ -1,6 +1,7 @@
-import { ZuordType } from "@zuord/type";
-import { IntegrateElement, IntegrateMode } from "./integrate.types";
+import { ZuordType as Type } from "@zuord/type";
+import { IntegrateElement } from "./integrate.types";
+import { InternalZuord as Internal } from "zuord/internal";
 
-export type MergeContent = ZuordType.ArrayOf<IntegrateElement>;
+export type MergeContent = Type.ArrayOf<IntegrateElement>;
 
-export type MergeMode = IntegrateMode;
+export type MergeMode = Partial<Internal.MergeMode>;
