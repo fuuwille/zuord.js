@@ -57,20 +57,20 @@ export function integrate <TBase extends Type.Array, TInput extends Type.Array> 
 export function integrate <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
-export function integrate <A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode> (a: A, b: B, mode?: TMode) {
-    if(!shape.integrateElement(a)) {
-        throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
+export function integrate <TBase extends Shape.IntegrateBase, TInput extends Shape.IntegrateInput, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
+    if (!shape.integrateElement(base)) {
+        throw new TypeError("Integrate function expects the base to be a valid IntegrateBase.");
     }
 
-    if(!shape.integrateElement(b)) {
-        throw new TypeError("Integrate function expects both arguments to be either plain objects or arrays.");
+    if (!shape.integrateElement(input)) {
+        throw new TypeError("Integrate function expects the input to be a valid IntegrateInput.");
     }
 
     if (!shape.integrateMode(mode)) {
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate(a, b, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<A, B, TMode>;
+    return internal.integrate(base, input, core.modeResolve([integrateMode, mode ?? {}])) as Integrate<TBase, TInput, TMode>;
 }
 
 export const integrateMode = internal.integrateMode satisfies IntegrateMode;
