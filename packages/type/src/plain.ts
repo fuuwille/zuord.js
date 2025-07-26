@@ -1,3 +1,4 @@
+import { arrayOf } from "./array";
 import { Plain, PlainArray } from "./plain.types";
 
 export function plain(obj: unknown) : obj is Plain {
@@ -8,7 +9,5 @@ export function plain(obj: unknown) : obj is Plain {
 }
 
 export function plainArray(obj: unknown) : obj is PlainArray {
-    if (!Array.isArray(obj)) return false;
-
-    return obj.every(item => plain(item));
+    return arrayOf(obj, plain);
 }
