@@ -10,7 +10,7 @@ export function merge <TContent extends Shape.MergeContent, TMode extends Shape.
     : Merge<TContent, TMode>;
 
 export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
-    if(!(shape.mergeContent(content))) {
+    if(!shape.mergeContent(content)) {
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
 
