@@ -8,7 +8,9 @@ export type Exact<Base, Input> = Base extends ZuordType.Plain ? (
 
 export type ExactContent<TBase, TInput> = {
     [K in Exclude<keyof TInput, Exclude<keyof TInput, keyof TBase>>]: (
-        [TInput[K]] extends [true] ? true : K extends keyof TBase ? Exact<TBase[K], TInput[K]> : never
+        [TInput[K]] extends [true] ? true : (
+            K extends keyof TBase ? Exact<TBase[K], TInput[K]> : never
+        )
     )
 };
 
