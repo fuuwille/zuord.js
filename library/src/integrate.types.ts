@@ -4,15 +4,12 @@ import { ZuordCore } from "@zuord/core";
 import { ShapeZuord as Shape } from "./shape";
 
 /**
- * Integrates two elements by applying the values from `B` onto `A`.
- * 
- * - `A`: The original element to be integrated into.
- * - `B`: The element providing new values.
- * 
- * @template A - The base element.
- * @template B - The element to integrate from.
+ * Integrates two elements by applying the types from `input` onto `base`.
+ *
+ * @template TBase - The base element to integrate into.
+ * @template TInput - The element providing new or overriding types.
  * @template TMode - Optional integration mode settings.
  */
-export type Integrate<A extends Shape.IntegrateElement, B extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode = {}> = Internal.Integrate<A, B, ZuordCore.ModeResolve<[typeof integrateMode, TMode]>>;
+export type Integrate<TBase extends Shape.IntegrateElement, TInput extends Shape.IntegrateElement, TMode extends Shape.IntegrateMode = {}> = Internal.Integrate<TBase, TInput, ZuordCore.ModeResolve<[typeof integrateMode, TMode]>>;
 
 export type IntegrateMode = Internal.IntegrateMode;
