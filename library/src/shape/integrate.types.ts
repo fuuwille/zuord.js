@@ -1,6 +1,8 @@
 import { ZuordType as Type } from "@zuord/type";
 import { InternalZuord as Internal } from "zuord/internal";
 
+export type IntegrateBase = Type.Array | Type.Plain;
+
 /**
  * Allowed element types for the `integrate` operations.
  * 
