@@ -2,7 +2,7 @@ import { zuordCore } from "@zuord/core";
 import { zuordType, ZuordType } from "@zuord/type";
 import { IntegrateMode } from "./integrate.types";
 
-export function integrate<TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode) {
+export function integrate<TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) {
     const { shallow, concat, unique } = mode as IntegrateMode;
 
     if(zuordType.array(base) && zuordType.array(input)) {
