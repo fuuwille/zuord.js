@@ -14,7 +14,7 @@ import { ZuordUtil as Util } from "@zuord/util";
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
+export function integratePlain <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -28,36 +28,40 @@ export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKe
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function integrate <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function integratePlain <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
+export function integratePlain (base: any, input: any, mode: any = {}) {
+    return doIntegrate(base, input, mode, false);
+}
+
 /**
- * Integrates two arrays by applying the values from `input` onto `base`.
- * 
- * @template TBase - The base array to integrate into.
- * @template TInput - The input array providing new or overriding values.
- * @returns The integrated result array.
- * 
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
+ * Integrates two plains by applying the values from `input` onto `base`.
+ *
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input plain providing new or overriding values.
+ * @returns The integrated result plain.
+ *
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-export function integrate <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function integratePlainLoose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
- * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
- * 
- * @template TBase - The base array to integrate into.
- * @template TInput - The input array providing new or overriding values.
+ * Integrates two plains by applying the values from `input` onto `base` with custom mode.
+ *
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input plain providing new or overriding values.
  * @template TMode - Integration mode for customizing the behavior.
- * @returns The integrated result array.
- * 
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
+ * @returns The integrated result plain.
+ *
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function integrate <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode : TMode)
+export function integratePlainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function integrate <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function integratePlainLoose <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
 
@@ -70,7 +74,7 @@ export function integrate <TBase extends Shape.IntegrateSource, TInput extends S
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
+export function integratePlainStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -84,8 +88,13 @@ export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Pl
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function integratePlainStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
+
+export function integratePlainStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+    return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
+}
+
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
@@ -96,7 +105,7 @@ export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Pl
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-export function integrateLoose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function integrateArray <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -110,40 +119,14 @@ export function integrateLoose <TBase extends Type.Array, TInput extends Type.Ar
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function integrateLoose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function integrateArray <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode : TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function integrateLoose <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
+export function integrateArray (base: any, input: any, mode: any = {}) {
+    return doIntegrate(base, input, mode, false);
 }
 
 /**
- * Integrates two plains by applying the values from `input` onto `base`.
- *
- * @template TBase - The base plain to integrate into.
- * @template TInput - The input plain providing new or overriding values.
- * @returns The integrated result plain.
- *
- * @throws {TypeError} If either `base` or `input` is not a valid plain.
- */
-export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
-    : Integrate<TBase, TInput>;
-
-/**
- * Integrates two plains by applying the values from `input` onto `base` with custom mode.
- *
- * @template TBase - The base plain to integrate into.
- * @template TInput - The input plain providing new or overriding values.
- * @template TMode - Integration mode for customizing the behavior.
- * @returns The integrated result plain.
- *
- * @throws {TypeError} If either `base` or `input` is not a valid plain.
- * @throws {TypeError} If `mode` is not a valid mode.
- */
-export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate<TBase, TInput, TMode>;
-
-/**
  * Integrates two arrays by applying the values from `input` onto `base`.
  * 
  * @template TBase - The base array to integrate into.
@@ -152,7 +135,7 @@ export function integrateStrict <TBase extends Type.Plain, TInput extends Util.E
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-export function integrateStrict <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function integrateArrayStrict <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -166,10 +149,10 @@ export function integrateStrict <TBase extends Type.Array, TInput extends Type.A
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function integrateStrict <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function integrateArrayStrict <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function integrateStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function integrateArrayStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
