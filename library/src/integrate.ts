@@ -5,6 +5,14 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
+export const integrate = {
+    plain: integratePlain,
+    plainLoose: integratePlainLoose,
+    plainStrict: integratePlainStrict,
+    array: integrateArray,
+    arrayStrict: integrateArrayStrict
+};
+
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
  *
