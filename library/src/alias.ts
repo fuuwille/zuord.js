@@ -20,6 +20,7 @@ import * as _merge from "./merge";
 
 type Merge = {
     plain: typeof _merge.plain;
+    array: typeof _merge.array;
     mode: typeof _merge.mode;
 }
 
