@@ -1,5 +1,5 @@
 import { InternalZuord as Internal } from "./internal";
-import { mode } from "./integrate";
+import { array, arrayStrict, mode, plain, plainLoose, plainStrict } from "./integrate";
 import { ZuordCore } from "@zuord/core";
 import { ShapeZuord as Shape } from "./shape";
 
@@ -16,3 +16,12 @@ export type Integrate<TBase extends Shape.IntegrateSource, TInput extends Shape.
  * Represents the integration mode for customizing behavior.
  */
 export type IntegrateMode = Internal.IntegrateMode;
+
+export type IntegrateAPI = {
+    plain: typeof plain;
+    plainLoose: typeof plainLoose;
+    plainStrict: typeof plainStrict;
+    array: typeof array;
+    arrayStrict: typeof arrayStrict;
+    mode: typeof mode;
+}
