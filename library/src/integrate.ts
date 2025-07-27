@@ -33,7 +33,7 @@ export function plain <TBase extends Type.Plain, TInput extends Util.ExactKeys<T
 export function plain <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function plain (base: any, input: any, mode: any = {}) {
+export function plain <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, false);
 }
 
