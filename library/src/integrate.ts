@@ -112,11 +112,10 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode>;
 
-export function plainStrict (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode = {}) {
-    return object(base, input, mode, true)
-}
+export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.PlainStrict<TBase, TInput, TMode> { return object(base, input, mode, true); }
 
-
+    
 // ARRAY
 
 /**
