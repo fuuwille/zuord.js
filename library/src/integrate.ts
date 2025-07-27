@@ -2,7 +2,6 @@ import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
 import { Object, Mode } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
-import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
 // PLAIN
