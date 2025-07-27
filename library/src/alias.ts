@@ -8,7 +8,7 @@ type Integrate = {
     plainStrict: typeof _integrate.plainStrict;
     array: typeof _integrate.array;
     arrayStrict: typeof _integrate.arrayStrict;
-    mode: typeof _integrate.mode;
+    defaultMode: typeof _integrate.defaultMode;
 }
 
 export const integrate: Integrate = _integrate;

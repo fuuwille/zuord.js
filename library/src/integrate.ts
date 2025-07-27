@@ -173,10 +173,10 @@ function doIntegrate<TBase extends Shape.IntegrateSource, TInput extends Shape.I
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate(base, input, core.modeResolve([mode, mode]), strict);
+    return internal.integrate(base, input, core.modeResolve([defaultMode, mode]), strict);
 }
 
 
 // MODE
 
-export const mode = internal.integrateMode satisfies IntegrateMode;
+export const defaultMode = internal.integrateMode satisfies IntegrateMode;
