@@ -2,11 +2,12 @@ import { internalZuord as internal } from "./internal";
 import { zuordCore as zuord } from "@zuord/core";
 import { MergeMode, Merge } from "./merge.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
+import { ZuordType } from "@zuord/type";
 
-export function merge <TContent extends Shape.MergeContent> (content: [...TContent]) 
+export function merge <TContent extends ZuordType.Plain[]> (content: [...TContent]) 
     : Merge<TContent>;
 
-export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
+export function merge <TContent extends ZuordType.Plain[], TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
     : Merge<TContent, TMode>;
 
 export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
