@@ -14,6 +14,19 @@ type Integrate = {
 export const integrate: Integrate = _integrate;
 
 
-export * from "./merge";
+// MERGE
+
+import * as _merge from "./merge";
+
+type Merge = {
+    plain: typeof _merge.plain;
+    mode: typeof _merge.mode;
+}
+
+export const merge: Merge = _merge;
+
+
+//
+
 export * from "./pick";
 export * from "./omit";
