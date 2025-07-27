@@ -5,7 +5,6 @@ type IntegrateAPI = {
     plainLoose: typeof m_integrate.plainLoose;
     plainStrict: typeof m_integrate.plainStrict;
     array: typeof m_integrate.array;
-    arrayStrict: typeof m_integrate.arrayStrict;
     defaultMode: typeof m_integrate.defaultMode;
 }
 

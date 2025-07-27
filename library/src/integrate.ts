@@ -145,36 +145,6 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : Integrate.Array<TBase, TInput, TMode> { return object(base, input, mode, false); }
 
-/**
- * Integrates two arrays by applying the values from `input` onto `base`.
- * 
- * @template TBase - The base array to integrate into.
- * @template TInput - The input array providing new or overriding values.
- * @returns The integrated result array.
- * 
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
- */
-export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
-    : Integrate.Array<TBase, TInput>;
-
-/**
- * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
- * 
- * @template TBase - The base array to integrate into.
- * @template TInput - The input array providing new or overriding values.
- * @template TMode - Integration mode for customizing the behavior.
- * @returns The integrated result array.
- * 
- * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
- * @throws {TypeError} If `mode` is not a valid mode.
- */
-export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate.Array<TBase, TInput, TMode>;
-
-export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : Integrate.Array<TBase, TInput, TMode> { return object(base, input, mode, true); }
-
-
 // MODE
 
 export const defaultMode = internal.integrateMode satisfies Integrate.Mode;
