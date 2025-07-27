@@ -1,6 +1,6 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
-import { Object, Mode } from "./integrate.types";
+import { Object, Mode, Plain } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 
@@ -16,7 +16,7 @@ import { ZuordUtil as Util } from "@zuord/util";
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
-    : Object<TBase, TInput>;
+    : Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -30,7 +30,7 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Object<TBase, TInput, TMode>;
+    : Plain<TBase, TInput, TMode>;
 
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return object(base, input, mode, false);
@@ -46,7 +46,7 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Shape
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain> (base: TBase, input: TInput)
-    : Object<TBase, TInput>;
+    : Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -60,10 +60,10 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Object<TBase, TInput, TMode>;
+    : Plain<TBase, TInput, TMode>;
 
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return object(base, input, mode, false) as Object<TBase, TInput, TMode>;
+    return object(base, input, mode, false);
 }
 
 /**
@@ -76,7 +76,7 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
-    : Object<TBase, TInput>;
+    : Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -90,10 +90,10 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Object<TBase, TInput, TMode>;
+    : Plain<TBase, TInput, TMode>;
 
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return object(base, input, mode, true) as Object<TBase, TInput, TMode>;
+    return object(base, input, mode, true)
 }
 
 
