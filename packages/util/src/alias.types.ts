@@ -2,4 +2,4 @@ export * from "./partialize.types";
 export * from "./normalize.types";
 export * from "./mutable.types";
 export * from "./pattern.types";
-export * from "./exact.types";
+export { Exact } from "./exact.index";
