@@ -1,6 +1,8 @@
+// INTEGRATE
+
 import * as _integrate from "./integrate";
 
-type IntegrateAPI = {
+type Integrate = {
     plain: typeof _integrate.plain;
     plainLoose: typeof _integrate.plainLoose;
     plainStrict: typeof _integrate.plainStrict;
@@ -9,7 +11,7 @@ type IntegrateAPI = {
     mode: typeof _integrate.mode;
 }
 
-export const integrate: IntegrateAPI = _integrate;
+export const integrate: Integrate = _integrate;
 
 
 export * from "./merge";
