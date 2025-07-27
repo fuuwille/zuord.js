@@ -15,3 +15,12 @@ export type ExactSharedKeys<TBase, TInput> = {
 export type ExactNoExtraKeys<TBase, TInput> = {
     [K in Exclude<keyof TInput, keyof TBase>]: never;
 }
+
+export type ExactShape<TBase, TInput> = {
+  [K in keyof TBase]: 
+    K extends keyof TInput
+      ? [TInput[K]] extends [true]
+        ? true
+        : ExactKeys<TBase[K], TInput[K]>
+      : never; // eksik key yakalanır
+};
