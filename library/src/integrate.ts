@@ -82,9 +82,8 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate.PlainLoose<TBase, TInput, TMode>;
 
-export function plainLoose (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode = {}) {
-    return object(base, input, mode, false);
-}
+export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.PlainLoose<TBase, TInput, TMode> { return object(base, input, mode, false); }
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
@@ -115,7 +114,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode> { return object(base, input, mode, true); }
 
-    
+
 // ARRAY
 
 /**
