@@ -6,7 +6,7 @@ export const merge = <TContent, TMode>(content: TContent, mode: TMode)=> {
 
     return content.reduce((acc, current) => {
         if (acc === undefined) return current;
-        return integrate(acc, current, mode);
+        return integrate(acc, current, mode, false);
     });
 }
 
