@@ -13,6 +13,8 @@ export const integrate = {
     arrayStrict: integrateArrayStrict
 };
 
+// PLAIN
+
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
  *
