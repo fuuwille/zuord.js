@@ -1,16 +1,16 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as zuord } from "@zuord/core";
-import { MergeMode, Merge } from "./merge.types";
+import { Merge } from "./merge.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType } from "@zuord/type";
 
 // PLAIN
 
 export function plain <TContent extends [...ZuordType.Plain[]]> (content: TContent) 
-    : Merge<TContent>;
+    : Merge.Object<TContent>;
 
 export function plain <TContent extends [...ZuordType.Plain[]], TMode extends Shape.MergeMode> (content: TContent, mode: TMode)
-    : Merge<TContent, TMode>;
+    : Merge.Object<TContent, TMode>;
 
 export function plain <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: TContent, mode?: TMode) {
     if(!shape.mergeContent(content)) {
@@ -21,16 +21,16 @@ export function plain <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge(content, zuord.modeResolve([mode, mode ?? {}])) as Merge<TContent, TMode>;
+    return internal.merge(content, zuord.modeResolve([mode, mode ?? {}])) as Merge.Object<TContent, TMode>;
 }
 
 // ARRAY
 
 export function array <TContent extends ZuordType.Array[]> (content: [...TContent]) 
-    : Merge<TContent>;
+    : Merge.Object<TContent>;
 
 export function array <TContent extends ZuordType.Array[], TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
-    : Merge<TContent, TMode>;
+    : Merge.Object<TContent, TMode>;
 
 export function array <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
     if(!shape.mergeContent(content)) {
@@ -41,9 +41,9 @@ export function array <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge(content, zuord.modeResolve([mode, mode ?? {}])) as Merge<TContent, TMode>;
+    return internal.merge(content, zuord.modeResolve([mode, mode ?? {}])) as Merge.Object<TContent, TMode>;
 }
 
 // MODE
 
-export const mode = internal.mergeMode satisfies MergeMode;
+export const mode = internal.mergeMode satisfies Merge.Mode;
