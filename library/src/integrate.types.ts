@@ -7,4 +7,6 @@ export type Object<TBase extends Shape.Integrate.Object, TInput extends Shape.In
 
 export type Plain<TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode = {}> = Internal.IntegratePlain<TBase, TInput, ZuordCore.ModeResolve<[typeof defaultMode, TMode]>>;
 
+export type Array<TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode = {}> = Internal.IntegrateArray<TBase, TInput, ZuordCore.ModeResolve<[typeof defaultMode, TMode]>>;
+
 export type Mode = Internal.IntegrateMode;
