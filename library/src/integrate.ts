@@ -1,6 +1,6 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
-import { Integrate } from "./integrate.index";
+import { Integrate } from "./integrate.alias";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 
