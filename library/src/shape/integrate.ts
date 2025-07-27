@@ -1,7 +1,7 @@
 import { zuordType } from "@zuord/type";
-import { IntegrateSource, IntegrateMode } from "./integrate.types";
+import { IntegrateItem, IntegrateMode } from "./integrate.types";
 
-export const integrateSource = (obj: unknown) : obj is IntegrateSource => {
+export const integrateSource = (obj: unknown) : obj is IntegrateItem => {
     return zuordType.plain(obj) || zuordType.array(obj);
 }
 
