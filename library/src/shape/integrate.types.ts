@@ -1,7 +1,7 @@
 import { ZuordType as Type } from "@zuord/type";
 import { InternalZuord as Internal } from "zuord/internal";
 
-export type Item = Plain | Array;
+export type Object = Plain | Array;
 
 export type Plain = Type.Plain;
 

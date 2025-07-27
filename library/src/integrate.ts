@@ -160,7 +160,7 @@ export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
-function doIntegrate<TBase extends Shape.Integrate.Item, TInput extends Shape.Integrate.Item, TMode extends Shape.Integrate.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
+function doIntegrate<TBase extends Shape.Integrate.Object, TInput extends Shape.Integrate.Object, TMode extends Shape.Integrate.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
     if (!shape.integrateSource(base)) {
         throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
     }
