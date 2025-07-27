@@ -34,7 +34,7 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.
     : Integrate<TBase, TInput, TMode>;
 
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return doIntegrate(base, input, mode, false);
+    return object(base, input, mode, false);
 }
 
 /**
@@ -64,7 +64,7 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
     : Integrate<TBase, TInput, TMode>;
 
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
+    return object(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
 
 /**
@@ -94,7 +94,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
     : Integrate<TBase, TInput, TMode>;
 
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
+    return object(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
 
@@ -127,7 +127,7 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
     : Integrate<TBase, TInput, TMode>;
 
 export function array (base: any, input: any, mode: any = {}) {
-    return doIntegrate(base, input, mode, false);
+    return object(base, input, mode, false);
 }
 
 /**
@@ -157,10 +157,10 @@ export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends
     : Integrate<TBase, TInput, TMode>;
 
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
+    return object(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
-function doIntegrate<TBase extends Shape.Integrate.Object, TInput extends Shape.Integrate.Object, TMode extends Shape.Integrate.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
+function object<TBase extends Shape.Integrate.Object, TInput extends Shape.Integrate.Object, TMode extends Shape.Integrate.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
     if (!shape.integrateSource(base)) {
         throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
     }
