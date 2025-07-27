@@ -143,6 +143,18 @@ export function integrateStrict <TBase extends Type.Plain, TInput extends Util.E
 export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput>;
 
+/**
+ * Integrates two arrays by applying the values from `input` onto `base`.
+ * 
+ * @template TBase - The base array to integrate into.
+ * @template TInput - The input array providing new or overriding values.
+ * @returns The integrated result array.
+ * 
+ * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
+ */
+export function integrateStrict <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+    : Integrate<TBase, TInput>;
+
 export function integrateStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
