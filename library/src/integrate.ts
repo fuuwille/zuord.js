@@ -66,7 +66,7 @@ export function plain (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain> (base: TBase, input: TInput)
-    : Integrate.Plain<TBase, TInput>;
+    : Integrate.PlainLoose<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -80,7 +80,7 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate.Plain<TBase, TInput, TMode>;
+    : Integrate.PlainLoose<TBase, TInput, TMode>;
 
 export function plainLoose (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode = {}) {
     return object(base, input, mode, false);
@@ -95,8 +95,8 @@ export function plainLoose (base: Shape.Integrate.Plain, input: Shape.Integrate.
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>> (base: TBase, input: TInput)
-    : Integrate.Plain<TBase, TInput>;
+export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>> (base: TBase, input: TInput)
+    : Integrate.PlainStrict<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -109,8 +109,8 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate.Plain<TBase, TInput, TMode>;
+export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
+    : Integrate.PlainStrict<TBase, TInput, TMode>;
 
 export function plainStrict (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode = {}) {
     return object(base, input, mode, true)
