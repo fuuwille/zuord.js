@@ -117,6 +117,10 @@ export function integrateLoose <TBase extends Shape.IntegrateSource, TInput exte
     return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
 
+export function integrateStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+    return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
+}
+
 function doIntegrate<TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
     if (!shape.integrateSource(base)) {
         throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
