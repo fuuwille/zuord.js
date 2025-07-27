@@ -8,10 +8,8 @@ export type ModeOn<TMode, TKey> = Internal.ModeOn<TMode, TKey>;
 
 export type ShallowMode = ModeField<"shallow">;
 
-export type StrictMode = ModeField<"strict">;
-
 export type ConcatMode = ModeField<"concat">;
 
 export type UniqueMode = ModeField<"unique">;
 
-export type BaseMode = ModeResolve<[ShallowMode, StrictMode]>;
+export type BaseMode = ModeResolve<[ShallowMode]>;
