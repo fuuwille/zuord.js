@@ -109,7 +109,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-export function array <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -123,7 +123,7 @@ export function array <TBase extends Type.Array, TInput extends Type.Array> (bas
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function array <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
+export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
     : Integrate<TBase, TInput, TMode>;
 
 export function array (base: any, input: any, mode: any = {}) {
@@ -139,7 +139,7 @@ export function array (base: any, input: any, mode: any = {}) {
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
 /**
@@ -153,10 +153,10 @@ export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
+export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function arrayStrict <TBase extends Shape.Integrate.Item, TInput extends Shape.Integrate.Item, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
