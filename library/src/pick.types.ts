@@ -7,4 +7,4 @@ export type Pick<TSouce extends Shape.PickSource, TPattern extends PickPattern<T
 
 export type PickLoose<TSouce extends Shape.PickSource, TPattern extends Shape.PickPattern<TSouce>> = Internal.Pick<TSouce, TPattern>;
 
-export type PickPattern<TSouce extends Shape.PickSource, TPattern extends Type.Plain> = Util.ExactKeys<Shape.PickPattern<TSouce>, TPattern>
+export type PickPattern<TSouce extends Shape.PickSource, TPattern extends Type.Plain> = Util.Exact.Plain<Shape.PickPattern<TSouce>, TPattern>
