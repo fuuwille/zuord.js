@@ -5,22 +5,6 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
-function doIntegrate<TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
-    if (!shape.integrateSource(base)) {
-        throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
-    }
-
-    if (!shape.integrateSource(input)) {
-        throw new TypeError("Integrate function expects the input to be a valid IntegrateSource.");
-    }
-
-    if (!shape.integrateMode(mode)) {
-        throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
-    }
-
-    return internal.integrate(base, input, core.modeResolve([integrateMode, mode]), strict);
-}
-
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
  *
@@ -132,5 +116,23 @@ export function integrateLoose <TBase extends Type.Array, TInput extends Type.Ar
 export function integrateLoose <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
+
+function doIntegrate<TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
+    if (!shape.integrateSource(base)) {
+        throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
+    }
+
+    if (!shape.integrateSource(input)) {
+        throw new TypeError("Integrate function expects the input to be a valid IntegrateSource.");
+    }
+
+    if (!shape.integrateMode(mode)) {
+        throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
+    }
+
+    return internal.integrate(base, input, core.modeResolve([integrateMode, mode]), strict);
+}
+
+//
 
 export const integrateMode = internal.integrateMode satisfies IntegrateMode;
