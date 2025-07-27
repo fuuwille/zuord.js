@@ -142,9 +142,8 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
     : Integrate.Array<TBase, TInput, TMode>;
 
-export function array (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode: Shape.Integrate.Mode = {}) {
-    return object(base, input, mode, false);
-}
+export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode = {} as TMode)
+    : Integrate.Array<TBase, TInput, TMode> { return object(base, input, mode, false); }
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
