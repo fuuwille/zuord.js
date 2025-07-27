@@ -52,9 +52,8 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate.Plain<TBase, TInput, TMode>;
 
-export function plain (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode = {}) {
-    return object(base, input, mode, false);
-}
+export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.Plain<TBase, TInput, TMode> { return object(base, input, mode, false); }
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
