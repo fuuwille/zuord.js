@@ -30,10 +30,10 @@ export function plain <TBase extends Type.Plain, TInput extends Util.ExactKeys<T
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function plain <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function plain <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function plain <TBase extends Shape.IntegrateItem, TInput extends Shape.IntegrateItem, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function plain <TBase extends Shape.Item, TInput extends Shape.Item, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, false);
 }
 
@@ -60,10 +60,10 @@ export function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain>
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function plainLoose <TBase extends Shape.IntegrateItem, TInput extends Shape.IntegrateItem, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function plainLoose <TBase extends Shape.Item, TInput extends Shape.Item, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
 
@@ -90,10 +90,10 @@ export function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function plainStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function plainStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function plainStrict <TBase extends Shape.IntegrateItem, TInput extends Shape.IntegrateItem, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function plainStrict <TBase extends Shape.Item, TInput extends Shape.Item, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
@@ -123,7 +123,7 @@ export function array <TBase extends Type.Array, TInput extends Type.Array> (bas
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function array <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode : TMode)
+export function array <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.Mode> (base: TBase, input: TInput, mode : TMode)
     : Integrate<TBase, TInput, TMode>;
 
 export function array (base: any, input: any, mode: any = {}) {
@@ -153,14 +153,14 @@ export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+export function arrayStrict <TBase extends Type.Array, TInput extends Type.Array, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate<TBase, TInput, TMode>;
 
-export function arrayStrict <TBase extends Shape.IntegrateItem, TInput extends Shape.IntegrateItem, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function arrayStrict <TBase extends Shape.Item, TInput extends Shape.Item, TMode extends Shape.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
-function doIntegrate<TBase extends Shape.IntegrateItem, TInput extends Shape.IntegrateItem, TMode extends Shape.IntegrateMode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
+function doIntegrate<TBase extends Shape.Item, TInput extends Shape.Item, TMode extends Shape.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
     if (!shape.integrateSource(base)) {
         throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
     }
