@@ -125,7 +125,7 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
     : Integrate.Array<TBase, TInput, TMode>;
 
-export function array (base: any, input: any, mode: any = {}) {
+export function array (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode: Shape.Integrate.Mode = {}) {
     return object(base, input, mode, false);
 }
 
@@ -155,7 +155,7 @@ export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
     : Integrate.Array<TBase, TInput, TMode>;
 
-export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+export function arrayStrict (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode: Shape.Integrate.Mode = {}) {
     return object(base, input, mode, true);
 }
 
