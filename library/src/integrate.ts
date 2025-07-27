@@ -129,6 +129,20 @@ export function integrateLoose <TBase extends Shape.IntegrateSource, TInput exte
 export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
+/**
+ * Integrates two plains by applying the values from `input` onto `base` with custom mode.
+ *
+ * @template TBase - The base plain to integrate into.
+ * @template TInput - The input plain providing new or overriding values.
+ * @template TMode - Integration mode for customizing the behavior.
+ * @returns The integrated result plain.
+ *
+ * @throws {TypeError} If either `base` or `input` is not a valid plain.
+ * @throws {TypeError} If `mode` is not a valid mode.
+ */
+export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
+    : Integrate<TBase, TInput>;
+
 export function integrateStrict <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
