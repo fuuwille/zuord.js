@@ -1,4 +1,4 @@
-export { integrate } from "./integrate.alias";
-export { merge } from "./merge.alias";
+export { integrate } from "./integrate.index";
+export { merge } from "./merge.index";
 export * from "./pick";
 export * from "./omit";
