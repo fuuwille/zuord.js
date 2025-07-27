@@ -1,6 +1,6 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
-import { Object, Mode, Plain, Array } from "./integrate.types";
+import { Integrate } from "./integrate.index";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 
@@ -16,7 +16,7 @@ import { ZuordUtil as Util } from "@zuord/util";
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
-    : Plain<TBase, TInput>;
+    : Integrate.Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -30,7 +30,7 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Plain<TBase, TInput, TMode>;
+    : Integrate.Plain<TBase, TInput, TMode>;
 
 export function plain <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return object(base, input, mode, false);
@@ -46,7 +46,7 @@ export function plain <TBase extends Shape.Integrate.Plain, TInput extends Shape
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain> (base: TBase, input: TInput)
-    : Plain<TBase, TInput>;
+    : Integrate.Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -60,7 +60,7 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Plain<TBase, TInput, TMode>;
+    : Integrate.Plain<TBase, TInput, TMode>;
 
 export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return object(base, input, mode, false);
@@ -76,7 +76,7 @@ export function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends 
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>> (base: TBase, input: TInput)
-    : Plain<TBase, TInput>;
+    : Integrate.Plain<TBase, TInput>;
 
 /**
  * Integrates two plains by applying the values from `input` onto `base` with custom mode.
@@ -90,7 +90,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Plain<TBase, TInput, TMode>;
+    : Integrate.Plain<TBase, TInput, TMode>;
 
 export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return object(base, input, mode, true)
@@ -109,7 +109,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
-    : Array<TBase, TInput>;
+    : Integrate.Array<TBase, TInput>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
@@ -123,7 +123,7 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
-    : Array<TBase, TInput, TMode>;
+    : Integrate.Array<TBase, TInput, TMode>;
 
 export function array (base: any, input: any, mode: any = {}) {
     return object(base, input, mode, false);
@@ -139,7 +139,7 @@ export function array (base: any, input: any, mode: any = {}) {
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
-    : Array<TBase, TInput>;
+    : Integrate.Array<TBase, TInput>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
@@ -153,7 +153,7 @@ export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Array<TBase, TInput, TMode>;
+    : Integrate.Array<TBase, TInput, TMode>;
 
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
     return object(base, input, mode, true);
@@ -178,4 +178,4 @@ function object<TBase extends Shape.Integrate.Object, TInput extends Shape.Integ
 
 // MODE
 
-export const defaultMode = internal.integrateMode satisfies Mode;
+export const defaultMode = internal.integrateMode satisfies Integrate.Mode;
