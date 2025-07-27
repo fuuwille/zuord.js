@@ -85,7 +85,7 @@ export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Pl
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function integrateLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate<TBase, TInput>;
+    : Integrate<TBase, TInput, TMode>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
