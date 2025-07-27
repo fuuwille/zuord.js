@@ -4,13 +4,13 @@ import { MergeMode, Merge } from "./merge.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType } from "@zuord/type";
 
-export function merge <TContent extends ZuordType.Plain[]> (content: [...TContent]) 
+export function plain <TContent extends ZuordType.Plain[]> (content: [...TContent]) 
     : Merge<TContent>;
 
-export function merge <TContent extends ZuordType.Plain[], TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
+export function plain <TContent extends ZuordType.Plain[], TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
     : Merge<TContent, TMode>;
 
-export function merge <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
+export function plain <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
     if(!shape.mergeContent(content)) {
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
@@ -19,7 +19,7 @@ export function merge <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge(content, zuord.modeResolve([mergeMode, mode ?? {}])) as Merge<TContent, TMode>;
+    return internal.merge(content, zuord.modeResolve([mode, mode ?? {}])) as Merge<TContent, TMode>;
 }
 
-export const mergeMode = internal.mergeMode satisfies MergeMode;
+export const mode = internal.mergeMode satisfies MergeMode;
