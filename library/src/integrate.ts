@@ -5,15 +5,6 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
-export const integrate = {
-    plain: integratePlain,
-    plainLoose: integratePlainLoose,
-    plainStrict: integratePlainStrict,
-    array: integrateArray,
-    arrayStrict: integrateArrayStrict
-};
-
-
 // PLAIN
 
 /**
@@ -185,6 +176,7 @@ function doIntegrate<TBase extends Shape.IntegrateSource, TInput extends Shape.I
     return internal.integrate(base, input, core.modeResolve([integrateMode, mode]), strict);
 }
 
-//
 
-export const integrateMode = internal.integrateMode satisfies IntegrateMode;
+// MODE
+
+const integrateMode = internal.integrateMode satisfies IntegrateMode;
