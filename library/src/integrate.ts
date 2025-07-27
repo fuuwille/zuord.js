@@ -13,6 +13,7 @@ export const integrate = {
     arrayStrict: integrateArrayStrict
 };
 
+
 // PLAIN
 
 /**
@@ -105,6 +106,8 @@ function integratePlainStrict <TBase extends Shape.IntegrateSource, TInput exten
     return doIntegrate(base, input, mode, true) as Integrate<TBase, TInput, TMode>;
 }
 
+
+// ARRAY
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
