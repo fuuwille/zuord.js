@@ -73,8 +73,8 @@ export function integrate <TBase extends Type.Array, TInput extends Type.Array> 
 export function integrate <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate<TBase, TInput>;
 
-export function integrate <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode?: TMode) {
-    return doIntegrate(base, input, mode ?? {}, false) as Integrate<TBase, TInput, TMode>;
+export function integrate <TBase extends Shape.IntegrateSource, TInput extends Shape.IntegrateSource, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
+    return doIntegrate(base, input, mode, false) as Integrate<TBase, TInput, TMode>;
 }
 
 /**
