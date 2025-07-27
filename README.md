@@ -14,12 +14,12 @@
 
 ### Install Zuord (Alpha)
 
- via npm:
+via npm:
 ```bash
 npm install zuord@latest
 ```
 
- or pnpm:
+or pnpm:
 ```bash
 pnpm add zuord@latest
 ```
@@ -56,3 +56,7 @@ type Integrated = ZuordX.Integrate.Plain.Loose<typeof obj1, typeof obj2>;
   Visit the early access documentation: 
   <a href="https://www.zuordjs.org">zuordjs.org</a><br/>
 </p>
+
+
+### Contact With Me
+- [Discord](https://discord.gg/nYTUyETH)
