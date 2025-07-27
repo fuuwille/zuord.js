@@ -1,6 +1,6 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
-import { Object, Mode, Plain } from "./integrate.types";
+import { Object, Mode, Plain, Array } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 
@@ -109,7 +109,7 @@ export function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
-    : Object<TBase, TInput>;
+    : Array<TBase, TInput>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
@@ -123,7 +123,7 @@ export function array <TBase extends Shape.Integrate.Array, TInput extends Shape
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
-    : Object<TBase, TInput, TMode>;
+    : Array<TBase, TInput, TMode>;
 
 export function array (base: any, input: any, mode: any = {}) {
     return object(base, input, mode, false);
@@ -139,7 +139,7 @@ export function array (base: any, input: any, mode: any = {}) {
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
-    : Object<TBase, TInput>;
+    : Array<TBase, TInput>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`  with custom mode.
@@ -153,10 +153,10 @@ export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
-    : Object<TBase, TInput, TMode>;
+    : Array<TBase, TInput, TMode>;
 
 export function arrayStrict <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode) {
-    return object(base, input, mode, true) as Object<TBase, TInput, TMode>;
+    return object(base, input, mode, true);
 }
 
 function object<TBase extends Shape.Integrate.Object, TInput extends Shape.Integrate.Object, TMode extends Shape.Integrate.Mode>(base: TBase, input: TInput, mode: TMode, strict: boolean) {
