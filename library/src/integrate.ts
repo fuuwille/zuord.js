@@ -141,7 +141,7 @@ export function integrateStrict <TBase extends Type.Plain, TInput extends Util.E
  * @throws {TypeError} If `mode` is not a valid mode.
  */
 export function integrateStrict <TBase extends Type.Plain, TInput extends Util.ExactKeys<TBase, TInput>, TMode extends Shape.IntegrateMode> (base: TBase, input: TInput, mode: TMode)
-    : Integrate<TBase, TInput>;
+    : Integrate<TBase, TInput, TMode>;
 
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
