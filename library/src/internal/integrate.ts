@@ -2,20 +2,20 @@ import { zuordCore } from "@zuord/core";
 import { zuordType, ZuordType } from "@zuord/type";
 import { IntegrateMode } from "./integrate.types";
 
-export function integrate<A, B, TMode>(a: A, b: B, mode: TMode) {
+export function integrate<TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode) {
     const { shallow, concat, unique } = mode as IntegrateMode;
 
-    if(zuordType.array(a) && zuordType.array(b)) {
+    if(zuordType.array(base) && zuordType.array(input)) {
         return concat ? ( unique 
-            ? Array.from(new Set([...a, ...b])) 
-            : [...a, ...b]
-        ) : b;
+            ? Array.from(new Set([...base, ...input])) 
+            : [...base, ...input]
+        ) : input;
     }
 
-    if(zuordType.plain(a) && zuordType.plain(b)) {
+    if(zuordType.plain(base) && zuordType.plain(input)) {
 
         const result: any = {};
-        const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: a, sourceB: b }];
+        const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
 
         while (stack.length) {
             const { target, sourceA, sourceB } = stack.pop()!;
