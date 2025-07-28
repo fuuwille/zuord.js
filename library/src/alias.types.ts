@@ -1,4 +1,4 @@
-import { Integrate as IntegrateModule } from "./integrate.index";
+import { Integrate as IntegrateModule } from "./integrate.types";
 import { Merge as MergeModule } from "./merge.index";
 
 export namespace Zuord {
