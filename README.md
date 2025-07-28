@@ -9,6 +9,11 @@
   <a href="https://www.zuordjs.org">zuordjs.org</a>
 </p>
 
+### Contact With Me
+- [Discord](https://discord.gg/JKG5fS3TZZ)
+
+<br>
+
 ## Quick Start
 
 ### Install Zuord (Alpha)
@@ -47,8 +52,3 @@ type Merged = Zuord.Merge<[typeof obj1, typeof obj2]>;
 type Integrated = ZuordX.Integrate.Plain.Loose<typeof obj1, typeof obj2>;
 // Integrated = { a: number, b: { x: number, y: number }, c: number }
 ```
-
-<br/>
-
-### Contact With Me
-- [Discord](https://discord.gg/nYTUyETH)
