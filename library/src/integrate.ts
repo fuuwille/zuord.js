@@ -161,9 +161,9 @@ type Integrate = {
 };
 
 export const integrate : Integrate =  {
-    plain: plain.bind(module),
-    plainLoose: plainLoose.bind(module),
-    plainStrict: plainStrict.bind(module),
-    array: array.bind(module),
+    plain: plain,
+    plainLoose: plainLoose,
+    plainStrict: plainStrict,
+    array: array,
     defaultMode: defaultMode
 };
