@@ -152,7 +152,7 @@ const defaultMode = internal.integrateMode satisfies Integrate.Mode;
 
 // EXPORT
 
-type Integrate = {
+type IntegrateAPI = {
     plain: typeof plain;
     plainLoose: typeof plainLoose;
     plainStrict: typeof plainStrict;
@@ -160,7 +160,7 @@ type Integrate = {
     defaultMode: typeof defaultMode;
 };
 
-export const integrate : Integrate = {
+export const integrate : IntegrateAPI = {
     get plain() { return plain; },
     get plainStrict() { return plainStrict; },
     get plainLoose() { return plainLoose; },
