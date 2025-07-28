@@ -152,10 +152,18 @@ const defaultMode = internal.integrateMode satisfies Integrate.Mode;
 
 // EXPORT
 
-export const integrate = {
-  plain: plain.bind(module),
-  plainLoose: plainLoose.bind(module),
-  plainStrict: plainStrict.bind(module),
-  array: array.bind(module),
-  defaultMode: defaultMode
+export type Integrate = {
+    plain: typeof plain;
+    plainLoose: typeof plainLoose;
+    plainStrict: typeof plainStrict;
+    array: typeof array;
+    defaultMode: typeof defaultMode;
+};
+
+export const integrate : Integrate =  {
+    plain: plain.bind(module),
+    plainLoose: plainLoose.bind(module),
+    plainStrict: plainStrict.bind(module),
+    array: array.bind(module),
+    defaultMode: defaultMode
 };
