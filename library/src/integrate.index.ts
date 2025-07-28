@@ -1,24 +1,15 @@
 import * as module from "./integrate";
-type IntegrateAPI = typeof module;
-
-let moduleCached: IntegrateAPI | null = null;
-const functionCache = new Map<keyof IntegrateAPI, Function>();
+type IntegrateAPI = {
+    plain: typeof module.plain,
+    plainLoose: typeof module.plainLoose,
+    plainStrict: typeof module.plainStrict,
+    array: typeof module.array,
+    defaultMode: typeof module.defaultMode
+};
 
 export const integrate : IntegrateAPI = new Proxy({} as IntegrateAPI, {
     get(_target, prop: keyof IntegrateAPI) {
-        if (!moduleCached) {
-            moduleCached = module;
-        }
-
-        const value = moduleCached[prop];
-        if (typeof value === "function") {
-            if (!functionCache.has(prop)) {
-                functionCache.set(prop, value.bind(moduleCached));
-            }
-            return functionCache.get(prop);
-        }
-
-        return value;
+        return module[prop];
     }
 });
 
