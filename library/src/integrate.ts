@@ -160,10 +160,10 @@ type Integrate = {
     defaultMode: typeof defaultMode;
 };
 
-export const integrate : Integrate =  {
-    plain: plain,
-    plainLoose: plainLoose,
-    plainStrict: plainStrict,
-    array: array,
-    defaultMode: defaultMode
+export const integrate : Integrate = {
+    get plain() { return plain; },
+    get plainStrict() { return plainStrict; },
+    get plainLoose() { return plainLoose; },
+    get array() { return array; },
+    get defaultMode() { return defaultMode; }
 };
