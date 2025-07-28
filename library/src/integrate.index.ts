@@ -1,13 +1,21 @@
-import * as m_integrate from "./integrate";
+import * as module from "./integrate";
+type IntegrateAPI = typeof module;
 
-type IntegrateAPI = {
-    plain: typeof m_integrate.plain;
-    plainLoose: typeof m_integrate.plainLoose;
-    plainStrict: typeof m_integrate.plainStrict;
-    array: typeof m_integrate.array;
-    defaultMode: typeof m_integrate.defaultMode;
-}
+let moduleCached: IntegrateAPI | null = null;
 
-export const integrate: IntegrateAPI = m_integrate;
+export const integrate : IntegrateAPI = new Proxy({} as IntegrateAPI, {
+    get(_target, prop: keyof IntegrateAPI) {
+        if (!moduleCached) {
+            moduleCached = module;
+        }
+
+        const value = moduleCached[prop];
+        if (typeof value === "function") {
+            return value.bind(moduleCached);
+        }
+
+        return value;
+    }
+});
 
 export { Integrate } from "./integrate.types";
