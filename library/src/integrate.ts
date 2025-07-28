@@ -152,7 +152,7 @@ const defaultMode = internal.integrateMode satisfies Integrate.Mode;
 
 // EXPORT
 
-export type Integrate = {
+type Integrate = {
     plain: typeof plain;
     plainLoose: typeof plainLoose;
     plainStrict: typeof plainStrict;
