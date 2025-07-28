@@ -149,6 +149,9 @@ function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integr
 
 const defaultMode = internal.integrateMode satisfies Integrate.Mode;
 
+
+// EXPORT
+
 export const integrate = {
   plain: plain.bind(module),
   plainLoose: plainLoose.bind(module),
