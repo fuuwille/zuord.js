@@ -25,6 +25,8 @@ In Zuord, every operation comes in two synchronized forms:
 - `zuord`: **Runtime functions** — `integrate`, `merge`, `evolve`, `pick`, `omit`, etc.
 
   ```ts
+  import { zuord } from "zuord";
+  
   const result = zuord.merge([{ first: 'Kayra' }, { last: 'Özkaya' }, { active: true } as const]);
 
   // Value: { first: 'Kayra', last: 'Özkaya', active: true }
@@ -34,6 +36,8 @@ In Zuord, every operation comes in two synchronized forms:
 - `Zuord`: **Compile-time types** — `Integrate`, `Merge`, `Evolve`, `Pick`, `Omit`, etc.
 
   ```ts
+  import { Zuord } from "zuord";
+
   type Result = Zuord.Merge<[{ first: string}, { last: string }, { active: true }]>;
 
   // Value: (not available – this is a type-only evaluation)
