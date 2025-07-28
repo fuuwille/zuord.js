@@ -6,5 +6,5 @@ export namespace Exact {
         = Internal.ExactKeys<TBase, TContent>;
 
     export type PlainStrict<TBase extends ZuordType.Plain, TContent extends ZuordType.Plain> 
-        = Internal.ExactShape<TBase, TContent> extends infer TExact extends ZuordType.Plain ? TExact : never;
+        = Internal.ExactShape<TBase, TContent>;
 }
