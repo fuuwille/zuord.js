@@ -1,7 +1,7 @@
-import { Integrate as IntegrateModule } from "./integrate.types";
-import { Merge as MergeModule } from "./merge.index";
+import * as IntegrateModule from "./integrate.types";
+import * as MergeModule from "./merge.index";
 
 export namespace Zuord {
-    export import Integrate = IntegrateModule;
-    export import Merge = MergeModule;
+    export import Integrate = IntegrateModule.Integrate;
+    export import Merge = MergeModule.Merge;
 }
