@@ -43,3 +43,16 @@ export function array <TContent extends Shape.MergeContent, TMode extends Shape.
 
     return internal.merge.object(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
 }
+
+
+// EXPORT
+
+type merge = {
+    readonly plain: typeof plain;
+    readonly array: typeof array;
+}
+
+export const merge: merge = {
+    plain: plain,
+    array: array
+};
