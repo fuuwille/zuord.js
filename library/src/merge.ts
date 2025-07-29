@@ -21,7 +21,7 @@ export function plain <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
+    return internal.merge.object(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
 }
 
 // ARRAY
@@ -41,5 +41,5 @@ export function array <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
+    return internal.merge.object(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
 }
