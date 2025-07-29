@@ -1,11 +1,11 @@
-import { InternalZuordCore as Internal } from "./internal";
+import { Flags as _Flags } from "./internal/flags.types";
 
 export namespace Flags {
-    export type Shallow = Internal.Flags.Shallow;
+    export type Shallow = _Flags.Shallow;
 
-    export type Concat = Internal.Flags.Concat;
+    export type Concat = _Flags.Concat;
 
-    export type Unique = Internal.Flags.Unique;
+    export type Unique = _Flags.Unique;
 
-    export type Base = Internal.Flags.Base;
+    export type Base = _Flags.Base;
 }
