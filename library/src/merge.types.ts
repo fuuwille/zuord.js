@@ -4,5 +4,5 @@ import { ShapeZuord as Shape } from "./shape";
 
 export namespace Merge {
     export type Object<TContent extends Shape.MergeContent, TMode extends Shape.MergeMode = {}> 
-        = Internal.Merge<TContent, ZuordCore.ModeResolve<[TMode]>>;
+        = Internal.Merge.Object<TContent, ZuordCore.ModeResolve<[TMode]>>;
 }
