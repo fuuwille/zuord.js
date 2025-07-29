@@ -34,7 +34,7 @@ export declare namespace Integrate {
 
     export type PlainOverlap<A extends ZuordType.Plain, B extends ZuordType.Plain, TMode> = ({
         [K in keyof A]: K extends keyof B ? (
-            [ZuordCore.ModeOn<TMode, "shallow">] extends [true] ? B[K] : Object<A[K], B[K], TMode>
+            TMode extends { shallow: true } ? B[K] : Object<A[K], B[K], TMode>
         ) : A[K];
     });
 
