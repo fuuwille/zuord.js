@@ -21,7 +21,7 @@ function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mod
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate.object(base, input, core.modeResolve([zuord.mode.integrate, mode]), strict);
+    return internal.integrate.object(base, input, core.mode.resolve([zuord.mode.integrate, mode]), strict);
 }
 
 

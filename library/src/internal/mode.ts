@@ -1,7 +1,7 @@
 import { zuordCore } from "@zuord/core";
 import { Mode } from "./mode.types";
 
-const integrate = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies Mode.Integrate;
+const integrate = zuordCore.mode.resolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies Mode.Integrate;
 
 const merge = integrate satisfies Mode.Merge;
 
