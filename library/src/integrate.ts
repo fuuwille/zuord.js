@@ -127,6 +127,18 @@ function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.E
 
 // ARRAY
 
+const $array = (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode: Shape.Integrate.Mode) => {
+    if(!type.array(base)) {
+        throw new TypeError("Integrate function expects the base to be a valid array.");
+    }
+
+    if(!type.array(input)) {
+        throw new TypeError("Integrate function expects the input to be a valid array.");
+    }
+
+    return internal.integrate.array(base, input, core.mode.resolve([zuord.mode.integrate, mode]));
+}
+
 /**
  * Integrates two arrays by applying the values from `input` onto `base`.
  * 
@@ -154,7 +166,7 @@ function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integr
     : Integrate.Array<TBase, TInput, TMode>;
 
 function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode = {} as TMode)
-    : Integrate.Array<TBase, TInput, TMode> { return object(base, input, mode, false); }
+    : Integrate.Array<TBase, TInput, TMode> { return $array(base, input, mode) as Integrate.Array<TBase, TInput, TMode>; }
 
 
 // EXPORT
