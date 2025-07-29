@@ -7,4 +7,4 @@ export type Plain = Type.Plain;
 
 export type Array = Type.Array;
 
-export type Mode = Partial<Internal.IntegrateMode>;
+export type Mode = Partial<Internal.Mode.Integrate>;
