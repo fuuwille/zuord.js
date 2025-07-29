@@ -1,22 +1,22 @@
-import { internalZuordCore as internal } from "./internal";
-import { ZuordCore } from ".";
-import { ShallowMode, ConcatMode, BaseMode, UniqueMode } from "./mode.types";
+import { mode as _mode } from "./internal/mode";
+import { Mode } from "./mode.types";
+
 
 function flag <K extends string, const V extends boolean = false>(key: K, value?: V) 
-    : ZuordCore.Mode.Field<K, V>
+    : Mode.Field<K, V>
 
 function flag <K extends string, const V extends boolean = false>(key: K[], value?: V) 
-    : ZuordCore.Mode.Field<K, V>
+    : Mode.Field<K, V>
 
 function flag <K extends string, const V extends boolean = false>(key: K | K[], value?: V) 
-    : ZuordCore.Mode.Field<K, V>;
+    : Mode.Field<K, V>;
 
 function flag <K extends string, const V extends boolean = false>(key: K | K[], value?: V) {
-    return internal.mode.flag(key, value ?? false) as ZuordCore.Mode.Field<K, V>;
+    return _mode.flag(key, value ?? false) as Mode.Field<K, V>;
 }
 
-function resolve <const TModes extends ZuordCore.Mode.Field[]>(modes: TModes): ZuordCore.Mode.Resolve<TModes> {
-    return internal.mode.resolve(modes);
+function resolve <const TModes extends Mode.Field[]>(modes: TModes): Mode.Resolve<TModes> {
+    return _mode.resolve(modes);
 };
 
 //
