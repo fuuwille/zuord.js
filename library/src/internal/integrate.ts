@@ -15,7 +15,7 @@ const object = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _
 }
 
 const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
-    const { shallow, concat, unique } = mode as Mode.Integrate;
+    const { shallow } = mode as Mode.Integrate;
 
     const result: any = {};
     const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
