@@ -58,3 +58,17 @@ const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TM
 
     return input;
 }
+
+//
+
+type integrate = {
+    object: typeof object;
+    plain: typeof plain;
+    array: typeof array;
+};
+
+export const integrate : integrate = {
+    object: object,
+    plain: plain,
+    array: array
+}
