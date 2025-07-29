@@ -1,11 +1,11 @@
-import { InternalZuordCore as Internal } from ".";
+import { Mode } from "./mode.types";
 
 export namespace Flags {
-    export type Shallow = Internal.Mode.Flag<"shallow">;
+    export type Shallow = Mode.Flag<"shallow">;
     
-    export type Concat = Internal.Mode.Flag<"concat">;
+    export type Concat = Mode.Flag<"concat">;
     
-    export type Unique = Internal.Mode.Flag<"unique">;
+    export type Unique = Mode.Flag<"unique">;
     
-    export type Base = Internal.Mode.Resolve<[Flags.Shallow]>;
+    export type Base = Mode.Resolve<[Flags.Shallow]>;
 }
