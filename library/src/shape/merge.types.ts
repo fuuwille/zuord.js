@@ -4,4 +4,4 @@ import { Object } from "./integrate.types";
 
 export type MergeContent = Type.ArrayOf<Object>;
 
-export type MergeMode = Partial<Internal.MergeMode>;
+export type MergeMode = Partial<Internal.Mode.Merge>;
