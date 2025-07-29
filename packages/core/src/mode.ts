@@ -19,14 +19,6 @@ function resolve <const TModes extends ZuordCore.Mode.Field[]>(modes: TModes): Z
     return internal.mode.resolve(modes);
 };
 
-export const shallowMode = flag("shallow", false) satisfies ShallowMode;
-
-export const concatMode = flag("concat", false) satisfies ConcatMode;
-
-export const uniqueMode = flag("unique", false) satisfies UniqueMode;
-
-export const baseMode = resolve([shallowMode]) satisfies BaseMode;
-
 //
 
 type mode = {
