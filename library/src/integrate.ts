@@ -8,11 +8,6 @@ import { ZuordUtil as Util } from "@zuord/util";
 // EXPORT
 
 type integrate = {
-    /**
-     * Default mode for integration operations.
-     */
-    readonly defaultMode: typeof defaultMode;
-
     plain: typeof plain;
     plainLoose: typeof plainLoose;
     plainStrict: typeof plainStrict;
@@ -20,18 +15,11 @@ type integrate = {
 };
 
 export const integrate : integrate = {
-    get defaultMode() { return defaultMode; },
     get plain() { return plain; },
     get plainStrict() { return plainStrict; },
     get plainLoose() { return plainLoose; },
     get array() { return array; }
 };
-
-
-// MODE
-
-const defaultMode = internal.integrateMode satisfies Integrate.Mode;
-
 
 // OBJECT
 
@@ -48,7 +36,7 @@ function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mod
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate(base, input, core.modeResolve([defaultMode, mode]), strict);
+    return internal.integrate(base, input, core.modeResolve([mode, mode]), strict);
 }
 
 
