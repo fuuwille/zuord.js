@@ -1,20 +1,21 @@
 import { internalZuordCore as internal } from "./internal";
-import { ModeField, ModeResolve, ShallowMode, ConcatMode, BaseMode, UniqueMode } from "./mode.types";
+import { ZuordCore } from ".";
+import { ShallowMode, ConcatMode, BaseMode, UniqueMode } from "./mode.types";
 
 function field <K extends string, const V extends boolean = false>(key: K, value?: V) 
-    : ModeField<K, V>
+    : ZuordCore.Mode.Field<K, V>
 
 function field <K extends string, const V extends boolean = false>(key: K[], value?: V) 
-    : ModeField<K, V>
+    : ZuordCore.Mode.Field<K, V>
 
 function field <K extends string, const V extends boolean = false>(key: K | K[], value?: V) 
-    : ModeField<K, V>;
+    : ZuordCore.Mode.Field<K, V>;
 
 function field <K extends string, const V extends boolean = false>(key: K | K[], value?: V) {
-    return internal.mode.field(key, value ?? false) as ModeField<K, V>;
+    return internal.mode.field(key, value ?? false) as ZuordCore.Mode.Field<K, V>;
 }
 
-function resolve <const TModes extends ModeField[]>(modes: TModes): ModeResolve<TModes> {
+function resolve <const TModes extends ZuordCore.Mode.Field[]>(modes: TModes): ZuordCore.Mode.Resolve<TModes> {
     return internal.mode.resolve(modes);
 };
 

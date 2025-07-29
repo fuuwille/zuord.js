@@ -1,7 +1,7 @@
 import { ZuordCore } from "@zuord/core";
 
 export declare namespace Mode {
-    export type Integrate = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode, ZuordCore.UniqueMode]>;
+    export type Integrate = ZuordCore.Mode.Resolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode, ZuordCore.UniqueMode]>;
 
     export type Merge = Integrate;
 
