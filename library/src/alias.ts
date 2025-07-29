@@ -1,5 +1,5 @@
 import { integrate } from "./integrate";
-import { merge } from "./merge.index";
+import { merge } from "./merge";
 
 type zuord = {
     /**
