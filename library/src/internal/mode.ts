@@ -1,13 +1,13 @@
-import { zuordCore } from "@zuord/core";
+import { zuordCore as core } from "@zuord/core";
 import { Mode } from "./mode.types";
 
-const integrate = zuordCore.mode.resolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies Mode.Integrate;
+const integrate = core.mode.resolve([core.flags.base, core.flags.concat, core.flags.unique]) satisfies Mode.Integrate;
 
 const merge = integrate satisfies Mode.Merge;
 
-const pick = zuordCore.baseMode satisfies Mode.Pick;
+const pick = core.flags.base satisfies Mode.Pick;
 
-const omit = zuordCore.baseMode satisfies Mode.Omit;
+const omit = core.flags.base satisfies Mode.Omit;
 
 type mode = {
     readonly integrate: typeof integrate;
