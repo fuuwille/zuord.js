@@ -1,9 +1,7 @@
 import { ArrayOf } from "./array.types";
 import { TupleOf } from "./tuple.types";
 
-export type Plain = {
-  [key: PropertyKey]: unknown;
-};
+export type Plain = PlainOf<PropertyKey, unknown>;
 
 export type PlainOf<K extends PropertyKey = PropertyKey, T = unknown> = {
   [key in K]: T;
