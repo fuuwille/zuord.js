@@ -4,7 +4,7 @@ import * as PickModule from "./pick.types";
 import * as OmitModule from "./omit.types";
 import * as ModeModule from "./mode.types";
 
-export namespace InternalZuord {
+export declare namespace InternalZuord {
     export import Integrate = IntegrateModule.Integrate;
     export import Merge = MergeModule.Merge;
     export import Pick = PickModule.Pick;
