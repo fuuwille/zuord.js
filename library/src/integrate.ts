@@ -5,22 +5,6 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 
 
-// EXPORT
-
-type integrate = {
-    plain: typeof plain;
-    plainLoose: typeof plainLoose;
-    plainStrict: typeof plainStrict;
-    array: typeof array;
-};
-
-export const integrate : integrate = {
-    get plain() { return plain; },
-    get plainStrict() { return plainStrict; },
-    get plainLoose() { return plainLoose; },
-    get array() { return array; }
-};
-
 // OBJECT
 
 function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mode: Shape.Integrate.Mode, strict: boolean) {
@@ -160,3 +144,20 @@ function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integr
 
 function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : Integrate.Array<TBase, TInput, TMode> { return object(base, input, mode, false); }
+
+
+// EXPORT
+
+type integrate = {
+    plain: typeof plain;
+    plainLoose: typeof plainLoose;
+    plainStrict: typeof plainStrict;
+    array: typeof array;
+};
+
+export const integrate : integrate = {
+    plain: plain,
+    plainLoose: plainLoose,
+    plainStrict: plainStrict,
+    array: array
+};
