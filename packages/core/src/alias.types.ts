@@ -1,5 +1,5 @@
-import * as ModeModule from "./mode.types";
+import { Mode as ModeModule } from "./mode.types";
 
 export declare namespace ZuordCore {
-    export import Mode = ModeModule.Mode;
+    export import Mode = ModeModule;
 }
