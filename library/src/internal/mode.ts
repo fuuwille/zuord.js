@@ -6,7 +6,12 @@ const integrate = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMod
 
 const merge = integrate satisfies MergeMode;
 
-export const mode = {
+type mode = {
+    readonly integrate: typeof integrate;
+    readonly merge: typeof merge;
+}
+
+export const mode : mode = {
     integrate: integrate,
     merge: merge
 }
