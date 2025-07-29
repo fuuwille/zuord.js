@@ -1,6 +1,6 @@
 import { Mode } from "./mode.types";
 
-export namespace Flags {
+export declare namespace Flags {
     export type Shallow = Mode.Flag<"shallow">;
     
     export type Concat = Mode.Flag<"concat">;
