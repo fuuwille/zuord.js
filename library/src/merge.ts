@@ -26,13 +26,13 @@ export function plain <TContent extends Shape.MergeContent, TMode extends Shape.
 
 // ARRAY
 
-export function array <TContent extends ZuordType.Array[]> (content: [...TContent]) 
+export function array <TContent extends [...ZuordType.Array[]]> (content: TContent) 
     : Merge.Object<TContent>;
 
-export function array <TContent extends ZuordType.Array[], TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
+export function array <TContent extends [...ZuordType.Array[]], TMode extends Shape.MergeMode> (content: TContent, mode: TMode)
     : Merge.Object<TContent, TMode>;
 
-export function array <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode) {
+export function array <TContent extends [...ZuordType.Array[]], TMode extends Shape.MergeMode> (content: TContent, mode: TMode = {} as TMode) {
     if(!shape.mergeContent(content)) {
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
@@ -41,7 +41,7 @@ export function array <TContent extends Shape.MergeContent, TMode extends Shape.
         throw new TypeError("Merge function expects the mode to be a valid MergeMode.");
     }
 
-    return internal.merge.object(content, zuord.modeResolve([mode ?? {}])) as Merge.Object<TContent, TMode>;
+    return internal.merge.object(content, zuord.modeResolve([mode])) as Merge.Object<TContent, TMode>;
 }
 
 
