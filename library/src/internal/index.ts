@@ -1,2 +1,2 @@
 export { internalZuord } from "./alias";
-export { InternalZuord } from "./alias.types";
+export type { InternalZuord } from "./alias.types";
