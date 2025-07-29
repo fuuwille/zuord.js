@@ -26,7 +26,7 @@ type omit = {
     readonly plainLoose: typeof plainLoose;
 }
 
-export const omit = {
+export const omit: omit = {
     plain: plain,
     plainLoose: plainLoose
 };
