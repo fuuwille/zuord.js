@@ -149,10 +149,10 @@ function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integr
 // EXPORT
 
 type integrate = {
-    plain: typeof plain;
-    plainLoose: typeof plainLoose;
-    plainStrict: typeof plainStrict;
-    array: typeof array;
+    readonly plain: typeof plain;
+    readonly plainLoose: typeof plainLoose;
+    readonly plainStrict: typeof plainStrict;
+    readonly array: typeof array;
 };
 
 export const integrate : integrate = {
