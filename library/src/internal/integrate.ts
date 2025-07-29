@@ -11,7 +11,7 @@ const object = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _
         return plain(base, input, mode);
     }
 
-    throw new TypeError("Both arguments must be either plain objects or arrays.");
+    return input;
 }
 
 const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
