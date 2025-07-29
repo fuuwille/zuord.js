@@ -13,7 +13,7 @@ export type ExactKeys<TBase, TInput> =
         : TInput;
 
 export type ExactKeysFromInputs<
-  TInputs extends [any, ...any[]]
+  TInputs extends any[]
 > = TInputs extends [infer TBase, ...infer TRest]
   ? TRest extends readonly unknown[]
     ? ExactKeysMultiple<TBase, TRest>
