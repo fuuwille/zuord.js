@@ -4,7 +4,7 @@ import { ZuordUtil as Util } from "@zuord/util";
 import { ShapeZuord as Shape } from "./shape";
 import { mode } from "./mode";
 
-export namespace Integrate {
+export declare namespace Integrate {
     export type Plain<TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode = {}> 
         = Internal.Integrate.Plain<TBase, TInput, ZuordCore.ModeResolve<[typeof mode.integrate, TMode]>>;
 
