@@ -1,7 +1,7 @@
 import { Integrate } from "./integrate.types";
 import { ZuordType } from "@zuord/type";
 
-export namespace Merge {
+export declare namespace Merge {
     export type Object<TContent, TMode> = (
         TContent extends ZuordType.Tuple  ? (
             ObjectFromTuple<TContent, TMode>
