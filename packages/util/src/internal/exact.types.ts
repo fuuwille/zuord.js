@@ -12,6 +12,21 @@ export type ExactKeys<TBase, TInput> =
         }
         : TInput;
 
+export type ExactKeysFromInputs<
+  TInputs extends [any, ...any[]]
+> = TInputs extends [infer TBase, ...infer TRest]
+  ? TRest extends readonly unknown[]
+    ? ExactKeysMultiple<TBase, TRest>
+    : never
+  : never;
+
+export type ExactKeysMultiple<
+  TBase,
+  TInputs extends readonly unknown[]
+> = TInputs extends [infer TFirst, ...infer TRest]
+  ? ExactKeys<TBase, TFirst> & ExactKeysMultiple<TBase, TRest>
+  : unknown;
+
 
 export type ExactShape<TBase, TInput> = 
   TBase extends ZuordType.Plain ? (
