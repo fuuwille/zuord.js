@@ -28,21 +28,11 @@ type zuord = {
 }
 
 const zuord : zuord = {
-    get integrate() {
-        return integrate;
-    },
-    get merge() {
-        return merge;
-    },
-    get pick() {
-        return pick;
-    },
-    get omit() {
-        return omit;
-    },
-    get mode() {
-        return mode;
-    }
+    integrate: integrate,
+    merge: merge,
+    pick: pick,
+    omit: omit,
+    mode: mode
 }
 
 export { zuord };
