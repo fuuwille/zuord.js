@@ -13,12 +13,12 @@ export declare namespace Integrate {
     );
 
     export type Array<A extends ZuordType.Array, B extends ZuordType.Array, TMode> = (
-        ArrayCollection<A, B, TMode> extends infer TIntegrated extends ZuordType.Array ? (
+        ArrayOverlap<A, B, TMode> extends infer TIntegrated extends ZuordType.Array ? (
             ZuordUtil.Mutable<TIntegrated[number][]>
         ) : never
     );
 
-    export type ArrayCollection<A extends ZuordType.Array, B extends ZuordType.Array, TMode> = (
+    export type ArrayOverlap<A extends ZuordType.Array, B extends ZuordType.Array, TMode> = (
         A extends ZuordType.Array ? B extends ZuordType.Array ? (
             TMode extends { concat: true } ? (
                 [...A, ...B]
