@@ -1,2 +1,2 @@
 export { zuordCore } from "./alias";
-export { ZuordCore } from "./alias.types";
+export type { ZuordCore } from "./alias.types";
