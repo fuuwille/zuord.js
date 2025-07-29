@@ -1,26 +1,10 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
 import { Integrate } from "./integrate.types";
-import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
+import { ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 import { zuord } from ".";
 import { zuordType as type } from "@zuord/type";
-
-function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mode: Shape.Integrate.Mode, strict: boolean) {
-    if (!shape.integrateSource(base)) {
-        throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
-    }
-
-    if (!shape.integrateSource(input)) {
-        throw new TypeError("Integrate function expects the input to be a valid IntegrateSource.");
-    }
-
-    if (!shape.integrateMode(mode)) {
-        throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
-    }
-
-    return internal.integrate.unknown(base, input, core.mode.resolve([zuord.mode.integrate, mode]), strict);
-}
 
 
 // PLAIN
