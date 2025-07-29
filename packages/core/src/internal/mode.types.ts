@@ -1,5 +1,5 @@
 export declare namespace Mode {
-  export type Field<K = string, V = boolean> = K extends string ? {
+  export type Flag<K = string, V = boolean> = K extends string ? {
     [P in K]: V
   } : never;
 

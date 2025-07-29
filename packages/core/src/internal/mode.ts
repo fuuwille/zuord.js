@@ -1,6 +1,6 @@
 import { InternalZuordCore as Internal } from ".";
 
-const field = <const K, const V>(key: K | K[], value: V) => {
+const flag = <const K, const V>(key: K | K[], value: V) => {
     let field : Record<string, boolean> = {};
 
     const keys = Array.isArray(key) ? key : [key];
@@ -8,19 +8,19 @@ const field = <const K, const V>(key: K | K[], value: V) => {
         field[k as string] = value as boolean;
     }
 
-    return field as Internal.Mode.Field<K, V>;
+    return field as Internal.Mode.Flag<K, V>;
 }
 
-const resolve = <const TModes extends Internal.Mode.Field[]>(modes: TModes) => {
+const resolve = <const TModes extends Internal.Mode.Flag[]>(modes: TModes) => {
     return Object.assign({}, ...modes) as Internal.Mode.Resolve<TModes>;
 };
 
 type mode = {
-    field: typeof field;
+    flag: typeof flag;
     resolve: typeof resolve;
 }
 
 export const mode: mode = {
-    field,
+    flag,
     resolve
 }
