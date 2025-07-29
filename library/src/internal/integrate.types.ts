@@ -2,7 +2,7 @@ import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
-export namespace Integrate {
+export declare namespace Integrate {
     export type Object<A, B, TMode> = (
         [A, B] extends [infer A extends ZuordType.Array, infer B extends ZuordType.Array] ? (
             Array<A, B, TMode>
