@@ -1,4 +1,4 @@
-import { InternalZuordCore as Internal } from ".";
+import { Mode } from "./mode.types";
 
 const flag = <const K, const V>(key: K | K[], value: V) => {
     let field : Record<string, boolean> = {};
@@ -8,11 +8,11 @@ const flag = <const K, const V>(key: K | K[], value: V) => {
         field[k as string] = value as boolean;
     }
 
-    return field as Internal.Mode.Flag<K, V>;
+    return field as Mode.Flag<K, V>;
 }
 
-const resolve = <const TModes extends Internal.Mode.Flag[]>(modes: TModes) => {
-    return Object.assign({}, ...modes) as Internal.Mode.Resolve<TModes>;
+const resolve = <const TModes extends Mode.Flag[]>(modes: TModes) => {
+    return Object.assign({}, ...modes) as Mode.Resolve<TModes>;
 };
 
 type mode = {
