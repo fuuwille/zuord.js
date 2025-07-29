@@ -7,5 +7,5 @@ export namespace Flags {
     
     export type Unique = Internal.Mode.Flag<"unique">;
     
-    export type Base = Internal.Mode.Flag<[Flags.Shallow]>;
+    export type Base = Internal.Mode.Resolve<[Flags.Shallow]>;
 }
