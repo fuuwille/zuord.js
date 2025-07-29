@@ -1,4 +1,4 @@
-export const pick = <T, P>(plain: T, pattern: P) => {
+export const plain = <T, P>(plain: T, pattern: P) => {
     const result: any = {};
     const stack: Array<{ source: any; pattern: any; target: any }> = [
         { source: plain, pattern, target: result },
@@ -25,3 +25,11 @@ export const pick = <T, P>(plain: T, pattern: P) => {
 
     return result;
 };
+
+type pick = {
+    plain: typeof plain;
+}
+
+export const pick: pick = {
+    plain
+}

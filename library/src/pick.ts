@@ -7,7 +7,7 @@ export function pick<TSouce extends Shape.PickSource, const TPattern extends Pic
         throw new TypeError("Pick function expects the source to be a plain.");
     }
 
-    return internal.pick(source, pattern) as Pick<TSouce, TPattern>;
+    return internal.pick.plain(source, pattern) as Pick<TSouce, TPattern>;
 }
 
 export function pickLoose<TSouce extends Shape.PickSource, const TPattern extends Shape.PickPattern<TSouce>>(source: TSouce, pattern: TPattern) {
@@ -15,5 +15,5 @@ export function pickLoose<TSouce extends Shape.PickSource, const TPattern extend
         throw new TypeError("Pick function expects the source to be a plain.");
     }
 
-    return internal.pick(source, pattern) as PickLoose<TSouce, TPattern>;
+    return internal.pick.plain(source, pattern) as PickLoose<TSouce, TPattern>;
 }
