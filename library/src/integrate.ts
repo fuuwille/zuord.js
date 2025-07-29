@@ -1,15 +1,15 @@
 import { internalZuord as internal } from "./internal";
 import { zuordCore as core } from "@zuord/core";
 import { Integrate } from "./integrate.types";
-import { ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 import { zuord } from ".";
-import { zuordType as type } from "@zuord/type";
+import { zuordType as type, ZuordType as Type } from "@zuord/type";
+import { Mode } from "./mode.types";
 
 
 // PLAIN
 
-const $plain = (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode) => {
+const $plain = (base: Type.Plain, input: Type.Plain, mode: Partial<Mode.Integrate>) => {
     if(!type.plain(base)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
@@ -30,7 +30,7 @@ const $plain = (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode:
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>> (base: TBase, input: TInput)
+function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate.Plain<TBase, TInput>;
 
 /**
@@ -44,10 +44,10 @@ function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.P
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
+function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
     : Integrate.Plain<TBase, TInput, TMode>;
 
-function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Plain<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 /**
@@ -59,7 +59,7 @@ function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.P
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain> (base: TBase, input: TInput)
+function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
     : Integrate.PlainLoose<TBase, TInput>;
 
 /**
@@ -73,10 +73,10 @@ function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.I
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
+function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
     : Integrate.PlainLoose<TBase, TInput, TMode>;
 
-function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.PlainLoose<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 /**
@@ -88,7 +88,7 @@ function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.I
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>> (base: TBase, input: TInput)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate.PlainStrict<TBase, TInput>;
 
 /**
@@ -102,16 +102,16 @@ function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.E
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode>;
 
-function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 
 // ARRAY
 
-const $array = (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode: Shape.Integrate.Mode) => {
+const $array = (base: Type.Array, input: Type.Array, mode: Partial<Mode.Integrate>) => {
     if(!type.array(base)) {
         throw new TypeError("Integrate function expects the base to be a valid array.");
     }
@@ -132,7 +132,7 @@ const $array = (base: Shape.Integrate.Array, input: Shape.Integrate.Array, mode:
  * 
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  */
-function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array> (base: TBase, input: TInput)
+function array <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : Integrate.Array<TBase, TInput>;
 
 /**
@@ -146,10 +146,10 @@ function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integr
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode)
+function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode)
     : Integrate.Array<TBase, TInput, TMode>;
 
-function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode : TMode = {} as TMode)
+function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : Integrate.Array<TBase, TInput, TMode> { return $array(base, input, mode) as Integrate.Array<TBase, TInput, TMode>; }
 
 
