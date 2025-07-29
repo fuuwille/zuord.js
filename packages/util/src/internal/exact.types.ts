@@ -10,7 +10,7 @@ export type ExactKeys<TBase, TInput> =
         } & {
             [K in Exclude<keyof TBase, keyof TInput>]?: never
         }
-        : TInput extends TBase ? TBase : never;
+        : TInput;
 
 
 export type ExactShape<TBase, TInput> = 
