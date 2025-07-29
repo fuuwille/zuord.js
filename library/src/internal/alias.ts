@@ -12,10 +12,12 @@ type internalZuord = {
     readonly mode: typeof mode;
 }
 
-export const internalZuord: internalZuord = {
+const internalZuord: internalZuord = {
     integrate,
     merge,
     pick,
     omit,
     mode
 };
+
+export { internalZuord };
