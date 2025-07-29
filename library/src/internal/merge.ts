@@ -5,7 +5,7 @@ const object = <TContent, TMode>(content: TContent, mode: TMode)=> {
 
     return content.reduce((acc, current) => {
         if (acc === undefined) return current;
-        return integrate.object(acc, current, mode, false);
+        return integrate.unknown(acc, current, mode, false);
     });
 }
 

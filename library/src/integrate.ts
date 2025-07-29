@@ -5,9 +5,6 @@ import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 import { zuord } from ".";
 
-
-// OBJECT
-
 function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mode: Shape.Integrate.Mode, strict: boolean) {
     if (!shape.integrateSource(base)) {
         throw new TypeError("Integrate function expects the base to be a valid IntegrateSource.");
@@ -21,7 +18,7 @@ function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mod
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate.object(base, input, core.mode.resolve([zuord.mode.integrate, mode]), strict);
+    return internal.integrate.unknown(base, input, core.mode.resolve([zuord.mode.integrate, mode]), strict);
 }
 
 

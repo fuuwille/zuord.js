@@ -1,7 +1,7 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { Mode } from "./mode.types";
 
-const object = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
+const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
     if(zuordType.array(base) && zuordType.array(input)) {
         return array(base, input, mode);
     }
@@ -61,13 +61,13 @@ const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TM
 //
 
 type integrate = {
-    object: typeof object;
+    unknown: typeof unknown;
     plain: typeof plain;
     array: typeof array;
 };
 
 export const integrate : integrate = {
-    object: object,
+    unknown: unknown,
     plain: plain,
     array: array
 }
