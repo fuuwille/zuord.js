@@ -12,7 +12,7 @@ export function plain <TContent extends [...ZuordType.Plain[]]> (content: TConte
 export function plain <TContent extends [...ZuordType.Plain[]], TMode extends Shape.MergeMode> (content: TContent, mode: TMode)
     : Merge.Object<TContent, TMode>;
 
-export function plain <TContent extends Shape.MergeContent, TMode extends Shape.MergeMode> (content: TContent, mode?: TMode) {
+export function plain <TContent extends [...ZuordType.Plain[]], TMode extends Shape.MergeMode> (content: TContent, mode?: TMode) {
     if(!shape.mergeContent(content)) {
         throw new TypeError("Merge function expects the content to be an array of integrate elements.");
     }
