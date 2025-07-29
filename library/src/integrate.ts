@@ -36,7 +36,7 @@ function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mod
         throw new TypeError("Integrate function expects the mode to be a valid IntegrateMode.");
     }
 
-    return internal.integrate(base, input, core.modeResolve([mode, mode]), strict);
+    return internal.integrate.object(base, input, core.modeResolve([mode, mode]), strict);
 }
 
 
