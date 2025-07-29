@@ -1,7 +1,6 @@
 import { Flags } from "./flags.types";
 import { mode } from "./mode";
 
-{}
 const shallow = mode.flag("shallow", false) satisfies Flags.Shallow;
 
 const concat = mode.flag("concat", false) satisfies Flags.Concat;
