@@ -4,8 +4,6 @@ export type ModeField<K extends string = string, V extends boolean = boolean> = 
 
 export type ModeResolve<TModes extends ModeField[]> = Internal.ModeResolve<TModes>;
 
-export type ModeOn<TMode, TKey> = Internal.ModeOn<TMode, TKey>;
-
 export type ShallowMode = ModeField<"shallow">;
 
 export type ConcatMode = ModeField<"concat">;

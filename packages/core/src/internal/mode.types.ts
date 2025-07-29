@@ -10,7 +10,3 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
     ) extends infer TResolved extends boolean ? TResolved : false
   } : never
 ) : {};
-
-export type ModeOn<TMode, TKey> = TKey extends keyof TMode ? (
-  [TMode[TKey]] extends [true] ? true : false
-) : false;
