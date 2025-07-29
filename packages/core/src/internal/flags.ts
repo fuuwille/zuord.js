@@ -1,9 +1,23 @@
 import { internalZuordCore as internal, InternalZuordCore as Internal } from ".";
 
-export const shallow = internal.mode.flag("shallow", false) satisfies Internal.Flags.Shallow;
+const shallow = internal.mode.flag("shallow", false) satisfies Internal.Flags.Shallow;
 
-export const concat = internal.mode.flag("concat", false) satisfies Internal.Flags.Concat;
+const concat = internal.mode.flag("concat", false) satisfies Internal.Flags.Concat;
 
-export const unique = internal.mode.flag("unique", false) satisfies Internal.Flags.Unique;
+const unique = internal.mode.flag("unique", false) satisfies Internal.Flags.Unique;
 
-export const base = internal.mode.resolve([shallow]) satisfies Internal.Flags.Base;
+const base = internal.mode.resolve([shallow]) satisfies Internal.Flags.Base;
+
+type flags = {
+    readonly shallow: typeof shallow;
+    readonly concat: typeof concat;
+    readonly unique: typeof unique;
+    readonly base: typeof base;
+};
+
+export const flags: flags = {
+    shallow,
+    concat,
+    unique,
+    base
+};
