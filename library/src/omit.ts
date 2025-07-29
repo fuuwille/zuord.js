@@ -7,7 +7,7 @@ export function omit<TPlain extends Shape.OmitPlain, const TPattern extends Shap
         throw new TypeError("Pick function expects the target object to be a plain.");
     }
 
-    return internal.omit(plain, pattern) as Omit<TPlain, TPattern>;
+    return internal.omit.plain(plain, pattern) as Omit<TPlain, TPattern>;
 }
 
 export function omitLoose<TPlain extends Shape.OmitPlain, const TPattern extends Shape.OmitPatternLoose<TPlain>>(plain: TPlain, pattern: TPattern) {
@@ -15,5 +15,5 @@ export function omitLoose<TPlain extends Shape.OmitPlain, const TPattern extends
         throw new TypeError("Pick function expects the target object to be a plain.");
     }
 
-    return internal.omit(plain, pattern) as OmitLoose<TPlain, TPattern>;
+    return internal.omit.plain(plain, pattern) as OmitLoose<TPlain, TPattern>;
 }
