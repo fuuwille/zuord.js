@@ -4,6 +4,7 @@ import { Integrate } from "./integrate.types";
 import { shapeZuord as shape, ShapeZuord as Shape } from "./shape";
 import { ZuordUtil as Util } from "@zuord/util";
 import { zuord } from ".";
+import { zuordType as type } from "@zuord/type";
 
 function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mode: Shape.Integrate.Mode, strict: boolean) {
     if (!shape.integrateSource(base)) {
@@ -23,6 +24,18 @@ function object(base: Shape.Integrate.Object, input: Shape.Integrate.Object, mod
 
 
 // PLAIN
+
+const $plain = (base: Shape.Integrate.Plain, input: Shape.Integrate.Plain, mode: Shape.Integrate.Mode) => {
+    if(!type.plain(base)) {
+        throw new TypeError("Integrate function expects the base to be a valid plain.");
+    }
+
+    if(!type.plain(input)) {
+        throw new TypeError("Integrate function expects the input to be a valid plain.");
+    }
+
+    return internal.integrate.plain(base, input, core.mode.resolve([zuord.mode.integrate, mode]));
+}
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
@@ -51,7 +64,7 @@ function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.P
     : Integrate.Plain<TBase, TInput, TMode>;
 
 function plain <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : Integrate.Plain<TBase, TInput, TMode> { return object(base, input, mode, false); }
+    : Integrate.Plain<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
@@ -80,7 +93,7 @@ function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.I
     : Integrate.PlainLoose<TBase, TInput, TMode>;
 
 function plainLoose <TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : Integrate.PlainLoose<TBase, TInput, TMode> { return object(base, input, mode, false); }
+    : Integrate.PlainLoose<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 /**
  * Integrates two plains by applying the values from `input` onto `base`.
@@ -109,7 +122,7 @@ function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.E
     : Integrate.PlainStrict<TBase, TInput, TMode>;
 
 function plainStrict <TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Shape.Integrate.Mode> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : Integrate.PlainStrict<TBase, TInput, TMode> { return object(base, input, mode, true); }
+    : Integrate.PlainStrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 
 // ARRAY
