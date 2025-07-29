@@ -1,12 +1,14 @@
-import { internalZuordCore as internal, InternalZuordCore as Internal } from ".";
+import { Flags } from "./flags.types";
+import { mode } from "./mode";
 
-const shallow = internal.mode.flag("shallow", false) satisfies Internal.Flags.Shallow;
+{}
+const shallow = mode.flag("shallow", false) satisfies Flags.Shallow;
 
-const concat = internal.mode.flag("concat", false) satisfies Internal.Flags.Concat;
+const concat = mode.flag("concat", false) satisfies Flags.Concat;
 
-const unique = internal.mode.flag("unique", false) satisfies Internal.Flags.Unique;
+const unique = mode.flag("unique", false) satisfies Flags.Unique;
 
-const base = internal.mode.resolve([shallow]) satisfies Internal.Flags.Base;
+const base = mode.resolve([shallow]) satisfies Flags.Base;
 
 type flags = {
     readonly shallow: typeof shallow;
