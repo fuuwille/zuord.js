@@ -11,11 +11,11 @@ export function modeField <K extends string, const V extends boolean = false>(ke
     : ModeField<K, V>;
 
 export function modeField <K extends string, const V extends boolean = false>(key: K | K[], value?: V) {
-    return internal.modeField(key, value ?? false) as ModeField<K, V>;
+    return internal.mode.field(key, value ?? false) as ModeField<K, V>;
 }
 
 export function modeResolve <const TModes extends ModeField[]>(modes: TModes): ModeResolve<TModes> {
-    return internal.modeResolve(modes);
+    return internal.mode.resolve(modes);
 };
 
 export const shallowMode = modeField("shallow", false) satisfies ShallowMode;
