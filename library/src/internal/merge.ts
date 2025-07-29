@@ -1,5 +1,4 @@
-import { integrate, integrateMode } from "./integrate";
-import { MergeMode } from "./merge.types";
+import { integrate } from "./integrate";
 
 export const merge = <TContent, TMode>(content: TContent, mode: TMode)=> {
     if (!Array.isArray(content) || content.length == 0) return {};
@@ -9,5 +8,3 @@ export const merge = <TContent, TMode>(content: TContent, mode: TMode)=> {
         return integrate(acc, current, mode, false);
     });
 }
-
-export const mergeMode = integrateMode satisfies MergeMode;

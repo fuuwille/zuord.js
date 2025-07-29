@@ -1,9 +1,8 @@
-import { zuordCore } from "@zuord/core";
 import { zuordType, ZuordType } from "@zuord/type";
-import { IntegrateMode } from "./integrate.types";
+import { Mode } from "./mode.types";
 
 export const integrate = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
-    const { shallow, concat, unique } = mode as IntegrateMode;
+    const { shallow, concat, unique } = mode as Mode.Integrate;
 
     if(zuordType.array(base) && zuordType.array(input)) {
         return concat ? ( unique 
@@ -51,5 +50,3 @@ export const integrate = <TBase, TInput, TMode>(base: TBase, input: TInput, mode
 
     throw new TypeError("Both arguments must be either plain objects or arrays.");
 }
-
-export const integrateMode = zuordCore.modeResolve([zuordCore.baseMode, zuordCore.concatMode, zuordCore.uniqueMode]) satisfies IntegrateMode;

@@ -1,4 +1,4 @@
-import { Integrate, IntegrateMode } from "./integrate.types";
+import { Integrate } from "./integrate.types";
 import { ZuordType } from "@zuord/type";
 
 export type Merge<TContent, TMode> = (
@@ -25,5 +25,3 @@ export type MergeFromArray<TContent, TMode> = TContent extends readonly (infer T
         ) : never
     ) : never
 ) : never;
-
-export type MergeMode = IntegrateMode;

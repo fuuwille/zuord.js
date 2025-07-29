@@ -41,5 +41,3 @@ export type IntegrateOverlap<A, B, TMode> = ({
 export type IntegrateExtras<A, B> = ({
     [K in keyof B as K extends keyof A ? never : K]: B[K];
 });
-
-export type IntegrateMode = ZuordCore.ModeResolve<[ZuordCore.BaseMode, ZuordCore.ConcatMode, ZuordCore.UniqueMode]>;
