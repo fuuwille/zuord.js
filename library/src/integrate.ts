@@ -146,10 +146,10 @@ function array <TBase extends Type.Array, TInput extends Type.Array> (base: TBas
  * @throws {TypeError} If either `base` or `input` is not a valid `IntegrateElement` (plain object or array).
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode)
+function array <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode)
     : Integrate.Array<TBase, TInput, TMode>;
 
-function array <TBase extends Shape.Integrate.Array, TInput extends Shape.Integrate.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
+function array <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : Integrate.Array<TBase, TInput, TMode> { return $array(base, input, mode) as Integrate.Array<TBase, TInput, TMode>; }
 
 
