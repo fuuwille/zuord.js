@@ -1,6 +1,5 @@
 import { ZuordCore } from "@zuord/core";
 import { ZuordType } from "@zuord/type";
-import { ZuordTrait } from "@zuord/trait";
 import { ZuordUtil } from "@zuord/util";
 
 export namespace Integrate {
