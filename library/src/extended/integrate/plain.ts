@@ -21,18 +21,6 @@ const $plain = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integ
 }
 
 
-// RESTRICT
-
-function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>> (base: TBase, input: TInput)
-    : Integrate.Restrict<TBase, TInput>;
-
-function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
-    : Integrate.Restrict<TBase, TInput, TMode>;
-
-function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : Integrate.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
-
-
 // LOOSE
 
 function loose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
@@ -43,6 +31,18 @@ function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode exten
 
 function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Loose<TBase, TInput, TMode> { return $plain(base, input, mode); }
+
+
+// RESTRICT
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>> (base: TBase, input: TInput)
+    : Integrate.Restrict<TBase, TInput>;
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
+    : Integrate.Restrict<TBase, TInput, TMode>;
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 
 // STRICT
@@ -60,13 +60,13 @@ function strict <TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase
 // EXPORT
 
 type plain = {
-    readonly restrict: typeof restrict;
     readonly loose: typeof loose;
+    readonly restrict: typeof restrict;
     readonly strict: typeof strict;
 }
 
 export const plain: plain = {
-    restrict: restrict,
     loose: loose,
+    restrict: restrict,
     strict: strict
 };
