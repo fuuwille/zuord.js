@@ -5,7 +5,7 @@ import { ShapeZuord as Shape } from "./shape";
 import { mode } from "./mode";
 
 export declare namespace Integrate {
-    export type Plain<TBase extends Shape.Integrate.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Shape.Integrate.Mode = {}> 
+    export type Plain<TBase extends Shape.Integrate.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Shape.Integrate.Mode = {}> 
         = Internal.Integrate.Plain<TBase, TInput, ZuordCore.Mode.Resolve<[typeof mode.integrate, TMode]>>;
 
     export type PlainLoose<TBase extends Shape.Integrate.Plain, TInput extends Shape.Integrate.Plain, TMode extends Shape.Integrate.Mode = {}> 

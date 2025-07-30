@@ -30,7 +30,7 @@ const $plain = (base: Type.Plain, input: Type.Plain, mode: Partial<Mode.Integrat
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>> (base: TBase, input: TInput)
+function plain <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate.Plain<TBase, TInput>;
 
 /**
@@ -44,10 +44,10 @@ function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase,
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
+function plain <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
     : Integrate.Plain<TBase, TInput, TMode>;
 
-function plain <TBase extends Type.Plain, TInput extends Util.Exact.Plain<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+function plain <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Plain<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 /**
