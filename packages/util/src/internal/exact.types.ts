@@ -3,30 +3,20 @@ import { ZuordType } from "@zuord/type";
 
 export type ExactKeys<TBase, TInput> = 
     TBase extends ZuordType.Plain
-        ? {
+        ? ({
             [K in keyof TInput]: K extends keyof TBase
                 ? ExactKeys<TBase[K], TInput[K]>
-                : never
+                : TInput[K]
         } & {
             [K in Exclude<keyof TBase, keyof TInput>]?: never
-        }
+        }) extends infer TT ? {
+            [K in keyof TT as [undefined] extends [TT[K]] ? never : K]: TT[K] extends never ? never : TT[K];
+        } : never
         : TInput;
 
-export type ExactKeysFromInputs<
-  TInputs extends any[]
-> = TInputs extends [infer TBase, ...infer TRest]
-  ? TRest extends readonly unknown[]
-    ? ExactKeysMultiple<TBase, TRest>
-    : never
-  : never;
-
-export type ExactKeysMultiple<
-  TBase,
-  TInputs extends readonly unknown[]
-> = TInputs extends [infer TFirst, ...infer TRest]
-  ? ExactKeys<TBase, TFirst> & ExactKeysMultiple<TBase, TRest>
-  : unknown;
-
+export type ExactKeysFromInputs<TInputs extends any[]> = TInputs extends [...infer TRest, infer TBase] ? (
+  TRest extends [...unknown[], unknown] ? ExactKeys<TBase, ExactKeysFromInputs<TRest>> : TBase
+) : never
 
 export type ExactShape<TBase, TInput> = 
   TBase extends ZuordType.Plain ? (
