@@ -1,12 +1,12 @@
 import { integrate } from "./integrate";
 import { mode } from "./mode";
 
-type zuordX = {
+type x = {
     readonly integrate: typeof integrate;
     readonly mode: typeof mode;
 }
 
-export const zuordX: zuordX = {
+export const x: x = {
     integrate: integrate,
     mode: mode
 };
