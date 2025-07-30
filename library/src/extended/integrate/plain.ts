@@ -43,3 +43,15 @@ function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode exten
 
 function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Loose<TBase, TInput, TMode> { return $plain(base, input, mode); }
+
+
+// STRICT
+
+function strict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>> (base: TBase, input: TInput)
+    : Integrate.Strict<TBase, TInput>;
+
+function strict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
+    : Integrate.Strict<TBase, TInput, TMode>;
+
+function strict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.Strict<TBase, TInput, TMode> { return $plain(base, input, mode); }
