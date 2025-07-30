@@ -6,5 +6,5 @@ export declare namespace Restrict {
         = $Restrict.Keys<TBase, TInput>
 
     export type ListKeys<TBase extends Type.Plain, TInputs extends Type.PlainArray> 
-        = $Restrict.ListKeys<TBase, TInputs>  extends infer T extends Type.PlainArray ? T : never
+        = $Restrict.ListKeys<TBase, TInputs> extends infer T extends Type.PlainTuple ? T : never
 }
