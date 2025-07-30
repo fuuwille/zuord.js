@@ -11,6 +11,6 @@ export declare namespace Integrate {
     export type Loose<TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain> = {}> 
         = Internal.Integrate.Plain<TBase, TInput, Core.Mode.Resolve<[typeof mode.integrate.plain, TMode]>>;
 
-    export type Strict<TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain> = {}> 
+    export type Strict<TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain> = {}> 
         = Internal.Integrate.Plain<TBase, TInput, Core.Mode.Resolve<[typeof mode.integrate.plain, TMode]>>;
 }

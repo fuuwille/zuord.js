@@ -3,7 +3,7 @@ import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 import { Pick } from "./pick.types";
 
-function plain<TPlain extends Type.Plain, TPattern extends Util.Exact.Keys<Util.Pattern<TPlain>, TPattern>>(plain: TPlain, pattern: TPattern) {
+function plain<TPlain extends Type.Plain, TPattern extends Util.Strict.Keys<Util.Pattern<TPlain>, TPattern>>(plain: TPlain, pattern: TPattern) {
     return internal.pick.plain(plain, pattern) as Pick.Plain<TPlain, TPattern>;
 }
 

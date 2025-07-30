@@ -1,1 +1,1 @@
-export { Exact } from "./exact.types";
+export { Strict } from "./exact.types";
