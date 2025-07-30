@@ -29,3 +29,14 @@ function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<T
 
 function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
+
+// LOOSE
+
+function loose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
+    : Integrate.Loose<TBase, TInput>;
+
+function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
+    : Integrate.Loose<TBase, TInput, TMode>;
+
+function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.Loose<TBase, TInput, TMode> { return $plain(base, input, mode); }
