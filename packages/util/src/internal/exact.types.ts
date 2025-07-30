@@ -14,9 +14,19 @@ export type ExactKeys<TBase, TInput> =
         } : never
         : TInput;
 
-export type ExactKeysArray<TBase, TInputs> = TInputs extends [infer TFirst, ...infer TRest]
-  ? [ExactKeys<TBase, TFirst>, ...ExactKeysArray<TBase, TRest>]
-  : TInputs;
+export type ExactKeysArray<TBase, TInputs> = TInputs extends ZuordType.TupleOf<infer T> ? (
+  ExactKeysArray2<TBase, T>
+) : TInputs extends ZuordType.ArrayOf<infer U> ? (
+    ExactKeysArray1<TBase, ZuordType.UnionToTuple<U>>[number][]
+) : never;
+
+export type ExactKeysArray1<TBase, TInputs extends readonly unknown[]> = {
+  [K in keyof TInputs]: ExactKeys<TBase, TInputs[K]>
+} extends infer T extends ZuordType.Array ? T : never;
+
+export type ExactKeysArray2<TBase, TInputs> = TInputs extends [infer TFirst, ...infer TRest]
+? [ExactKeys<TBase, TFirst>, ...ExactKeysArray2<TBase, TRest>]
+: TInputs;
   
 export type ExactShape<TBase, TInput> = 
   TBase extends ZuordType.Plain ? (
@@ -31,21 +41,3 @@ export type ExactShape<TBase, TInput> =
         [TInput[K]] extends [true] ? true : ExactShape<TBase[K], TInput[K]>
     }
   ) : TInput;
-
-type Base = {
-  a: number;
-  b: { x: boolean };
-};
-
-type InputValid = {
-  a: 42;          // 42 extends number, OK
-  b: { x: true }; // true extends boolean, OK
-};
-
-type InputInvalid = {
-  a: "string";    // string extends number? NO => never
-  b: { x: true };
-};
-
-type TestValid = ExactShape<Base, InputValid>;   // türü başarılı
-type TestInvalid = ExactShape<Base, InputInvalid>; // 'a' key için never
