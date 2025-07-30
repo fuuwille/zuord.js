@@ -1,7 +1,9 @@
 import { internalZuord as internal } from "../../internal";
 import { zuordCore as core } from "@zuord/core";
 import { zuordType as type, ZuordType as Type } from "@zuord/type";
+import { ZuordUtil as Util } from "@zuord/util";
 import { mode, Mode } from "../mode";
+import { Integrate } from "./plain.types";
 
 // PLAIN
 
@@ -16,3 +18,14 @@ const $plain = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integ
 
     return internal.integrate.plain($base, $input, core.mode.resolve([mode.integrate.plain, $mode]));
 }
+
+// RESTRICT
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>> (base: TBase, input: TInput)
+    : Integrate.Restrict<TBase, TInput>;
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
+    : Integrate.Restrict<TBase, TInput, TMode>;
+
+function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+    : Integrate.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
