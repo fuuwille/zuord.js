@@ -6,7 +6,7 @@ export type ExactKeys<TBase, TInput> =
         ? ({
             [K in keyof TInput]: K extends keyof TBase
                 ? ExactKeys<TBase[K], TInput[K]>
-                : TInput[K]
+                : never
         } & {
             [K in Exclude<keyof TBase, keyof TInput>]?: never
         }) extends infer TT ? {
@@ -14,10 +14,10 @@ export type ExactKeys<TBase, TInput> =
         } : never
         : TInput;
 
-export type ExactKeysFromInputs<TInputs extends any[]> = TInputs extends [...infer TRest, infer TBase] ? (
-  TRest extends [...unknown[], unknown] ? ExactKeys<TBase, ExactKeysFromInputs<TRest>> : TBase
-) : never
-
+export type ExactKeysArray<TBase, TInputs> = TInputs extends [infer TFirst, ...infer TRest]
+  ? [ExactKeys<TBase, TFirst>, ...ExactKeysArray<TBase, TRest>]
+  : TInputs;
+  
 export type ExactShape<TBase, TInput> = 
   TBase extends ZuordType.Plain ? (
     // 1. TInput'ta olmayan ama TBase'te olanlar => eksik key
