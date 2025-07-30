@@ -1,15 +1,19 @@
 import { ZuordType } from "@zuord/type";
 
 export namespace Exact {
-  export type Keys<TBase, TInput> = TBase extends ZuordType.Plain ? (
-    {
-      [K in keyof TInput]: K extends keyof TBase
-          ? ExactKeys<TBase[K], TInput[K]>
-          : never
-    } & {
-      [K in Exclude<keyof TBase, keyof TInput>]?: never
-    }
+  export type Keys<TBase, TInput> = [TBase, TInput] extends [infer TBase extends ZuordType.Plain, infer TInput extends ZuordType.Plain] ? (
+    KeysIncluded<TBase, TInput> & KeysExcluded<TBase, TInput>
   ) : TInput;
+
+  export type KeysIncluded<TBase extends ZuordType.Plain, TInput extends ZuordType.Plain> = {
+    [K in keyof TInput]: K extends keyof TBase
+        ? ExactKeys<TBase[K], TInput[K]>
+        : never
+  } 
+
+  export type KeysExcluded<TBase extends ZuordType.Plain, TInput extends ZuordType.Plain> = {
+    [K in Exclude<keyof TBase, keyof TInput>]?: never
+  };
 }
 
 
