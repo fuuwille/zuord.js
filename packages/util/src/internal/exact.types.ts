@@ -1,5 +1,17 @@
 import { ZuordType } from "@zuord/type";
 
+export namespace Exact {
+  export type Keys<TBase, TInput> = TBase extends ZuordType.Plain ? (
+    {
+      [K in keyof TInput]: K extends keyof TBase
+          ? ExactKeys<TBase[K], TInput[K]>
+          : never
+    } & {
+      [K in Exclude<keyof TBase, keyof TInput>]?: never
+    }
+  ) : TInput;
+}
+
 
 export type ExactKeys<TBase, TInput> = 
     TBase extends ZuordType.Plain
