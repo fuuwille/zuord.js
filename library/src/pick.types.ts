@@ -1,8 +1,9 @@
 import { InternalZuord as Internal } from "./internal";
-import { ShapeZuord as Shape } from "./shape";
+import { ZuordType as Type } from "@zuord/type";
+import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Pick {
-    export type Plain<TPlain extends Shape.OmitPlain, TPattern extends Shape.OmitPattern<TPlain, TPattern>> = Internal.Pick.Plain<TPlain, TPattern>;
+    export type Plain<TPlain extends Type.Plain, TPattern extends Util.Exact.Keys<Util.Pattern<TPlain>, TPattern>> = Internal.Pick.Plain<TPlain, TPattern>;
 
-    export type PlainLoose<TPlain extends Shape.OmitPlain, TPattern extends Shape.OmitPatternLoose<TPlain>> = Internal.Pick.Plain<TPlain, TPattern>;
+    export type PlainLoose<TPlain extends Type.Plain, TPattern extends Util.Pattern<TPlain>> = Internal.Pick.Plain<TPlain, TPattern>;
 }
