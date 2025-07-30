@@ -55,3 +55,18 @@ function strict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase,
 
 function strict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.Strict<TBase, TInput, TMode> { return $plain(base, input, mode); }
+
+
+// EXPORT
+
+type plain = {
+    readonly restrict: typeof restrict;
+    readonly loose: typeof loose;
+    readonly strict: typeof strict;
+}
+
+export const plain: plain = {
+    restrict: restrict,
+    loose: loose,
+    strict: strict
+};
