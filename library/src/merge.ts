@@ -7,14 +7,14 @@ import { ZuordUtil } from "@zuord/util";
 
 // PLAIN
 
-export function plain <TBase extends ZuordType.Plain, TRest extends ZuordUtil.Exact.PlainArray<TBase, TRest>> (content: [TBase, ...TRest]) 
-    : Merge.Object<[TBase, ...TRest]>;
+export function plain <TContent extends ZuordType.PlainArray> (content: [...TContent]) 
+    :  Merge.Object<TContent>
 
-export function plain <TBase extends ZuordType.Plain, TRest extends ZuordUtil.Exact.PlainArray<TBase, TRest>, TMode extends Shape.MergeMode> (content: [TBase, ...TRest], mode: TMode)
-    :  Merge.Object<[TBase, ...TRest]>
+export function plain <TContent extends ZuordType.PlainArray, TMode extends Shape.MergeMode> (content: [...TContent], mode: TMode)
+    :  Merge.Object<TContent>
 
-export function plain <TBase extends ZuordType.Plain, TRest extends ZuordUtil.Exact.PlainArray<TBase, TRest>, TMode extends Shape.MergeMode> (content: [TBase, ...TRest], mode?: TMode)
-    : Merge.Object<[TBase, ...TRest]>
+export function plain <TContent extends ZuordType.PlainArray, TMode extends Shape.MergeMode> (content: [...TContent], mode?: TMode)
+    :  Merge.Object<TContent>
     {
 
     if(!shape.mergeContent(content)) {
