@@ -88,7 +88,7 @@ function plainLoose <TBase extends Type.Plain, TInput extends Type.Plain, TMode 
  *
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  */
-function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>> (base: TBase, input: TInput)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>> (base: TBase, input: TInput)
     : Integrate.PlainStrict<TBase, TInput>;
 
 /**
@@ -102,10 +102,10 @@ function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainS
  * @throws {TypeError} If either `base` or `input` is not a valid plain.
  * @throws {TypeError} If `mode` is not a valid mode.
  */
-function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode>;
 
-function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.PlainStrict<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
+function plainStrict <TBase extends Type.Plain, TInput extends Util.Exact.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
     : Integrate.PlainStrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 
