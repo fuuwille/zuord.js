@@ -2,8 +2,8 @@ import { plain, array } from "./alias";
 import type { Plain as $Plain, Array as $Array } from "./alias.types";
 
 export declare const integrate: {
-    plain: typeof plain;
-    array: typeof array;
+    readonly plain: typeof plain;
+    readonly array: typeof array;
 };
 
 export declare namespace Integrate {
