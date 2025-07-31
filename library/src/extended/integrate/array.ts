@@ -16,3 +16,14 @@ function loose <TBase extends Type.Array, TInput extends Type.Array, TMode exten
 
 function loose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordX.Mode.Integrate.Array>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : ZuordX.Integrate.Array.Loose<TBase, TInput, TMode> { return $array(base, input, mode) as ZuordX.Integrate.Array.Loose<TBase, TInput, TMode>; }
+
+
+// EXPORT
+
+type array = {
+    readonly loose: typeof loose;
+};
+
+export const array: array = {
+    loose: loose
+};
