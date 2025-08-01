@@ -1,4 +1,4 @@
-import type * as $plain from "./plain";
+import type * as $plain from "./plain.runtime";
 import type * as $array from "./array";
 
 type plainAPI = {
