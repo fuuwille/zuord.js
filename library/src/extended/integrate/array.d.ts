@@ -1,7 +1,7 @@
-import type * as $array from "./array.runtime";
+import type { loose as $loose } from "./array.runtime";
 
 type arrayAPI = {
-    loose: typeof $array.loose;
+    loose: typeof $loose;
 }
 
 export declare const array: arrayAPI;
