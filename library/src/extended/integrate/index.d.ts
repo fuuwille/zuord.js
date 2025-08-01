@@ -1,10 +1,12 @@
 import * as $integrate from "./alias";
 import type * as $Integrate from "./alias.types";
 
-export declare const integrate: {
+type integrateAPI = {
     readonly plain: typeof $integrate.plain;
     readonly array: typeof $integrate.array;
-};
+}
+
+export declare const integrate: integrateAPI;
 
 export declare namespace Integrate {
     export import Plain = $Integrate.Plain;
