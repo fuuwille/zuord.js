@@ -1,9 +1,9 @@
-import * as $integrate from "./alias";
-import type * as $Integrate from "./alias.types";
+import { plain as $plain } from "./index.runtime";
+import { array as $array } from "./index.runtime";
 
 type integrateAPI = {
-    readonly plain: typeof $integrate.plain;
-    readonly array: typeof $integrate.array;
+    readonly plain: typeof $plain;
+    readonly array: typeof $array;
 }
 
 export declare const integrate: integrateAPI;
