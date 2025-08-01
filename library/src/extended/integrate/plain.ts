@@ -1,12 +1,14 @@
 import { internalZuord as internal } from "../../internal";
 import { zuordCore as core } from "@zuord/core";
 import { zuordType as type } from "@zuord/type";
-import { ZuordUtil as Util } from "@zuord/util";
 import { mode, Mode } from "../mode";
 
-import type { ZuordType as Type } from "@zuord/type";
 import type { ZuordX } from "..";
+import type { ZuordType as Type } from "@zuord/type";
+import type { ZuordUtil as Util } from "@zuord/util";
 
+
+//
 
 const $ = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integrate.Plain>) => {
     if(!type.plain($base)) {
