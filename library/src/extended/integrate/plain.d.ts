@@ -1,9 +1,11 @@
-import type * as $plain from "./plain.runtime";
+import type { loose as $loose } from "./array.runtime";
+import type { restrict as $restrict } from "./plain.runtime";
+import type { strict as $strict } from "./plain.runtime";
 
 type plainAPI = {
-    loose: typeof $plain.loose;
-    restrict: typeof $plain.restrict;
-    strict: typeof $plain.strict;
+    loose: typeof $loose;
+    restrict: typeof $restrict;
+    strict: typeof $strict;
 }
 
 export declare const plain: plainAPI;
