@@ -1,4 +1,4 @@
-import type { loose as $loose } from "./array.runtime";
+import type { loose as $loose } from "./plain.runtime";
 import type { restrict as $restrict } from "./plain.runtime";
 import type { strict as $strict } from "./plain.runtime";
 
