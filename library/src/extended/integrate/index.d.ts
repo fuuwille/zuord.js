@@ -8,7 +8,4 @@ type integrateAPI = {
 
 export declare const integrate: integrateAPI;
 
-export declare namespace Integrate {
-    export import Plain = $Integrate.Plain;
-    export import Array = $Integrate.Array;
-}
+export { Integrate } from "./index.types";
