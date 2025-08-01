@@ -1,7 +1,7 @@
-import { loose, restrict, strict } from "./plain";
+import * as $plain from "./plain";
 
 export declare const plain: {
-    loose: typeof loose;
-    restrict: typeof restrict;
-    strict: typeof strict;
+    loose: typeof $plain.loose;
+    restrict: typeof $plain.restrict;
+    strict: typeof $plain.strict;
 }
