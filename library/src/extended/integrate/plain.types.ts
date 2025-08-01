@@ -1,8 +1,12 @@
-import { InternalZuord as Internal } from "../../internal";
-import { ZuordType as Type } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
-import { ZuordUtil as Util } from "@zuord/util";
-import { mode, Mode } from "../mode";
+import { mode } from "../mode";
+
+import type { Mode } from "../mode";
+import type { ZuordType as Type } from "@zuord/type";
+import type { ZuordCore as Core } from "@zuord/core";
+import type { ZuordUtil as Util } from "@zuord/util";
+import type { InternalZuord as Internal } from "../../internal";
+
+//
 
 export type Loose<TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain> = {}> 
     = Internal.Integrate.Plain<TBase, TInput, Core.Mode.Resolve<[typeof mode.integrate.plain, TMode]>>;
