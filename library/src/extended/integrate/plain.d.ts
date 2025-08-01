@@ -7,3 +7,5 @@ type plainAPI = {
 }
 
 export declare const plain: plainAPI;
+
+export { Plain } from "./plain.types";
