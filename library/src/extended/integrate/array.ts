@@ -8,22 +8,11 @@ const $array = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordX.Mod
     return internal.integrate.array($base, $input, core.mode.resolve([mode.integrate.array, $mode]));
 }
 
-function loose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
+export function loose <TBase extends Type.Array, TInput extends Type.Array> (base: TBase, input: TInput)
     : ZuordX.Integrate.Array.Loose<TBase, TInput>;
 
-function loose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordX.Mode.Integrate.Array>> (base: TBase, input: TInput, mode : TMode)
+export function loose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordX.Mode.Integrate.Array>> (base: TBase, input: TInput, mode : TMode)
     : ZuordX.Integrate.Array.Loose<TBase, TInput, TMode>;
 
-function loose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordX.Mode.Integrate.Array>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
+export function loose <TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordX.Mode.Integrate.Array>> (base: TBase, input: TInput, mode : TMode = {} as TMode)
     : ZuordX.Integrate.Array.Loose<TBase, TInput, TMode> { return $array(base, input, mode) as ZuordX.Integrate.Array.Loose<TBase, TInput, TMode>; }
-
-
-// EXPORT
-
-type array = {
-    readonly loose: typeof loose;
-};
-
-export const array: array = {
-    loose: loose
-};
