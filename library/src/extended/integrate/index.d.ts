@@ -1,12 +1,12 @@
-import { plain, array } from "./alias";
-import type { Plain as $Plain, Array as $Array } from "./alias.types";
+import * as $integrate from "./alias";
+import type * as $Integrate from "./alias.types";
 
 export declare const integrate: {
-    readonly plain: typeof plain;
-    readonly array: typeof array;
+    readonly plain: typeof $integrate.plain;
+    readonly array: typeof $integrate.array;
 };
 
 export declare namespace Integrate {
-    export import Plain = $Plain;
-    export import Array = $Array;
+    export import Plain = $Integrate.Plain;
+    export import Array = $Integrate.Array;
 }
