@@ -1,4 +1,4 @@
-import { integrate } from "./integrate";
+import { integrate } from "./integrate.runtime";
 
 type mode = {
     readonly integrate: typeof integrate;
