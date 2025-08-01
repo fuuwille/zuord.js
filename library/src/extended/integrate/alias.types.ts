@@ -1,2 +1,2 @@
 export type { Plain } from "./plain.types";
-export type { Array } from "./array.types";
+export type * as Array from "./array.types";
