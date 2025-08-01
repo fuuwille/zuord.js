@@ -1,2 +1,2 @@
-export * as plain from "./plain";
-export * as array from "./array";
+export { plain } from "./plain";
+export { array } from "./array";
