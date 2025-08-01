@@ -1,14 +1,14 @@
 import { internalZuord as internal } from "../../internal";
 import { zuordCore as core } from "@zuord/core";
-import { zuordType as type, ZuordType as Type } from "@zuord/type";
+import { zuordType as type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 import { mode, Mode } from "../mode";
+
+import type { ZuordType as Type } from "@zuord/type";
 import type { ZuordX } from "..";
 
 
-// PLAIN
-
-const $plain = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integrate.Plain>) => {
+const $ = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integrate.Plain>) => {
     if(!type.plain($base)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
@@ -30,7 +30,7 @@ export function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMod
     : ZuordX.Integrate.Plain.Loose<TBase, TInput, TMode>;
 
 export function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Plain.Loose<TBase, TInput, TMode> { return $plain(base, input, mode); }
+    : ZuordX.Integrate.Plain.Loose<TBase, TInput, TMode> { return $(base, input, mode); }
 
 
 // RESTRICT
@@ -42,7 +42,7 @@ export function restrict <TBase extends Type.Plain, TInput extends Util.Restrict
     : ZuordX.Integrate.Plain.Restrict<TBase, TInput, TMode>;
 
 export function restrict <TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Plain.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
+    : ZuordX.Integrate.Plain.Restrict<TBase, TInput, TMode> { return $(base, input, mode); }
 
 
 // STRICT
@@ -54,4 +54,4 @@ export function strict <TBase extends Type.Plain, TInput extends Util.Strict.Key
     : ZuordX.Integrate.Plain.Strict<TBase, TInput, TMode>;
 
 export function strict <TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>, TMode extends Partial<Mode.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Plain.Strict<TBase, TInput, TMode> { return $plain(base, input, mode); }
+    : ZuordX.Integrate.Plain.Strict<TBase, TInput, TMode> { return $(base, input, mode); }
