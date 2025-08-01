@@ -1,12 +1,16 @@
-import * as $plain from "./plain";
-import * as $array from "./array";
+import type * as $plain from "./plain";
+import type * as $array from "./array";
 
-export declare const plain: {
+type plainAPI = {
     loose: typeof $plain.loose;
     restrict: typeof $plain.restrict;
     strict: typeof $plain.strict;
 }
 
-export declare const array: {
+export declare const plain: plainAPI;
+
+type arrayAPI = {
     loose: typeof $array.loose;
-};
+}
+
+export declare const array: arrayAPI;
