@@ -7,3 +7,5 @@ type integrateAPI = {
 }
 
 export declare const integrate: integrateAPI;
+
+export { Integrate } from "./integrate.types";
