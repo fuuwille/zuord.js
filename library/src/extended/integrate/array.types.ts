@@ -8,5 +8,7 @@ import type { InternalZuord as Internal } from "../../internal";
 
 //
 
-export type Loose<TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<Mode.Integrate.Array> = {}> 
-    = Internal.Integrate.Array<TBase, TInput, Core.Mode.Resolve<[typeof mode.integrate.array, TMode]>>;
+export namespace Array {
+    export type Loose<TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<Mode.Integrate.Array> = {}> 
+        = Internal.Integrate.Array<TBase, TInput, Core.Mode.Resolve<[typeof mode.integrate.array, TMode]>>;
+}
