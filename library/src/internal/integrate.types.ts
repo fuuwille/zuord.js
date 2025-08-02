@@ -2,7 +2,7 @@ import { ZuordType as Type } from "@zuord/type";
 import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Integrate {
-    export type Object<A, B, TMode> = (
+    export type Unknown<A, B, TMode> = (
         [A, B] extends [infer A extends Type.Array, infer B extends Type.Array] ? (
             Array<A, B, TMode>
         ) : 
@@ -33,7 +33,7 @@ export declare namespace Integrate {
 
     export type PlainOverlap<A extends Type.Plain, B extends Type.Plain, TMode> = ({
         [K in keyof A]: K extends keyof B ? (
-            TMode extends { shallow: true } ? B[K] : Object<A[K], B[K], TMode>
+            TMode extends { shallow: true } ? B[K] : Unknown<A[K], B[K], TMode>
         ) : A[K];
     });
 
