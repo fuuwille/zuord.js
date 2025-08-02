@@ -5,3 +5,5 @@ type zuordModeAPI = {
 }
 
 export declare const zuordMode: zuordModeAPI;
+
+export { ZuordMode } from "./index.types";
