@@ -1,4 +1,4 @@
-import { mode } from "../mode";
+import { zuordMode } from "../../mode/";
 import { zuordCore as core } from "@zuord/core";
 import { $zuord } from "../../internal";
 
@@ -9,7 +9,7 @@ import type { ZuordType as Type } from "@zuord/type";
 //
 
 const $ = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordX.Mode.Integrate.Array>) => {
-    return $zuord.integrate.array($base, $input, core.mode.resolve([mode.integrate.array, $mode]));
+    return $zuord.integrate.array($base, $input, core.mode.resolve([zuordMode.extended.integrate.array, $mode]));
 }
 
 
