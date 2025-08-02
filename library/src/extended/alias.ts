@@ -1,1 +1,1 @@
-export { integrate } from "./integrate";
+export { integrate } from "./zuord/integrate";

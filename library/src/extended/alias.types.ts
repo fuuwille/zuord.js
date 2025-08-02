@@ -1,1 +1,1 @@
-export type { Integrate } from "./integrate";
+export type { Integrate } from "./zuord/integrate";
