@@ -1,4 +1,4 @@
-import { internalZuord as internal } from "../../internal";
+import { $zuord } from "../../internal";
 import { zuordCore as core } from "@zuord/core";
 import { zuordType as type } from "@zuord/type";
 import { mode, Mode } from "../mode";
@@ -19,7 +19,7 @@ const $ = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<Mode.Integrate.
         throw new TypeError("Integrate function expects the input to be a valid plain.");
     }
 
-    return internal.integrate.plain($base, $input, core.mode.resolve([mode.integrate.plain, $mode]));
+    return $zuord.integrate.plain($base, $input, core.mode.resolve([mode.integrate.plain, $mode]));
 }
 
 
