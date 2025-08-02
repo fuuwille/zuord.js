@@ -25,11 +25,3 @@ export const plain = <T, P>(plain: T, pattern: P) => {
 
     return result;
 };
-
-type pick = {
-    plain: typeof plain;
-}
-
-export const pick: pick = {
-    plain
-}
