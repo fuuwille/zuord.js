@@ -1,4 +1,4 @@
-import { integrate } from "./integrate";
+import { integrate } from "./integrate.runtime";
 
 const object = <TContent, TMode>(content: TContent, mode: TMode)=> {
     if (!Array.isArray(content) || content.length == 0) return {};

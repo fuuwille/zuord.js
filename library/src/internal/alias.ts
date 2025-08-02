@@ -1,4 +1,4 @@
-import { integrate } from "./integrate";
+import { integrate } from "./integrate.runtime";
 import { merge } from "./merge";
 import { pick } from "./pick";
 import { omit } from "./omit";
