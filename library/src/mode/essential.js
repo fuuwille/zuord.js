@@ -1,1 +1,1 @@
-export * as essantial from "./essential.runtime";
+export * as essential from "./essential.runtime";
