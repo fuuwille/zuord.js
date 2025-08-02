@@ -5,3 +5,5 @@ type zuordAPI = {
 }
 
 export declare const zuord: zuordAPI;
+
+export { ZuordModeX } from "./mode.types";
