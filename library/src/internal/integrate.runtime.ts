@@ -1,5 +1,5 @@
 import { zuordType, ZuordType } from "@zuord/type";
-import { Mode } from "./mode.types";
+import { ZuordCore as Core } from "@zuord/core";
 
 export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
     if(zuordType.plain(base) && zuordType.plain(input)) {
@@ -14,7 +14,7 @@ export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: 
 }
 
 export const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
-    const { shallow } = mode as Mode.Integrate;
+    const { shallow } = mode as Core.Mode.Field;
 
     const result: any = {};
     const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
@@ -49,7 +49,7 @@ export const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Pl
 }
 
 export const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TMode>(base: TBase, input: TInput, mode: TMode) => {
-    const { concat, unique } = mode as Mode.Integrate;
+    const { concat, unique } = mode as Core.Mode.Field;
 
     if (concat) {
         return unique ? Array.from(new Set([...base, ...input])) : [...base, ...input];
