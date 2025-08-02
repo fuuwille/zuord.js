@@ -5,3 +5,5 @@ type zuordXAPI = {
 }
 
 export declare const zuordX: zuordXAPI;
+
+export { ZuordX } from "./index.types";
