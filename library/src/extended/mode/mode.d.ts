@@ -1,4 +1,4 @@
-import { integrate as $integrate } from "./index.runtime";
+import { integrate as $integrate } from "./mode.runtime";
 
 type zuordAPI = {
     integrate: typeof $integrate;
