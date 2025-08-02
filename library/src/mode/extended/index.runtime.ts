@@ -1,1 +1,0 @@
-export { integrate } from "./integrate";

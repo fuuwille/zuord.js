@@ -1,1 +1,0 @@
-export * as zuordMode from "./index.runtime";
