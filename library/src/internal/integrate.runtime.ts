@@ -1,7 +1,7 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { Mode } from "./mode.types";
 
-const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
+export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
     if(zuordType.array(base) && zuordType.array(input)) {
         return array(base, input, mode);
     }
@@ -13,7 +13,7 @@ const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, 
     return input;
 }
 
-const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
+export const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
     const { shallow } = mode as Mode.Integrate;
 
     const result: any = {};
@@ -48,7 +48,7 @@ const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TM
     return result;
 }
 
-const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TMode>(base: TBase, input: TInput, mode: TMode) => {
+export const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TMode>(base: TBase, input: TInput, mode: TMode) => {
     const { concat, unique } = mode as Mode.Integrate;
 
     if (concat) {
@@ -56,18 +56,4 @@ const array = <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TM
     }
 
     return input;
-}
-
-//
-
-type integrate = {
-    unknown: typeof unknown;
-    plain: typeof plain;
-    array: typeof array;
-};
-
-export const integrate : integrate = {
-    unknown: unknown,
-    plain: plain,
-    array: array
 }
