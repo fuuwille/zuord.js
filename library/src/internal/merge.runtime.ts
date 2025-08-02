@@ -16,3 +16,7 @@ export const unknown = <TContent, TMode>(content: TContent, mode: TMode) => {
 export const plain = <TContent, TMode>(content: TContent, mode: TMode) => {
     return $(content, mode, integrate.plain);
 }
+
+export const array = <TContent, TMode>(content: TContent, mode: TMode) => {
+    return $(content, mode, integrate.array);
+}
