@@ -9,3 +9,5 @@ type mergeAPI = {
 }
 
 export declare const merge: mergeAPI;
+
+export { Merge } from "./merge.types";
