@@ -1,6 +1,6 @@
 import { zuordCore as core } from "@zuord/core";
 
-import type { ZuordModeX } from "./mode.types";
+import type { ZuordModeX } from ".";
 
 
 //
