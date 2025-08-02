@@ -1,2 +1,7 @@
-export { extended } from "./extended";
-export { essential } from "./essential";
+import { extended } from './extended';
+
+export const integrate = extended.integrate.plain;
+
+export const integrateArray = extended.integrate.array;
+
+export { extended };
