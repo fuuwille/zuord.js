@@ -1,1 +1,0 @@
-export type { Integrate } from "./zuord/integrate";
