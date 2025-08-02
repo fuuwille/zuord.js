@@ -10,4 +10,4 @@ type zuordAPI = {
 
 export declare const zuord: zuordAPI;
 
-export { Zuord } from "./index.types.ts";
+export { Zuord } from "./index.types";
