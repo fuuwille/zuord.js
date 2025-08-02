@@ -3,12 +3,8 @@ import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Integrate {
     export type Unknown<A, B, TMode> = (
-        [A, B] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? (
-            Plain<A, B, TMode>
-        ) :
-        [A, B] extends [infer A extends Type.Array, infer B extends Type.Array] ? (
-            Array<A, B, TMode>
-        ) : B
+        [A, B] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Plain<A, B, TMode> :
+        [A, B] extends [infer A extends Type.Array, infer B extends Type.Array] ? Array<A, B, TMode> : B
     );
 
     export type Plain<A extends Type.Plain, B extends Type.Plain, TMode> = (
