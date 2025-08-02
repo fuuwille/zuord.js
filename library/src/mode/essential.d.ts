@@ -7,3 +7,5 @@ type essantialAPI = {
 }
 
 export declare const essantial: essantialAPI;
+
+export { Essential } from "./essantial.types";
