@@ -1,2 +1,2 @@
-export * as zuordX from "./alias";
-export * as ZuordX from "./alias.types";
+export { zuordX } from "./zuord";
+export { zuordModeX } from "./mode";
