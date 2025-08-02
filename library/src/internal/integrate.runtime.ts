@@ -2,12 +2,12 @@ import { zuordType, ZuordType } from "@zuord/type";
 import { Mode } from "./mode.types";
 
 export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
-    if(zuordType.array(base) && zuordType.array(input)) {
-        return array(base, input, mode);
-    }
-
     if(zuordType.plain(base) && zuordType.plain(input)) {
         return plain(base, input, mode);
+    }
+
+    if(zuordType.array(base) && zuordType.array(input)) {
+        return array(base, input, mode);
     }
 
     return input;
