@@ -1,9 +1,9 @@
 import { integrate as $integrate } from "./mode.runtime";
 
-type zuordAPI = {
+type zuordModeXAPI = {
     integrate: typeof $integrate;
 }
 
-export declare const zuord: zuordAPI;
+export declare const zuordModeX: zuordModeXAPI;
 
 export { ZuordModeX } from "./mode.types";
