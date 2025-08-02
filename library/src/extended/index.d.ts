@@ -1,12 +1,6 @@
-import { integrate as $integrate, mode as $mode } from "./alias";
-import type { Integrate as $Integrate, Mode as $Mode } from "./alias.types";
+import { zuordX as $zuordX } from "./zuord";
+import { zuordModeX as $zuordModeX } from "./mode";
 
-type zuordXAPI = {
-    integrate: typeof $integrate;
-}
+export declare const zuordX: typeof $zuordX;
 
-export declare const zuordX: zuordXAPI;
-
-export declare namespace ZuordX {
-    export import Integrate = $Integrate;
-}
+export declare const zuordModeX: typeof $zuordModeX;
