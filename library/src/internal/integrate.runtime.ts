@@ -1,7 +1,7 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 
-export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode, _strict: boolean) => {
+export const unknown = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode) => {
     if(zuordType.plain(base) && zuordType.plain(input)) {
         return plain(base, input, mode);
     }
