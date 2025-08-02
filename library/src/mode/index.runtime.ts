@@ -1,0 +1,1 @@
+export { extended } from "./extended";
