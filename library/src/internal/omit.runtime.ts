@@ -1,4 +1,4 @@
-const plain = <T, P>(plain: T, pattern: P) => {
+export const plain = <T, P>(plain: T, pattern: P) => {
     const result: any = {};
     const stack: Array<{ source: any; pattern: any; target: any }> = [
         { source: plain, pattern, target: result },
@@ -30,11 +30,3 @@ const plain = <T, P>(plain: T, pattern: P) => {
 
     return result;
 };
-
-type omit = {
-    plain: typeof plain;
-}
-
-export const omit: omit = {
-    plain
-}
