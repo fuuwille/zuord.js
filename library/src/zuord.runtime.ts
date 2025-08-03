@@ -1,5 +1,5 @@
-import { integrate as $integrate } from "./extended/zuord/integrate";
+import { zuordX } from "zuord/extended";
 
-export const integrate = $integrate.plain.restrict;
+export const integrate = zuordX.integrate.plain.restrict;
 
-export const integrateArray = $integrate.array.loose;
+export const integrateArray = zuordX.integrate.array.loose;
