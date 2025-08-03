@@ -4,6 +4,7 @@
         "paths": {
             "zuord": ["../../library/src"],
             "zuord/internal": ["../../library/src/internal"],
+            "zuord/extended": ["../../library/src/extended"],
             "@zuord/core": ["../../packages/core/src"],
             "@zuord/type": ["../../packages/type/src"],
             "@zuord/util": ["../../packages/util/src"],
