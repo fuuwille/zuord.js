@@ -1,4 +1,4 @@
-import { $zuord } from "../../../internal";
+import { $zuord } from "zuord/internal";
 import { zuordCore as core } from "@zuord/core";
 import { zuordType as type } from "@zuord/type";
 import { zuordModeX } from "../../mode";

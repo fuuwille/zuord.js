@@ -4,7 +4,7 @@ import type { ZuordModeX } from "../../mode";
 import type { ZuordType as Type } from "@zuord/type";
 import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
-import type { $Zuord } from "../../../internal";
+import type { $Zuord } from "zuord/internal";
 
 
 //
