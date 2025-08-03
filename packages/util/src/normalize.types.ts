@@ -23,3 +23,9 @@ export type Normalize<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
         } : never: never )
     ) : T
 ) : any;
+
+export type NormalizePlain<T, TMode> = ZuordTrait.Is<T, ZuordType.Plain> extends true ? ({
+    [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
+}) extends infer TNormalized ? {
+    [K in keyof TNormalized]: NormalizePlain<TNormalized[K], TMode>  
+} : never : T;
