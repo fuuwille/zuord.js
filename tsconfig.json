@@ -14,6 +14,7 @@
     "baseUrl": ".",
     "paths": {
       "zuord": ["../library/src"],
+      "zuord/extended": ["../library/src/extended"],
       "zuord/internal": ["../library/src/internal"],
       "@zuord/type": ["../packages/type/src"],
       "@zuord/core": ["../packages/core/src"],
