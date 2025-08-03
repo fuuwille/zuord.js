@@ -1,1 +1,0 @@
-export * as zuordModeX from "./mode.runtime";
