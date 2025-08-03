@@ -1,7 +1,7 @@
-import { Integrate as $Integrate } from "./extended/zuord/integrate";
+import { ZuordX } from "zuord/extended";
 
 export declare namespace Zuord {
-    export import Integrate = $Integrate.Plain.Restrict;
+    export import Integrate = ZuordX.Integrate.Plain.Restrict;
 
-    export import IntegrateArray = $Integrate.Array.Loose;
+    export import IntegrateArray = ZuordX.Integrate.Array.Loose;
 }
