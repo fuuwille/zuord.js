@@ -1,1 +1,1 @@
-export { integrate } from "./integrate";
+export { integrate, Integrate } from "./integrate";
