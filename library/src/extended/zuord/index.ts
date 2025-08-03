@@ -1,0 +1,1 @@
+export { zuordX, ZuordX } from "./zuord";
