@@ -1,3 +1,4 @@
+import { ZuordUtil } from "@zuord/util";
 import { Integrate } from "./integrate.types";
 import { ZuordType } from "@zuord/type";
 
@@ -21,9 +22,7 @@ export declare namespace Merge {
 
     export type ObjectFromArray<TContent, TMode> = TContent extends readonly (infer TInfer)[] ? (
         ZuordType.PlainAsRequired<TInfer> extends infer TRequired ? (
-            ZuordType.UnionToTuple<TRequired> extends infer TNormalized ? (
-                ObjectFromTuple<TNormalized, TMode> 
-            ) : never
+            ZuordUtil.Normalize<TRequired, TMode>
         ) : never
     ) : never;
 }
