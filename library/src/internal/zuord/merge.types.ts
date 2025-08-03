@@ -4,7 +4,7 @@ import { ZuordType } from "@zuord/type";
 
 export declare namespace Merge {
     export type Object<TContent, TMode> = (
-        TContent extends [...unknown[], unknown]  ? (
+        TContent extends ZuordType.EndingTuple  ? (
             ObjectFromTuple<TContent, TMode>
         ) : 
         TContent extends ZuordType.Array ? (
@@ -13,7 +13,7 @@ export declare namespace Merge {
     );
 
     export type ObjectFromTuple<TContent, TMode> = (
-        TContent extends [...infer TRest, infer TLast] ? (
+        TContent extends ZuordType.EndingTupleWith<infer TRest, infer TLast> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.Unknown<TRest[0], TLast, TMode> 
             : Integrate.Unknown<ObjectFromTuple<TRest, TMode>, TLast, TMode>
