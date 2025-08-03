@@ -1,4 +1,4 @@
-import { integrate as $integrate } from "./index.runtime";
+import { integrate as $integrate } from "./zuord.runtime";
 
 type zuordXAPI = {
     integrate: typeof $integrate;
@@ -6,4 +6,4 @@ type zuordXAPI = {
 
 export declare const zuordX: zuordXAPI;
 
-export { ZuordX } from "./index.types";
+export { ZuordX } from "./zuord.types";
