@@ -1,6 +1,6 @@
 import { integrate as $integrate } from "./index.runtime";
 import { merge as $merge } from "./index.runtime";
-import { evolve as $evolve } from "./evolve.runtime";
+import { evolve as $evolve } from "./index.runtime";
 
 type $zuordAPI = {
     integrate: typeof $integrate;
