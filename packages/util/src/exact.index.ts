@@ -1,1 +1,0 @@
-export { Strict } from "./exact.types";
