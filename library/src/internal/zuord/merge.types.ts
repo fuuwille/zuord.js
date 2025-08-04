@@ -22,7 +22,7 @@ export declare namespace Merge {
 
     export type ObjectFromArray<TContent, TMode> = TContent extends readonly (infer TInfer)[] ? (
         ZuordType.PlainAsRequired<TInfer> extends infer TRequired ? (
-            ZuordUtil.Normalize<TRequired, TMode>
+            ZuordUtil.Normalize.Plain<TRequired, TMode>
         ) : never
     ) : never;
 }
