@@ -1,0 +1,1 @@
+export { Strict } from "./strict.types";
