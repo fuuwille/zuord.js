@@ -10,4 +10,6 @@ export type EndingTupleOf<T> = readonly [...T[], T];
 
 export type EndingTupleWith<TRest extends unknown[], TLast extends unknown> = readonly [...TRest, TLast];
 
-export type PureTuple = readonly [unknown] | [unknown, ...[unknown, ...unknown[]]];
+export type PureTuple = PureTupleOf<unknown>;
+
+export type PureTupleOf<T> = readonly [T] | [T, ...[T, ...T[]]];
