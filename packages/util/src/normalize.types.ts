@@ -24,6 +24,10 @@ export type NormalizeTuple<T extends ZuordType.Tuple, TMode> = {
     [K in keyof T]: Normalize<T[K], TMode> 
 };
 
+export type NormalizeArray<T extends ZuordType.Array, TMode> = (
+    Normalize<T[number], TMode>[]
+);
+
 export type NormalizePlain<T extends ZuordType.Plain, TMode> = (
     NormalizePlainOverlap<T> extends infer TNormalized ? { 
         [K in keyof TNormalized]: Normalize<TNormalized[K], TMode>  
