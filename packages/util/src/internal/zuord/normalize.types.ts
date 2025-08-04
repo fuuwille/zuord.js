@@ -8,8 +8,12 @@ export declare namespace Normalize {
     ) : T;
 
     export type PlainExtract<T, TMode> = (
-        ZuordType.UnionToIntersection<T> extends infer V ? ({ 
-            [K in keyof V]: Normalize.Plain<V[K], TMode>      
+        PlainFill<T> extends infer TFilled ? ({
+            [K in keyof TFilled]: Normalize.Plain<TFilled[K], TMode>;
         }) : never
     );
+
+    export type PlainFill<T> = {
+        [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
+    };
 }
