@@ -7,3 +7,5 @@ type evolveAPI = {
 };
 
 export declare const evolve: evolveAPI;
+
+export { Evolve } from "./evolve.types";
