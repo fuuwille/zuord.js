@@ -10,9 +10,7 @@ export type Normalize<T, TMode> = (
     ) :
     [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? (
         | (ZuordTrait.Exclude<T, ZuordType.Array> extends infer TExcluded ? Normalize<TExcluded, TMode> : never)
-        | (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted extends ZuordType.Array ? (
-            Normalize<TExtracted[number], TMode>[]
-        ) : never )
+        | (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted extends ZuordType.Array ? NormalizeArray<TExtracted, TMode> : never )
     ) :     
     [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
         | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) 
