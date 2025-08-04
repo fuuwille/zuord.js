@@ -7,11 +7,11 @@ export declare namespace Normalize {
         | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? Normalize.PlainExtract<TExtracted, TMode> : never)
     ) : T;
 
-    export type PlainExtract<T, TMode> = (
+    export type PlainExtract<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
         PlainComposite<T> extends infer TFilled ? ({
             [K in keyof TFilled]: Normalize.PlainResolve<TFilled[K], TMode>;
         }) : never
-    );
+    ) : any;
 
     export type PlainComposite<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
