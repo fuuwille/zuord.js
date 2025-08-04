@@ -26,12 +26,12 @@ export type Normalize<T, TMode> = (
     ) : T
 )
 
-export type NormalizePlain<T, TMode> = (
+export type NormalizePlain<T extends ZuordType.Plain, TMode> = (
     NormalizePlainOverlap<T> extends infer TNormalized ? { 
         [K in keyof TNormalized]: Normalize<TNormalized[K], TMode>  
     } : never
 );
 
-export type NormalizePlainOverlap<T> = {
+export type NormalizePlainOverlap<T extends ZuordType.Plain> = {
     [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
 }
