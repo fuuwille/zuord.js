@@ -1,4 +1,4 @@
-import { Restrict as $Restrict } from "./internal/restrict.types";
+import { Restrict as $Restrict } from "./internal";
 import { ZuordType as Type } from "@zuord/type";
 
 export declare namespace Restrict {
