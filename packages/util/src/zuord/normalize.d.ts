@@ -1,1 +1,1 @@
-export type { Normalize } from "./normalize.types";
+export { Normalize } from "./normalize.types";
