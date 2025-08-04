@@ -1,7 +1,9 @@
 import { ZuordType } from "@zuord/type";
 import { ZuordTrait } from "@zuord/trait";
 
-export type Normalize<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
+export type Normalize<T, TMode> = (
+    [ZuordTrait.Eq<T, any>] extends [true] ? any :
+    [ZuordTrait.Is<T, ZuordType.Primitive>] extends [true] ? T :
     [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
         (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
         (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? {
@@ -22,7 +24,7 @@ export type Normalize<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
             [K in keyof TTO]: Normalize<TTO[K], TMode>;
         } : never: never )
     ) : T
-) : any;
+)
 
 export type NormalizePlain<T, TMode> = (
     NormalizePlainOverlap<T> extends infer TNormalized ? { 
