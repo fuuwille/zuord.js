@@ -2,14 +2,14 @@ import { ZuordTrait } from "@zuord/trait";
 import { ZuordType } from "@zuord/type";
 
 export declare namespace Normalize {
-    export type PlainResolve<T, TMode> = [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
-        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize.PlainResolve<TExcluded, TMode> : never)
+    export type Plain<T, TMode> = (
+        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? TExcluded : never)
         | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? Normalize.PlainExtract<TExtracted, TMode> : never)
-    ) : T;
+    );
 
     export type PlainExtract<T, TMode> = (
         PlainComposite<T> extends infer TFilled ? ({
-            [K in keyof TFilled]: Normalize.PlainResolve<TFilled[K], TMode>;
+            [K in keyof TFilled]: Normalize.Plain<TFilled[K], TMode>;
         }) : never
     );
 
