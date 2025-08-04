@@ -4,7 +4,7 @@ import { ZuordType } from "@zuord/type";
 
 export declare namespace Merge {
     export type Object<TContent, TMode> = (
-        TContent extends ZuordType.EndingTuple  ? (
+        ZuordType.IsPureTuple<TContent> extends true ? (
             ObjectFromTuple<TContent, TMode>
         ) : 
         TContent extends ZuordType.Array ? (
