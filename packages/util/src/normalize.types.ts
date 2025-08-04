@@ -4,36 +4,30 @@ import { ZuordTrait } from "@zuord/trait";
 export type Normalize<T, TMode> = (
     [ZuordTrait.Eq<T, any>] extends [true] ? any :
     [ZuordTrait.Is<T, ZuordType.Primitive>] extends [true] ? T :
-    [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? NormalizeUnionTuple<T, TMode> :
-    [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? NormalizeUnionArray<T, TMode> :     
-    [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? NormalizeUnionPlain<T, TMode> : T
+    [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
+        | (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never)
+        | (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? {
+            [K in keyof TExtracted]: Normalize<TExtracted[K], TMode> 
+        } : never )
+    ) :
+    [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? (
+        | (ZuordTrait.Exclude<T, ZuordType.Array> extends infer TExcluded ? Normalize<TExcluded, TMode> : never)
+        | (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted extends ZuordType.Array ? (
+            Normalize<TExtracted[number], TMode>[]
+        ) : never )
+    ) :     
+    [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
+        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) 
+        | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted extends ZuordType.Plain ? NormalizePlain<TExtracted, TMode> : never)
+    ) : T
 )
 
-export type NormalizeUnionTuple<T, TMode> = (
-    (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
-    (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? {
-        [K in keyof TExtracted]: Normalize<TExtracted[K], TMode> 
-    } : never )
-);
-
-export type NormalizeUnionArray<T, TMode> = (
-    (ZuordTrait.Exclude<T, ZuordType.Array> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) |
-    (ZuordTrait.Extract<T, ZuordType.Array> extends infer TExtracted extends ZuordType.Array ? (
-        Normalize<TExtracted[number], TMode>[]
-    ) : never )
-);
-
-export type NormalizeUnionPlain<T, TMode> = (
-    | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize<TExcluded, TMode> : never) 
-    | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted extends ZuordType.Plain ? NormalizePlain<TExtracted, TMode> : never)
-);
-
-export type NormalizePlain<T extends ZuordType.Plain, TMode> = (
+export type NormalizePlain<T, TMode> = (
     NormalizePlainOverlap<T> extends infer TNormalized ? { 
         [K in keyof TNormalized]: Normalize<TNormalized[K], TMode>  
     } : never
 );
 
-export type NormalizePlainOverlap<T extends ZuordType.Plain> = {
+export type NormalizePlainOverlap<T> = {
     [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
-}
+};
