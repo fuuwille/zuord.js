@@ -14,7 +14,7 @@ export namespace Mutable {
         -readonly [K in keyof T]: Mutable.Resolve<T[K]> 
     })
 
-    export type ArrayResolve<T extends ZuordType.Array> = (
+    export type ArrayResolve<T> = (
         T extends ZuordType.ArrayOf<infer U> ?  Mutable.Resolve<U>[] : never
     );
 }
