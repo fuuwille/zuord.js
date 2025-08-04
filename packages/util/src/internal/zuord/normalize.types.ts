@@ -7,8 +7,8 @@ type IsUnion<T, U = T> = T extends any
 
 export declare namespace Normalize {
     export type Plain<T, TMode> = [ZuordTrait.Is<T, ZuordType.Plain>] extends [true] ? (
-        | ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize.Plain<TExcluded, TMode> : never
-        | ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? PlainExtract<TExtracted, TMode> : never
+        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize.Plain<TExcluded, TMode> : never)
+        | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? PlainExtract<TExtracted, TMode> : never)
     ) : T;
 
     export type PlainExtract<T, TMode> = [IsUnion<T>] extends [true] ? ({
