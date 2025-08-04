@@ -1,2 +1,2 @@
 export * as InternalZuordUtil from "./alias.types";
-export * from "zuord";
+export * from "./zuord";
