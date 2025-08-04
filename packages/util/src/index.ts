@@ -1,1 +1,1 @@
-export * as ZuordUtil from "./alias.types";
+export { ZuordUtil } from "./zuord";
