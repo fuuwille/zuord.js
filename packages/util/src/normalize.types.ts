@@ -6,9 +6,7 @@ export type Normalize<T, TMode> = (
     [ZuordTrait.Is<T, ZuordType.Primitive>] extends [true] ? T :
     [ZuordTrait.Has<T, ZuordType.Tuple>] extends [true] ? (
         | (ZuordTrait.Exclude<T, ZuordType.Tuple> extends infer TExcluded ? Normalize<TExcluded, TMode> : never)
-        | (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? {
-            [K in keyof TExtracted]: Normalize<TExtracted[K], TMode> 
-        } : never )
+        | (ZuordTrait.Extract<T, ZuordType.Tuple> extends infer TExtracted extends ZuordType.Tuple ? NormalizeTuple<TExtracted, TMode> : never )
     ) :
     [ZuordTrait.Has<T, ZuordType.Array>] extends [true] ? (
         | (ZuordTrait.Exclude<T, ZuordType.Array> extends infer TExcluded ? Normalize<TExcluded, TMode> : never)
