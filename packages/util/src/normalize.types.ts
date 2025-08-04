@@ -18,15 +18,9 @@ export type Normalize<T, TMode> = (
     ) : T
 )
 
-export type NormalizePlain<T extends ZuordType.Plain, TMode> = (
-    NormalizePlainOverlap<T> extends infer TNormalized ? { 
-        [K in keyof TNormalized]: Normalize<TNormalized[K], TMode>  
-    } : never
-);
-
-export type NormalizePlainOverlap<T  extends ZuordType.Plain> = {
+export type NormalizePlain<T extends ZuordType.Plain, TMode> = {
     [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
-};
+} extends infer V extends ZuordType.Plain ? { [K in keyof V]: Normalize<V[K], TMode> }: never
 
 export type NormalizeTuple<T extends ZuordType.Tuple, TMode> = ({
     [K in keyof T]: Normalize<T[K], TMode> 
