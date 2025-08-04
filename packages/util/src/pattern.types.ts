@@ -1,4 +1,4 @@
+import { $ZuordUtil } from "./internal";
 import { ZuordType } from "@zuord/type";
-import { InternalZuordUtil } from "./internal";
 
-export type Pattern<T extends ZuordType.Plain> = InternalZuordUtil.Pattern<T>;
+export type Pattern<T extends ZuordType.Plain> = $ZuordUtil.Pattern.Resolve<T>;

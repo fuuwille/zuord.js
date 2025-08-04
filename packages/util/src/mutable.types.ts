@@ -1,3 +1,3 @@
-import { InternalZuordUtil } from "./internal";
+import { $ZuordUtil } from "./internal";
 
-export type Mutable<T extends object> = InternalZuordUtil.Mutable<T>;
+export type Mutable<T extends object> = $ZuordUtil.Mutable.Resolve<T>;
