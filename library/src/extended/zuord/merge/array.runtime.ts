@@ -20,11 +20,11 @@ const $ = ($content: Type.ArrayOf<Type.Array>, $mode: Partial<ZuordModeX.Integra
 
 // LOOSE
 
-export function loose <TContent extends Type.ArrayOf<Type.Array>> (content: TContent)
+export function loose <TContent extends Type.ArrayOf<Type.Array>> (content: [...TContent])
     : ZuordX.Merge.Array.Loose<TContent>;
 
-export function loose <TContent extends Type.ArrayOf<Type.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: TContent, mode: TMode)
+export function loose <TContent extends Type.ArrayOf<Type.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: [...TContent], mode: TMode)
     : ZuordX.Merge.Array.Loose<TContent, TMode>;
 
-export function loose <TContent extends Type.ArrayOf<Type.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: TContent, mode: TMode = {} as TMode)
+export function loose <TContent extends Type.ArrayOf<Type.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: [...TContent], mode: TMode = {} as TMode)
     : ZuordX.Merge.Array.Loose<TContent, TMode> { return $(content, mode); }
