@@ -28,10 +28,10 @@ export type NormalizePlainOverlap<T  extends ZuordType.Plain> = {
     [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
 };
 
-export type NormalizeTuple<T extends ZuordType.Tuple, TMode> = {
+export type NormalizeTuple<T extends ZuordType.Tuple, TMode> = T extends ZuordType.Tuple ? ({
     [K in keyof T]: Normalize<T[K], TMode> 
-};
+}) : never;
 
-export type NormalizeArray<T extends ZuordType.Array, TMode> = (
+export type NormalizeArray<T extends ZuordType.Array, TMode> = T extends ZuordType.Array ? (
     Normalize<T[number], TMode>[]
-);
+) : never;
