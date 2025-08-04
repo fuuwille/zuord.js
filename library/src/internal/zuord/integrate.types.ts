@@ -25,7 +25,7 @@ export declare namespace Integrate {
 
     export type Array<A extends Type.Array, B extends Type.Array, TMode> = (
         ArrayOverlap<A, B, TMode> extends infer TIntegrated extends Type.Array ? (
-            Util.Mutable<TIntegrated[number][]>
+            Util.Mutable.Hybrid<TIntegrated[number][]>
         ) : never
     );
 
