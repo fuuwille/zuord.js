@@ -22,7 +22,7 @@ export namespace One {
     );
     
     export type ResolvePlain<T extends Type.Plain, TMode> = (
-        (One.ResolveRequiredPlain<T> & One.ResolvePlainOptional<T>) extends infer TOne ? {
+        (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? TOne[K] : One.ResolveHybrid<TOne[K], TMode>;
         } : never
     ) extends infer T ? T : never;
@@ -31,7 +31,7 @@ export namespace One {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
     };
 
-    export type ResolvePlainOptional<T> = {
+    export type ResolveOptionalPlain<T> = {
         [K in $ZuordUtil.Keys.Optional<T>]?: T extends any ? (
             K extends keyof T ? T[K] : never
         ) : never;
