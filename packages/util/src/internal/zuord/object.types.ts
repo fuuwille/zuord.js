@@ -6,4 +6,12 @@ export namespace Object {
     export type OptionalKeys<T> = {
         [K in Object.Keys<T>]: T extends { [P in K]-?: T[K] } ? never : K
     }[Object.Keys<T>];
+
+    export type RequiredOne<T> = {
+        [K in Object.RequiredKeys<T>]: T[K]
+    };
+
+    export type OptionalOne<T> = {
+        [K in Object.OptionalKeys<T>]?: T[K]
+    };
 }
