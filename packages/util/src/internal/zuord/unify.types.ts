@@ -11,9 +11,9 @@ export declare namespace Unify {
     export type ResolvePlain<T, TMode> = (
         | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Unify.Resolve<TExcluded, TMode> : never)
         | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? Unify.ResolvePlainExtract<TExtracted, TMode> : never)
-    );
+    ) extends infer T ? T : never;
 
-    export type ResolvePlainExtract<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
+    export type ResolvePlainExtract<T, TMode> = [ZuordTrait.Is<T, ZuordType.Plain>] extends [true] ? (
         ResolvePlainComposite<T> extends infer TFilled ? ({
             [K in keyof TFilled]: (
                 TMode extends { shallow: true } ? TFilled[K] : Unify.ResolvePlain<TFilled[K], TMode>
