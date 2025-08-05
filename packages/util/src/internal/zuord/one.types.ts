@@ -12,14 +12,14 @@ export namespace One {
 
     export type ResolvePlain<T, TMode> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? One.ResolveHybrid<TExcluded, TMode> : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted ? One.ResolvePlainComposite<TExtracted, TMode> : never)
-    ) extends infer T ? T : never;
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? One.ResolvePlainComposite<TExtracted, TMode> : never)
+    );
 
-    export type ResolvePlainComposite<T, TMode> = (
+    export type ResolvePlainComposite<T extends Type.Plain, TMode> = (
         (One.ResolvePlainRequired<T> & One.ResolvePlainOptional<T>) extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? TOne[K] : One.ResolveHybrid<TOne[K], TMode>;
         } : never
-    );
+    ) extends infer T ? T : never;
 
     export type ResolvePlainRequired<T> = {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
