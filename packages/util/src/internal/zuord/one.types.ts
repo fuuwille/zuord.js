@@ -6,12 +6,12 @@ export namespace One {
     export type Hybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Is<T, Type.Primitive>] extends [true] ? T :
-        [Trait.Has<T, Type.Plain>] extends [true] ? One.Plain<T> : T
+        [Trait.Has<T, Type.Plain>] extends [true] ? One.Plain<T, TMode> : T
     );
 
-    export type Plain<T> = (
+    export type Plain<T, TMode> = (
         (One.PlainRequired<T> & One.PlainOptional<T>) extends infer TOne ? {
-            [K in keyof TOne]: TOne[K];
+            [K in keyof TOne]: TMode extends { shallow: true } ? TOne[K] : One.Hybrid<TOne[K], TMode>;
         } : never
     )
 
