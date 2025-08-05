@@ -5,5 +5,5 @@ import { ZuordModeX } from "zuord/extended";
 
 export namespace Plain {
     export type Restrict<TBase extends Type.Plain, TContent extends Util.Restrict.ListKeys<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain> = {}> 
-        = $Zuord.Merge.Object<TContent, TMode>;
+        = $Zuord.Merge.ResolvePlain<TContent, TMode>;
 }
