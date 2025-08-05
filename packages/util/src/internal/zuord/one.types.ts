@@ -5,9 +5,14 @@ import { ZuordTrait as Trait } from "@zuord/trait";
 export namespace One {
     export type ResolveHybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
-        [Trait.Is<T, Type.Primitive>] extends [true] ? T :
+        [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
         [Trait.Has<T, Type.Plain>] extends [true] ? One.ResolvePlain<T, TMode> :
         [Trait.Has<T, Type.Array>] extends [true] ? One.ResolveArray<T, TMode> : T
+    );
+
+    export type ResolvePrimitive<T, TMode> = (
+        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? One.ResolveHybrid<TExcluded, TMode> : never)
+        | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     );
 
     export type ResolvePlain<T, TMode> = (
