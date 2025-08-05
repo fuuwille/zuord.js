@@ -7,6 +7,12 @@ export namespace Object {
         [K in Object.Keys<T>]: T extends { [P in K]-?: T[K] } ? never : K
     }[Object.Keys<T>];
 
+    export type One<T> = (
+        (RequiredOne<T> & OptionalOne<T>) extends infer TOne ? {
+            [K in keyof TOne]: TOne[K];
+        } : never
+    )
+
     export type RequiredOne<T> = {
         [K in Object.RequiredKeys<T>]: T[K]
     };
