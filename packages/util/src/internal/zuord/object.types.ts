@@ -13,7 +13,15 @@ export namespace Object {
         [K in keyof T]-?: {} extends Pick<T, K> ? never : K
     }[keyof T];
 
-    export type OptionalKeys<T> = {
+    export type OptionalKeys<T> = Keys<T> extends infer K ? (
+        K extends keyof any ? (
+            T extends unknown ? (
+                K extends OptionalKeysRaw<T> ? K : never
+                ) : never
+            ) : never
+        ) : never;
+
+    export type OptionalKeysRaw<T> = {
         [K in keyof T]-?: {} extends Pick<T, K> ? K : never
     }[keyof T];
 
