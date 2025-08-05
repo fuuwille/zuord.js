@@ -9,12 +9,12 @@ import type { ZuordType as Type } from "@zuord/type";
 
 //
 
-const $ = ($content: Type.PlainArray, $mode: Partial<ZuordModeX.Integrate.Plain>) => {
+const $ = ($content: Type.PlainArray, $mode: Partial<ZuordModeX.Merge.Plain>) => {
     if(!type.plainArray($content)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
 
-    return $zuord.merge.plain($content, core.mode.resolve([zuordModeX.integrate.plain, $mode]));
+    return $zuord.merge.plain($content, core.mode.resolve([zuordModeX.merge.plain, $mode]));
 }
 
 
