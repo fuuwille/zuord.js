@@ -3,23 +3,23 @@ import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Integrate {
     export type Unknown<A, B, TMode> = (
-        [A, B] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Plain<A, B, TMode> :
+        [A, B] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? ResolvePlain<A, B, TMode> :
         [A, B] extends [infer A extends Type.Array, infer B extends Type.Array] ? Array<A, B, TMode> : B
     );
 
-    export type Plain<A extends Type.Plain, B extends Type.Plain, TMode> = (
-        (PlainOverlap<A, B, TMode> & PlainExtras<A, B>) extends infer TIntegrated ? ({
+    export type ResolvePlain<A extends Type.Plain, B extends Type.Plain, TMode> = (
+        (ResolvePlainOverlap<A, B, TMode> & ResolvePlainExtras<A, B>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     )
 
-    export type PlainOverlap<A extends Type.Plain, B extends Type.Plain, TMode> = ({
+    export type ResolvePlainOverlap<A extends Type.Plain, B extends Type.Plain, TMode> = ({
         [K in keyof A]: K extends keyof B ? (
             TMode extends { shallow: true } ? B[K] : Unknown<A[K], B[K], TMode>
         ) : A[K];
     });
 
-    export type PlainExtras<A extends Type.Plain, B extends Type.Plain> = ({
+    export type ResolvePlainExtras<A extends Type.Plain, B extends Type.Plain> = ({
         [K in keyof B as K extends keyof A ? never : K]: B[K];
     });
 
