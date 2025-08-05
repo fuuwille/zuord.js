@@ -11,13 +11,15 @@ export namespace One {
     );
 
     export type ResolvePrimitive<T, TMode> = (
-        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? (
-            One.ResolveHybrid<TExcluded, TMode> extends infer THybrid ? (
-                [{}] extends [THybrid] ? never : THybrid
-            ) : never
-        ) : never)
+        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? ResolveExcludedPrimitive<TExcluded, TMode> : never)
         | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     ) extends infer T ? T : never;
+
+    export type ResolveExcludedPrimitive<T, TMode> = (
+        One.ResolveHybrid<T, TMode> extends infer THybrid ? (
+            [{}] extends [THybrid] ? never : THybrid
+        ) : never
+    );
     
     export type ResolvePlain<T extends Type.Plain, TMode> = (
         (One.ResolvePlainRequired<T> & One.ResolvePlainOptional<T>) extends infer TOne ? {
