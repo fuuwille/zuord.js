@@ -6,7 +6,8 @@ export namespace One {
     export type ResolveHybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Is<T, Type.Primitive>] extends [true] ? T :
-        [Trait.Has<T, Type.Plain>] extends [true] ? One.ResolvePlain<T, TMode> : T
+        [Trait.Has<T, Type.Plain>] extends [true] ? One.ResolvePlain<T, TMode> :
+        [Trait.Has<T, Type.Array>] extends [true] ? One.ResolveArray<T, TMode> : T
     );
 
     export type ResolvePlain<T, TMode> = (
@@ -29,4 +30,13 @@ export namespace One {
             K extends keyof T ? T[K] : never
         ) : never;
     };
+
+    export type ResolveArray<T, TMode> = (
+        | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? One.ResolveHybrid<TExcluded, TMode> : never)
+        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? One.ResolveArrayComposite<TExtracted, TMode> : never)
+    ) extends infer T ? T : never;
+
+    export type ResolveArrayComposite<T extends Type.Array, TMode> = (
+        ResolveHybrid<T[number], TMode>[]
+    ) extends infer T ? T : never;
 }
