@@ -24,4 +24,12 @@ export namespace Object {
     export type OptionalCommonKeys<T> = {
         [K in keyof T]-?: {} extends Pick<T, K> ? K : never
     }[keyof T];
+
+    export type RequiredOnly<T> = {
+        [K in keyof T as {} extends Pick<T, K> ? never : K]: T[K];
+    } extends infer R ? R : never;
+
+    export type OptionalOnly<T> = {
+        [K in keyof T as {} extends Pick<T, K> ? K : never]: T[K];
+    } extends infer R ? R : never;
 }
