@@ -1,1 +1,1 @@
-export type { $ZuordUtil } from "./index.types";
+export { $ZuordUtil } from "./index.types";
