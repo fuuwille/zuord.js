@@ -1,4 +1,5 @@
 import { Keys as $Keys } from "./keys.types";
+import { One as $One } from "./one.types";
 import { Object as $Object } from "./object.types";
 import { Normalize as $Normalize } from "./normalize.types";
 import { Unify as $Unify } from "./unify.types";
@@ -9,6 +10,7 @@ import { Pattern as $Pattern } from "./pattern.types";
 
 export namespace $ZuordUtil {
     export import Keys = $Keys;
+    export import One = $One;
     export import Object = $Object;
     export import Normalize = $Normalize;
     export import Unify = $Unify;
