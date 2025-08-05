@@ -4,24 +4,24 @@ export namespace Object {
     export type RequiredKeys<T> = Keys<T> extends infer K ? (
         K extends keyof any ? (
             T extends unknown ?( 
-                K extends RequiredKeysRaw<T> ? K : never
+                K extends RequiredCommonKeys<T> ? K : never
             ) : never
         ) : never
     ) : never;
 
-    export type RequiredKeysRaw<T> = {
+    export type RequiredCommonKeys<T> = {
         [K in keyof T]-?: {} extends Pick<T, K> ? never : K
     }[keyof T];
 
     export type OptionalKeys<T> = Keys<T> extends infer K ? (
         K extends keyof any ? (
             T extends unknown ? (
-                K extends OptionalKeysRaw<T> ? K : never
+                K extends OptionalCommonKeys<T> ? K : never
                 ) : never
             ) : never
         ) : never;
 
-    export type OptionalKeysRaw<T> = {
+    export type OptionalCommonKeys<T> = {
         [K in keyof T]-?: {} extends Pick<T, K> ? K : never
     }[keyof T];
 
