@@ -2,18 +2,18 @@ import { ZuordTrait } from "@zuord/trait";
 import { ZuordType } from "@zuord/type";
 
 export declare namespace Normalize {
-    export type PlainResolve<T, TMode> = [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
-        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize.PlainResolve<TExcluded, TMode> : never)
-        | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? Normalize.PlainExtract<TExtracted, TMode> : never)
+    export type ResolvePlain<T, TMode> = [ZuordTrait.Has<T, ZuordType.Plain>] extends [true] ? (
+        | (ZuordTrait.Exclude<T, ZuordType.Plain> extends infer TExcluded ? Normalize.ResolvePlain<TExcluded, TMode> : never)
+        | (ZuordTrait.Extract<T, ZuordType.Plain> extends infer TExtracted ? Normalize.ResolvePlainExtract<TExtracted, TMode> : never)
     ) : T;
 
-    export type PlainExtract<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
-        PlainComposite<T> extends infer TFilled ? ({
-            [K in keyof TFilled]: Normalize.PlainResolve<TFilled[K], TMode>;
+    export type ResolvePlainExtract<T, TMode> = [ZuordTrait.Eq<T, any>] extends [false] ? (
+        ResolvePlainComposite<T> extends infer TFilled ? ({
+            [K in keyof TFilled]: Normalize.ResolvePlain<TFilled[K], TMode>;
         }) : never
     ) : any;
 
-    export type PlainComposite<T> = {
+    export type ResolvePlainComposite<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     };
 }
