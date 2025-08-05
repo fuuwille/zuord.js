@@ -17,7 +17,7 @@ export namespace Restrict {
         [K in Exclude<keyof TBase, keyof TInput>]?: never
     };
 
-    export type ListKeys<TBase, TInputs extends readonly unknown[]> = {
+    export type ResolveKeysBatch<TBase, TInputs extends readonly unknown[]> = {
         [I in keyof TInputs]: ResolveKeys<TBase, TInputs[I]>;
     };
 }

@@ -21,11 +21,11 @@ const $ = ($base: Type.Plain, $content: Type.PlainArray, $mode: Partial<ZuordMod
 
 // LOOSE
 
-export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.ListKeys<TBase, TContent>> (base: TBase, content: [...TContent])
+export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
     : ZuordX.Evolve.Plain.Restrict<TBase, TContent>;
 
-export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.ListKeys<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
+export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
     : ZuordX.Evolve.Plain.Restrict<TBase, TContent, TMode>;
 
-export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.ListKeys<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
+export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
     : ZuordX.Evolve.Plain.Restrict<TBase, TContent, TMode> { return $(base, content, mode); }
