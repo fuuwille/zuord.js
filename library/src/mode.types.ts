@@ -8,4 +8,6 @@ export namespace ZuordMode {
     export import Merge = ZuordModeX.Merge.Plain;
 
     export import MergeArray = ZuordModeX.Merge.Array;
+
+    export import Evolve = ZuordModeX.Evolve.Plain;
 }
