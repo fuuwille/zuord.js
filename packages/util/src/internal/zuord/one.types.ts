@@ -34,7 +34,7 @@ export namespace One {
 
     export type ResolveSkippedPlain<T extends Type.Plain, TMode> = {
         [K in keyof T]: ResolveHybrid<T[K], TMode>;
-    };
+    } extends infer T ? T : never;
 
     export type ResolveDesiredPlain<T extends Type.Plain, TMode> =  (
         (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
