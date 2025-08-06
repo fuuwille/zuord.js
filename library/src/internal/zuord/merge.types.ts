@@ -21,9 +21,7 @@ export declare namespace Merge {
         ) : never
     );
 
-    export type ResolvePlainFromArray<TContent, TMode extends ZuordCore.Mode.Field> = TContent extends readonly (infer TInfer)[] ? (
-        ZuordType.PlainAsRequired<TInfer> extends infer TRequired extends ZuordType.Plain ? (
-            ZuordUtil.Unify.Hybrid<TRequired, TMode>
-        ) : never
+    export type ResolvePlainFromArray<TContent, TMode extends ZuordCore.Mode.Field> = TContent extends readonly (infer TInfer extends ZuordType.Plain)[] ? (
+        ZuordUtil.Unify.Hybrid<ZuordUtil.Only.Required<TInfer, TMode>, TMode>
     ) : never;
 }
