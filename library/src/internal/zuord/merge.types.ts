@@ -13,7 +13,7 @@ export declare namespace Merge {
         TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain> ? (
             ZuordUtil.Unify.Hybrid<ZuordUtil.Only.Required<TInfer, TMode>, TMode>
         ) : never
-    );
+    ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
     export type ResolvePlainTuple<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.EndingTupleWith<infer TRest, infer TLast> ? (
