@@ -1,0 +1,6 @@
+import { $ZuordUtil } from "src/internal";
+import { ZuordType as Type } from "@zuord/type";
+
+export namespace One {
+    export type Hybrid<T extends Type.Plain | Type.Array, TMode> = $ZuordUtil.One.ResolveHybrid<T, TMode>;
+}
