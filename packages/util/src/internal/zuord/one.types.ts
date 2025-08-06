@@ -4,19 +4,19 @@ import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace One {
-    export type All<T> = Trait.Is<T, Type.Plain> extends true ? (
-        (ResolveRequired<T> & ResolveOptional<T>) extends infer TInfer ? ({
-            [K in keyof TInfer]: One.All<TInfer[K]>;
+    export type All<T, TMode extends Core.Mode.Field> = Trait.Is<T, Type.Plain> extends true ? (
+        (ResolveRequired<T, TMode> & ResolveOptional<T, TMode>) extends infer TInfer ? ({
+            [K in keyof TInfer]: One.All<TInfer[K], TMode>;
         }) : never
     ) : T;
 
-    export type ResolveRequired<T> = [T] extends [Type.Plain] ? {
-        [K in $Util.Keys.Required<T>]: One.All<T[K]>
+    export type ResolveRequired<T, TMode extends Core.Mode.Field> = [T] extends [Type.Plain] ? {
+        [K in $Util.Keys.Required<T>]: One.All<T[K], TMode>
     } : T;
 
-    export type ResolveOptional<T> = {
+    export type ResolveOptional<T, TMode extends Core.Mode.Field> = {
         [K in $Util.Keys.Optional<T>]?: T extends any ? (
-            K extends keyof T ? One.All<T[K]> : never
+            K extends keyof T ? One.All<T[K], TMode> : never
         ) : never
     };
 }
