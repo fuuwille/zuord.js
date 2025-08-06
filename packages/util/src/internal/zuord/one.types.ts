@@ -65,9 +65,9 @@ export namespace One {
     ) extends infer T ? T : never;
 
     export type ResolveHybridArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
-        TMode extends { skipArray: true } ? (
-            ResolveSkippedArray<T, TMode>
-        ) : ResolveExtractedArray<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
+        TMode extends { oneArray: true } ? (
+            ResolveExtractedArray<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
+        ) : ResolveSkippedArray<T, TMode>
     );
 
     export type ResolveSkippedArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
