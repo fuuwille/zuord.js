@@ -6,7 +6,7 @@ export namespace One {
     export type ResolveHybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
-        [T] extends [Type.Plain] ? One.ResolveExtractedPlain<T, TMode> :
+        [T] extends [Type.Plain] ? One.ResolveHybridPlain<T, TMode> :
         [T] extends [Type.Array] ? One.ResolveExtractedArray<T, TMode> : T
     );
 
@@ -23,20 +23,20 @@ export namespace One {
     
     export type ResolvePlain<T, TMode> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveDesiredPlain<TExtracted, TMode> : never)
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
-    export type ResolveExtractedPlain<T extends Type.Plain, TMode> = (
+    export type ResolveHybridPlain<T extends Type.Plain, TMode> = (
         TMode extends { skipPlain: true } ? (
             ResolveSkippedPlain<T, TMode>
-        ) : ResolveDesiredPlain<T, TMode>
+        ) : ResolveExtractedPlain<T, TMode>
     );
 
     export type ResolveSkippedPlain<T extends Type.Plain, TMode> = {
         [K in keyof T]: ResolveHybrid<T[K], TMode>;
     } extends infer T ? T : never;
 
-    export type ResolveDesiredPlain<T extends Type.Plain, TMode> =  (
+    export type ResolveExtractedPlain<T extends Type.Plain, TMode> =  (
         (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
