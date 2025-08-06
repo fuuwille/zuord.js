@@ -23,7 +23,7 @@ export namespace One {
     
     export type ResolvePlain<T, TMode> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveDesiredPlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
     export type ResolveExtractedPlain<T extends Type.Plain, TMode> = (
@@ -41,7 +41,7 @@ export namespace One {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
-                TMode extends { hybrid: true } 
+                TMode extends { $hybrid: true } 
                     ? One.ResolveHybrid<TOne[K], TMode>
                     : One.ResolvePlain<TOne[K], TMode>
             )
@@ -71,7 +71,7 @@ export namespace One {
         TMode extends { shallow: true } ? (
             T[number]
         ) : (
-            TMode extends { hybrid: true } 
+            TMode extends { $hybrid: true } 
                 ? ResolveHybrid<T[number], TMode>
                 : ResolveArray<T[number], TMode>
         )
