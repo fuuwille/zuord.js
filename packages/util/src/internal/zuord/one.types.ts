@@ -48,6 +48,11 @@ export namespace One {
         ) : never;
     };
 
+    export type ResolveArray<T, TMode> = (
+        | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
+        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? ResolveExtractedArray<TExtracted, TMode> : never)
+    ) extends infer T ? T : never;
+
     export type ResolveExtractedArray<T extends Type.Array, TMode> = (
         ResolveHybrid<T[number], TMode>[]
     ) extends infer T ? T : never;
