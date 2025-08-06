@@ -1,6 +1,7 @@
 import { $ZuordUtil as $Util } from ".";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
+import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace One {
     export type ResolveAll<T, TMode extends Core.Mode.Field> = 
@@ -10,7 +11,7 @@ export namespace One {
         }) : never
     ) : T;
 
-    export type ResolveRequired<T, TMode extends Core.Mode.Field> = [T] extends [Type.Plain] ? {
+    export type ResolveRequired<T, TMode extends Core.Mode.Field> = [Trait.Is<T, Type.Plain>] extends [true] ? {
         [K in $Util.Keys.Required<T>]: (
             [TMode ]extends [{ "$one.all": true }] ? (
                 One.ResolveAll<T[K], TMode>
@@ -18,7 +19,7 @@ export namespace One {
         )
     } : T;
 
-    export type ResolveOptional<T, TMode extends Core.Mode.Field> = {
+    export type ResolveOptional<T, TMode extends Core.Mode.Field> = [Trait.Is<T, Type.Plain>] extends [true] ? {
         [K in $Util.Keys.Optional<T>]?: T extends any ? (
             K extends keyof T ? (
                 [TMode] extends [{ "$one.all": true }] ? (
@@ -26,5 +27,5 @@ export namespace One {
                 ) : One.ResolveOptional<T[K], TMode>
             ) : never
         ) : never
-    };
+    } : T;
 }
