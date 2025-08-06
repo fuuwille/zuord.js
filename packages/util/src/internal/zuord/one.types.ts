@@ -7,7 +7,7 @@ export namespace One {
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
         [T] extends [Type.Plain] ? One.ResolveExtractedPlain<T, TMode> :
-        [T] extends [Type.Array]? One.ResolveArray<T, TMode> : T
+        [T] extends [Type.Array]? One.ResolveExtractedArray<T, TMode> : T
     );
 
     export type ResolvePrimitive<T, TMode> = (
@@ -48,7 +48,7 @@ export namespace One {
         ) : never;
     };
 
-    export type ResolveArray<T extends Type.Array, TMode> = (
+    export type ResolveExtractedArray<T extends Type.Array, TMode> = (
         ResolveHybrid<T[number], TMode>[]
     ) extends infer T ? T : never;
 }
