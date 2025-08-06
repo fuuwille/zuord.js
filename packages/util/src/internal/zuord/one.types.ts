@@ -8,7 +8,7 @@ export namespace One {
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
         [T] extends [Type.Plain] ? One.ResolveHybridPlain<T, TMode> :
-        [T] extends [Type.Array] ? One.ResolveExtractedArray<T, TMode> : T
+        [T] extends [Type.Array] ? One.ResolveHybridArray<T, TMode> : T
     );
 
     export type ResolvePrimitive<T, TMode extends Core.Mode.Field> = (
