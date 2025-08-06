@@ -20,7 +20,11 @@ export namespace One {
 
     export type ResolveOptional<T, TMode extends Core.Mode.Field> = {
         [K in $Util.Keys.Optional<T>]?: T extends any ? (
-            K extends keyof T ? One.ResolveAll<T[K], TMode> : never
+            K extends keyof T ? (
+                [TMode] extends [{ "$one.all": true }] ? (
+                    One.ResolveAll<T[K], TMode>
+                ) : One.ResolveOptional<T[K], TMode>
+            ) : never
         ) : never
     };
 }
