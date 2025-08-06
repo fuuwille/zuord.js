@@ -4,7 +4,7 @@ import { ZuordCore as Core } from "@zuord/core";
 
 export namespace Unify {
     export type Hybrid<T extends Type.Plain | Type.Array, TMode extends Core.Mode.Field> 
-        = $ZuordUtil.Unify.ResolveHybrid<T, Core.Mode.Resolve<[{ onePlain: true, oneArray: true }, TMode]>>;
+        = $ZuordUtil.Unify.ResolveHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>;
 
     export type Plain<T extends Type.Plain, TMode extends Core.Mode.Field> = $ZuordUtil.Unify.ResolvePlain<T, TMode>;
 

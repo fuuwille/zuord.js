@@ -27,7 +27,7 @@ export namespace Unify {
     ) extends infer T ? T : never;
 
     export type ResolveHybridPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
-        TMode extends { onePlain: true } ? (
+        TMode extends { unifyPlain: true } ? (
             ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
         ) : ResolveSkippedPlain<T, TMode>
     );
@@ -58,7 +58,7 @@ export namespace Unify {
     ) extends infer T ? T : never;
 
     export type ResolveHybridArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
-        TMode extends { oneArray: true } ? (
+        TMode extends { unifyArray: true } ? (
             ResolveExtractedArray<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
         ) : ResolveSkippedArray<T, TMode>
     );
