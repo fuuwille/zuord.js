@@ -1,39 +1,39 @@
 import { ZuordType as Type } from "@zuord/type";
-import { ZuordUtil as Util } from "@zuord/util";
+import { ZuordUtil as Util, ZuordUtil } from "@zuord/util";
 
 export declare namespace Integrate {
-    export type Unknown<A, B, TMode> = (
-        [A, B] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? ResolvePlain<A, B, TMode> :
-        [A, B] extends [infer A extends Type.Array, infer B extends Type.Array] ? ResolveArray<A, B, TMode> : B
+    export type Unknown<TBase, TOverlay, TMode> = (
+        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? ResolvePlain<A, B, TMode> :
+        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? ResolveArray<A, B, TMode> : TOverlay
     );
 
-    export type ResolvePlain<A extends Type.Plain, B extends Type.Plain, TMode> = (
-        (ResolvePlainOverlap<A, B, TMode> & ResolvePlainExtras<A, B>) extends infer TIntegrated ? ({
+    export type ResolvePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+        (ResolvePlainOverlap<TBase, TOverlay, TMode> & ResolvePlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     )
 
-    export type ResolvePlainOverlap<A extends Type.Plain, B extends Type.Plain, TMode> = ({
-        [K in keyof A]: K extends keyof B ? (
-            TMode extends { shallow: true } ? B[K] : Unknown<A[K], B[K], TMode>
-        ) : A[K];
+    export type ResolvePlainOverlap<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
+        [K in keyof TBase]: K extends keyof TOverlay ? (
+            TMode extends { shallow: true } ? TOverlay[K] : Unknown<TBase[K], TOverlay[K], TMode>
+        ) : TBase[K];
     });
 
-    export type ResolvePlainExtras<A extends Type.Plain, B extends Type.Plain> = ({
-        [K in keyof B as K extends keyof A ? never : K]: B[K];
+    export type ResolvePlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
+        [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
-    export type ResolveArray<A extends Type.Array, B extends Type.Array, TMode> = (
-        ResolveArrayOverlap<A, B, TMode> extends infer TIntegrated extends Type.Array ? (
-            Util.Mutable.Hybrid<TIntegrated[number][]>
+    export type ResolveArray<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
+        ResolveArrayOverlap<TBase, TOverlay, TMode> extends infer TIntegrated extends Type.Array ? (
+            TIntegrated[number][]
         ) : never
     );
 
-    export type ResolveArrayOverlap<A extends Type.Array, B extends Type.Array, TMode> = (
-        A extends Type.Array ? B extends Type.Array ? (
+    export type ResolveArrayOverlap<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
+        TBase extends Type.Array ? TOverlay extends Type.Array ? (
             TMode extends { concat: true } ? (
-                [...A, ...B]
-            ) : B
+                [...TBase, ...TOverlay]
+            ) : TOverlay
         ) : never : never
     );
 }
