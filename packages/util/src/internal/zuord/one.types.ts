@@ -1,20 +1,20 @@
-import { ZuordType } from "@zuord/type";
-import { $ZuordUtil } from ".";
-import { ZuordTrait } from "@zuord/trait";
+import { $ZuordUtil as $Util } from ".";
+import { ZuordType as Type } from "@zuord/type";
+import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace One {
-    export type All<T> = ZuordTrait.Is<T, ZuordType.Plain> extends true ? (
+    export type All<T> = Trait.Is<T, Type.Plain> extends true ? (
         (ResolveRequired<T> & ResolveOptional<T>) extends infer TInfer ? ({
             [K in keyof TInfer]: All<TInfer[K]>;
         }) : never
     ) : T;
 
-    export type ResolveRequired<T> = [T] extends [ZuordType.Plain] ? {
-        [K in $ZuordUtil.Keys.Required<T>]: All<T[K]>
+    export type ResolveRequired<T> = [T] extends [Type.Plain] ? {
+        [K in $Util.Keys.Required<T>]: All<T[K]>
     } : T;
 
     export type ResolveOptional<T> = {
-        [K in $ZuordUtil.Keys.Optional<T>]?: T extends any ? (
+        [K in $Util.Keys.Optional<T>]?: T extends any ? (
             K extends keyof T ? All<T[K]> : never
         ) : never
     };
