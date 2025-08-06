@@ -8,18 +8,18 @@ export declare namespace Integrate {
     );
 
     export type ResolvePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
-        (ResolveBasePlain<TBase, TOverlay, TMode> & ResolveOverlayPlain<TBase, TOverlay>) extends infer TIntegrated ? ({
+        (ResolvePlainOverrides<TBase, TOverlay, TMode> & ResolvePlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     )
 
-    export type ResolveBasePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
+    export type ResolvePlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? TOverlay[K] : Unknown<TBase[K], TOverlay[K], TMode>
         ) : TBase[K];
     });
 
-    export type ResolveOverlayPlain<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
+    export type ResolvePlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
