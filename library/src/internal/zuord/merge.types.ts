@@ -26,4 +26,12 @@ export declare namespace Merge {
             ZuordUtil.Only.Required<TInfer, TMode>
         ) : never
     )
+
+    export type ResolveUnifiedPlain<TContent, TMode extends ZuordCore.Mode.Field> = (
+        Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends ZuordType.Plain ? (
+            ZuordUtil.Unify.Hybrid<TResolved, ZuordCore.Mode.Resolve<[TMode, { 
+                unifyPlain: TContent extends ZuordType.PureTuple ? false : true
+            }]>>
+        ) : never
+    )
 }
