@@ -1,4 +1,4 @@
-import { Unify as $Unify } from "./one";
+import { Unify as $Unify } from "./unify";
 import { Normalize as $Normalize } from "./normalize";
 import { Mutable as $Mutable } from "./mutable";
 import { Restrict as $Restrict } from "./restrict";
