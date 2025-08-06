@@ -30,7 +30,7 @@ export namespace One {
     export type ResolveHybridPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
         TMode extends { skipPlain: true } ? (
             ResolveSkippedPlain<T, TMode>
-        ) : ResolveExtractedPlain<T, TMode>
+        ) : ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
     );
 
     export type ResolveSkippedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = {
