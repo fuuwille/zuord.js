@@ -1,4 +1,4 @@
-import { One as $One } from "./one";
+import { Unify as $Unify } from "./one";
 import { Normalize as $Normalize } from "./normalize";
 import { Mutable as $Mutable } from "./mutable";
 import { Restrict as $Restrict } from "./restrict";
@@ -9,7 +9,7 @@ import { Pattern as $Pattern } from "./pattern";
 //
 
 export declare namespace ZuordUtil {
-    export import One = $One;
+    export import Unify = $Unify;
     export import Normalize = $Normalize;
     export import Mutable = $Mutable;
     export import Restrict = $Restrict;

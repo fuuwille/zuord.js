@@ -6,5 +6,5 @@ import { ZuordUtil as Util } from "@zuord/util";
 
 export namespace Plain {
     export type Loose<TContent extends Type.PlainArray, TMode extends Partial<ZuordModeX.Merge.Plain> = {}> 
-        = Util.One.Hybrid<$Zuord.Merge.ResolvePlain<TContent, TMode>, Core.Mode.Resolve<[{ onePlain: false }, TMode]>>;
+        = Util.Unify.Hybrid<$Zuord.Merge.ResolvePlain<TContent, TMode>, Core.Mode.Resolve<[{ onePlain: false }, TMode]>>;
 }

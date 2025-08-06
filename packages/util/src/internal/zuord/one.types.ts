@@ -2,12 +2,12 @@ import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
-export namespace One {
+export namespace Unify {
     export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [Trait.Eq<T, any>] extends [true] ? any :
-        [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
-        [T] extends [Type.Plain] ? One.ResolveHybridPlain<T, TMode> :
-        [T] extends [Type.Array] ? One.ResolveHybridArray<T, TMode> : T
+        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.ResolvePrimitive<T, TMode> :
+        [T] extends [Type.Plain] ? Unify.ResolveHybridPlain<T, TMode> :
+        [T] extends [Type.Array] ? Unify.ResolveHybridArray<T, TMode> : T
     );
 
     export type ResolvePrimitive<T, TMode extends Core.Mode.Field> = (
@@ -16,7 +16,7 @@ export namespace One {
     ) extends infer T ? T : never;
 
     export type ResolveExcludedPrimitive<T, TMode extends Core.Mode.Field> = (
-        One.ResolveHybrid<T, TMode> extends infer THybrid ? (
+        Unify.ResolveHybrid<T, TMode> extends infer THybrid ? (
             [{}] extends [THybrid] ? never : THybrid
         ) : never
     );
@@ -37,13 +37,13 @@ export namespace One {
     } extends infer T ? T : never;
 
     export type ResolveExtractedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> =  (
-        One.ResolveCompositedPlain<T> extends infer TOne ? {
+        Unify.ResolveCompositedPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
                 TMode extends { $hybrid: true } 
-                    ? One.ResolveHybrid<TOne[K], TMode>
-                    : One.ResolvePlain<TOne[K], TMode>
+                    ? Unify.ResolveHybrid<TOne[K], TMode>
+                    : Unify.ResolvePlain<TOne[K], TMode>
             )
         } : never
     );
