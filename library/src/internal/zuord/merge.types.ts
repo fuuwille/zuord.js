@@ -7,7 +7,7 @@ export declare namespace Merge {
     export type ResolvePlainArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.PureTuple ? (
             Merge.ResolvePlainTuple<TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
-                ZuordUtil.Unify.Hybrid<TPlain, TMode>
+                ZuordUtil.Unify.Hybrid<TPlain, ZuordCore.Mode.Resolve<[TMode, { unifyPlain: false }]>>
             ) : never
         ) : 
         TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain> ? (
