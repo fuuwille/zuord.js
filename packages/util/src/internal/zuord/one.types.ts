@@ -1,5 +1,6 @@
 import { $ZuordUtil as $Util } from ".";
 import { ZuordType as Type } from "@zuord/type";
+import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace One {
