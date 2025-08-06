@@ -1,6 +1,7 @@
 import { Integrate } from "./integrate.types";
-import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
+import { ZuordCore } from "@zuord/core";
+import { ZuordUtil } from "@zuord/util";
 
 export declare namespace Merge {
     export type ResolvePlain<TContent, TMode> = (
