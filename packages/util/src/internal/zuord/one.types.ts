@@ -28,9 +28,9 @@ export namespace One {
     ) extends infer T ? T : never;
 
     export type ResolveHybridPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
-        TMode extends { skipPlain: true } ? (
-            ResolveSkippedPlain<T, TMode>
-        ) : ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
+        TMode extends { onePlain: true } ? (
+            ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { $hybrid: true }]>>
+        ) : ResolveSkippedPlain<T, TMode>
     );
 
     export type ResolveSkippedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = {
