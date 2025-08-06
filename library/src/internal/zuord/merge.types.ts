@@ -11,7 +11,7 @@ export declare namespace Merge {
         [TContent] extends [ZuordType.Array] ? (
             ResolvePlainFromArray<TContent, TMode>
         ) : never
-    ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
+    );
 
     export type ResolvePlainFromTuple<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.EndingTupleWith<infer TRest, infer TLast> ? (
