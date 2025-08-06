@@ -54,6 +54,12 @@ export namespace One {
     ) extends infer T ? T : never;
 
     export type ResolveExtractedArray<T extends Type.Array, TMode> = (
-        ResolveHybrid<T[number], TMode>[]
+        TMode extends { shallow: true } ? (
+            T[number][]
+        ) : (
+            TMode extends { hybrid: true } 
+                ? ResolveHybrid<T[number], TMode>[]
+                : ResolveArray<T[number], TMode>[]
+        )
     ) extends infer T ? T : never;
 }
