@@ -6,7 +6,7 @@ export namespace One {
     export type ResolveHybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? One.ResolvePrimitive<T, TMode> :
-        [T] extends [Type.Plain] ? One.ResolvePlain<T, TMode> :
+        [T] extends [Type.Plain] ? One.ResolveExtractedPlain<T, TMode> :
         [T] extends [Type.Array]? One.ResolveArray<T, TMode> : T
     );
 
@@ -21,7 +21,12 @@ export namespace One {
         ) : never
     );
     
-    export type ResolvePlain<T extends Type.Plain, TMode> = (
+    export type ResolvePlain<T, TMode> = (
+        | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted ? ResolveExtractedPlain<TExtracted, TMode> : never)
+    ) extends infer T ? T : never;
+
+    export type ResolveExtractedPlain<T, TMode> = [T] extends [Type.Plain] ? (
         (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
@@ -31,7 +36,7 @@ export namespace One {
                     : One.ResolvePlain<TOne[K], TMode>
             )
         } : never
-    );
+    ) : never;
 
     export type ResolveRequiredPlain<T> = {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
