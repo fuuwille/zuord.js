@@ -6,4 +6,6 @@ export namespace One {
     export type All<T extends Type.Plain, TMode extends Core.Mode.Field> = $ZuordUtil.One.ResolveAll<T, TMode>;
 
     export type Required<T extends Type.Plain, TMode extends Core.Mode.Field> = $ZuordUtil.One.ResolveRequired<T, TMode>;
+
+    export type Optional<T extends Type.Plain, TMode extends Core.Mode.Field> = $ZuordUtil.One.ResolveOptional<T, TMode>;
 }
