@@ -15,7 +15,9 @@ export declare namespace Integrate {
 
     export type ResolvePlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
-            TMode extends { shallow: true } ? TOverlay[K] : Unknown<TBase[K], TOverlay[K], TMode>
+            TMode extends { shallow: true } ? (
+                TOverlay[K]
+            ) : Unknown<TBase[K], TOverlay[K], TMode>
         ) : TBase[K];
     });
 
