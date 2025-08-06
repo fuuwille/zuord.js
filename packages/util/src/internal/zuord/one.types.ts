@@ -1,4 +1,3 @@
-import { $ZuordUtil } from ".";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
@@ -52,7 +51,7 @@ export namespace One {
     export type ResolveCompositedPlain<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     }
-    
+
     export type ResolveArray<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? ResolveExtractedArray<TExtracted, TMode>: never)
