@@ -42,6 +42,18 @@ export namespace One {
         [K in keyof T]: ResolveHybrid<T[K], TMode>;
     };
 
+    export type ResolveDesiredPlain<T extends Type.Plain, TMode> =  (
+        (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
+            [K in keyof TOne]: TMode extends { shallow: true } ? (
+                TOne[K]
+            ) : (
+                TMode extends { hybrid: true } 
+                    ? One.ResolveHybrid<TOne[K], TMode>
+                    : One.ResolvePlain<TOne[K], TMode>
+            )
+        } : never
+    );
+
     export type ResolveRequiredPlain<T> = {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
     };
