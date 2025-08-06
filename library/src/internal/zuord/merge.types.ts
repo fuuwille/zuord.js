@@ -4,14 +4,14 @@ import { ZuordCore } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 
 export declare namespace Merge {
-    export type ResolvePlain<TContent, TMode extends ZuordCore.Mode.Field> = (
+    export type ResolvePlainArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.PureTuple ? (
             Merge.ResolvePlainTuple<TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
                 ZuordUtil.Unify.Hybrid<TPlain, TMode>
             ) : never
         ) : 
-        TContent extends ZuordType.Array ? (
-            ZuordUtil.Unify.Hybrid<Merge.ResolvePlainArray<TContent, TMode>, TMode>
+        TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain> ? (
+            ZuordUtil.Unify.Hybrid<ZuordUtil.Only.Required<TInfer, TMode>, TMode>
         ) : never
     );
 
@@ -22,8 +22,4 @@ export declare namespace Merge {
             : Integrate.Unknown<ResolvePlainTuple<TRest, TMode>, TLast, TMode>
         ) : never
     );
-
-    export type ResolvePlainArray<TContent, TMode extends ZuordCore.Mode.Field> = TContent extends readonly (infer TInfer extends ZuordType.Plain)[] ? (
-        ZuordUtil.Only.Required<TInfer, TMode>
-    ) : never;
 }
