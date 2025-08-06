@@ -11,7 +11,11 @@ export namespace One {
     ) : T;
 
     export type ResolveRequired<T, TMode extends Core.Mode.Field> = [T] extends [Type.Plain] ? {
-        [K in $Util.Keys.Required<T>]: One.All<T[K], TMode>
+        [K in $Util.Keys.Required<T>]: (
+            [TMode ]extends [{ "$one.all": true }] ? (
+                One.All<T[K], TMode>
+            ) : One.ResolveRequired<T[K], TMode>
+        )
     } : T;
 
     export type ResolveOptional<T, TMode extends Core.Mode.Field> = {
