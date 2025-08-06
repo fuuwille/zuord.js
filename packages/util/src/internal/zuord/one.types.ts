@@ -38,6 +38,10 @@ export namespace One {
         } : never
     );
 
+    export type ResolveSkippedPlain<T extends Type.Plain, TMode> = {
+        [K in keyof T]: ResolveHybrid<T[K], TMode>;
+    };
+
     export type ResolveRequiredPlain<T> = {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
     };
