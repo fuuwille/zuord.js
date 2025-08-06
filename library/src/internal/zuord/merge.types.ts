@@ -1,5 +1,5 @@
-import { ZuordUtil } from "@zuord/util";
 import { Integrate } from "./integrate.types";
+import { ZuordUtil } from "@zuord/util";
 import { ZuordType } from "@zuord/type";
 
 export declare namespace Merge {
