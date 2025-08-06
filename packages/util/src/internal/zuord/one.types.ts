@@ -23,10 +23,10 @@ export namespace One {
     
     export type ResolvePlain<T, TMode> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted ? ResolveExtractedPlain<TExtracted, TMode> : never)
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
-    export type ResolveExtractedPlain<T, TMode> = [T] extends [Type.Plain] ? (
+    export type ResolveExtractedPlain<T extends Type.Plain, TMode> = (
         (One.ResolveRequiredPlain<T> & One.ResolveOptionalPlain<T>) extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
@@ -36,7 +36,7 @@ export namespace One {
                     : One.ResolvePlain<TOne[K], TMode>
             )
         } : never
-    ) : never;
+    );
 
     export type ResolveRequiredPlain<T> = {
         [K in $ZuordUtil.Keys.Required<T>]: T[K]
