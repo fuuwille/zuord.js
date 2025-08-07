@@ -3,6 +3,8 @@ import { ZuordUtil as Util } from "@zuord/util";
 import { ZuordCore as Core } from "@zuord/core";
 
 
+//
+
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.PlainRaw<A, B, TMode> :
