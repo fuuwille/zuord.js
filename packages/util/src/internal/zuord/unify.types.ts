@@ -68,7 +68,7 @@ export namespace Unify {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     }
 
-    export type ResolveArray<T, TMode extends Core.Mode.Field> = (
+    export type HandleArray<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveExtractedArray<TExtracted, TMode>: never)
     ) extends infer T ? T : never;
@@ -95,7 +95,7 @@ export namespace Unify {
         ) : (
             TMode extends { unifyHybrid: true } 
                 ? Unify.HandleHybrid<T[number], TMode>
-                : Unify.ResolveArray<T[number], TMode>
+                : Unify.HandleArray<T[number], TMode>
         )
     )
 }
