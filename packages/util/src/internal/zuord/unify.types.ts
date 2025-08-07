@@ -28,7 +28,11 @@ export namespace Unify {
             [{}] extends [THybrid] ? never : THybrid
         ) : never
     );
-    
+
+    export type Plain<T, TMode> = TMode extends Core.Mode.Field ? (
+        HandlePlain<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: true, unifyArray: false }, TMode]>>
+    ) : never;
+
     export type HandlePlain<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolvePlain<TExtracted, TMode> : never)
@@ -36,7 +40,7 @@ export namespace Unify {
 
     export type ResolvePlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
         TMode extends { unifyPlain: true } ? (
-            ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { unifyHybrid: true }]>>
+            ResolveExtractedPlain<T, TMode>
         ) : ResolveSkippedPlain<T, TMode>
     );
 
