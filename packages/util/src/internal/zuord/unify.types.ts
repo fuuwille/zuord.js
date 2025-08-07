@@ -63,6 +63,19 @@ export namespace Unify {
             never
         ) : Unify.ResolveArray<T, TMode>
     );
+
+    export type ExtractTuple<T, TMode> = (
+        $Util.Tuple.Unify<T> extends infer TTuple ? ({
+            [K in keyof TTuple]: TMode extends { shallow: true } ? (
+                TTuple[K]
+            ) : (
+                TMode extends { unifyPlain: true } | { unifyArray: true }
+                    ? Unify.DistributeHybrid<TTuple[K], TMode>
+                    : Unify.DistributeArray<TTuple[K], TMode>
+            )
+        }) : never
+    );
+
     export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
         Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
     ) : never;
