@@ -10,7 +10,7 @@ export namespace Unify {
     export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.HandlePrimitive<T, TMode> :
-        [T] extends [Type.Plain] ? Unify.ResolveHybridPlain<T, TMode> :
+        [T] extends [Type.Plain] ? Unify.ResolvePlain<T, TMode> :
         [T] extends [Type.Array] ? Unify.ResolveHybridArray<T, TMode> : T
     );
 
@@ -30,7 +30,7 @@ export namespace Unify {
         | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
-    export type ResolveHybridPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
+    export type ResolvePlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
         TMode extends { unifyPlain: true } ? (
             ResolveExtractedPlain<T, Core.Mode.Resolve<[TMode, { unifyHybrid: true }]>>
         ) : ResolveSkippedPlain<T, TMode>
