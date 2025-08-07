@@ -51,7 +51,7 @@ export declare namespace Integrate {
         TMode extends { concat: true } ? (
             [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
                 [...TBase, ...TOverlay]
-            ) : (TBase | TOverlay)[]
+            ) : TBase | TOverlay
         ) : TOverlay
     );
 }
