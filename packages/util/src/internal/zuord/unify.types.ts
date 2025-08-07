@@ -4,7 +4,7 @@ import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
     export type Hybrid<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.HandleHybrid<T, Core.Mode.Resolve<[{ unifyHybrid: true, unifyPlain: true, unifyArray: true }, TMode]>>
+        Unify.HandleHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>
     ) : never;
 
     export type HandleHybrid<T, TMode> = (
@@ -30,7 +30,7 @@ export namespace Unify {
     );
 
     export type Plain<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.HandlePlain<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: true, unifyArray: false }, TMode]>>
+        Unify.HandlePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: false }, TMode]>>
     ) : never;
 
     export type HandlePlain<T, TMode> = (
@@ -46,7 +46,7 @@ export namespace Unify {
 
     export type SkipPlain<T, TMode> = {
         [K in keyof T]: (
-            TMode extends { unifyHybrid: true } ? (
+            TMode extends { unifyArray: true } ? (
                 Unify.HandleHybrid<T[K], TMode>
             ) : Unify.HandlePlain<T[K], TMode> 
         )
@@ -57,7 +57,7 @@ export namespace Unify {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
-                TMode extends { unifyHybrid: true } 
+                TMode extends { unifyArray: true } 
                     ? Unify.HandleHybrid<TOne[K], TMode>
                     : Unify.HandlePlain<TOne[K], TMode>
             )
@@ -97,7 +97,7 @@ export namespace Unify {
         TMode extends { shallow: true } ? (
             T[number]
         ) : (
-            TMode extends { unifyHybrid: true } 
+            TMode extends { unifyPlain: true } 
                 ? Unify.HandleHybrid<T[number], TMode>
                 : Unify.HandleArray<T[number], TMode>
         )
