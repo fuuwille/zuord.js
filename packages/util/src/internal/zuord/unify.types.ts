@@ -77,7 +77,7 @@ export namespace Unify {
     );
 
     export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
+        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: false, unifyArray: true }, TMode]>>
     ) : never;
 
     export type DistributeArray<T, TMode> = (
