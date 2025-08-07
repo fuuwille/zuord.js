@@ -58,6 +58,10 @@ export namespace Unify {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     };
 
+    export type Tuple<T, TMode> = TMode extends Core.Mode.Field ? (
+        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
+    ) : never;
+
     export type ResolveTuple<T, TMode> = (
         TMode extends { unifyTuple: true } ? (
             ExtractTuple<T, TMode>
