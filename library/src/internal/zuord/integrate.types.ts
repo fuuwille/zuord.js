@@ -18,7 +18,7 @@ export declare namespace Integrate {
     );
 
     export type ExtractPlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
-        (Integrate.OverridePlain<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
+        (Integrate.OverridePlain<TBase, TOverlay, TMode> & Integrate.AdditionPlain<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     );
@@ -31,7 +31,7 @@ export declare namespace Integrate {
         ) : TBase[K];
     });
 
-    export type PlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
+    export type AdditionPlain<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
