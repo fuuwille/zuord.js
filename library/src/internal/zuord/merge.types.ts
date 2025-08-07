@@ -16,8 +16,8 @@ export declare namespace Merge {
     export type ResolvePlainFromTuple<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.EndingTupleWith<infer TRest, infer TLast> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? Integrate.Unknown<TRest[0], TLast, TMode> 
-            : Integrate.Unknown<ResolvePlainFromTuple<TRest, TMode>, TLast, TMode>
+            TRest["length"] extends 1 ? Integrate.ResolveHybrid<TRest[0], TLast, TMode> 
+            : Integrate.ResolveHybrid<ResolvePlainFromTuple<TRest, TMode>, TLast, TMode>
         ) : never
     );
 

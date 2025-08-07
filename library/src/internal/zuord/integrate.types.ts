@@ -1,7 +1,7 @@
 import { ZuordType as Type } from "@zuord/type";
 
 export declare namespace Integrate {
-    export type Unknown<TBase, TOverlay, TMode> = (
+    export type ResolveHybrid<TBase, TOverlay, TMode> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? ResolvePlain<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? ResolveArray<A, B, TMode> : TOverlay
     );
@@ -16,7 +16,7 @@ export declare namespace Integrate {
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
-            ) : Unknown<TBase[K], TOverlay[K], TMode>
+            ) : ResolveHybrid<TBase[K], TOverlay[K], TMode>
         ) : TBase[K];
     });
 
