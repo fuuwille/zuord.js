@@ -8,7 +8,7 @@ import { ZuordCore as Core } from "@zuord/core";
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.PlainRaw<A, B, TMode> :
-        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ArrayRaw<A, B, TMode> : TOverlay
+        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ExtractArray<A, B, TMode> : TOverlay
     );
 
     export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
@@ -36,14 +36,14 @@ export declare namespace Integrate {
     });
 
     export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
-        ArrayRaw<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
+        Integrate.ExtractArray<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
             [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
                 TArray
             ) : Util.Unify.Hybrid<TArray, TMode>
         ) : never
     );
 
-    export type ArrayRaw<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
+    export type ExtractArray<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
         TMode extends { concat: true } ? (
             [...TBase, ...TOverlay]
         ) : TOverlay
