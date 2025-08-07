@@ -35,7 +35,7 @@ export namespace Unify {
 
     export type ResolvePlain<T, TMode> = (
         TMode extends { unifyPlain: true } ? (
-            Unify.CompletePlain<T, TMode>
+            Unify.ExtractPlain<T, TMode>
         ) : Unify.SkipPlain<T, TMode>
     );
 
@@ -47,7 +47,7 @@ export namespace Unify {
         )
     } extends infer T ? T : never;
 
-    export type CompletePlain<T, TMode> =  (
+    export type ExtractPlain<T, TMode> =  (
         Unify.CollectPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
