@@ -26,7 +26,9 @@ export declare namespace Merge {
     ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
     export type Array<TContent extends ZuordType.Array, TMode extends ZuordCore.Mode.Field> = (
-        Merge.ResolveArray<TContent, TMode>
+        Merge.ResolveArray<TContent, TMode> extends infer TResolved extends ZuordType.Array ? (
+            ZuordUtil.Unify.Hybrid<TResolved, TMode>
+        ) : never
     );
 
     export type ResolveArray<TContent, TMode extends ZuordCore.Mode.Field> = (
