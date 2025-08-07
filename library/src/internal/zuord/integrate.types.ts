@@ -34,16 +34,19 @@ export declare namespace Integrate {
     });
 
     export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
-        ArrayRaw<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
-            Util.Unify.Hybrid<TArray, TMode>
+        ArrayRaw<TBase, TOverlay, { concat: true }> extends infer TArray ? (
+            TArray extends Type.PureTuple ? (
+                TArray
+            ) : 
+            TArray extends Type.Array ? (
+                Util.Unify.Hybrid<TArray, TMode>
+            ) : never
         ) : never
     );
 
     export type ArrayRaw<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
-        TBase extends Type.Array ? TOverlay extends Type.Array ? (
-            TMode extends { concat: true } ? (
-                [...TBase, ...TOverlay]
-            ) : TOverlay
-        ) : never : never
+        TMode extends { concat: true } ? (
+            [...TBase, ...TOverlay]
+        ) : TOverlay
     );
 }
