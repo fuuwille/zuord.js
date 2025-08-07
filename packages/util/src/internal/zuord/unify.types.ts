@@ -15,6 +15,7 @@ export namespace Unify {
 
     export type ResolveHybrid<T, TMode> = (
         [T] extends [Type.Plain] ? Unify.ResolvePlain<T, TMode> :
+        [T] extends [Type.Tuple] ? Unify.ResolveTuple<T, TMode> :
         [T] extends [Type.Array] ? Unify.ResolveArray<T, TMode> : T
     );
 
@@ -57,6 +58,11 @@ export namespace Unify {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     };
 
+    export type ResolveTuple<T, TMode> = (
+        TMode extends { unifyTuple: true } ? (
+            never
+        ) : never
+    );
     export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
         Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
     ) : never;
