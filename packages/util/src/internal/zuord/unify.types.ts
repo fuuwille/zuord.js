@@ -47,7 +47,7 @@ export namespace Unify {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
-                TMode extends { unifyArray: true } 
+                TMode extends {unifyTuple: false} | { unifyArray: true } 
                     ? Unify.DistributeHybrid<TOne[K], TMode>
                     : Unify.DistributePlain<TOne[K], TMode>
             )
