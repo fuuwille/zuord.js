@@ -60,7 +60,7 @@ export namespace Unify {
 
     export type ResolveTuple<T, TMode> = (
         TMode extends { unifyTuple: true } ? (
-            never
+            ExtractTuple<T, TMode>
         ) : Unify.ResolveArray<T, TMode>
     );
 
