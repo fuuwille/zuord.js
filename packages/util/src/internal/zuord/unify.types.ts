@@ -3,9 +3,9 @@ import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
-    export type Hybrid<T, TMode extends Core.Mode.Field> = (
+    export type Hybrid<T, TMode> = TMode extends Core.Mode.Field ? (
         ResolveHybrid<T, Core.Mode.Resolve<[{ unifyHybrid: true, unifyPlain: true, unifyArray: true }, TMode]>>
-    );
+    ) : never;
 
     export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [Trait.Eq<T, any>] extends [true] ? any :
