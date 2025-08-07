@@ -38,13 +38,13 @@ export namespace Unify {
         | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
-    export type ResolvePlain<T extends Type.Plain, TMode> = (
+    export type ResolvePlain<T, TMode> = (
         TMode extends { unifyPlain: true } ? (
             Unify.CompletePlain<T, TMode>
         ) : Unify.SkipPlain<T, TMode>
     );
 
-    export type SkipPlain<T extends Type.Plain, TMode> = {
+    export type SkipPlain<T, TMode> = {
         [K in keyof T]: (
             TMode extends { unifyHybrid: true } ? (
                 Unify.HandleHybrid<T[K], TMode>
@@ -52,7 +52,7 @@ export namespace Unify {
         )
     } extends infer T ? T : never;
 
-    export type CompletePlain<T extends Type.Plain, TMode> =  (
+    export type CompletePlain<T, TMode> =  (
         Unify.CollectPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
