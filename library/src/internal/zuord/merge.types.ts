@@ -13,12 +13,8 @@ export declare namespace Merge {
     )
 
     export type ResolvePlain<TContent, TMode extends ZuordCore.Mode.Field> = (
-        [TContent] extends [ZuordType.PureTuple] ? (
-            BuildPlain<TContent, TMode>
-        ) : 
-        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain>] ? (
-            ZuordUtil.Only.Required<TInfer, TMode>
-        ) : never
+        [TContent] extends [ZuordType.PureTuple] ? BuildPlain<TContent, TMode> : 
+        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain>] ? ZuordUtil.Only.Required<TInfer, TMode> : never
     );
 
     export type BuildPlain<TContent, TMode extends ZuordCore.Mode.Field> = (
