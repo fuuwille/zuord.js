@@ -4,24 +4,24 @@ import { ZuordCore as Core } from "@zuord/core";
 
 
 export declare namespace Integrate {
-    export type Any<TBase, TOverlay, TMode> = (
+    export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.PlainRaw<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Array<A, B, TMode> : TOverlay
     );
 
-    export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+    export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
         PlainRaw<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
             Util.Unify.Hybrid<TPlain, Core.Mode.Resolve<[TMode, { unifyPlain: false }]>>
         ) : never
     );
 
-    export type PlainRaw<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+    export type PlainRaw<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
         (PlainOverrides<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     );
 
-    export type PlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
+    export type PlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
@@ -33,7 +33,7 @@ export declare namespace Integrate {
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
-    export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
+    export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
         TBase extends Type.Array ? TOverlay extends Type.Array ? (
             TMode extends { concat: true } ? (
                 [...TBase, ...TOverlay]
