@@ -3,7 +3,7 @@ import { ZuordType as Type } from "@zuord/type";
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.Plain<A, B, TMode> :
-        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? ResolveArray<A, B, TMode> : TOverlay
+        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Array<A, B, TMode> : TOverlay
     );
 
     export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
@@ -24,13 +24,7 @@ export declare namespace Integrate {
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
-    export type ResolveArray<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
-        ResolveArrayOverlap<TBase, TOverlay, TMode> extends infer TIntegrated extends Type.Array ? (
-            TIntegrated[number][]
-        ) : never
-    );
-
-    export type ResolveArrayOverlap<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
+    export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
         TBase extends Type.Array ? TOverlay extends Type.Array ? (
             TMode extends { concat: true } ? (
                 [...TBase, ...TOverlay]

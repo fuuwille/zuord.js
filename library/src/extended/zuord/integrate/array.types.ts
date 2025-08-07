@@ -9,5 +9,5 @@ import type { ZuordCore as Core } from "@zuord/core";
 
 export namespace Array {
     export type Loose<TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordModeX.Integrate.Array> = {}> 
-        = $Zuord.Integrate.ResolveArray<TBase, TInput, Core.Mode.Resolve<[typeof zuordModeX.integrate.array, TMode]>>;
+        = $Zuord.Integrate.Array<TBase, TInput, Core.Mode.Resolve<[typeof zuordModeX.integrate.array, TMode]>>;
 }
