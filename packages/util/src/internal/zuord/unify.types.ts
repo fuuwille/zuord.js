@@ -96,26 +96,14 @@ export namespace Unify {
             [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
         }[]) : never
     );
-    export type ExtractArray<T, TMode> =(
-        [T, TMode] extends [Type.Tuple, { unifyTuple: true }] ? (
-            $Util.Tuple.Unify<T> extends infer TTuple ? ({
-                [K in keyof TTuple]: TMode extends { shallow: true } ? (
-                    TTuple[K]
-                ) : (
-                    TMode extends { unifyPlain: true } 
-                        ? Unify.DistributeHybrid<TTuple[K], TMode>
-                        : Unify.DistributeArray<TTuple[K], TMode>
-                )
-            }) : never
-        ) :
-        [T] extends [Type.Array] ? (
-            TMode extends { shallow: true } ? (
-                T[number][]
-            ) : (
-                TMode extends { unifyPlain: true } 
-                    ? Unify.DistributeHybrid<T[number], TMode>[]
-                    : Unify.DistributeArray<T[number], TMode>[]
-            )
-        ) : never
-    );
+    
+    export type ExtractArray<T, TMode> = [T] extends [Type.Array] ? (
+        TMode extends { shallow: true } ? (
+            T[number][]
+        ) : (
+            TMode extends { unifyPlain: true } 
+                ? Unify.DistributeHybrid<T[number], TMode>[]
+                : Unify.DistributeArray<T[number], TMode>[]
+        )
+    ) : never
 }
