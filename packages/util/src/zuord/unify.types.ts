@@ -7,7 +7,7 @@ export namespace Unify {
         = $ZuordUtil.Unify.ResolveHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>;
 
     export type Plain<T extends Type.Plain, TMode extends Core.Mode.Field> 
-        = $ZuordUtil.Unify.ResolvePlain<T, TMode>;
+        = $ZuordUtil.Unify.HandlePlain<T, TMode>;
 
     export type Array<T extends Type.Array, TMode extends Core.Mode.Field> 
         = $ZuordUtil.Unify.ResolveArray<T, TMode>;

@@ -25,7 +25,7 @@ export namespace Unify {
         ) : never
     );
     
-    export type ResolvePlain<T, TMode extends Core.Mode.Field> = (
+    export type HandlePlain<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
@@ -47,7 +47,7 @@ export namespace Unify {
             ) : (
                 TMode extends { unifyHybrid: true } 
                     ? Unify.ResolveHybrid<TOne[K], TMode>
-                    : Unify.ResolvePlain<TOne[K], TMode>
+                    : Unify.HandlePlain<TOne[K], TMode>
             )
         } : never
     );
