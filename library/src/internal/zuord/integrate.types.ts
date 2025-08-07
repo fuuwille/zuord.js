@@ -34,7 +34,7 @@ export declare namespace Integrate {
     });
 
     export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
-        ArrayRaw<TBase, TOverlay, TMode> extends infer TArray extends Type.Array ? (
+        ArrayRaw<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
             Util.Unify.Hybrid<TArray, TMode>
         ) : never
     );
