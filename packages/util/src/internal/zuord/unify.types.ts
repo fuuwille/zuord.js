@@ -61,7 +61,7 @@ export namespace Unify {
     export type ResolveTuple<T, TMode> = (
         TMode extends { unifyTuple: true } ? (
             never
-        ) : never
+        ) : Unify.ResolveArray<T, TMode>
     );
     export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
         Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
