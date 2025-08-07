@@ -39,7 +39,7 @@ export declare namespace Merge {
     export type BuildArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Array[], infer TLast extends ZuordType.Array> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? Integrate.Array<TRest[0], TLast, TMode> : 
+            TRest["length"] extends 1 ? Integrate.ExtractArray<TRest[0], TLast, TMode> : 
             Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
         ) : never
     );
