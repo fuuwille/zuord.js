@@ -7,7 +7,7 @@ import { ZuordCore as Core } from "@zuord/core";
 
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
-        ExtractAny<TBase, TOverlay, TMode>
+        Integrate.ExtractAny<TBase, TOverlay, TMode>
     );
 
     export type ExtractAny<TBase, TOverlay, TMode extends Core.Mode.Field> = (
