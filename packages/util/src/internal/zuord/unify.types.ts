@@ -20,7 +20,7 @@ export namespace Unify {
     );
 
     export type Plain<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: false }, TMode]>>
+        Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: false, unifyArray: false }, TMode]>>
     ) : never;
 
     export type DistributePlain<T, TMode> = (
