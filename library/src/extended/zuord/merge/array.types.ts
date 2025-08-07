@@ -4,5 +4,5 @@ import { ZuordModeX } from "zuord/extended";
 
 export namespace Array {
     export type Loose<TContent extends Type.ArrayOf<Type.Array>, TMode extends Partial<ZuordModeX.Merge.Array> = {}> 
-        = $Zuord.Merge.ResolvePlain<TContent, TMode>;
+        = $Zuord.Merge.Array<TContent, TMode>;
 }
