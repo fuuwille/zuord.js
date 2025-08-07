@@ -9,12 +9,12 @@ export namespace Unify {
 
     export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [Trait.Eq<T, any>] extends [true] ? any :
-        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.ResolvePrimitive<T, TMode> :
+        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.HandlePrimitive<T, TMode> :
         [T] extends [Type.Plain] ? Unify.ResolveHybridPlain<T, TMode> :
         [T] extends [Type.Array] ? Unify.ResolveHybridArray<T, TMode> : T
     );
 
-    export type ResolvePrimitive<T, TMode extends Core.Mode.Field> = (
+    export type HandlePrimitive<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? ResolveExcludedPrimitive<TExcluded, TMode> : never)
         | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     ) extends infer T ? T : never;
