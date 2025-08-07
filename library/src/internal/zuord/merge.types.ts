@@ -36,6 +36,9 @@ export declare namespace Merge {
     export type ResolveArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         [TContent] extends [ZuordType.Tuple] ? (
             ResolveArrayFromTuple<TContent, TMode>
+        ) : 
+        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Array>] ? (
+            TInfer
         ) : never
     )
 
