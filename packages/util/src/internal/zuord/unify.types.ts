@@ -4,12 +4,16 @@ import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
     export type Hybrid<T, TMode> = TMode extends Core.Mode.Field ? (
-        ResolveHybrid<T, Core.Mode.Resolve<[{ unifyHybrid: true, unifyPlain: true, unifyArray: true }, TMode]>>
+        HandleHybrid<T, Core.Mode.Resolve<[{ unifyHybrid: true, unifyPlain: true, unifyArray: true }, TMode]>>
     ) : never;
 
-    export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
+    export type HandleHybrid<T, TMode extends Core.Mode.Field> = (
         [Trait.Eq<T, any>] extends [true] ? any :
         [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.HandlePrimitive<T, TMode> :
+        ResolveHybrid<T, TMode>
+    );
+
+    export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [T] extends [Type.Plain] ? Unify.ResolvePlain<T, TMode> :
         [T] extends [Type.Array] ? Unify.ResolveHybridArray<T, TMode> : T
     );
@@ -20,7 +24,7 @@ export namespace Unify {
     ) extends infer T ? T : never;
 
     export type ResolveNonPrimitive<T, TMode extends Core.Mode.Field> = (
-        Unify.ResolveHybrid<T, TMode> extends infer THybrid ? (
+        Unify.HandleHybrid<T, TMode> extends infer THybrid ? (
             [{}] extends [THybrid] ? never : THybrid
         ) : never
     );
@@ -39,7 +43,7 @@ export namespace Unify {
     export type ResolveSkippedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = {
         [K in keyof T]: (
             TMode extends { unifyHybrid: true } ? (
-                ResolveHybrid<T[K], TMode>
+                HandleHybrid<T[K], TMode>
             ) : HandlePlain<T[K], TMode> 
         )
     } extends infer T ? T : never;
@@ -50,7 +54,7 @@ export namespace Unify {
                 TOne[K]
             ) : (
                 TMode extends { unifyHybrid: true } 
-                    ? Unify.ResolveHybrid<TOne[K], TMode>
+                    ? Unify.HandleHybrid<TOne[K], TMode>
                     : Unify.HandlePlain<TOne[K], TMode>
             )
         } : never
@@ -73,7 +77,7 @@ export namespace Unify {
 
     export type ResolveSkippedArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
         T extends Type.ArrayOf<infer TInfer> ? ({
-            [K in keyof TInfer]: ResolveHybrid<TInfer[K], TMode>;
+            [K in keyof TInfer]: HandleHybrid<TInfer[K], TMode>;
         }[]) : never
     );
 
@@ -86,7 +90,7 @@ export namespace Unify {
             T[number]
         ) : (
             TMode extends { unifyHybrid: true } 
-                ? ResolveHybrid<T[number], TMode>
+                ? HandleHybrid<T[number], TMode>
                 : ResolveArray<T[number], TMode>
         )
     )
