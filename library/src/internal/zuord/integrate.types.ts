@@ -31,7 +31,7 @@ export declare namespace Integrate {
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
-            ) : Integrate.Any<TBase[K], TOverlay[K], TMode>
+            ) : Integrate.ExtractAny<TBase[K], TOverlay[K], TMode>
         ) : TBase[K];
     });
 
