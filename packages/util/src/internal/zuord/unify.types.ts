@@ -53,7 +53,7 @@ export namespace Unify {
     } extends infer T ? T : never;
 
     export type CompletePlain<T extends Type.Plain, TMode extends Core.Mode.Field> =  (
-        Unify.ResolveCompositedPlain<T> extends infer TOne ? {
+        Unify.CollectPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
@@ -64,7 +64,7 @@ export namespace Unify {
         } : never
     );
 
-    export type ResolveCompositedPlain<T> = {
+    export type CollectPlain<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     }
 
