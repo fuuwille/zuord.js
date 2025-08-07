@@ -49,7 +49,9 @@ export declare namespace Integrate {
 
     export type ExtractArray<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
         TMode extends { concat: true } ? (
-            [...TBase, ...TOverlay]
+            [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
+                [...TBase, ...TOverlay]
+            ) : (TBase | TOverlay)[]
         ) : TOverlay
     );
 }
