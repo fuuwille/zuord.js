@@ -16,8 +16,8 @@ export declare namespace Merge {
         [TContent] extends [ZuordType.PureTuple] ? (
             ResolvePlainFromTuple<TContent, TMode>
         ) : 
-        [TContent] extends [ZuordType.Array] ? (
-            ResolvePlainFromArray<TContent, TMode>
+        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain>] ? (
+            ZuordUtil.Only.Required<TInfer, TMode>
         ) : never
     );
 
@@ -28,12 +28,6 @@ export declare namespace Merge {
             : Integrate.Plain<ResolvePlainFromTuple<TRest, TMode>, TLast, TMode>
         ) : never
     ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
-
-    export type ResolvePlainFromArray<TContent, TMode extends ZuordCore.Mode.Field> = (
-        TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain> ? (
-            ZuordUtil.Only.Required<TInfer, TMode>
-        ) : never
-    )
 
     export type Array<TContent extends ZuordType.Array, TMode extends ZuordCore.Mode.Field> = (
         Merge.ResolveArray<TContent, TMode>
