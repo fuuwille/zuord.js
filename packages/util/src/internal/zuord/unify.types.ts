@@ -5,7 +5,7 @@ import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
     export type Hybrid<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.DistributeHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>
+        Unify.DistributeHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: true, unifyArray: true }, TMode]>>
     ) : never;
 
     export type DistributeHybrid<T, TMode> = (
@@ -96,7 +96,7 @@ export namespace Unify {
             [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
         }[]) : never
     );
-    
+
     export type ExtractArray<T, TMode> = [T] extends [Type.Array] ? (
         TMode extends { shallow: true } ? (
             T[number][]
