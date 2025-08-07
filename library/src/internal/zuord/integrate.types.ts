@@ -2,17 +2,17 @@ import { ZuordType as Type } from "@zuord/type";
 
 export declare namespace Integrate {
     export type ResolveHybrid<TBase, TOverlay, TMode> = (
-        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? ResolvePlain<A, B, TMode> :
+        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.Plain<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? ResolveArray<A, B, TMode> : TOverlay
     );
 
-    export type ResolvePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
-        (ResolvePlainOverrides<TBase, TOverlay, TMode> & ResolvePlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
+    export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+        (PlainOverrides<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     )
 
-    export type ResolvePlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
+    export type PlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
@@ -20,7 +20,7 @@ export declare namespace Integrate {
         ) : TBase[K];
     });
 
-    export type ResolvePlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
+    export type PlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
