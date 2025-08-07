@@ -10,5 +10,5 @@ export namespace Unify {
         = $ZuordUtil.Unify.Plain<T, TMode>;
 
     export type Array<T extends Type.Array, TMode extends Core.Mode.Field> 
-        = $ZuordUtil.Unify.HandleArray<T, TMode>;
+        = $ZuordUtil.Unify.Array<T, TMode>;
 }
