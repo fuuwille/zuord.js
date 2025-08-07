@@ -33,6 +33,12 @@ export declare namespace Integrate {
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
+    export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
+        ArrayRaw<TBase, TOverlay, TMode> extends infer TArray extends Type.Array ? (
+            Util.Unify.Hybrid<TArray, TMode>
+        ) : never
+    );
+
     export type ArrayRaw<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
         TBase extends Type.Array ? TOverlay extends Type.Array ? (
             TMode extends { concat: true } ? (
