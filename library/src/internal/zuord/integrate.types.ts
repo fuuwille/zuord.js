@@ -18,12 +18,12 @@ export declare namespace Integrate {
     );
 
     export type ExtractPlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
-        (PlainOverrides<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
+        (Integrate.OverridePlain<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     );
 
-    export type PlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = ({
+    export type OverridePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
