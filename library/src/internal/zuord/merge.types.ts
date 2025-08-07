@@ -21,7 +21,7 @@ export declare namespace Merge {
         TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Plain[], infer TLast extends ZuordType.Plain> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.Plain<TRest[0], TLast, TMode> 
-            : Integrate.Plain<BuildPlain<TRest, TMode>, TLast, TMode>
+            : Integrate.ExtractPlain<BuildPlain<TRest, TMode>, TLast, TMode>
         ) : never
     ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
