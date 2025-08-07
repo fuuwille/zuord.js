@@ -15,7 +15,7 @@ export namespace Unify {
 
     export type ResolveHybrid<T, TMode extends Core.Mode.Field> = (
         [T] extends [Type.Plain] ? Unify.ResolvePlain<T, TMode> :
-        [T] extends [Type.Array] ? Unify.ResolveHybridArray<T, TMode> : T
+        [T] extends [Type.Array] ? Unify.ResolveArray<T, TMode> : T
     );
 
     export type HandlePrimitive<T, TMode extends Core.Mode.Field> = (
@@ -70,26 +70,26 @@ export namespace Unify {
 
     export type HandleArray<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveExtractedArray<TExtracted, TMode>: never)
+        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.CompleteArray<TExtracted, TMode>: never)
     ) extends infer T ? T : never;
 
-    export type ResolveHybridArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
+    export type ResolveArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
         TMode extends { unifyArray: true } ? (
-            Unify.ResolveExtractedArray<T, Core.Mode.Resolve<[TMode, { unifyHybrid: true }]>>
-        ) : Unify.ResolveSkippedArray<T, TMode>
+            Unify.CompleteArray<T, Core.Mode.Resolve<[TMode, { unifyHybrid: true }]>>
+        ) : Unify.SkipArray<T, TMode>
     );
 
-    export type ResolveSkippedArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
+    export type SkipArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
         T extends Type.ArrayOf<infer TInfer> ? ({
             [K in keyof TInfer]: Unify.HandleHybrid<TInfer[K], TMode>;
         }[]) : never
     );
 
-    export type ResolveExtractedArray<T extends Type.Array, TMode extends Core.Mode.Field> =(
-        [T] extends [never] ? never : Unify.ResolveDistributedArray<T, TMode>[]
+    export type CompleteArray<T extends Type.Array, TMode extends Core.Mode.Field> =(
+        [T] extends [never] ? never : Unify.CollectArray<T, TMode>[]
     );
 
-    export type ResolveDistributedArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
+    export type CollectArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
         TMode extends { shallow: true } ? (
             T[number]
         ) : (
