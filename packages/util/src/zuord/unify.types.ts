@@ -9,6 +9,9 @@ export namespace Unify {
     export type Plain<T extends Type.Plain, TMode extends Core.Mode.Field = {}> 
         = $ZuordUtil.Unify.Plain<T, TMode>;
 
+    export type Tuple<T extends Type.Tuple, TMode extends Core.Mode.Field = {}> 
+        = $ZuordUtil.Unify.Tuple<T, TMode>;
+
     export type Array<T extends Type.Array, TMode extends Core.Mode.Field = {}> 
         = $ZuordUtil.Unify.Array<T, TMode>;
 }
