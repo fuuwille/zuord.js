@@ -25,11 +25,13 @@ export namespace Unify {
         Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: false, unifyArray: false }, TMode]>>
     ) : never;
 
-    export type DistributePlain<T, TMode> = (
-        | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
-    ) extends infer T ? T : never;
-
+    export type DistributePlain<T, TMode> = [Trait.Eq<T, Type.Plain>] extends [false] ? (
+        (
+            | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
+            | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
+        ) extends infer T ? T : never
+    ) : any;
+    
     export type ResolvePlain<T, TMode> = (
         TMode extends { unifyPlain: true } ? (
             Unify.ExtractPlain<T, TMode>
