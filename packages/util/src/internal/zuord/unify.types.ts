@@ -1,3 +1,4 @@
+import { $ZuordUtil as $Util } from ".";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
@@ -82,18 +83,18 @@ export namespace Unify {
             [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
         }[]) : never
     );
-
     export type HandleArray<T, TMode> =(
-        [T] extends [never] ? never : Unify.CollectArray<T, TMode>[]
+        [T] extends [Type.Tuple] ? (
+            $Util.Tuple.Unify<T>
+        ) :
+        [T] extends [Type.Array] ? (
+            TMode extends { shallow: true } ? (
+                T[number]
+            ) : (
+                TMode extends { unifyPlain: true } 
+                    ? Unify.DistributeHybrid<T[number], TMode>
+                    : Unify.DistributeArray<T[number], TMode>
+            )
+        ) : never
     );
-
-    export type CollectArray<T, TMode> = [T] extends [Type.Array] ? (
-        TMode extends { shallow: true } ? (
-            T[number]
-        ) : (
-            TMode extends { unifyPlain: true } 
-                ? Unify.DistributeHybrid<T[number], TMode>
-                : Unify.DistributeArray<T[number], TMode>
-        )
-    ) : never;
 }
