@@ -79,7 +79,7 @@ export namespace Unify {
 
     export type ResolveArray<T extends Type.Array, TMode extends Core.Mode.Field> = (
         TMode extends { unifyArray: true } ? (
-            Unify.CompleteArray<T, Core.Mode.Resolve<[TMode, { unifyHybrid: true }]>>
+            Unify.CompleteArray<T, TMode>
         ) : Unify.SkipArray<T, TMode>
     );
 
