@@ -66,7 +66,11 @@ export namespace Unify {
 
     export type CollectPlain<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
-    }
+    };
+
+    export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
+        Unify.HandleArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
+    ) : never;
 
     export type HandleArray<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
