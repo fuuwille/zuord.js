@@ -40,7 +40,7 @@ export declare namespace Merge {
         TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Array[], infer TLast extends ZuordType.Array> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.Array<TRest[0], TLast, TMode> : 
-            Integrate.Array<BuildArray<TRest, TMode>, TLast, TMode>
+            Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, TMode>
         ) : never
     );
 }
