@@ -89,11 +89,11 @@ export namespace Unify {
         ) :
         [T] extends [Type.Array] ? (
             TMode extends { shallow: true } ? (
-                T[number]
+                T[number][]
             ) : (
                 TMode extends { unifyPlain: true } 
-                    ? Unify.DistributeHybrid<T[number], TMode>
-                    : Unify.DistributeArray<T[number], TMode>
+                    ? Unify.DistributeHybrid<T[number], TMode>[]
+                    : Unify.DistributeArray<T[number], TMode>[]
             )
         ) : never
     );
