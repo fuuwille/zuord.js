@@ -10,7 +10,7 @@ export declare namespace Integrate {
         (PlainOverrides<TBase, TOverlay, TMode> & PlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
-    )
+    ) extends infer TPlain extends Type.Plain ? TPlain : never;
 
     export type PlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
