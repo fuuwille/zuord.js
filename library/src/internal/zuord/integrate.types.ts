@@ -13,7 +13,7 @@ export declare namespace Integrate {
 
     export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
         PlainRaw<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
-            Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyHybrid: true, unifyArray: true }]>>
+            Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
         ) : never
     );
 
