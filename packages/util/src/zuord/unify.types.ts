@@ -7,7 +7,7 @@ export namespace Unify {
         = $ZuordUtil.Unify.Hybrid<T, TMode>;
 
     export type Plain<T extends Type.Plain, TMode extends Core.Mode.Field> 
-        = $ZuordUtil.Unify.HandlePlain<T, TMode>;
+        = $ZuordUtil.Unify.Plain<T, TMode>;
 
     export type Array<T extends Type.Array, TMode extends Core.Mode.Field> 
         = $ZuordUtil.Unify.HandleArray<T, TMode>;
