@@ -34,15 +34,15 @@ export declare namespace Merge {
     );
 
     export type ResolveArray<TContent, TMode extends ZuordCore.Mode.Field> = (
-        [TContent] extends [ZuordType.Tuple] ? ResolveArrayFromTuple<TContent, TMode> : 
+        [TContent] extends [ZuordType.Tuple] ? BuildArray<TContent, TMode> : 
         [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Array>] ? TInfer : never
     )
 
-    export type ResolveArrayFromTuple<TContent, TMode extends ZuordCore.Mode.Field> = (
+    export type BuildArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Array[], infer TLast extends ZuordType.Array> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.Array<TRest[0], TLast, TMode> : 
-            Integrate.Array<ResolveArrayFromTuple<TRest, TMode>, TLast, TMode>
+            Integrate.Array<BuildArray<TRest, TMode>, TLast, TMode>
         ) : never
     );
 }
