@@ -15,11 +15,11 @@ export namespace Unify {
     );
 
     export type HandlePrimitive<T, TMode extends Core.Mode.Field> = (
-        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? ResolveExcludedPrimitive<TExcluded, TMode> : never)
+        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? ResolvePrimitive<TExcluded, TMode> : never)
         | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     ) extends infer T ? T : never;
 
-    export type ResolveExcludedPrimitive<T, TMode extends Core.Mode.Field> = (
+    export type ResolvePrimitive<T, TMode extends Core.Mode.Field> = (
         Unify.ResolveHybrid<T, TMode> extends infer THybrid ? (
             [{}] extends [THybrid] ? never : THybrid
         ) : never
