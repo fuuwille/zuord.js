@@ -1,9 +1,18 @@
 import { ZuordType as Type } from "@zuord/type";
+import { ZuordUtil as Util } from "@zuord/util";
+import { ZuordCore as Core } from "@zuord/core";
+
 
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.PlainRaw<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Array<A, B, TMode> : TOverlay
+    );
+
+    export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+        PlainRaw<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
+            Util.Unify.Hybrid<TPlain, Core.Mode.Resolve<[TMode, { unifyPlain: false }]>>
+        ) : never
     );
 
     export type PlainRaw<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
