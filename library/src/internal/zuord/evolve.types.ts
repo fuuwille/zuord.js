@@ -1,7 +1,7 @@
-import { Integrate } from "./integrate.types";
-import { Merge } from "./merge.types";
+import { $Zuord } from ".";
+
 
 export namespace Evolve {
     export type ResolvePlain<TBase, TContent, TMode> 
-        = Integrate.Any<TBase, Merge.ResolvePlain<TContent, TMode>, TMode>;
+        = $Zuord.Integrate.Any<TBase, $Zuord.Merge.ResolvePlain<TContent, TMode>, TMode>;
 }
