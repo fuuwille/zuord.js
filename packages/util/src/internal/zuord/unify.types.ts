@@ -101,7 +101,7 @@ export namespace Unify {
         TMode extends { shallow: true } ? (
             T[number][]
         ) : (
-            TMode extends { unifyPlain: true } 
+            TMode extends { unifyPlain: true } | { unifyTuple: true } 
                 ? Unify.DistributeHybrid<T[number], TMode>[]
                 : Unify.DistributeArray<T[number], TMode>[]
         )
