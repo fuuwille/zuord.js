@@ -8,7 +8,7 @@ export namespace Unify {
         Unify.DistributeHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: true, unifyArray: true }, TMode]>>
     ) : never;
 
-    export type DistributeHybrid<T, TMode> = [Trait.Eq<T, Type.Plain>] extends [false] ? (
+    export type DistributeHybrid<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
             | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? Unify.ResolveHybrid<TExcluded, TMode> : never)
             | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
@@ -25,7 +25,7 @@ export namespace Unify {
         Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: false, unifyArray: false }, TMode]>>
     ) : never;
 
-    export type DistributePlain<T, TMode> = [Trait.Eq<T, Type.Plain>] extends [false] ? (
+    export type DistributePlain<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
             | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
             | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
@@ -88,10 +88,12 @@ export namespace Unify {
         Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: false, unifyArray: true }, TMode]>>
     ) : never;
 
-    export type DistributeArray<T, TMode> = (
-        | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveArray<TExtracted, TMode>: never)
-    ) extends infer T ? T : never;
+    export type DistributeArray<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
+        (
+            | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
+            | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveArray<TExtracted, TMode>: never)
+        ) extends infer T ? T : never
+    ) : any;
 
     export type ResolveArray<T, TMode> = (
         TMode extends { unifyArray: true } ? (
