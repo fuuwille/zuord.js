@@ -1,9 +1,11 @@
 export namespace Tuple {
     export type Keys<T> = T extends any ? Exclude<keyof T, keyof any[]> : never;
 
-    export type Unify<T, Acc = []> = Acc extends any[] ? (
+    export type Unify<T> = ResolveUnify<UnifyLike<T>>;
+
+    export type ResolveUnify<T, Acc = []> = Acc extends any[] ? (
         `${Acc['length']}` extends infer K ? (
-            K extends keyof T ? Tuple.Unify<T, [...Acc, T[K]]> : Acc
+            K extends keyof T ? Tuple.ResolveUnify<T, [...Acc, T[K]]> : Acc
         ) : never
     ) : never;
 
