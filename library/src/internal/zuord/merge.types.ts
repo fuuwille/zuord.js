@@ -34,4 +34,18 @@ export declare namespace Merge {
             ZuordUtil.Only.Required<TInfer, TMode>
         ) : never
     )
+
+    export type Array<TContent extends ZuordType.Array, TMode extends ZuordCore.Mode.Field> = (
+        Merge.ResolveArray<TContent, TMode> extends infer TResolved extends ZuordType.Array ? (
+            ZuordUtil.Unify.Array<TResolved, ZuordCore.Mode.Resolve<[TMode, { unifyPlain: true }]>> 
+        ) : never
+    );
+
+    export type ResolveArray<TContent, TMode> = [TContent] extends [ZuordType.Array] ? (
+        TContent extends ZuordType.PureTuple ? (
+            TContent
+        ) : TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Array> ? (
+            TInfer
+        ) : never
+    ) : never;
 }
