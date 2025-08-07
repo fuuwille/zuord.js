@@ -6,7 +6,7 @@ import { ZuordCore as Core } from "@zuord/core";
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.PlainRaw<A, B, TMode> :
-        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.Array<A, B, TMode> : TOverlay
+        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ArrayRaw<A, B, TMode> : TOverlay
     );
 
     export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
@@ -33,7 +33,7 @@ export declare namespace Integrate {
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
-    export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
+    export type ArrayRaw<TBase extends Type.Array, TOverlay extends Type.Array, TMode extends Core.Mode.Field> = (
         TBase extends Type.Array ? TOverlay extends Type.Array ? (
             TMode extends { concat: true } ? (
                 [...TBase, ...TOverlay]
