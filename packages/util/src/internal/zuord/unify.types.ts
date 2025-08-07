@@ -24,7 +24,7 @@ export namespace Unify {
     ) extends infer T ? T : never;
 
     export type ResolveNonPrimitive<T, TMode extends Core.Mode.Field> = (
-        Unify.HandleHybrid<T, TMode> extends infer THybrid ? (
+        Unify.ResolveHybrid<T, TMode> extends infer THybrid ? (
             [{}] extends [THybrid] ? never : THybrid
         ) : never
     );
