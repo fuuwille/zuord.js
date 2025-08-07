@@ -43,7 +43,7 @@ export declare namespace Integrate {
         Integrate.ExtractArray<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
             [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
                 TArray
-            ) : Util.Unify.Hybrid<TArray, TMode>
+            ) : Util.Unify.Array<TArray, TMode>
         ) : never
     );
 
