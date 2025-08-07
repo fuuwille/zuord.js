@@ -4,12 +4,12 @@ import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
     export type Hybrid<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.HandleHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>
+        Unify.DistributeHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: true }, TMode]>>
     ) : never;
 
-    export type HandleHybrid<T, TMode> = (
+    export type DistributeHybrid<T, TMode> = (
         [Trait.Eq<T, any>] extends [true] ? any :
-        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.HandlePrimitive<T, TMode> :
+        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.DistributePrimitive<T, TMode> :
         Unify.ResolveHybrid<T, TMode>
     );
 
@@ -18,7 +18,7 @@ export namespace Unify {
         [T] extends [Type.Array] ? Unify.ResolveArray<T, TMode> : T
     );
 
-    export type HandlePrimitive<T, TMode> = (
+    export type DistributePrimitive<T, TMode> = (
         | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? Unify.ResolveNonPrimitive<TExcluded, TMode> : never)
         | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     ) extends infer T ? T : never;
@@ -30,10 +30,10 @@ export namespace Unify {
     );
 
     export type Plain<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.HandlePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: false }, TMode]>>
+        Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyArray: false }, TMode]>>
     ) : never;
 
-    export type HandlePlain<T, TMode> = (
+    export type DistributePlain<T, TMode> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
@@ -47,8 +47,8 @@ export namespace Unify {
     export type SkipPlain<T, TMode> = {
         [K in keyof T]: (
             TMode extends { unifyArray: true } ? (
-                Unify.HandleHybrid<T[K], TMode>
-            ) : Unify.HandlePlain<T[K], TMode> 
+                Unify.DistributeHybrid<T[K], TMode>
+            ) : Unify.DistributePlain<T[K], TMode> 
         )
     } extends infer T ? T : never;
 
@@ -58,8 +58,8 @@ export namespace Unify {
                 TOne[K]
             ) : (
                 TMode extends { unifyArray: true } 
-                    ? Unify.HandleHybrid<TOne[K], TMode>
-                    : Unify.HandlePlain<TOne[K], TMode>
+                    ? Unify.DistributeHybrid<TOne[K], TMode>
+                    : Unify.DistributePlain<TOne[K], TMode>
             )
         } : never
     );
@@ -69,10 +69,10 @@ export namespace Unify {
     };
 
     export type Array<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.HandleArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
+        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyHybrid: false, unifyPlain: false, unifyArray: true }, TMode]>>
     ) : never;
 
-    export type HandleArray<T, TMode> = (
+    export type DistributeArray<T, TMode> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
         | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.CompleteArray<TExtracted, TMode>: never)
     ) extends infer T ? T : never;
@@ -85,7 +85,7 @@ export namespace Unify {
 
     export type SkipArray<T, TMode> = (
         T extends Type.ArrayOf<infer TInfer> ? ({
-            [K in keyof TInfer]: Unify.HandleHybrid<TInfer[K], TMode>;
+            [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
         }[]) : never
     );
 
@@ -98,8 +98,8 @@ export namespace Unify {
             T[number]
         ) : (
             TMode extends { unifyPlain: true } 
-                ? Unify.HandleHybrid<T[number], TMode>
-                : Unify.HandleArray<T[number], TMode>
+                ? Unify.DistributeHybrid<T[number], TMode>
+                : Unify.DistributeArray<T[number], TMode>
         )
     ) : never;
 }
