@@ -1,5 +1,4 @@
 import { ZuordType as Type } from "@zuord/type";
-import { ZuordUtil as Util, ZuordUtil } from "@zuord/util";
 
 export declare namespace Integrate {
     export type Unknown<TBase, TOverlay, TMode> = (
