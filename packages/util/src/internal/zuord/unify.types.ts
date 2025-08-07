@@ -68,12 +68,12 @@ export namespace Unify {
 
     export type DistributeArray<T, TMode> = (
         | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.CompleteArray<TExtracted, TMode>: never)
+        | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.HandleArray<TExtracted, TMode>: never)
     ) extends infer T ? T : never;
 
     export type ResolveArray<T, TMode> = (
         TMode extends { unifyArray: true } ? (
-            Unify.CompleteArray<T, TMode>
+            Unify.HandleArray<T, TMode>
         ) : Unify.SkipArray<T, TMode>
     );
 
@@ -83,7 +83,7 @@ export namespace Unify {
         }[]) : never
     );
 
-    export type CompleteArray<T, TMode> =(
+    export type HandleArray<T, TMode> =(
         [T] extends [never] ? never : Unify.CollectArray<T, TMode>[]
     );
 
