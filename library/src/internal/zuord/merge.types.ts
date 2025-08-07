@@ -22,12 +22,12 @@ export declare namespace Merge {
     );
 
     export type ResolvePlainFromTuple<TContent, TMode extends ZuordCore.Mode.Field> = (
-        TContent extends ZuordType.EndingTupleWith<infer TRest, infer TLast> ? (
+        TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Plain[], infer TLast extends ZuordType.Plain> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? Integrate.Any<TRest[0], TLast, TMode> 
-            : Integrate.Any<ResolvePlainFromTuple<TRest, TMode>, TLast, TMode>
+            TRest["length"] extends 1 ? Integrate.Plain<TRest[0], TLast, TMode> 
+            : Integrate.Plain<ResolvePlainFromTuple<TRest, TMode>, TLast, TMode>
         ) : never
-    );
+    ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
     export type ResolvePlainFromArray<TContent, TMode extends ZuordCore.Mode.Field> = (
         TContent extends ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain> ? (
