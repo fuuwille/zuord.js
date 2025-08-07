@@ -8,21 +8,15 @@ export namespace Unify {
     ) : never;
 
     export type DistributeHybrid<T, TMode> = (
-        [Trait.Eq<T, any>] extends [true] ? any :
-        [Trait.Has<T, Type.Primitive>] extends [true] ? Unify.DistributePrimitive<T, TMode> :
-        Unify.ResolveHybrid<T, TMode>
+        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? Unify.ResolveNonPrimitive<TExcluded, TMode> : never)
+        | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
     );
 
     export type ResolveHybrid<T, TMode> = (
         [T] extends [Type.Plain] ? Unify.ResolvePlain<T, TMode> :
         [T] extends [Type.Array] ? Unify.ResolveArray<T, TMode> : T
     );
-
-    export type DistributePrimitive<T, TMode> = (
-        | (Trait.Exclude<T, Type.Primitive> extends infer TExcluded ? Unify.ResolveNonPrimitive<TExcluded, TMode> : never)
-        | (Trait.Extract<T, Type.Primitive> extends infer TExtracted ? TExtracted : never)
-    ) extends infer T ? T : never;
-
+    
     export type ResolveNonPrimitive<T, TMode> = (
         Unify.ResolveHybrid<T, TMode> extends infer THybrid ? (
             [{}] extends [THybrid] ? never : THybrid
