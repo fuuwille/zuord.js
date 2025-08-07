@@ -27,7 +27,7 @@ export namespace Unify {
     
     export type HandlePlain<T, TMode extends Core.Mode.Field> = (
         | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
-        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolveExtractedPlain<TExtracted, TMode> : never)
+        | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? ResolvePlain<TExtracted, TMode> : never)
     ) extends infer T ? T : never;
 
     export type ResolvePlain<T extends Type.Plain, TMode extends Core.Mode.Field> = (
