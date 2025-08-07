@@ -37,7 +37,11 @@ export namespace Unify {
     );
 
     export type ResolveSkippedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> = {
-        [K in keyof T]: ResolveHybrid<T[K], TMode>;
+        [K in keyof T]: (
+            TMode extends { unifyHybrid: true } ? (
+                ResolveHybrid<T[K], TMode>
+            ) : HandlePlain<T[K], TMode> 
+        )
     } extends infer T ? T : never;
 
     export type ResolveExtractedPlain<T extends Type.Plain, TMode extends Core.Mode.Field> =  (
