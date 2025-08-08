@@ -8,7 +8,7 @@ export namespace Strict {
     }
   ) : TInput;
 
-  export type ResolveExcludedKeys<TBase extends Type.Plain, TInput extends Type.Plain> = (
+  export type ResolveExcludedKeys<TBase, TInput> = (
     ResolveExcludedBaseKeys<TBase, TInput> & ResolveExcludedInputKeys<TBase, TInput>
   )
 
