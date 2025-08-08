@@ -1,4 +1,4 @@
-import { restrict as $restrict } from "./plain.runtime";
+import type { restrict as $restrict } from "./plain.runtime";
 
 type plainAPI = {
     readonly restrict: typeof $restrict;
