@@ -9,10 +9,6 @@ const $ = <TContent, TMode>(content: TContent, mode: TMode, integrate: (base: an
     });
 }
 
-export const unknown = <TContent, TMode>(content: TContent, mode: TMode) => {
-    return $(content, mode, integrate.any);
-}
-
 export const plain = <TContent, TMode>(content: TContent, mode: TMode) => {
     return $(content, mode, integrate.plain);
 }

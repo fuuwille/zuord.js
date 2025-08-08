@@ -1,18 +1,6 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 
-export const any = <TBase, TInput, TMode>(base: TBase, input: TInput, mode: TMode) => {
-    if(zuordType.plain(base) && zuordType.plain(input)) {
-        return plain(base, input, mode);
-    }
-
-    if(zuordType.array(base) && zuordType.array(input)) {
-        return array(base, input, mode);
-    }
-
-    return input;
-}
-
 export const plain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
     const { shallow } = mode as Core.Mode.Field;
 
