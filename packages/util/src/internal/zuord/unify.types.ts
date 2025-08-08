@@ -57,7 +57,7 @@ export namespace Unify {
         } : never
     );
 
-    export type CollectPlain<T> = [""] extends [keyof T] ? never : {
+    export type CollectPlain<T> = {
         [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
     };
 
