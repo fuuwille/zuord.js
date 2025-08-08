@@ -6,9 +6,6 @@ import type { ZuordX, ZuordModeX } from "zuord/extended";
 import type { ZuordType as Type } from "@zuord/type";
 import type { ZuordUtil as Util } from "@zuord/util";
 
-
-//
-
 const $ = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<ZuordModeX.Integrate.Plain>) => {
     if(!type.plain($base)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
