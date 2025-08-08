@@ -1,47 +1,47 @@
 import { Integrate } from "./integrate.types";
-import { ZuordType } from "@zuord/type";
-import { ZuordCore } from "@zuord/core";
-import { ZuordUtil } from "@zuord/util";
+import { ZuordType as Type } from "@zuord/type";
+import { ZuordCore as Core } from "@zuord/core";
+import { ZuordUtil as Util } from "@zuord/util";
 
 
 //
 
 export declare namespace Merge {
-    export type Plain<TContent, TMode extends ZuordCore.Mode.Field> = (
-        Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends ZuordType.Plain ? (
-            ZuordUtil.Unify.Hybrid<TResolved, ZuordCore.Mode.Resolve<[TMode, { 
-                unifyPlain: TContent extends ZuordType.PureTuple ? false : true
+    export type Plain<TContent, TMode extends Core.Mode.Field> = (
+        Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends Type.Plain ? (
+            Util.Unify.Hybrid<TResolved, Core.Mode.Resolve<[TMode, { 
+                unifyPlain: TContent extends Type.PureTuple ? false : true
             }]>>
         ) : never
     )
 
-    export type ResolvePlain<TContent, TMode extends ZuordCore.Mode.Field> = (
-        [TContent] extends [ZuordType.PureTuple] ? BuildPlain<TContent, TMode> : 
-        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Plain>] ? ZuordUtil.Only.Required<TInfer, TMode> : never
+    export type ResolvePlain<TContent, TMode extends Core.Mode.Field> = (
+        [TContent] extends [Type.PureTuple] ? BuildPlain<TContent, TMode> : 
+        [TContent] extends [Type.ArrayOf<infer TInfer extends Type.Plain>] ? Util.Only.Required<TInfer, TMode> : never
     );
 
-    export type BuildPlain<TContent, TMode extends ZuordCore.Mode.Field> = (
-        TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Plain[], infer TLast extends ZuordType.Plain> ? (
+    export type BuildPlain<TContent, TMode extends Core.Mode.Field> = (
+        TContent extends Type.EndingTupleWith<infer TRest extends Type.Plain[], infer TLast extends Type.Plain> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.ExtractPlain<TRest[0], TLast, TMode> 
             : Integrate.ExtractPlain<BuildPlain<TRest, TMode>, TLast, TMode>
         ) : never
-    ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
+    ) extends infer TPlain extends Type.Plain ? TPlain : never;
 
-    export type Array<TContent extends ZuordType.Array, TMode extends ZuordCore.Mode.Field> = (
+    export type Array<TContent extends Type.Array, TMode extends Core.Mode.Field> = (
         Merge.ResolveArray<TContent, TMode> extends infer TResolved ? (
-            [TResolved] extends [ZuordType.PureTuple] ? TResolved :
-            [TResolved] extends [ZuordType.Array] ? ZuordUtil.Unify.Array<TResolved, TMode> : never
+            [TResolved] extends [Type.PureTuple] ? TResolved :
+            [TResolved] extends [Type.Array] ? Util.Unify.Array<TResolved, TMode> : never
         ) : never
     );
 
-    export type ResolveArray<TContent, TMode extends ZuordCore.Mode.Field> = (
-        [TContent] extends [ZuordType.PureTuple] ? BuildArray<ZuordUtil.Mutable.Hybrid<TContent>, TMode> : 
-        [TContent] extends [ZuordType.ArrayOf<infer TInfer extends ZuordType.Array>] ? TInfer : never
+    export type ResolveArray<TContent, TMode extends Core.Mode.Field> = (
+        [TContent] extends [Type.PureTuple] ? BuildArray<Util.Mutable.Hybrid<TContent>, TMode> : 
+        [TContent] extends [Type.ArrayOf<infer TInfer extends Type.Array>] ? TInfer : never
     )
 
-    export type BuildArray<TContent, TMode extends ZuordCore.Mode.Field> = (
-        TContent extends ZuordType.EndingTupleWith<infer TRest extends ZuordType.Array[], infer TLast extends ZuordType.Array> ? (
+    export type BuildArray<TContent, TMode extends Core.Mode.Field> = (
+        TContent extends Type.EndingTupleWith<infer TRest extends Type.Array[], infer TLast extends Type.Array> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? Integrate.ExtractArray<TRest[0], TLast, TMode> : 
             Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
