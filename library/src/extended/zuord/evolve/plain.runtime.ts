@@ -29,3 +29,15 @@ export function restrict <TBase extends Type.Plain, TContent extends Util.Restri
 
 export function restrict <TBase extends Type.Plain, TContent extends Util.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
     : ZuordX.Evolve.Plain.Restrict<TBase, TContent, TMode> { return $(base, content, mode); }
+
+
+// STRICT
+
+export function strict <TBase extends Type.Plain, TContent extends Util.Strict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
+    : ZuordX.Evolve.Plain.Strict<TBase, TContent>;
+
+export function strict <TBase extends Type.Plain, TContent extends Util.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
+    : ZuordX.Evolve.Plain.Strict<TBase, TContent, TMode>;
+
+export function strict <TBase extends Type.Plain, TContent extends Util.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
+    : ZuordX.Evolve.Plain.Strict<TBase, TContent, TMode> { return $(base, content, mode); }
