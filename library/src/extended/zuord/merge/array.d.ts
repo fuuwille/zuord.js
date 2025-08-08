@@ -1,4 +1,4 @@
-import { loose as $loose } from "./array.runtime";
+import type { loose as $loose } from "./array.runtime";
 
 type arrayAPI = {
     readonly loose: typeof $loose;
