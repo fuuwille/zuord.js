@@ -7,9 +7,6 @@ import type { ZuordModeX } from "zuord/extended";
 import type { ZuordType as Type } from "@zuord/type";
 import type { ZuordUtil as Util } from "@zuord/util";
 
-
-//
-
 const $ = ($base: Type.Plain, $content: Type.PlainArray, $mode: Partial<ZuordModeX.Evolve.Plain>) => {
     if(!type.plainArray($content)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
