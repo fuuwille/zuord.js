@@ -26,7 +26,7 @@ export namespace Unify {
     ) : any;
     
     export type ResolvePlain<T, TMode> = (
-        TMode extends { unifyPlain: true } ? (
+        [TMode, Type.IsUnion<T>] extends [{ unifyPlain: true }, true] ? (
             Unify.ExtractPlain<T, TMode>
         ) : Unify.SkipPlain<T, TMode>
     );
