@@ -109,7 +109,7 @@ export namespace Unify {
 
     export type DistributeArray<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
-            | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? TExcluded : never)
+            | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? ExcludeArray<TExcluded, TMode> : never)
             | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveArray<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
