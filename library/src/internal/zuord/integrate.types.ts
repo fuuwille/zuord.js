@@ -47,7 +47,7 @@ export declare namespace Integrate {
         ) : never
     );
 
-    export type ResolveArray<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
+    export type ResolveArray<TBase, TOverlay, TMode> = (
         TMode extends { concat: true } ? (
             [TBase, TOverlay] extends [infer A extends Type.PureTuple, infer B extends Type.PureTuple] ? (
                 [...A, ...B]
