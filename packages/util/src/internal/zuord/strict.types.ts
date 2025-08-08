@@ -4,8 +4,11 @@ export namespace Strict {
   export type Keys<TBase, TInput> =  TBase extends Type.Plain ? (
     { [K in Exclude<keyof TBase, keyof TInput>]: never } &
     { [K in Exclude<keyof TInput, keyof TBase>]: never } &
-    { [K in keyof TInput & keyof TBase]: 
-        [TInput[K]] extends [true] ? true : Keys<TBase[K], TInput[K]>
+    { [K in keyof TInput & keyof TBase]: Keys<TBase[K], TInput[K]>
     }
   ) : TInput;
+
+  export type ResolveExcludedBaseKeys<TBase, TInput> = { 
+    [K in Exclude<keyof TBase, keyof TInput>]: never
+  };
 }
