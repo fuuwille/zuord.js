@@ -7,17 +7,17 @@ import { ZuordCore as Core } from "@zuord/core";
 
 export declare namespace Integrate {
     export type Any<TBase, TOverlay, TMode extends Core.Mode.Field> = (
-        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.ExtractPlain<A, B, TMode> :
+        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.ResolvePlain<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ExtractArray<A, B, TMode> : TOverlay
     );
 
     export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
-        Integrate.ExtractPlain<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
+        Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
             Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
         ) : never
     );
 
-    export type ExtractPlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
+    export type ResolvePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode extends Core.Mode.Field> = (
         (Integrate.OverridePlain<TBase, TOverlay, TMode> & Integrate.AdditionPlain<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never

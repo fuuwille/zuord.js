@@ -23,8 +23,8 @@ export declare namespace Merge {
     export type BuildPlain<TContent, TMode extends Core.Mode.Field> = (
         TContent extends Type.EndingTupleWith<infer TRest extends Type.Plain[], infer TLast extends Type.Plain> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? $Zuord.Integrate.ExtractPlain<TRest[0], TLast, TMode> 
-            : $Zuord.Integrate.ExtractPlain<BuildPlain<TRest, TMode>, TLast, TMode>
+            TRest["length"] extends 1 ? $Zuord.Integrate.ResolvePlain<TRest[0], TLast, TMode> 
+            : $Zuord.Integrate.ResolvePlain<BuildPlain<TRest, TMode>, TLast, TMode>
         ) : never
     ) extends infer TPlain extends Type.Plain ? TPlain : never;
 
