@@ -31,13 +31,13 @@ export namespace Unify {
         ) : Unify.SkipPlain<T, TMode>
     );
 
-    export type SkipPlain<T, TMode> = {
-        [K in keyof T]: (
+    export type SkipPlain<T, TMode> = [keyof T] extends [infer TKeys extends keyof T] ? {
+        [K in TKeys]: (
             TMode extends { unifyArray: true } ? (
                 Unify.DistributeHybrid<T[K], TMode>
             ) : Unify.DistributePlain<T[K], TMode> 
         )
-    } extends infer T ? T : never;
+    } extends infer T ? T : never : never;
 
     export type ExcludePlain<T, TMode> = (
         TMode extends { unifyArray: true } | { unifyTuple: true }
