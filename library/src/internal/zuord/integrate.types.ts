@@ -11,7 +11,7 @@ export declare namespace Integrate {
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ResolveArray<A, B, TMode> : TOverlay
     );
 
-    export type Plain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+    export type Plain<TBase, TOverlay, TMode> = (
         [TBase, TOverlay, TMode] extends [infer TBase extends Type.Plain, infer TOverlay extends Type.Plain, infer TMode extends Core.Mode.Field] ? (
             Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
                 Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
