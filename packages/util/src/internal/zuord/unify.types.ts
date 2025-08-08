@@ -21,13 +21,13 @@ export namespace Unify {
     export type DistributePlain<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
             | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? ExcludePlain<TExcluded, TMode> : never)
-            | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
+            | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ExtractPlain<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
     
-    export type ResolvePlain<T, TMode> = (
+    export type ExtractPlain<T, TMode> = (
         [TMode, Type.IsUnion<T>] extends [{ unifyPlain: true }, true] ? (
-            Unify.ExtractPlain<T, TMode>
+            Unify.ResolvePlain<T, TMode>
         ) : Unify.SkipPlain<T, TMode>
     );
 
@@ -45,7 +45,7 @@ export namespace Unify {
             : T
     )
 
-    export type ExtractPlain<T, TMode> =  (
+    export type ResolvePlain<T, TMode> =  (
         Unify.CollectPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
