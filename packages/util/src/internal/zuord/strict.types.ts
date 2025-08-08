@@ -11,4 +11,8 @@ export namespace Strict {
   export type ResolveExcludedBaseKeys<TBase, TInput> = { 
     [K in Exclude<keyof TBase, keyof TInput>]: never
   };
+
+  export type ResolveExcludedInputKeys<TBase, TInput> = { 
+    [K in Exclude<keyof TInput, keyof TBase>]: never
+  };
 }
