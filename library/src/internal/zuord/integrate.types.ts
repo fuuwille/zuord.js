@@ -12,20 +12,20 @@ export declare namespace Integrate {
     );
 
     export type Plain<TBase, TOverlay, TMode> = (
-        [TBase, TOverlay, TMode] extends [infer TBase extends Type.Plain, infer TOverlay extends Type.Plain, infer TMode extends Core.Mode.Field] ? (
+        [TMode] extends [infer TMode extends Core.Mode.Field] ? (
             Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
                 Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
             ) : never
         ) : never
     );
 
-    export type ResolvePlain<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = (
+    export type ResolvePlain<TBase, TOverlay, TMode> = (
         (Integrate.ResolvePlainOverrides<TBase, TOverlay, TMode> & Integrate.ResolvePlainExtras<TBase, TOverlay>) extends infer TIntegrated ? ({
             -readonly [K in keyof TIntegrated]: TIntegrated[K];
         }) : never
     );
 
-    export type ResolvePlainOverrides<TBase extends Type.Plain, TOverlay extends Type.Plain, TMode> = ({
+    export type ResolvePlainOverrides<TBase, TOverlay, TMode> = ({
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
@@ -33,7 +33,7 @@ export declare namespace Integrate {
         ) : TBase[K];
     });
 
-    export type ResolvePlainExtras<TBase extends Type.Plain, TOverlay extends Type.Plain> = ({
+    export type ResolvePlainExtras<TBase, TOverlay> = ({
         [K in keyof TOverlay as K extends keyof TBase ? never : K]: TOverlay[K];
     });
 
