@@ -46,6 +46,12 @@ export namespace Unify {
         )
     } extends infer T ? T : never;
 
+    export type ExcludePlain<T, TMode> = (
+        TMode extends { unifyArray: true } | { unifyTuple: true }
+            ? Unify.DistributeHybrid<T, TMode>
+            : T
+    )
+
     export type ExtractPlain<T, TMode> =  (
         Unify.CollectPlain<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
