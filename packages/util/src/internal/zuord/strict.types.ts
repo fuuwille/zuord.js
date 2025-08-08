@@ -5,6 +5,10 @@ export namespace Strict {
     ResolveIncludedKeys<TBase, TInput> & ResolveExcludedKeys<TBase, TInput>
   ) : TInput;
 
+  export type ResolveIncludedKeys<TBase, TInput> = { 
+    [K in keyof TInput & keyof TBase]: Keys<TBase[K], TInput[K]>
+  }
+
   export type ResolveExcludedKeys<TBase, TInput> = (
     ResolveExcludedBaseKeys<TBase, TInput> & ResolveExcludedInputKeys<TBase, TInput>
   )
@@ -16,8 +20,4 @@ export namespace Strict {
   export type ResolveExcludedInputKeys<TBase, TInput> = { 
     [K in Exclude<keyof TInput, keyof TBase>]: never
   };
-
-  export type ResolveIncludedKeys<TBase, TInput> = { 
-    [K in keyof TInput & keyof TBase]: Keys<TBase[K], TInput[K]>
-  }
 }
