@@ -73,7 +73,7 @@ export namespace Unify {
     ) : any;
 
     export type ResolveTuple<T, TMode> = (
-        TMode extends { unifyTuple: true } ? (
+        [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
             ExtractTuple<T, TMode>
         ) : Unify.ResolveArray<T, TMode>
     );
