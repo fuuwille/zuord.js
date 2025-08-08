@@ -1,9 +1,6 @@
 import { ZuordType as Type } from "@zuord/type";
-import { ZuordUtil as Util } from "@zuord/util";
 import { ZuordCore as Core } from "@zuord/core";
-
-
-//
+import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Integrate {
     export type ResolveAny<TBase, TOverlay, TMode> = (
