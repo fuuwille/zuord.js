@@ -68,13 +68,13 @@ export namespace Unify {
     export type DistributeTuple<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
             | (Trait.Exclude<T, Type.Tuple> extends infer TExcluded ? ExcludeTuple<TExcluded, TMode> : never)
-            | (Trait.Extract<T, Type.Tuple> extends infer TExtracted extends Type.Array ? Unify.ResolveTuple<TExtracted, TMode> : never)
+            | (Trait.Extract<T, Type.Tuple> extends infer TExtracted extends Type.Array ? Unify.ExtractTuple<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
 
-    export type ResolveTuple<T, TMode> = (
+    export type ExtractTuple<T, TMode> = (
         [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
-            ExtractTuple<T, TMode>
+            ResolveTuple<T, TMode>
         ) : Unify.ResolveArray<T, TMode>
     );
 
@@ -84,7 +84,7 @@ export namespace Unify {
             : T
     )
 
-    export type ExtractTuple<T, TMode> = (
+    export type ResolveTuple<T, TMode> = (
         $Util.Tuple.Unify<T> extends infer TTuple ? ({
             [K in keyof TTuple]: TMode extends { shallow: true } ? (
                 TTuple[K]
