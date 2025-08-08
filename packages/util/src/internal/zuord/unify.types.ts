@@ -126,6 +126,12 @@ export namespace Unify {
         }[]) : never
     );
 
+    export type ExcludeArray<T, TMode> = (
+        TMode extends { unifyPlain: true } | { unifyTuple: true }
+            ? Unify.DistributeHybrid<T, TMode>
+            : T
+    )
+
     export type ExtractArray<T, TMode> = [T] extends [Type.Array] ? (
         TMode extends { shallow: true } ? (
             T[number][]
