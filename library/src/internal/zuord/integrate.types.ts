@@ -38,10 +38,12 @@ export declare namespace Integrate {
     });
 
     export type Array<TBase extends Type.Array, TOverlay extends Type.Array, TMode> = (
-        Integrate.ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
-            [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
-                TArray
-            ) : Util.Unify.Array<TArray, TMode>
+        [TBase, TOverlay, TMode] extends [infer TBase extends Type.Array, infer TOverlay extends Type.Array, infer TMode extends Core.Mode.Field] ? (
+            Integrate.ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
+                [TBase, TOverlay] extends [Type.PureTuple, Type.PureTuple] ? (
+                    TArray
+                ) : Util.Unify.Array<TArray, TMode>
+            ) : never
         ) : never
     );
 
