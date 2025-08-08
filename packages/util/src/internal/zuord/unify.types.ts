@@ -75,7 +75,7 @@ export namespace Unify {
     export type ExtractTuple<T, TMode> = (
         [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
             ResolveTuple<T, TMode>
-        ) : Unify.ResolveArray<T, TMode>
+        ) : Unify.ExtractArray<T, TMode>
     );
 
     export type ExcludeTuple<T, TMode> = (
@@ -103,13 +103,13 @@ export namespace Unify {
     export type DistributeArray<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
             | (Trait.Exclude<T, Type.Array> extends infer TExcluded ? ExcludeArray<TExcluded, TMode> : never)
-            | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ResolveArray<TExtracted, TMode> : never)
+            | (Trait.Extract<T, Type.Array> extends infer TExtracted extends Type.Array ? Unify.ExtractArray<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
 
-    export type ResolveArray<T, TMode> = [T] extends [[]] ? never : (
+    export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
         [TMode, Type.IsUnion<T>] extends [{ unifyArray: true }, true] ? (
-            Unify.ExtractArray<T, TMode>
+            Unify.ResolveArray<T, TMode>
         ) : Unify.SkipArray<T, TMode>
     );
 
@@ -125,7 +125,7 @@ export namespace Unify {
             : T
     )
 
-    export type ExtractArray<T, TMode> = [T] extends [Type.Array] ? (
+    export type ResolveArray<T, TMode> = [T] extends [Type.Array] ? (
         TMode extends { shallow: true } ? (
             T[number][]
         ) : (
