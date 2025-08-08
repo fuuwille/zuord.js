@@ -74,7 +74,7 @@ export namespace Unify {
 
     export type DistributeTuple<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
-            | (Trait.Exclude<T, Type.Tuple> extends infer TExcluded ? DistributeArray<TExcluded, TMode> : never)
+            | (Trait.Exclude<T, Type.Tuple> extends infer TExcluded ? ExcludeTuple<TExcluded, TMode> : never)
             | (Trait.Extract<T, Type.Tuple> extends infer TExtracted extends Type.Array ? Unify.ResolveTuple<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
