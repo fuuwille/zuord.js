@@ -29,9 +29,8 @@ export declare namespace Merge {
     ) extends infer TPlain extends Type.Plain ? TPlain : never;
 
     export type Array<TContent extends Type.Array, TMode extends Core.Mode.Field> = (
-        Merge.ResolveArray<TContent, TMode> extends infer TResolved ? (
-            [TResolved] extends [Type.PureTuple] ? TResolved :
-            [TResolved] extends [Type.Array] ? Util.Unify.Array<TResolved, TMode> : never
+        [Merge.ResolveArray<TContent, TMode>] extends [infer TResolved extends Type.Array] ? (
+            Util.Unify.Hybrid<TResolved, Core.Mode.Resolve<[TMode, { unifyPlain: false}]>>
         ) : never
     );
 
