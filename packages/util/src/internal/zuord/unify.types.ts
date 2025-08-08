@@ -63,7 +63,7 @@ export namespace Unify {
     };
 
     export type Tuple<T, TMode> = TMode extends Core.Mode.Field ? (
-        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
+        Unify.DistributeTuple<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
     ) : never;
 
     export type DistributeTuple<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
