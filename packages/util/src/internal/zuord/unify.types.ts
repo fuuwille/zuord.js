@@ -66,6 +66,13 @@ export namespace Unify {
         Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
     ) : never;
 
+    export type DistributeTuple<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
+        (
+            | (Trait.Exclude<T, Type.Tuple> extends infer TExcluded ? DistributeArray<TExcluded, TMode> : never)
+            | (Trait.Extract<T, Type.Tuple> extends infer TExtracted extends Type.Array ? Unify.ResolveTuple<TExtracted, TMode> : never)
+        ) extends infer T ? T : never
+    ) : any;
+
     export type ResolveTuple<T, TMode> = (
         TMode extends { unifyTuple: true } ? (
             ExtractTuple<T, TMode>
