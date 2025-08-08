@@ -3,9 +3,6 @@ import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil as Util } from "@zuord/util";
 
-
-//
-
 export declare namespace Merge {
     export type Plain<TContent, TMode extends Core.Mode.Field> = (
         Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends Type.Plain ? (
