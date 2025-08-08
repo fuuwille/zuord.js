@@ -1,12 +1,12 @@
 import { ZuordType as Type } from "@zuord/type";
 
 export namespace Strict {
-  export type Keys<TBase, TInput> = TBase extends Type.Plain ? (
+  export type ResolveKeys<TBase, TInput> = TBase extends Type.Plain ? (
     ResolveIncludedKeys<TBase, TInput> & ResolveExcludedKeys<TBase, TInput>
   ) : TInput;
 
   export type ResolveIncludedKeys<TBase, TInput> = { 
-    [K in keyof TInput & keyof TBase]: Keys<TBase[K], TInput[K]>
+    [K in keyof TInput & keyof TBase]: ResolveKeys<TBase[K], TInput[K]>
   }
 
   export type ResolveExcludedKeys<TBase, TInput> = (
