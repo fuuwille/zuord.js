@@ -1,5 +1,9 @@
 import { ZuordType } from ".";
 
+export type IsUnion<T, U = T> = T extends any ? (
+    [U] extends [T] ? false : true
+) : never;
+
 export type UnionOf<U extends ZuordType.Tuple> = U[number]
 
 export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
