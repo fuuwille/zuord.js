@@ -20,4 +20,8 @@ export namespace Strict {
   export type ResolveExcludedInputKeys<TBase, TInput> = { 
     [K in Exclude<keyof TInput, keyof TBase>]: never
   };
+
+  export type ResolveKeysBatch<TBase, TInputs extends readonly unknown[]> = {
+    [I in keyof TInputs]: ResolveKeys<TBase, TInputs[I]>;
+  };
 }
