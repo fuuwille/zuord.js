@@ -6,7 +6,7 @@ import { ZuordCore as Core } from "@zuord/core";
 //
 
 export declare namespace Integrate {
-    export type Any<TBase, TOverlay, TMode> = (
+    export type ResolveAny<TBase, TOverlay, TMode> = (
         [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.ResolvePlain<A, B, TMode> :
         [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ResolveArray<A, B, TMode> : TOverlay
     );
@@ -29,7 +29,7 @@ export declare namespace Integrate {
         [K in keyof TBase]: K extends keyof TOverlay ? (
             TMode extends { shallow: true } ? (
                 TOverlay[K]
-            ) : Integrate.Any<TBase[K], TOverlay[K], TMode>
+            ) : Integrate.ResolveAny<TBase[K], TOverlay[K], TMode>
         ) : TBase[K];
     });
 
