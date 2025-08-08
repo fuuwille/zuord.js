@@ -42,8 +42,8 @@ export declare namespace Merge {
     export type BuildArray<TContent, TMode extends Core.Mode.Field> = (
         TContent extends Type.EndingTupleWith<infer TRest extends Type.Array[], infer TLast extends Type.Array> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? $Zuord.Integrate.ExtractArray<TRest[0], TLast, { concat: true }> : 
-            $Zuord.Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
+            TRest["length"] extends 1 ? $Zuord.Integrate.ResolveArray<TRest[0], TLast, { concat: true }> : 
+            $Zuord.Integrate.ResolveArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
         ) : never
     );
 }
