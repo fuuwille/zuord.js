@@ -1,4 +1,4 @@
-import { Integrate } from "./integrate.types";
+import { $Zuord } from ".";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil as Util } from "@zuord/util";
@@ -23,8 +23,8 @@ export declare namespace Merge {
     export type BuildPlain<TContent, TMode extends Core.Mode.Field> = (
         TContent extends Type.EndingTupleWith<infer TRest extends Type.Plain[], infer TLast extends Type.Plain> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? Integrate.ExtractPlain<TRest[0], TLast, TMode> 
-            : Integrate.ExtractPlain<BuildPlain<TRest, TMode>, TLast, TMode>
+            TRest["length"] extends 1 ? $Zuord.Integrate.ExtractPlain<TRest[0], TLast, TMode> 
+            : $Zuord.Integrate.ExtractPlain<BuildPlain<TRest, TMode>, TLast, TMode>
         ) : never
     ) extends infer TPlain extends Type.Plain ? TPlain : never;
 
@@ -43,8 +43,8 @@ export declare namespace Merge {
     export type BuildArray<TContent, TMode extends Core.Mode.Field> = (
         TContent extends Type.EndingTupleWith<infer TRest extends Type.Array[], infer TLast extends Type.Array> ? (
             TRest["length"] extends 0 ? TLast : 
-            TRest["length"] extends 1 ? Integrate.ExtractArray<TRest[0], TLast, TMode> : 
-            Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
+            TRest["length"] extends 1 ? $Zuord.Integrate.ExtractArray<TRest[0], TLast, TMode> : 
+            $Zuord.Integrate.ExtractArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
         ) : never
     );
 }
