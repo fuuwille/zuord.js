@@ -30,7 +30,7 @@ export declare namespace Merge {
 
     export type Array<TContent extends Type.Array, TMode extends Core.Mode.Field> = (
         [Merge.ResolveArray<TContent, TMode>] extends [infer TResolved extends Type.Array] ? (
-            Util.Unify.Hybrid<TResolved, Core.Mode.Resolve<[TMode, { unifyPlain: false}]>>
+            Util.Unify.Hybrid<TResolved, TMode>
         ) : never
     );
 
