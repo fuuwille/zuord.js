@@ -27,7 +27,7 @@ export namespace Unify {
 
     export type DistributePlain<T, TMode> = [Trait.Eq<T, any>] extends [false] ? (
         (
-            | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? TExcluded : never)
+            | (Trait.Exclude<T, Type.Plain> extends infer TExcluded ? ExcludePlain<TExcluded, TMode> : never)
             | (Trait.Extract<T, Type.Plain> extends infer TExtracted extends Type.Plain ? Unify.ResolvePlain<TExtracted, TMode> : never)
         ) extends infer T ? T : never
     ) : any;
