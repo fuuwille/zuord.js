@@ -16,9 +16,9 @@ export namespace Unify {
     ) : any;
 
     export type ResolveHybrid<T, TMode> = (
-        [Trait.Has<T, Type.Plain>] extends [true] ? Unify.ResolvePlain<T, TMode> :
-        [Trait.Has<T, Type.Tuple>] extends [true] ? Unify.ResolveTuple<T, TMode> :
-        [Trait.Has<T, Type.Array>] extends [true] ? Unify.ResolveArray<T, TMode> : T
+        [Trait.Has<T, Type.Plain>] extends [true] ? Unify.DistributePlain<T, TMode> :
+        [Trait.Has<T, Type.Tuple>] extends [true] ? Unify.DistributeTuple<T, TMode> :
+        [Trait.Has<T, Type.Array>] extends [true] ? Unify.DistributeArray<T, TMode> : T
     );
 
     export type Plain<T, TMode> = TMode extends Core.Mode.Field ? (
