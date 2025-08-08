@@ -85,6 +85,12 @@ export namespace Unify {
         ) : Unify.ResolveArray<T, TMode>
     );
 
+    export type ExcludeTuple<T, TMode> = (
+        TMode extends { unifyPlain: true } | { unifyArray: true }
+            ? Unify.DistributeHybrid<T, TMode>
+            : T
+    )
+
     export type ExtractTuple<T, TMode> = (
         $Util.Tuple.Unify<T> extends infer TTuple ? ({
             [K in keyof TTuple]: TMode extends { shallow: true } ? (
