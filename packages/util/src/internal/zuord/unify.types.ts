@@ -46,7 +46,7 @@ export namespace Unify {
     )
 
     export type ResolvePlain<T, TMode> =  (
-        Unify.CollectPlain<T> extends infer TOne ? {
+        $Util.Plain.Unify<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
@@ -56,10 +56,6 @@ export namespace Unify {
             )
         } : never
     );
-
-    export type CollectPlain<T> = {
-        [K in T extends any ? keyof T : never]: T extends any ? K extends keyof T ? T[K] : never : never;
-    };
 
     export type Tuple<T, TMode> = TMode extends Core.Mode.Field ? (
         Unify.DistributeTuple<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
