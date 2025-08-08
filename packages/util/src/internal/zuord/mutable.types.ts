@@ -12,7 +12,7 @@ export namespace Mutable {
 
     export type StructResolve<T> = ({ 
         -readonly [K in keyof T]: Mutable.Resolve<T[K]> 
-    })
+    }) extends infer V ? V : never;
 
     export type ArrayResolve<T> = (
         T extends ZuordType.ArrayOf<infer U> ?  Mutable.Resolve<U>[] : never
