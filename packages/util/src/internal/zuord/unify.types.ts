@@ -108,7 +108,7 @@ export namespace Unify {
     ) : any;
 
     export type ResolveArray<T, TMode> = [T] extends [[]] ? never : (
-        TMode extends { unifyArray: true } ? (
+        [TMode, Type.IsUnion<T>] extends [{ unifyArray: true }, true] ? (
             Unify.ExtractArray<T, TMode>
         ) : Unify.SkipArray<T, TMode>
     );
