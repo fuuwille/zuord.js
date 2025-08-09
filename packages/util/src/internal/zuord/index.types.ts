@@ -1,5 +1,6 @@
 import { Tuple as $Tuple } from "./tuple";
 import { Plain as $Plain } from "./plain";
+import { Union as $Union } from "./union";
 import { Keys as $Keys } from "./keys";
 import { Only as $Only } from "./only";
 import { One as $One } from "./one";
@@ -12,6 +13,7 @@ import { Pattern as $Pattern } from "./pattern";
 export namespace $ZuordUtil {
     export import Tuple = $Tuple;
     export import Plain = $Plain;
+    export import Union = $Union;
     export import Keys = $Keys;
     export import Only = $Only;
     export import One = $One;
