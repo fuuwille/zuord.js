@@ -115,12 +115,6 @@ export namespace Unify {
         ) : Unify.SkipArray<$Util.Union.ToIntersection<T>, TMode>
     );
 
-    export type SkipArray<T, TMode> = (
-        T extends Type.ArrayOf<infer TInfer> ? ({
-            [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
-        }[]) : never
-    );
-
     export type ResolveArray<T, TMode> = [T] extends [Type.Array] ? (
         TMode extends { shallow: true } ? (
             T[number][]
@@ -130,4 +124,10 @@ export namespace Unify {
                 : Unify.DistributeArray<T[number], TMode>[]
         )
     ) : never
+
+    export type SkipArray<T, TMode> = (
+        T extends Type.ArrayOf<infer TInfer> ? ({
+            [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
+        }[]) : never
+    );
 }
