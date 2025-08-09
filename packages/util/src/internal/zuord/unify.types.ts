@@ -37,14 +37,6 @@ export namespace Unify {
         ) : Unify.SkipPlain<$Util.Union.ToIntersection<T>, TMode>
     );
 
-    export type SkipPlain<T, TMode> = {
-        [K in keyof T]: (
-            TMode extends { unifyArray: true } ? (
-                Unify.DistributeHybrid<T[K], TMode>
-            ) : Unify.DistributePlain<T[K], TMode> 
-        )
-    } extends infer T ? T : never;
-
     export type ResolvePlain<T, TMode> =  (
         $Util.Plain.Unify<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
@@ -56,6 +48,14 @@ export namespace Unify {
             )
         } : never
     );
+
+    export type SkipPlain<T, TMode> = {
+        [K in keyof T]: (
+            TMode extends { unifyArray: true } ? (
+                Unify.DistributeHybrid<T[K], TMode>
+            ) : Unify.DistributePlain<T[K], TMode> 
+        )
+    } extends infer T ? T : never;
 
     export type Tuple<T, TMode> = TMode extends Core.Mode.Field ? (
         Unify.DistributeTuple<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
