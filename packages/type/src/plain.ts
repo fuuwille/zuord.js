@@ -1,4 +1,4 @@
-import { arrayOf } from "./array";
+import { array } from "./array";
 import { Plain, PlainArray } from "./plain.types";
 
 export function plain(obj: unknown) : obj is Plain {
@@ -9,5 +9,5 @@ export function plain(obj: unknown) : obj is Plain {
 }
 
 export function plainArray(obj: unknown) : obj is PlainArray {
-    return arrayOf(obj, plain);
+    return array(obj, plain);
 }

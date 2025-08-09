@@ -1,10 +1,11 @@
 import { Array } from "./array.types";
 
-export function array(obj: unknown): obj is Array {
-    return globalThis.Array.isArray(obj);
-}
-
-export function arrayOf<T>(obj: unknown, checkItem: (item: unknown) => item is T): obj is Array<T> {
-    if (!array(obj)) return false;
-    return obj.every(checkItem);
+export function array<T extends unknown = unknown>(obj: unknown, checkItem?: (item: T) => item is T): obj is Array<T> {
+    if (globalThis.Array.isArray(obj)) {
+        if (checkItem) {
+            return obj.every(checkItem);
+        }
+        return true;
+    }
+    return false;
 }
