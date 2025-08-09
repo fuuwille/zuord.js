@@ -1,2 +1,2 @@
-export { tuple } from "./tuple.runtime";
-export { Tuple, TupleFirst, TupleLast, TupleNest } from "./tuple.types";
+export * from "./tuple.runtime";
+export * from "./tuple.types";
