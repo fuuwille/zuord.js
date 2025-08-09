@@ -1,4 +1,4 @@
-import { Array, ArrayNest } from "./array.types";
+import { Array, ArrayNest, ArrayEmpty } from "./array.types";
 
 export function array<T extends unknown = unknown>(obj: unknown, checkItem?: (item: T) => item is T): obj is Array<T> {
     if (globalThis.Array.isArray(obj)) {
@@ -12,4 +12,8 @@ export function array<T extends unknown = unknown>(obj: unknown, checkItem?: (it
 
 export function arrayNest<T extends unknown = unknown>(obj: unknown, checkItem?: (item: T) => item is T): obj is ArrayNest<T> {
   return array(obj, (item): item is Array<T> => array<T>(item, checkItem));
+}
+
+export function arrayEmpty(obj: unknown): obj is ArrayEmpty {
+    return array(obj) && obj.length === 0;
 }
