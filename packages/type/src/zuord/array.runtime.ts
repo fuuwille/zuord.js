@@ -2,7 +2,7 @@ import { ZuordType as Type } from ".";
 
 export function array<T extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is T }): obj is Type.Array<T> {
     if (globalThis.Array.isArray(obj)) {
-        if (type?.item) {
+        if (type && type.item) {
             return obj.every(type.item);
         }
         return true;
