@@ -3,7 +3,7 @@ import { TupleOf } from "./tuple.types";
 
 export type Plain = PlainOf<PropertyKey, unknown>;
 
-export type PlainOf<K extends PropertyKey = PropertyKey, T = unknown> = {
+export type PlainOf<K extends PropertyKey = PropertyKey, T extends unknown = unknown> = {
   [key in K]: T;
 };
 
