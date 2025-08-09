@@ -1,1 +1,0 @@
-export { Function } from "./function.types";
