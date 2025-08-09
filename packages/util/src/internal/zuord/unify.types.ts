@@ -32,7 +32,7 @@ export namespace Unify {
     )
 
     export type ExtractPlain<T, TMode> = (
-        [Type.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
+        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
             Unify.ResolvePlain<T, TMode>
         ) : Unify.SkipPlain<$Util.Union.ToIntersection<T>, TMode>
     );
@@ -75,7 +75,7 @@ export namespace Unify {
     )
 
     export type ExtractTuple<T, TMode> = (
-        [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
+        [TMode, $Util.Union.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
             ResolveTuple<T, TMode>
         ) : Unify.ExtractArray<T, TMode>
     );
@@ -110,7 +110,7 @@ export namespace Unify {
     )
 
     export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
-        [Type.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
+        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
             Unify.ResolveArray<T, TMode>
         ) : Unify.SkipArray<$Util.Union.ToIntersection<T>, TMode>
     );
