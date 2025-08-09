@@ -15,6 +15,6 @@ export namespace Mutable {
     }) extends infer V ? V : never;
 
     export type ArrayResolve<T> = (
-        T extends ZuordType.ArrayOf<infer U> ?  Mutable.Resolve<U>[] : never
+        T extends ZuordType.Array<infer U> ?  Mutable.Resolve<U>[] : never
     );
 }
