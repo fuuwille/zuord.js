@@ -23,14 +23,16 @@ export function tupleLast<TRest extends unknown[] = unknown[], TLast extends unk
     if (obj.length < 1) return false;
 
     if (type) {
-        const last = obj[obj.length - 1];
         if (type.rest) {
             for (let i = 0; i < obj.length - 1; i++) {
                 if (!type.rest(obj[i])) return false;
             }
         }
 
-        if (type.last && !type.last(last)) return false;
+        if (type.last) {
+            const last = obj[obj.length - 1];
+            if (!type.last(last)) return false;
+        }
     }
 
     return true;
