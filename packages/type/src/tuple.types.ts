@@ -1,4 +1,4 @@
-export type Tuple<T extends unknown = unknown> = readonly [T] | readonly [T, ...T[]];
+export type Tuple<T extends unknown = unknown> = readonly [] | readonly [T] | readonly [T, ...T[]];
 
 export type TupleFirst<TFirst extends unknown = unknown, TRest extends unknown[] = unknown[]> = readonly [TFirst, ...TRest];
 
