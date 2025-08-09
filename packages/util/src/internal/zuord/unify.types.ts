@@ -28,16 +28,16 @@ export namespace Unify {
     export type ExtractPlain<T, TMode> = (
         [TMode, Type.IsUnion<T>] extends [{ unifyPlain: true }, true] ? (
             Unify.ResolvePlain<T, TMode>
-        ) : Unify.SkipPlain<T, TMode>
+        ) : Unify.SkipPlain<Type.UnionToIntersection<T>, TMode>
     );
 
-    export type SkipPlain<T, TMode> = [keyof T] extends [infer TKeys extends keyof T] ? {
-        [K in TKeys]: (
+    export type SkipPlain<T, TMode> = {
+        [K in keyof T]: (
             TMode extends { unifyArray: true } ? (
                 Unify.DistributeHybrid<T[K], TMode>
             ) : Unify.DistributePlain<T[K], TMode> 
         )
-    } extends infer T ? T : never : never;
+    } extends infer T ? T : never;
 
     export type ExcludePlain<T, TMode> = (
         TMode extends { unifyArray: true } | { unifyTuple: true }
