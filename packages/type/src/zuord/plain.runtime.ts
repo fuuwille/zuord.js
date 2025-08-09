@@ -2,7 +2,7 @@ import { array } from "./array";
 import { tuple } from "./tuple";
 import { ZuordType as Type } from ".";
 
-export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.Plain {
+export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.Plain<TKey, TItem> {
     if (typeof obj !== 'object' || obj === null) return false;
 
     if (Object.getPrototypeOf(obj) !== Object.prototype) return false;
