@@ -75,7 +75,7 @@ export namespace Unify {
     )
 
     export type ExtractTuple<T, TMode> = (
-        [TMode, $Util.Union.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
+        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyTuple: true }] ? (
             ResolveTuple<T, TMode>
         ) : Unify.ExtractArray<T, TMode>
     );
