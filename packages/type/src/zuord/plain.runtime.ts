@@ -1,4 +1,5 @@
 import { array } from "./array";
+import { tuple } from "./tuple";
 import { ZuordType as Type } from ".";
 
 export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.Plain {
@@ -20,4 +21,8 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
 
 export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainArray {
     return array(obj, (item): item is Type.Plain<TKey, TItem> => plain(item, type));
+}
+
+export function plainTuple<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainTuple {
+    return tuple(obj, (item): item is Type.Plain<TKey, TItem> => plain(item, type));
 }
