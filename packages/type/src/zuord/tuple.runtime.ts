@@ -17,3 +17,21 @@ export function tupleFirst<TFirst extends unknown = unknown, TRest extends unkno
 
     return true;
 }
+
+export function tupleLast<TRest extends unknown[] = unknown[], TLast extends unknown = unknown>(obj: unknown, type?: { rest?: (z: unknown) => z is TRest, last?: (z: unknown) => z is TLast }): obj is Type.TupleLast<TRest, TLast> {
+    if (!tuple(obj)) return false;
+    if (obj.length < 1) return false;
+
+    if (type) {
+        const last = obj[obj.length - 1];
+        if (type.rest) {
+            for (let i = 0; i < obj.length - 1; i++) {
+                if (!type.rest(obj[i])) return false;
+            }
+        }
+
+        if (type.last && !type.last(last)) return false;
+    }
+
+    return true;
+}
