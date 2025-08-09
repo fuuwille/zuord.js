@@ -1,2 +1,2 @@
-export * from "./index.runtime";
-export * from "./index.types";
+export * as zuordType from "./index.runtime";
+export * as ZuordType from "./index.types";
