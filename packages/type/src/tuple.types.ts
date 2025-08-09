@@ -4,4 +4,4 @@ export type TupleFirst<TFirst extends unknown = unknown, TRest extends unknown[]
 
 export type TupleLast<TRest extends unknown[] = unknown[], TLast extends unknown = unknown> = readonly [...TRest, TLast];
 
-export type PureTuple<T extends unknown = unknown> = readonly [T] | [T, ...[T, ...T[]]];
+export type TupleNest<T extends unknown = unknown> = readonly [T] | [T, ...[T, ...T[]]];
