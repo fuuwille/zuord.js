@@ -1,1 +1,1 @@
-export { tuple } from "./tuple.runtime";
+export * from "./tuple.runtime";
