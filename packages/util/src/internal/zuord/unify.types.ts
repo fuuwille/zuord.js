@@ -103,6 +103,12 @@ export namespace Unify {
         ) extends infer T ? T : never
     ) : any;
 
+    export type ExcludeArray<T, TMode> = (
+        TMode extends { unifyPlain: true } | { unifyTuple: true }
+            ? Unify.DistributeHybrid<T, TMode>
+            : T
+    )
+
     export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
         [Type.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
             Unify.ResolveArray<T, TMode>
@@ -114,12 +120,6 @@ export namespace Unify {
             [K in keyof TInfer]: Unify.DistributeHybrid<TInfer[K], TMode>;
         }[]) : never
     );
-
-    export type ExcludeArray<T, TMode> = (
-        TMode extends { unifyPlain: true } | { unifyTuple: true }
-            ? Unify.DistributeHybrid<T, TMode>
-            : T
-    )
 
     export type ResolveArray<T, TMode> = [T] extends [Type.Array] ? (
         TMode extends { shallow: true } ? (
