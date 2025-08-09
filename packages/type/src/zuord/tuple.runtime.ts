@@ -18,7 +18,7 @@ export function tupleFirst<TFirst extends unknown = unknown, TRest extends unkno
     return true;
 }
 
-export function tupleLast<TRest extends unknown[] = unknown[], TLast extends unknown = unknown>(obj: unknown, type?: { rest?: (z: unknown) => z is TRest, last?: (z: unknown) => z is TLast }): obj is Type.TupleLast<TRest, TLast> {
+export function tupleLast<TLast extends unknown = unknown, TRest extends unknown[] = unknown[]>(obj: unknown, type?: { last?: (z: unknown) => z is TLast, rest?: (z: unknown) => z is TRest }): obj is Type.TupleLast<TRest, TLast> {
     if (!tuple(obj)) return false;
     if (obj.length < 1) return false;
 
