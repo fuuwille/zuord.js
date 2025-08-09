@@ -11,8 +11,8 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
         const entries = Object.entries(obj);
 
         for (const [key, value] of entries) {
-            if (type?.key && !type.key(key)) return false;
-            if (type?.item && !type.item(value)) return false;
+            if (type.key && !type.key(key)) return false;
+            if (type.item && !type.item(value)) return false;
         }
     }
 
