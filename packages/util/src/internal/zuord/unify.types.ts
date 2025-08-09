@@ -28,7 +28,7 @@ export namespace Unify {
     export type ExtractPlain<T, TMode> = (
         [TMode, Type.IsUnion<T>] extends [{ unifyPlain: true }, true] ? (
             Unify.ResolvePlain<T, TMode>
-        ) : Unify.SkipPlain<Type.UnionToIntersection<T>, TMode>
+        ) : Unify.SkipPlain<$Util.Union.ToIntersection<T>, TMode>
     );
 
     export type SkipPlain<T, TMode> = {
