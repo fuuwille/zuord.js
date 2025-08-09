@@ -1,7 +1,7 @@
 import { array } from "./array";
 import type { ZuordType as Type } from ".";
 
-export function tuple<T extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is T }): obj is Type.Tuple<T> {
+export function tuple<TItem extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is TItem }): obj is Type.Tuple<TItem> {
     return array(obj, type);
 }
 
