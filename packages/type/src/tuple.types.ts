@@ -1,6 +1,6 @@
 export type Tuple<T extends unknown = unknown> = readonly [T, ...T[]];
 
-export type TupleWith<TFirst, TRest> = readonly [TFirst, ...TRest[]];
+export type TupleWith<TFirst extends unknown = unknown, TRest extends unknown = unknown> = readonly [TFirst, ...TRest[]];
 
 export type EndingTuple = EndingTupleOf<unknown>;
 
