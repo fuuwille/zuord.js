@@ -1,6 +1,4 @@
-export type Tuple = TupleOf<unknown>;
-
-export type TupleOf<T> = readonly [T, ...T[]];
+export type Tuple<T extends unknown = unknown> = readonly [T, ...T[]];
 
 export type TupleWith<TFirst, TRest> = readonly [TFirst, ...TRest[]];
 
