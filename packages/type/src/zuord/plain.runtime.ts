@@ -19,10 +19,10 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
     return true;
 }
 
-export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainArray {
+export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainArray<TKey, TItem> {
     return array(obj, (item): item is Type.Plain<TKey, TItem> => plain(item, type));
 }
 
-export function plainTuple<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainTuple {
+export function plainTuple<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainTuple<TKey, TItem> {
     return tuple(obj, (item): item is Type.Plain<TKey, TItem> => plain(item, type));
 }
