@@ -1,5 +1,5 @@
 import { Array } from "./array.types";
-import { Tuple } from "./tuple.types";
+import { Tuple } from "./zuord/tuple.types";
 
 export type Plain<K extends PropertyKey = PropertyKey, T extends unknown = unknown> = {
   [key in K]: T;
