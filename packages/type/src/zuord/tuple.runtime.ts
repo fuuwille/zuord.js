@@ -36,3 +36,7 @@ export function tupleLast<TLast extends unknown = unknown, TRest extends unknown
 
     return true;
 }
+
+export function tupleNest<TItem extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is TItem }): obj is Type.TupleNest<TItem> {
+  return tuple(obj, { item: (item): item is Type.Tuple<TItem> => tuple<TItem>(item, type) });
+}
