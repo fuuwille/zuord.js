@@ -1,7 +1,7 @@
 import { array } from "./array";
-import { Plain, PlainArray } from "./plain.types";
+import { ZuordType as Type } from ".";
 
-export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Plain {
+export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.Plain {
     if (typeof obj !== 'object' || obj === null) return false;
 
     if (Object.getPrototypeOf(obj) !== Object.prototype) return false;
@@ -18,6 +18,6 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
     return true;
 }
 
-export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is PlainArray {
-    return array(obj, (item): item is Plain<TKey, TItem> => plain(item, type));
+export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is Type.PlainArray {
+    return array(obj, (item): item is Type.Plain<TKey, TItem> => plain(item, type));
 }
