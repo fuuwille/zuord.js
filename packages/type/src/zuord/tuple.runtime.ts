@@ -4,3 +4,16 @@ import type { ZuordType as Type } from ".";
 export function tuple<T extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is T }): obj is Type.Tuple<T> {
     return array(obj, type);
 }
+
+export function tupleFirst<TFirst extends unknown = unknown, TRest extends unknown[] = unknown[]>(obj: unknown, type?: { first?: (z: unknown) => z is TFirst, rest?: (z: unknown) => z is TRest }): obj is Type.TupleFirst<TFirst, TRest> {
+    if (!tuple(obj)) return false;
+    if (obj.length < 1) return false;
+
+    if (type) {
+        const [first, ...rest] = obj;
+        if (type.first && !type.first(first)) return false;
+        if (type.rest && !type.rest(rest)) return false;
+    }
+
+    return true;
+}
