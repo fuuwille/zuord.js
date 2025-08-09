@@ -10,6 +10,6 @@ export function array<T extends unknown = unknown>(obj: unknown, checkItem?: (it
     return false;
 }
 
-export function arrayNest<T extends unknown = unknown>(obj: unknown): obj is ArrayNest<T> {
-    return array(obj, array<T>);
+export function arrayNest<T = unknown>(obj: unknown): obj is ArrayNest<T> {
+  return array(obj, (item): item is Array<T> => array<T>(item));
 }
