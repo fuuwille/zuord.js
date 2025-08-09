@@ -18,6 +18,6 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
     return true;
 }
 
-export function plainArray(obj: unknown) : obj is PlainArray {
-    return array(obj, plain);
+export function plainArray<TKey extends PropertyKey, TItem extends unknown>(obj: unknown, type?: { key?: (z: unknown) => z is TKey, item?: (z: unknown) => z is TItem }) : obj is PlainArray {
+    return array(obj, (item): item is Plain<TKey, TItem> => plain(item, type));
 }
