@@ -68,17 +68,17 @@ export namespace Unify {
         ) extends infer T ? T : never
     ) : any;
 
-    export type ExtractTuple<T, TMode> = (
-        [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
-            ResolveTuple<T, TMode>
-        ) : Unify.ExtractArray<T, TMode>
-    );
-
     export type ExcludeTuple<T, TMode> = (
         TMode extends { unifyPlain: true } | { unifyArray: true }
             ? Unify.DistributeHybrid<T, TMode>
             : T
     )
+
+    export type ExtractTuple<T, TMode> = (
+        [TMode, Type.IsUnion<T>] extends [{ unifyTuple: true }, true] ? (
+            ResolveTuple<T, TMode>
+        ) : Unify.ExtractArray<T, TMode>
+    );
 
     export type ResolveTuple<T, TMode> = (
         $Util.Tuple.Unify<T> extends infer TTuple ? ({
