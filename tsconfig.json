@@ -20,6 +20,14 @@
       "@zuord/core": ["../packages/core/src"],
       "@zuord/util": ["../packages/util/src"],
       "@zuord/trait": ["../packages/trait/src"],
-    }
-  }
+    },
+  },
+  "files": [],
+  "references": [
+    { "path": "library" },
+    { "path": "packages/type" },
+    { "path": "packages/core" },
+    { "path": "packages/util" },
+    { "path": "packages/trait" }
+  ]
 }
