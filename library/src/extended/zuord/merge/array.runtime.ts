@@ -7,7 +7,7 @@ import type { ZuordModeX } from "zuord/extended";
 import type { ZuordType as Type } from "@zuord/type";
 
 const $ = ($content: Type.Array<Type.Array>, $mode: Partial<ZuordModeX.Merge.Array>) => {
-    if(!type.array($content, type.array)) {
+    if(!type.array($content, { item: type.array })) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
 
