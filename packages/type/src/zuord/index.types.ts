@@ -1,1 +1,1 @@
-export { Tuple, TupleFirst, TupleLast, TupleNest } from "./tuple";
+export * from "./tuple.types";
