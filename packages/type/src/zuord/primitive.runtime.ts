@@ -8,3 +8,7 @@ export function primitive(obj: unknown): obj is Type.Primitive {
 export function primitiveArray(obj: unknown): obj is Type.PrimitiveArray {
     return array(obj, { item: primitive });
 }
+
+export function primitiveTuple(obj: unknown): obj is Type.PrimitiveTuple {
+    return array(obj, { item: primitive });
+}
