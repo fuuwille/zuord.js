@@ -1,1 +1,1 @@
-export * from "./index.runtime";
+export * as zuordType from "./index.runtime";
