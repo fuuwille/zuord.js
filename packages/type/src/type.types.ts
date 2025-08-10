@@ -6,4 +6,6 @@ export namespace ZuordType {
     export type Array<T extends unknown = unknown> = readonly T[];
 
     export type Tuple<TItem extends unknown = unknown> = readonly [] | readonly [TItem] | readonly [TItem, ...TItem[]];
+
+    export type Func = (...args: unknown[]) => unknown;
 }
