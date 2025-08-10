@@ -34,3 +34,7 @@ export function array<T extends unknown = unknown>(obj: unknown, type?: { item?:
 export function tuple<TItem extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is TItem }): obj is Type.Tuple<TItem> {
     return array(obj, type);
 }
+
+export function func(obj : unknown): obj is Type.Func {
+    return typeof obj === "function";
+}
