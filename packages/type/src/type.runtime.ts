@@ -20,3 +20,13 @@ export function plain<TKey extends PropertyKey, TItem extends unknown>(obj: unkn
 
     return true;
 }
+
+export function array<T extends unknown = unknown>(obj: unknown, type?: { item?: (z: unknown) => z is T }): obj is Type.Array<T> {
+    if (globalThis.Array.isArray(obj)) {
+        if (type && type.item) {
+            return obj.every(type.item);
+        }
+        return true;
+    }
+    return false;
+}
