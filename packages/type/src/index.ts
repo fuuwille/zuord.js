@@ -1,1 +1,1 @@
-export { zuordType, ZuordType } from "./zuord";
+export { zuordType, ZuordType } from "./_zuord";
