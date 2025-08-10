@@ -1,6 +1,6 @@
 import { ZuordType as Type } from ".";
 
-export function func<TArgs extends unknown[], TResult extends unknown = unknown>(obj : unknown): obj is Type.Func<TArgs, TResult> {
+export function func(obj : unknown): obj is Type.Func {
     if (typeof obj !== "function") return false;
 
     return true;

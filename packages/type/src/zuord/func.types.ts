@@ -1,1 +1,1 @@
-export type Func<TArgs extends unknown[] = unknown[], TResult extends unknown = unknown> = (...args: TArgs) => TResult;
+export type Func = (...args: unknown[]) => unknown;
