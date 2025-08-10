@@ -1,1 +1,1 @@
-export { Function } from "./func.types";
+export * from "./func.types";
