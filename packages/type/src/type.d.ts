@@ -4,7 +4,6 @@ import { array as $array } from "./type.runtime";
 import { tuple as $tuple } from "./type.runtime";
 import { func as $func } from "./type.runtime";
 
-
 type zuordTypeAPI = {
     primitive: typeof $primitive;
     plain: typeof $plain;
@@ -12,3 +11,5 @@ type zuordTypeAPI = {
     tuple: typeof $tuple;
     func: typeof $func;
 }
+
+export declare const zuordType: zuordTypeAPI;
