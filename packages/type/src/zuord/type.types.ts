@@ -4,4 +4,6 @@ export namespace Type {
     export type Plain<TKey extends PropertyKey = PropertyKey, TValue extends unknown = unknown> = { [key in TKey]: TValue; };
 
     export type Array<T extends unknown = unknown> = readonly T[];
+
+    export type Tuple<TItem extends unknown = unknown> = readonly [] | readonly [TItem] | readonly [TItem, ...TItem[]];
 }
