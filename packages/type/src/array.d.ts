@@ -7,3 +7,5 @@ type zuordArrayAPI = {
 };
 
 export declare const zuordArray: zuordArrayAPI;
+
+export { ZuordArray } from "./array.types";
