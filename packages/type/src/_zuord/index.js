@@ -1,1 +1,0 @@
-export * as zuordType from "./index.runtime";
