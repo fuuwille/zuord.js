@@ -1,16 +1,16 @@
-import { ZuordType as Type } from "@zuord/type";
+import { ZuordType, ZuordTuple } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Integrate {
     export type ResolveAny<TBase, TOverlay, TMode> = (
-        [TBase, TOverlay] extends [infer A extends Type.Plain, infer B extends Type.Plain] ? Integrate.ResolvePlain<A, B, TMode> :
-        [TBase, TOverlay] extends [infer A extends Type.Array, infer B extends Type.Array] ? Integrate.ResolveArray<A, B, TMode> : TOverlay
+        [TBase, TOverlay] extends [infer A extends ZuordType.Plain, infer B extends ZuordType.Plain] ? Integrate.ResolvePlain<A, B, TMode> :
+        [TBase, TOverlay] extends [infer A extends ZuordType.Array, infer B extends ZuordType.Array] ? Integrate.ResolveArray<A, B, TMode> : TOverlay
     );
 
     export type Plain<TBase, TOverlay, TMode> = (
         [TMode] extends [infer TMode extends Core.Mode.Field] ? (
-            Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends Type.Plain ? (
+            Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends ZuordType.Plain ? (
                 Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
             ) : never
         ) : never
@@ -36,7 +36,7 @@ export declare namespace Integrate {
 
     export type Array<TBase, TOverlay, TMode> = (
         [TMode] extends [infer TMode extends Core.Mode.Field] ? (
-            Integrate.ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends Type.Array ? (
+            Integrate.ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends ZuordType.Array ? (
                 Util.Unify.Array<TArray, TMode>
             ) : never
         ) : never
@@ -44,7 +44,7 @@ export declare namespace Integrate {
 
     export type ResolveArray<TBase, TOverlay, TMode> = (
         TMode extends { concat: true } ? (
-            [TBase, TOverlay] extends [infer A extends Type.TupleNest, infer B extends Type.TupleNest] ? (
+            [TBase, TOverlay] extends [infer A extends ZuordTuple.Nest, infer B extends ZuordTuple.Nest] ? (
                 [...A, ...B]
             ) : TBase | TOverlay
         ) : TOverlay
