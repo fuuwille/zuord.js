@@ -1,7 +1,7 @@
-import { ZuordType as Type } from "./type";
+import { ZuordType } from "./type";
 
 export namespace ZuordArray {
-    export type Nest<T extends unknown = unknown> = Type.Array<Type.Array<T>>;
+    export type Nest<T extends unknown = unknown> = ZuordType.Array<ZuordType.Array<T>>;
     
     export type Empty = readonly [];
 }
