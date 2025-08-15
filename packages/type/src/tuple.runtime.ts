@@ -13,3 +13,22 @@ export function first<TFirst extends unknown = unknown, TRest extends unknown[] 
 
     return true;
 }
+
+export function last<TLast extends unknown = unknown, TRest extends unknown[] = unknown[]>(obj: unknown, type?: { last?: (z: unknown) => z is TLast, rest?: (z: unknown) => z is TRest }): obj is ZuordTuple.Last<TLast, TRest> {
+    if (!zuordType.tuple(obj)) return false;
+    if (obj.length < 1) return false;
+
+    if (type) {
+        if (type.last) {
+            const last = obj[obj.length - 1];
+            if (!type.last(last)) return false;
+        }
+
+        if (type.rest) {
+            const rest = obj.slice(0, obj.length - 1);
+            if (!type.rest(rest)) return false;
+        }
+    }
+
+    return true;
+}
