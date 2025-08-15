@@ -1,4 +1,4 @@
-import { ZuordType } from "../../../type/src";
+import { ZuordArray } from "../../../type/src";
 
 
 // IS
@@ -22,7 +22,7 @@ export type { IsAny as ZuordIsAny };
 // IS EVERY
 
 type IsEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [Is<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : IsEvery<TRestSources, TBase>) : false
+    [Is<TSource, TBase>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : IsEvery<TRestSources, TBase>) : false
 ) : false;
 
 export type { IsEvery as ZuordIsEvery };
@@ -40,7 +40,7 @@ export type { IsSome as ZuordIsSome };
 // IS EACH
 
 type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    [Is<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.ArrayEmpty ? true : IsEach<TSource, TRestBases>) : false
+    [Is<TSource, TBase>] extends [true] ? (TRestBases extends ZuordArray.Empty ? true : IsEach<TSource, TRestBases>) : false
 ) : false;
 
 export type { IsEach as ZuordIsEach };
@@ -67,7 +67,7 @@ export type { IsAnyEach as ZuordIsAnyEach };
 // IS EVERY SOME
 
 type IsEverySome<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [IsSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : IsEverySome<TRestSources, TBases>) : false
+    [IsSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : IsEverySome<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEverySome as ZuordIsEverySome };
@@ -76,7 +76,7 @@ export type { IsEverySome as ZuordIsEverySome };
 // IS EVERY EACH
 
 type IsEveryEach<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [IsEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : IsEveryEach<TRestSources, TBases>) : false
+    [IsEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : IsEveryEach<TRestSources, TBases>) : false
 ) : false;
 
 export type { IsEveryEach as ZuordIsEveryEach };
