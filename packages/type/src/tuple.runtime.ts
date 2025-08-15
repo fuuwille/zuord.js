@@ -1,7 +1,7 @@
 import { zuordType } from "./type";
 import type { ZuordTuple } from "./tuple.types";
 
-export function tupleFirst<TFirst extends unknown = unknown, TRest extends unknown[] = unknown[]>(obj: unknown, type?: { first?: (z: unknown) => z is TFirst, rest?: (z: unknown) => z is TRest }): obj is ZuordTuple.First<TFirst, TRest> {
+export function first<TFirst extends unknown = unknown, TRest extends unknown[] = unknown[]>(obj: unknown, type?: { first?: (z: unknown) => z is TFirst, rest?: (z: unknown) => z is TRest }): obj is ZuordTuple.First<TFirst, TRest> {
     if (!zuordType.tuple(obj)) return false;
     if (obj.length < 1) return false;
 
