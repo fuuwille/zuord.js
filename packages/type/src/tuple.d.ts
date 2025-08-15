@@ -7,3 +7,5 @@ type zuordTupleAPI = {
     last: typeof $last;
     nest: typeof $nest;
 }
+
+export declare const zuordTuple: zuordTupleAPI;
