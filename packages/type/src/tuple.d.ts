@@ -9,3 +9,5 @@ type zuordTupleAPI = {
 }
 
 export declare const zuordTuple: zuordTupleAPI;
+
+export { ZuordTuple } from "./tuple.types";
