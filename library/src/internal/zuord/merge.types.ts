@@ -1,43 +1,43 @@
 import { $Zuord } from ".";
-import { ZuordType as Type } from "@zuord/type";
+import { ZuordType, ZuordTuple } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil as Util } from "@zuord/util";
 
 export declare namespace Merge {
     export type Plain<TContent, TMode extends Core.Mode.Field> = (
-        Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends Type.Plain ? (
+        Merge.ResolvePlain<TContent, TMode> extends infer TResolved extends ZuordType.Plain ? (
             Util.Unify.Hybrid<TResolved, Core.Mode.Resolve<[TMode, { 
-                unifyPlain: TContent extends Type.TupleNest ? false : true
+                unifyPlain: TContent extends ZuordTuple.Nest ? false : true
             }]>>
         ) : never
     )
 
     export type ResolvePlain<TContent, TMode extends Core.Mode.Field> = (
-        [TContent] extends [Type.TupleNest] ? BuildPlain<TContent, TMode> : 
-        [TContent] extends [Type.Array<infer TInfer extends Type.Plain>] ? Util.Only.Required<TInfer, TMode> : never
+        [TContent] extends [ZuordTuple.Nest] ? BuildPlain<TContent, TMode> : 
+        [TContent] extends [ZuordType.Array<infer TInfer extends ZuordType.Plain>] ? Util.Only.Required<TInfer, TMode> : never
     );
 
     export type BuildPlain<TContent, TMode extends Core.Mode.Field> = (
-        TContent extends Type.TupleLast<infer TLast extends Type.Plain ,infer TRest extends Type.Plain[]> ? (
+        TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Plain ,infer TRest extends ZuordType.Plain[]> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? $Zuord.Integrate.ResolvePlain<TRest[0], TLast, TMode> 
             : $Zuord.Integrate.ResolvePlain<BuildPlain<TRest, TMode>, TLast, TMode>
         ) : never
-    ) extends infer TPlain extends Type.Plain ? TPlain : never;
+    ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
-    export type Array<TContent extends Type.Array, TMode extends Core.Mode.Field> = (
-        [Merge.ResolveArray<TContent, TMode>] extends [infer TResolved extends Type.Array] ? (
+    export type Array<TContent extends ZuordType.Array, TMode extends Core.Mode.Field> = (
+        [Merge.ResolveArray<TContent, TMode>] extends [infer TResolved extends ZuordType.Array] ? (
             Util.Unify.Hybrid<TResolved, TMode>
         ) : never
     );
 
     export type ResolveArray<TContent, TMode extends Core.Mode.Field> = (
-        [TContent] extends [Type.TupleNest] ? BuildArray<Util.Mutable.Hybrid<TContent>, TMode> : 
-        [TContent] extends [Type.Array<infer TInfer extends Type.Array>] ? TInfer : never
+        [TContent] extends [ZuordTuple.Nest] ? BuildArray<Util.Mutable.Hybrid<TContent>, TMode> : 
+        [TContent] extends [ZuordType.Array<infer TInfer extends ZuordType.Array>] ? TInfer : never
     )
 
     export type BuildArray<TContent, TMode extends Core.Mode.Field> = (
-        TContent extends Type.TupleLast<infer TLast extends Type.Array, infer TRest extends Type.Array[]> ? (
+        TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Array, infer TRest extends ZuordType.Array[]> ? (
             TRest["length"] extends 0 ? TLast : 
             TRest["length"] extends 1 ? $Zuord.Integrate.ResolveArray<TRest[0], TLast, { concat: true }> : 
             $Zuord.Integrate.ResolveArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
