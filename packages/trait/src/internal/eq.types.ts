@@ -1,4 +1,4 @@
-import { ZuordType } from "../../../type/src";
+import { ZuordArray } from "../../../type/src";
 
 
 // EQ
@@ -20,7 +20,7 @@ export type { EqAny as ZuordEqAny };
 // EQ EVERY
 
 type EqEvery<U1, T2> = U1 extends [infer T1, ...infer R1] ? (
-    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordType.ArrayEmpty ? true : EqEvery<R1, T2>) : false
+    [Eq<T1, T2>] extends [true] ? (R1 extends ZuordArray.Empty ? true : EqEvery<R1, T2>) : false
 ) : false;
 
 export type { EqEvery as ZuordEqEvery };
@@ -47,7 +47,7 @@ export type { EqAnySome as ZuordEqAnySome };
 // EQ EVERY SOME
 
 type EqEverySome<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
-    [EqSome<T1, U2>] extends [true] ? (R1 extends ZuordType.ArrayEmpty ? true : EqEverySome<R1, U2>) : false
+    [EqSome<T1, U2>] extends [true] ? (R1 extends ZuordArray.Empty ? true : EqEverySome<R1, U2>) : false
 ) : false;
 
 export type { EqEverySome as ZuordEqEverySome };
