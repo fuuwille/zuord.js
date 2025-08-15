@@ -1,4 +1,4 @@
-import { ZuordType } from "../../../type/src";
+import { ZuordArray } from "../../../type/src";
 import { InternalZuordTrait } from ".";
 
 
@@ -21,7 +21,7 @@ export type { HasAny as ZuordHasAny };
 // HAS EVERY
 
 type HasEvery<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [Has<TSource, TBase>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : HasEvery<TRestSources, TBase>) : false
+    [Has<TSource, TBase>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : HasEvery<TRestSources, TBase>) : false
 ) : false;
 
 export type { HasEvery as ZuordHasEvery };
@@ -39,7 +39,7 @@ export type { HasSome as ZuordHasSome };
 // HAS EACH
 
 type HasEach<TSource, TBases> = TBases extends [infer TBase, ...infer TRestBases] ? (
-    [Has<TSource, TBase>] extends [true] ? (TRestBases extends ZuordType.ArrayEmpty ? true : HasEach<TSource, TRestBases>) : false
+    [Has<TSource, TBase>] extends [true] ? (TRestBases extends ZuordArray.Empty ? true : HasEach<TSource, TRestBases>) : false
 ) : false;
 
 export type { HasEach as ZuordHasEach };
@@ -66,7 +66,7 @@ export type { HasAnyEach as ZuordHasAnyEach };
 // HAS EVERY SOME
 
 type HasEverySome<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [HasSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : HasEverySome<TRestSources, TBases>) : false
+    [HasSome<TSource, TBases>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : HasEverySome<TRestSources, TBases>) : false
 ) : false;
 
 export type { HasEverySome as ZuordHasEverySome };
@@ -75,7 +75,7 @@ export type { HasEverySome as ZuordHasEverySome };
 // HAS EVERY EACH
 
 type HasEveryEach<TSources, TBases> = TSources extends [infer TSource, ...infer TRestSources] ? (
-    [HasEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordType.ArrayEmpty ? true : HasEveryEach<TRestSources, TBases>) : false
+    [HasEach<TSource, TBases>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : HasEveryEach<TRestSources, TBases>) : false
 ) : false;
 
 export type { HasEveryEach as ZuordHasEveryEach };
