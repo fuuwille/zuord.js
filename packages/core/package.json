@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
   },
   "keywords": [
     "zuord"
