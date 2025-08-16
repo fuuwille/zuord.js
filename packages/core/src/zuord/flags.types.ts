@@ -1,4 +1,4 @@
-import { $ZuordCore } from "../internal/zuord";
+import { $ZuordCore } from "../internal";
 
 export declare namespace Flags {
     export type Shallow = $ZuordCore.Flags.Shallow;
