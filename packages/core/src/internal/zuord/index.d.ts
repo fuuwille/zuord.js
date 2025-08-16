@@ -5,3 +5,5 @@ type zuordCoreAPI = {
 };
 
 export declare const zuordCore: zuordCoreAPI;
+
+export { $ZuordCore } from "./index.types";
