@@ -11,3 +11,5 @@ type flagsAPI = {
 };
 
 export declare const flags: flagsAPI;
+
+export { Flags } from "./flags.types";
