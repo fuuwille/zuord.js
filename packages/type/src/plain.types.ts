@@ -1,4 +1,4 @@
-import { ZuordType } from "./type.types";
+import { ZuordType } from ".";
 
 export namespace ZuordPlain {
     export type Array<TKey extends PropertyKey = PropertyKey, TValue extends unknown = unknown> = ZuordType.Array<ZuordType.Plain<TKey, TValue>>;
