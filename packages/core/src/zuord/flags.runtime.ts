@@ -1,10 +1,10 @@
 import { $zuordCore } from "../internal";
-import { Flags } from "./flags.types";
+import { ZuordCore } from ".";
 
-export const shallow = $zuordCore.flags.shallow satisfies Flags.Shallow;
+export const shallow = $zuordCore.flags.shallow satisfies ZuordCore.Flags.Shallow;
 
-export const concat = $zuordCore.flags.concat satisfies Flags.Concat;
+export const concat = $zuordCore.flags.concat satisfies ZuordCore.Flags.Concat;
 
-export const unique = $zuordCore.flags.unique satisfies Flags.Unique;
+export const unique = $zuordCore.flags.unique satisfies ZuordCore.Flags.Unique;
 
-export const base = $zuordCore.flags.base satisfies Flags.Base;
+export const base = $zuordCore.flags.base satisfies ZuordCore.Flags.Base;
