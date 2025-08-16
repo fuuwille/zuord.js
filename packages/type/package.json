@@ -11,13 +11,15 @@
     }
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "rollup -c"
+    "build": "rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
   },
   "keywords": [
     "zuord"
   ],
   "author": "k4yr2",
   "license": "Apache-2.0",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "cpy-cli": "^5.0.0"
+  }
 }
