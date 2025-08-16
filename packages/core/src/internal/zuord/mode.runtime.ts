@@ -1,4 +1,4 @@
-import { Mode } from "./mode.types";
+import { $ZuordCore } from ".";
 
 export const flags = <const K, const V>(key: K | K[], value: V) => {
     let field : Record<string, boolean> = {};
@@ -8,9 +8,9 @@ export const flags = <const K, const V>(key: K | K[], value: V) => {
         field[k as string] = value as boolean;
     }
 
-    return field as Mode.Flags<K, V>;
+    return field as $ZuordCore.Mode.Flags<K, V>;
 }
 
-export const resolve = <const TModes extends Mode.Flags[]>(modes: TModes) => {
-    return Object.assign({}, ...modes) as Mode.Resolve<TModes>;
+export const resolve = <const TModes extends $ZuordCore.Mode.Flags[]>(modes: TModes) => {
+    return Object.assign({}, ...modes) as $ZuordCore.Mode.Resolve<TModes>;
 };
