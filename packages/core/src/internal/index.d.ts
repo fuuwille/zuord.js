@@ -1,1 +1,1 @@
-export { $zuordCore } from "./zuord";
+export { $zuordCore, $ZuordCore } from "./zuord";
