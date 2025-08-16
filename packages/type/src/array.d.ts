@@ -1,5 +1,5 @@
-import { nest as $nest } from "./array.runtime";
-import { empty as $empty } from "./array.runtime";
+import type { nest as $nest } from "./array.runtime";
+import type { empty as $empty } from "./array.runtime";
 
 type zuordArrayAPI = {
     nest: typeof $nest;
