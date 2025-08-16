@@ -1,6 +1,6 @@
-import { first as $first } from "./tuple.runtime";
-import { last as $last } from "./tuple.runtime";
-import { nest as $nest } from "./tuple.runtime";
+import type { first as $first } from "./tuple.runtime";
+import type { last as $last } from "./tuple.runtime";
+import type { nest as $nest } from "./tuple.runtime";
 
 type zuordTupleAPI = {
     first: typeof $first;
