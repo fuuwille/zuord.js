@@ -1,10 +1,10 @@
-import { Flags } from "./flags.types";
 import { mode } from "./mode";
+import type { $ZuordCore } from ".";
 
-export const shallow = mode.flags("shallow", false) satisfies Flags.Shallow;
+export const shallow = mode.flags("shallow", false) satisfies $ZuordCore.Flags.Shallow;
 
-export const concat = mode.flags("concat", false) satisfies Flags.Concat;
+export const concat = mode.flags("concat", false) satisfies $ZuordCore.Flags.Concat;
 
-export const unique = mode.flags("unique", false) satisfies Flags.Unique;
+export const unique = mode.flags("unique", false) satisfies $ZuordCore.Flags.Unique;
 
-export const base = mode.resolve([shallow]) satisfies Flags.Base;
+export const base = mode.resolve([shallow]) satisfies $ZuordCore.Flags.Base;
