@@ -1,4 +1,4 @@
-import { $zuordCore } from "../internal/zuord";
+import { $zuordCore } from "../internal";
 import { Mode } from "./mode.types";
 
 export function flags <K extends string, const V extends boolean = false>(key: K, value?: V) 
