@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@zuord/type':
-        specifier: 0.3.0-alpha
-        version: 0.3.0-alpha
+        specifier: 2.0.0-alpha.4
+        version: 2.0.0-alpha.4
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -2001,14 +2001,14 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@zuord/type@0.3.0-alpha':
-    resolution: {integrity: sha512-F3ph7QICtSpvcr03KTv4TwQTg2mblNKQgtAMfVD6Qcx23frFR8qdQaqMfUFYuqW85+feiQLWir4JaV44d232QA==}
-
   '@zuord/type@0.4.0-alpha':
     resolution: {integrity: sha512-hrGCo60w3S/FTsdwApjjXfFW07bfdTlC0P7uPbQnYeNOYzoGAEQy7JcombNF8Oxuvm9oEHw1bQP9RBti4xd75w==}
 
   '@zuord/type@0.5.0-alpha':
     resolution: {integrity: sha512-UdZHTZWe/2MWc0BDItbBYcKPKQaMMB445PYyo9MmZxEUNTvDIYmRygF9AG8lOeKDX3lqu3y6cp9ZuU9LI1NyIw==}
+
+  '@zuord/type@2.0.0-alpha.4':
+    resolution: {integrity: sha512-5tbxMJa2QZb4klsasaDkMLARnFy0mTWSh4Y9gWXC2xnSulsUb1W3Vrd59UUa3/dLBuMDtzzFxUlmDeDcXtGf2Q==}
 
   '@zuord/util@0.5.0-alpha':
     resolution: {integrity: sha512-IHgXWgeYLG1dCsEdt0uXWJkPxlQ23jCfX+z+Wzyqn8xXUnvWMMjl+1Y7Z5TWC7Bnp89u8NIEJvjmXMNZfToHzg==}
@@ -8300,11 +8300,11 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@zuord/type@0.3.0-alpha': {}
-
   '@zuord/type@0.4.0-alpha': {}
 
   '@zuord/type@0.5.0-alpha': {}
+
+  '@zuord/type@2.0.0-alpha.4': {}
 
   '@zuord/util@0.5.0-alpha':
     dependencies:

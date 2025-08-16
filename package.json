@@ -3,7 +3,7 @@
   "name": "zuord-monorepo",
   "scripts": {},
   "dependencies": {
-    "@zuord/type": "0.3.0-alpha"
+    "@zuord/type": "2.0.0-alpha.4"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
