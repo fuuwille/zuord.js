@@ -3,19 +3,19 @@ import { Mode } from "./mode.types";
 
 
 function flag <K extends string, const V extends boolean = false>(key: K, value?: V) 
-    : Mode.Field<K, V>
+    : Mode.Flags<K, V>
 
 function flag <K extends string, const V extends boolean = false>(key: K[], value?: V) 
-    : Mode.Field<K, V>
+    : Mode.Flags<K, V>
 
 function flag <K extends string, const V extends boolean = false>(key: K | K[], value?: V) 
-    : Mode.Field<K, V>;
+    : Mode.Flags<K, V>;
 
 function flag <K extends string, const V extends boolean = false>(key: K | K[], value?: V) {
-    return _mode.flag(key, value ?? false) as Mode.Field<K, V>;
+    return _mode.flag(key, value ?? false) as Mode.Flags<K, V>;
 }
 
-function resolve <const TModes extends Mode.Field[]>(modes: TModes): Mode.Resolve<TModes> {
+function resolve <const TModes extends Mode.Flags[]>(modes: TModes): Mode.Resolve<TModes> {
     return _mode.resolve(modes);
 };
 
