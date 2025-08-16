@@ -1,8 +1,8 @@
-import { primitive as $primitive } from "./type.runtime";
-import { plain as $plain } from "./type.runtime";
-import { array as $array } from "./type.runtime";
-import { tuple as $tuple } from "./type.runtime";
-import { func as $func } from "./type.runtime";
+import type { primitive as $primitive } from "./type.runtime";
+import type { plain as $plain } from "./type.runtime";
+import type { array as $array } from "./type.runtime";
+import type { tuple as $tuple } from "./type.runtime";
+import type { func as $func } from "./type.runtime";
 
 type zuordTypeAPI = {
     primitive: typeof $primitive;
