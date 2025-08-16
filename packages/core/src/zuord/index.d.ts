@@ -5,3 +5,5 @@ type zuordCoreAPI = {
     mode: typeof $mode;
     flags: typeof $flags;
 };
+
+export declare const zuordCore: zuordCoreAPI;
