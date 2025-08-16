@@ -126,6 +126,6 @@ export namespace Unify {
     ) : never
 
     export type SkipArray<T, TMode> = (
-        T extends Type.Array<infer TInfer> ? Unify.DistributeHybrid<TInfer, TMode> : never
+        T extends Type.Array<infer TInfer> ? Unify.DistributeHybrid<TInfer, TMode>[] : never
     );
 }
