@@ -9,3 +9,5 @@ type flagsAPI = {
     unique: typeof $unique;
     base: typeof $base;
 };
+
+export declare const flags: flagsAPI;
