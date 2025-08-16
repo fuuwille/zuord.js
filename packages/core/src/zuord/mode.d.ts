@@ -5,3 +5,5 @@ type modeAPI = {
     flags: typeof $flags;
     resolve: typeof $resolve;
 };
+
+export declare const mode: modeAPI;
