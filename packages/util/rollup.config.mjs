@@ -1,7 +1,7 @@
-import { createConfig } from '../rollup.config.mjs';
+import { createConfig } from '../../rollup.config.mjs';
 
 export default createConfig({
-    input: 'src/index.ts',
+    input: 'src',
     tsconfig: './tsconfig.json',
-    //external: ['@zuord/internal']
+    external: ['@zuord/core']
 });
