@@ -4,10 +4,10 @@ import { unique as $unique } from "./flags.runtime";
 import { base as $base } from "./flags.runtime";
 
 type flagsAPI = {
-    shallow: typeof $shallow;
-    concat: typeof $concat;
-    unique: typeof $unique;
-    base: typeof $base;
+    readonly shallow: typeof $shallow;
+    readonly concat: typeof $concat;
+    readonly unique: typeof $unique;
+    readonly base: typeof $base;
 };
 
 export declare const flags: flagsAPI;
