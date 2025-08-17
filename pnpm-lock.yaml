@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@zuord/core':
+        specifier: 3.0.0-alpha.1
+        version: 3.0.0-alpha.1
       '@zuord/type':
         specifier: 2.0.0-alpha.4
         version: 2.0.0-alpha.4
@@ -2000,6 +2003,9 @@ packages:
 
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
+
+  '@zuord/core@3.0.0-alpha.1':
+    resolution: {integrity: sha512-F336ORhDWYIohXYgfc7Ma6ZgOnG5NNpU+m75m9PkecDDwJ+Mg+gy3n6KsDyY836yK5YcZm85Lo4YRmQr6aBgWQ==}
 
   '@zuord/type@0.4.0-alpha':
     resolution: {integrity: sha512-hrGCo60w3S/FTsdwApjjXfFW07bfdTlC0P7uPbQnYeNOYzoGAEQy7JcombNF8Oxuvm9oEHw1bQP9RBti4xd75w==}
@@ -8299,6 +8305,8 @@ snapshots:
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
+
+  '@zuord/core@3.0.0-alpha.1': {}
 
   '@zuord/type@0.4.0-alpha': {}
 
