@@ -6,5 +6,5 @@ export function nest<T extends unknown = unknown>(obj: unknown, type?: { item?: 
 }
 
 export function empty(obj: unknown): obj is ZuordArray.Empty {
-    return zuordType.array(obj) && obj.length === 0;
+  return zuordType.array(obj) && obj.length === 0;
 }
