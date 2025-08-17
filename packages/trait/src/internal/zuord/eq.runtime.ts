@@ -1,5 +1,5 @@
-export function both(a: unknown, b: unknown): boolean {
-    return a === b;
+export function both(t1: unknown, t2: unknown): boolean {
+    return t1 === t2;
 }
 
 export function any(u1: unknown[], t2: unknown): boolean {
