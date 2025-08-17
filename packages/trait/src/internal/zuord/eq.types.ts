@@ -18,4 +18,8 @@ export declare namespace Eq {
     export type AnySome<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
         [Eq.Some<T1, U2>] extends [true] ? true : Eq.AnySome<R1, U2>
     ) : false;
+
+    export type EverySome<U1, U2> = U1 extends [infer T1, ...infer R1] ? (
+        [Eq.Some<T1, U2>] extends [true] ? (R1 extends ZuordArray.Empty ? true : Eq.EverySome<R1, U2>) : false
+    ) : false;
 }
