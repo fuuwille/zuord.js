@@ -20,4 +20,8 @@ export namespace Is {
     export type Each<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
         [Is.Base<TSource, TBase>] extends [true] ? (TBaseRest extends ZuordArray.Empty ? true : Is.Each<TSource, TBaseRest>) : false
     ) : false;
+
+    export type AnySome<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
+        [Is.Some<TSource, TBases>] extends [true] ? true : Is.AnySome<TSourceRest, TBases>
+    ) : false;
 }
