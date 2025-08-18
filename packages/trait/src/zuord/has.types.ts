@@ -10,4 +10,6 @@ export namespace Has {
     export type Some<TSource extends unknown, TBases extends unknown[]> = $ZuordTrait.Has.Some<TSource, TBases>;
 
     export type Each<TSource extends unknown, TBases extends unknown[]> = $ZuordTrait.Has.Each<TSource, TBases>;
+
+    export type AnySome<TSources extends unknown[], TBases extends unknown[]> = $ZuordTrait.Has.AnySome<TSources, TBases>;
 }
