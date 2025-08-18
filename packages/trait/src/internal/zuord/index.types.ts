@@ -1,8 +1,8 @@
-import { Eq as $Eq } from "./eq.types";
-import { Is as $Is } from "./is.types";
-import { Has as $Has } from "./has.types";
-import { Exclude as $Exclude } from "./exclude.types";
-import { Extract as $Extract } from "./extract.types";
+import { Eq as $Eq } from "./eq";
+import { Is as $Is } from "./is";
+import { Has as $Has } from "./has";
+import { Exclude as $Exclude } from "./exclude";
+import { Extract as $Extract } from "./extract";
 
 export namespace $ZuordTrait {
     export import Eq = $Eq;
