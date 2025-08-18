@@ -11,7 +11,7 @@ export namespace One {
         }) : never
     ) : T;
 
-    export type ResolveRequired<T, TMode extends Core.Mode.Flags> = [Trait.Is<T, Type.Plain>] extends [true] ? {
+    export type ResolveRequired<T, TMode extends Core.Mode.Flags> = [Trait.Is.Base<T, Type.Plain>] extends [true] ? {
         [K in $Util.Keys.Required<T>]: (
             [TMode ]extends [{ "$one.all": true }] ? (
                 One.ResolveAll<T[K], TMode>
@@ -19,7 +19,7 @@ export namespace One {
         )
     } : T;
 
-    export type ResolveOptional<T, TMode extends Core.Mode.Flags> = [Trait.Is<T, Type.Plain>] extends [true] ? {
+    export type ResolveOptional<T, TMode extends Core.Mode.Flags> = [Trait.Is.Base<T, Type.Plain>] extends [true] ? {
         [K in $Util.Keys.Optional<T>]?: T extends any ? (
             K extends keyof T ? (
                 [TMode] extends [{ "$one.all": true }] ? (
