@@ -4,9 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "rollup -c",
-    "prepublishOnly": "pnpm install @zuord/type@latest "
+    "build": "rimraf dist && rollup -c && cpy 'src/**/*.d.ts' dist"
   },
   "keywords": [],
   "author": "",
