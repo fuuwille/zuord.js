@@ -21,6 +21,7 @@
       "@zuord/core/internal": ["../packages/core/src/internal"],
       "@zuord/util": ["../packages/util/src"],
       "@zuord/trait": ["../packages/trait/src"],
+      "@zuord/trait/internal": ["../packages/trait/src/internal"],
     },
   }
 }
