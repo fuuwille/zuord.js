@@ -12,4 +12,8 @@ export declare namespace Extract {
     export type Eq<TSource, TBase> = TSource extends any ? (
         [$ZuordTrait.Eq.Both<TSource, TBase>] extends [true] ? TSource : never
     ) : never;
+
+    export type EqEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
+        Extract.EqEach<Extract.Eq<TSource, TBase>, TBaseRest>
+    ) : TSource;
 }
