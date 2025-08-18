@@ -8,4 +8,6 @@ export namespace Is {
     export type Every<TSources extends unknown[], TBase extends unknown> = $ZuordTrait.Is.Every<TSources, TBase>;
 
     export type Some<TSource extends unknown, TBases extends unknown[]> = $ZuordTrait.Is.Some<TSource, TBases>;
+
+    export type Each<TSource extends unknown, TBases extends unknown[]> = $ZuordTrait.Is.Each<TSource, TBases>;
 }
