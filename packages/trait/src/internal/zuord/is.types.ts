@@ -32,4 +32,8 @@ export namespace Is {
     export type EverySome<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
         [Is.Some<TSource, TBases>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : Is.EverySome<TSourceRest, TBases>) : false
     ) : false;
+
+    export type EveryEach<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
+        [Is.Each<TSource, TBases>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : Is.EveryEach<TSourceRest, TBases>) : false
+    ) : false;
 }
