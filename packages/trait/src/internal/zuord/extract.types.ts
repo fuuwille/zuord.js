@@ -8,4 +8,8 @@ export declare namespace Extract {
     export type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
         Extract.IsEach<Extract.Is<TSource, TBase>, TBaseRest>
     ) : TSource;
+
+    export type Eq<TSource, TBase> = TSource extends any ? (
+        [$ZuordTrait.Eq.Both<TSource, TBase>] extends [true] ? TSource : never
+    ) : never;
 }
