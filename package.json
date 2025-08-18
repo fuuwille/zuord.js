@@ -4,6 +4,7 @@
   "scripts": {},
   "dependencies": {
     "@zuord/core": "3.0.0-alpha.1",
+    "@zuord/trait": "3.0.0-alpha.1",
     "@zuord/type": "2.0.0-alpha.4"
   },
   "devDependencies": {
