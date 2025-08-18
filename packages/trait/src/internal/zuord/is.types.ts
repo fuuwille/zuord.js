@@ -5,12 +5,12 @@ export namespace Is {
         [TSource] extends [never] ? ([TBase] extends [never] ? true : false) : true
     ) : false;
 
-    export type Any<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-        [Is.Base<TSource, TBase>] extends [true] ? true : Is.Any<TRestSources, TBase>
+    export type Any<TSources, TBase> = TSources extends [infer TSource, ...infer TSourceRest] ? (
+        [Is.Base<TSource, TBase>] extends [true] ? true : Is.Any<TSourceRest, TBase>
     ) : false;
 
-    export type Every<TSources, TBase> = TSources extends [infer TSource, ...infer TRestSources] ? (
-        [Is.Base<TSource, TBase>] extends [true] ? (TRestSources extends ZuordArray.Empty ? true : Is.Every<TRestSources, TBase>) : false
+    export type Every<TSources, TBase> = TSources extends [infer TSource, ...infer TSourceRest] ? (
+        [Is.Base<TSource, TBase>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : Is.Every<TSourceRest, TBase>) : false
     ) : false;
 
     export type Some<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
