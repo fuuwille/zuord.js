@@ -15,4 +15,8 @@ export namespace Has {
     export type Some<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
         [Has.Base<TSource, TBase>] extends [true] ? true : Has.Some<TSource, TBaseRest>
     ) : false;
+
+    export type Each<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
+        [Has.Base<TSource, TBase>] extends [true] ? (TBaseRest extends ZuordArray.Empty ? true : Has.Each<TSource, TBaseRest>) : false
+    ) : false;
 }
