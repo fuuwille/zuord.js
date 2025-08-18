@@ -4,7 +4,7 @@ import { Has as $Has } from "./has.types";
 import { Extract as $Extract } from "./extract.types";
 import { Exclude as $Exclude } from "./exclude.types";
 
-export declare namespace ZuordTrait {
+export namespace ZuordTrait {
     export import Eq = $Eq;
     export import Is = $Is;
     export import Has = $Has;
