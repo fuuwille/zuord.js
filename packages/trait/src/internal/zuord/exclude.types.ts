@@ -8,4 +8,8 @@ export declare namespace Exclude {
     export type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
         Exclude.IsEach<Exclude.Is<TSource, TBase>, TBaseRest>
     ) : TSource;
+
+    export type Eq<TSource, TBase> = TSource extends any ? (
+        [$ZuordTrait.Eq.Both<TSource, TBase>] extends [false] ? TSource : never
+    ) : never;
 }
