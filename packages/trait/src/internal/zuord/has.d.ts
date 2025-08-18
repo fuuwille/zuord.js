@@ -1,0 +1,1 @@
+export { Has } from "./has.types";
