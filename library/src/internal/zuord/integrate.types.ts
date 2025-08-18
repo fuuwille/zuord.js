@@ -9,7 +9,7 @@ export declare namespace Integrate {
     );
 
     export type Plain<TBase, TOverlay, TMode> = (
-        [TMode] extends [infer TMode extends Core.Mode.Field] ? (
+        [TMode] extends [infer TMode extends Core.Mode.Flags] ? (
             Integrate.ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends ZuordType.Plain ? (
                 Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
             ) : never
@@ -35,7 +35,7 @@ export declare namespace Integrate {
     });
 
     export type Array<TBase, TOverlay, TMode> = (
-        [TMode] extends [infer TMode extends Core.Mode.Field] ? (
+        [TMode] extends [infer TMode extends Core.Mode.Flags] ? (
             Integrate.ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends ZuordType.Array ? (
                 Util.Unify.Array<TArray, TMode>
             ) : never
