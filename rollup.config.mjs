@@ -6,7 +6,8 @@ export function createConfig({ input, tsconfig, external = ["zuord", "zuord/inte
         input,
         output: {
             dir: 'dist',
-            format: 'esm'
+            format: 'esm',
+            sourcemap: true,
         },
         external: [/^@zuord\//],
         plugins: [
