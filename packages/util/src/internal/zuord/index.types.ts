@@ -10,7 +10,7 @@ import { Strict as $Strict } from "./strict";
 import { Mutable as $Mutable } from "./mutable";
 import { Pattern as $Pattern } from "./pattern";
 
-export namespace $ZuordUtil {
+export declare namespace $ZuordUtil {
     export import Tuple = $Tuple;
     export import Plain = $Plain;
     export import Union = $Union;
