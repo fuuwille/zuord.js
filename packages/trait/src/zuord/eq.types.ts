@@ -11,4 +11,6 @@ export declare namespace Eq {
     export type Some<T1 extends unknown, U2 extends ZuordType.Tuple> = $ZuordTrait.Eq.Some<T1, U2>;
 
     export type AnySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = $ZuordTrait.Eq.AnySome<U1, U2>;
+
+    export type EverySome<U1 extends ZuordType.Tuple, U2 extends ZuordType.Tuple> = $ZuordTrait.Eq.EverySome<U1, U2>;
 }
