@@ -13,13 +13,7 @@ export function createConfig({ input, tsconfig, external = ["zuord", "zuord/inte
         external,
         plugins: [
             resolve({ preferBuiltins: true }),
-            typescript({
-                tsconfig,
-                declaration: true,
-                declarationMap: true,
-                emitDeclarationOnly: false,
-                skipLibCheck: true
-            }),
+            typescript({ tsconfig }),
         ],
     };
 }
