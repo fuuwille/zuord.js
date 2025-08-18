@@ -1,6 +1,6 @@
 import { ZuordArray } from "@zuord/type";
 
-export namespace Is {
+export declare namespace Is {
     export type Base<TSource, TBase> = [TSource] extends [TBase] ? (
         [TSource] extends [never] ? ([TBase] extends [never] ? true : false) : true
     ) : false;
