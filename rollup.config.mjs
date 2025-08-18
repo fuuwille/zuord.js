@@ -10,7 +10,7 @@ export function createConfig({ input, tsconfig, external = ["zuord", "zuord/inte
             preserveModules: true,
             sourcemap: true,
         },
-        external,
+        external: [/^@zuord\//],
         plugins: [
             resolve({ preferBuiltins: true }),
             typescript({ tsconfig }),
