@@ -1,7 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import dts from 'rollup-plugin-dts';
 
-export function createConfig({ input, tsconfig }) {
+export function createConfig({ input, tsconfig = null }) {
     return {
         input,
         output: {
@@ -12,7 +13,8 @@ export function createConfig({ input, tsconfig }) {
         external: [/^@zuord\//],
         plugins: [
             resolve({ preferBuiltins: true }),
-            typescript({ tsconfig }),
-        ],
+            tsconfig && typescript({ tsconfig }),
+            !tsconfig && dts()
+        ].filter(Boolean),
     };
 }
