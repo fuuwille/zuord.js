@@ -3,4 +3,4 @@ src
 .gitignore
 rollup.config.mjs
 tsconfig.json
-tsconfig.dist.json
+tsconfig-dist.json
