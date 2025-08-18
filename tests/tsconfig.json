@@ -6,6 +6,7 @@
             "zuord/internal": ["../../library/src/internal"],
             "zuord/extended": ["../../library/src/extended"],
             "@zuord/core": ["../../packages/core/src"],
+            "@zuord/core/internal": ["../../packages/core/src/internal"],
             "@zuord/type": ["../../packages/type/src"],
             "@zuord/util": ["../../packages/util/src"],
             "@zuord/trait": ["../../packages/trait/src"],
