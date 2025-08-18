@@ -1,0 +1,1 @@
+export { ZuordTrait } from "./index.types";
