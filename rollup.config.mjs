@@ -11,7 +11,6 @@ export function createConfig({ input, tsconfig = null }) {
         },
         external: [/^@zuord\//],
         plugins: [
-            resolve({ preferBuiltins: true }),
             typescript({ tsconfig })
         ],
     };
