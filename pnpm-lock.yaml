@@ -57,8 +57,8 @@ importers:
   packages/trait:
     dependencies:
       '@zuord/type':
-        specifier: 0.4.0-alpha
-        version: 0.4.0-alpha
+        specifier: 2.0.0-alpha.5
+        version: 2.0.0-alpha.5
 
   packages/type:
     devDependencies:
@@ -2015,6 +2015,9 @@ packages:
 
   '@zuord/type@2.0.0-alpha.4':
     resolution: {integrity: sha512-5tbxMJa2QZb4klsasaDkMLARnFy0mTWSh4Y9gWXC2xnSulsUb1W3Vrd59UUa3/dLBuMDtzzFxUlmDeDcXtGf2Q==}
+
+  '@zuord/type@2.0.0-alpha.5':
+    resolution: {integrity: sha512-xHnEQMzmycAQczJc9frkZdHaRFzS/WLQ8ZpJkgBDYjj2J2fuX+qWQUo8Z/9MWNndfZ4tMQtJxnuDxUWRu+3UUg==}
 
   '@zuord/util@0.5.0-alpha':
     resolution: {integrity: sha512-IHgXWgeYLG1dCsEdt0uXWJkPxlQ23jCfX+z+Wzyqn8xXUnvWMMjl+1Y7Z5TWC7Bnp89u8NIEJvjmXMNZfToHzg==}
@@ -8313,6 +8316,8 @@ snapshots:
   '@zuord/type@0.5.0-alpha': {}
 
   '@zuord/type@2.0.0-alpha.4': {}
+
+  '@zuord/type@2.0.0-alpha.5': {}
 
   '@zuord/util@0.5.0-alpha':
     dependencies:
