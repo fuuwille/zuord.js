@@ -9,6 +9,7 @@
             "@zuord/type": ["../../packages/type/src"],
             "@zuord/util": ["../../packages/util/src"],
             "@zuord/trait": ["../../packages/trait/src"],
+            "@zuord/trait/internal": ["../../packages/trait/src/internal"],
         },
         "types": ["vitest/globals"]
     }
