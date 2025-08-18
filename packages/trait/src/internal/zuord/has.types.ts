@@ -23,4 +23,8 @@ export namespace Has {
     export type AnySome<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
         [Has.Some<TSource, TBases>] extends [true] ? true : Has.AnySome<TSourceRest, TBases>
     ) : false;
+
+    export type AnyEach<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
+        [Has.Each<TSource, TBases>] extends [true] ? true : Has.AnyEach<TSourceRest, TBases>
+    ) : false;
 }
