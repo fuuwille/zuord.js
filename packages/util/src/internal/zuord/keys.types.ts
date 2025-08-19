@@ -1,4 +1,4 @@
-export namespace Keys {
+export declare namespace Keys {
     export type All<T> = T extends any ? keyof T : never;
 
     export type Required<T> = Exclude<Keys.All<T>, Keys.Optional<T>>;
