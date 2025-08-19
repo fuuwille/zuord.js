@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/type";
+import type { ZuordType } from "@zuord/type";
 
 export namespace Pattern {
     export type PlainResolve<T> = T extends ZuordType.Plain ? {
