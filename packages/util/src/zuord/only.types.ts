@@ -1,7 +1,7 @@
-import { $ZuordUtil as $Util } from "../internal";
-import { ZuordType as Type } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
+import type { $ZuordUtil } from "@zuord/util/internal";
+import type { ZuordType } from "@zuord/type";
+import type { ZuordCore } from "@zuord/core";
 
 export declare namespace Only {
-    export type Required<T extends Type.Plain, TMode extends Core.Mode.Flags> = $Util.Only.ResolveRequired<T, TMode>;
+    export type Required<T extends ZuordType.Plain, TMode extends ZuordCore.Mode.Flags> = $ZuordUtil.Only.ResolveRequired<T, TMode>;
 }
