@@ -5,7 +5,8 @@
         "outDir": "dist",
         "paths": {
             "zuord": ["./src"],
-            "zuord/internal": ["./src/internal"]
+            "zuord/internal": ["./src/internal"],
+            "zuord/extended": ["./src/extended"]
         }
     }
 }
