@@ -4,7 +4,8 @@
         "rootDir": "src",
         "outDir": "dist",
         "paths": {
-            
+            "zuord": ["./src"],
+            "zuord/internal": ["./src/internal"]
         }
     },
     "include": ["src/**/*"],
