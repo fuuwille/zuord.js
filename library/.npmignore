@@ -4,5 +4,5 @@ tests
 .gitignore
 rollup.config.mjs
 tsconfig.json
-tsconfig.dist.json
+tsconfig-dist.json
 vitest.config.js
