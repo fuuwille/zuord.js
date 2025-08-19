@@ -14,7 +14,7 @@
   "scripts": {
     "build": "rimraf dist && rollup -c && cpy 'src/**/*.d.ts' dist"
   },
-  "keywords": [],
+  "keywords": ["typescript", "zuord", "trait"],
   "author": "k4yr2",
   "license": "ISC",
   "type": "module",
