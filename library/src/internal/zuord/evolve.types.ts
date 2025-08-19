@@ -4,7 +4,7 @@ import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 
 
-export namespace Evolve {
+export declare namespace Evolve {
     export type Plain<TBase, TContent, TMode extends Core.Mode.Flags> = (
         [Evolve.ResolvePlain<TBase, TContent, TMode>] extends [infer TResolved extends ZuordType.Plain] ? (
             ZuordUtil.Unify.Hybrid<TResolved, TMode>
