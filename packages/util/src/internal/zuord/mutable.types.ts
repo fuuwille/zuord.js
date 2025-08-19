@@ -1,4 +1,4 @@
-import { ZuordType } from "@zuord/type";
+import type { ZuordType } from "@zuord/type";
  
 export namespace Mutable {
     export type Resolve<T> = (
