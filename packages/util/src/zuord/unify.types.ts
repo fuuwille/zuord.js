@@ -2,7 +2,7 @@ import type { $ZuordUtil } from "@zuord/util/internal";
 import type { ZuordType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 
-export namespace Unify {
+export declare namespace Unify {
     export type Hybrid<T extends ZuordType.Plain | ZuordType.Array, TMode extends ZuordCore.Mode.Flags = {}> 
         = $ZuordUtil.Unify.Hybrid<T, TMode>;
 
