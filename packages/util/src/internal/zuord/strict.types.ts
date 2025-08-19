@@ -1,7 +1,7 @@
-import { ZuordType as Type } from "@zuord/type";
+import type { ZuordType } from "@zuord/type";
 
 export namespace Strict {
-  export type ResolveKeys<TBase, TInput> = TBase extends Type.Plain ? (
+  export type ResolveKeys<TBase, TInput> = TBase extends ZuordType.Plain ? (
     ResolveIncludedKeys<TBase, TInput> & ResolveExcludedKeys<TBase, TInput>
   ) : TInput;
 
