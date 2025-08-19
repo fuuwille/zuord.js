@@ -1,5 +1,5 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
-import { ZuordType, ZuordPlain } from "@zuord/type";
+import type { ZuordType, ZuordPlain } from "@zuord/type";
 
 export declare namespace Restrict {
     export type Keys<TBase extends ZuordType.Plain, TInput extends ZuordType.Plain> 
