@@ -1,4 +1,4 @@
-import { $ZuordUtil } from "../internal";
+import type { $ZuordUtil } from "@zuord/util/internal";
 import { ZuordType, ZuordPlain } from "@zuord/type";
 
 export declare namespace Restrict {
