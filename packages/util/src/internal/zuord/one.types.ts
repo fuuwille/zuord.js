@@ -1,4 +1,4 @@
-import { $ZuordUtil as $Util } from ".";
+import type { $ZuordUtil } from "@zuord/util/internal";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
@@ -12,7 +12,7 @@ export namespace One {
     ) : T;
 
     export type ResolveRequired<T, TMode extends Core.Mode.Flags> = [Trait.Is.Base<T, Type.Plain>] extends [true] ? {
-        [K in $Util.Keys.Required<T>]: (
+        [K in $ZuordUtil.Keys.Required<T>]: (
             [TMode ]extends [{ "$one.all": true }] ? (
                 One.ResolveAll<T[K], TMode>
             ) : One.ResolveRequired<T[K], TMode>
@@ -20,7 +20,7 @@ export namespace One {
     } : T;
 
     export type ResolveOptional<T, TMode extends Core.Mode.Flags> = [Trait.Is.Base<T, Type.Plain>] extends [true] ? {
-        [K in $Util.Keys.Optional<T>]?: T extends any ? (
+        [K in $ZuordUtil.Keys.Optional<T>]?: T extends any ? (
             K extends keyof T ? (
                 [TMode] extends [{ "$one.all": true }] ? (
                     One.ResolveAll<T[K], TMode>
