@@ -1,4 +1,4 @@
-import { $ZuordUtil } from "../internal";
+import type { $ZuordUtil } from "@zuord/util/internal";
 import { ZuordType } from "@zuord/type";
 
 export namespace Pattern {
