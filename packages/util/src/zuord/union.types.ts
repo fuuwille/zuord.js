@@ -1,6 +1,6 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
 
-export namespace Union {
+export declare namespace Union {
     export type IsUnion<T> = $ZuordUtil.Union.IsUnion<T>;
 
     export type ToIntersection<U> = $ZuordUtil.Union.ToIntersection<U>;
