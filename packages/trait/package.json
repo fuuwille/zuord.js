@@ -15,7 +15,7 @@
     "build": "rimraf dist && rollup -c && cpy 'src/**/*.d.ts' dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "k4yr2",
   "license": "ISC",
   "type": "module",
   "dependencies": {
