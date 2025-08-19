@@ -10,9 +10,6 @@ import { Restrict as $Restrict } from "./restrict";
 import { Strict as $Strict } from "./strict";
 import { Pattern as $Pattern } from "./pattern";
 
-
-//
-
 export declare namespace ZuordUtil {
     export import Keys = $Keys;
     export import Tuple = $Tuple;
