@@ -1,4 +1,4 @@
-import { $ZuordUtil } from "../internal";
+import type { $ZuordUtil } from "@zuord/util/internal";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 
