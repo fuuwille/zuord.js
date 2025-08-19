@@ -1,4 +1,4 @@
-export namespace Tuple {
+export declare namespace Tuple {
     export type Keys<T> = T extends any ? Exclude<keyof T, keyof any[]> : never;
 
     export type Unify<T> = ResolveUnify<ExtractUnify<T>>;
