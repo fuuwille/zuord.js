@@ -1,6 +1,6 @@
 import type { ZuordType } from "@zuord/type";
  
-export namespace Mutable {
+export declare namespace Mutable {
     export type Resolve<T> = (
         T extends ZuordType.Plain | ZuordType.Tuple ? (
             StructResolve<T>
