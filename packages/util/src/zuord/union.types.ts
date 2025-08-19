@@ -1,4 +1,4 @@
-import { $ZuordUtil } from "../internal";
+import type { $ZuordUtil } from "@zuord/util/internal";
 
 export namespace Union {
     export type IsUnion<T> = $ZuordUtil.Union.IsUnion<T>;
