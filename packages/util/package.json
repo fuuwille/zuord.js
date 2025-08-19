@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
+    "build": "rimraf dist && tsc --project tsconfig-dist.json && cpy 'src/**/*.d.ts' dist"
   },
   "keywords": [
     "zuord"
