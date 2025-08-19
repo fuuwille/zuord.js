@@ -3,7 +3,7 @@ import type { ZuordType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { ZuordTrait } from "@zuord/trait";
 
-export namespace One {
+export declare namespace One {
     export type ResolveAll<T, TMode extends ZuordCore.Mode.Flags> = 
     [T, ZuordCore.Mode.Resolve<[TMode, { "$one.all": true }]>] extends [infer TPlain extends ZuordType.Plain, infer THybridMode extends ZuordCore.Mode.Flags] ? (
         (ResolveRequired<TPlain, THybridMode> & ResolveOptional<TPlain, THybridMode>) extends infer TInfer ? ({
