@@ -1,5 +1,5 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
-import { ZuordType as Type } from "@zuord/type";
+import type { ZuordType } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
@@ -9,9 +9,9 @@ export namespace Unify {
     ) : never;
 
     export type DistributeHybrid<T, TMode> = (
-        [Trait.Has.Base<T, Type.Plain>] extends [true] ? Unify.DistributePlain<T, TMode> :
-        [Trait.Has.Base<T, Type.Tuple>] extends [true] ? Unify.DistributeTuple<T, TMode> :
-        [Trait.Has.Base<T, Type.Array>] extends [true] ? Unify.DistributeArray<T, TMode> : T
+        [Trait.Has.Base<T, ZuordType.Plain>] extends [true] ? Unify.DistributePlain<T, TMode> :
+        [Trait.Has.Base<T, ZuordType.Tuple>] extends [true] ? Unify.DistributeTuple<T, TMode> :
+        [Trait.Has.Base<T, ZuordType.Array>] extends [true] ? Unify.DistributeArray<T, TMode> : T
     );
 
     export type Plain<T, TMode> = TMode extends Core.Mode.Flags ? (
@@ -20,8 +20,8 @@ export namespace Unify {
 
     export type DistributePlain<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
         (
-            | (Unify.ExcludePlain<Trait.Exclude.Is<T, Type.Plain>, TMode>)
-            | (Unify.ExtractPlain<Trait.Extract.Is<T, Type.Plain>, TMode>)
+            | (Unify.ExcludePlain<Trait.Exclude.Is<T, ZuordType.Plain>, TMode>)
+            | (Unify.ExtractPlain<Trait.Extract.Is<T, ZuordType.Plain>, TMode>)
         ) extends infer T ? T : never
     ) : any;
     
@@ -63,8 +63,8 @@ export namespace Unify {
 
     export type DistributeTuple<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
         (
-            | (Unify.ExcludeTuple<Trait.Exclude.Is<T, Type.Tuple>, TMode>)
-            | (Unify.ExtractTuple<Trait.Extract.Is<T, Type.Tuple>, TMode>)
+            | (Unify.ExcludeTuple<Trait.Exclude.Is<T, ZuordType.Tuple>, TMode>)
+            | (Unify.ExtractTuple<Trait.Extract.Is<T, ZuordType.Tuple>, TMode>)
         ) extends infer T ? T : never
     ) : any;
 
@@ -98,8 +98,8 @@ export namespace Unify {
 
     export type DistributeArray<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
         (
-            | (Unify.ExcludeArray<Trait.Exclude.Is<T, Type.Array>, TMode>)
-            | (Unify.ExtractArray<Trait.Extract.Is<T, Type.Array>, TMode>)
+            | (Unify.ExcludeArray<Trait.Exclude.Is<T, ZuordType.Array>, TMode>)
+            | (Unify.ExtractArray<Trait.Extract.Is<T, ZuordType.Array>, TMode>)
         ) extends infer T ? T : never
     ) : any;
 
@@ -115,7 +115,7 @@ export namespace Unify {
         ) : Unify.SkipArray<$ZuordUtil.Union.ToIntersection<T>, TMode>
     );
 
-    export type ResolveArray<T, TMode> = [T] extends [Type.Array] ? (
+    export type ResolveArray<T, TMode> = [T] extends [ZuordType.Array] ? (
         TMode extends { shallow: true } ? (
             T[number][]
         ) : (
@@ -126,6 +126,6 @@ export namespace Unify {
     ) : never
 
     export type SkipArray<T, TMode> = (
-        T extends Type.Array<infer TInfer> ? Unify.DistributeHybrid<TInfer, TMode>[] : never
+        T extends ZuordType.Array<infer TInfer> ? Unify.DistributeHybrid<TInfer, TMode>[] : never
     );
 }
