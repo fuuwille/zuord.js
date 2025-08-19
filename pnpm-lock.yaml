@@ -15,8 +15,8 @@ importers:
         specifier: 3.0.0-alpha.2
         version: 3.0.0-alpha.2
       '@zuord/type':
-        specifier: 2.0.0-alpha.4
-        version: 2.0.0-alpha.4
+        specifier: 2.0.0-alpha.5
+        version: 2.0.0-alpha.5
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -2021,9 +2021,6 @@ packages:
 
   '@zuord/type@0.5.0-alpha':
     resolution: {integrity: sha512-UdZHTZWe/2MWc0BDItbBYcKPKQaMMB445PYyo9MmZxEUNTvDIYmRygF9AG8lOeKDX3lqu3y6cp9ZuU9LI1NyIw==}
-
-  '@zuord/type@2.0.0-alpha.4':
-    resolution: {integrity: sha512-5tbxMJa2QZb4klsasaDkMLARnFy0mTWSh4Y9gWXC2xnSulsUb1W3Vrd59UUa3/dLBuMDtzzFxUlmDeDcXtGf2Q==}
 
   '@zuord/type@2.0.0-alpha.5':
     resolution: {integrity: sha512-xHnEQMzmycAQczJc9frkZdHaRFzS/WLQ8ZpJkgBDYjj2J2fuX+qWQUo8Z/9MWNndfZ4tMQtJxnuDxUWRu+3UUg==}
@@ -8334,8 +8331,6 @@ snapshots:
   '@zuord/type@0.4.0-alpha': {}
 
   '@zuord/type@0.5.0-alpha': {}
-
-  '@zuord/type@2.0.0-alpha.4': {}
 
   '@zuord/type@2.0.0-alpha.5': {}
 
