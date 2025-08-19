@@ -1,6 +1,6 @@
 import type { ZuordType } from "@zuord/type";
 
-export namespace Restrict {
+export declare namespace Restrict {
     export type ResolveKeys<TBase, TInput> = TBase extends ZuordType.Plain ? (
         (ResolveIncludedKeys<TBase, TInput> & ResolveExcludedKeys<TBase, TInput>) extends infer T ? {
             [K in keyof T as [undefined] extends [T[K]] ? never : K]: T[K] extends never ? never : T[K];
