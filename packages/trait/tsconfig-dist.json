@@ -3,11 +3,10 @@
     "compilerOptions": {
         "baseUrl": ".",
         "rootDir": "src",
+        "outDir": "dist",
         "paths": {
             "@zuord/trait": ["./src"],
             "@zuord/trait/internal": ["./src/internal"]
-        },
-        "declaration": true,
-        "emitDeclarationOnly": true,
+        }
     }
 }
