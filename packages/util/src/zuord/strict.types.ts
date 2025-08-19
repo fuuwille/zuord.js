@@ -1,7 +1,7 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
 import type { ZuordType, ZuordPlain } from "@zuord/type";
 
-export namespace Strict {
+export declare namespace Strict {
     export type Keys<TBase extends ZuordType.Plain, TContent extends ZuordType.Plain> 
         = $ZuordUtil.Strict.ResolveKeys<TBase, TContent>;
 
