@@ -1,8 +1,8 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "rootDir": "src",
         "baseUrl": ".",
+        "rootDir": "src",
         "paths": {
             "@zuord/trait": ["./src"],
             "@zuord/trait/internal": ["./src/internal"]
