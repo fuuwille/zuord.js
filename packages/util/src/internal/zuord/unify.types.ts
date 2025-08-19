@@ -3,7 +3,7 @@ import type { ZuordType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { ZuordTrait } from "@zuord/trait";
 
-export namespace Unify {
+export declare namespace Unify {
     export type Hybrid<T, TMode> = TMode extends ZuordCore.Mode.Flags ? (
         Unify.DistributeHybrid<T, ZuordCore.Mode.Resolve<[{ unifyPlain: true, unifyTuple: true, unifyArray: true }, TMode]>>
     ) : never;
