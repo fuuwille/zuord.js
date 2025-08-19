@@ -5,6 +5,8 @@
         "rootDir": "src",
         "outDir": "dist",
         "paths": {
+            "@zuord/util": ["./src"],
+            "@zuord/util/internal": ["./src/internal"]
         },
         "declaration": true,
         "emitDeclarationOnly": true,
