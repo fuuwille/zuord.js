@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.1
-        version: 3.0.0-alpha.1
+        specifier: 3.0.0-alpha.8
+        version: 3.0.0-alpha.8
       '@zuord/trait':
         specifier: 3.0.0-alpha.2
         version: 3.0.0-alpha.2
@@ -2013,8 +2013,8 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@zuord/core@3.0.0-alpha.1':
-    resolution: {integrity: sha512-F336ORhDWYIohXYgfc7Ma6ZgOnG5NNpU+m75m9PkecDDwJ+Mg+gy3n6KsDyY836yK5YcZm85Lo4YRmQr6aBgWQ==}
+  '@zuord/core@3.0.0-alpha.8':
+    resolution: {integrity: sha512-HBicKCAdKdp3N6iZgXJLuXcKbgtu2Vw1JOeq6ZKwmvAn+0xwwirXPZ+kLpGn8oRhB9vY1IK6iphUC3m7sXJGfw==}
 
   '@zuord/trait@3.0.0-alpha.2':
     resolution: {integrity: sha512-MG1we53lNfXcOKzZw5zblYYsVWAS73ItY7aFA6LUZABNxpZVbjD3rvI4a6i9evx9Fag1M/3HXYCTEgKuI0wInw==}
@@ -2030,6 +2030,7 @@ packages:
 
   '@zuord/util@0.5.0-alpha':
     resolution: {integrity: sha512-IHgXWgeYLG1dCsEdt0uXWJkPxlQ23jCfX+z+Wzyqn8xXUnvWMMjl+1Y7Z5TWC7Bnp89u8NIEJvjmXMNZfToHzg==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@zuord/util@4.0.0-alpha.2':
     resolution: {integrity: sha512-ZA9FgFAwBBSNg24DOr7FwqHIepeufcQHlU5l68ktHQnbTNAQ3Cje0FNE69SHP/VrU4GOuxWFKhbbRloi8uYFJw==}
@@ -8328,7 +8329,7 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@zuord/core@3.0.0-alpha.1': {}
+  '@zuord/core@3.0.0-alpha.8': {}
 
   '@zuord/trait@3.0.0-alpha.2':
     dependencies:
