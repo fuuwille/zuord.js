@@ -4,9 +4,7 @@
   "description": "The most powerful TypeScript utility type system designed to fill critical gaps in the type ecosystem, providing advanced normalization, class-plain differentiation, and robust helper types.",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "rollup -c",
-    "prepublishOnly": "pnpm install @zuord/type@latest @zuord/util@latest"
+    "build": "rimraf dist && rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
   },
   "repository": {
     "type": "git",
