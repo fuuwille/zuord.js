@@ -1,17 +1,17 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
-import { ZuordType as Type } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
+import type { ZuordType } from "@zuord/type";
+import type { ZuordCore } from "@zuord/core";
 
 export namespace Unify {
-    export type Hybrid<T extends Type.Plain | Type.Array, TMode extends Core.Mode.Flags = {}> 
+    export type Hybrid<T extends ZuordType.Plain | ZuordType.Array, TMode extends ZuordCore.Mode.Flags = {}> 
         = $ZuordUtil.Unify.Hybrid<T, TMode>;
 
-    export type Plain<T extends Type.Plain, TMode extends Core.Mode.Flags = {}> 
+    export type Plain<T extends ZuordType.Plain, TMode extends ZuordCore.Mode.Flags = {}> 
         = $ZuordUtil.Unify.Plain<T, TMode>;
 
-    export type Tuple<T extends Type.Tuple, TMode extends Core.Mode.Flags = {}> 
+    export type Tuple<T extends ZuordType.Tuple, TMode extends ZuordCore.Mode.Flags = {}> 
         = $ZuordUtil.Unify.Tuple<T, TMode>;
 
-    export type Array<T extends Type.Array, TMode extends Core.Mode.Flags = {}> 
+    export type Array<T extends ZuordType.Array, TMode extends ZuordCore.Mode.Flags = {}> 
         = $ZuordUtil.Unify.Array<T, TMode>;
 }
