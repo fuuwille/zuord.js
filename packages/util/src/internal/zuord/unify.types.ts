@@ -1,4 +1,4 @@
-import { $ZuordUtil as $Util } from ".";
+import type { $ZuordUtil } from "@zuord/util/internal";
 import { ZuordType as Type } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
@@ -32,13 +32,13 @@ export namespace Unify {
     )
 
     export type ExtractPlain<T, TMode> = (
-        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
+        [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
             Unify.ResolvePlain<T, TMode>
-        ) : Unify.SkipPlain<$Util.Union.ToIntersection<T>, TMode>
+        ) : Unify.SkipPlain<$ZuordUtil.Union.ToIntersection<T>, TMode>
     );
 
     export type ResolvePlain<T, TMode> =  (
-        $Util.Plain.Unify<T> extends infer TOne ? {
+        $ZuordUtil.Plain.Unify<T> extends infer TOne ? {
             [K in keyof TOne]: TMode extends { shallow: true } ? (
                 TOne[K]
             ) : (
@@ -75,13 +75,13 @@ export namespace Unify {
     )
 
     export type ExtractTuple<T, TMode> = (
-        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyTuple: true }] ? (
+        [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyTuple: true }] ? (
             ResolveTuple<T, TMode>
         ) : Unify.ExtractArray<T, TMode>
     );
 
     export type ResolveTuple<T, TMode> = (
-        $Util.Tuple.Unify<T> extends infer TTuple ? ({
+        $ZuordUtil.Tuple.Unify<T> extends infer TTuple ? ({
             [K in keyof TTuple]: TMode extends { shallow: true } ? (
                 TTuple[K]
             ) : (
@@ -110,9 +110,9 @@ export namespace Unify {
     )
 
     export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
-        [$Util.Union.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
+        [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
             Unify.ResolveArray<T, TMode>
-        ) : Unify.SkipArray<$Util.Union.ToIntersection<T>, TMode>
+        ) : Unify.SkipArray<$ZuordUtil.Union.ToIntersection<T>, TMode>
     );
 
     export type ResolveArray<T, TMode> = [T] extends [Type.Array] ? (
