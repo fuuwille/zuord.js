@@ -1,11 +1,11 @@
 import type { $ZuordUtil } from "@zuord/util/internal";
 import type { ZuordType } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
+import type { ZuordCore } from "@zuord/core";
 import { ZuordTrait as Trait } from "@zuord/trait";
 
 export namespace Unify {
-    export type Hybrid<T, TMode> = TMode extends Core.Mode.Flags ? (
-        Unify.DistributeHybrid<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: true, unifyArray: true }, TMode]>>
+    export type Hybrid<T, TMode> = TMode extends ZuordCore.Mode.Flags ? (
+        Unify.DistributeHybrid<T, ZuordCore.Mode.Resolve<[{ unifyPlain: true, unifyTuple: true, unifyArray: true }, TMode]>>
     ) : never;
 
     export type DistributeHybrid<T, TMode> = (
@@ -14,8 +14,8 @@ export namespace Unify {
         [Trait.Has.Base<T, ZuordType.Array>] extends [true] ? Unify.DistributeArray<T, TMode> : T
     );
 
-    export type Plain<T, TMode> = TMode extends Core.Mode.Flags ? (
-        Unify.DistributePlain<T, Core.Mode.Resolve<[{ unifyPlain: true, unifyTuple: false, unifyArray: false }, TMode]>>
+    export type Plain<T, TMode> = TMode extends ZuordCore.Mode.Flags ? (
+        Unify.DistributePlain<T, ZuordCore.Mode.Resolve<[{ unifyPlain: true, unifyTuple: false, unifyArray: false }, TMode]>>
     ) : never;
 
     export type DistributePlain<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
@@ -57,8 +57,8 @@ export namespace Unify {
         )
     } extends infer T ? T : never;
 
-    export type Tuple<T, TMode> = TMode extends Core.Mode.Flags ? (
-        Unify.DistributeTuple<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
+    export type Tuple<T, TMode> = TMode extends ZuordCore.Mode.Flags ? (
+        Unify.DistributeTuple<T, ZuordCore.Mode.Resolve<[{ unifyPlain: false, unifyTuple: true, unifyArray: false }, TMode]>>
     ) : never;
 
     export type DistributeTuple<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
@@ -92,8 +92,8 @@ export namespace Unify {
         }) : never
     );
 
-    export type Array<T, TMode> = TMode extends Core.Mode.Flags ? (
-        Unify.DistributeArray<T, Core.Mode.Resolve<[{ unifyPlain: false, unifyTuple: false, unifyArray: true }, TMode]>>
+    export type Array<T, TMode> = TMode extends ZuordCore.Mode.Flags ? (
+        Unify.DistributeArray<T, ZuordCore.Mode.Resolve<[{ unifyPlain: false, unifyTuple: false, unifyArray: true }, TMode]>>
     ) : never;
 
     export type DistributeArray<T, TMode> = [Trait.Eq.Both<T, any>] extends [false] ? (
