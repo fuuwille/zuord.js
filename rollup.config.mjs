@@ -8,7 +8,7 @@ export function createConfig({ input, tsconfig = null }) {
             format: 'esm',
             sourcemap: true,
         },
-        external: [/^@zuord\//],
+        external: [/^zuord\//, /^@zuord\//],
         plugins: [
             typescript({ tsconfig })
         ],
