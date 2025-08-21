@@ -1,5 +1,5 @@
 import { $zuord } from "zuord/internal";
-import { zuordModeX } from "zuord/extended";
+import { zuordModeX } from "../../mode";
 import { zuordCore as core } from "@zuord/core";
 import type { ZuordX } from "zuord/extended";
 import type { ZuordModeX } from "zuord/extended";
