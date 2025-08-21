@@ -58,17 +58,17 @@ importers:
   library:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.9
-        version: 3.0.0-alpha.9
+        specifier: 3.0.0-alpha.12
+        version: 3.0.0-alpha.12
       '@zuord/trait':
-        specifier: 3.0.0-alpha.5
-        version: 3.0.0-alpha.5
+        specifier: 3.0.0-alpha.8
+        version: 3.0.0-alpha.8
       '@zuord/type':
-        specifier: 2.0.0-alpha.5
-        version: 2.0.0-alpha.5
+        specifier: 2.0.0-alpha.8
+        version: 2.0.0-alpha.8
       '@zuord/util':
-        specifier: 4.0.0-alpha.4
-        version: 4.0.0-alpha.4
+        specifier: 4.0.0-alpha.7
+        version: 4.0.0-alpha.7
 
   packages/core: {}
 
@@ -2035,26 +2035,11 @@ packages:
   '@zuord/core@3.0.0-alpha.12':
     resolution: {integrity: sha512-53/OT1kl8nlpCo3PfvlFR5pSVhs1kLtzGX7neBCENL4WAMdrD8oIdoR5OIoFjshYz6qJgsTJgP+olR8Z3b+TnQ==}
 
-  '@zuord/core@3.0.0-alpha.8':
-    resolution: {integrity: sha512-HBicKCAdKdp3N6iZgXJLuXcKbgtu2Vw1JOeq6ZKwmvAn+0xwwirXPZ+kLpGn8oRhB9vY1IK6iphUC3m7sXJGfw==}
-
-  '@zuord/core@3.0.0-alpha.9':
-    resolution: {integrity: sha512-ADVN2IK2ssPG8GrsZi3LX6f4lIr9XfKuFbYyV1KKyerjm3sFnU4YpMboGGuqSJLUhMvqwWuAMpGneUkRemixGw==}
-
-  '@zuord/trait@3.0.0-alpha.5':
-    resolution: {integrity: sha512-PaL7YCft/+NtEJn/Ulxzb+I9/ZAPsTSmnE5VRW8L9r4Z0Me0aremTRSyg3uArHOykQfXhK/Ol3F10thvMGAcIw==}
-
   '@zuord/trait@3.0.0-alpha.8':
     resolution: {integrity: sha512-IlzZRZQ9Ch9U2yC8ZYFCv7HxrOha4mzhvDHxXZKjRqbY7luYd6buL3wL2a4/pZzZQoOIz8qxfHJgGr6wMkohVA==}
 
-  '@zuord/type@2.0.0-alpha.5':
-    resolution: {integrity: sha512-xHnEQMzmycAQczJc9frkZdHaRFzS/WLQ8ZpJkgBDYjj2J2fuX+qWQUo8Z/9MWNndfZ4tMQtJxnuDxUWRu+3UUg==}
-
   '@zuord/type@2.0.0-alpha.8':
     resolution: {integrity: sha512-kSBP0JetyS9MJHvA9umz2dmzhpYGdiJ8jobS318du+/90dxmdPoE+IgGDdA+/HXCNpZaRVE+BCzGrkn3wbyz+A==}
-
-  '@zuord/util@4.0.0-alpha.4':
-    resolution: {integrity: sha512-AepnPkhMGdR45dUz1L87O4FJ/uDE+LYshUb4NNimiyVoZ2xuzPY/WKpsdorhRmIpEl3gA1gvpuqRLYCHwG6mLw==}
 
   '@zuord/util@4.0.0-alpha.7':
     resolution: {integrity: sha512-HIW6W7sOxE70k1IXo6WNaiaO0NcsA4DB+q48Y6t6y/4T45JOm23VvCFOq2Fvb/0t9ljU2qVetnSCk8yrMSL3Cg==}
@@ -8365,27 +8350,11 @@ snapshots:
 
   '@zuord/core@3.0.0-alpha.12': {}
 
-  '@zuord/core@3.0.0-alpha.8': {}
-
-  '@zuord/core@3.0.0-alpha.9': {}
-
-  '@zuord/trait@3.0.0-alpha.5':
-    dependencies:
-      '@zuord/type': 2.0.0-alpha.5
-
   '@zuord/trait@3.0.0-alpha.8':
     dependencies:
       '@zuord/type': 2.0.0-alpha.8
 
-  '@zuord/type@2.0.0-alpha.5': {}
-
   '@zuord/type@2.0.0-alpha.8': {}
-
-  '@zuord/util@4.0.0-alpha.4':
-    dependencies:
-      '@zuord/core': 3.0.0-alpha.8
-      '@zuord/trait': 3.0.0-alpha.5
-      '@zuord/type': 2.0.0-alpha.5
 
   '@zuord/util@4.0.0-alpha.7':
     dependencies:
