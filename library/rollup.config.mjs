@@ -1,6 +1,6 @@
 import { createConfig } from '../rollup.config.mjs';
 
 export default createConfig({
-    input: ['src/index.ts', 'src/internal/index.ts', 'src/extended/index.ts'],
+    input: ['src/index', 'src/internal/index', 'src/extended/index'],
     tsconfig: './tsconfig-dist.json',
 });
