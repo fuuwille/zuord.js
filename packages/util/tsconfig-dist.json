@@ -4,12 +4,6 @@
         "baseUrl": ".",
         "rootDir": "src",
         "outDir": "dist",
-        "moduleResolution": "bundler",
-        "paths": {
-            "@zuord/util": ["./src"],
-            "@zuord/util/internal": ["./src/internal"]
-        },
-        "declaration": true,
         "emitDeclarationOnly": true,
     }
 }
