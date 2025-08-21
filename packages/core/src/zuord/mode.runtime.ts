@@ -1,5 +1,5 @@
-import { $zuordCore } from "@zuord/core/internal";
-import type { ZuordCore } from "@zuord/core";
+import { $zuordCore } from "../internal";
+import type { ZuordCore } from "..";
 
 export function flags <K extends string, const V extends boolean = false>(key: K, value?: V) 
     : ZuordCore.Mode.Flags<K, V>
