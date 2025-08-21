@@ -1,4 +1,4 @@
-import type { $ZuordCore } from "@zuord/core/internal";
+import type { $ZuordCore } from "../../internal";
 
 export const flags = <const K, const V>(key: K | K[], value: V) => {
     let field : Record<string, boolean> = {};
