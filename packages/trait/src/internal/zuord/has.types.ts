@@ -1,4 +1,4 @@
-import { $ZuordTrait } from ".";
+import { $ZuordTrait } from "..";
 import { ZuordArray } from "@zuord/type";
 
 export declare namespace Has {

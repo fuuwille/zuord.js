@@ -1,4 +1,4 @@
-import { $ZuordTrait } from ".";
+import { $ZuordTrait } from "..";
 
 export declare namespace Extract {
     export type Is<TSource, TBase> = TSource extends any ? (
