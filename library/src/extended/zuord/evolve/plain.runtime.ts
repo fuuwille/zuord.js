@@ -1,9 +1,8 @@
-import { $zuord } from "zuord/internal";
+import { $zuord } from "../../../internal";
 import { zuordModeX } from "../../mode";
 import { zuordPlain } from "@zuord/type";
 import { zuordCore } from "@zuord/core";
-import type { ZuordX } from "zuord/extended";
-import type { ZuordModeX } from "zuord/extended";
+import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType, ZuordPlain } from "@zuord/type";
 import type { ZuordUtil } from "@zuord/util";
 
