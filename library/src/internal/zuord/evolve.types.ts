@@ -1,5 +1,5 @@
-import { ZuordType } from "@zuord/type";
 import { $Zuord } from ".";
+import { ZuordType } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { ZuordUtil } from "@zuord/util";
 
