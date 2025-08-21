@@ -11,7 +11,7 @@ export function createConfig({ input, tsconfig, external = [] }) {
             sourcemap: true,
             preserveModules: true,
         },
-        external: [/node_modules/],
+        external: [/node_modules/, /^@?zuord\//],
         plugins: [
             resolve({
                 extensions: ['.js', '.ts']
