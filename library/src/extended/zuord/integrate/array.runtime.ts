@@ -1,8 +1,7 @@
 import { $zuord } from "../../../internal";
 import { zuordModeX } from "../../mode";
 import { zuordCore as core } from "@zuord/core";
-import type { ZuordX } from "zuord/extended";
-import type { ZuordModeX } from "zuord/extended";
+import type { ZuordX, ZuordModeX } from "../../../extended";
 import type { ZuordType as Type } from "@zuord/type";
 
 const $ = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordModeX.Integrate.Array>) => {
