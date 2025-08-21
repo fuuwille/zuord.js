@@ -81,7 +81,17 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
 
-  packages/util: {}
+  packages/util:
+    dependencies:
+      '@zuord/core':
+        specifier: 3.0.0-alpha.8
+        version: 3.0.0-alpha.8
+      '@zuord/trait':
+        specifier: 3.0.0-alpha.5
+        version: 3.0.0-alpha.5
+      '@zuord/type':
+        specifier: 2.0.0-alpha.5
+        version: 2.0.0-alpha.5
 
   tests:
     devDependencies:
