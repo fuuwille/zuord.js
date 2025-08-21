@@ -1,1 +1,2 @@
-export { $zuord, $Zuord } from "./zuord";
+export { $zuord } from "./zuord";
+export type { $Zuord } from "./zuord";
