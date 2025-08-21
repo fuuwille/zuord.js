@@ -1,7 +1,6 @@
 {
   "name": "zuord",
   "version": "5.0.0-alpha",
-  "description": "The most powerful TypeScript utility type system designed to fill critical gaps in the type ecosystem, providing advanced normalization, class-plain differentiation, and robust helper types.",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf dist && rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
