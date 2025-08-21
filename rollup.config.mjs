@@ -1,5 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import tsconfigPaths from "rollup-plugin-tsconfig-paths";
 
 export function createConfig({ input, tsconfig, external = [] }) {
     return {
@@ -13,7 +14,8 @@ export function createConfig({ input, tsconfig, external = [] }) {
         external,
         plugins: [
             resolve({ preferBuiltins: true }),
-            typescript({ tsconfig })
+            typescript({ tsconfig }),
+            tsconfigPaths(),
         ],
     };
 }
