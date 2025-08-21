@@ -1,4 +1,4 @@
-import type { ZuordType } from "@zuord/type";
+import type { ZuordType } from ".";
 
 export function primitive(obj: unknown): obj is ZuordType.Primitive {
     return obj === null || (typeof obj !== "object" && typeof obj !== "function");
