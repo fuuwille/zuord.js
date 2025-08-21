@@ -1,4 +1,4 @@
-import { $ZuordTrait } from "@zuord/trait/internal";
+import { $ZuordTrait } from "../internal";
 
 export declare namespace Exclude {
     export type Is<TSource extends unknown, TExclude extends unknown> = $ZuordTrait.Exclude.Is<TSource, TExclude>;
