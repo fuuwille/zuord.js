@@ -1,4 +1,4 @@
-import { ZuordX } from "zuord/extended";
+import { ZuordX } from "./extended";
 
 export declare namespace Zuord {
     export import Integrate = ZuordX.Integrate.Plain.Restrict;
