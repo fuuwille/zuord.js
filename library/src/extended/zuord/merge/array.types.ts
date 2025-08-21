@@ -1,5 +1,5 @@
-import { $Zuord } from "zuord/internal";
-import { ZuordModeX } from "zuord/extended";
+import { $Zuord } from "../../../internal";
+import { ZuordModeX } from "../../";
 import { ZuordType as Type } from "@zuord/type";
 
 export namespace Array {
