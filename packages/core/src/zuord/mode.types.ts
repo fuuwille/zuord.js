@@ -1,4 +1,4 @@
-import type { $ZuordCore } from "@zuord/core/internal";
+import type { $ZuordCore } from "../internal";
 
 export declare namespace Mode {
     export type Flags<K extends string = string, V extends boolean = boolean> = $ZuordCore.Mode.Flags<K, V>;
