@@ -13,7 +13,9 @@ export function createConfig({ input, tsconfig, external = [] }) {
         },
         external: [/node_modules/],
         plugins: [
-            resolve({ preferBuiltins: true }),
+            resolve({
+                extensions: ['.js', '.ts']
+            }),
             tsconfigPaths({ tsConfigPath: tsconfig }),
             typescript({ tsconfig }),
         ],
