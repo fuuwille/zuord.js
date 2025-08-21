@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 
-export function createConfig({ input, tsconfig }) {
+export function createConfig({ input, tsconfig, external = [] }) {
     return {
         input,
         output: {
@@ -9,7 +9,7 @@ export function createConfig({ input, tsconfig }) {
             format: 'esm',
             sourcemap: true,
         },
-        external: [/^@?zuord\//],
+        external,
         plugins: [
             resolve({ preferBuiltins: true }),
             typescript({ tsconfig })
