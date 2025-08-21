@@ -9,9 +9,9 @@ export function createConfig({ input, tsconfig }) {
             format: 'esm',
             sourcemap: true,
         },
-        external: [/^@zuord\//],
+        external: [/^@?zuord\//],
         plugins: [
-            resolve({}),
+            resolve({ preferBuiltins: true }),
             typescript({ tsconfig })
         ],
     };
