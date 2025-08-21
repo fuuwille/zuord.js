@@ -3,6 +3,20 @@
   "version": "5.0.0-alpha",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./internal": {
+      "import": "./dist/internal/index.js",
+      "types": "./dist/internal/index.d.ts"
+    },
+    "./extended": {
+      "import": "./dist/extended/index.js",
+      "types": "./dist/extended/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "rimraf dist && rollup -c && cpy \"src/**/*.{js,d.ts}\" dist"
   },
