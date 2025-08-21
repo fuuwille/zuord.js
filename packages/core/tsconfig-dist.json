@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "dist",
+        "paths": {
+            "@zuord/core": ["./src"],
+            "@zuord/core/internal": ["./src/internal"]
+        }
+    }
+}
