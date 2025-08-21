@@ -11,7 +11,7 @@ export function createConfig({ input, tsconfig, external = [] }) {
             sourcemap: true,
             preserveModules: true,
         },
-        external,
+        external: [/node_modules/],
         plugins: [
             resolve({ preferBuiltins: true }),
             tsconfigPaths({ tsConfigPath: tsconfig }),
