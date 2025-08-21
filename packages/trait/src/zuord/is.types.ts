@@ -1,4 +1,4 @@
-import { $ZuordTrait } from "@zuord/trait/internal";
+import { $ZuordTrait } from "../internal";
 
 export declare namespace Is {
     export type Base<TSource extends unknown, TBase extends unknown> = $ZuordTrait.Is.Base<TSource, TBase>;
