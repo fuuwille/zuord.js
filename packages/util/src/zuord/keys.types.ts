@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from "@zuord/util/internal";
+import type { $ZuordUtil } from "../internal";
 
 export declare namespace Keys {
     export type All<T> = $ZuordUtil.Keys.All<T>;
