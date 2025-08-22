@@ -1,0 +1,1 @@
+export { zuord, zuordMode } from "./main";
