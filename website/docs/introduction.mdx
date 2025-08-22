@@ -27,17 +27,6 @@ Each transformation is available in two aligned forms:
 - `zuord`: **Runtime functions** — `integrate`, `merge`, `evolve`, `pick`, `omit`, etc.
 - `Zuord`: **Type-level utilities** — `Integrate`, `Merge`, `Evolve`, `Pick`, `Omit`, etc.
 
-Each returned type exactly matches its Zuord type, guaranteeing type safety during development:
-
-```typescript
-const output = zuord.merge([{ foo: 1 }, { bar: 'text' } as const])
-
-// Defined: Zuord.Merge<[{ foo: 1 }, { bar: 'text' }]>
-// Returned: { foo: number, bar: 'text' }
-```
-
-This effectively eliminates any fallback to any and ensures complete type safety.
-
 ## Smarter Manipulations & Inferences
 
 Zuord delivers smarter and more precise runtime manipulations and compile-time type inferences compared to native implementations and popular alternatives. Here’s why Zuord stands out:
