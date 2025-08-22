@@ -40,6 +40,9 @@ const merged = zuord.merge([obj1, obj2]);
 
 const integrated = zuordX.integrate.plain.loose(obj1, obj2);
 // merged: { a: 1, b: { x: 10, y: 20 }, c: 3 }
+
+type Merged = Zuord.Merge<[typeof obj1, typeof obj2]>;
+// Merged = { a: number, b: { x: number, y: number }, c: number }
 ```
 
 <br/>
