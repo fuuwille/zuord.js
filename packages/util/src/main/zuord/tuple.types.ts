@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from "../internal";
+import type { $ZuordUtil } from "../../internal";
 import type { ZuordType } from "@zuord/type";
 
 export declare namespace Tuple {
