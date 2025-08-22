@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/k4yr2/zuord.git"
+    "url": "git+https://github.com/fuuwille/zuord.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/k4yr2/zuord/issues"
+    "url": "https://github.com/fuuwille/zuord/issues"
   },
-  "homepage": "https://github.com/k4yr2/zuord#readme",
+  "homepage": "https://github.com/fuuwille/zuord#readme",
   "dependencies": {
     "@zuord/core": "3.0.0-alpha.12",
     "@zuord/trait": "3.0.0-alpha.8",
