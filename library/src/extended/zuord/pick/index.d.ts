@@ -1,7 +1,7 @@
 import { plain } from "./index.runtime";
 
 type pickAPI = {
-    plain: typeof plain;
+    readonly plain: typeof plain;
 };
 
 export declare const pick: pickAPI;
