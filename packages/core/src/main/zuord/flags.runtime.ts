@@ -1,4 +1,4 @@
-import { $zuordCore } from "../internal";
+import { $zuordCore } from "../../internal";
 import type { ZuordCore } from "..";
 
 export const shallow = $zuordCore.flags.shallow satisfies ZuordCore.Flags.Shallow;
