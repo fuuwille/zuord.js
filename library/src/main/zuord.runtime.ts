@@ -1,4 +1,4 @@
-import { zuordX } from "./extended";
+import { zuordX } from "../extended";
 
 export const integrate = zuordX.integrate.plain.restrict;
 

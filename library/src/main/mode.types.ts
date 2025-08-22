@@ -1,4 +1,4 @@
-import { ZuordModeX } from "./extended";
+import { ZuordModeX } from "../extended";
 
 export namespace ZuordMode {
     export import Integrate = ZuordModeX.Integrate.Plain;

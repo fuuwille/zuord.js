@@ -1,4 +1,4 @@
-import { zuordModeX } from "./extended";
+import { zuordModeX } from "../extended";
 
 export const integrate = zuordModeX.integrate.plain;
 
