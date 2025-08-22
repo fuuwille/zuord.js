@@ -26,8 +26,7 @@ pnpm add zuord@latest
 
 ### Basic Usage
 
-👉 **Try Zuord (Alpha) on Playground:**  
-- [Stackblitz](https://stackblitz.com/edit/zuord?file=index.ts)
+👉 **Try Zuord (Alpha) on [Stackblitz](https://stackblitz.com/edit/zuord?file=index.ts)**
 
 
 ```ts
