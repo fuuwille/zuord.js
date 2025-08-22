@@ -25,8 +25,21 @@ pnpm add zuord@latest
 ```
 
 ### Basic Usage
-```bash
+```ts
+import { zuord, Zuord } from "zuord";
+import { zuordX, ZuordX } from "zuord/extended";
 
+// zuord, zuordX for Runtime
+// Zuord, ZuordX for Types
+
+const obj1 = { a: 1, b: { x: 10 } };
+const obj2 = { b: { y: 20 }, c: 3 };
+
+const merged = zuord.merge([obj1, obj2]);
+// merged: { a: 1, b: { x: 10, y: 20 }, c: 3 }
+
+const integrated = zuordX.integrate.plain.loose(obj1, obj2);
+// merged: { a: 1, b: { x: 10, y: 20 }, c: 3 }
 ```
 
 <br/>
