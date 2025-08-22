@@ -10,4 +10,6 @@ export declare namespace Zuord {
     export import MergeArray = ZuordX.Merge.Array.Loose;
 
     export import Evolve = ZuordX.Evolve.Plain.Restrict;
+
+    export import Pick = ZuordX.Pick.Plain.Loose;
 }
