@@ -3,6 +3,7 @@ import { integrateArray as $integrateArray } from "./zuord.runtime";
 import { merge as $merge } from "./zuord.runtime";
 import { mergeArray as $mergeArray } from "./zuord.runtime";
 import { evolve as $evolve } from "./zuord.runtime";
+import { pick as $pick } from "./zuord.runtime";
 
 type zuordAPI = {
     integrate: typeof $integrate;
@@ -10,6 +11,7 @@ type zuordAPI = {
     merge: typeof $merge;
     mergeArray: typeof $mergeArray;
     evolve: typeof $evolve;
+    pick: typeof $pick;
 }
 
 export declare const zuord: zuordAPI;
