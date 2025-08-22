@@ -9,3 +9,5 @@ export const merge = zuordModeX.merge.plain;
 export const mergeArray = zuordModeX.merge.array;
 
 export const evolve = zuordModeX.evolve.plain;
+
+export const pick = zuordModeX.pick.plain;
