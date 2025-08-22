@@ -10,4 +10,6 @@ export namespace ZuordMode {
     export import MergeArray = ZuordModeX.Merge.Array;
 
     export import Evolve = ZuordModeX.Evolve.Plain;
+
+    export import Pick = ZuordModeX.Pick.Plain;
 }
