@@ -12,4 +12,6 @@ export declare namespace Zuord {
     export import Evolve = ZuordX.Evolve.Plain.Restrict;
 
     export import Pick = ZuordX.Pick.Plain.Loose;
+
+    export import Omit = ZuordX.Omit.Plain.Loose;
 }
