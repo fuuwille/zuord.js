@@ -1,1 +1,1 @@
-export * as pick from "./pick.runtime";
+export * as pick from "./index.runtime";
