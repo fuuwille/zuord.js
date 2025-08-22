@@ -12,4 +12,6 @@ export namespace ZuordMode {
     export import Evolve = ZuordModeX.Evolve.Plain;
 
     export import Pick = ZuordModeX.Pick.Plain;
+
+    export import Omit = ZuordModeX.Omit.Plain;
 }
