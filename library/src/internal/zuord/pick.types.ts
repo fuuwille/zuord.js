@@ -3,6 +3,6 @@ import { ZuordType } from "@zuord/type";
 
 export declare namespace Pick {
     export type Plain<T, P> = P extends ZuordType.Plain ? {
-        -readonly [K in keyof T as [ZuordTrait.Eq.Any<[unknown, never, any], P[K]>] extends [true] ? never : K]: Pick.Plain<T[K], P[K]>;
+        -readonly [K in keyof T as [ZuordTrait.Eq.Both<P[K], true>] extends [true] ? K : never]: Pick.Plain<T[K], P[K]>;
     } : T
 }
