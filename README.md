@@ -14,12 +14,12 @@
 
 ### Install Zuord (Alpha)
 
- via npm:
+via npm:
 ```bash
 npm install zuord@latest
 ```
 
- or pnpm:
+or pnpm:
 ```bash
 pnpm add zuord@latest
 ```
