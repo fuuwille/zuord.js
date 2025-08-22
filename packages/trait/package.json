@@ -3,14 +3,6 @@
   "version": "3.0.0-alpha.8",
   "description": "",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts"
-    },
-    "./internal": {
-      "types": "./dist/internal/index.d.ts"
-    }
-  },
   "scripts": {
     "build": "rimraf dist && tsc --project tsconfig-dist.json && cpy 'src/**/*.d.ts' dist"
   },
