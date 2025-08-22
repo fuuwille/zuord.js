@@ -6,11 +6,17 @@
   "scripts": {
     "build": "rimraf dist && tsc --project tsconfig-dist.json && cpy 'src/**/*.d.ts' dist"
   },
-  "keywords": ["zuord", "typescript", "type", "trait", "type trait"],
+  "keywords": [
+    "zuord",
+    "typescript",
+    "type",
+    "trait",
+    "type trait"
+  ],
   "author": "k4yr2",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@zuord/type": "2.0.0-alpha.8"
+    "@zuord/type": "2.0.0-alpha.9"
   }
 }
