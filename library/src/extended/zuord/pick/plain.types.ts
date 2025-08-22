@@ -4,5 +4,5 @@ import { ZuordType } from "@zuord/type";
 import { ZuordUtil } from "@zuord/util";
 
 export declare namespace Plain {
-    export type Loose<T extends ZuordType.Plain, P extends ZuordUtil.Pattern.Plain<T>, _TMode extends Partial<ZuordModeX.Evolve.Plain>> = $Zuord.Pick.Plain<T, P>;
+    export type Loose<T extends ZuordType.Plain, P extends ZuordUtil.Pattern.Plain<T>, _TMode extends Partial<ZuordModeX.Evolve.Plain> = {}> = $Zuord.Pick.Plain<T, P>;
 }
