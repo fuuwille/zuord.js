@@ -9,3 +9,5 @@ export const merge = zuordX.merge.plain.loose;
 export const mergeArray = zuordX.merge.array.loose;
 
 export const evolve = zuordX.evolve.plain.restrict;
+
+export const pick = zuordX.pick.plain.loose;
