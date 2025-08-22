@@ -1,4 +1,4 @@
-import { $ZuordTrait } from "../internal";
+import { $ZuordTrait } from "../../internal";
 import { ZuordType } from "@zuord/type";
 
 export declare namespace Eq {
