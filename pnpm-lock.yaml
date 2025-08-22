@@ -58,17 +58,17 @@ importers:
   library:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.12
-        version: 3.0.0-alpha.12
+        specifier: 3.0.0-alpha.13
+        version: 3.0.0-alpha.13
       '@zuord/trait':
-        specifier: 3.0.0-alpha.8
-        version: 3.0.0-alpha.8
+        specifier: 3.0.0-alpha.9
+        version: 3.0.0-alpha.9
       '@zuord/type':
-        specifier: 2.0.0-alpha.8
-        version: 2.0.0-alpha.8
+        specifier: 2.0.0-alpha.9
+        version: 2.0.0-alpha.9
       '@zuord/util':
-        specifier: 4.0.0-alpha.7
-        version: 4.0.0-alpha.7
+        specifier: 4.0.0-alpha.8
+        version: 4.0.0-alpha.8
 
   packages/core: {}
 
@@ -2052,6 +2052,9 @@ packages:
 
   '@zuord/util@4.0.0-alpha.7':
     resolution: {integrity: sha512-HIW6W7sOxE70k1IXo6WNaiaO0NcsA4DB+q48Y6t6y/4T45JOm23VvCFOq2Fvb/0t9ljU2qVetnSCk8yrMSL3Cg==}
+
+  '@zuord/util@4.0.0-alpha.8':
+    resolution: {integrity: sha512-Nq/uXczq3tYVEnb5r3S93Brl/hwKlKOcoLnHpn1Nbp19w6v1Wf30p+SyO2TBQPtwIzzX9+IY3MWLtQem9H9GFQ==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -8378,6 +8381,12 @@ snapshots:
       '@zuord/core': 3.0.0-alpha.12
       '@zuord/trait': 3.0.0-alpha.8
       '@zuord/type': 2.0.0-alpha.8
+
+  '@zuord/util@4.0.0-alpha.8':
+    dependencies:
+      '@zuord/core': 3.0.0-alpha.13
+      '@zuord/trait': 3.0.0-alpha.9
+      '@zuord/type': 2.0.0-alpha.9
 
   accepts@1.3.8:
     dependencies:
