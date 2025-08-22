@@ -25,9 +25,14 @@ pnpm add zuord@latest
 ```
 
 ### Basic Usage
+
+👉 **Try Zuord (Alpha) on Playground:**  
+- [Stackblitz](https://stackblitz.com/edit/zuord?file=index.ts)
+
+
 ```ts
-import { zuord, Zuord } from "zuord";
-import { zuordX, ZuordX } from "zuord/extended";
+import { zuord, zuordX } from "zuord";
+import type { Zuord, ZuordX } from "zuord";
 
 // zuord, zuordX for Runtime
 // Zuord, ZuordX for Types
@@ -36,11 +41,10 @@ const obj1 = { a: 1, b: { x: 10 } };
 const obj2 = { b: { y: 20 }, c: 3 };
 
 const merged = zuord.merge([obj1, obj2]);
-// merged: { a: 1, b: { x: 10, y: 20 }, c: 3 }
+// merged: { a: number, b: { x: number, y: number }, c: number }
 
 const integrated = zuordX.integrate.plain.loose(obj1, obj2);
-// merged: { a: 1, b: { x: 10, y: 20 }, c: 3 }
-
+// merged: { a: number, b: { x: number, y: number }, c: number }
 type Merged = Zuord.Merge<[typeof obj1, typeof obj2]>;
 // Merged = { a: number, b: { x: number, y: number }, c: number }
 
