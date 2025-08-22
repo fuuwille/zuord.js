@@ -5,8 +5,8 @@ import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType } from "@zuord/type";
 import type { ZuordUtil } from "@zuord/util";
 
-const $ = ($obj: ZuordType.Plain, $pattern: ZuordUtil.Pattern.Plain<ZuordType.Plain>, $mode: Partial<ZuordModeX.Pick.Plain>) => {
-    return $zuord.pick.plain($obj, $pattern, zuordCore.mode.resolve([zuordModeX.pick.plain, $mode]));
+const $ = ($target: ZuordType.Plain, $pattern: ZuordUtil.Pattern.Plain<ZuordType.Plain>, $mode: Partial<ZuordModeX.Pick.Plain>) => {
+    return $zuord.pick.plain($target, $pattern, zuordCore.mode.resolve([zuordModeX.pick.plain, $mode]));
 }
 
 
