@@ -1,4 +1,4 @@
-import style from '../css/modules/benefits.module.scss';
+import style from '@site/src/css/modules/benefits.module.scss';
 import BenefitCard, { BenefitCardProps } from './benefitCard';
 import clsx from 'clsx';
 

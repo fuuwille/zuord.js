@@ -1,4 +1,4 @@
-import style from '../css/modules/benefitCard.module.scss';
+import style from '@site/src/css/modules/benefitCard.module.scss';
 import clsx from 'clsx';
 
 const BenefitCard: React.FC<BenefitCardProps> = ({
