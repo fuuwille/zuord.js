@@ -2,14 +2,21 @@ import style from '../css/modules/benefits.module.scss';
 import BenefitCard, { BenefitCardProps } from './benefitCard';
 
 const Benefits: React.FC<BenefitsProps> = ({ cards }) => { 
-    const leftCards = []; const rightCards = [];
-    cards.forEach((card, index) => (index % 2 ? leftCards : rightCards).push(card));
+    const leftColumn = []; const rightColumn = [];
+    cards.forEach((card, index) => (index % 2 ? leftColumn : rightColumn).push(card));
 
     return (
         <div className={style['benefits']}>
-            {cards.map((card, index) => (
-                <BenefitCard key={index} {...card} />
-            ))}
+            <div className={style['left-column']}>
+                {leftColumn.map((card, index) => (
+                    <BenefitCard key={index} title={card.title} description={card.description} />
+                ))}
+            </div>
+            <div className={style['right-column']}>
+                {rightColumn.map((card, index) => (
+                    <BenefitCard key={index} title={card.title} description={card.description} />
+                ))}
+            </div>
         </div>
     );
 };
