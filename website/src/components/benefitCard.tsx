@@ -6,8 +6,8 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
     description = "Benefit description goes here.",
 }) => (
     <div className={clsx('benefit-card', style['benefit-card'])}>
-        <div className={clsx('title', style.title)}>{title}</div>
-        <div className={clsx('description', style.description)}>{description}</div>
+        <div className={style.title}>{title}</div>
+        <div className={style.description}>{description}</div>
     </div>
 );
 
