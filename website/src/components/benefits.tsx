@@ -1,12 +1,16 @@
 import style from '../css/modules/benefits.module.scss';
-import BenefitCard from './benefitCard';
+import BenefitCard, { BenefitCardProps } from './benefitCard';
 
-const Benefits: React.FC = () => (
+const Benefits: React.FC<BenefitsProps> = ({ cards }) => (
     <div className={style['benefits']}>
-        <BenefitCard 
-            title="Runtime & Type Harmony"
-            description="Zuord provides a fully synchronized API for both runtime behavior and compile-time types." />
+        {cards.map((card, index) => (
+            <BenefitCard key={index} {...card} />
+        ))}
     </div>
 );
+
+export type BenefitsProps = {
+    cards: BenefitCardProps[];
+};
 
 export default Benefits;
