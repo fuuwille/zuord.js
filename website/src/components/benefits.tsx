@@ -3,7 +3,7 @@ import BenefitCard, { BenefitCardProps } from './benefitCard';
 
 const Benefits: React.FC<BenefitsProps> = ({ cards }) => { 
     const leftColumn = []; const rightColumn = [];
-    cards.forEach((card, index) => (index % 2 ? leftColumn : rightColumn).push(card));
+    cards.forEach((card, index) => (index % 2 == 0 ? leftColumn : rightColumn).push(card));
 
     return (
         <div className={style['benefits']}>
