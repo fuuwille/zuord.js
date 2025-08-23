@@ -5,10 +5,18 @@
 
         .left-column {
             flex: 1;
+
+            .benefit-card {
+                margin-right: 8px;
+            }
         }
 
         .right-column {
             flex: 1;
+
+            .benefit-card {
+                margin-left: 8px;
+            }
         }
     }
 }
