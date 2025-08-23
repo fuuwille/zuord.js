@@ -1,0 +1,10 @@
+.benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.benefits > * {
+    flex: 0 0 calc(50% - 8px);
+    box-sizing: border-box;
+}
