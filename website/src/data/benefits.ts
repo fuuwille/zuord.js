@@ -1,7 +1,7 @@
 export const benefitCards = [
     {
         title: "Runtime & Type Harmony",
-        description: "Zuord provides a fully synchronized API for both runtime behavior and compile-time types.",
+        description: "Experience APIs that are in sync between runtime and type level",
     },
     {
         title: "Zero runtime overhead",
