@@ -18,6 +18,9 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Raleway&display=swap'
+  ],
   presets: [
     [
       'classic',
