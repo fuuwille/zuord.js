@@ -13,12 +13,12 @@ const Benefits: React.FC<BenefitsProps> = ({
             <div className={style['cards']}>
                 <div className={style['left-column']}>
                     {leftColumn.map((card, index) => (
-                        <BenefitCard key={index} title={card.title} description={card.description} />
+                        <BenefitCard key={index} {...card} />
                     ))}
                 </div>
                 <div className={style['right-column']}>
                     {rightColumn.map((card, index) => (
-                        <BenefitCard key={index} title={card.title} description={card.description} />
+                        <BenefitCard key={index} {...card} />
                     ))}
                 </div>
             </div>
