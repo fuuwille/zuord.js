@@ -1,12 +1,13 @@
 import style from '../css/modules/benefitCard.module.scss';
+import clsx from 'clsx';
 
 const BenefitCard: React.FC<BenefitCardProps> = ({
     title = "Benefit Title",
     description = "Benefit description goes here.",
 }) => (
-    <div className={style['benefit-card']}>
-        <div className={style.title}>{title}</div>
-        <div className={style.description}>{description}</div>
+    <div className={clsx('benefit-card', style['benefit-card'])}>
+        <div className={clsx('title', style.title)}>{title}</div>
+        <div className={clsx('description', style.description)}>{description}</div>
     </div>
 );
 
