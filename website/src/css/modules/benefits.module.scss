@@ -1,15 +1,14 @@
 .benefits {
     .cards {
         display: flex;
-        
+        padding: 0 10%;
+
         .left-column {
             flex: 1;
-            margin-right: 16px;
         }
 
         .right-column {
             flex: 1;
-            margin-left: 16px;
         }
     }
 }
