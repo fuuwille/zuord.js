@@ -1,10 +1,5 @@
 .benefits {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-}
-
-.benefits > * {
-    flex: 0 0 calc(50% - 8px);
-    box-sizing: border-box;
 }
