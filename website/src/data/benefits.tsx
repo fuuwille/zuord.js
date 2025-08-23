@@ -1,7 +1,10 @@
+import BenefitSyncAPI from "../components/benefitSyncAPI";
+
 export const benefitCards = [
     {
         title: "Runtime & Type Harmony",
         description: "Experience APIs that are in sync between runtime and type level",
+        content: <BenefitSyncAPI />
     },
     {
         title: "Zero runtime overhead",
