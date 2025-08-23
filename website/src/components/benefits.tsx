@@ -1,12 +1,13 @@
 import style from '../css/modules/benefits.module.scss';
 import BenefitCard, { BenefitCardProps } from './benefitCard';
+import clsx from 'clsx';
 
 const Benefits: React.FC<BenefitsProps> = ({ cards }) => { 
     const leftColumn = []; const rightColumn = [];
     cards.forEach((card, index) => (index % 2 == 0 ? leftColumn : rightColumn).push(card));
 
     return (
-        <div className={style['benefits']}>
+        <div className={clsx('benefits', style['benefits'])}>
             <div className={style['cards']}>
                 <div className={style['left-column']}>
                     {leftColumn.map((card, index) => (
