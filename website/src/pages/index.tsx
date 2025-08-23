@@ -1,11 +1,11 @@
 import React from 'react';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
+import { BenefitCard } from '../components/benefitCard';
 
 export default function Home() {
   return (
     <Layout title="Zuord">
-      H
+      <BenefitCard />
     </Layout>
   );
 }
