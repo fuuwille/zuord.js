@@ -1,7 +1,6 @@
 [data-theme='dark'] .benefit-card {
-  background-color: #1E3A8A;
-  border: 1px solid #3B82F6;
-
+  background-color: #242526;
+  border: 1px solid #444950;
   padding: 8px;
   margin: 8px;
   border-radius: 8px;
@@ -10,12 +9,12 @@
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     font-weight: bold;
-  };
+    color: #E0E0E0;
+  }
 
   .description {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 18px;
-    color: #888;
-    color: #BFDBFE;
-  };
+    color: #B0B0B0;
+  }
 }
