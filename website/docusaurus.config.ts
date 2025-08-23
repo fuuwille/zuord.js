@@ -125,7 +125,8 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    'vercel-analytics'
+    'vercel-analytics',
+    'docusaurus-plugin-sass'
   ]
 };
 
