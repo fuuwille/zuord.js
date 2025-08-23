@@ -12,7 +12,7 @@ export default function Home() {
         },
         {
           title: "Seamless Integration",
-          description: "Zuord integrates effortlessly with existing codebases, allowing for gradual adoption."
+          description: "Zuord integrates effortlessly with existing codebases, allowing for gradual adoption. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         },
         {
           title: "Enhanced Developer Experience",
