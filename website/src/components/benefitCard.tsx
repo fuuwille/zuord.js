@@ -1,4 +1,4 @@
-export const BenefitCard: React.FC<BenefitCardProps> = ({
+const BenefitCard: React.FC<BenefitCardProps> = ({
     title = "Benefit Title",
     description = "Benefit description goes here.",
 }) => (
@@ -12,3 +12,5 @@ export type BenefitCardProps = {
     title?: string;
     description?: string;
 };
+
+export default BenefitCard;
