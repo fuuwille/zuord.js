@@ -7,15 +7,17 @@ const Benefits: React.FC<BenefitsProps> = ({ cards }) => {
 
     return (
         <div className={style['benefits']}>
-            <div className={style['left-column']}>
-                {leftColumn.map((card, index) => (
-                    <BenefitCard key={index} title={card.title} description={card.description} />
-                ))}
-            </div>
-            <div className={style['right-column']}>
-                {rightColumn.map((card, index) => (
-                    <BenefitCard key={index} title={card.title} description={card.description} />
-                ))}
+            <div className={style['cards']}>
+                <div className={style['left-column']}>
+                    {leftColumn.map((card, index) => (
+                        <BenefitCard key={index} title={card.title} description={card.description} />
+                    ))}
+                </div>
+                <div className={style['right-column']}>
+                    {rightColumn.map((card, index) => (
+                        <BenefitCard key={index} title={card.title} description={card.description} />
+                    ))}
+                </div>
             </div>
         </div>
     );
