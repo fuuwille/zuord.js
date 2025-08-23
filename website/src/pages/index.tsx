@@ -5,7 +5,7 @@ import { BenefitCard } from '../components/benefitCard';
 export default function Home() {
   return (
     <Layout title="Zuord">
-      <BenefitCard />
+      <BenefitCard title={"Harmony Between Runtime and Type"}/>
     </Layout>
   );
 }
