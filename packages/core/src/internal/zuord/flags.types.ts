@@ -1,11 +1,9 @@
 import type { $ZuordCore } from "../../internal";
 
-export declare namespace Flags {
-    export type Shallow = $ZuordCore.Mode.Flags<"shallow">;
+export type Shallow = $ZuordCore.Mode.Flags<"shallow">;
 
-    export type Concat = $ZuordCore.Mode.Flags<"concat">;
+export type Concat = $ZuordCore.Mode.Flags<"concat">;
 
-    export type Unique = $ZuordCore.Mode.Flags<"unique">;
+export type Unique = $ZuordCore.Mode.Flags<"unique">;
 
-    export type Base = $ZuordCore.Mode.Resolve<[Flags.Shallow]>;
-}
+export type Base = $ZuordCore.Mode.Resolve<[Shallow]>;
