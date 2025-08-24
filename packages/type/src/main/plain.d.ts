@@ -8,4 +8,4 @@ type zuordPlainAPI = {
 
 export declare const zuordPlain: zuordPlainAPI;
 
-export { ZuordPlain } from "./plain.types";
+export * as ZuordPlain from "./plain.types";
