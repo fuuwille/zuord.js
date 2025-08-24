@@ -8,4 +8,4 @@ type zuordArrayAPI = {
 
 export declare const zuordArray: zuordArrayAPI;
 
-export { ZuordArray } from "./array.types";
+export * as ZuordArray from "./array.types";
