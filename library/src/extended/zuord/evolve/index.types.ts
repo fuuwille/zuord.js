@@ -1,1 +1,1 @@
-import { Plain } from "./plain";
+export { Plain } from "./plain";
