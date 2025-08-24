@@ -1,1 +1,1 @@
-export { Is } from "./is.types";
+export * as Is from "./is.types";
