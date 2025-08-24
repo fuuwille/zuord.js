@@ -1,1 +1,1 @@
-export { Restrict } from "./restrict.types";
+export * as Restrict from "./restrict.types";
