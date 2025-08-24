@@ -1,1 +1,1 @@
-export { Strict } from "./strict.types";
+export * as Strict from "./strict.types";
