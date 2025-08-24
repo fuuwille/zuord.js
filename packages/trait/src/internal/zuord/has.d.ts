@@ -1,1 +1,1 @@
-export { Has } from "./has.types";
+export * as Has from "./has.types";
