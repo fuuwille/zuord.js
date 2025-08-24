@@ -6,4 +6,4 @@ type pickAPI = {
 
 export declare const pick: pickAPI;
 
-export { Pick } from "./index.types";
+export * as Pick from "./index.types";
