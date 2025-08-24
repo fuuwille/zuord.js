@@ -1,1 +1,1 @@
-export { Pattern } from "./pattern.types";
+export * as Pattern from "./pattern.types";
