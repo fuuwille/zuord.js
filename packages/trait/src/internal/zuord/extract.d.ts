@@ -1,1 +1,1 @@
-export { Extract } from "./extract.types";
+export * as Extract from "./extract.types";
