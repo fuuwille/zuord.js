@@ -1,13 +1,5 @@
-import { Integrate as $Integrate } from "./integrate.types";
-import { Merge as $Merge } from "./merge.types";
-import { Evolve as $Evolve } from "./evolve.types";
-import { Pick as $Pick } from "./pick.types";
-import { Omit as $Omit } from "./omit.types";
-
-export namespace $Zuord {
-    export import Integrate = $Integrate;
-    export import Merge = $Merge;
-    export import Evolve = $Evolve;
-    export import Pick = $Pick;
-    export import Omit = $Omit;
-}
+export { Integrate } from "./integrate";
+export { Merge } from "./merge";
+export { Evolve } from "./evolve";
+export { Pick } from "./pick";
+export { Omit } from "./omit";
