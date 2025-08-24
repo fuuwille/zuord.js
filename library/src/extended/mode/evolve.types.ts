@@ -1,5 +1,5 @@
-import { Integrate } from "./integrate.types";
+import { ZuordModeX } from ".";
 
-export type Plain = Integrate.Plain;
+export type Plain = ZuordModeX.Integrate.Plain;
 
-export type Array = Integrate.Array;
+export type Array = ZuordModeX.Integrate.Array;
