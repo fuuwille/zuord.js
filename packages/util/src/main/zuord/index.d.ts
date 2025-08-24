@@ -1,1 +1,1 @@
-export { ZuordUtil } from "./index.types";
+export * as ZuordUtil from "./index.types";
