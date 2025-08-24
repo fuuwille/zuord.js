@@ -1,1 +1,1 @@
-export { ZuordTrait } from "./index.types";
+export * as ZuordTrait from "./index.types";
