@@ -1,7 +1,12 @@
-.benefits-sync-api {
+.benefit-sync-api {
     padding: 16px;
 
     .runtime, .type {
         display: flex;
+
+        .import {
+            width: 32px;
+            background-color: aqua;
+        }
     }
 }
