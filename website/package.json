@@ -15,6 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.20.0",
     "@docusaurus/core": "3.8.1",
     "@docusaurus/plugin-vercel-analytics": "^3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
