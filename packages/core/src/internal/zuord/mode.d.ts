@@ -8,4 +8,4 @@ type modeAPI = {
 
 export declare const mode: modeAPI;
 
-export { Mode } from "./mode.types";
+export * as Mode from "./mode.types";
