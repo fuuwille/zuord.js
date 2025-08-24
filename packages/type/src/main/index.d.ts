@@ -1,8 +1,4 @@
-export { zuordType } from "./type";
-export { zuordPlain } from "./plain";
-export { zuordArray } from "./array";
-export { zuordTuple } from "./tuple";
-export { ZuordType } from "./type.types";
-export { ZuordPlain } from "./plain.types";
-export { ZuordArray } from "./array.types";
-export { ZuordTuple } from "./tuple.types";
+export { zuordType, ZuordType } from "./type";
+export { zuordPlain, ZuordPlain } from "./plain";
+export { zuordArray, ZuordArray } from "./array";
+export { zuordTuple, ZuordTuple } from "./tuple";
