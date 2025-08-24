@@ -6,4 +6,4 @@ type omitAPI = {
 
 export declare const omit: omitAPI;
 
-export { Omit } from "./omit.types";
+export * as Omit from "./omit.types";
