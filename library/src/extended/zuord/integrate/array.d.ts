@@ -6,4 +6,4 @@ type arrayAPI = {
 
 export declare const array: arrayAPI;
 
-export { Array } from "./array.types";
+export * as Array from "./array.types";
