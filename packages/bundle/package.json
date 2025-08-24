@@ -1,6 +1,7 @@
 {
   "name": "@zuord/bundle",
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.52.9",
     "rollup": "^4.45.1",
     "rollup-plugin-dts": "^6.2.1",
     "typescript": "^5.8.3"
