@@ -1,1 +1,1 @@
-export { One } from "./one.types";
+export * as One from "./one.types";
