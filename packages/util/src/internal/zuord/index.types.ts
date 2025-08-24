@@ -1,25 +1,11 @@
-import { Tuple as $Tuple } from "./tuple";
-import { Plain as $Plain } from "./plain";
-import { Union as $Union } from "./union";
-import { Keys as $Keys } from "./keys";
-import { Only as $Only } from "./only";
-import { One as $One } from "./one";
-import { Unify as $Unify } from "./unify";
-import { Restrict as $Restrict } from "./restrict";
-import { Strict as $Strict } from "./strict";
-import { Mutable as $Mutable } from "./mutable";
-import { Pattern as $Pattern } from "./pattern";
-
-export declare namespace $ZuordUtil {
-    export import Tuple = $Tuple;
-    export import Plain = $Plain;
-    export import Union = $Union;
-    export import Keys = $Keys;
-    export import Only = $Only;
-    export import One = $One;
-    export import Unify = $Unify;
-    export import Restrict = $Restrict;
-    export import Strict = $Strict;
-    export import Mutable = $Mutable;
-    export import Pattern = $Pattern;
-}
+export { Tuple } from "./tuple";
+export { Plain } from "./plain";
+export { Union } from "./union";
+export { Keys } from "./keys";
+export { Only } from "./only";
+export { One } from "./one";
+export { Unify } from "./unify";
+export { Restrict } from "./restrict";
+export { Strict } from "./strict";
+export { Mutable } from "./mutable";
+export { Pattern } from "./pattern";
