@@ -1,1 +1,1 @@
-export { Only } from "./only.types";
+export * as Only from "./only.types";
