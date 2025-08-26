@@ -17,6 +17,11 @@ export const config_lib = [
 
 export const config_type = [
     {
+        input: "$/type/index.js",
+        output: { file: "type/index.js", format: "esm" },
+        plugins: [resolve()],
+    },
+    {
         input: "$/type/index.d.ts",
         output: { file: "type/index.d.ts", format: "es" },
         plugins: [dts()],
