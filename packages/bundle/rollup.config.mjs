@@ -47,4 +47,5 @@ export default defineConfig([
     ...config_type,
     ...config_core,
     ...config_trait,
+    ...config_util
 ]);
