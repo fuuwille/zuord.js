@@ -18,7 +18,16 @@ export const config_type = [
     }
 ];
 
+export const config_core = [
+    {
+        input: "src/core/index.d.ts",
+        output: { file: "dist/core/index.d.ts", format: "es" },
+        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/core" } })],
+    }
+];
+
 export default defineConfig([
     ...config_lib,
-    ...config_type
+    ...config_type,
+    ...config_core,
 ]);
