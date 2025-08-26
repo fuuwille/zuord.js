@@ -30,6 +30,11 @@ export const config_type = [
 
 export const config_core = [
     {
+        input: "$/core/index.js",
+        output: { file: "core/index.js", format: "esm" },
+        plugins: [resolve()],
+    },
+    {
         input: "$/core/index.d.ts",
         output: { file: "core/index.d.ts", format: "es" },
         plugins: [dts()],
