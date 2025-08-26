@@ -4,8 +4,8 @@ import { defineConfig } from "rollup";
 
 export const config_lib = [
     {
-        input: "src/zuord/index.d.ts",
-        output: { file: "dist/zuord/index.d.ts", format: "es" },
+        input: "src/lib/index.d.ts",
+        output: { file: "dist/lib/index.d.ts", format: "es" },
         plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/zuord" } })],
     }
 ]
