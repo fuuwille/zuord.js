@@ -1,11 +1,34 @@
 {
     "name": "@zuord/bundle",
+    "version": "1.0.0-alpha.2",
     "dependencies": {
         "@zuord/core": "3.0.0-alpha.15",
         "@zuord/trait": "3.0.0-alpha.10",
         "@zuord/type": "2.0.0-alpha.10",
         "@zuord/util": "4.0.0-alpha.10",
         "zuord": "5.0.0-alpha.11"
+    },
+    "exports": {
+        ".": {
+            "import": "./lib/index.js",
+            "types": "./lib/index.d.ts"
+        },
+        "./type": {
+            "import": "./type/index.js",
+            "types": "./type/index.d.ts"
+        },
+        "./core": {
+            "import": "./core/index.js",
+            "types": "./core/index.d.ts"
+        },
+        "./trait": {
+            "import": "./trait/index.js",
+            "types": "./trait/index.d.ts"
+        },
+        "./util": {
+            "import": "./util/index.js",
+            "types": "./util/index.d.ts"
+        }
     },
     "scripts": {
         "cpy:lib": "cpy 'node_modules/zuord/dist/**/*' $/lib",
