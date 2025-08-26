@@ -11,6 +11,7 @@
         "cpy:lib": "cpy 'node_modules/zuord/dist/**/*' src/lib",
         "cpy:type": "cpy 'node_modules/@zuord/type/dist/**/*' src/type",
         "cpy:core": "cpy 'node_modules/@zuord/core/dist/**/*' src/core",
-        "cpy:trait": "cpy 'node_modules/@zuord/trait/dist/**/*' src/trait"
+        "cpy:trait": "cpy 'node_modules/@zuord/trait/dist/**/*' src/trait",
+        "cpy:util": "cpy 'node_modules/@zuord/util/dist/**/*' src/util"
     }
 }
