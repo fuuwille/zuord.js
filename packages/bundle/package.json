@@ -8,6 +8,7 @@
         "zuord": "5.0.0-alpha.11"
     },
     "scripts": {
-        "cpy:lib": "cpy 'node_modules/zuord/dist/**/*' src/zuord"
+        "cpy:lib": "cpy 'node_modules/zuord/dist/**/*' src/zuord",
+        "cpy:type": "cpy 'node_modules/@zuord/type/dist/**/*' src/type"
     }
 }
