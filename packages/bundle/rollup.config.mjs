@@ -19,5 +19,6 @@ export const config_type = [
 ];
 
 export default defineConfig([
-    ...config_lib
+    ...config_lib,
+    ...config_type
 ]);
