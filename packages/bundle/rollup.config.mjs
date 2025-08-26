@@ -8,7 +8,15 @@ export const config_lib = [
         output: { file: "dist/lib/index.d.ts", format: "es" },
         plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/zuord" } })],
     }
-]
+];
+
+export const config_type = [
+    {
+        input: "src/type/index.d.ts",
+        output: { file: "dist/type/index.d.ts", format: "es" },
+        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/type" } })],
+    }
+];
 
 export default defineConfig([
     ...config_lib
