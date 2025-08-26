@@ -6,7 +6,7 @@ export const config_lib = [
     {
         input: "$/lib/index.d.ts",
         output: { file: "lib/index.d.ts", format: "es" },
-        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/zuord" } })],
+        plugins: [dts()],
     }
 ];
 
@@ -14,7 +14,7 @@ export const config_type = [
     {
         input: "$/type/index.d.ts",
         output: { file: "type/index.d.ts", format: "es" },
-        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/type" } })],
+        plugins: [dts()],
     }
 ];
 
@@ -22,7 +22,7 @@ export const config_core = [
     {
         input: "$/core/index.d.ts",
         output: { file: "core/index.d.ts", format: "es" },
-        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/core" } })],
+        plugins: [dts()],
     }
 ];
 
@@ -30,7 +30,7 @@ export const config_trait = [
     {
         input: "$/trait/index.d.ts",
         output: { file: "trait/index.d.ts", format: "es" },
-        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/trait" } })],
+        plugins: [dts()],
     }
 ];
 
@@ -38,7 +38,7 @@ export const config_util = [
     {
         input: "$/util/index.d.ts",
         output: { file: "util/index.d.ts", format: "es" },
-        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/util" } })],
+        plugins: [dts()],
     }
 ];
 
