@@ -13,6 +13,7 @@
         "cpy:core": "cpy 'node_modules/@zuord/core/dist/**/*' $/core",
         "cpy:trait": "cpy 'node_modules/@zuord/trait/dist/**/*' $/trait",
         "cpy:util": "cpy 'node_modules/@zuord/util/dist/**/*' $/util",
-        "cpy": "npm run cpy:lib && npm run cpy:type && npm run cpy:core && npm run cpy:trait && npm run cpy:util"
+        "cpy": "npm run cpy:lib && npm run cpy:type && npm run cpy:core && npm run cpy:trait && npm run cpy:util",
+        "build": "rimraf $ lib type core trait util && npm run cpy && rollup -c"
     }
 }
