@@ -34,9 +34,17 @@ export const config_trait = [
     }
 ];
 
+export const config_util = [
+    {
+        input: "src/util/index.d.ts",
+        output: { file: "dist/util/index.d.ts", format: "es" },
+        plugins: [resolve(), dts({ compilerOptions: { baseUrl: "./node_modules/@zuord/util" } })],
+    }
+];
+
 export default defineConfig([
     ...config_lib,
     ...config_type,
     ...config_core,
-    ...config_trait
+    ...config_trait,
 ]);
