@@ -4,6 +4,11 @@ import { defineConfig } from "rollup";
 
 export const config_lib = [
     {
+        input: "$/lib/index.js",
+        output: { file: "lib/index.js", format: "esm" },
+        plugins: [resolve()],
+    },
+    {
         input: "$/lib/index.d.ts",
         output: { file: "lib/index.d.ts", format: "es" },
         plugins: [dts()],
