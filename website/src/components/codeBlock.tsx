@@ -41,5 +41,6 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
 
 
 export interface CodeBlockProps {
-  code: string;
+    code: string;
+    style?: Partial<React.CSSProperties>;
 }
