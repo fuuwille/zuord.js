@@ -1,7 +1,7 @@
 import Prism from "prismjs";
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 
-export const CodeLabel: React.FC<CodeBlockProps> = ({ code }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
   const tokens = Prism.tokenize(code, Prism.languages.ts);
   console.log(tokens);
 
