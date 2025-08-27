@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { tokenText } from "../utils/tokenText";
 
 export const CodeToken: React.FC<CodeTokenProps> = ({ token }) => {
-    const { type, text } = typeof token === "string" 
+    let { type, text } = typeof token === "string" 
         ? { type: "", text: token }
         : { type: token.type, text: tokenText(token.content) };
         
