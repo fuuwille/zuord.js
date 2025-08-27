@@ -25,6 +25,6 @@ export default BenefitSyncAPI;
 export const runtimeImportModifiers: CodeTokenModifier[] = [
   {
     predicate: (data) => data.text.trim() === "zuord",
-    props: { Wrapper: ({ text }) => <span style={{ backgroundColor: 'yellow' }}>{text}</span> }
+    props: { Wrapper: ({ text }) => <span className={style['runtime-import-zuord']}>{text}</span> }
   }
 ]
