@@ -3,7 +3,7 @@ import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { prismContent } from "@site/src/utils/prismContent";
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
   const tokens = Prism.tokenize(code, Prism.languages.ts);
 
   return (
@@ -15,6 +15,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
         padding: 2,
         margin: 2,
         userSelect: "none",
+        ...style,
       }}
     >
       {tokens.map((token, i) => {
