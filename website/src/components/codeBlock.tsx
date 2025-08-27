@@ -25,6 +25,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
 
         const { type, content } = token;
 
+        const text = tokenText(content);
+
         return (
           <span
             key={i}
@@ -32,7 +34,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
             data-token-index={i}
             data-token-type={type}
           >
-            {tokenText(content)}
+            {text}
           </span>
         );
       })}
