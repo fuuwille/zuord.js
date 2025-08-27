@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { tokenText } from "../utils/tokenText";
 
-export const CodeToken: React.FC<CodeTokenProps> = ({ text, type }) => {
+export const CodeToken: React.FC<CodeTokenProps> = ({ text, type, Wrapper }) => {
     return (
         <span className={clsx(`token ${type}`)}>
-            {text}
+            {Wrapper ? <Wrapper text={text}/> : text}
         </span>
     );
 };
@@ -12,7 +12,7 @@ export const CodeToken: React.FC<CodeTokenProps> = ({ text, type }) => {
 export interface CodeTokenProps {
     text: string;
     type: string;
-    wrapper?: CodeTokenWrapper;
+    Wrapper?: CodeTokenWrapper;
 }
 
 export type CodeTokenWrapper = React.FC<CodeTokenWrapperProps>;
