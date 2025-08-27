@@ -2,8 +2,8 @@ import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { tokenText } from "@site/src/utils/tokenText";
-import { CodeToken } from "./codeToken";
 import { CodeTokenModifier } from "@site/src/data/code";
+import clsx from "clsx";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [] }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
@@ -21,7 +21,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [
                 const { type, text, Wrapper } = { ...data, ...(modifier?.props ?? {}) };
 
                 return (
-                    <CodeToken key={i} text={text} type={type} />
+                    <span className={clsx(`token ${type}`)}>
+                        {Wrapper ? <Wrapper text={text} type={type} /> : text}
+                    </span>
                 )
             })}
         </pre>
