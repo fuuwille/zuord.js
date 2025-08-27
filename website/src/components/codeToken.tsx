@@ -7,7 +7,7 @@ export const CodeToken: React.FC<CodeTokenProps> = ({ token }) => {
         : { type: token.type, text: tokenText(token.content) };
         
     return (
-        <span className={clsx('token')}>
+        <span className={clsx(`token ${type}`)}>
 
         </span>
     );
