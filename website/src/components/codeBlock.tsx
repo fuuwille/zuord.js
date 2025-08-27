@@ -18,7 +18,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [
 
                 const modifier = modifiers.find(modifier => modifier.predicate(data))
 
-                const { type, text } = { ...data, ...(modifier?.data ?? {}) };
+                const { type, text, Wrapper } = { ...data, ...(modifier?.props ?? {}) };
 
                 return (
                     <CodeToken key={i} text={text} type={type} />

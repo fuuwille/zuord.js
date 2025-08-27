@@ -13,5 +13,5 @@ export type CodeTokenPredicate = (token: CodeTokenData) => boolean;
 
 export type CodeTokenModifier = {
     predicate: CodeTokenPredicate;
-    data: CodeTokenData;
+    props: CodeTokenProps;
 }
