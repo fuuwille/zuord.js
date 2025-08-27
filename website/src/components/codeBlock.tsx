@@ -1,17 +1,10 @@
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
+import { prismToken } from "@site/src/utils/prismToken";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
   const tokens = Prism.tokenize(code, Prism.languages.ts);
-
-  const renderContent = (content: string | Prism.Token | (string | Prism.Token)[]) => {
-    if (typeof content === "string") return content;
-    if (Array.isArray(content)) {
-      return content.map((c, i) => <>{renderContent(c)}</>);
-    }
-    return renderContent(content.content);
-  };
 
   return (
     <pre
@@ -38,7 +31,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
             data-token-index={i}
             data-token-type={type}
           >
-            {renderContent(content)}
+            {prismToken(content)}
           </span>
         );
       })}
