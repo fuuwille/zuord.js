@@ -4,3 +4,5 @@ export interface CodeTokenData {
 }
 
 export type CodeTokenWrapper = React.FC<CodeTokenData>;
+
+export type CodeTokenPredicate = (token: CodeTokenData) => boolean;
