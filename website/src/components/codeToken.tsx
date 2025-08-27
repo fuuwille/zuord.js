@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { CodeTokenData } from "@site/src/data/code";
 
 export const CodeToken: React.FC<CodeTokenProps> = ({ text, type, Wrapper }) => {
     return (
@@ -8,8 +9,6 @@ export const CodeToken: React.FC<CodeTokenProps> = ({ text, type, Wrapper }) => 
     );
 };
 
-export interface CodeTokenProps {
-    text: string;
-    type: string;
+export interface CodeTokenProps extends CodeTokenData {
     Wrapper?: React.FC<{ text: string}>;
 }
