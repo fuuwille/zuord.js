@@ -15,10 +15,11 @@ const BenefitSyncAPI: React.FC = ({
           </div>
         </div>
         <div className={style['type']}>
-            <div className={style['import']}>{"import { Zuord } from 'zuord';"}</div>
-            <div className={style['navbar']}>
+          <CodeBlock code={`import { Zuord } from 'zuord'`} />
+          
+          <div className={style['navbar']}>
 
-            </div>
+          </div>
         </div>
     </div>
 )};
