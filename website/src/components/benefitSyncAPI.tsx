@@ -8,15 +8,15 @@ const BenefitSyncAPI: React.FC = ({
   return(
     <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
         <div className={style['runtime']}>
-          <CodeBlock code={`import { zuord } from 'zuord'`} />
+          <CodeBlock code={`import { zuord } from 'zuord';`} />
 
           <div className={style['navbar']}>
 
           </div>
         </div>
         <div className={style['type']}>
-          <CodeBlock code={`import { Zuord } from 'zuord'`} />
-          
+          <CodeBlock code={`import { Zuord } from 'zuord';`} />
+
           <div className={style['navbar']}>
 
           </div>
