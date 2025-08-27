@@ -1,7 +1,7 @@
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
-import { prismToken } from "@site/src/utils/prismToken";
+import { prismContent } from "@site/src/utils/prismContent";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
   const tokens = Prism.tokenize(code, Prism.languages.ts);
@@ -31,7 +31,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code }) => {
             data-token-index={i}
             data-token-type={type}
           >
-            {prismToken(content)}
+            {prismContent(content)}
           </span>
         );
       })}
