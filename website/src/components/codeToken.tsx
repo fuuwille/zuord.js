@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { tokenText } from "../utils/tokenText";
 
 export const CodeToken: React.FC<CodeTokenProps> = ({ text, type, Wrapper }) => {
     return (
