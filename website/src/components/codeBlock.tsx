@@ -19,13 +19,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
       }}
     >
       {tokens.map((token, i) => {
-        if (typeof token === "string") {
-          return <span key={i}>{token}</span>;
-        }
-
-        const { type, content } = token;
-
-        const text = tokenText(content);
+        const { type, text } = typeof token === "string" 
+            ? { type: "", text: token }
+            : { type: token.type, text: tokenText(token.content) };
 
         return (
           <span
