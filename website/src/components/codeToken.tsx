@@ -11,11 +11,5 @@ export const CodeToken: React.FC<CodeTokenProps> = ({ text, type, Wrapper }) => 
 export interface CodeTokenProps {
     text: string;
     type: string;
-    Wrapper?: CodeTokenWrapper;
-}
-
-export type CodeTokenWrapper = React.FC<CodeTokenWrapperProps>;
-
-export interface CodeTokenWrapperProps {
-    text: string
+    Wrapper?: React.FC<{ text: string}>;
 }
