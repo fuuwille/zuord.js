@@ -5,7 +5,7 @@ import { tokenText } from "@site/src/utils/tokenText";
 import { CodeToken } from "./codeToken";
 import { CodeTokenModifier } from "@site/src/data/code";
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [] }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
     const blockStyle: Partial<React.CSSProperties> = { background: "transparent", fontSize: "14px", padding: 3, margin: 3, userSelect: "none", ...style };
 
@@ -16,7 +16,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
                     ? { type: "", text: token }
                     : { type: token.type, text: tokenText(token.content) };
 
-                const { type, text } = { ...data };
+                const modifier = modifiers.find(modifier => modifier.predicate(data))
+
+                const { type, text } = { ...data, ...(modifier?.data ?? {}) };
 
                 return (
                     <CodeToken key={i} text={text} type={type} />
