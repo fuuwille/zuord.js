@@ -12,9 +12,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
     return (
         <pre className="code-block" style={blockStyle}>
             {tokens.map((token, i) => {
-                const { type, text } = typeof token === "string" 
+                const data = typeof token === "string" 
                     ? { type: "", text: token }
                     : { type: token.type, text: tokenText(token.content) };
+
+                const { type, text } = { ...data };
 
                 return (
                     <CodeToken key={i} text={text} type={type} />
