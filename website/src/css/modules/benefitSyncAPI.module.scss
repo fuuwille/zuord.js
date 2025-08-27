@@ -11,6 +11,18 @@
 
         .navbar {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 280px;
+
+            .button {
+                background-color: gray;
+                border-radius: 8px;
+                padding: 0 4px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 14px;
+            }
         }
     }
 }
