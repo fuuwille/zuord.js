@@ -15,14 +15,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
                 : { type: token.type, text: tokenText(token.content) };
 
             return (
-            <span
-                key={i}
-                className={`token ${type}`}
-                data-token-index={i}
-                data-token-type={type}
-            >
-                {text}
-            </span>
+                <span key={i} className={`token ${type}`}>
+                    {text}
+                </span>
             );
         })}
         </pre>
