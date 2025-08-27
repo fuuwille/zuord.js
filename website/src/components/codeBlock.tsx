@@ -2,6 +2,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { tokenText } from "@site/src/utils/tokenText";
+import { CodeToken } from "./codeToken";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
@@ -9,17 +10,15 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
 
     return (
         <pre className="code-block" style={blockStyle}>
-        {tokens.map((token, i) => {
-            const { type, text } = typeof token === "string" 
-                ? { type: "", text: token }
-                : { type: token.type, text: tokenText(token.content) };
+            {tokens.map((token, i) => {
+                const { type, text } = typeof token === "string" 
+                    ? { type: "", text: token }
+                    : { type: token.type, text: tokenText(token.content) };
 
-            return (
-                <span key={i} className={`token ${type}`}>
-                    {text}
-                </span>
-            );
-        })}
+                return (
+                    <CodeToken key={i} text={text} type={type} />
+                )
+            })}
         </pre>
     );
 };
