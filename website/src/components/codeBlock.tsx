@@ -3,6 +3,7 @@ import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { tokenText } from "@site/src/utils/tokenText";
 import { CodeToken } from "./codeToken";
+import { CodeTokenModifier } from "@site/src/data/code";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
@@ -27,4 +28,5 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
 export interface CodeBlockProps {
     code: string;
     style?: Partial<React.CSSProperties>;
+    modifiers?: CodeTokenModifier[];
 }
