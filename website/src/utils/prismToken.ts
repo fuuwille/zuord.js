@@ -1,9 +1,9 @@
-export const renderContent = (content: string | Prism.Token | (string | Prism.Token)[]) : string | string[] => {
+export const prismToken = (content: string | Prism.Token | (string | Prism.Token)[]) : string | string[] => {
     if (typeof content === "string") return content as string;
 
     if (Array.isArray(content)) {
-        return content.map((c, i) => renderContent(c)) as string[];
+        return content.map((c, i) => prismToken(c)) as string[];
     }
 
-    return renderContent(content.content);
+    return prismToken(content.content);
 };
