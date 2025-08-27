@@ -15,7 +15,7 @@ export const CodeToken: React.FC<CodeTokenProps> = ({ token }) => {
 
 export interface CodeTokenProps {
     token: string | Prism.Token;
-    wrapper?: CodeTokenWrapper;
+    content?: CodeTokenContent;
 }
 
 export interface CodeTokenContent {
