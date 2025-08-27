@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 
-const BenefitSyncAPI: React.ReactNode = (  
+const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['runtime']}>
       <CodeBlock code={`import { zuord } from 'zuord';`} />
