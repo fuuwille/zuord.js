@@ -18,6 +18,12 @@ export interface CodeTokenProps {
     wrapper?: CodeTokenWrapper;
 }
 
+export interface CodeTokenContent {
+    text?: string;
+    type?: string;
+    wrapper?: CodeTokenWrapper;
+}
+
 export type CodeTokenWrapper = React.FC<CodeTokenWrapperProps>;
 
 export interface CodeTokenWrapperProps {
