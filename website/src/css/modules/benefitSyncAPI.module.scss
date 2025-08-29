@@ -17,15 +17,24 @@
         width: 280px;
 
         .button {
-            background-color: gray;
+            background-color: #3A3B3C;
             border-radius: 8px;
             padding: 0 8px;
-            margin: 0 8px;;
+            margin: 3px 8px;;
             height: 24px;
             line-height: 24px;
             font-size: 14px;
             user-select: none;
             transition: all 0.25s ease;
+            font-weight: 500;
+        }
+
+        .button-js {
+            color: #caca9d;
+        }
+
+        .button-dts {
+            color: #4ec9b0;
         }
 
         .button:hover {
