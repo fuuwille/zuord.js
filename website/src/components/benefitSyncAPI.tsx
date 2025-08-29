@@ -10,16 +10,16 @@ const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <div className={style['button']}>integrate</div>
-        <div className={style['button']}>merge</div>
-        <div className={style['button']}>evolve</div>
-        <div className={style['button']}>pick</div>
-        <div className={style['button']}>omit</div>
-        <div className={style['button']}>Integrate</div>
-        <div className={style['button']}>Merge</div>
-        <div className={style['button']}>Evolve</div>
-        <div className={style['button']}>Pick</div>
-        <div className={style['button']}>Omit</div>
+        <div className={clsx(style['button'])}>integrate</div>
+        <div className={clsx(style['button'])}>merge</div>
+        <div className={clsx(style['button'])}>evolve</div>
+        <div className={clsx(style['button'])}>pick</div>
+        <div className={clsx(style['button'])}>omit</div>
+        <div className={clsx(style['button'])}>Integrate</div>
+        <div className={clsx(style['button'])}>Merge</div>
+        <div className={clsx(style['button'])}>Evolve</div>
+        <div className={clsx(style['button'])}>Pick</div>
+        <div className={clsx(style['button'])}>Omit</div>
       </div>
   </div>
 );
