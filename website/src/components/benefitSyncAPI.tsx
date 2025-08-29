@@ -15,11 +15,11 @@ const BenefitSyncAPI: React.FC = () => (
         <div className={clsx(style['button'], style['button-js'])}>evolve</div>
         <div className={clsx(style['button'], style['button-js'])}>pick</div>
         <div className={clsx(style['button'], style['button-js'])}>omit</div>
-        <div className={clsx(style['button'], style['button-d.ts'])}>Integrate</div>
-        <div className={clsx(style['button'], style['button-d.ts'])}>Merge</div>
-        <div className={clsx(style['button'], style['button-d.ts'])}>Evolve</div>
-        <div className={clsx(style['button'], style['button-d.ts'])}>Pick</div>
-        <div className={clsx(style['button'], style['button-d.ts'])}>Omit</div>
+        <div className={clsx(style['button'], style['button-dts'])}>Integrate</div>
+        <div className={clsx(style['button'], style['button-dts'])}>Merge</div>
+        <div className={clsx(style['button'], style['button-dts'])}>Evolve</div>
+        <div className={clsx(style['button'], style['button-dts'])}>Pick</div>
+        <div className={clsx(style['button'], style['button-dts'])}>Omit</div>
       </div>
   </div>
 );
