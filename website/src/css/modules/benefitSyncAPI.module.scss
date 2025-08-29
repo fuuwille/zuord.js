@@ -1,38 +1,36 @@
 .benefit-sync-api {
+    display: flex;
     padding: 16px;
 
-    .runtime, .type {
-        display: flex;
+    .import {
+        width: 230px;
+        background-color: rgb(131, 124, 172);
+    }
 
-        .import {
-            width: 230px;
-            background-color: rgb(131, 124, 172);
+    .navbar {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        
+
+        align-items: center;
+        justify-content: space-between;
+        width: 280px;
+
+        .button {
+            background-color: gray;
+            border-radius: 8px;
+            padding: 0 8px;
+            margin: 0 8px;;
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            user-select: none;
+            transition: all 0.25s ease;
         }
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 280px;
-
-            .button {
-                background-color: gray;
-                border-radius: 8px;
-                padding: 0 8px;
-                margin: 0 8px;;
-                height: 24px;
-                line-height: 24px;
-                font-size: 14px;
-                user-select: none;
-                transition: all 0.25s ease;
-            }
-
-            .button:hover {
-                padding: 0 12px;
-                margin: 0 4px;
-                height: 26px;
-                line-height: 26px;
-            }
+        .button:hover {
+            padding: 0 12px;
+            margin: 0 4px;
         }
     }
 }
