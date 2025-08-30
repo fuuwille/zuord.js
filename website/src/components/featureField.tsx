@@ -3,11 +3,13 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 import { FeatureFieldProps } from '@site/src/types/featureField';
+import { FeatureMonitor } from './featureMonitor';
 
 export const FeatureField: React.FC<FeatureFieldProps> = ({ 
     layoutText, 
     passiveText, 
     activeText, 
+    monitor = <FeatureMonitor />,
     className,
     enterDelay = 200,
     leaveDelay = 100,
@@ -20,7 +22,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
 
     return (
         <Tooltip 
-            title={layoutText} 
+            title={monitor} 
             onOpen={() => setTooltip(true)} 
             onClose={() => setTooltip(false)}
             enterDelay={enterDelay}
