@@ -44,7 +44,11 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}>
       <span className={style['layout']} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <Tooltip title={passiveText} onOpen={() => setTooltip(true)} onClose={() => setTooltip(false)}>
+        <Tooltip 
+          title={passiveText} 
+          onOpen={() => setTooltip(true)} 
+          onClose={() => setTooltip(false)}
+        >
           <span className={style['text']}>{passiveText}</span>
         </Tooltip>
       </span>
