@@ -41,7 +41,6 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
       </span>
       <span className={style['visual']}>
         <span className={clsx(style['text'], style['first'])}>{firstText}</span>
-        <span className={clsx(style['text'], style['last'])}>{lastText}</span>
       </span>
     </div>
   )
