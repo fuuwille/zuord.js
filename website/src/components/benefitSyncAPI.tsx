@@ -28,12 +28,8 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 const Box: React.FC<{ text: string }> = ({ text }) => {
   const [hovered, setHovered] = useState(false);
   const [tooltip, setTooltip] = useState(false);
-  const featured = useRef(false);
-
-  useEffect(() => {
-    featured.current = hovered || tooltip;
-  }, [hovered, tooltip]);
-
+  const featured = hovered || tooltip;
+  
   let type, passiveText = `.${text}`, activeText;
 
   if(text[0] === text[0].toLowerCase()) {
@@ -46,9 +42,9 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   }
 
   return (
-    <div className={clsx(style['box'], style[type], hovered ? style['featured'] : null)}>
+    <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}>
       <span className={style['layout']} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <Tooltip title={passiveText} open={tooltip} onOpen={() => setTooltip(true)} onClose={() => setTooltip(false)}>
+        <Tooltip title={passiveText} onOpen={() => setTooltip(true)} onClose={() => setTooltip(false)}>
           <span className={style['text']}>{passiveText}</span>
         </Tooltip>
       </span>
