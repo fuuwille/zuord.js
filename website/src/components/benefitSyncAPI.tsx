@@ -50,7 +50,11 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
       enterNextDelay={250}
       leaveDelay={100}
     >
-      <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <div 
+        className={clsx(style['box'], style[type], featured ? style['featured'] : null)}  
+        onMouseEnter={() => setHovered(true)} 
+        onMouseLeave={() => setHovered(false)}
+      >
         <span className={style['layout']}>
             <span className={style['text']}>{passiveText}</span>
         </span>
