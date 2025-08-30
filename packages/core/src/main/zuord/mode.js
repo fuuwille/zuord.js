@@ -1,1 +1,1 @@
-export * as mode from "./mode.runtime";
+export * as mode from "./mode.runtime.js";

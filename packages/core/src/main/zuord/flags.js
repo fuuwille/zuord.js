@@ -1,1 +1,1 @@
-export * as flags from "./flags.runtime";
+export * as flags from "./flags.runtime.js";
