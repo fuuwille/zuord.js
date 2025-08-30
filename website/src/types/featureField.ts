@@ -5,13 +5,17 @@ export interface FeatureFieldProps {
 
     monitor?: FeatureFieldMonitor;
     className?: string;
-    enterDelay?: number;
-    leaveDelay?: number;
-    enterNextDelay?: number;
     enableFocus?: boolean;
 }
 
 export interface FeatureFieldMonitor {
-    node: React.ReactNode;
+    node?: React.ReactNode;
+    delay?: FeatureFieldMonitorDelay;
     offset?: [number, number];
+}
+
+export interface FeatureFieldMonitorDelay {
+    enter?: number;
+    leave?: number;
+    enterNext?: number;
 }

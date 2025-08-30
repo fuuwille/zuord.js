@@ -9,11 +9,15 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     layoutText, 
     passiveText, 
     activeText, 
-    monitor = { node: <FeatureMonitor /> },
+    monitor = { 
+        node: <FeatureMonitor />,
+        delay: {
+            enter: 200,
+            leave: 100,
+            enterNext: 200
+        }
+    },
     className,
-    enterDelay = 200,
-    leaveDelay = 100,
-    enterNextDelay = 200,
     enableFocus = true
 }) => {
     const [hovered, setHovered] = useState(false);
@@ -26,9 +30,9 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
             open={tooltipOpen}
             onOpen={() => setTooltipOpen(true)} 
             onClose={() => setTooltipOpen(false)}
-            enterDelay={enterDelay}
-            enterNextDelay={enterNextDelay}
-            leaveDelay={leaveDelay}
+            enterDelay={monitor.delay.enter}
+            enterNextDelay={monitor.delay.enterNext}
+            leaveDelay={monitor.delay.leave}
             slotProps={{
                 tooltip: {
                     sx: {
