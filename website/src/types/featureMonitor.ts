@@ -1,3 +1,3 @@
 export interface FeatureMonitorProps {
-    title: React.ReactNode;
+    title?: React.ReactNode;
 }
