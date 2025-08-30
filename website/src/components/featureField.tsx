@@ -17,15 +17,15 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     enableFocus = true
 }) => {
     const [hovered, setHovered] = useState(false);
-    const [tooltip, setTooltip] = useState(false);
-    const focused = enableFocus && (hovered || tooltip);
+    const [tooltipOpen, setTooltipOpen] = useState(false);
+    const focused = enableFocus && (hovered || tooltipOpen);
 
     return (
         <Tooltip 
             title={monitor} 
-            open={tooltip}
-            onOpen={() => setTooltip(true)} 
-            onClose={() => setTooltip(false)}
+            open={tooltipOpen}
+            onOpen={() => setTooltipOpen(true)} 
+            onClose={() => setTooltipOpen(false)}
             enterDelay={enterDelay}
             enterNextDelay={enterNextDelay}
             leaveDelay={leaveDelay}
