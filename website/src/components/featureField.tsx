@@ -9,7 +9,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     layoutText, 
     passiveText, 
     activeText, 
-    monitor = <FeatureMonitor />,
+    monitor = { node: <FeatureMonitor /> },
     className,
     enterDelay = 200,
     leaveDelay = 100,
@@ -22,7 +22,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
 
     return (
         <Tooltip 
-            title={monitor} 
+            title={monitor.node} 
             open={tooltipOpen}
             onOpen={() => setTooltipOpen(true)} 
             onClose={() => setTooltipOpen(false)}
@@ -37,6 +37,16 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
                         padding: 0,
                         color: 'inherit',
                     }
+                },
+                popper: {
+                    modifiers: [
+                        {
+                            name: 'offset',
+                            options: {
+                                offset: [0, 10]
+                            }
+                        }
+                    ],
                 }
             }}
         >
