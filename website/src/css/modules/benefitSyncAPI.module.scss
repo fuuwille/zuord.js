@@ -19,8 +19,7 @@
         .box {
             background-color: #3A3B3C;
             border-radius: 8px;
-            padding: 0 8px;
-            margin: 3px 8px;;
+
             height: 24px;
             line-height: 24px;
             font-size: 14px;
@@ -38,11 +37,11 @@
                 position: absolute;
                 top: 0; left: 0;
             }
-        }
 
-        .box:hover {
-            padding: 0 12px;
-            margin: 0 4px;
+            .text {
+                padding: 0 4px;
+                margin: 3px 8px;
+            }
         }
 
         .runtime {
