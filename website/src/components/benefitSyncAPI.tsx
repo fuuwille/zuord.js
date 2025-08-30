@@ -1,4 +1,5 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
+import { useState } from 'react';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
@@ -24,6 +25,8 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 ]
 
 const Box: React.FC<{ text: string }> = ({ text }) => {
+  const [featured, setFeatured] = useState(false);
+
   let type, passiveText = `.${text}`, activeText;
 
   if(text[0] === text[0].toLowerCase()) {
@@ -36,8 +39,8 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   }
 
   return (
-    <div className={clsx(style['box'], style[type])}>
-      <span className={style['layout']}>
+    <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}>
+      <span className={style['layout']} onMouseEnter={() => setFeatured(true)} onMouseLeave={() => setFeatured(false)}>
         <span className={style['text']}>{passiveText}</span>
       </span>
       <span className={style['visual']}>
