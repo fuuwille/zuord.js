@@ -36,6 +36,14 @@
             .visual {
                 position: absolute;
                 top: 0; left: 0;
+
+                .first {
+                    opacity: 1;
+                }
+
+                .last {
+                    opacity: 0;
+                }
             }
 
             .text {
