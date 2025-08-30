@@ -10,8 +10,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <Button text="integrate" /> <Button text="merge" /> <Button text="evolve" /> <Button text="pick" /> <Button text="omit" />
-        <Button text="Integrate" /> <Button text="Merge" /> <Button text="Evolve" /> <Button text="Pick" /> <Button text="Omit" />
+        <Box text="integrate" /> <Box text="merge" /> <Box text="evolve" /> <Box text="pick" /> <Box text="omit" />
+        <Box text="Integrate" /> <Box text="Merge" /> <Box text="Evolve" /> <Box text="Pick" /> <Box text="Omit" />
       </div>
   </div>
 );
@@ -23,7 +23,7 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
   }
 ]
 
-const Button: React.FC<{ text: string }> = ({ text }) => {
+const Box: React.FC<{ text: string }> = ({ text }) => {
   let type;
 
   if(text[0] === text[0].toLowerCase()) {
