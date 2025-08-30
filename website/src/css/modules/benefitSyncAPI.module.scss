@@ -23,7 +23,7 @@
             line-height: 24px;
             font-size: 14px;
             user-select: none;
-            transition: all 0.25s ease;
+            transition: all 0.30s ease-in-out;
             font-weight: 500;
             position: relative;
             padding: 0px 8px;
@@ -64,8 +64,8 @@
         }
 
         .box:has(.layout:hover) {
-            padding: 0px 14px;
-            margin: 3px 0px;
+            padding: 0px 12px;
+            margin: 3px 2px;
 
             .first {
                 opacity: 0;
