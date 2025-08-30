@@ -2,7 +2,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { tokenText } from "@site/src/utils/tokenText";
-import { CodeTokenModifier } from "@site/src/data/code";
+import { CodeTokenModifier } from "@site/src/types/codeToken";
 import clsx from "clsx";
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [] }) => {

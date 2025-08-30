@@ -1,7 +1,7 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
-import { CodeTokenModifier } from '@site/src/data/code';
+import { CodeTokenModifier } from '@site/src/types/codeToken';
 import { FeatureField } from './featureField';
 
 export const featureFieldProps = (text: string) => {
