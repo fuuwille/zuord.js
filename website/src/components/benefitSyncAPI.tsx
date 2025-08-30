@@ -30,3 +30,11 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
     props: { Wrapper: ({ text }) => <span className={style['runtime-import-zuord']}>{text}</span> }
   }
 ]
+
+const Button: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <div className={clsx(style['button'], style['button-js'])}>
+      {text}
+    </div>
+  )
+}
