@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
+import { FeatureFieldProps } from '@site/src/types/featureField';
 
 export const FeatureField: React.FC<FeatureFieldProps> = ({ 
     layoutText, 
@@ -42,12 +43,3 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     )
 }
 
-export interface FeatureFieldProps {
-    layoutText: string;
-    passiveText: string;
-    activeText: string;
-    className?: string;
-    enterDelay?: number;
-    leaveDelay?: number;
-    enterNextDelay?: number;
-}
