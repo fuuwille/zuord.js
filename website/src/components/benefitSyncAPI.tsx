@@ -22,8 +22,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <FeatureField {...(featureFieldProps("integrate"))} /> <FeatureField {...(featureFieldProps("merge"))} /> <FeatureField {...(featureFieldProps("evolve"))} /> <FeatureField {...(featureFieldProps("pick"))} /> <FeatureField {...(featureFieldProps("omit"))} />
-        <FeatureField {...(featureFieldProps("Integrate"))} /> <FeatureField {...(featureFieldProps("Merge"))} /> <FeatureField {...(featureFieldProps("Evolve"))} /> <FeatureField {...(featureFieldProps("Pick"))} /> <FeatureField {...(featureFieldProps("Omit"))} />
+        <FeatureField {...featureFieldProps("integrate")} /> <FeatureField {...featureFieldProps("merge")} /> <FeatureField {...featureFieldProps("evolve")} /> <FeatureField {...featureFieldProps("pick")} /> <FeatureField {...featureFieldProps("omit")} />
+        <FeatureField {...featureFieldProps("Integrate")} /> <FeatureField {...featureFieldProps("Merge")} /> <FeatureField {...featureFieldProps("Evolve")} /> <FeatureField {...featureFieldProps("Pick")} /> <FeatureField {...featureFieldProps("Omit")} />
       </div>
   </div>
 );
