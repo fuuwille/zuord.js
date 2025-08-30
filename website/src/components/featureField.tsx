@@ -15,7 +15,8 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
             enter: 200,
             leave: 100,
             enterNext: 200
-        }
+        },
+        offset: [0, 0]
     },
     className,
     enableFocus = true
@@ -47,7 +48,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
                         {
                             name: 'offset',
                             options: {
-                                offset: [0, 10]
+                                offset: monitor.offset
                             }
                         }
                     ],
