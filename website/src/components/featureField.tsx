@@ -3,7 +3,15 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 
-export const FeatureField: React.FC<FeatureFieldProps> = ({ layoutText, passiveText, activeText, className }) => {
+export const FeatureField: React.FC<FeatureFieldProps> = ({ 
+    layoutText, 
+    passiveText, 
+    activeText, 
+    className,
+    enterDelay = 200,
+    leaveDelay = 100,
+    enterNextDelay = 200
+}) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
     const focused = hovered || tooltip;
@@ -13,9 +21,9 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({ layoutText, passiveT
             title={layoutText} 
             onOpen={() => setTooltip(true)} 
             onClose={() => setTooltip(false)}
-            enterDelay={200}
-            enterNextDelay={200}
-            leaveDelay={100}
+            enterDelay={enterDelay}
+            enterNextDelay={enterNextDelay}
+            leaveDelay={leaveDelay}
         >
             <div 
                 className={clsx(style['feature-field'], focused ? style['focused'] : null, className)}  
@@ -39,4 +47,7 @@ export interface FeatureFieldProps {
     passiveText: string;
     activeText: string;
     className?: string;
+    enterDelay?: number;
+    leaveDelay?: number;
+    enterNextDelay?: number;
 }
