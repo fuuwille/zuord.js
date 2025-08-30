@@ -42,23 +42,23 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   }
 
   return (
-    <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      <span className={style['layout']}>
-        <Tooltip 
-          title={passiveText} 
-          onOpen={() => setTooltip(true)} 
-          onClose={() => setTooltip(false)}
-          enterDelay={250}
-          enterNextDelay={250}
-          leaveDelay={100}
-        >
-          <span className={style['text']}>{passiveText}</span>
-        </Tooltip>
-      </span>
-      <span className={style['visual']}>
-        <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
-        <span className={clsx(style['text'], style['active'])}>{activeText}</span>
-      </span>
-    </div>
+    <Tooltip 
+      title={passiveText} 
+      onOpen={() => setTooltip(true)} 
+      onClose={() => setTooltip(false)}
+      enterDelay={250}
+      enterNextDelay={250}
+      leaveDelay={100}
+    >
+      <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}  onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <span className={style['layout']}>
+            <span className={style['text']}>{passiveText}</span>
+        </span>
+        <span className={style['visual']}>
+          <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
+          <span className={clsx(style['text'], style['active'])}>{activeText}</span>
+        </span>
+      </div>
+    </Tooltip>
   )
 }
