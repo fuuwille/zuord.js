@@ -35,16 +35,6 @@
             background-color: #4A4B4C;
             padding: 0px 10px;
             margin: 3px 2px;
-
-            .first {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-
-            .last {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .box {
@@ -79,6 +69,18 @@
                     opacity: 0;
                     white-space: nowrap;
                 }
+            }
+        }
+
+        .box.box:has(.layout:hover) {
+            .first {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            .last {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
