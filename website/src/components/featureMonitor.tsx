@@ -16,7 +16,7 @@ export const FeatureMonitor: React.FC<FeatureMonitorProps> = ({
                 <div className={clsx(style['view'])}>
                     A
                 </div>
-                <Divider orientation="vertical" {...dividerProps('vertical')} />
+                <Divider {...dividerProps('vertical')} />
                 <div className={clsx(style['analyze'])}>
                     B
                 </div>
