@@ -16,7 +16,7 @@
         justify-content: space-between;
         width: 280px;
 
-        .button {
+        .box {
             background-color: #3A3B3C;
             border-radius: 8px;
             padding: 0 8px;
@@ -29,15 +29,15 @@
             font-weight: 500;
         }
 
-        .button-js {
+        .runtime {
             color: #caca9d;
         }
 
-        .button-dts {
+        .type {
             color: #4ec9b0;
         }
 
-        .button:hover {
+        .box:hover {
             padding: 0 12px;
             margin: 0 4px;
         }
