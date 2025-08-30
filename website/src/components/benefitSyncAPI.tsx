@@ -35,7 +35,8 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div className={clsx(style['box'], style[type])}>
-      {`.${text}`}
+      <span className={style['passive']}>{`.${text}`}</span>
+      <span className={style['active']}>Yeni Yazı</span>
     </div>
   )
 }
