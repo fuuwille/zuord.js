@@ -29,7 +29,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({ text, className }) =
             leaveDelay={100}
         >
         <div 
-            className={clsx(style['box'], style[type], focused ? style['focused'] : null)}  
+            className={clsx(style['feature-field'], style[type], focused ? style['focused'] : null, className)}  
             onMouseEnter={() => setHovered(true)} 
             onMouseLeave={() => setHovered(false)}
         >
