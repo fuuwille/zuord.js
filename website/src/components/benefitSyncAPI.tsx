@@ -1,9 +1,7 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
-import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
-import { Tooltip } from '@mui/material';
 import { FeatureField } from './featureField';
 
 export const BenefitSyncAPI: React.FC = () => (  
