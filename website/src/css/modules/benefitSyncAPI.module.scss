@@ -69,25 +69,25 @@
                     white-space: nowrap;
                 }
 
-                .first {
+                .passive {
                     opacity: 1;
                     transform: translateX(0);
                 }
 
-                .last {
-                    transform: translateX(100%);
+                .active {
                     opacity: 0;
+                    transform: translateX(100%);
                 }
             }
         }
 
         .box:has(.layout:hover) {
-            .first {
+            .passive {
                 opacity: 0;
                 transform: translateX(-100%);
             }
 
-            .last {
+            .active {
                 opacity: 1;
                 transform: translateX(0);
             }
