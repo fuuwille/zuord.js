@@ -1,4 +1,5 @@
 export interface FeatureFieldProps {
+    tooltip?: React.ReactNode;
     layoutText: string;
     passiveText: string;
     activeText: string;
