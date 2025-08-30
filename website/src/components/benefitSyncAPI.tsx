@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/types/codeToken';
 import { FeatureField } from './featureField';
+import { FeatureMonitor } from './featureMonitor';
 
 export const featureFieldProps = (text: string) => {
   const runtime = text[0] === text[0].toLowerCase();
@@ -13,7 +14,16 @@ export const featureFieldProps = (text: string) => {
       passive: `.${text}`,
       active: runtime ? `${text}()` : `${text}<>`,
     },
-    className: runtime ? style['runtime'] : style['type']
+    className: runtime ? style['runtime'] : style['type'],
+    monitor: {
+              node: <FeatureMonitor />,
+              delay: {
+                  enter: 200,
+                  leave: 100,
+                  enterNext: 200
+              },
+              offset: [0, runtime ? 30 : 0] as [number, number]
+    }
   };
 }
 
