@@ -27,6 +27,17 @@
             user-select: none;
             transition: all 0.25s ease;
             font-weight: 500;
+            position: relative;
+
+            .layout {
+                display: inline-block;
+                visibility: hidden;
+            }
+
+            .visual {
+                position: absolute;
+                top: 0; left: 0;
+            }
         }
 
         .box:hover {
