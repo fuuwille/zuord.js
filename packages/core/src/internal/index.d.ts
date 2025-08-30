@@ -1,1 +1,1 @@
-export { $zuordCore, $ZuordCore } from "./zuord";
+export { $zuordCore, $ZuordCore } from "./zuord/index.js";
