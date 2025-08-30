@@ -10,16 +10,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <Button text="integrate" />
-        <Button text="merge" />
-        <Button text="evolve" />
-        <Button text="pick" />
-        <Button text="omit" />
-        <Button text="Integrate" />
-        <Button text="Merge" />
-        <Button text="Evolve" />
-        <Button text="Pick" />
-        <Button text="Omit" />
+        <Button text="integrate" /> <Button text="merge" /> <Button text="evolve" /> <Button text="pick" /> <Button text="omit" />
+        <Button text="Integrate" /> <Button text="Merge" /> <Button text="Evolve" /> <Button text="Pick" /> <Button text="Omit" />
       </div>
   </div>
 );
