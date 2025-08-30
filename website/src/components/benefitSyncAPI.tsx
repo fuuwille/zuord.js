@@ -1,5 +1,5 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
@@ -28,6 +28,11 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 const Box: React.FC<{ text: string }> = ({ text }) => {
   const [hovered, setHovered] = useState(false);
   const [tooltip, setTooltip] = useState(false);
+  const featured = useRef(false);
+
+  useEffect(() => {
+    featured.current = hovered || tooltip;
+  }, [hovered, tooltip]);
 
   let type, passiveText = `.${text}`, activeText;
 
