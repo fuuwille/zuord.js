@@ -8,6 +8,15 @@ export const FeatureMonitor: React.FC = ({
             <div className={clsx(style['title'])}>
 
             </div>
+            <div className={clsx(style['content'])}>
+                <div className={clsx(style['view'])}>
+
+                </div>
+
+                <div className={clsx(style['analyze'])}>
+
+                </div>
+            </div>
         </div>
     );
 }
