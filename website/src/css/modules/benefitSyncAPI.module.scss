@@ -29,7 +29,25 @@
             position: relative;
             padding: 0px 8px;
             margin: 3px 4px;
+        }
 
+        .box:has(.layout:hover) {
+            background-color: #4A4B4C;
+            padding: 0px 10px;
+            margin: 3px 2px;
+
+            .first {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            .last {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .box {
             .layout {
                 display: inline-block;
                 position: relative;
@@ -61,22 +79,6 @@
                     opacity: 0;
                     white-space: nowrap;
                 }
-            }
-        }
-
-        .box:has(.layout:hover) {
-            background-color: #4A4B4C;
-            padding: 0px 10px;
-            margin: 3px 2px;
-
-            .first {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-
-            .last {
-                opacity: 1;
-                transform: translateX(0);
             }
         }
 
