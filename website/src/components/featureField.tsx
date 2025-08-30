@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 
-const FeatureField: React.FC<{ text: string }> = ({ text }) => {
+export const FeatureField: React.FC<{ text: string }> = ({ text }) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
     const focused = hovered || tooltip;
