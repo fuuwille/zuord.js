@@ -10,12 +10,13 @@
     .navbar {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        
+        width: 280px;
 
         align-items: center;
         justify-content: space-between;
-        width: 280px;
+    }
 
+    .navbar {
         .box {
             background-color: #3A3B3C;
             border-radius: 8px;
