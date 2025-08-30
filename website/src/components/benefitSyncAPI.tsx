@@ -35,14 +35,14 @@ const Button: React.FC<{ text: string }> = ({ text }) => {
   let type;
 
   if(text[0] === text[0].toLowerCase()) {
-    type = 'js';
+    type = 'runtime';
   }
   else {
-    type = 'dts';
+    type = 'type';
   }
 
   return (
-    <div className={clsx(style['button'], style[`button-${type}`])}>
+    <div className={clsx(style['box'], style[type])}>
       {`.${text}`}
     </div>
   )
