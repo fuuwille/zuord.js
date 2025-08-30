@@ -16,7 +16,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
 }) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
-    const focused = hovered || tooltip || enableFocus;
+    const focused = enableFocus && (hovered || tooltip);
 
     return (
         <Tooltip 
