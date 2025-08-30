@@ -11,11 +11,12 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     className,
     enterDelay = 200,
     leaveDelay = 100,
-    enterNextDelay = 200
+    enterNextDelay = 200,
+    enableFocus = true
 }) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
-    const focused = hovered || tooltip;
+    const focused = hovered || tooltip || enableFocus;
 
     return (
         <Tooltip 

@@ -6,4 +6,5 @@ export interface FeatureFieldProps {
     enterDelay?: number;
     leaveDelay?: number;
     enterNextDelay?: number;
+    enableFocus?: boolean;
 }
