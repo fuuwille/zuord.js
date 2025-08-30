@@ -52,6 +52,13 @@
             }
         }
 
+        .box:has(.layout:hover) {
+            .last {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .runtime {
             color: #caca9d;
         }
