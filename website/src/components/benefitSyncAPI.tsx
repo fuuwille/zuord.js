@@ -10,8 +10,7 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <Box text="integrate" /> <Box text="merge" /> <Box text="evolve" /> <Box text="pick" /> <Box text="omit" />
-        <Box text="Integrate" /> <Box text="Merge" /> <Box text="Evolve" /> <Box text="Pick" /> <Box text="Omit" />
+        <Box text="integrate" /> 
       </div>
   </div>
 );
@@ -35,7 +34,9 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div className={clsx(style['box'], style[type])}>
-      <span className={style['layout']}>{text}</span>
+      <span className={style['layout']}>
+        <span className={style['text']}>{text}</span>
+      </span>
       <span className={style['visual']}>
         <span className={clsx(style['text'], style['first'])}>{`.${text}`}</span>
         <span className={clsx(style['text'], style['last'])}>{`${text}()`}</span>
