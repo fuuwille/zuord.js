@@ -1,2 +1,2 @@
-export { $zuordCore } from "./internal";
-export { zuordCore } from "./main";
+export { $zuordCore } from "./internal/index.js";
+export { zuordCore } from "./main/index.js";
