@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
 import { Tooltip } from '@mui/material';
+import { FeatureField } from './featureField';
 
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
@@ -12,8 +13,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <Box text="integrate" /> <Box text="merge" /> <Box text="evolve" /> <Box text="pick" /> <Box text="omit" />
-        <Box text="Integrate" /> <Box text="Merge" /> <Box text="Evolve" /> <Box text="Pick" /> <Box text="Omit" />
+        <FeatureField text="integrate" className={style['runtime']} /> <FeatureField text="merge" className={style['runtime']} /> <FeatureField text="evolve" className={style['runtime']} /> <FeatureField text="pick" className={style['runtime']} /> <FeatureField text="omit" className={style['runtime']} />
+        <FeatureField text="Integrate" className={style['type']} /> <FeatureField text="Merge" className={style['type']} /> <FeatureField text="Evolve" className={style['type']} /> <FeatureField text="Pick" className={style['type']} /> <FeatureField text="Omit" className={style['type']} />
       </div>
   </div>
 );
@@ -24,45 +25,3 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
     props: { Wrapper: ({ text }) => <span className={style['runtime-import-zuord']}>{text}</span> }
   }
 ]
-
-const Box: React.FC<{ text: string }> = ({ text }) => {
-  const [hovered, setHovered] = useState(false);
-  const [tooltip, setTooltip] = useState(false);
-  const featured = hovered || tooltip;
-  
-  let type, passiveText = `.${text}`, activeText;
-
-  if(text[0] === text[0].toLowerCase()) {
-    type = 'runtime';
-    activeText = `${text}()`;
-  }
-  else {
-    type = 'type';
-    activeText = `${text}<>`;
-  }
-
-  return (
-    <Tooltip 
-      title={passiveText} 
-      onOpen={() => setTooltip(true)} 
-      onClose={() => setTooltip(false)}
-      enterDelay={200}
-      enterNextDelay={200}
-      leaveDelay={100}
-    >
-      <div 
-        className={clsx(style['box'], style[type], featured ? style['featured'] : null)}  
-        onMouseEnter={() => setHovered(true)} 
-        onMouseLeave={() => setHovered(false)}
-      >
-        <span className={style['layout']}>
-            <span className={style['text']}>{passiveText}</span>
-        </span>
-        <span className={style['visual']}>
-          <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
-          <span className={clsx(style['text'], style['active'])}>{activeText}</span>
-        </span>
-      </div>
-    </Tooltip>
-  )
-}
