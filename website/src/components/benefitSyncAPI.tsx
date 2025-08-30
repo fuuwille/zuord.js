@@ -48,6 +48,9 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
           title={passiveText} 
           onOpen={() => setTooltip(true)} 
           onClose={() => setTooltip(false)}
+          enterDelay={250}
+          enterNextDelay={250}
+          leaveDelay={100}
         >
           <span className={style['text']}>{passiveText}</span>
         </Tooltip>
