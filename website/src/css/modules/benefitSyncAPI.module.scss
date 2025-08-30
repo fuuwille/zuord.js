@@ -30,6 +30,8 @@
 
             .layout {
                 display: inline-block;
+                position: relative;
+                z-index: 100;
                 opacity: 0;
             }
 
