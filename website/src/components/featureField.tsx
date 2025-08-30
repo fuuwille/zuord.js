@@ -23,6 +23,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
     return (
         <Tooltip 
             title={monitor} 
+            open={tooltip}
             onOpen={() => setTooltip(true)} 
             onClose={() => setTooltip(false)}
             enterDelay={enterDelay}
