@@ -36,7 +36,7 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className={clsx(style['box'], style[type])}>
       <span className={clsx(style['text'], style['passive'])}>{`.${text}`}</span>
-      <span className={clsx(style['text'], style['active'])}>Yeni Yazı</span>
+      <span className={clsx(style['text'], style['active'])}>YeniYazı</span>
     </div>
   )
 }
