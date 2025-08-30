@@ -29,17 +29,17 @@
             font-weight: 500;
         }
 
+        .box:hover {
+            padding: 0 12px;
+            margin: 0 4px;
+        }
+
         .runtime {
             color: #caca9d;
         }
 
         .type {
             color: #4ec9b0;
-        }
-
-        .box:hover {
-            padding: 0 12px;
-            margin: 0 4px;
         }
     }
 }
