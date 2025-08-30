@@ -66,12 +66,17 @@
                     width: 100%;
                     text-align: center;
                     transition: all 0.30s ease-in-out;
+                    white-space: nowrap;
+                }
+
+                .first {
+                    opacity: 1;
+                    transform: translateX(0);
                 }
 
                 .last {
                     transform: translateX(100%);
                     opacity: 0;
-                    white-space: nowrap;
                 }
             }
         }
