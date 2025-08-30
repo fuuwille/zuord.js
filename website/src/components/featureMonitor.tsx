@@ -27,5 +27,10 @@ export const FeatureMonitor: React.FC<FeatureMonitorProps> = ({
 
 const dividerProps = (horizontal: 'horizontal' | 'vertical') => ({
     orientation: horizontal,
-    flexItem: true
+    flexItem: true,
+    sx: {
+        width: horizontal === 'horizontal' ? '100%' : '1px',
+        height: horizontal === 'horizontal' ? '1px' : '100%',
+        backgroundColor: '#444950',
+    }
 });
