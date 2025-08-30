@@ -35,10 +35,10 @@ const Button: React.FC<{ text: string }> = ({ text }) => {
   let type;
 
   if(text[0] === text[0].toLowerCase()) {
-    type = 'dts';
+    type = 'js';
   }
   else {
-    type = 'js';
+    type = 'dts';
   }
 
   return (
