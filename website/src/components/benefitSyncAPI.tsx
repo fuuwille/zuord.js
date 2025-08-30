@@ -23,7 +23,7 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 ]
 
 const Box: React.FC<{ text: string }> = ({ text }) => {
-  let type;
+  let type, firstText = `.${text}`;
 
   if(text[0] === text[0].toLowerCase()) {
     type = 'runtime';
@@ -35,10 +35,10 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className={clsx(style['box'], style[type])}>
       <span className={style['layout']}>
-        <span className={style['text']}>{text}</span>
+        <span className={style['text']}>{firstText}</span>
       </span>
       <span className={style['visual']}>
-        <span className={clsx(style['text'], style['first'])}>{`.${text}`}</span>
+        <span className={clsx(style['text'], style['first'])}>{firstText}</span>
         <span className={clsx(style['text'], style['last'])}>{`${text}()`}</span>
       </span>
     </div>
