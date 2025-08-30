@@ -1,6 +1,7 @@
 import style from '@site/src/css/modules/featureMonitor.module.scss';
 import clsx from "clsx";
 import { FeatureMonitorProps } from '@site/src/types/featureMonitor';
+import { Divider } from '@mui/material';
 
 export const FeatureMonitor: React.FC<FeatureMonitorProps> = ({ 
     title = "Feature Monitor"
@@ -12,11 +13,11 @@ export const FeatureMonitor: React.FC<FeatureMonitorProps> = ({
             </div>
             <div className={clsx(style['content'])}>
                 <div className={clsx(style['view'])}>
-
+                    A
                 </div>
-
+                <Divider orientation="vertical" flexItem />
                 <div className={clsx(style['analyze'])}>
-
+                    B
                 </div>
             </div>
         </div>
