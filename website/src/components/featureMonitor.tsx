@@ -11,6 +11,7 @@ export const FeatureMonitor: React.FC<FeatureMonitorProps> = ({
             <div className={clsx(style['title'])}>
                 {title}
             </div>
+            <Divider orientation="horizontal" flexItem />
             <div className={clsx(style['content'])}>
                 <div className={clsx(style['view'])}>
                     A
