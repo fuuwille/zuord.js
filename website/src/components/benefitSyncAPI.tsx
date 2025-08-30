@@ -3,6 +3,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
+import { Tooltip } from '@mui/material';
 
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
@@ -41,7 +42,9 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   return (
     <div className={clsx(style['box'], style[type], hovered ? style['featured'] : null)}>
       <span className={style['layout']} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <span className={style['text']}>{passiveText}</span>
+        <Tooltip title={passiveText}>
+          <span className={style['text']}>{passiveText}</span>
+        </Tooltip>
       </span>
       <span className={style['visual']}>
         <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
