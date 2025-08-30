@@ -6,9 +6,11 @@ import { FeatureFieldProps } from '@site/src/types/featureField';
 import { FeatureMonitor } from './featureMonitor';
 
 export const FeatureField: React.FC<FeatureFieldProps> = ({ 
-    layoutText, 
-    passiveText, 
-    activeText, 
+    text = {
+        layout: '',
+        passive: '',
+        active: ''
+    },
     monitor = { 
         node: <FeatureMonitor />,
         delay: {
@@ -61,11 +63,11 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
                 onMouseLeave={() => setHovered(false)}
             >
                 <span className={style['layout']}>
-                    <span className={style['text']}>{layoutText}</span>
+                    <span className={style['text']}>{text.layout}</span>
                 </span>
                 <span className={style['visual']}>
-                    <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
-                    <span className={clsx(style['text'], style['active'])}>{activeText}</span>
+                    <span className={clsx(style['text'], style['passive'])}>{text.passive}</span>
+                    <span className={clsx(style['text'], style['active'])}>{text.active}</span>
                 </span>
             </div>
         </Tooltip>

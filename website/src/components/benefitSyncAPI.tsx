@@ -8,9 +8,11 @@ export const featureFieldProps = (text: string) => {
   const runtime = text[0] === text[0].toLowerCase();
 
   return {
-    layoutText: `.${text}`,
-    passiveText: `.${text}`,
-    activeText: runtime ? `${text}()` : `${text}<>`,
+    text: {
+      layout: `.${text}`,
+      passive: `.${text}`,
+      active: runtime ? `${text}()` : `${text}<>`,
+    },
     className: runtime ? style['runtime'] : style['type']
   };
 }

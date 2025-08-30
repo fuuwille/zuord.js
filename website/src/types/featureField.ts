@@ -1,11 +1,14 @@
 export interface FeatureFieldProps {
-    layoutText: string;
-    passiveText: string;
-    activeText: string;
-
+    text: FeatureFieldText;
     monitor?: FeatureFieldMonitor;
     className?: string;
     enableFocus?: boolean;
+}
+
+export interface FeatureFieldText {
+    layout: string;
+    passive: string;
+    active: string;
 }
 
 export interface FeatureFieldMonitor {
