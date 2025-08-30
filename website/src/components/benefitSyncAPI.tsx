@@ -32,8 +32,14 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 ]
 
 const Button: React.FC<{ text: string }> = ({ text }) => {
+  let type = 'js';
+
+  if(text[0] === text[0].toUpperCase()) {
+    type = 'dts';
+  }
+
   return (
-    <div className={clsx(style['button'], style['button-js'])}>
+    <div className={clsx(style['button'], style[`button-${type}`])}>
       {text}
     </div>
   )
