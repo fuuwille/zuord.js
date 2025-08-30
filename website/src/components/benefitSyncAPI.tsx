@@ -25,7 +25,7 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
 ]
 
 const Box: React.FC<{ text: string }> = ({ text }) => {
-  const [featured, setFeatured] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   let type, passiveText = `.${text}`, activeText;
 
@@ -39,8 +39,8 @@ const Box: React.FC<{ text: string }> = ({ text }) => {
   }
 
   return (
-    <div className={clsx(style['box'], style[type], featured ? style['featured'] : null)}>
-      <span className={style['layout']} onMouseEnter={() => setFeatured(true)} onMouseLeave={() => setFeatured(false)}>
+    <div className={clsx(style['box'], style[type], hovered ? style['featured'] : null)}>
+      <span className={style['layout']} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <span className={style['text']}>{passiveText}</span>
       </span>
       <span className={style['visual']}>
