@@ -3,23 +3,14 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 
-export const FeatureField: React.FC<FeatureFieldProps> = ({ text, className }) => {
+export const FeatureField: React.FC<FeatureFieldProps> = ({ layoutText, passiveText, activeText, className }) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
     const focused = hovered || tooltip;
 
-    let type, passiveText = `.${text}`, activeText;
-
-    if(text[0] === text[0].toLowerCase()) {
-        activeText = `${text}()`;
-    }
-    else {
-        activeText = `${text}<>`;
-    }
-
     return (
         <Tooltip 
-            title={passiveText} 
+            title={layoutText} 
             onOpen={() => setTooltip(true)} 
             onClose={() => setTooltip(false)}
             enterDelay={200}
@@ -32,7 +23,7 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({ text, className }) =
                 onMouseLeave={() => setHovered(false)}
             >
                 <span className={style['layout']}>
-                    <span className={style['text']}>{passiveText}</span>
+                    <span className={style['text']}>{layoutText}</span>
                 </span>
                 <span className={style['visual']}>
                     <span className={clsx(style['text'], style['passive'])}>{passiveText}</span>
@@ -44,6 +35,8 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({ text, className }) =
 }
 
 export interface FeatureFieldProps {
-    text: string;
+    layoutText: string;
+    passiveText: string;
+    activeText: string;
     className?: string;
 }

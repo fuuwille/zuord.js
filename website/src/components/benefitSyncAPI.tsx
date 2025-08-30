@@ -4,6 +4,17 @@ import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/data/code';
 import { FeatureField } from './featureField';
 
+export const featureFieldProps = (text: string) => {
+  const runtime = text[0] === text[0].toLowerCase();
+
+  return {
+    layoutText: `.${text}`,
+    passiveText: `.${text}`,
+    activeText: runtime ? `${text}()` : `${text}<>`,
+    className: runtime ? style['runtime'] : style['type']
+  };
+}
+
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['imports']}>
@@ -11,8 +22,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <FeatureField text="integrate" className={style['runtime']} /> <FeatureField text="merge" className={style['runtime']} /> <FeatureField text="evolve" className={style['runtime']} /> <FeatureField text="pick" className={style['runtime']} /> <FeatureField text="omit" className={style['runtime']} />
-        <FeatureField text="Integrate" className={style['type']} /> <FeatureField text="Merge" className={style['type']} /> <FeatureField text="Evolve" className={style['type']} /> <FeatureField text="Pick" className={style['type']} /> <FeatureField text="Omit" className={style['type']} />
+        <FeatureField {...(featureFieldProps("integrate"))} /> <FeatureField {...(featureFieldProps("merge"))} /> <FeatureField {...(featureFieldProps("evolve"))} /> <FeatureField {...(featureFieldProps("pick"))} /> <FeatureField {...(featureFieldProps("omit"))} />
+        <FeatureField {...(featureFieldProps("Integrate"))} /> <FeatureField {...(featureFieldProps("Merge"))} /> <FeatureField {...(featureFieldProps("Evolve"))} /> <FeatureField {...(featureFieldProps("Pick"))} /> <FeatureField {...(featureFieldProps("Omit"))} />
       </div>
   </div>
 );
@@ -23,3 +34,4 @@ export const runtimeImportModifiers: CodeTokenModifier[] = [
     props: { Wrapper: ({ text }) => <span className={style['runtime-import-zuord']}>{text}</span> }
   }
 ]
+
