@@ -29,6 +29,16 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
             enterDelay={enterDelay}
             enterNextDelay={enterNextDelay}
             leaveDelay={leaveDelay}
+            componentsProps={{
+    tooltip: {
+      sx: {
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        padding: 0,
+        color: 'inherit',
+      }
+    }
+  }}
         >
             <div 
                 className={clsx(style['feature-field'], focused ? style['focused'] : null, className)}  
