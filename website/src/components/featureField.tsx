@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 
-export const FeatureField: React.FC<FeatureFieldProps> = ({ text }) => {
+export const FeatureField: React.FC<FeatureFieldProps> = ({ text, className }) => {
     const [hovered, setHovered] = useState(false);
     const [tooltip, setTooltip] = useState(false);
     const focused = hovered || tooltip;
@@ -47,4 +47,5 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({ text }) => {
 
 export interface FeatureFieldProps {
     text: string;
+    className?: string;
 }
