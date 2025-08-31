@@ -8,4 +8,4 @@ type zuordCoreAPI = {
 
 export declare const zuordCore: zuordCoreAPI;
 
-export * as ZuordCore from "./index.types";
+export * as ZuordCore from "./index.types.js";
