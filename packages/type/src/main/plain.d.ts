@@ -1,5 +1,5 @@
-import type { array as $array } from "./plain.runtime.js";
-import type { tuple as $tuple } from "./plain.runtime.js";
+import type { array as $array } from "./plain.runtime";
+import type { tuple as $tuple } from "./plain.runtime";
 
 type zuordPlainAPI = {
     array: typeof $array;
@@ -8,4 +8,4 @@ type zuordPlainAPI = {
 
 export declare const zuordPlain: zuordPlainAPI;
 
-export * as ZuordPlain from "./plain.types.js";
+export type * as ZuordPlain from "./plain.types";
