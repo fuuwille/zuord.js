@@ -1,5 +1,5 @@
-export { Eq } from "./eq";
-export { Is} from "./is";
-export { Has } from "./has";
-export { Exclude } from "./exclude";
-export { Extract } from "./extract";
+export type { Eq } from "./eq";
+export type { Is } from "./is";
+export type { Has } from "./has";
+export type { Exclude } from "./exclude";
+export type { Extract } from "./extract";
