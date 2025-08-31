@@ -1,1 +1,0 @@
-export { $zuord } from "./zuord";
