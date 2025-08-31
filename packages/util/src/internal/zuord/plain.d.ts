@@ -1,1 +1,1 @@
-export * as Plain from "./plain.types";
+export type * as Plain from "./plain.types";

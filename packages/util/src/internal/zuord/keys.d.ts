@@ -1,1 +1,1 @@
-export * as Keys from "./keys.types";
+export type * as Keys from "./keys.types";

@@ -1,1 +1,1 @@
-export * as Tuple from "./tuple.types";
+export type * as Tuple from "./tuple.types";

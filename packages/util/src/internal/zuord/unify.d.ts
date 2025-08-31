@@ -1,1 +1,1 @@
-export * as Unify from "./unify.types";
+export type * as Unify from "./unify.types";
