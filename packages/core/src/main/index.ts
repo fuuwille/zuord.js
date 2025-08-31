@@ -1,1 +1,2 @@
-export { zuordCore, ZuordCore } from "./zuord";
+export { zuordCore  } from "./zuord";
+export type { ZuordCore } from "./zuord";
