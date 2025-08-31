@@ -1,1 +1,1 @@
-export * as zuordType from "./type.runtime";
+export * as zuordType from "./type.runtime.js";

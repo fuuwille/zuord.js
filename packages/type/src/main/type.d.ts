@@ -1,8 +1,8 @@
-import type { primitive as $primitive } from "./type.runtime";
-import type { plain as $plain } from "./type.runtime";
-import type { array as $array } from "./type.runtime";
-import type { tuple as $tuple } from "./type.runtime";
-import type { func as $func } from "./type.runtime";
+import type { primitive as $primitive } from "./type.runtime.js";
+import type { plain as $plain } from "./type.runtime.js";
+import type { array as $array } from "./type.runtime.js";
+import type { tuple as $tuple } from "./type.runtime.js";
+import type { func as $func } from "./type.runtime.js";
 
 type zuordTypeAPI = {
     primitive: typeof $primitive;
@@ -14,4 +14,4 @@ type zuordTypeAPI = {
 
 export declare const zuordType: zuordTypeAPI;
 
-export * as ZuordType from "./type.types";
+export * as ZuordType from "./type.types.js";

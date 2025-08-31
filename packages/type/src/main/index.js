@@ -1,4 +1,4 @@
-export { zuordType } from "./type";
-export { zuordPlain } from "./plain";
-export { zuordArray } from "./array";
-export { zuordTuple } from "./tuple";
+export { zuordType } from "./type.js";
+export { zuordPlain } from "./plain.js";
+export { zuordArray } from "./array.js";
+export { zuordTuple } from "./tuple.js";

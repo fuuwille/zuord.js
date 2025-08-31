@@ -1,1 +1,1 @@
-export * as zuordPlain from "./plain.runtime";
+export * as zuordPlain from "./plain.runtime.js";

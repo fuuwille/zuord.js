@@ -1,1 +1,1 @@
-export * as zuordArray from "./array.runtime";
+export * as zuordArray from "./array.runtime.js";
