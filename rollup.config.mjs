@@ -10,7 +10,6 @@ export const rollupConfig = {
     output: {
         dir: 'dist',
         format: 'esm',
-        sourcemap: true,
         preserveModules: true,
     },
     external: [/node_modules/, /^@?zuord\//],
