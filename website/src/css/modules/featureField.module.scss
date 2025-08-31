@@ -63,13 +63,15 @@
 }
 
 .feature-field.focused {
-    .passive {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
+    .visual {
+        .passive {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
 
-    .active {
-        opacity: 1;
-        transform: translateX(0);
+        .active {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 }
