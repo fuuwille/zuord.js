@@ -1,7 +1,3 @@
-import { createConfig } from '../../rollup.config.mjs';
-import glob from 'fast-glob';
+import { rollupConfig } from '../../rollup.config.mjs';
 
-export default createConfig({
-    tsconfig: './tsconfig-dist.json',
-    input: await glob(['src/**/*.ts', '!src/**/*.types.ts', '!**/*.d.ts'])
-});
+export default rollupConfig;
