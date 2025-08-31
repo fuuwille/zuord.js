@@ -1,1 +1,1 @@
-export * as Union from './union.types';
+export type * as Union from './union.types';
