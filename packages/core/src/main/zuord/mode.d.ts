@@ -1,5 +1,5 @@
-import { flags as $flags } from "./mode.runtime";
-import { resolve as $resolve } from "./mode.runtime";
+import type { flags as $flags } from "./mode.runtime";
+import type { resolve as $resolve } from "./mode.runtime";
 
 type modeAPI = {
     flags: typeof $flags;
@@ -8,4 +8,4 @@ type modeAPI = {
 
 export declare const mode: modeAPI;
 
-export * as Mode from "./mode.types";
+export type * as Mode from "./mode.types";
