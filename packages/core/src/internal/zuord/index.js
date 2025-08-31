@@ -1,1 +1,0 @@
-export * as $zuordCore from "./index.runtime.js";

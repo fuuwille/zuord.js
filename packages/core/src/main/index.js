@@ -1,1 +1,0 @@
-export { zuordCore } from "./zuord/index.js";
