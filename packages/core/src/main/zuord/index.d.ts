@@ -1,5 +1,5 @@
-import { mode as $mode } from "./index.runtime.js";
-import { flags as $flags } from "./index.runtime.js";
+import { mode as $mode } from "./index.runtime";
+import { flags as $flags } from "./index.runtime";
 
 type zuordCoreAPI = {
     mode: typeof $mode;
@@ -8,4 +8,4 @@ type zuordCoreAPI = {
 
 export declare const zuordCore: zuordCoreAPI;
 
-export * as ZuordCore from "./index.types.js";
+export * as ZuordCore from "./index.types";
