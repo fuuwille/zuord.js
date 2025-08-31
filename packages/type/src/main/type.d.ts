@@ -14,4 +14,4 @@ type zuordTypeAPI = {
 
 export declare const zuordType: zuordTypeAPI;
 
-export * as ZuordType from "./type.types";
+export type * as ZuordType from "./type.types";
