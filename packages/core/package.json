@@ -12,5 +12,8 @@
   ],
   "author": "k4yr2",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "fast-glob": "^3.3.3"
+  }
 }

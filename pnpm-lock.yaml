@@ -94,7 +94,11 @@ importers:
         specifier: 5.0.0-alpha.11
         version: 5.0.0-alpha.11
 
-  packages/core: {}
+  packages/core:
+    devDependencies:
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
 
   packages/trait:
     dependencies:
