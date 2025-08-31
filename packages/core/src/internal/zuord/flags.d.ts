@@ -1,7 +1,7 @@
-import { shallow as $shallow } from "./flags.runtime.js";
-import { concat as $concat } from "./flags.runtime.js";
-import { unique as $unique } from "./flags.runtime.js";
-import { base as $base } from "./flags.runtime.js";
+import { shallow as $shallow } from "./flags.runtime";
+import { concat as $concat } from "./flags.runtime";
+import { unique as $unique } from "./flags.runtime";
+import { base as $base } from "./flags.runtime";
 
 type flagsAPI = {
     readonly shallow: typeof $shallow;
@@ -12,4 +12,4 @@ type flagsAPI = {
 
 export declare const flags: flagsAPI;
 
-export * as Flags from "./flags.types.js";
+export * as Flags from "./flags.types";
