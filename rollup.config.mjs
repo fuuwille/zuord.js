@@ -16,7 +16,9 @@ export const rollupConfig = {
         resolve({
             extensions: ['.js', '.ts']
         }),
-        tsconfigPaths({ tsConfigPath: './tsconfig-dist.json' }),
-        typescript({ tsconfig: './tsconfig-dist.json' }),
+        tsconfigPaths({ tsConfigPath: tscDistPath }),
+        typescript({ tsconfig: tscDistPath }),
     ],
 }
+
+export const tscDistPath = './tsconfig-dist.json';
