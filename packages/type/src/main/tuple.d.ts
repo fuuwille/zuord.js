@@ -1,6 +1,6 @@
-import type { first as $first } from "./tuple.runtime.js";
-import type { last as $last } from "./tuple.runtime.js";
-import type { nest as $nest } from "./tuple.runtime.js";
+import type { first as $first } from "./tuple.runtime";
+import type { last as $last } from "./tuple.runtime";
+import type { nest as $nest } from "./tuple.runtime";
 
 type zuordTupleAPI = {
     first: typeof $first;
@@ -10,4 +10,4 @@ type zuordTupleAPI = {
 
 export declare const zuordTuple: zuordTupleAPI;
 
-export * as ZuordTuple from "./tuple.types.js";
+export type * as ZuordTuple from "./tuple.types";
