@@ -1,2 +1,2 @@
-export { $ZuordTrait } from "./internal";
-export { ZuordTrait } from "./main";
+export type { $ZuordTrait } from "./internal";
+export type { ZuordTrait } from "./main";
