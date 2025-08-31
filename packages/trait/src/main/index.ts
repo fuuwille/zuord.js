@@ -1,1 +1,1 @@
-export { ZuordTrait } from "./zuord";
+export type { ZuordTrait } from "./zuord";
