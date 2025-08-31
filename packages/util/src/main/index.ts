@@ -1,1 +1,1 @@
-export { ZuordUtil } from "./zuord";
+export type { ZuordUtil } from "./zuord";
