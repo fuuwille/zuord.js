@@ -1,1 +1,1 @@
-export * as Eq from "./eq.types";
+export type * as Eq from "./eq.types";

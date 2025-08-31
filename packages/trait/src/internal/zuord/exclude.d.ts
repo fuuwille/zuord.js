@@ -1,1 +1,1 @@
-export * as Exclude from "./exclude.types";
+export type * as Exclude from "./exclude.types";

@@ -1,1 +1,1 @@
-export * as Extract from "./extract.types";
+export type * as Extract from "./extract.types";
