@@ -1,2 +1,2 @@
-export { Mode } from "./mode";
-export { Flags } from "./flags";
+export type { Mode } from "./mode";
+export type { Flags } from "./flags";
