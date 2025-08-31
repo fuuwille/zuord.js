@@ -1,3 +1,2 @@
 export * as mode from "./mode.runtime";
-
-export * as Mode from "./mode.types";
+export type * as Mode from "./mode.types";
