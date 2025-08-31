@@ -2,7 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import tsconfigPaths from "rollup-plugin-tsconfig-paths";
 
-export function createConfig({ input, tsconfig, external = [] }) {
+export function createConfig({ input, tsconfig }) {
     return {
         input,
         output: {
