@@ -1,1 +1,0 @@
-export { zuordType, zuordPlain, zuordArray, zuordTuple } from "./main";
