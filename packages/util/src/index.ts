@@ -1,2 +1,2 @@
-export { $ZuordUtil } from "./internal";
-export { ZuordUtil } from "./main";
+export type { $ZuordUtil } from "./internal";
+export type { ZuordUtil } from "./main";
