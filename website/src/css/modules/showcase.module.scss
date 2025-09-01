@@ -1,4 +1,10 @@
 .showcase {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.showcase {
     .control {
         background-color: #3A3B3C;
         border-radius: 8px;
