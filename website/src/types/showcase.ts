@@ -1,14 +1,8 @@
 import { Ref } from "react";
 
 export type ShowcaseRef = {
-    hovered: {
-        value: ShowcaseControlRef | null;
-        dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
-    }
-    focused: {
-        value: ShowcaseControlRef | null;
-        dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
-    }
+    hovered: ShowcaseControlRef
+    focused: ShowcaseControlRef
 }
 
 export type ShowcaseProps = {
@@ -19,8 +13,15 @@ export type ShowcaseProps = {
 }
 
 export type ShowcaseControlRef = {
-    div: HTMLDivElement | null;
-    id: number;
+    element: HTMLDivElement | null;
+    isHovered: {
+        value: boolean;
+        dispatch: React.Dispatch<React.SetStateAction<boolean>>;
+    },
+    isFocused: {
+        value: boolean;
+        dispatch: React.Dispatch<React.SetStateAction<boolean>>;
+    },
 }
 
 export type ShowcaseControlProps = {

@@ -15,13 +15,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const [hovered, setHovered] = useState<ShowcaseControlRef>(null);
-    const [focused, setFocused] = useState<ShowcaseControlRef>(null);
-
     const ref = useRef<ShowcaseRef>({
-        hovered: { value: hovered, dispatch: setHovered },
-        focused: { value: focused, dispatch: setFocused }
+        hovered: undefined,
+        focused: undefined
     });
+
     return (
         <ShowcaseContext.Provider value={ref.current}>
             <div 
@@ -61,18 +59,28 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     
     const divRef = useRef<HTMLDivElement>(null);
     const controlRef = useRef<ShowcaseControlRef>({
-        div: null,
-        id: props.id
+        element: undefined,
+        isHovered: undefined,
+        isFocused: undefined
     });
     
     const context = useContext(ShowcaseContext);
-    const hovered = false;
-    const focused = false;
+
+    const [hovered, setHovered] = useState(false);
+    const [focused, setFocused] = useState(false);
     const engaged = hovered || focused;
 
     useEffect(() => {
-        controlRef.current.div = divRef.current;
-    }, [divRef]);
+        controlRef.current.element = divRef.current;
+        controlRef.current.isHovered = {
+            value: hovered,
+            dispatch: setHovered
+        };
+        controlRef.current.isFocused = {
+            value: focused,
+            dispatch: setFocused
+        };
+    }, [divRef, hovered, focused]);
 
     return (
         <Tooltip 
@@ -81,13 +89,15 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             arrow
             open={focused}
             onOpen={() => {
-                if(!context.focused.value) {
-                    context.focused.dispatch(controlRef.current)
+                if(!context.focused) {
+                    context.focused = controlRef.current;
+                    context.focused.isFocused.dispatch(true);
                 }
             }}
             onClose={() => {
-                if(context.hovered.value && context.focused.value.id === controlRef.current.id) {
-                    context.focused.dispatch(null);
+                if(context.focused === controlRef.current) {
+                    context.focused.isFocused.dispatch(false);
+                    context.focused = undefined;
                 }
             }}
         >
@@ -95,13 +105,15 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 ref={divRef}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
-                    if(!context.hovered.value) {
-                        context.hovered.dispatch(controlRef.current)
+                    if(!context.hovered) {
+                        context.hovered = controlRef.current;
+                        context.hovered.isHovered.dispatch(true);
                     }
                 }}
                 onMouseLeave={() => {
-                    if(context.hovered.value && context.hovered.value.id === controlRef.current.id) {
-                        context.hovered.dispatch(null);
+                    if(context.hovered === controlRef.current) {
+                        context.hovered.isHovered.dispatch(false);
+                        context.hovered = undefined;
                     }
                 }}
             >
