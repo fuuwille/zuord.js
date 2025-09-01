@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
-import { createContext, useContext, useRef } from 'react';
+import { createContext, useContext, useEffect, useRef } from 'react';
 
 const Context = createContext<ShowcaseContext>(undefined);
 
@@ -20,9 +20,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             focused: null
         }
     });
-
+  
     return (
-        <Context.Provider value={{control: undefined}}>
+        <Context.Provider value={context.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
                 style={{ 
@@ -55,7 +55,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         <div
             ref={ref}
             className={clsx(style['control'], props.style.className)}
-            onMouseEnter={() => context.control.hovered = ref.current}
+            onMouseEnter={() => {context.control.hovered = ref.current}}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
