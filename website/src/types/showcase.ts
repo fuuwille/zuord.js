@@ -1,3 +1,5 @@
+import { Ref } from "react";
+
 export type ShowcaseRef = {
     control: {
         hovered: ShowcaseControlRef | null;
@@ -13,7 +15,7 @@ export type ShowcaseProps = {
 }
 
 export type ShowcaseControlRef = {
-    div: HTMLDivElement | null;
+    div: Ref<HTMLDivElement>;
     hovered: {
         value: boolean;
         dispatch: React.Dispatch<React.SetStateAction<boolean>>;

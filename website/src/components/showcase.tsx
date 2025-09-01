@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseRef, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
+import { ShowcaseRef, ShowcaseProps, ShowcaseControlProps, ShowcaseControlRef } from "@site/src/types/showcase"
 import { zuord } from "zuord"
 import { createContext, useContext, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
@@ -40,7 +40,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(Context);
-    const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<ShowcaseControlRef>(null);
     const [hovered, setHovered] = useState(false);
     const [focused, setFocused] = useState(false);
     const engaged = hovered || focused;
@@ -78,7 +78,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             }}
         >
             <div
-                ref={ref}
+                ref={ref.current.div}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
                     if(mouseLeaveTimeout.current) {
