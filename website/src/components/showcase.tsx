@@ -26,11 +26,13 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         <ShowcaseContext.Provider value={context.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
-                style={{ 
-                    gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
-                }}
             >
-                <div className={style['controls']}>
+                <div 
+                    className={style['controls']}
+                    style={{ 
+                        gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
+                    }}
+                >
                     {props.controls.map((control, index) => (
                         <ShowcaseControl key={index} {...control} />
                     ))}
