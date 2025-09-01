@@ -45,16 +45,29 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const [focused, setFocused] = useState(false);
 
     useEffect(() => {
-        ref.current = {
-            hovered: {
+        if(!ref.current) {
+            ref.current = {
+                hovered: {
+                    value: hovered,
+                    dispatch: setHovered
+                },
+                focused: {
+                    value: focused,
+                    dispatch: setFocused
+                }
+            };
+        }
+        else {
+            ref.current.hovered = {
                 value: hovered,
                 dispatch: setHovered
-            },
-            focused: {
+            };
+
+            ref.current.focused = {
                 value: focused,
                 dispatch: setFocused
-            }
-        };
+            };
+        }
     }, [hovered, setHovered, focused, setFocused]);
 
     const engaged = hovered || focused;
@@ -82,7 +95,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 }
             }}
             onClose={() => {
-                if(context.control.focused === ref.current) {
+                if(ref.current && context.control.focused === ref.current) {
                     context.control.focused = null;
                     setFocused(false);
                 }
@@ -97,7 +110,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                     }
                 }}
                 onMouseLeave={() => {
-                    if(context.control.hovered === ref.current) {
+                    if(ref.current && context.control.hovered === ref.current) {
                         context.control.hovered = null;
                         setHovered(false);
                     }
