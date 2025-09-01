@@ -1,84 +1,86 @@
 .showcase {
-    display: grid;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.showcase {
-    .control {
-        background-color: #3A3B3C;
-        border-radius: 8px;
-        height: 24px;
-        line-height: 24px;
-        font-size: 14px;
-        user-select: none;
-        transition: all 0.30s ease-in-out;
-        font-weight: 500;
-        position: relative;
-        padding: 0px 9px;
-        margin: 3px 5px;
+    .controls {
+        display: grid;
+        align-items: center;
+        justify-content: space-between;
     }
-
-    .control.engaged {
-        background-color: #4A4B4C;
-        padding: 0px 12px;
-        margin: 3px 2px;
-    }
-
-    .control {
-        .layout {
-            display: inline-block;
+    
+    .controls {
+        .control {
+            background-color: #3A3B3C;
+            border-radius: 8px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            user-select: none;
+            transition: all 0.30s ease-in-out;
+            font-weight: 500;
             position: relative;
-            z-index: 100;
-            opacity: 0;
+            padding: 0px 9px;
+            margin: 3px 5px;
         }
 
-        .layout {
-            .text {
-                font-size: 14px;
+        .control.engaged {
+            background-color: #4A4B4C;
+            padding: 0px 12px;
+            margin: 3px 2px;
+        }
+
+        .control {
+            .layout {
+                display: inline-block;
+                position: relative;
+                z-index: 100;
+                opacity: 0;
             }
-        }
 
-        .visual {
-            display: flex;
-            position: absolute;
-            overflow: hidden;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-        }
+            .layout {
+                .text {
+                    font-size: 14px;
+                }
+            }
 
-        .visual {
-            .text {
+            .visual {
+                display: flex;
                 position: absolute;
+                overflow: hidden;
+                top: 0; left: 0;
                 width: 100%;
-                text-align: center;
-                transition: all 0.30s ease-in-out;
-                white-space: nowrap;
+                height: 100%;
             }
 
-            .text.default {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            .visual {
+                .text {
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    transition: all 0.30s ease-in-out;
+                    white-space: nowrap;
+                }
 
-            .text.focused {
-                opacity: 0;
-                transform: translateX(100%);
+                .text.default {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+
+                .text.focused {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
             }
         }
-    }
 
-    .control.engaged {
-        .visual {
-            .text.default {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
+        .control.engaged {
+            .visual {
+                .text.default {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
 
-            .text.focused {
-                opacity: 1;
-                transform: translateX(0);
+                .text.focused {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
             }
         }
     }
