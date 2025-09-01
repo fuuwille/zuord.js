@@ -5,7 +5,7 @@ import { zuord } from "zuord"
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 
-const Context = createContext<ShowcaseRef>(undefined);
+const ShowcaseContext = createContext<ShowcaseRef>(undefined);
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuord.integrate({
@@ -23,7 +23,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     });
   
     return (
-        <Context.Provider value={context.current}>
+        <ShowcaseContext.Provider value={context.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
                 style={{ 
@@ -34,12 +34,12 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     <ShowcaseControl key={index} {...control} />
                 ))}
             </div>
-        </Context.Provider>
+        </ShowcaseContext.Provider>
     )
 }
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
-    const context = useContext(Context);
+    const context = useContext(ShowcaseContext);
     const ref = useRef<ShowcaseControlRef>(null);
     const [hovered, setHovered] = useState(false);
     const [focused, setFocused] = useState(false);
