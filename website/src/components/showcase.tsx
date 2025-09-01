@@ -1,7 +1,7 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseRef, ShowcaseProps, ShowcaseControlProps, ShowcaseControlRef } from "@site/src/types/showcase"
-import { zuord } from "zuord"
+import { zuord, zuordX } from "zuord"
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 
@@ -35,7 +35,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     }}
                 >
                     {props.controls.map((control, index) => (
-                        <ShowcaseControl id={index} key={index} {...control} />
+                        <ShowcaseControl key={index} {...control} />
                     ))}
                 </div>
                 <div
@@ -54,7 +54,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const focused = false;
     const engaged = hovered || focused;
 
-    const props = zuord.integrate({
+    const props = zuordX.integrate.plain.loose({
         text: {
             default: "showcase",
             focused: "showcase X"

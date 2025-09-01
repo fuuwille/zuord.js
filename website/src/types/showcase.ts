@@ -29,11 +29,12 @@ export type ShowcaseControlRef = {
     }
 }
 
-export interface ShowcaseControlProps {
+export type ShowcaseControlProps = {
     text: {
         default: string;
         focused: string;
     },
+    id?: number;
     style?: {
         className?: string;
     }
