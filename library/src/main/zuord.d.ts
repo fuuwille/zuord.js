@@ -1,10 +1,10 @@
-import { integrate as $integrate } from "./zuord.runtime";
-import { integrateArray as $integrateArray } from "./zuord.runtime";
-import { merge as $merge } from "./zuord.runtime";
-import { mergeArray as $mergeArray } from "./zuord.runtime";
-import { evolve as $evolve } from "./zuord.runtime";
-import { pick as $pick } from "./zuord.runtime";
-import { omit as $omit } from "./zuord.runtime";
+import type { integrate as $integrate } from "./zuord.runtime";
+import type { integrateArray as $integrateArray } from "./zuord.runtime";
+import type { merge as $merge } from "./zuord.runtime";
+import type { mergeArray as $mergeArray } from "./zuord.runtime";
+import type { evolve as $evolve } from "./zuord.runtime";
+import type { pick as $pick } from "./zuord.runtime";
+import type { omit as $omit } from "./zuord.runtime";
 
 type zuordAPI = {
     integrate: typeof $integrate;
@@ -18,4 +18,4 @@ type zuordAPI = {
 
 export declare const zuord: zuordAPI;
 
-export * as Zuord from "./zuord.types";
+export type * as Zuord from "./zuord.types";

@@ -1,10 +1,10 @@
-import { integrate as $integrate } from "./mode.runtime";
-import { integrateArray as $integrateArray } from "./mode.runtime";
-import { merge as $merge } from "./mode.runtime";
-import { mergeArray as $mergeArray } from "./mode.runtime";
-import { evolve as $evolve } from "./mode.runtime";
-import { pick as $pick } from "./mode.runtime";
-import { omit as $omit } from "./mode.runtime";
+import type { integrate as $integrate } from "./mode.runtime";
+import type { integrateArray as $integrateArray } from "./mode.runtime";
+import type { merge as $merge } from "./mode.runtime";
+import type { mergeArray as $mergeArray } from "./mode.runtime";
+import type { evolve as $evolve } from "./mode.runtime";
+import type { pick as $pick } from "./mode.runtime";
+import type { omit as $omit } from "./mode.runtime";
 
 type zuordModeAPI = {
     integrate: typeof $integrate;
@@ -18,4 +18,4 @@ type zuordModeAPI = {
 
 export declare const zuordMode: zuordModeAPI;
 
-export * as ZuordMode from "./mode.types";
+export type * as ZuordMode from "./mode.types";

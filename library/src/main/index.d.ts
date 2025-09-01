@@ -1,2 +1,4 @@
-export { zuord, Zuord } from "./zuord";
-export { zuordMode, ZuordMode } from "./mode";
+export { zuord } from "./zuord";
+export { zuordMode } from "./mode";
+export type { Zuord } from "./zuord";
+export type { ZuordMode } from "./mode";
