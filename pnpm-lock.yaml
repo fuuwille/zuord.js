@@ -9,20 +9,20 @@ importers:
   .:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.15
-        version: 3.0.0-alpha.15
+        specifier: 3.0.0-alpha.22
+        version: 3.0.0-alpha.22
       '@zuord/trait':
-        specifier: 3.0.0-alpha.10
-        version: 3.0.0-alpha.10
+        specifier: 3.0.0-alpha.14
+        version: 3.0.0-alpha.14
       '@zuord/type':
-        specifier: 2.0.0-alpha.10
-        version: 2.0.0-alpha.10
+        specifier: 2.0.0-alpha.15
+        version: 2.0.0-alpha.15
       '@zuord/util':
-        specifier: 4.0.0-alpha.10
-        version: 4.0.0-alpha.10
+        specifier: 4.0.0-alpha.13
+        version: 4.0.0-alpha.13
       zuord:
-        specifier: 5.0.0-alpha.11
-        version: 5.0.0-alpha.11
+        specifier: 5.0.0-alpha.14
+        version: 5.0.0-alpha.14
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -6216,6 +6216,9 @@ packages:
 
   zuord@5.0.0-alpha.11:
     resolution: {integrity: sha512-5x0w4aus7/hU2i8AoUC+X69/JnhrvqPt8XxnhnHg3LKd/u4Az7XpsaZgawlHmizIWFyGbOftWpSZoXClhtNwnA==}
+
+  zuord@5.0.0-alpha.14:
+    resolution: {integrity: sha512-W1Jk0kH1rATRyQhylAFv4FMqXlVhnCEvqNLVwWUm+hs5Yhv88bUa7UKvnWKhG5rHZx0xsUuaSjfow1HFCPV1Kw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -13708,5 +13711,12 @@ snapshots:
       '@zuord/trait': 3.0.0-alpha.10
       '@zuord/type': 2.0.0-alpha.10
       '@zuord/util': 4.0.0-alpha.10
+
+  zuord@5.0.0-alpha.14:
+    dependencies:
+      '@zuord/core': 3.0.0-alpha.22
+      '@zuord/trait': 3.0.0-alpha.14
+      '@zuord/type': 2.0.0-alpha.15
+      '@zuord/util': 4.0.0-alpha.13
 
   zwitch@2.0.4: {}

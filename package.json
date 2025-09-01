@@ -3,11 +3,11 @@
   "name": "zuord-monorepo",
   "scripts": {},
   "dependencies": {
-    "@zuord/core": "3.0.0-alpha.15",
-    "@zuord/trait": "3.0.0-alpha.10",
-    "@zuord/type": "2.0.0-alpha.10",
-    "@zuord/util": "4.0.0-alpha.10",
-    "zuord": "5.0.0-alpha.11"
+    "@zuord/core": "3.0.0-alpha.22",
+    "@zuord/trait": "3.0.0-alpha.14",
+    "@zuord/type": "2.0.0-alpha.15",
+    "@zuord/util": "4.0.0-alpha.13",
+    "zuord": "5.0.0-alpha.14"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
