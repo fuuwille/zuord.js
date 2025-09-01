@@ -45,9 +45,6 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const [focused, setFocused] = useState(false);
     const engaged = hovered || focused;
 
-    const mouseEnterTimeout = useRef<NodeJS.Timeout | null>(null);
-    const mouseLeaveTimeout = useRef<NodeJS.Timeout | null>(null);
-
     const props = zuord.integrate({
         text: {
             default: "showcase",
@@ -81,34 +78,16 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 ref={ref.current.div}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
-                    if(mouseLeaveTimeout.current) {
-                        clearTimeout(mouseLeaveTimeout.current);
-                        mouseLeaveTimeout.current = null;
+                    if(!context.control.hovered) {
+                        context.control.hovered = ref.current
+                        setHovered(true);
                     }
-
-                    mouseEnterTimeout.current = setTimeout(() => {
-                        if(!context.control.hovered) {
-                            context.control.hovered = ref.current
-                            setHovered(true);
-                        }
-
-                        mouseEnterTimeout.current = null;
-                    }, context.control.focused ? 300 : 0);
                 }}
                 onMouseLeave={() => {
-                    if(mouseEnterTimeout.current) {
-                        clearTimeout(mouseEnterTimeout.current);
-                        mouseEnterTimeout.current = null;
+                    if(context.control.hovered === ref.current) {
+                        context.control.hovered = null;
+                        setHovered(false);
                     }
-
-                    mouseLeaveTimeout.current = setTimeout(() => {
-                        if(context.control.hovered === ref.current) {
-                            context.control.hovered = null;
-                            setHovered(false);
-                        }
-
-                        mouseLeaveTimeout.current = null;
-                    }, context.control.focused ? 300 : 0);
                 }}
             >
                 <span className={style['layout']}>
