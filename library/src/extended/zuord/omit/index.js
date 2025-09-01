@@ -1,1 +1,0 @@
-export * as omit from "./index.runtime";
