@@ -65,6 +65,9 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     }, $props);
 
     const divRef = useRef<HTMLDivElement>(null);
+    const controlRef = useRef<ShowcaseControlRef>({
+        div: null
+    });
 
     return (
         <Tooltip 
@@ -74,11 +77,11 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             open={focused}
             onOpen={() => {
                 if(!context.focused.value) {
-                    context.focused.dispatch(ref.current)
+                    context.focused.dispatch(controlRef.current)
                 }
             }}
             onClose={() => {
-                if(context.focused.value === ref.current) {
+                if(context.focused.value === controlRef.current) {
                     context.focused.dispatch(null);
                 }
             }}
@@ -88,11 +91,11 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
                     if(!context.hovered.value) {
-                        context.hovered.dispatch(ref.current)
+                        context.hovered.dispatch(controlRef.current)
                     }
                 }}
                 onMouseLeave={() => {
-                    if(context.hovered.value === ref.current) {
+                    if(context.hovered.value === controlRef.current) {
                         context.hovered.dispatch(null);
                     }
                 }}
