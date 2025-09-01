@@ -1,2 +1,2 @@
-export { Plain } from "./plain";
-export { Array } from "./array";
+export type { Plain } from "./plain";
+export type { Array } from "./array";
