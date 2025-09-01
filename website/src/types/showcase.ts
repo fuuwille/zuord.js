@@ -12,6 +12,14 @@ export type ShowcaseProps = {
     }
 }
 
+export type ShowcaseControlRef = {
+    div: HTMLDivElement | null;
+    hovered: {
+        value: boolean;
+        dispatch: React.Dispatch<React.SetStateAction<boolean>>;
+    }
+}
+
 export interface ShowcaseControlProps {
     text: {
         default: string;
