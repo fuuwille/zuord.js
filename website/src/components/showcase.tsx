@@ -15,15 +15,16 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const context = useRef<ShowcaseRef>({
-        control: {
-            hovered: null,
-            focused: null
-        }
+    const [hovered, setHovered] = useState<ShowcaseControlRef>(null);
+    const [focused, setFocused] = useState<ShowcaseControlRef>(null);
+
+    const ref = useRef<ShowcaseRef>({
+        hovered: { value: hovered, dispatch: setHovered },
+        focused: { value: focused, dispatch: setFocused }
     });
-  
+
     return (
-        <ShowcaseContext.Provider value={context.current}>
+        <ShowcaseContext.Provider value={ref.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
             >
@@ -88,30 +89,26 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             arrow
             open={focused}
             onOpen={() => {
-                if(!context.control.focused) {
-                    context.control.focused = ref.current
-                    setFocused(true);
+                if(!context.focused.value) {
+                    context.focused.dispatch(ref.current)
                 }
             }}
             onClose={() => {
-                if(context.control.focused === ref.current) {
-                    context.control.focused = null;
-                    setFocused(false);
+                if(context.focused.value === ref.current) {
+                    context.focused.dispatch(null);
                 }
             }}
         >
             <div
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
-                    if(!context.control.hovered) {
-                        context.control.hovered = ref.current
-                        setHovered(true);
+                    if(!context.hovered.value) {
+                        context.hovered.dispatch(ref.current)
                     }
                 }}
                 onMouseLeave={() => {
-                    if(ref.current && context.control.hovered === ref.current) {
-                        context.control.hovered = null;
-                        setHovered(false);
+                    if(context.hovered.value === ref.current) {
+                        context.hovered.dispatch(null);
                     }
                 }}
             >

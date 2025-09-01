@@ -1,15 +1,13 @@
 import { Ref } from "react";
 
 export type ShowcaseRef = {
-    control: {
-        hovered: {
-            value: ShowcaseControlRef | null;
-            dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
-        }
-        focused: {
-            value: ShowcaseControlRef | null;
-            dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
-        }
+    hovered: {
+        value: ShowcaseControlRef | null;
+        dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
+    }
+    focused: {
+        value: ShowcaseControlRef | null;
+        dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlRef | null>>;
     }
 }
 
