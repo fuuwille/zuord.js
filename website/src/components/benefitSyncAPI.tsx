@@ -26,16 +26,16 @@ export const BenefitSyncAPI: React.FC = () => (
     </div>
       <div className={style['navbar']}>
         <Showcase controls={[
-          { text: { default: ".integrate", focused: "integrate()" } },
-          { text: { default: ".merge", focused: "merge()" } },
-          { text: { default: ".evolve", focused: "evolve()" } },
-          { text: { default: ".pick", focused: "pick()" } },
-          { text: { default: ".omit", focused: "omit()" } },
-          { text: { default: ".Integrate", focused: "Integrate<>" } },
-          { text: { default: ".Merge", focused: "Merge<>" } },
-          { text: { default: ".Evolve", focused: "Evolve<>" } },
-          { text: { default: ".Pick", focused: "Pick<>" } },
-          { text: { default: ".Omit", focused: "Omit<>" } }
+          showcaseControl('integrate'),
+          showcaseControl('merge'),
+          showcaseControl('evolve'),
+          showcaseControl('pick'),
+          showcaseControl('omit'),
+          showcaseControl('Integrate'),
+          showcaseControl('Merge'),
+          showcaseControl('Evolve'),
+          showcaseControl('Pick'),
+          showcaseControl('Omit'),
         ]} style={{ columns: 5 }}/>
       </div>
   </div>
