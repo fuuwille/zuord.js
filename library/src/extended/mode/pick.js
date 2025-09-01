@@ -1,1 +1,0 @@
-export * as pick from "./pick.runtime";
