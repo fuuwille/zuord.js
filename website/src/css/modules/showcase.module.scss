@@ -51,12 +51,12 @@
                 white-space: nowrap;
             }
 
-            .passive {
+            .text.default {
                 opacity: 1;
                 transform: translateX(0);
             }
 
-            .active {
+            .text.focused {
                 opacity: 0;
                 transform: translateX(100%);
             }
@@ -65,12 +65,12 @@
 
     .control.focused {
         .visual {
-            .passive {
+            .text.default {
                 opacity: 0;
                 transform: translateX(-100%);
             }
 
-            .active {
+            .text.focused {
                 opacity: 1;
                 transform: translateX(0);
             }
