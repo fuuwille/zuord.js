@@ -22,7 +22,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         hovered: { value: hovered, dispatch: setHovered },
         focused: { value: focused, dispatch: setFocused }
     });
-
     return (
         <ShowcaseContext.Provider value={ref.current}>
             <div 
@@ -87,7 +86,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 }
             }}
             onClose={() => {
-                if(context.focused.value === controlRef.current) {
+                if(context.hovered.value && context.focused.value.id === controlRef.current.id) {
                     context.focused.dispatch(null);
                 }
             }}
@@ -101,7 +100,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                     }
                 }}
                 onMouseLeave={() => {
-                    if(context.hovered.value === controlRef.current) {
+                    if(context.hovered.value && context.hovered.value.id === controlRef.current.id) {
                         context.hovered.dispatch(null);
                     }
                 }}
