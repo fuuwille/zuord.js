@@ -91,6 +91,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                             context.control.hovered = ref.current
                             setHovered(true);
                         }
+
+                        mouseEnterTimeout.current = null;
                     }, context.control.focused ? 300 : 0);
                 }}
                 onMouseLeave={() => {
@@ -104,6 +106,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                             context.control.hovered = null;
                             setHovered(false);
                         }
+
+                        mouseLeaveTimeout.current = null;
                     }, context.control.focused ? 300 : 0);
                 }}
             >
