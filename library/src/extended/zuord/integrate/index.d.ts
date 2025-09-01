@@ -8,4 +8,4 @@ type integrateAPI = {
 
 export declare const integrate: integrateAPI;
 
-export * as Integrate from "./index.types";
+export type * as Integrate from "./index.types";
