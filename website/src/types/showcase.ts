@@ -1,5 +1,5 @@
 export type ShowcaseProps = {
-    controls: ShowcaseControlData[];
+    controls: ShowcaseControlProps[];
     style?: {
         columns: number;
     }
@@ -12,7 +12,7 @@ export type ShowcaseContext = {
     }
 }
 
-export interface ShowcaseControlData {
+export interface ShowcaseControlProps {
     text: {
         default: string;
         focused: string;
@@ -20,8 +20,4 @@ export interface ShowcaseControlData {
     style?: {
         className?: string;
     }
-}
-
-export interface ShowcaseControlProps extends ShowcaseControlData {
-    context: ShowcaseContext;
 }
