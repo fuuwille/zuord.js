@@ -55,7 +55,10 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         <div
             ref={ref}
             className={clsx(style['control'], props.style.className)}
-            onMouseEnter={() => {context.control.hovered = ref.current}}
+            onMouseEnter={() => {
+                if(!context.control.hovered)
+                    context.control.hovered = ref.current
+            }}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
