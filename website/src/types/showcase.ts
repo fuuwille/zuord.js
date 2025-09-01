@@ -9,7 +9,7 @@ export type ShowcaseContext = {
 
 }
 
-export type ShowcaseControlProps = {
+export interface ShowcaseControlData {
     text: {
         default: string;
         focused: string;
@@ -17,4 +17,8 @@ export type ShowcaseControlProps = {
     style?: {
         className?: string;
     }
+}
+
+export interface ShowcaseControlProps extends ShowcaseControlData {
+    
 }
