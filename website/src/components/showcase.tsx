@@ -6,7 +6,7 @@ export const Showcase: React.FC<ShowcaseProps> = () => {
     )
 }
 
-export const ShowcaseControls: React.FC<ShowcaseControlProps> = () => {
+export const ShowcaseControl: React.FC<ShowcaseControlProps> = () => {
     return (
         null
     )
