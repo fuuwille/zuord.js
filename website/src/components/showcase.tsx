@@ -18,7 +18,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                 gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
             }}
         >
-
+            {props.controls.map((control, index) => (
+                <ShowcaseControl key={index} {...control} />
+            ))}
         </div>
     )
 }
