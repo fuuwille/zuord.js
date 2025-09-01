@@ -9,5 +9,8 @@ export type ShowcaseControlProps = {
     text: {
         default: string;
         focused: string;
+    },
+    style?: {
+        className?: string;
     }
 }
