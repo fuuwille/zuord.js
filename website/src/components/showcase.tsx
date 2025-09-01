@@ -30,12 +30,15 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         text: {
             default: "showcase",
             focused: "showcase X"
+        },
+        style: {
+            className: null
         }
     }, $props);
 
     return (
         <div 
-            className={clsx(style['control'])}
+            className={clsx(style['control'], props.style.className)}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
