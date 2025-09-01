@@ -74,7 +74,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
 
     const [hovered, setHovered] = useState(false);
     const [focused, setFocused] = useState(false);
-    const engaged = hovered || focused;
+    const engaged = hovered || (hovered && focused);
 
     useEffect(() => {
         controlRef.current.element = divRef.current;
@@ -87,6 +87,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             dispatch: setFocused
         };
     }, [divRef, hovered, focused]);
+
+    const mouseEnter = useRef<NodeJS.Timeout | null>(null);
 
     return (
         <Tooltip 
@@ -111,12 +113,17 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 ref={divRef}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
-                    if(context.hovered) {
-                        context.hovered.isHovered.dispatch(false);
+                    mouseEnter.current = setTimeout(() => {
+                        context.hovered?.isHovered.dispatch(false);
+                        context.hovered = controlRef.current;
+                        context.hovered.isHovered.dispatch(true);
+                    }, context.hovered ? 200 : 0);
+                }}
+                onMouseLeave={() => {
+                    if(mouseEnter.current) {
+                        clearTimeout(mouseEnter.current);
+                        mouseEnter.current = null;
                     }
-
-                    context.hovered = controlRef.current;
-                    context.hovered.isHovered.dispatch(true);
                 }}
             >
                 <span className={style['layout']}>
