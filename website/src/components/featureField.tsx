@@ -3,15 +3,16 @@ import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
 import { FeatureFieldProps } from '@site/src/types/featureField';
+import { zuord } from "zuord";
 import { FeatureMonitor } from './featureMonitor';
 
-export const FeatureField: React.FC<FeatureFieldProps> = ({ 
-    text = {
+export const defaultProps = { 
+    text: {
         layout: '',
         passive: '',
         active: ''
     },
-    monitor = { 
+    monitor: { 
         node: <FeatureMonitor />,
         delay: {
             enter: 200,
@@ -20,9 +21,13 @@ export const FeatureField: React.FC<FeatureFieldProps> = ({
         },
         offset: [0, 0]
     },
-    className,
-    enableFocus = true
-}) => {
+    className: null,
+    enableFocus: true
+};
+
+export const FeatureField: React.FC<FeatureFieldProps> = (mode) => {
+    const { text, className, monitor, enableFocus = true } = zuord.integrate(defaultProps, mode);
+
     const [hovered, setHovered] = useState(false);
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const focused = enableFocus && (hovered || tooltipOpen);
