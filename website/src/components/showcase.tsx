@@ -2,7 +2,9 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
-import { useRef } from 'react';
+import { createContext, useRef } from 'react';
+
+const Context = createContext<ShowcaseContext>(undefined);
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuord.integrate({
@@ -20,22 +22,23 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     });
 
     return (
-        <div 
-            className={clsx('showcase', style['showcase'])}
-            style={{ 
-                gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
-            }}
-        >
-            {props.controls.map((control, index) => (
-                <ShowcaseControl context={context.current} key={index} {...control} />
-            ))}
-        </div>
+        <Context.Provider value={{control: undefined}}>
+            <div 
+                className={clsx('showcase', style['showcase'])}
+                style={{ 
+                    gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
+                }}
+            >
+                {props.controls.map((control, index) => (
+                    <ShowcaseControl key={index} {...control} />
+                ))}
+            </div>
+        </Context.Provider>
     )
 }
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const props = zuord.integrate({
-        context: null,
         text: {
             default: "showcase",
             focused: "showcase X"
