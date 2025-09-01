@@ -1,4 +1,4 @@
-import { plain as $plain } from "./omit.runtime";
+import type { plain as $plain } from "./omit.runtime";
 
 type omitAPI = {
     plain: typeof $plain;
@@ -6,4 +6,4 @@ type omitAPI = {
 
 export declare const omit: omitAPI;
 
-export * as Omit from "./omit.types";
+export type * as Omit from "./omit.types";
