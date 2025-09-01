@@ -39,6 +39,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(Context);
+    const ref = useRef<HTMLDivElement>(null);
 
     const props = zuord.integrate({
         text: {
@@ -51,7 +52,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     }, $props);
 
     return (
-        <div 
+        <div
+            ref={ref}
             className={clsx(style['control'], props.style.className)}
         >
             <span className={style['layout']}>
