@@ -1,5 +1,5 @@
 export type ShowcaseProps = {
-    controls: ShowcaseControlProps[];
+    controls: ShowcaseControlData[];
     style?: {
         columns: number;
     }
@@ -20,5 +20,5 @@ export interface ShowcaseControlData {
 }
 
 export interface ShowcaseControlProps extends ShowcaseControlData {
-    
+
 }
