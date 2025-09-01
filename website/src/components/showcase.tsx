@@ -43,6 +43,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const ref = useRef<HTMLDivElement>(null);
     const [hovered, setHovered] = useState(false);
     const [focused, setFocused] = useState(false);
+    const engaged = hovered || focused;
 
     const props = zuord.integrate({
         text: {
@@ -75,7 +76,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         >
             <div
                 ref={ref}
-                className={clsx(style['control'], props.style.className, hovered ? style['hovered'] : null)}
+                className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
                     if(!context.control.hovered) {
                         context.control.hovered = ref.current
