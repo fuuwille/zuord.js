@@ -1,4 +1,4 @@
-import { ZuordModeX } from ".";
+import type { ZuordModeX } from ".";
 
 export type Plain = ZuordModeX.Integrate.Plain;
 

@@ -1,5 +1,5 @@
-export { Integrate } from "./integrate";
-export { Merge } from "./merge";
-export { Evolve } from "./evolve";
-export { Pick } from "./pick";
-export { Omit } from "./omit";
+export type { Integrate } from "./integrate";
+export type { Merge } from "./merge";
+export type { Evolve } from "./evolve";
+export type { Pick } from "./pick";
+export type { Omit } from "./omit";
