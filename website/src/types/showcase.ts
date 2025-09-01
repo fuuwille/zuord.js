@@ -5,6 +5,10 @@ export type ShowcaseProps = {
     }
 }
 
+export type ShowcaseContext = {
+
+}
+
 export type ShowcaseControlProps = {
     text: {
         default: string;
