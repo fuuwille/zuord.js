@@ -85,7 +85,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 }
             }}
             onClose={() => {
-                if(ref.current && context.control.focused === ref.current) {
+                if(context.control.focused === ref.current) {
                     context.control.focused = null;
                     setFocused(false);
                 }
