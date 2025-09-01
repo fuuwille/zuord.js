@@ -6,4 +6,4 @@ type plainAPI = {
 
 export declare const plain: plainAPI;
 
-export * as Plain from "./plain.types";
+export type * as Plain from "./plain.types";

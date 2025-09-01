@@ -8,4 +8,4 @@ type mergeAPI = {
 
 export declare const merge: mergeAPI;
 
-export * as Merge from "./index.types";
+export type * as Merge from "./index.types";
