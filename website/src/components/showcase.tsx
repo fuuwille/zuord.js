@@ -24,6 +24,12 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         <ShowcaseContext.Provider value={ref.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
+                onMouseLeave={() => {
+                    if(ref.current.hovered) {
+                        ref.current.hovered.isHovered.dispatch(false);
+                        ref.current.hovered = undefined;
+                    }
+                }}
             >
                 <div 
                     className={style['controls']}
@@ -105,16 +111,12 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 ref={divRef}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
-                    if(!context.hovered) {
-                        context.hovered = controlRef.current;
-                        context.hovered.isHovered.dispatch(true);
-                    }
-                }}
-                onMouseLeave={() => {
-                    if(context.hovered === controlRef.current) {
+                    if(context.hovered) {
                         context.hovered.isHovered.dispatch(false);
-                        context.hovered = undefined;
                     }
+
+                    context.hovered = controlRef.current;
+                    context.hovered.isHovered.dispatch(true);
                 }}
             >
                 <span className={style['layout']}>
