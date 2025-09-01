@@ -1,4 +1,4 @@
-import { plain as $plain } from "./index.runtime";
+import type { plain as $plain } from "./index.runtime";
 
 type omitAPI = {
     readonly plain: typeof $plain;
@@ -6,4 +6,4 @@ type omitAPI = {
 
 export declare const omit: omitAPI;
 
-export * as Omit from "./index.types";
+export type * as Omit from "./index.types";
