@@ -1,7 +1,7 @@
-export type ShowcaseContext = {
+export type ShowcaseRef = {
     control: {
-        hovered: HTMLDivElement | null;
-        focused: HTMLDivElement | null;
+        hovered: ShowcaseControlRef | null;
+        focused: ShowcaseControlRef | null;
     }
 }
 

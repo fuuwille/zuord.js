@@ -1,11 +1,11 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
+import { ShowcaseRef, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
 import { createContext, useContext, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 
-const Context = createContext<ShowcaseContext>(undefined);
+const Context = createContext<ShowcaseRef>(undefined);
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuord.integrate({
@@ -15,7 +15,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const context = useRef<ShowcaseContext>({
+    const context = useRef<ShowcaseRef>({
         control: {
             hovered: null,
             focused: null
