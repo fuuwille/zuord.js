@@ -37,6 +37,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         <ShowcaseControl key={index} {...control} />
                     ))}
                 </div>
+                <div
+                    className={style['monitor']}
+                >
+
+                </div>
             </div>
         </ShowcaseContext.Provider>
     )
