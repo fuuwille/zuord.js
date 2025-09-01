@@ -81,6 +81,11 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 ref={ref}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
+                    if(mouseLeaveTimeout.current) {
+                        clearTimeout(mouseLeaveTimeout.current);
+                        mouseLeaveTimeout.current = null;
+                    }
+
                     mouseEnterTimeout.current = setTimeout(() => {
                         if(!context.control.hovered) {
                             context.control.hovered = ref.current
@@ -89,6 +94,11 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                     }, context.control.focused ? 300 : 0);
                 }}
                 onMouseLeave={() => {
+                    if(mouseEnterTimeout.current) {
+                        clearTimeout(mouseEnterTimeout.current);
+                        mouseEnterTimeout.current = null;
+                    }
+
                     mouseLeaveTimeout.current = setTimeout(() => {
                         if(context.control.hovered === ref.current) {
                             context.control.hovered = null;
