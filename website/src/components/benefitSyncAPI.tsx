@@ -4,19 +4,16 @@ import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/types/codeToken';
 import { Showcase } from './showcase';
 
-export const featureFieldProps = (text: string) => {
+export const showcaseControl = (text: string) => {
   const runtime = text[0] === text[0].toLowerCase();
 
   return {
     text: {
-      layout: `.${text}`,
-      passive: `.${text}`,
-      active: runtime ? `${text}()` : `${text}<>`,
+      default: `.${text}`,
+      focused: runtime ? `${text}()` : `${text}<>`,
     },
-    className: runtime ? style['runtime'] : style['type'],
-    monitor: {
-
-              offset: [0, runtime ? 30 : 0] as [number, number]
+    style: {
+      className: runtime ? style['runtime'] : style['type'],
     }
   };
 }
