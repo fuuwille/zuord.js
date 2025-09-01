@@ -2,11 +2,11 @@
     "name": "@zuord/bundle",
     "version": "1.0.0-alpha.2",
     "dependencies": {
-        "@zuord/core": "3.0.0-alpha.15",
-        "@zuord/trait": "3.0.0-alpha.10",
-        "@zuord/type": "2.0.0-alpha.10",
-        "@zuord/util": "4.0.0-alpha.10",
-        "zuord": "5.0.0-alpha.11"
+        "zuord": "5.0.0-alpha.14",
+        "@zuord/core": "3.0.0-alpha.22",
+        "@zuord/trait": "3.0.0-alpha.14",
+        "@zuord/type": "2.0.0-alpha.15",
+        "@zuord/util": "4.0.0-alpha.13"
     },
     "exports": {
         ".": {
