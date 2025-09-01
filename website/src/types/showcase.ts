@@ -6,7 +6,10 @@ export type ShowcaseProps = {
 }
 
 export type ShowcaseContext = {
-
+    control: {
+        hovered: HTMLDivElement | null;
+        focused: HTMLDivElement | null;
+    }
 }
 
 export interface ShowcaseControlData {
