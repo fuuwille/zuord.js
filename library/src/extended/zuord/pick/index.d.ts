@@ -1,4 +1,4 @@
-import { plain } from "./index.runtime";
+import type { plain } from "./index.runtime";
 
 type pickAPI = {
     readonly plain: typeof plain;
@@ -6,4 +6,4 @@ type pickAPI = {
 
 export declare const pick: pickAPI;
 
-export * as Pick from "./index.types";
+export type * as Pick from "./index.types";

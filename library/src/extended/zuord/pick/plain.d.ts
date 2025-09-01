@@ -1,4 +1,4 @@
-import { loose as $loose } from "./plain.runtime";
+import type { loose as $loose } from "./plain.runtime";
 
 type plainAPI = {
     loose: typeof $loose;
@@ -6,4 +6,4 @@ type plainAPI = {
 
 export declare const plain: plainAPI;
 
-export * as Plain from "./plain.types";
+export type * as Plain from "./plain.types";
