@@ -64,6 +64,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         }
     }, $props);
 
+    const divRef = useRef<HTMLDivElement>(null);
+
     return (
         <Tooltip 
             title={props.text.default} 
@@ -82,6 +84,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             }}
         >
             <div
+                ref={divRef}
                 className={clsx(style['control'], props.style.className, engaged ? style['engaged'] : null)}
                 onMouseEnter={() => {
                     if(!context.hovered.value) {
