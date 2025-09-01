@@ -60,8 +60,18 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             placement="top" 
             arrow
             open={focused}
-            onOpen={() => setFocused(true)}
-            onClose={() => setFocused(false)}
+            onOpen={() => {
+                if(!context.control.focused) {
+                    context.control.focused = ref.current
+                    setFocused(true);
+                }
+            }}
+            onClose={() => {
+                if(context.control.focused === ref.current) {
+                    context.control.focused = null;
+                    setFocused(false);
+                }
+            }}
         >
             <div
                 ref={ref}
