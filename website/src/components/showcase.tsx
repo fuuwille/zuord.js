@@ -40,34 +40,24 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(ShowcaseContext);
-    const ref = useRef<ShowcaseControlRef>(null);
     const [hovered, setHovered] = useState(false);
     const [focused, setFocused] = useState(false);
 
-    useEffect(() => {
-        if(!ref.current) {
-            ref.current = {
-                hovered: {
-                    value: hovered,
-                    dispatch: setHovered
-                },
-                focused: {
-                    value: focused,
-                    dispatch: setFocused
-                }
-            };
-        }
-        else {
-            ref.current.hovered = {
-                value: hovered,
-                dispatch: setHovered
-            };
+    const ref = useRef<ShowcaseControlRef>({
+        hovered: { value: hovered, dispatch: setHovered },
+        focused: { value: focused, dispatch: setFocused }
+    });
 
-            ref.current.focused = {
-                value: focused,
-                dispatch: setFocused
-            };
-        }
+    useEffect(() => {
+        ref.current.hovered = {
+            value: hovered,
+            dispatch: setHovered
+        };
+
+        ref.current.focused = {
+            value: focused,
+            dispatch: setFocused
+        };
     }, [hovered, setHovered, focused, setFocused]);
 
     const engaged = hovered || focused;
