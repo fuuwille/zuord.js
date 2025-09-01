@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
-import { createContext, useContext, useEffect, useRef } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 const Context = createContext<ShowcaseContext>(undefined);
 
@@ -40,6 +40,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(Context);
     const ref = useRef<HTMLDivElement>(null);
+    const [hovered, setHovered] = useState(false);
 
     const props = zuord.integrate({
         text: {
@@ -56,12 +57,16 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             ref={ref}
             className={clsx(style['control'], props.style.className)}
             onMouseEnter={() => {
-                if(!context.control.hovered)
+                if(!context.control.hovered) {
                     context.control.hovered = ref.current
+                    setHovered(true);
+                }
             }}
             onMouseLeave={() => {
-                if(context.control.hovered === ref.current)
+                if(context.control.hovered === ref.current) {
                     context.control.hovered = null;
+                    setHovered(false);
+                }
             }}
         >
             <span className={style['layout']}>
