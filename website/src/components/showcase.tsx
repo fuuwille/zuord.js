@@ -42,6 +42,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(Context);
     const ref = useRef<HTMLDivElement>(null);
     const [hovered, setHovered] = useState(false);
+    const [focused, setFocused] = useState(false);
 
     const props = zuord.integrate({
         text: {
@@ -54,7 +55,14 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     }, $props);
 
     return (
-        <Tooltip title={props.text.default} placement="top" arrow>
+        <Tooltip 
+            title={props.text.default} 
+            placement="top" 
+            arrow
+            open={focused}
+            onOpen={() => setFocused(true)}
+            onClose={() => setFocused(false)}
+        >
             <div
                 ref={ref}
                 className={clsx(style['control'], props.style.className, hovered ? style['hovered'] : null)}
