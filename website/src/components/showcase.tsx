@@ -55,7 +55,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     return (
         <div
             ref={ref}
-            className={clsx(style['control'], props.style.className)}
+            className={clsx(style['control'], props.style.className, hovered ? style['hovered'] : null)}
             onMouseEnter={() => {
                 if(!context.control.hovered) {
                     context.control.hovered = ref.current
