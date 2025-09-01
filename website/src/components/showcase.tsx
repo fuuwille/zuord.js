@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
-import { createContext, useRef } from 'react';
+import { createContext, useContext, useRef } from 'react';
 
 const Context = createContext<ShowcaseContext>(undefined);
 
@@ -38,6 +38,8 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 }
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
+    const context = useContext(Context);
+
     const props = zuord.integrate({
         text: {
             default: "showcase",
