@@ -1,7 +1,7 @@
-import { $Zuord } from ".";
-import { ZuordType } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
-import { ZuordUtil } from "@zuord/util";
+import type { $Zuord } from ".";
+import type { ZuordType } from "@zuord/type";
+import type { ZuordCore as Core } from "@zuord/core";
+import type { ZuordUtil } from "@zuord/util";
 
 export type Plain<TBase, TContent, TMode extends Core.Mode.Flags> = (
     [ResolvePlain<TBase, TContent, TMode>] extends [infer TResolved extends ZuordType.Plain] ? (

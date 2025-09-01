@@ -1,6 +1,6 @@
-import { ZuordType, ZuordTuple } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
-import { ZuordUtil as Util } from "@zuord/util";
+import type { ZuordType, ZuordTuple } from "@zuord/type";
+import type { ZuordCore as Core } from "@zuord/core";
+import type { ZuordUtil as Util } from "@zuord/util";
 
 export type ResolveAny<TBase, TOverlay, TMode> = (
     [TBase, TOverlay] extends [infer A extends ZuordType.Plain, infer B extends ZuordType.Plain] ? ResolvePlain<A, B, TMode> :
