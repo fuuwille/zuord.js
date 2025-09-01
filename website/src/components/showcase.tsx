@@ -3,7 +3,14 @@ import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
 
-export const Showcase: React.FC<ShowcaseProps> = () => {
+export const Showcase: React.FC<ShowcaseProps> = ($props) => {
+    const props = zuord.integrate({
+        controls: [],
+        style: {
+            columns: 3
+        }
+    }, $props);
+
     return (
         null
     )
