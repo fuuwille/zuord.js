@@ -1,1 +1,1 @@
-export { Plain } from "./plain";
+export type { Plain } from "./plain";
