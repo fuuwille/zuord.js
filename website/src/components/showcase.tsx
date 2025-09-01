@@ -12,7 +12,14 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     }, $props);
 
     return (
-        null
+        <div 
+            className={clsx('showcase', style['showcase'])}
+            style={{ 
+                gridTemplateColumns: `repeat(${props.style.columns}, 1fr)`
+            }}
+        >
+
+        </div>
     )
 }
 
