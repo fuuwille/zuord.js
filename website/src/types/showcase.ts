@@ -15,7 +15,6 @@ export type ShowcaseProps = {
 }
 
 export type ShowcaseControlRef = {
-    div: Ref<HTMLDivElement>;
     hovered: {
         value: boolean;
         dispatch: React.Dispatch<React.SetStateAction<boolean>>;
