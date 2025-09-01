@@ -59,6 +59,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             default: "showcase",
             focused: "showcase X"
         },
+        id: -1,
         style: {
             className: null
         }
@@ -66,7 +67,8 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
 
     const divRef = useRef<HTMLDivElement>(null);
     const controlRef = useRef<ShowcaseControlRef>({
-        div: null
+        div: null,
+        id: props.id
     });
 
     useEffect(() => {

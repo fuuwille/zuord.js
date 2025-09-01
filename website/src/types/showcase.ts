@@ -19,7 +19,8 @@ export type ShowcaseProps = {
 }
 
 export type ShowcaseControlRef = {
-    div: HTMLDivElement;
+    div: HTMLDivElement | null;
+    id: number;
 }
 
 export type ShowcaseControlProps = {
