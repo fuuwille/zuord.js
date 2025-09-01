@@ -1,4 +1,4 @@
-import { plain as $plain } from "./pick.runtime";
+import type { plain as $plain } from "./pick.runtime";
 
 type pickAPI = {
     plain: typeof $plain;
@@ -6,4 +6,4 @@ type pickAPI = {
 
 export declare const pick: pickAPI;
 
-export * as Pick from "./pick.types";
+export type * as Pick from "./pick.types";
