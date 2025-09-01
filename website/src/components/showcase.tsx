@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
 import { createContext, useContext, useRef, useState } from 'react';
+import { Tooltip } from '@mui/material';
 
 const Context = createContext<ShowcaseContext>(undefined);
 
@@ -53,29 +54,31 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     }, $props);
 
     return (
-        <div
-            ref={ref}
-            className={clsx(style['control'], props.style.className, hovered ? style['hovered'] : null)}
-            onMouseEnter={() => {
-                if(!context.control.hovered) {
-                    context.control.hovered = ref.current
-                    setHovered(true);
-                }
-            }}
-            onMouseLeave={() => {
-                if(context.control.hovered === ref.current) {
-                    context.control.hovered = null;
-                    setHovered(false);
-                }
-            }}
-        >
-            <span className={style['layout']}>
-                <span className={style['text']}>{props.text.default}</span>
-            </span>
-            <span className={style['visual']}>
-                <span className={clsx(style['text'], style['default'])}>{props.text.default}</span>
-                <span className={clsx(style['text'], style['focused'])}>{props.text.focused}</span>
-            </span>
-        </div>
+        <Tooltip title={props.text.default} placement="top" arrow>
+            <div
+                ref={ref}
+                className={clsx(style['control'], props.style.className, hovered ? style['hovered'] : null)}
+                onMouseEnter={() => {
+                    if(!context.control.hovered) {
+                        context.control.hovered = ref.current
+                        setHovered(true);
+                    }
+                }}
+                onMouseLeave={() => {
+                    if(context.control.hovered === ref.current) {
+                        context.control.hovered = null;
+                        setHovered(false);
+                    }
+                }}
+            >
+                <span className={style['layout']}>
+                    <span className={style['text']}>{props.text.default}</span>
+                </span>
+                <span className={style['visual']}>
+                    <span className={clsx(style['text'], style['default'])}>{props.text.default}</span>
+                    <span className={clsx(style['text'], style['focused'])}>{props.text.focused}</span>
+                </span>
+            </div>
+        </Tooltip>
     )
 }
