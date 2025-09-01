@@ -35,7 +35,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     }}
                 >
                     {props.controls.map((control, index) => (
-                        <ShowcaseControl key={index} {...control} />
+                        <ShowcaseControl id={index} key={index} {...control} />
                     ))}
                 </div>
                 <div
