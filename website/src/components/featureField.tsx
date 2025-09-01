@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import style from '@site/src/css/modules/featureField.module.scss';
@@ -32,6 +32,21 @@ export const FeatureField: React.FC<FeatureFieldProps> = (mode) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const focused = enableFocus && (hovered || tooltipOpen);
 
+    const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+    const handleMouseEnter = () => {
+        hoverTimeout.current = setTimeout(() => {
+            setHovered(true);
+        }, 100); // 100ms delay
+    };
+
+    const handleMouseLeave = () => {
+        if (hoverTimeout.current) {
+            clearTimeout(hoverTimeout.current); // Gecikme varsa iptal et
+        }
+        setHovered(false);
+    };
+
     return (
         <Tooltip 
             title={monitor.node} 
@@ -64,8 +79,8 @@ export const FeatureField: React.FC<FeatureFieldProps> = (mode) => {
         >
             <div 
                 className={clsx(style['feature-field'], focused ? style['focused'] : null, className)}  
-                onMouseEnter={() => setHovered(true)} 
-                onMouseLeave={() => setHovered(false)}
+                onMouseEnter={handleMouseEnter} 
+                onMouseLeave={handleMouseLeave}
             >
                 <span className={style['layout']}>
                     <span className={style['text']}>{text.layout}</span>
