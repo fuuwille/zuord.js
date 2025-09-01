@@ -20,5 +20,5 @@ export interface ShowcaseControlData {
 }
 
 export interface ShowcaseControlProps extends ShowcaseControlData {
-
+    context: ShowcaseContext;
 }

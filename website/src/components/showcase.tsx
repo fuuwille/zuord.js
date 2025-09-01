@@ -1,7 +1,8 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
+import { ShowcaseContext, ShowcaseProps, ShowcaseControlProps } from "@site/src/types/showcase"
 import { zuord } from "zuord"
+import { useRef } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuord.integrate({
@@ -11,6 +12,8 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
+    const context = useRef<ShowcaseContext>({});
+
     return (
         <div 
             className={clsx('showcase', style['showcase'])}
@@ -19,7 +22,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             }}
         >
             {props.controls.map((control, index) => (
-                <ShowcaseControl key={index} {...control} />
+                <ShowcaseControl context={context} key={index} {...control} />
             ))}
         </div>
     )
@@ -27,6 +30,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const props = zuord.integrate({
+        context: null,
         text: {
             default: "showcase",
             focused: "showcase X"
