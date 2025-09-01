@@ -1,5 +1,5 @@
-import { plain as $plain } from "./merge.runtime";
-import { array as $array } from "./merge.runtime";
+import type { plain as $plain } from "./merge.runtime";
+import type { array as $array } from "./merge.runtime";
 
 type mergeAPI = {
     plain: typeof $plain;
@@ -8,4 +8,4 @@ type mergeAPI = {
 
 export declare const merge: mergeAPI;
 
-export * as Merge from "./merge.types";
+export type * as Merge from "./merge.types";

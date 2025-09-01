@@ -1,5 +1,5 @@
-import { plain as $plain } from "./evolve.runtime";
-import { array as $array } from "./evolve.runtime";
+import type { plain as $plain } from "./evolve.runtime";
+import type { array as $array } from "./evolve.runtime";
 
 type evolveAPI = {
     plain: typeof $plain;
@@ -8,4 +8,4 @@ type evolveAPI = {
 
 export declare const evolve: evolveAPI;
 
-export * as Evolve from "./evolve.types";
+export type * as Evolve from "./evolve.types";

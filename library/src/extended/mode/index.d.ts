@@ -1,8 +1,8 @@
-import { integrate as $integrate } from "./index.runtime";
-import { merge as $merge } from "./index.runtime";
-import { evolve as $evolve } from "./index.runtime";
-import { pick as $pick } from "./index.runtime";
-import { omit as $omit } from "./index.runtime";
+import type { integrate as $integrate } from "./index.runtime";
+import type { merge as $merge } from "./index.runtime";
+import type { evolve as $evolve } from "./index.runtime";
+import type { pick as $pick } from "./index.runtime";
+import type { omit as $omit } from "./index.runtime";
 
 type zuordModeXAPI = {
     integrate: typeof $integrate;
@@ -14,4 +14,4 @@ type zuordModeXAPI = {
 
 export declare const zuordModeX: zuordModeXAPI;
 
-export * as ZuordModeX from "./index.types";
+export type * as ZuordModeX from "./index.types";
