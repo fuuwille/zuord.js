@@ -1,5 +1,5 @@
 export type ShowcaseProps = {
-    
+    controls: ShowcaseControlProps[];
 }
 
 export type ShowcaseControlProps = {
