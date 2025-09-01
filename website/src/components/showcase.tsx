@@ -69,6 +69,10 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
         div: null
     });
 
+    useEffect(() => {
+        controlRef.current.div = divRef.current;
+    }, [divRef]);
+
     return (
         <Tooltip 
             title={props.text.default} 
