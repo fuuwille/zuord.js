@@ -6,4 +6,4 @@ type evolveAPI = {
 
 export declare const evolve: evolveAPI;
 
-export * as Evolve from "./index.types";
+export type * as Evolve from "./index.types";
