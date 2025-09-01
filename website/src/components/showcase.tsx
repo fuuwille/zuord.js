@@ -35,7 +35,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     }}
                 >
                     {props.controls.map((control, index) => (
-                        <ShowcaseControl key={index} {...control} />
+                        <ShowcaseControl id={index} key={index} {...control} />
                     ))}
                 </div>
                 <div
@@ -50,26 +50,8 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
     const context = useContext(ShowcaseContext);
-    const [hovered, setHovered] = useState(false);
-    const [focused, setFocused] = useState(false);
-
-    const ref = useRef<ShowcaseControlRef>({
-        hovered: { value: hovered, dispatch: setHovered },
-        focused: { value: focused, dispatch: setFocused }
-    });
-
-    useEffect(() => {
-        ref.current.hovered = {
-            value: hovered,
-            dispatch: setHovered
-        };
-
-        ref.current.focused = {
-            value: focused,
-            dispatch: setFocused
-        };
-    }, [hovered, setHovered, focused, setFocused]);
-
+    const hovered = false;
+    const focused = false;
     const engaged = hovered || focused;
 
     const props = zuord.integrate({

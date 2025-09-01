@@ -12,7 +12,7 @@ export type ShowcaseRef = {
 }
 
 export type ShowcaseProps = {
-    controls: ShowcaseControlProps[];
+    controls: ShowcaseControlDate[];
     style?: {
         columns: number;
     }
@@ -29,7 +29,7 @@ export type ShowcaseControlRef = {
     }
 }
 
-export interface ShowcaseControlProps {
+export interface ShowcaseControlDate {
     text: {
         default: string;
         focused: string;
@@ -37,4 +37,8 @@ export interface ShowcaseControlProps {
     style?: {
         className?: string;
     }
+}
+
+export interface ShowcaseControlProps extends ShowcaseControlDate {
+    id: number;
 }
