@@ -49,11 +49,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 }
 
 export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
-    const context = useContext(ShowcaseContext);
-    const hovered = false;
-    const focused = false;
-    const engaged = hovered || focused;
-
     const props = zuordX.integrate.plain.loose({
         text: {
             default: "showcase",
@@ -64,12 +59,17 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
             className: null
         }
     }, $props);
-
+    
     const divRef = useRef<HTMLDivElement>(null);
     const controlRef = useRef<ShowcaseControlRef>({
         div: null,
         id: props.id
     });
+    
+    const context = useContext(ShowcaseContext);
+    const hovered = false;
+    const focused = false;
+    const engaged = hovered || focused;
 
     useEffect(() => {
         controlRef.current.div = divRef.current;
