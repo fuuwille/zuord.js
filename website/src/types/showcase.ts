@@ -1,6 +1,6 @@
 export type ShowcaseProps = {
     controls: ShowcaseControlProps[];
-    style: {
+    style?: {
         columns: number;
     }
 }
