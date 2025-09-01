@@ -59,6 +59,10 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
                 if(!context.control.hovered)
                     context.control.hovered = ref.current
             }}
+            onMouseLeave={() => {
+                if(context.control.hovered === ref.current)
+                    context.control.hovered = null;
+            }}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
