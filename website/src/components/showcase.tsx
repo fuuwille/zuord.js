@@ -35,7 +35,7 @@ export const ShowcaseControl: React.FC<ShowcaseControlProps> = ($props) => {
 
     return (
         <div 
-            className={clsx(style['feature-field'])}
+            className={clsx(style['control'])}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
