@@ -17,6 +17,10 @@ export type ShowcaseControlRef = {
     hovered: {
         value: boolean;
         dispatch: React.Dispatch<React.SetStateAction<boolean>>;
+    },
+    focused: {
+        value: boolean;
+        dispatch: React.Dispatch<React.SetStateAction<boolean>>;
     }
 }
 
