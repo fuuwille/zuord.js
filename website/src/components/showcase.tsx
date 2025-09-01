@@ -12,7 +12,12 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const context = useRef<ShowcaseContext>({});
+    const context = useRef<ShowcaseContext>({
+        control: {
+            hovered: null,
+            focused: null
+        }
+    });
 
     return (
         <div 
@@ -22,7 +27,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             }}
         >
             {props.controls.map((control, index) => (
-                <ShowcaseControl context={context} key={index} {...control} />
+                <ShowcaseControl context={context.current} key={index} {...control} />
             ))}
         </div>
     )
