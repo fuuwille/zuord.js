@@ -41,8 +41,8 @@ export type ShowcaseControlData = {
         title: React.ReactNode;
         code: React.ReactNode;
         result: {
-            code: React.ReactNode;
-            result: React.ReactNode;
+            type: React.ReactNode;
+            runtime: React.ReactNode;
         }
     },
     design?: {
