@@ -15,3 +15,10 @@ export type PretextTokenProps = {
     data: PretextTokenData;
     node?: PretextTokenNode;
 }
+
+export type CodeTokenPredicate = (token: PretextTokenData) => boolean;
+
+export type CodeTokenModifier = {
+    predicate: CodeTokenPredicate;
+    props: Partial<PretextTokenProps>;
+}
