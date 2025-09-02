@@ -15,10 +15,15 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const focuseTimeoutRef = useRef<NodeJS.Timeout>(null);
     const focuseTimeout = focuseTimeoutRef.current;
 
+    const unfocusTimeoutRef = useRef<NodeJS.Timeout>(null);
+    const unfocusTimeout = unfocusTimeoutRef.current;
+
     const stateRef = useRef<ShowcaseState>({
         pos: 0,
         hovered: null,      setHovered: (value) => {
             clearTimeout(focuseTimeoutRef.current);
+            clearTimeout(unfocusTimeoutRef.current);
+
             state.hovered = value;
 
             if(state.hovered) {
@@ -28,7 +33,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         state.focused = state.hovered;
                         state.focused.state.setIsFocused(true);
                     }
-                }, state.focused ? 175 : 25);
+                }, state.focused ? 225 : 125);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
@@ -42,8 +47,12 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             <div 
                 className={clsx('showcase', style['showcase'])}
                 onMouseLeave={() => {
-                    state.focused?.state.setIsFocused(false);
-                    state.focused = null;
+                    clearTimeout(focuseTimeoutRef.current);
+
+                    unfocusTimeoutRef.current = setTimeout(() => {
+                        state.focused?.state.setIsFocused(false);
+                        state.focused = null;
+                    }, 125);
                 }}
             >
                 <ShowcasePanel {...props.panel} />
