@@ -5,6 +5,12 @@ export type ShowcaseRef = {
     setFocused: (state: ShowcaseControlRef) => void;
 }
 
+export type ShowcaseState = {
+    focused: {
+        value
+    }
+}
+
 export type ShowcaseProps = {
     container: ShowcaseContainerProps;
 }

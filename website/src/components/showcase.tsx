@@ -88,11 +88,17 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
         <div
             className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
             onClick={() => {
-                context.focused?.state.setIsFocused(false);
-                context.focused = ref.current;
-                context.focused.state.setIsFocused(true);
+                if(context.focused?.props.id === props.id) {
+                    context.focused.state.setIsFocused(false);
+                    context.inspector.state.setData(null);
+                }
+                else {
+                    context.focused?.state.setIsFocused(false);
+                    context.focused = ref.current;
+                    context.focused.state.setIsFocused(true);
 
-                context.inspector.state.setData(ref.current.props);
+                    context.inspector.state.setData(ref.current.props);
+                }
             }}
         >
             <span className={style['layout']}>
