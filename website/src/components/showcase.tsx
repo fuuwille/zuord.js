@@ -154,7 +154,7 @@ const ShowcaseInspector: React.FC = () => {
 
     return (
         <div className={style['monitor']} style={{ opacity: context.inspector.state.data ? 1 : 0, transition: 'all 0.10s ease-in' }}>
-            <h2>Showcase Inspector</h2>
+            <h2>MKANTOR Inspector</h2>
             <pre style={{overflow: 'scroll', height: '200px'}} >{JSON.stringify(context, null, 2)}</pre>
         </div>
     );
