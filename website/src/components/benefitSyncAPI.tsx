@@ -25,7 +25,7 @@ export const BenefitSyncAPI: React.FC = () => (
       <CodeBlock code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
-        <Showcase panel={{
+        <Showcase container={{
           controls: [
             showcaseControl('integrate'), showcaseControl('merge'), showcaseControl('evolve'), showcaseControl('pick'), showcaseControl('omit'),
             showcaseControl('Integrate'), showcaseControl('Merge'), showcaseControl('Evolve'), showcaseControl('Pick'), showcaseControl('Omit'),

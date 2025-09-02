@@ -11,10 +11,10 @@ export type ShowcaseState = {
 }
 
 export type ShowcaseProps = {
-    panel: ShowcasePanelProps;
+    container: ShowcaseContainerProps;
 }
 
-export type ShowcasePanelProps = {
+export type ShowcaseContainerProps = {
     controls: ShowcaseControlData[];
     design: {
         columns: number;

@@ -1,12 +1,12 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseState, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
-        panel: {
+        container: {
             controls: [],
             design: { columns: 3 }
         }
@@ -53,7 +53,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     }, 125);
                 }}
             >
-                <ShowcasePanel {...props.panel} />
+                <ShowcaseContainer {...props.container} />
                 <ShowcaseInspector />
             </div>
         </ShowcaseContext.Provider>
@@ -62,11 +62,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 const ShowcaseContext = createContext<ShowcaseState>(null);
 
-const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
+const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
     const context = useContext(ShowcaseContext);
 
     return (
-        <div className={clsx(style['panel'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
+        <div className={clsx(style['container'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
             {props.controls.map((control, index) => {
                 return (
                     <ShowcaseControl id={index + 1} key={index} {...control} />
