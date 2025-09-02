@@ -1,5 +1,6 @@
 .showcase {
     position: relative;
+    padding: 3px;
 }
 
 .showcase {
@@ -7,7 +8,6 @@
         display: grid;
         align-items: center;
         justify-content: space-between;
-        cursor: pointer;
     }
     
     .container {
@@ -23,12 +23,14 @@
             position: relative;
             padding: 0px 9px;
             margin: 3px 5px;
+            cursor: pointer;
         }
 
         .control.focused {
             background-color: #4A4B4C;
             padding: 0px 12px;
             margin: 3px 2px;
+            cursor: default;
         }
 
         .control {
@@ -100,7 +102,6 @@
         transition: all 0.10s ease-in;
         left: 50%;
         transform: translateX(-50%);
-        margin: 6px;
     }
 
     .inspector.active {
