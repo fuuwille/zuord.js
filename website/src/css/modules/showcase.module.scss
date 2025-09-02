@@ -1,136 +1,145 @@
 .showcase {
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .showcase {
-    .container {
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        padding: 6px;
+    .panel {
+        width: max-content;
+    }
+
+    .panel {
+        .container {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+        }
+        
+        .container {
+            .control {
+                background-color: #3A3B3C;
+                border-radius: 8px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 14px;
+                user-select: none;
+                transition: all 0.30s ease-in-out;
+                font-weight: 500;
+                position: relative;
+                padding: 0px 9px;
+                margin: 3px 5px;
+                cursor: pointer;
+            }
+
+            .control.focused {
+                background-color: #4A4B4C;
+                padding: 0px 12px;
+                margin: 3px 2px;
+            }
+
+            .control {
+                .layout {
+                    display: inline-block;
+                    position: relative;
+                    z-index: 100;
+                    opacity: 0;
+                }
+
+                .layout {
+                    .text {
+                        font-size: 14px;
+                    }
+                }
+
+                .visual {
+                    display: flex;
+                    position: absolute;
+                    overflow: hidden;
+                    top: 0; left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .visual {
+                    .text {
+                        position: absolute;
+                        width: 100%;
+                        text-align: center;
+                        transition: all 0.30s ease-in-out;
+                        white-space: nowrap;
+                    }
+
+                    .text.default {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+
+                    .text.focused {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+                }
+            }
+
+            .control.focused {
+                .visual {
+                    .text.default {
+                        opacity: 0;
+                        transform: translateX(-100%);
+                    }
+
+                    .text.focused {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+            }
+        }
+
+        .inspector {
+            position: fixed;
+            min-width: 600px;
+            background-color: #292a2c;
+            border: 1.5px solid #444950;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.10s ease-in;
+        }
+
+        .inspector.active {
+            opacity: 1;
+        }
+
+        .inspector {
+            .head {
+                min-height: 30px;
+            }
+
+            .body {
+                min-height: 200px;                
+            }
+
+            .head, .body {            
+                display: flex;
+                width: 100%;
+            }
+
+            .body {
+                .code {
+                    background-color: #ffe0a825;
+                }
+
+                .result {
+                    background-color: #70617025;
+                }
+
+                .code, .result {
+                    flex: 1
+                }
+            }
+        }
     }
     
-    .container {
-        .control {
-            background-color: #3A3B3C;
-            border-radius: 8px;
-            height: 24px;
-            line-height: 24px;
-            font-size: 14px;
-            user-select: none;
-            transition: all 0.30s ease-in-out;
-            font-weight: 500;
-            position: relative;
-            padding: 0px 9px;
-            margin: 3px 5px;
-            cursor: pointer;
-        }
-
-        .control.focused {
-            background-color: #4A4B4C;
-            padding: 0px 12px;
-            margin: 3px 2px;
-        }
-
-        .control {
-            .layout {
-                display: inline-block;
-                position: relative;
-                z-index: 100;
-                opacity: 0;
-            }
-
-            .layout {
-                .text {
-                    font-size: 14px;
-                }
-            }
-
-            .visual {
-                display: flex;
-                position: absolute;
-                overflow: hidden;
-                top: 0; left: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            .visual {
-                .text {
-                    position: absolute;
-                    width: 100%;
-                    text-align: center;
-                    transition: all 0.30s ease-in-out;
-                    white-space: nowrap;
-                }
-
-                .text.default {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-
-                .text.focused {
-                    opacity: 0;
-                    transform: translateX(100%);
-                }
-            }
-        }
-
-        .control.focused {
-            .visual {
-                .text.default {
-                    opacity: 0;
-                    transform: translateX(-100%);
-                }
-
-                .text.focused {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-        }
-    }
-
-    .inspector {
-        position: fixed;
-        min-width: 600px;
-        background-color: #292a2c;
-        border: 1.5px solid #444950;
-        border-radius: 8px;
-        opacity: 0;
-        transition: all 0.10s ease-in;
-    }
-
-    .inspector.active {
-        opacity: 1;
-    }
-
-    .inspector {
-        .head {
-            min-height: 30px;
-        }
-
-        .body {
-            min-height: 200px;                
-        }
-
-        .head, .body {            
-            display: flex;
-            width: 100%;
-        }
-
-        .body {
-            .code {
-                background-color: #ffe0a825;
-            }
-
-            .result {
-                background-color: #70617025;
-            }
-
-            .code, .result {
-                flex: 1
-            }
-        }
-    }
 }
