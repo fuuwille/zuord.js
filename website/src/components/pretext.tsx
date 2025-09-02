@@ -1,3 +1,4 @@
+import style from '@site/src/css/modules/pretext.module.scss';
 import Prism from "prismjs";
 import "prismjs/components/prism-typescript"; // TS desteği için
 import "prism-themes/themes/prism-vsc-dark-plus.css";
@@ -5,12 +6,11 @@ import { tokenText } from "@site/src/utils/tokenText";
 import { CodeTokenModifier } from "@site/src/types/codeToken";
 import clsx from "clsx";
 
-export const Pretext: React.FC<PretextProps> = ({ code, style, modifiers = [] }) => {
+export const Pretext: React.FC<PretextProps> = ({ code, modifiers = [] }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
-    const blockStyle: Partial<React.CSSProperties> = { background: "transparent", fontSize: "14px", padding: 3, margin: 3, userSelect: "none", ...style };
 
     return (
-        <pre className="code-block" style={blockStyle}>
+        <pre className={clsx('pretext', style['pretext'])}>
             {tokens.map((token, i) => {
                 const data = typeof token === "string" 
                     ? { type: "", text: token }
