@@ -1,8 +1,8 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlState, ShowcaseControlRef } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlRef } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -12,22 +12,19 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const focuseTimeoutRef = useRef<NodeJS.Timeout>(null);
-    const focuseTimeout = focuseTimeoutRef.current;
-
-    const unfocusTimeoutRef = useRef<NodeJS.Timeout>(null);
-    const unfocusTimeout = unfocusTimeoutRef.current;
+    const focuseTimeout = useRef<NodeJS.Timeout>(null);
+    const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     const stateRef = useRef<ShowcaseState>({
         pos: 0,
         hovered: null,      setHovered: (value) => {
-            clearTimeout(focuseTimeoutRef.current);
-            clearTimeout(unfocusTimeoutRef.current);
+            clearTimeout(focuseTimeout.current);
+            clearTimeout(unfocusTimeout.current);
 
             state.hovered = value;
 
             if(state.hovered) {
-                focuseTimeoutRef.current = setTimeout(() => {
+                focuseTimeout.current = setTimeout(() => {
                     if(!state.focused || value.props.id !== state.focused.props.id) {
                         state.focused?.state.setIsFocused(false);
                         state.focused = state.hovered;
@@ -47,9 +44,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             <div 
                 className={clsx('showcase', style['showcase'])}
                 onMouseLeave={() => {
-                    clearTimeout(focuseTimeoutRef.current);
+                    clearTimeout(focuseTimeout.current);
 
-                    unfocusTimeoutRef.current = setTimeout(() => {
+                    unfocusTimeout.current = setTimeout(() => {
                         state.focused?.state.setIsFocused(false);
                         state.focused = null;
                     }, 125);
