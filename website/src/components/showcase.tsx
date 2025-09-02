@@ -16,6 +16,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     }, $props);
 
     const ref = useRef<ShowcaseRef>({
+        div: null,
         target: null,
         data: {
             content: null,
@@ -23,9 +24,13 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     });
 
+    const divRef = useRef<HTMLDivElement>(null);
+    ref.current.div = divRef.current;
+
     return (
         <ShowcaseContext.Provider value={ref.current}>
             <div 
+                ref={divRef}
                 className={clsx('showcase', style['showcase'], props.design?.className)}
             >
                 <ShowcaseContainer {...props.container} />

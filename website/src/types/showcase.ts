@@ -1,4 +1,5 @@
 export type ShowcaseRef = {
+    div: HTMLDivElement;
     target: ShowcaseControlRef
     data: {
         content: ShowcaseControlData;
