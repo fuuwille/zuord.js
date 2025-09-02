@@ -85,9 +85,16 @@
         }
     }
 
-    .monitor {
+    .inspector {
         position: absolute;
         width: 500px;
         background-color: rgb(83, 121, 133);
+
+        opacity: 0;
+        transition: all 0.10s ease-in;
+    }
+
+    .inspector.active {
+        opacity: 1;
     }
 }
