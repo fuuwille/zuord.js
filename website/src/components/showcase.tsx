@@ -10,6 +10,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         container: {
             controls: [],
             design: { columns: 3 }
+        },
+        design: {
+            className: null
         }
     }, $props);
 
@@ -27,7 +30,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     return (
         <ShowcaseContext.Provider value={ref.current}>
             <div 
-                className={clsx('showcase', style['showcase'])}
+                className={clsx('showcase', style['showcase'], props.design?.className)}
                 onMouseEnter={() => {
                     clearTimeout(unfocusTimeout.current);
                 }}

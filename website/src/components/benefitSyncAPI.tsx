@@ -11,15 +11,13 @@ export const BenefitSyncAPI: React.FC = () => (
       <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} design={{ selectable: false }}/>
       <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false }}/>
     </div>
-      <div className={style['navbar']}>
-        <Showcase container={{
-          controls: [
-            syncAPIControl('integrate'), syncAPIControl('merge'), syncAPIControl('evolve'), syncAPIControl('pick'), syncAPIControl('omit'),
-            syncAPIControl('Integrate'), syncAPIControl('Merge'), syncAPIControl('Evolve'), syncAPIControl('Pick'), syncAPIControl('Omit'),
-          ],
-          design: { columns: 5 }
-        }}/>
-      </div>
+      <Showcase container={{
+        controls: [
+          syncAPIControl('integrate'), syncAPIControl('merge'), syncAPIControl('evolve'), syncAPIControl('pick'), syncAPIControl('omit'),
+          syncAPIControl('Integrate'), syncAPIControl('Merge'), syncAPIControl('Evolve'), syncAPIControl('Pick'), syncAPIControl('Omit'),
+        ],
+        design: { columns: 5 }
+      }} design={{ className: style['showcase'] }}/>
   </div>
 );
 

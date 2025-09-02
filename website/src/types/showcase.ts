@@ -8,6 +8,9 @@ export type ShowcaseRef = {
 
 export type ShowcaseProps = {
     container: ShowcaseContainerProps;
+    design?: {
+        className?: string;
+    }
 }
 
 export type ShowcaseContainerProps = {
