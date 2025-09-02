@@ -1,4 +1,8 @@
 .showcase {
+    position: relative;
+}
+
+.showcase {
     .container {
         display: grid;
         align-items: center;
@@ -93,6 +97,8 @@
         border-radius: 8px;
         opacity: 0;
         transition: all 0.10s ease-in;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .inspector.active {
