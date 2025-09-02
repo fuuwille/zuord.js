@@ -1,7 +1,10 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
+import { createContext } from 'react';
+
+const ShowcaseContext = createContext<ShowcaseState>({});
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -12,9 +15,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     }, $props);
 
     return (
-        <div className={clsx('showcase', style['showcase'])}>
-            <ShowcasePanel {...props.panel} />
-        </div>
+        <ShowcaseContext.Provider value={props}>
+            <div className={clsx('showcase', style['showcase'])}>
+                <ShowcasePanel {...props.panel} />
+            </div>
+        </ShowcaseContext.Provider>
     );
 }
 
