@@ -13,9 +13,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     }, $props);
 
     const stateRef = useRef<ShowcaseState>({
-        hovered: null,      setHovered: null,
-        focused: null,      setFocused: null,
-        inspected: null,    setInspected: null
+        hovered: null,      setHovered: (value) => state.hovered = value,
+        focused: null,      setFocused: (value) => state.focused = value,
+        inspected: null,    setInspected: (value) => state.inspected = value
     });
 
     const state = stateRef.current;
