@@ -1,4 +1,4 @@
-export type ShowcaseState = {
+export type ShowcaseRef = {
     inspector: ShowcaseInspectorRef;
 
     focused: ShowcaseControlRef;

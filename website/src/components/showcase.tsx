@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseState, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Divider } from '@mui/material';
@@ -16,13 +16,13 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const focuseTimeout = useRef<NodeJS.Timeout>(null);
     const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
-    const state = useRef<ShowcaseState>({
+    const ref = useRef<ShowcaseRef>({
         inspector: null,
-        focused: null,      setFocused: (value) => state.current.focused = value,
+        focused: null,      setFocused: (value) => ref.current.focused = value,
     });
 
     return (
-        <ShowcaseContext.Provider value={state.current}>
+        <ShowcaseContext.Provider value={ref.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
                 onMouseEnter={() => {
@@ -32,9 +32,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     clearTimeout(focuseTimeout.current);
 
                     unfocusTimeout.current = setTimeout(() => {
-                        state.current.focused?.state.setIsFocused(false);
-                        state.current.focused = null;
-                        state.current.inspector.state.setData(null);
+                        ref.current.focused?.state.setIsFocused(false);
+                        ref.current.focused = null;
+                        ref.current.inspector.state.setData(null);
                     }, 50);
                 }}
             >
@@ -45,7 +45,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     );
 }
 
-const ShowcaseContext = createContext<ShowcaseState>(null);
+const ShowcaseContext = createContext<ShowcaseRef>(null);
 
 const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
     const context = useContext(ShowcaseContext);
