@@ -20,7 +20,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
 const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
     return (
-        <div className={clsx(style['controls'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
+        <div className={clsx(style['panel'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
             {props.controls.map((control, index) => (
                 <ShowcaseControl key={index} {...control} />
             ))}
