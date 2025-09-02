@@ -33,6 +33,11 @@
                 cursor: pointer;
             }
 
+            .control:hover {
+                transition: all 0.10s ease-in-out;
+                background-color: #4A4B4C;
+            }
+
             .control.focused {
                 background-color: #4A4B4C;
                 padding: 0px 12px;
