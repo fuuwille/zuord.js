@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlRef } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useRef, useState } from 'react';
 
@@ -16,7 +16,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     const state = useRef<ShowcaseState>({
-        pos: 0,
+        inspector: null,
         hovered: null,      setHovered: (value) => {
             clearTimeout(focuseTimeout.current);
             clearTimeout(unfocusTimeout.current);
@@ -29,6 +29,8 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         state.current.focused?.state.setIsFocused(false);
                         state.current.focused = state.current.hovered;
                         state.current.focused.state.setIsFocused(true);
+
+                        state.current.inspector.state.setData(value.props);
                     }
                 }, state.current.focused ? 225 : 125);
             }
@@ -47,6 +49,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     unfocusTimeout.current = setTimeout(() => {
                         state.current.focused?.state.setIsFocused(false);
                         state.current.focused = null;
+                        state.current.inspector.state.setData(null);
                     }, 125);
                 }}
             >
@@ -134,12 +137,25 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 }
 
 const ShowcaseInspector: React.FC = () => {
+    const [data, setData] = useState<ShowcaseControlData>(null);
+
     const context = useContext(ShowcaseContext);
+    const ref = useRef<ShowcaseInspectorRef>({
+        state: {
+            data: null,
+            setData: (data) => {
+                ref.current.state.data = data;
+                setData(data);
+            }
+        }
+    });
+
+    context.inspector = ref.current;
 
     return (
-        <div className={style['inspector']}>
+        <div className={style['monitor']} style={{ visibility: context.inspector.state.data ? 'visible' : 'hidden' }}>
             <h2>Showcase Inspector</h2>
-            <pre>{JSON.stringify(context, null, 2)}</pre>
+            <pre style={{overflow: 'scroll', height: '200px'}} >{JSON.stringify(context, null, 2)}</pre>
         </div>
     );
 }

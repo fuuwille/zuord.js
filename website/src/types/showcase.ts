@@ -1,5 +1,6 @@
 export type ShowcaseState = {
-    pos: number;
+    inspector: ShowcaseInspectorRef;
+
     hovered: ShowcaseControlRef;
     focused: ShowcaseControlRef;
     inspected: ShowcaseControlRef;
@@ -41,3 +42,12 @@ export type ShowcaseControlData = {
 export type ShowcaseControlProps = {
     id: number;
 } & ShowcaseControlData;
+
+export type ShowcaseInspectorRef = {
+    state: ShowcaseInspectorState;
+}
+
+export type ShowcaseInspectorState = {
+    data: ShowcaseControlData;
+    setData: (data: ShowcaseControlData) => void;
+}
