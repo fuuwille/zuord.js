@@ -5,7 +5,7 @@ import { tokenText } from "@site/src/utils/tokenText";
 import { CodeTokenModifier } from "@site/src/types/codeToken";
 import clsx from "clsx";
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [] }) => {
+export const Pretext: React.FC<PretextProps> = ({ code, style, modifiers = [] }) => {
     const tokens = Prism.tokenize(code, Prism.languages.ts);
     const blockStyle: Partial<React.CSSProperties> = { background: "transparent", fontSize: "14px", padding: 3, margin: 3, userSelect: "none", ...style };
 
@@ -31,7 +31,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, style, modifiers = [
 };
 
 
-export interface CodeBlockProps {
+export interface PretextProps {
     code: string;
     style?: Partial<React.CSSProperties>;
     modifiers?: CodeTokenModifier[];

@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 import clsx from 'clsx';
-import { CodeBlock } from './codeBlock';
+import { Pretext } from './pretext';
 import { CodeTokenModifier } from '@site/src/types/codeToken';
 import { Showcase } from './showcase';
 import { syncAPIControl } from '@site/src/utils/showcase';
@@ -8,8 +8,8 @@ import { syncAPIControl } from '@site/src/utils/showcase';
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['imports']}>
-      <CodeBlock code={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} />
-      <CodeBlock code={`import { Zuord } from 'zuord';`} />
+      <Pretext code={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} />
+      <Pretext code={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
         <Showcase container={{

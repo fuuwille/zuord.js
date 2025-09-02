@@ -1,5 +1,5 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
-import { CodeBlock } from '@site/src/components/codeBlock';
+import { Pretext } from '@site/src/components/pretext';
 import { ShowcaseControlBody } from '@site/src/types/showcase';
 
 export const syncAPIControl = (text: string) => {
@@ -16,14 +16,14 @@ export const syncAPIControl = (text: string) => {
         inspector: {
             head: {
                 title: runtime 
-                    ? <CodeBlock code={`zuord.${text}(...)`} /> 
-                    : <CodeBlock code={`Zuord.${text}<...>`} />,
+                    ? <Pretext code={`zuord.${text}(...)`} /> 
+                    : <Pretext code={`Zuord.${text}<...>`} />,
             },
             body: {
-                code: <CodeBlock code={`zuord.${text}(...)`} />,
+                code: <Pretext code={`zuord.${text}(...)`} />,
                 result: {
-                    type: <CodeBlock code={`Zuord`} />,
-                    runtime: <CodeBlock code={`zuord.${text}(...)`} />
+                    type: <Pretext code={`Zuord`} />,
+                    runtime: <Pretext code={`zuord.${text}(...)`} />
                 }
             }
         }
