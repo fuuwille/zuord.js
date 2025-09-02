@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 import { CodeBlock } from '@site/src/components/codeBlock';
 import { ShowcaseControlBody } from '@site/src/types/showcase';
 
-export const syncAPIControl = (text: string, body: ShowcaseControlBody) => {
+export const syncAPIControl = (text: string) => {
     const runtime = text[0] === text[0].toLowerCase();
 
     return {
@@ -19,7 +19,13 @@ export const syncAPIControl = (text: string, body: ShowcaseControlBody) => {
                     ? <CodeBlock code={`zuord.${text}(...)`} /> 
                     : <CodeBlock code={`Zuord.${text}<...>`} />,
             },
-            body: body
+            body: {
+                code: <CodeBlock code={`zuord.${text}(...)`} />,
+                result: {
+                    type: <CodeBlock code={`Zuord`} />,
+                    runtime: <CodeBlock code={`zuord.${text}(...)`} />
+                }
+            }
         }
     };
 }
