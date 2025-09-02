@@ -20,9 +20,9 @@ export type ShowcasePanelProps = {
 }
 
 export type ShowcaseControlState = {
-    isHovered: boolean;
-    isFocused: boolean;
-    isInspected: boolean;
+    isHovered: boolean;     setIsHovered: (value: boolean) => void;
+    isFocused: boolean;     setIsFocused: (value: boolean) => void;
+    isInspected: boolean;   setIsInspected: (value: boolean) => void;
 }
 
 export type ShowcaseControlProps = {
