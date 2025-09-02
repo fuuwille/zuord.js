@@ -3,3 +3,15 @@ export type PretextProps = {
     language?: string;
     style?: Partial<React.CSSProperties>;
 }
+
+export type PretextTokenData = {
+    content: string;
+    type: string;
+}
+
+export type PretextTokenNode = React.FC<PretextTokenData>;
+
+export type PretextTokenProps = {
+    data: PretextTokenData;
+    node?: PretextTokenNode;
+}
