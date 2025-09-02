@@ -1,14 +1,9 @@
 export type ShowcaseRef = {
-    inspector: ShowcaseInspectorRef;
-
-    focused: ShowcaseControlRef;
-    setFocused: (state: ShowcaseControlRef) => void;
-}
-
-export type ShowcaseState = {
-    focused: {
-        value
-    }
+    target: ShowcaseControlRef
+    data: {
+        content: ShowcaseControlData;
+        dispatch: React.Dispatch<React.SetStateAction<ShowcaseControlData>>;
+    };
 }
 
 export type ShowcaseProps = {
@@ -58,12 +53,3 @@ export type ShowcaseControlBody = {
 export type ShowcaseControlProps = {
     id: number;
 } & ShowcaseControlData;
-
-export type ShowcaseInspectorRef = {
-    state: ShowcaseInspectorState;
-}
-
-export type ShowcaseInspectorState = {
-    data: ShowcaseControlData;
-    setData: (data: ShowcaseControlData) => void;
-}

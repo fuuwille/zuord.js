@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Divider } from '@mui/material';
@@ -17,8 +17,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     const ref = useRef<ShowcaseRef>({
-        inspector: null,
-        focused: null,      setFocused: (value) => ref.current.focused = value,
+        target: null,
+        data: {
+            content: null,
+            dispatch: null
+        }
     });
 
     return (
@@ -29,12 +32,10 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     clearTimeout(unfocusTimeout.current);
                 }}
                 onMouseLeave={() => {
-                    clearTimeout(focuseTimeout.current);
-
                     unfocusTimeout.current = setTimeout(() => {
-                        ref.current.focused?.state.setIsFocused(false);
-                        ref.current.focused = null;
-                        ref.current.inspector.state.setData(null);
+                        ref.current.target?.state.setIsFocused(false);
+                        ref.current.target = null;
+                        ref.current.data.dispatch(null);
                     }, 50);
                 }}
             >
@@ -70,11 +71,11 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
         state: {
             isFocused: false,   setIsFocused: (value) => {
                 if(value && !ref.current.state.isFocused) {
-                    context.setFocused(ref.current);
+                    context.target = ref.current;
                     isFocused[1](true);
                 }
                 else if(!value && ref.current.state.isFocused) {
-                    context.setFocused(null);
+                    context.target = null;
                     isFocused[1](false);
                 }
             },
@@ -88,16 +89,16 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
         <div
             className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
             onClick={() => {
-                if(context.focused?.props.id === props.id) {
-                    context.focused.state.setIsFocused(false);
-                    context.inspector.state.setData(null);
+                if(context.target?.props.id === props.id) {
+                    context.target.state.setIsFocused(false);
+                    context.data.dispatch(null);
                 }
                 else {
-                    context.focused?.state.setIsFocused(false);
-                    context.focused = ref.current;
-                    context.focused.state.setIsFocused(true);
+                    context.target?.state.setIsFocused(false);
+                    context.target = ref.current;
+                    context.target.state.setIsFocused(true);
 
-                    context.inspector.state.setData(ref.current.props);
+                    context.data.dispatch(props);
                 }
             }}
         >
@@ -117,18 +118,13 @@ const ShowcaseInspector: React.FC = () => {
     const dataRef = useRef<ShowcaseControlData>(data);
 
     const context = useContext(ShowcaseContext);
-    const ref = useRef<ShowcaseInspectorRef>({
-        state: {
-            data: null,
-            setData: (data) => {
-                ref.current.state.data = data;
-                setData(data);
-            }
-        }
-    });
 
     if(data) dataRef.current = data;
-    context.inspector = ref.current;
+    
+    context.data = {
+        content: dataRef.current,
+        dispatch: setData
+    }
 
     const isActive = data !== null;
 
