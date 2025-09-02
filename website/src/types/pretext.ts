@@ -16,9 +16,9 @@ export type PretextTokenProps = {
     node?: PretextTokenNode;
 }
 
-export type CodeTokenPredicate = (token: PretextTokenData) => boolean;
+export type PretextTokenPredicate = (token: PretextTokenData) => boolean;
 
-export type CodeTokenModifier = {
-    predicate: CodeTokenPredicate;
+export type PretextTokenModifier = {
+    predicate: PretextTokenPredicate;
     props: Partial<PretextTokenProps>;
 }
