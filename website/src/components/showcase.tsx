@@ -15,40 +15,38 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const focuseTimeout = useRef<NodeJS.Timeout>(null);
     const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
-    const stateRef = useRef<ShowcaseState>({
+    const state = useRef<ShowcaseState>({
         pos: 0,
         hovered: null,      setHovered: (value) => {
             clearTimeout(focuseTimeout.current);
             clearTimeout(unfocusTimeout.current);
 
-            state.hovered = value;
+            state.current.hovered = value;
 
-            if(state.hovered) {
+            if(state.current.hovered) {
                 focuseTimeout.current = setTimeout(() => {
-                    if(!state.focused || value.props.id !== state.focused.props.id) {
-                        state.focused?.state.setIsFocused(false);
-                        state.focused = state.hovered;
-                        state.focused.state.setIsFocused(true);
+                    if(!state.current.focused || value.props.id !== state.current.focused.props.id) {
+                        state.current.focused?.state.setIsFocused(false);
+                        state.current.focused = state.current.hovered;
+                        state.current.focused.state.setIsFocused(true);
                     }
-                }, state.focused ? 225 : 125);
+                }, state.current.focused ? 225 : 125);
             }
         },
-        focused: null,      setFocused: (value) => state.focused = value,
-        inspected: null,    setInspected: (value) => state.inspected = value
+        focused: null,      setFocused: (value) => state.current.focused = value,
+        inspected: null,    setInspected: (value) => state.current.inspected = value
     });
 
-    const state = stateRef.current;
-
     return (
-        <ShowcaseContext.Provider value={state}>
+        <ShowcaseContext.Provider value={state.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
                 onMouseLeave={() => {
                     clearTimeout(focuseTimeout.current);
 
                     unfocusTimeout.current = setTimeout(() => {
-                        state.focused?.state.setIsFocused(false);
-                        state.focused = null;
+                        state.current.focused?.state.setIsFocused(false);
+                        state.current.focused = null;
                     }, 125);
                 }}
             >
@@ -62,7 +60,6 @@ const ShowcaseContext = createContext<ShowcaseState>(null);
 
 const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
     const context = useContext(ShowcaseContext);
-    context.pos = 0;
 
     return (
         <div className={clsx(style['panel'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
@@ -81,48 +78,47 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     const isInspected = useState(false);
 
     const context = useContext(ShowcaseContext);
-    const controlRef = useRef<ShowcaseControlRef>({
+    const ref = useRef<ShowcaseControlRef>({
         props: props,
         state: {
             isHovered: false,   setIsHovered: (value) => {
-                if(value && !control.state.isHovered) {
-                    context.setHovered(control);
+                if(value && !ref.current.state.isHovered) {
+                    context.setHovered(ref.current);
                     isHovered[1](true);
                 }
-                else if(!value && control.state.isHovered) {
+                else if(!value && ref.current.state.isHovered) {
                     context.setHovered(null);
                     isHovered[1](false);
                 }
             },
             
             isFocused: false,   setIsFocused: (value) => {
-                if(value && !control.state.isFocused) {
-                    context.setFocused(control);
+                if(value && !ref.current.state.isFocused) {
+                    context.setFocused(ref.current);
                     isFocused[1](true);
                 }
-                else if(!value && control.state.isFocused) {
+                else if(!value && ref.current.state.isFocused) {
                     context.setFocused(null);
                     isFocused[1](false);
                 }
             },
-            isInspected: false,  setIsInspected: (value) => control.state.isInspected = value
+            isInspected: false,  setIsInspected: (value) => ref.current.state.isInspected = value
         }
     });
 
-    const control = controlRef.current;
-    control.props = props;
-    control.state.isHovered = isHovered[0];
-    control.state.isFocused = isFocused[0];
-    control.state.isInspected = isInspected[0];
+    ref.current.props = props;
+    ref.current.state.isHovered = isHovered[0];
+    ref.current.state.isFocused = isFocused[0];
+    ref.current.state.isInspected = isInspected[0];
 
     return (
         <div
-            className={clsx(style['control'], control.state.isFocused ? style['engaged'] : null)}
+            className={clsx(style['control'], ref.current.state.isFocused ? style['engaged'] : null)}
             onMouseEnter={() => {
-                control.state.setIsHovered(true);
+                ref.current.state.setIsHovered(true);
             }}
             onMouseLeave={() => {
-                control.state.setIsHovered(false);
+                ref.current.state.setIsHovered(false);
             }}
         >
             <span className={style['layout']}>
