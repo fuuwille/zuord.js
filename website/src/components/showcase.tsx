@@ -12,8 +12,21 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
+    const focuseTimeoutRef = useRef<NodeJS.Timeout>(null);
+    const focuseTimeout = focuseTimeoutRef.current;
+
     const stateRef = useRef<ShowcaseState>({
-        hovered: null,      setHovered: (value) => state.hovered = value,
+        hovered: null,      setHovered: (value) => {
+            clearTimeout(focuseTimeoutRef.current);
+            state.hovered = value;
+
+            if(state.hovered) {
+                focuseTimeoutRef.current = setTimeout(() => {
+                    state.focused = state.hovered;
+                    state.focused.setIsFocused(true);
+                }, 1000);
+            }
+        },
         focused: null,      setFocused: (value) => state.focused = value,
         inspected: null,    setInspected: (value) => state.inspected = value
     });
@@ -72,7 +85,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
     return (
         <div
-            className={clsx(style['control'], state.isHovered ? style['engaged'] : null)}
+            className={clsx(style['control'], state.isFocused ? style['engaged'] : null)}
             onMouseEnter={() => {
                 state.setIsHovered(true);
             }}
