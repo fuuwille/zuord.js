@@ -16,6 +16,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const focuseTimeout = focuseTimeoutRef.current;
 
     const stateRef = useRef<ShowcaseState>({
+        pos: 0,
         hovered: null,      setHovered: (value) => {
             clearTimeout(focuseTimeoutRef.current);
             state.hovered = value;
@@ -25,7 +26,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                     state.focused?.setIsFocused(false);
                     state.focused = state.hovered;
                     state.focused.setIsFocused(true);
-                }, 175);
+                }, 500);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
@@ -52,11 +53,16 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 const ShowcaseContext = createContext<ShowcaseState>(null);
 
 const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
+    const context = useContext(ShowcaseContext);
+    context.pos = 0;
+
     return (
         <div className={clsx(style['panel'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
-            {props.controls.map((control, index) => (
-                <ShowcaseControl key={index} {...control} />
-            ))}
+            {props.controls.map((control) => {
+                return (
+                    <ShowcaseControl key={context.pos++} {...control} />
+                );
+            })}
         </div>
     );
 }
@@ -68,6 +74,8 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
     const context = useContext(ShowcaseContext);
     const stateRef = useRef<ShowcaseControlState>({
+        id: context.pos,
+        props: props,
         isHovered: false,   setIsHovered: (value) => {
             if(value && !state.isHovered) {
                 context.setHovered(state);
@@ -93,6 +101,8 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     });
 
     const state = stateRef.current;
+    state.id = context.pos;
+    state.props = props;
     state.isHovered = isHovered[0];
     state.isFocused = isFocused[0];
     state.isInspected = isInspected[0];
