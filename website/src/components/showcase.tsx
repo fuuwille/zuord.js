@@ -4,8 +4,6 @@ import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState 
 import { zuordX } from 'zuord';
 import { createContext } from 'react';
 
-const ShowcaseContext = createContext<ShowcaseState>({});
-
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
         panel: {
@@ -22,6 +20,8 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         </ShowcaseContext.Provider>
     );
 }
+
+const ShowcaseContext = createContext<ShowcaseState>({});
 
 const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
     return (
