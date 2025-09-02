@@ -8,8 +8,8 @@ import { syncAPIControl } from '@site/src/utils/showcase';
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['imports']}>
-      <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} />
-      <Pretext text={`import { Zuord } from 'zuord';`} />
+      <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} design={{ selectable: false }}/>
+      <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false }}/>
     </div>
       <div className={style['navbar']}>
         <Showcase container={{
