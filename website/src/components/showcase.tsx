@@ -18,26 +18,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
     const state = useRef<ShowcaseState>({
         inspector: null,
-        hovered: null,      setHovered: (value) => {
-            clearTimeout(focuseTimeout.current);
-            clearTimeout(unfocusTimeout.current);
-
-            state.current.hovered = value;
-
-            if(state.current.hovered) {
-                focuseTimeout.current = setTimeout(() => {
-                    if(!state.current.focused || value.props.id !== state.current.focused.props.id) {
-                        state.current.focused?.state.setIsFocused(false);
-                        state.current.focused = state.current.hovered;
-                        state.current.focused.state.setIsFocused(true);
-
-                        state.current.inspector.state.setData(value.props);
-                    }
-                }, state.current.focused ? 225 : 125);
-            }
-        },
         focused: null,      setFocused: (value) => state.current.focused = value,
-        inspected: null,    setInspected: (value) => state.current.inspected = value
     });
 
     return (
@@ -81,25 +62,12 @@ const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
 }
 
 const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
-    const isHovered = useState(false);
     const isFocused = useState(false);
-    const isInspected = useState(false);
 
     const context = useContext(ShowcaseContext);
     const ref = useRef<ShowcaseControlRef>({
         props: props,
         state: {
-            isHovered: false,   setIsHovered: (value) => {
-                if(value && !ref.current.state.isHovered) {
-                    context.setHovered(ref.current);
-                    isHovered[1](true);
-                }
-                else if(!value && ref.current.state.isHovered) {
-                    context.setHovered(null);
-                    isHovered[1](false);
-                }
-            },
-            
             isFocused: false,   setIsFocused: (value) => {
                 if(value && !ref.current.state.isFocused) {
                     context.setFocused(ref.current);
@@ -110,23 +78,21 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
                     isFocused[1](false);
                 }
             },
-            isInspected: false,  setIsInspected: (value) => ref.current.state.isInspected = value
         }
     });
 
     ref.current.props = props;
-    ref.current.state.isHovered = isHovered[0];
     ref.current.state.isFocused = isFocused[0];
-    ref.current.state.isInspected = isInspected[0];
 
     return (
         <div
             className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
-            onMouseEnter={() => {
-                ref.current.state.setIsHovered(true);
-            }}
-            onMouseLeave={() => {
-                ref.current.state.setIsHovered(false);
+            onClick={() => {
+                context.focused?.state.setIsFocused(false);
+                context.focused = ref.current;
+                context.focused.state.setIsFocused(true);
+
+                context.inspector.state.setData(ref.current.props);
             }}
         >
             <span className={style['layout']}>
