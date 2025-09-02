@@ -51,6 +51,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                 }}
             >
                 <ShowcasePanel {...props.panel} />
+                <ShowcaseInspector />
             </div>
         </ShowcaseContext.Provider>
     );
@@ -128,6 +129,17 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
                 <span className={clsx(style['text'], style['default'])}>{props.text.default}</span>
                 <span className={clsx(style['text'], style['focused'])}>{props.text.focused}</span>
             </span>
+        </div>
+    );
+}
+
+const ShowcaseInspector: React.FC = () => {
+    const context = useContext(ShowcaseContext);
+
+    return (
+        <div className={style['inspector']}>
+            <h2>Showcase Inspector</h2>
+            <pre>{JSON.stringify(context, null, 2)}</pre>
         </div>
     );
 }
