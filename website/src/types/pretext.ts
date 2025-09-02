@@ -1,8 +1,11 @@
 export type PretextProps = {
     text: string;
     modifiers?: PretextTokenModifier[];
-    language?: string;
-    style?: Partial<React.CSSProperties>;
+    language?: Prism.Grammar;
+    design?: {
+        selectable?: boolean;
+        style?: Partial<React.CSSProperties>;
+    }
 }
 
 export type PretextTokenData = {
