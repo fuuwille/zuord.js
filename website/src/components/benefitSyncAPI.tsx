@@ -1,15 +1,15 @@
 import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 import clsx from 'clsx';
 import { Pretext } from './pretext';
-import { CodeTokenModifier } from '@site/src/types/codeToken';
+import { PretextTokenModifier } from '@site/src/types/pretext';
 import { Showcase } from './showcase';
 import { syncAPIControl } from '@site/src/utils/showcase';
 
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['imports']}>
-      <Pretext code={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} />
-      <Pretext code={`import { Zuord } from 'zuord';`} />
+      <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} />
+      <Pretext text={`import { Zuord } from 'zuord';`} />
     </div>
       <div className={style['navbar']}>
         <Showcase container={{
@@ -23,10 +23,10 @@ export const BenefitSyncAPI: React.FC = () => (
   </div>
 );
 
-export const runtimeImportModifiers: CodeTokenModifier[] = [
+export const runtimeImportModifiers: PretextTokenModifier[] = [
   {
-    predicate: (data) => data.text.trim() === "zuord",
-    props: { Wrapper: ({ text }) => <span className={style['runtime-import-zuord']}>{text}</span> }
+    predicate: (data) => data.content.trim() === "zuord",
+    props: { Node: ({ content }) => <span className={style['runtime-import-zuord']}>{content}</span> }
   }
 ]
 

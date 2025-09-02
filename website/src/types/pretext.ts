@@ -1,5 +1,6 @@
 export type PretextProps = {
     text: string;
+    modifiers?: PretextTokenModifier[];
     language?: string;
     style?: Partial<React.CSSProperties>;
 }
@@ -13,7 +14,7 @@ export type PretextTokenNode = React.FC<PretextTokenData>;
 
 export type PretextTokenProps = {
     data: PretextTokenData;
-    node?: PretextTokenNode;
+    Node?: PretextTokenNode;
 }
 
 export type PretextTokenPredicate = (token: PretextTokenData) => boolean;

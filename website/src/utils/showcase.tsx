@@ -16,14 +16,14 @@ export const syncAPIControl = (text: string) => {
         inspector: {
             head: {
                 title: runtime 
-                    ? <Pretext code={`zuord.${text}(...)`} /> 
-                    : <Pretext code={`Zuord.${text}<...>`} />,
+                    ? <Pretext text={`zuord.${text}(...)`} /> 
+                    : <Pretext text={`Zuord.${text}<...>`} />,
             },
             body: {
-                code: <Pretext code={`zuord.${text}(...)`} />,
+                code: <Pretext text={`zuord.${text}(...)`} />,
                 result: {
-                    type: <Pretext code={`Zuord`} />,
-                    runtime: <Pretext code={`zuord.${text}(...)`} />
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.${text}(...)`} />
                 }
             }
         }
