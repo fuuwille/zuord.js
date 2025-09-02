@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlState } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlState, ShowcaseControlRef } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
@@ -23,14 +23,14 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
             if(state.hovered) {
                 focuseTimeoutRef.current = setTimeout(() => {
-                    if(!state.focused || value.id !== state.focused.id) {
-                        state.focused?.setIsFocused(false);
+                    if(!state.focused || value.props.id !== state.focused.props.id) {
+                        state.focused?.state.setIsFocused(false);
                         state.focused = state.hovered;
-                        state.focused.setIsFocused(true);
+                        state.focused.state.setIsFocused(true);
                     }
 
-                    console.log([value.id, state.focused?.id])
-                }, 100);
+                    console.log([value.props.id, state.focused?.props.id])
+                }, 175);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
@@ -44,7 +44,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             <div 
                 className={clsx('showcase', style['showcase'])}
                 onMouseLeave={() => {
-                    state.focused?.setIsFocused(false);
+                    state.focused?.state.setIsFocused(false);
                     state.focused = null;
                 }}
             >
@@ -62,9 +62,9 @@ const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
 
     return (
         <div className={clsx(style['panel'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
-            {props.controls.map((control) => {
+            {props.controls.map((control, index) => {
                 return (
-                    <ShowcaseControl key={context.pos++} {...control} />
+                    <ShowcaseControl id={index + 1} key={index} {...control} />
                 );
             })}
         </div>
@@ -77,51 +77,48 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     const isInspected = useState(false);
 
     const context = useContext(ShowcaseContext);
-    const stateRef = useRef<ShowcaseControlState>({
-        id: context.pos,
+    const controlRef = useRef<ShowcaseControlRef>({
         props: props,
-        isHovered: false,   setIsHovered: (value) => {
-            if(value && !state.isHovered) {
-                context.setHovered(state);
-                isHovered[1](true);
-            }
-            else if(!value && state.isHovered) {
-                context.setHovered(null);
-                isHovered[1](false);
-            }
-        },
-        
-        isFocused: false,   setIsFocused: (value) => {
-            if(value && !state.isFocused) {
-                context.setFocused(state);
-                isFocused[1](true);
-            }
-            else if(!value && state.isFocused) {
-                context.setFocused(null);
-                isFocused[1](false);
-            }
-        },
-        isInspected: false,  setIsInspected: (value) => state.isInspected = value
+        state: {
+            isHovered: false,   setIsHovered: (value) => {
+                if(value && !control.state.isHovered) {
+                    context.setHovered(control);
+                    isHovered[1](true);
+                }
+                else if(!value && control.state.isHovered) {
+                    context.setHovered(null);
+                    isHovered[1](false);
+                }
+            },
+            
+            isFocused: false,   setIsFocused: (value) => {
+                if(value && !control.state.isFocused) {
+                    context.setFocused(control);
+                    isFocused[1](true);
+                }
+                else if(!value && control.state.isFocused) {
+                    context.setFocused(null);
+                    isFocused[1](false);
+                }
+            },
+            isInspected: false,  setIsInspected: (value) => control.state.isInspected = value
+        }
     });
 
-    const state = stateRef.current;
-    state.isHovered = isHovered[0];
-    state.isFocused = isFocused[0];
-    state.isInspected = isInspected[0];
-
-    useLayoutEffect(() => {
-        state.id = context.pos;
-        state.props = props;
-    })
+    const control = controlRef.current;
+    control.props = props;
+    control.state.isHovered = isHovered[0];
+    control.state.isFocused = isFocused[0];
+    control.state.isInspected = isInspected[0];
 
     return (
         <div
-            className={clsx(style['control'], state.isFocused ? style['engaged'] : null)}
+            className={clsx(style['control'], control.state.isFocused ? style['engaged'] : null)}
             onMouseEnter={() => {
-                state.setIsHovered(true);
+                control.state.setIsHovered(true);
             }}
             onMouseLeave={() => {
-                state.setIsHovered(false);
+                control.state.setIsHovered(false);
             }}
         >
             <span className={style['layout']}>
