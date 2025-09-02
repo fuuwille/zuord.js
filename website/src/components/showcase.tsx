@@ -38,6 +38,10 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         <ShowcaseContext.Provider value={state}>
             <div 
                 className={clsx('showcase', style['showcase'])}
+                onMouseLeave={() => {
+                    state.focused?.setIsFocused(false);
+                    state.focused = null;
+                }}
             >
                 <ShowcasePanel {...props.panel} />
             </div>
