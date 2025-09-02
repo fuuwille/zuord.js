@@ -158,8 +158,9 @@ const ShowcaseInspector: React.FC = () => {
 
     return (
         <div className={clsx(style['inspector'], isActive ? style['active'] : null)}>
-            <h2>MKANTOR Inspector</h2>
-            <pre style={{overflow: 'scroll', height: '200px'}} >{JSON.stringify(dataRef.current, null, 2)}</pre>
+            <div className={clsx(style['title'])}>
+                {dataRef.current?.text.default}
+            </div>
         </div>
     );
 }
