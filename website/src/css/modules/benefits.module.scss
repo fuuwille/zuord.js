@@ -1,19 +1,20 @@
 .benefits {
     .cards {
         display: flex;
-        padding: 0 10%;
+        margin: 0 10%;
+
+        .left-column, .right-column {
+            flex: 0 0 50%;
+            min-width: 0;
+        }
 
         .left-column {
-            flex: 1;
-
             :global(.benefit-card) {
                 margin-right: 8px;
             }
         }
 
         .right-column {
-            flex: 1;
-
             :global(.benefit-card) {
                 margin-left: 8px;
             }
