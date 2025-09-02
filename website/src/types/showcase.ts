@@ -37,6 +37,14 @@ export type ShowcaseControlData = {
         default: string;
         focused: string;
     },
+    inspector: {
+        title: React.ReactNode;
+        code: React.ReactNode;
+        result: {
+            code: React.ReactNode;
+            result: React.ReactNode;
+        }
+    },
     design?: {
         className?: string;
     }
