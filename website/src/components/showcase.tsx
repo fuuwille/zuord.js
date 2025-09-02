@@ -15,8 +15,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const unfocusTimeout = useRef<NodeJS.Timeout>(null);
-
     const ref = useRef<ShowcaseRef>({
         target: null,
         data: {
@@ -29,16 +27,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         <ShowcaseContext.Provider value={ref.current}>
             <div 
                 className={clsx('showcase', style['showcase'], props.design?.className)}
-                onMouseEnter={() => {
-                    clearTimeout(unfocusTimeout.current);
-                }}
-                onMouseLeave={() => {
-                    unfocusTimeout.current = setTimeout(() => {
-                        ref.current.target?.state.setIsFocused(false);
-                        ref.current.target = null;
-                        ref.current.data.dispatch(null);
-                    }, 125);
-                }}
             >
                 <ShowcaseContainer {...props.container} />
                 <ShowcaseInspector />
@@ -51,9 +39,23 @@ const ShowcaseContext = createContext<ShowcaseRef>(null);
 
 const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
     const context = useContext(ShowcaseContext);
+    const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     return (
-        <div className={clsx(style['container'])} style={{ gridTemplateColumns: 'auto '.repeat(props.design.columns).trim() }}>
+        <div 
+            className={clsx(style['container'])} 
+            style={{ gridTemplateColumns: 'auto '.repeat(props.design.columns).trim() }}
+            onMouseEnter={() => {
+                clearTimeout(unfocusTimeout.current);
+            }}
+            onMouseLeave={() => {
+                unfocusTimeout.current = setTimeout(() => {
+                    context.target?.state.setIsFocused(false);
+                    context.target = null;
+                    context.data.dispatch(null);
+                }, 125);
+            }}
+        >
             {props.controls.map((control, index) => {
                 return (
                     <ShowcaseControl id={index + 1} key={index} {...control} />

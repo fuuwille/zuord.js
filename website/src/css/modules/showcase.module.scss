@@ -92,15 +92,13 @@
     }
 
     .inspector {
-        position: absolute;
+        position: fixed;
         min-width: 600px;
         background-color: #292a2c;
         border: 1.5px solid #444950;
         border-radius: 8px;
         opacity: 0;
         transition: all 0.10s ease-in;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .inspector.active {
