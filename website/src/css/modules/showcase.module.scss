@@ -87,12 +87,10 @@
 
     .inspector {
         position: absolute;
-        width: 600px;
-        height: 200px;
+        min-width: 600px;
         background-color: #292a2c;
         border: 1.5px solid #444950;
         border-radius: 8px;
-
         opacity: 0;
         transition: all 0.10s ease-in;
     }
@@ -103,20 +101,29 @@
 
     .inspector {
         .head {
-            display: flex;
+            min-height: 30px;
         }
 
         .body {
+            min-height: 200px;                
+        }
+
+        .head, .body {            
             display: flex;
+            width: 100%;
         }
 
         .body {
-            .content {
-                flex: 1;
+            .code {
+                background-color: #ffe0a825;
             }
 
             .result {
-                flex: 1;
+                background-color: #70617025;
+            }
+
+            .code, .result {
+                flex: 1
             }
         }
     }
