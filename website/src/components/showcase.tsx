@@ -22,7 +22,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
     return (
         <ShowcaseContext.Provider value={state}>
-            <div className={clsx('showcase', style['showcase'])}>
+            <div 
+                className={clsx('showcase', style['showcase'])}
+            >
                 <ShowcasePanel {...props.panel} />
             </div>
         </ShowcaseContext.Provider>
@@ -50,11 +52,8 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     const stateRef = useRef<ShowcaseControlState>({
         isHovered: false,   setIsHovered: (value) => {
             if(value && !state.isHovered) {
-                context.hovered?.setIsHovered(false);
-
                 context.setHovered(state);
                 isHovered[1](true);
-                console.log('Hovered:', props.text.default);
             }
             else if(!value && state.isHovered) {
                 context.setHovered(null);
@@ -76,6 +75,9 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
             className={clsx(style['control'], state.isHovered ? style['engaged'] : null)}
             onMouseEnter={() => {
                 state.setIsHovered(true);
+            }}
+            onMouseLeave={() => {
+                state.setIsHovered(false);
             }}
         >
             <span className={style['layout']}>
