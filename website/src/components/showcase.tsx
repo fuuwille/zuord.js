@@ -22,9 +22,10 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
             if(state.hovered) {
                 focuseTimeoutRef.current = setTimeout(() => {
+                    state.focused?.setIsFocused(false);
                     state.focused = state.hovered;
                     state.focused.setIsFocused(true);
-                }, 1000);
+                }, 175);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
@@ -74,7 +75,16 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
             }
         },
         
-        isFocused: false,   setIsFocused: (value) => state.isFocused = value,
+        isFocused: false,   setIsFocused: (value) => {
+            if(value && !state.isFocused) {
+                context.setFocused(state);
+                isFocused[1](true);
+            }
+            else if(!value && state.isFocused) {
+                context.setFocused(null);
+                isFocused[1](false);
+            }
+        },
         isInspected: false,  setIsInspected: (value) => state.isInspected = value
     });
 
