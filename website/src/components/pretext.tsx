@@ -11,14 +11,18 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
         text: '',
         modifiers: [],
-        language: Prism.languages.ts
+        language: Prism.languages.ts,
+        design: {
+            selectable: true,
+            style: {},
+        }
     }, $props);
 
 
     const tokens = Prism.tokenize(props.text, props.language);
 
     return (
-        <pre className={clsx('pretext', style['pretext'])}>
+        <pre className={clsx('pretext', style['pretext'])} style={{ userSelect: props.design.selectable ? 'text' : 'none', ...props.design.style }}>
             {tokens.map((token, i) => {
                 const data = typeof token === "string" 
                     ? { content: token, type: "" }
