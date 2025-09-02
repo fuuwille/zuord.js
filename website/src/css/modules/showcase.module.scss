@@ -87,7 +87,8 @@
 
     .inspector {
         position: absolute;
-        width: 500px;
+        width: 600px;
+        height: 200px;
         background-color: #292a2c;
         border: 1.5px solid #444950;
         border-radius: 8px;
@@ -98,5 +99,25 @@
 
     .inspector.active {
         opacity: 1;
+    }
+
+    .inspector {
+        .head {
+            display: flex;
+        }
+
+        .body {
+            display: flex;
+        }
+
+        .body {
+            .content {
+                flex: 1;
+            }
+
+            .result {
+                flex: 1;
+            }
+        }
     }
 }
