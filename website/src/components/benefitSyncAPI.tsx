@@ -36,7 +36,7 @@ export const BenefitSyncAPI: React.FC = () => (
           showcaseControl('Evolve'),
           showcaseControl('Pick'),
           showcaseControl('Omit'),
-        ]} style={{ columns: 5 }}/>
+        ]} design={{ columns: 5 }}/>
       </div>
   </div>
 );
