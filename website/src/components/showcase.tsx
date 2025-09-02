@@ -28,9 +28,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         state.focused = state.hovered;
                         state.focused.state.setIsFocused(true);
                     }
-
-                    console.log([value.props.id, state.focused?.props.id])
-                }, 175);
+                }, state.focused ? 175 : 25);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
