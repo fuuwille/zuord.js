@@ -52,7 +52,7 @@ const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
     const context = useContext(ShowcaseContext);
 
     return (
-        <div className={clsx(style['container'])} style={{ gridTemplateColumns: `repeat(${props.design.columns}, 1fr)` }}>
+        <div className={clsx(style['container'])} style={{ gridTemplateColumns: 'auto '.repeat(props.design.columns).trim() }}>
             {props.controls.map((control, index) => {
                 return (
                     <ShowcaseControl id={index + 1} key={index} {...control} />
@@ -120,7 +120,7 @@ const ShowcaseInspector: React.FC = () => {
     const context = useContext(ShowcaseContext);
 
     if(data) dataRef.current = data;
-    
+
     context.data = {
         content: dataRef.current,
         dispatch: setData

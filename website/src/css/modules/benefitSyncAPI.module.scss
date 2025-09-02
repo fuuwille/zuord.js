@@ -15,15 +15,6 @@
     }
 
     .navbar {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        width: 280px;
-
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .navbar {
         .runtime {
             color: #caca9d;
         }
