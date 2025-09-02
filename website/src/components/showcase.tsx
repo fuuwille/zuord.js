@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlState } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -23,10 +23,14 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
             if(state.hovered) {
                 focuseTimeoutRef.current = setTimeout(() => {
-                    state.focused?.setIsFocused(false);
-                    state.focused = state.hovered;
-                    state.focused.setIsFocused(true);
-                }, 500);
+                    if(!state.focused || value.id !== state.focused.id) {
+                        state.focused?.setIsFocused(false);
+                        state.focused = state.hovered;
+                        state.focused.setIsFocused(true);
+                    }
+
+                    console.log([value.id, state.focused?.id])
+                }, 100);
             }
         },
         focused: null,      setFocused: (value) => state.focused = value,
@@ -101,11 +105,14 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     });
 
     const state = stateRef.current;
-    state.id = context.pos;
-    state.props = props;
     state.isHovered = isHovered[0];
     state.isFocused = isFocused[0];
     state.isInspected = isInspected[0];
+
+    useLayoutEffect(() => {
+        state.id = context.pos;
+        state.props = props;
+    })
 
     return (
         <div
