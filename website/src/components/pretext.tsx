@@ -5,9 +5,17 @@ import "prism-themes/themes/prism-vsc-dark-plus.css";
 import { tokenText } from "@site/src/utils/tokenText";
 import clsx from "clsx";
 import { PretextProps } from '@site/src/types/pretext';
+import { zuordX } from 'zuord';
 
-export const Pretext: React.FC<PretextProps> = ({ text, modifiers = [] }) => {
-    const tokens = Prism.tokenize(text, Prism.languages.ts);
+export const Pretext: React.FC<PretextProps> = ($props) => {
+    const props = zuordX.integrate.plain.loose({
+        text: '',
+        modifiers: [],
+        language: Prism.languages.ts
+    }, $props);
+
+
+    const tokens = Prism.tokenize(props.text, props.language);
 
     return (
         <pre className={clsx('pretext', style['pretext'])}>
@@ -16,7 +24,7 @@ export const Pretext: React.FC<PretextProps> = ({ text, modifiers = [] }) => {
                     ? { content: token, type: "" }
                     : { content: tokenText(token.content), type: token.type };
 
-                const modifier = modifiers.find(modifier => modifier.predicate(data))
+                const modifier = props.modifiers.find(modifier => modifier.predicate(data))
 
                 const { type, content, Node } = { ...data, ...(modifier?.props ?? {}) };
 
