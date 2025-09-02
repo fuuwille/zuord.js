@@ -44,6 +44,9 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         <ShowcaseContext.Provider value={state.current}>
             <div 
                 className={clsx('showcase', style['showcase'])}
+                onMouseEnter={() => {
+                    clearTimeout(unfocusTimeout.current);
+                }}
                 onMouseLeave={() => {
                     clearTimeout(focuseTimeout.current);
 
