@@ -35,7 +35,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         state.current.focused?.state.setIsFocused(false);
                         state.current.focused = null;
                         state.current.inspector.state.setData(null);
-                    }, 125);
+                    }, 50);
                 }}
             >
                 <ShowcaseContainer {...props.container} />
