@@ -1,3 +1,7 @@
+export type ShowcaseState = {
+    
+}
+
 export type ShowcaseProps = {
     panel: ShowcasePanelProps;
 }
