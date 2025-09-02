@@ -1,6 +1,6 @@
-import style from '@site/src/css/modules/showcase.module.scss';
+import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
 
-export const showcaseControl = (text: string) => {
+export const syncAPIControl = (text: string) => {
     const runtime = text[0] === text[0].toLowerCase();
 
     return {

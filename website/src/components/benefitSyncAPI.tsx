@@ -3,20 +3,7 @@ import clsx from 'clsx';
 import { CodeBlock } from './codeBlock';
 import { CodeTokenModifier } from '@site/src/types/codeToken';
 import { Showcase } from './showcase';
-
-export const showcaseControl = (text: string) => {
-  const runtime = text[0] === text[0].toLowerCase();
-
-  return {
-    text: {
-      default: `.${text}`,
-      focused: runtime ? `${text}()` : `${text}<>`,
-    },
-    design: {
-      className: runtime ? style['runtime'] : style['type'],
-    }
-  };
-}
+import { syncAPIControl } from '@site/src/utils/showcase';
 
 export const BenefitSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
@@ -27,8 +14,8 @@ export const BenefitSyncAPI: React.FC = () => (
       <div className={style['navbar']}>
         <Showcase container={{
           controls: [
-            showcaseControl('integrate'), showcaseControl('merge'), showcaseControl('evolve'), showcaseControl('pick'), showcaseControl('omit'),
-            showcaseControl('Integrate'), showcaseControl('Merge'), showcaseControl('Evolve'), showcaseControl('Pick'), showcaseControl('Omit'),
+            syncAPIControl('integrate'), syncAPIControl('merge'), syncAPIControl('evolve'), syncAPIControl('pick'), syncAPIControl('omit'),
+            syncAPIControl('Integrate'), syncAPIControl('Merge'), syncAPIControl('Evolve'), syncAPIControl('Pick'), syncAPIControl('Omit'),
           ],
           design: { columns: 5 }
         }}/>
