@@ -160,18 +160,18 @@ const ShowcaseInspector: React.FC = () => {
     return (
         <div className={clsx(style['inspector'], isActive ? style['active'] : null)}>
             <div className={clsx(style['head'])}>
-                {dataRef.current?.text.default}
+                {dataRef.current?.inspector.head.title}
             </div>
             <div className={clsx(style['body'])}>
                 <div className={clsx(style['code'])}>
-
+                    {dataRef.current?.inspector.body.code}
                 </div>
                 <div className={clsx(style['result'])}>
                     <div className={clsx(style['type'])}>
-
+                        {dataRef.current?.inspector.body.result.type}
                     </div>
                     <div className={clsx(style['runtime'])}>
-                        
+                        {dataRef.current?.inspector.body.result.runtime}
                     </div>
                 </div>
             </div>
