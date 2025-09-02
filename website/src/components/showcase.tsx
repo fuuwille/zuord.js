@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -25,7 +25,11 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     });
 
     const divRef = useRef<HTMLDivElement>(null);
-    ref.current.div = divRef.current;
+
+    useEffect(() => {
+        ref.current.div = divRef.current;
+        console.log(ref.current.div);
+    }, []);
 
     return (
         <ShowcaseContext.Provider value={ref.current}>
@@ -123,6 +127,8 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
 const ShowcaseInspector: React.FC = () => {
     const [data, setData] = useState<ShowcaseControlData>(null);
+
+    const divRef = useRef<HTMLDivElement>(null);
     const dataRef = useRef<ShowcaseControlData>(data);
 
     const context = useContext(ShowcaseContext);
@@ -135,9 +141,43 @@ const ShowcaseInspector: React.FC = () => {
     }
 
     const isActive = data !== null;
+    const [position, setPosition] = useState({ top: 0, left: 0 });
+
+    useEffect(() => {
+        const updatePosition = () => {
+            if (divRef.current) {
+                const rect = divRef.current.getBoundingClientRect();
+                const parentRect = divRef.current.parentElement.getBoundingClientRect();
+                
+                setPosition({
+                    top: parentRect.bottom, // parent'ın altı
+                    left: parentRect.x + (parentRect.width - rect.width) / 2,  // parent ile hizalı
+                });
+
+            }
+        };
+
+        updatePosition();
+        window.addEventListener('resize', updatePosition);
+        window.addEventListener('scroll', updatePosition, true); // true: capture phase
+
+
+        return () => {
+            window.removeEventListener('resize', updatePosition);
+            window.removeEventListener('scroll', updatePosition, true);
+        };
+    }, []);
 
     return (
-        <div className={clsx(style['inspector'], isActive ? style['active'] : null)}>
+        <div 
+            ref={divRef}
+            className={clsx(style['inspector'], isActive ? style['active'] : null)}
+            style={{
+                position: 'fixed',
+                top: `${position.top}px`,
+                left: `${position.left}px`,
+            }}
+        >
             <div className={clsx(style['head'])}>
                 {dataRef.current?.inspector.head.title}
             </div>
