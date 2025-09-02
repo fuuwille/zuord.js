@@ -1,5 +1,11 @@
 export type ShowcaseState = {
-    
+    hovered: ShowcaseControlState;
+    focused: ShowcaseControlState;
+    inspected: ShowcaseControlState;
+
+    setHovered: (state: ShowcaseControlState) => void;
+    setFocused: (state: ShowcaseControlState) => void;
+    setInspected: (state: ShowcaseControlState) => void;
 }
 
 export type ShowcaseProps = {
@@ -11,6 +17,12 @@ export type ShowcasePanelProps = {
     design: {
         columns: number;
     }
+}
+
+export type ShowcaseControlState = {
+    isHovered: boolean;
+    isFocused: boolean;
+    isInspected: boolean;
 }
 
 export type ShowcaseControlProps = {

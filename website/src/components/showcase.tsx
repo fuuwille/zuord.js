@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext } from 'react';
+import { createContext, useEffect, useRef } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -12,8 +12,16 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
+    const stateRef = useRef<ShowcaseState>({
+        hovered: null,      setHovered: null,
+        focused: null,      setFocused: null,
+        inspected: null,    setInspected: null
+    });
+
+    const state = stateRef.current;
+
     return (
-        <ShowcaseContext.Provider value={props}>
+        <ShowcaseContext.Provider value={state}>
             <div className={clsx('showcase', style['showcase'])}>
                 <ShowcasePanel {...props.panel} />
             </div>
@@ -21,7 +29,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     );
 }
 
-const ShowcaseContext = createContext<ShowcaseState>({});
+const ShowcaseContext = createContext<ShowcaseState>(null);
 
 const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
     return (
