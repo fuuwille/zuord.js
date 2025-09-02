@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlState } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useEffect, useRef } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -42,19 +42,41 @@ const ShowcasePanel : React.FC<ShowcasePanelProps> = (props) => {
 }
 
 const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
+    const isHovered = useState(false);
+    const isFocused = useState(false);
+    const isInspected = useState(false);
+
     const context = useContext(ShowcaseContext);
     const stateRef = useRef<ShowcaseControlState>({
-        isHovered: false,   setIsHovered: (value) => state.isHovered = value,
+        isHovered: false,   setIsHovered: (value) => {
+            if(value && !state.isHovered) {
+                context.hovered?.setIsHovered(false);
+
+                context.setHovered(state);
+                isHovered[1](true);
+                console.log('Hovered:', props.text.default);
+            }
+            else if(!value && state.isHovered) {
+                context.setHovered(null);
+                isHovered[1](false);
+            }
+        },
+        
         isFocused: false,   setIsFocused: (value) => state.isFocused = value,
         isInspected: false,  setIsInspected: (value) => state.isInspected = value
     });
 
     const state = stateRef.current;
+    state.isHovered = isHovered[0];
+    state.isFocused = isFocused[0];
+    state.isInspected = isInspected[0];
 
     return (
         <div
-            className={clsx(style['control'])}
-            onMouseEnter={() => context.setHovered(state)}
+            className={clsx(style['control'], state.isHovered ? style['engaged'] : null)}
+            onMouseEnter={() => {
+                state.setIsHovered(true);
+            }}
         >
             <span className={style['layout']}>
                 <span className={style['text']}>{props.text.default}</span>
