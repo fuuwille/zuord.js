@@ -36,6 +36,9 @@ export type ShowcaseControlData = {
     text: {
         default: string;
         focused: string;
+    },
+    design?: {
+        className?: string;
     }
 }
 

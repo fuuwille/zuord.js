@@ -12,7 +12,7 @@ export const showcaseControl = (text: string) => {
       default: `.${text}`,
       focused: runtime ? `${text}()` : `${text}<>`,
     },
-    style: {
+    design: {
       className: runtime ? style['runtime'] : style['type'],
     }
   };
