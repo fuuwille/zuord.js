@@ -117,7 +117,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
     return (
         <div
-            className={clsx(style['control'], ref.current.state.isFocused ? style['engaged'] : null, props.design?.className)}
+            className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
             onMouseEnter={() => {
                 ref.current.state.setIsHovered(true);
             }}
