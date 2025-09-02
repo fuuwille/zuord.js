@@ -2,7 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcasePanelProps, ShowcaseState, ShowcaseControlRef, ShowcaseInspectorRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -138,6 +138,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
 const ShowcaseInspector: React.FC = () => {
     const [data, setData] = useState<ShowcaseControlData>(null);
+    const dataRef = useRef<ShowcaseControlData>(data);
 
     const context = useContext(ShowcaseContext);
     const ref = useRef<ShowcaseInspectorRef>({
@@ -150,12 +151,14 @@ const ShowcaseInspector: React.FC = () => {
         }
     });
 
+    if(data) dataRef.current = data;
+
     context.inspector = ref.current;
 
     return (
         <div className={style['monitor']} style={{ opacity: context.inspector.state.data ? 1 : 0, transition: 'all 0.10s ease-in' }}>
             <h2>MKANTOR Inspector</h2>
-            <pre style={{overflow: 'scroll', height: '200px'}} >{JSON.stringify(context, null, 2)}</pre>
+            <pre style={{overflow: 'scroll', height: '200px'}} >{JSON.stringify(dataRef.current, null, 2)}</pre>
         </div>
     );
 }
