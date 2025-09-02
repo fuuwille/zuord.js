@@ -2,8 +2,7 @@ import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { Divider } from '@mui/material';
+import { createContext, useContext, useRef, useState } from 'react';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -16,7 +15,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     }, $props);
 
-    const focuseTimeout = useRef<NodeJS.Timeout>(null);
     const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     const ref = useRef<ShowcaseRef>({
