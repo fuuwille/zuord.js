@@ -2,15 +2,7 @@ import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
 import { PretextProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
-import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
-import ts from '@shikijs/langs/typescript'
-import darkPlus from '@shikijs/themes/dark-plus'
-
-const shiki = createHighlighterCoreSync({
-  themes: [darkPlus],
-  langs: [ts],
-  engine: createJavaScriptRegexEngine()
-})
+import { highlighter } from '@site/src/utils/pretext';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -24,7 +16,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     }, $props);
 
 
-    const { tokens } = shiki.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
+    const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
 
 
     return (
