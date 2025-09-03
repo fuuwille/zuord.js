@@ -149,7 +149,7 @@ const ShowcaseInspector: React.FC = () => {
         const updatePosition = () => {
             if (divRef.current) {
                 const rect = divRef.current.getBoundingClientRect();
-                const parentRect = divRef.current.parentElement.getBoundingClientRect();
+                const parentRect = divRef.current.parentElement.parentElement.getBoundingClientRect();
                 
                 setPosition({
                     top: parentRect.bottom, // parent'ın altı
