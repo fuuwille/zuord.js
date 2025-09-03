@@ -10,17 +10,16 @@ export type PretextProps = {
 
 export type PretextTokenData = {
     content: string;
-    type: string;
+    color: string;
 }
 
 export type PretextTokenNode = React.FC<PretextTokenData>;
 
-export type PretextTokenProps = {
-    data: PretextTokenData;
+export type PretextTokenProps = PretextTokenData & {
     Node?: PretextTokenNode;
 }
 
-export type PretextTokenPredicate = (token: PretextTokenData) => boolean;
+export type PretextTokenPredicate = (content: string) => boolean;
 
 export type PretextTokenModifier = {
     predicate: PretextTokenPredicate;
