@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { PretextProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
+import { useColorMode } from '@docusaurus/theme-common';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -15,8 +16,8 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         }
     }, $props);
 
-
-    const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
+    const { colorMode } = useColorMode();
+    const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: colorMode === 'dark' ? 'dark-plus' : 'light-plus' });
 
 
     return (
@@ -26,7 +27,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                     {line.map((token, j) => {
                         
                         const { content, color } = token;
-
+ 
                         return (
                             <span
                                 key={j}
