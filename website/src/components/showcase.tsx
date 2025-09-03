@@ -149,7 +149,7 @@ const ShowcaseInspector: React.FC = () => {
         const updatePosition = () => {
             if (divRef.current) {
                 const inspectorRect = divRef.current.getBoundingClientRect();
-                const panelRect = divRef.current.parentElement.parentElement.getBoundingClientRect();
+                const panelRect = divRef.current.parentElement.getBoundingClientRect();
                 
                 setPosition({
                     top: panelRect.bottom,
