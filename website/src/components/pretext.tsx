@@ -23,15 +23,19 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         <pre className={clsx('pretext', style['pretext'])} style={{ userSelect: props.design.selectable ? 'text' : 'none', ...props.design.style }}>
             {tokens.map((line, i) => (
                 <div key={i}>
-                    {line.map((token, j) => (
-                        <span
-                            key={j}
-                            style={{ color: token.color }}
-                            className={`token ${token.explanation?.[0]?.scopes.at(-1)?.scopeName ?? ''}`}
-                        >
-                            {token.content}
-                        </span>
-                    ))}
+                    {line.map((token, j) => {
+                        
+                        const { content, color } = token;
+
+                        return (
+                            <span
+                                key={j}
+                                style={{ color: color }}
+                            >
+                                {content}
+                            </span>
+                        );
+                    })}
                 </div>
             ))}
         </pre>
