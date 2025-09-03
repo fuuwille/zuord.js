@@ -2,14 +2,7 @@ import { Pretext } from "@site/src/components/pretext";
 
 export const code = {
     integrate: 
-`const defaultUser = {
-    profile: {
-        username: 'unknown',
-        location: 'Earth'
-    }, id: 31400222
-};
-
-zuord.integrate(defaultUser, {
+`const result = zuord.integrate(defaultUser, {
     profile: { username: 'k4yr2' },
     createdAt: new Date()
 });`
@@ -30,151 +23,71 @@ export const controlData = {
     integrate: {
         text: "integrate",
         inspector: {
-            head: {
-                title: <Pretext text={`zuord.integrate(...)`} />
-            },
-            body: {
-                code: <Pretext text={code.integrate} />,
-                result: {
-                    type: <Pretext text={resultType.integrate} />,
-                    runtime: "zuord.integrate(...)"
-                }
-            }
+            head: <Pretext text={`zuord.integrate(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     merge: {
         text: "merge",
         inspector: {
-            head: {
-                title: <Pretext text={`zuord.merge(...)`} />
-            },
-            body: {
-                code: "zuord.merge(...)",
-                result: {
-                    type: "MERGE",
-                    runtime: "zuord.merge(...)"
-                }
-            }
+            head: <Pretext text={`zuord.merge(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     evolve: {
         text: "evolve",
         inspector: {
-            head: {
-                title: <Pretext text={`zuord.evolve(...)`} />
-            },
-            body: {
-                code: "zuord.evolve(...)",
-                result: {
-                    type: "EVOLVE",
-                    runtime: "zuord.evolve(...)"
-                }
-            }
+            head: <Pretext text={`zuord.evolve(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     pick: {
         text: "pick",
         inspector: {
-            head: {
-                title: <Pretext text={`zuord.pick(...)`} />
-            },
-            body: {
-                code: "zuord.pick(...)",
-                result: {
-                    type: "PICK",
-                    runtime: "zuord.pick(...)"
-                }
-            }
+            head: <Pretext text={`zuord.pick(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     omit: {
         text: "omit",
         inspector: {
-            head: {
-                title: <Pretext text={`zuord.omit(...)`} />
-            },
-            body: {
-                code: "zuord.omit(...)",
-                result: {
-                    type: "OMIT",
-                    runtime: "zuord.omit(...)"
-                }
-            }
+            head: <Pretext text={`zuord.omit(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     Integrate: {
         text: "Integrate",
         inspector: {
-            head: {
-                title: <Pretext text={`Zuord.Integrate<...>`} />
-            },
-            body: {
-                code: <Pretext text={`zuord.Integrate(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.Integrate(...)`} />
-                }
-            }
+            head: <Pretext text={`zuord.Integrate(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     Merge: {
         text: "Merge",
         inspector: {
-            head: {
-                title: <Pretext text={`Zuord.Merge<...>`} />
-            },
-            body: {
-                code: <Pretext text={`zuord.Merge(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.Merge(...)`} />
-                }
-            }
+            head: <Pretext text={`zuord.Merge(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     Evolve: {
         text: "Evolve",
         inspector: {
-            head: {
-                title: <Pretext text={`Zuord.Evolve<...>`} />
-            },
-            body: {
-                code: <Pretext text={`zuord.Evolve(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.Evolve(...)`} />
-                }
-            }
+            head: <Pretext text={`zuord.Evolve(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     Pick: {
         text: "Pick",
         inspector: {
-            head: {
-                title: <Pretext text={`Zuord.Pick<...>`} />
-            },
-            body: {
-                code: <Pretext text={`zuord.Pick(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.Pick(...)`} />
-                }
-            }
+            head: <Pretext text={`zuord.Pick(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     },
     Omit: {
         text: "Omit",
         inspector: {
-            head: {
-                title: <Pretext text={`Zuord.Omit<...>`} />
-            },
-            body: {
-                code: <Pretext text={`zuord.Omit(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.Omit(...)`} />
-                }
-            }
+            head: <Pretext text={`zuord.Omit(...)`} />,
+            body: <Pretext text={code.integrate} />
         }
     }
-}
+};

@@ -36,16 +36,8 @@ export type ShowcaseControlData = {
         focused: string;
     },
     inspector: {
-        head: {
-            title: React.ReactNode;
-        },
-        body: {
-            code: React.ReactNode;
-            result: {
-                type: React.ReactNode;
-                runtime: React.ReactNode;
-            }
-        };
+        head: React.ReactNode,
+        body: React.ReactNode;
     },
     design?: {
         className?: string;
