@@ -26,8 +26,9 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i}>
                     {line.map((token, j) => {
                         
-                        const { content, color } = token;
- 
+                        const modifier = props.modifiers.find(mod => mod.predicate(token.content));
+                        const { content, color } = { ...token, ...(modifier?.props) };
+
                         return (
                             <span
                                 key={j}
