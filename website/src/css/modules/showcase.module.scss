@@ -106,7 +106,7 @@
 
         .inspector {
             position: fixed;
-            width: 600px;
+            width: 540px;
             background-color: #292a2c;
             border: 1.5px solid #444950;
             border-radius: 8px;
@@ -124,7 +124,7 @@
             }
 
             .body {
-                min-height: 200px;                
+                height: 240px;           
             }
 
             .head, .body {            
@@ -142,7 +142,7 @@
 
             .body {
                 .code {
-                    background-color: #ffe0a825;
+                    background-color: #ffe0a825;                    
                     flex: 3 3 0;
                 }
 
@@ -153,7 +153,8 @@
 
                 .code, .result {
                     min-width: 0;
-                    overflow: hidden;
+                    overflow-x:hidden;
+                    overflow-y: auto;
                 }
             }
         }
