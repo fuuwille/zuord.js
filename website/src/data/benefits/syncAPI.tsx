@@ -16,6 +16,12 @@ export const modifiers: Record<string, PretextTokenModifier[]> = {
             props: {
                 color: "#4ebffd"
             }
+        },
+        {
+            predicate: (content : string) => ["Date", "User"].includes(content),
+            props: {
+                color: "#4ec9b0"
+            }
         }
     ]
 }
