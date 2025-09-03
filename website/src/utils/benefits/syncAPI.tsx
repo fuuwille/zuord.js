@@ -1,13 +1,14 @@
 import style from '@site/src/css/modules/benefits/syncAPI.module.scss';
 import { Pretext } from '@site/src/components/pretext';
+import { SyncAPIControlData } from '@site/src/types/benefits/syncAPI';
 
-export const syncAPIControl = (text: string) => {
-    const runtime = text[0] === text[0].toLowerCase();
+export const syncAPIControl = (data: SyncAPIControlData) => {
+    const runtime = data.text[0] === data.text[0].toLowerCase();
 
     return {
         text: {
-            default: `.${text}`,
-            focused: runtime ? `${text}()` : `${text}<>`,
+            default: `.${data.text}`,
+            focused: runtime ? `${data.text}()` : `${data.text}<>`,
         },
         design: {
             className: runtime ? style['runtime'] : style['type'],
@@ -15,14 +16,14 @@ export const syncAPIControl = (text: string) => {
         inspector: {
             head: {
                 title: runtime 
-                    ? <Pretext text={`zuord.${text}(...)`} /> 
-                    : <Pretext text={`Zuord.${text}<...>`} />,
+                    ? <Pretext text={`zuord.${data.text}(...)`} /> 
+                    : <Pretext text={`Zuord.${data.text}<...>`} />,
             },
             body: {
-                code: <Pretext text={`zuord.${text}(...)`} />,
+                code: <Pretext text={`zuord.${data.text}(...)`} />,
                 result: {
                     type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.${text}(...)`} />
+                    runtime: <Pretext text={`zuord.${data.text}(...)`} />
                 }
             }
         }
