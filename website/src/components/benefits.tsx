@@ -1,6 +1,7 @@
 import style from '@site/src/css/modules/benefits.module.scss';
 import BenefitCard, { BenefitCardProps } from './benefitCard';
 import clsx from 'clsx';
+import { BenefitsProps } from '@site/src/types/benefits';
 
 const Benefits: React.FC<BenefitsProps> = ({ 
     cards = []
@@ -24,10 +25,6 @@ const Benefits: React.FC<BenefitsProps> = ({
             </div>
         </div>
     );
-};
-
-export type BenefitsProps = {
-    cards: BenefitCardProps[];
 };
 
 export default Benefits;
