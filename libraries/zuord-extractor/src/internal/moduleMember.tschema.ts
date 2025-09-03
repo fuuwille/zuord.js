@@ -66,7 +66,6 @@ export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctio
 }
 
 // Initializer Members
-
 export interface ModuleInitializerMember extends ModuleMember, ModuleKnownMember {
     node: ModuleInitializerNode;
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
