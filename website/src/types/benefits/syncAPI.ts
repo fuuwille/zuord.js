@@ -1,6 +1,7 @@
-import { ShowcaseControlBody } from '@site/src/types/showcase';
+import { ShowcaseControlData } from '@site/src/types/showcase';
+import { Zuord } from 'zuord';
 
 export type SyncAPIControlData = {
     text: string;
-    body: ShowcaseControlBody;
+    inspector: Zuord.Pick<ShowcaseControlData, { inspector: true }>;
 }

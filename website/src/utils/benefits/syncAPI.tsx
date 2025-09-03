@@ -13,13 +13,6 @@ export const syncAPIControl = (data: SyncAPIControlData) => {
         design: {
             className: runtime ? style['runtime'] : style['type'],
         },
-        inspector: {
-            head: {
-                title: runtime 
-                    ? <Pretext text={`zuord.${data.text}(...)`} /> 
-                    : <Pretext text={`Zuord.${data.text}<...>`} />,
-            },
-            body: data.body
-        }
+        inspector: data.inspector
     };
 }

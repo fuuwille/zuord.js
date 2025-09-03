@@ -1,101 +1,153 @@
+import { Pretext } from "@site/src/components/pretext";
+
 export const controlData = {
     integrate: {
         text: "integrate",
-        body: {
-            code: "zuord.integrate(...)",
-            result: {
-                type: "INTEGRATE",
-                runtime: "zuord.integrate(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`zuord.integrate(...)`} />
+            },
+            body: {
+                code: "zuord.integrate(...)",
+                result: {
+                    type: "INTEGRATE",
+                    runtime: "zuord.integrate(...)"
+                }
             }
         }
     },
     merge: {
         text: "merge",
-        body: {
-            code: "zuord.merge(...)",
-            result: {
-                type: "MERGE",
-                runtime: "zuord.merge(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`zuord.merge(...)`} />
+            },
+            body: {
+                code: "zuord.merge(...)",
+                result: {
+                    type: "MERGE",
+                    runtime: "zuord.merge(...)"
+                }
             }
         }
     },
     evolve: {
         text: "evolve",
-        body: {
-            code: "zuord.evolve(...)",
-            result: {
-                type: "EVOLVE",
-                runtime: "zuord.evolve(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`zuord.evolve(...)`} />
+            },
+            body: {
+                code: "zuord.evolve(...)",
+                result: {
+                    type: "EVOLVE",
+                    runtime: "zuord.evolve(...)"
+                }
             }
         }
     },
     pick: {
         text: "pick",
-        body: {
-            code: "zuord.pick(...)",
-            result: {
-                type: "PICK",
-                runtime: "zuord.pick(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`zuord.pick(...)`} />
+            },
+            body: {
+                code: "zuord.pick(...)",
+                result: {
+                    type: "PICK",
+                    runtime: "zuord.pick(...)"
+                }
             }
         }
     },
     omit: {
         text: "omit",
-        body: {
-            code: "zuord.omit(...)",
-            result: {
-                type: "OMIT",
-                runtime: "zuord.omit(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`zuord.omit(...)`} />
+            },
+            body: {
+                code: "zuord.omit(...)",
+                result: {
+                    type: "OMIT",
+                    runtime: "zuord.omit(...)"
+                }
             }
         }
     },
     Integrate: {
         text: "Integrate",
-        body: {
-            code: "zuord.Integrate(...)",
-            result: {
-                type: "INTEGRATE",
-                runtime: "zuord.Integrate(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`Zuord.Integrate<...>`} />
+            },
+            body: {
+                code: <Pretext text={`zuord.Integrate(...)`} />,
+                result: {
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.Integrate(...)`} />
+                }
             }
         }
     },
     Merge: {
         text: "Merge",
-        body: {
-            code: "zuord.Merge(...)",
-            result: {
-                type: "MERGE",
-                runtime: "zuord.Merge(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`Zuord.Merge<...>`} />
+            },
+            body: {
+                code: <Pretext text={`zuord.Merge(...)`} />,
+                result: {
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.Merge(...)`} />
+                }
             }
         }
     },
     Evolve: {
         text: "Evolve",
-        body: {
-            code: "zuord.Evolve(...)",
-            result: {
-                type: "EVOLVE",
-                runtime: "zuord.Evolve(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`Zuord.Evolve<...>`} />
+            },
+            body: {
+                code: <Pretext text={`zuord.Evolve(...)`} />,
+                result: {
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.Evolve(...)`} />
+                }
             }
         }
     },
     Pick: {
         text: "Pick",
-        body: {
-            code: "zuord.Pick(...)",
-            result: {
-                type: "PICK",
-                runtime: "zuord.Pick(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`Zuord.Pick<...>`} />
+            },
+            body: {
+                code: <Pretext text={`zuord.Pick(...)`} />,
+                result: {
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.Pick(...)`} />
+                }
             }
         }
     },
     Omit: {
         text: "Omit",
-        body: {
-            code: "zuord.Omit(...)",
-            result: {
-                type: "OMIT",
-                runtime: "zuord.Omit(...)"
+        inspector: {
+            head: {
+                title: <Pretext text={`Zuord.Omit<...>`} />
+            },
+            body: {
+                code: <Pretext text={`zuord.Omit(...)`} />,
+                result: {
+                    type: <Pretext text={`Zuord`} />,
+                    runtime: <Pretext text={`zuord.Omit(...)`} />
+                }
             }
         }
     }
