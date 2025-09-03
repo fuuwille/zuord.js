@@ -2,17 +2,17 @@ import { Pretext } from "@site/src/components/pretext";
 
 export const code = {
     integrate: 
-`zuord.integrate(defaultUser, {
-    profile: { username: 'k4yr2' },
-    createdAt: new Date()
-});
-
-const defaultUser = {
+`const defaultUser = {
     profile: {
         username: 'unknown',
         location: 'Earth'
     }, id: 31400222
-};`
+};
+
+zuord.integrate(defaultUser, {
+    profile: { username: 'k4yr2' },
+    createdAt: new Date()
+});`
 }
 
 export const resultType = {
