@@ -5,7 +5,7 @@ import { PretextTokenModifier } from '@site/src/types/pretext';
 import { Showcase } from '@site/src/components//showcase';
 import { syncAPIControl } from '@site/src/utils/showcase';
 
-export const SyncAPI: React.FC = () => (  
+export const BenefitsSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
     <div className={style['imports']}>
       <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} design={{ selectable: false }}/>

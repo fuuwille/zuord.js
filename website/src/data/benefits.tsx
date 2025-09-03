@@ -1,4 +1,4 @@
-import { SyncAPI as BenefitSyncAPI } from "@site/src/contents/benefits/syncAPI";
+import { BenefitsSyncAPI } from "@site/src/contents/benefits/syncAPI";
 
 export const benefitCards = [
     {
@@ -6,7 +6,7 @@ export const benefitCards = [
             title: "Runtime & Type Harmony",
             description: "Experience APIs that are in sync between runtime and type level",
         },
-        content: <BenefitSyncAPI />
+        content: <BenefitsSyncAPI />
     },
     {
         head: {
