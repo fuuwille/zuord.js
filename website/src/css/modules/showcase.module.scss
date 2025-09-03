@@ -143,14 +143,15 @@
             .body {
                 .code {
                     background-color: #ffe0a825;
+                    flex: 3 3 0;
                 }
 
                 .result {
                     background-color: #70617025;
+                    flex: 2 2 0;
                 }
 
                 .code, .result {
-                    flex: 1 1 0;
                     min-width: 0;
                     overflow: hidden;
                 }
