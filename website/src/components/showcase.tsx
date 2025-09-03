@@ -148,12 +148,12 @@ const ShowcaseInspector: React.FC = () => {
     useEffect(() => {
         const updatePosition = () => {
             if (divRef.current) {
-                const rect = divRef.current.getBoundingClientRect();
-                const parentRect = divRef.current.parentElement.parentElement.getBoundingClientRect();
+                const inspectorRect = divRef.current.getBoundingClientRect();
+                const panelRect = divRef.current.parentElement.parentElement.getBoundingClientRect();
                 
                 setPosition({
-                    top: parentRect.bottom, // parent'ın altı
-                    left: parentRect.x + (parentRect.width - rect.width) / 2,  // parent ile hizalı
+                    top: panelRect.bottom,
+                    left: panelRect.x + (panelRect.width - inspectorRect.width) / 2
                 });
 
             }
@@ -161,7 +161,7 @@ const ShowcaseInspector: React.FC = () => {
 
         updatePosition();
         window.addEventListener('resize', updatePosition);
-        window.addEventListener('scroll', updatePosition, true); // true: capture phase
+        window.addEventListener('scroll', updatePosition, true);
 
 
         return () => {
