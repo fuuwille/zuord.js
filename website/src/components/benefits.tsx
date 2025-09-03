@@ -3,7 +3,7 @@ import BenefitCard, { BenefitCardProps } from './benefitCard';
 import clsx from 'clsx';
 import { BenefitsProps } from '@site/src/types/benefits';
 
-const Benefits: React.FC<BenefitsProps> = ({ 
+export const Benefits: React.FC<BenefitsProps> = ({ 
     cards = []
 }) => { 
     const leftColumn = []; const rightColumn = [];
@@ -26,5 +26,3 @@ const Benefits: React.FC<BenefitsProps> = ({
         </div>
     );
 };
-
-export default Benefits;
