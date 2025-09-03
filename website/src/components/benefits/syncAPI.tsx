@@ -1,4 +1,4 @@
-import style from '@site/src/css/modules/benefitSyncAPI.module.scss';
+import style from '@site/src/css/modules/benefits/syncAPI.module.scss';
 import clsx from 'clsx';
 import { Pretext } from '@site/src/components/pretext';
 import { PretextTokenModifier } from '@site/src/types/pretext';
@@ -6,7 +6,7 @@ import { Showcase } from '@site/src/components//showcase';
 import { syncAPIControl } from '@site/src/utils/benefits/syncAPI';
 
 export const BenefitsSyncAPI: React.FC = () => (  
-  <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
+  <div className={clsx('benefits-sync-api', style['benefits-sync-api'])}>
     <div className={style['imports']}>
       <Pretext text={`import { zuord } from 'zuord';`} modifiers={runtimeImportModifiers} design={{ selectable: false }}/>
       <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false }}/>
