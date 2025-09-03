@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Pretext } from '@site/src/components/pretext';
 import { Showcase } from '@site/src/components//showcase';
 import { syncAPIControl } from '@site/src/utils/benefits/syncAPI';
+import { controlData } from '@site/src/data/benefits/syncAPI';
 
 export const BenefitsSyncAPI: React.FC = () => (  
   <div className={clsx('benefits-sync-api', style['benefits-sync-api'])}>
@@ -12,11 +13,10 @@ export const BenefitsSyncAPI: React.FC = () => (
     </div>
       <Showcase container={{
         controls: [
-          syncAPIControl('integrate'), syncAPIControl('merge'), syncAPIControl('evolve'), syncAPIControl('pick'), syncAPIControl('omit'),
-          syncAPIControl('Integrate'), syncAPIControl('Merge'), syncAPIControl('Evolve'), syncAPIControl('Pick'), syncAPIControl('Omit'),
+          syncAPIControl(controlData.integrate), syncAPIControl(controlData.merge), syncAPIControl(controlData.evolve), syncAPIControl(controlData.pick), syncAPIControl(controlData.omit),
+          syncAPIControl(controlData.Integrate), syncAPIControl(controlData.Merge), syncAPIControl(controlData.Evolve), syncAPIControl(controlData.Pick), syncAPIControl(controlData.Omit),
         ],
         design: { columns: 5 }
       }} design={{ className: style['showcase'] }}/>
   </div>
 );
-

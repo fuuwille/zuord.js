@@ -19,13 +19,7 @@ export const syncAPIControl = (data: SyncAPIControlData) => {
                     ? <Pretext text={`zuord.${data.text}(...)`} /> 
                     : <Pretext text={`Zuord.${data.text}<...>`} />,
             },
-            body: {
-                code: <Pretext text={`zuord.${data.text}(...)`} />,
-                result: {
-                    type: <Pretext text={`Zuord`} />,
-                    runtime: <Pretext text={`zuord.${data.text}(...)`} />
-                }
-            }
+            body: data.body
         }
     };
 }
