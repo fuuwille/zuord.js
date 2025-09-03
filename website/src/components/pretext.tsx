@@ -26,15 +26,20 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i}>
                     {line.map((token, j) => {
                         
-                        const modifier = props.modifiers.find(mod => mod.predicate(token.content));
-                        const { content, color, Node } = { ...token, ...(modifier?.props) };
+                        let data = { ...token, Node: null };
+
+                        for (const modifier of props.modifiers) {
+                            if (modifier.predicate(data.content)) {
+                                data = { ...data, ...(modifier.props) };
+                            }
+                        }
 
                         return (
                             <span
                                 key={j}
-                                style={{ color: color }}
+                                style={{ color: data.color }}
                             >
-                                {Node ? <Node content={content} color={color} /> : content}
+                                {data.Node ? <data.Node content={data.content} color={data.color} /> : data.content}
                             </span>
                         );
                     })}
