@@ -1,5 +1,14 @@
 import { Pretext } from "@site/src/components/pretext";
 
+export const code = {
+    integrate: 
+`const result = zuord.integrate({
+    a: 1, b: 2
+}, {
+    b: 3, c: 4
+});`
+}
+
 export const controlData = {
     integrate: {
         text: "integrate",
@@ -8,7 +17,7 @@ export const controlData = {
                 title: <Pretext text={`zuord.integrate(...)`} />
             },
             body: {
-                code: "zuord.integrate(...)",
+                code: <Pretext text={code.integrate} />,
                 result: {
                     type: "INTEGRATE",
                     runtime: "zuord.integrate(...)"

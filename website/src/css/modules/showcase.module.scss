@@ -106,7 +106,7 @@
 
         .inspector {
             position: fixed;
-            min-width: 600px;
+            width: 400px;
             background-color: #292a2c;
             border: 1.5px solid #444950;
             border-radius: 8px;
@@ -150,10 +150,11 @@
                 }
 
                 .code, .result {
-                    flex: 1
+                    flex: 1 1 0;
+                    min-width: 0;
+                    overflow: hidden;
                 }
             }
         }
     }
-    
 }
