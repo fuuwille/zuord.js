@@ -27,14 +27,14 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                     {line.map((token, j) => {
                         
                         const modifier = props.modifiers.find(mod => mod.predicate(token.content));
-                        const { content, color } = { ...token, ...(modifier?.props) };
+                        const { content, color, Node } = { ...token, ...(modifier?.props) };
 
                         return (
                             <span
                                 key={j}
                                 style={{ color: color }}
                             >
-                                {content}
+                                {Node ? <Node content={content} color={color} /> : content}
                             </span>
                         );
                     })}
