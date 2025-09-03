@@ -2,8 +2,7 @@ import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
 import { PretextProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
-import { codeToTokens, createHighlighterCoreSync, createJavaScriptRegexEngine, ThemedToken } from 'shiki';
-import { useEffect, useState } from 'react';
+import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
 import ts from '@shikijs/langs/typescript'
 import darkPlus from '@shikijs/themes/dark-plus'
 
