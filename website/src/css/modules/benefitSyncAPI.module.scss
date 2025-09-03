@@ -1,7 +1,6 @@
 .benefit-sync-api {
     display: flex;
-    padding: 16px;
-    justify-content: center;;
+    justify-content: center;
     width: fit-content;
     margin-inline: auto;
 }
@@ -22,6 +21,7 @@
     .showcase {
         flex-grow: 1;
         justify-content: left;
+        padding-top: 0;
     }
 
     .showcase {

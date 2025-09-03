@@ -42,7 +42,7 @@ const BenefitsCard: React.FC<BenefitCardProps> = ($props) => {
                 <div className={style['title']}>{props.head.title}</div>
                 <div className={style['description']}>{props.head.description}</div>
             </div>
-            {props.content && <div className={style['content']}>{props.content}</div>}
+            <div className={style['content']}>{props.content}</div>
         </div>
     );
 }
