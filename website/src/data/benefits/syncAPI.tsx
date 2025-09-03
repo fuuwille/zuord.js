@@ -2,17 +2,28 @@ import { Pretext } from "@site/src/components/pretext";
 
 export const code = {
     integrate: 
-`const defaultUser = {
+`zuord.integrate(defaultUser, {
+    profile: { username: 'k4yr2' },
+    createdAt: new Date()
+});
+
+const defaultUser = {
     profile: {
         username: 'unknown',
         location: 'Earth'
     }, id: 31400222
-};
+};`
+}
 
-zuord.integrate(defaultUser, {
-    profile: { username: 'k4yr2' },
-    createdAt: new Date()
-});`
+export const resultType = {
+    integrate: 
+`type Result = {
+    profile: {
+        username: string
+        location: string
+    }, id: number,
+    createdAt: Date
+}`
 }
 
 export const controlData = {
@@ -25,7 +36,7 @@ export const controlData = {
             body: {
                 code: <Pretext text={code.integrate} />,
                 result: {
-                    type: "INTEGRATE",
+                    type: <Pretext text={resultType.integrate} />,
                     runtime: "zuord.integrate(...)"
                 }
             }
