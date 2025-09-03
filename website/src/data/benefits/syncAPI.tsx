@@ -1,4 +1,5 @@
 import { Pretext } from "@site/src/components/pretext";
+import { PretextTokenModifier } from "@site/src/types/pretext";
 
 export const code = {
     integrate: 
@@ -8,15 +9,15 @@ export const code = {
 });`
 }
 
-export const resultType = {
-    integrate: 
-`type Result = {
-    profile: {
-        username: string
-        location: string
-    }, id: number,
-    createdAt: Date
-}`
+export const modifiers: Record<string, PretextTokenModifier[]> = {
+    integrate: [
+        {
+            predicate: (content : string) => ["zuord", "defaultUser"].includes(content),
+            props: {
+                color: "#4ebffd"
+            }
+        }
+    ]
 }
 
 export const controlData = {
@@ -24,7 +25,7 @@ export const controlData = {
         text: "integrate",
         inspector: {
             head: <Pretext text={`zuord.integrate(...)`} />,
-            body: <Pretext text={code.integrate} />
+            body: <Pretext text={code.integrate} modifiers={modifiers.integrate} />
         }
     },
     merge: {
