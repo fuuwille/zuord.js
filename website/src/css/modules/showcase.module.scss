@@ -132,6 +132,14 @@
                 width: 100%;
             }
 
+            .head {
+                .title {
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                }
+            }
+
             .body {
                 .code {
                     background-color: #ffe0a825;

@@ -181,7 +181,9 @@ const ShowcaseInspector: React.FC = () => {
             }}
         >
             <div className={clsx(style['head'])}>
-                {dataRef.current?.inspector.head.title}
+                <div className={style['title']}>
+                    {dataRef.current?.inspector.head.title}
+                </div>
             </div>
             <div className={clsx(style['body'])}>
                 <div className={clsx(style['code'])}>
