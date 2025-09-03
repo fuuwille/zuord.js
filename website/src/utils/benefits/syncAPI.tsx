@@ -1,5 +1,4 @@
 import style from '@site/src/css/modules/benefits/syncAPI.module.scss';
-import { Pretext } from '@site/src/components/pretext';
 import { SyncAPIControlData } from '@site/src/types/benefits/syncAPI';
 
 export const syncAPIControl = (data: SyncAPIControlData) => {
