@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Pretext } from '@site/src/components/pretext';
 import { PretextTokenModifier } from '@site/src/types/pretext';
 import { Showcase } from '@site/src/components//showcase';
-import { syncAPIControl } from '@site/src/utils/showcase';
+import { syncAPIControl } from '@site/src/utils/benefits/syncAPI';
 
 export const BenefitsSyncAPI: React.FC = () => (  
   <div className={clsx('benefit-sync-api', style['benefit-sync-api'])}>
