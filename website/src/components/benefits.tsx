@@ -1,7 +1,7 @@
 import style from '@site/src/css/modules/benefits.module.scss';
-import BenefitCard, { BenefitCardProps } from './benefitCard';
 import clsx from 'clsx';
-import { BenefitsProps } from '@site/src/types/benefits';
+import { BenefitsProps, BenefitCardProps } from '@site/src/types/benefits';
+import { zuord } from 'zuord';
 
 export const Benefits: React.FC<BenefitsProps> = ({ 
     cards = []
@@ -14,15 +14,35 @@ export const Benefits: React.FC<BenefitsProps> = ({
             <div className={style['cards']}>
                 <div className={style['left-column']}>
                     {leftColumn.map((card, index) => (
-                        <BenefitCard key={index} {...card} />
+                        <BenefitsCard key={index} {...card} />
                     ))}
                 </div>
                 <div className={style['right-column']}>
                     {rightColumn.map((card, index) => (
-                        <BenefitCard key={index} {...card} />
+                        <BenefitsCard key={index} {...card} />
                     ))}
                 </div>
             </div>
         </div>
     );
 };
+
+const BenefitsCard: React.FC<BenefitCardProps> = ($props) => {
+    const props = zuord.integrate({
+        head: {
+            title: 'Benefit Title',
+            description: 'Benefit description goes here.',
+        },
+        content: null,
+    }, $props);
+
+    return (
+        <div className={clsx(style['card'])}>
+            <div className={style['head']}>
+                <div className={style['title']}>{props.head.title}</div>
+                <div className={style['description']}>{props.head.description}</div>
+            </div>
+            {props.content && <div className={style['content']}>{props.content}</div>}
+        </div>
+    );
+}
