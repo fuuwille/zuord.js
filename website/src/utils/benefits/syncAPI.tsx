@@ -4,10 +4,14 @@ import { SyncAPIControlData } from '@site/src/types/benefits/syncAPI';
 export const syncAPIControl = (data: SyncAPIControlData) => {
     const runtime = data.text[0] === data.text[0].toLowerCase();
 
+    const textFirst = `.${data.text}`;
+    const textSecond = runtime ? `${data.text}()` : `${data.text}<>`;
+
     return {
         text: {
-            default: `.${data.text}`,
-            focused: runtime ? `${data.text}()` : `${data.text}<>`,
+            zero: textFirst,
+            first: textFirst,
+            second: textSecond
         },
         design: {
             className: runtime ? style['runtime'] : style['type'],

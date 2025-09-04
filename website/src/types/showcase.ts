@@ -32,8 +32,9 @@ export type ShowcaseControlState = {
 
 export type ShowcaseControlData = {
     text: {
-        default: string;
-        focused: string;
+        zero: string;
+        first: string;
+        second: string;
     },
     inspector: {
         head: React.ReactNode,
