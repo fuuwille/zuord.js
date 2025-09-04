@@ -53,6 +53,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         ref.current.data.dispatch(null);
                     }
                 }}
+                sx={{ width: '800px' }}
             >
                 <div 
                     ref={divRef}
@@ -139,15 +140,14 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
 const ShowcaseInspector: React.FC = () => {
     const context = useContext(ShowcaseContext);
-
-    const divRef = useRef<HTMLDivElement>(null);
     const dataRef = useRef<ShowcaseControlData>(context.data.content);
 
-    if(context.data.content) dataRef.current = context.data.content;
+    if(context.data.content) {
+        dataRef.current = context.data.content;
+    }
     
     return (
         <div 
-            ref={divRef}
             className={clsx(style['inspector'])}
         >
             <div className={clsx(style['head'])}>
