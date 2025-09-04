@@ -126,5 +126,25 @@
         display: flex;
         width: 100%;
         justify-content: center;
+        align-items: center;
+    }
+
+    .head {
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3A3B3C;
+            border-radius: 8px;
+            margin: 6px;
+        }
     }
 } 
