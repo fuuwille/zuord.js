@@ -3,7 +3,6 @@ import clsx from "clsx";
 import { PretextFeaturedTokenProps, PretextProps, PretextTokenProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
-import { title } from 'process';
 import { Tooltip } from '@mui/material';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
