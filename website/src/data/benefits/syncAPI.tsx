@@ -13,7 +13,8 @@ export const code = {
 export const modifiers: Record<string, PretextTokenModifier[]> = {
     integrate: [
         tokenModifier.const("zuord", "defaultUser"),
-        tokenModifier.type("Date", "User")
+        tokenModifier.type("Date", "User"),
+        tokenModifier.info("result", "defaultUser"),
     ]
 }
 
