@@ -117,13 +117,14 @@
             opacity: 1;
             visibility: visible;
         }
-
-        .inspector {
-            .head, .body {            
-                display: flex;
-                width: 100%;
-                justify-content: center;
-            }
-        }
     }
 }
+
+
+.inspector {
+    .head {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+} 
