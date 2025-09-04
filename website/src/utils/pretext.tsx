@@ -1,7 +1,7 @@
 import ts from '@shikijs/langs/typescript';
 import darkPlus from '@shikijs/themes/dark-plus';
 import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
-import { InfoCircledIcon } from '@radix-ui/react-icons';
+import { Tooltip } from '@mui/material';
 
 export const highlighter = createHighlighterCoreSync({
     themes: [darkPlus],
@@ -31,9 +31,11 @@ export const tokenModifier = {
             predicate: (content: string) => contents.includes(content),
             props: {
                 Node: ({ content, color }) => (
-                    <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center'}}>
-                        {content}
-                    </div>
+                    <Tooltip title={content} placement="top">
+                        <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center'}}>
+                            {content}
+                        </div>
+                    </Tooltip>
                 )
             }
         };
