@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { Divider } from '@mui/material';
+import { Divider, Tooltip } from '@mui/material';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -25,8 +25,14 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
         }
     });
 
+    const [data, setData] = useState<ShowcaseControlData>(null);
+
+    ref.current.data = {
+        content: data,
+        dispatch: setData
+    }
+
     const divRef = useRef<HTMLDivElement>(null);
-    const unfocusTimeout = useRef<NodeJS.Timeout>(null);
 
     useEffect(() => {
         ref.current.div = divRef.current;
@@ -35,29 +41,30 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
     return (
         <ShowcaseContext.Provider value={ref.current}>
-            <div 
-                ref={divRef}
-                className={clsx('showcase', style['showcase'], props.design?.className)}
-                onMouseEnter={() => {
-                    clearTimeout(unfocusTimeout.current);
-                }}
-                onMouseLeave={() => {
-                    unfocusTimeout.current = setTimeout(() => {
-                        if(ref.current.target) {
-                            ref.current.target.state.setIsFocused(false);
-                            ref.current.target = null;
-                            ref.current.data.dispatch(null);
-                        }
-                    }, 75);
+            <Tooltip 
+                title={<ShowcaseInspector />} 
+                placement="bottom" 
+                arrow={false}
+                open={data !== null}
+                onClose={() => {
+                    if(ref.current.target) {
+                        ref.current.target.state.setIsFocused(false);
+                        ref.current.target = null;
+                        ref.current.data.dispatch(null);
+                    }
                 }}
             >
-                <div
-                    className={clsx(style['panel'])}
+                <div 
+                    ref={divRef}
+                    className={clsx('showcase', style['showcase'], props.design?.className)}
                 >
-                    <ShowcaseContainer {...props.container} />
-                    <ShowcaseInspector />
+                    <div
+                        className={clsx(style['panel'])}
+                    >
+                        <ShowcaseContainer {...props.container} />
+                    </div>
                 </div>
-            </div>
+            </Tooltip>
         </ShowcaseContext.Provider>
     );
 }
@@ -131,57 +138,17 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 }
 
 const ShowcaseInspector: React.FC = () => {
-    const [data, setData] = useState<ShowcaseControlData>(null);
-
-    const divRef = useRef<HTMLDivElement>(null);
-    const dataRef = useRef<ShowcaseControlData>(data);
-
     const context = useContext(ShowcaseContext);
 
-    if(data) dataRef.current = data;
+    const divRef = useRef<HTMLDivElement>(null);
+    const dataRef = useRef<ShowcaseControlData>(context.data.content);
 
-    context.data = {
-        content: dataRef.current,
-        dispatch: setData
-    }
-
-    const isActive = data !== null;
-    const [position, setPosition] = useState({ top: 0, left: 0 });
-
-    useEffect(() => {
-        const updatePosition = () => {
-            if (divRef.current) {
-                const inspectorRect = divRef.current.getBoundingClientRect();
-                const panelRect = divRef.current.parentElement.getBoundingClientRect();
-                
-                setPosition({
-                    top: panelRect.bottom,
-                    left: panelRect.x + (panelRect.width - inspectorRect.width) / 2
-                });
-
-            }
-        };
-
-        updatePosition();
-        window.addEventListener('resize', updatePosition);
-        window.addEventListener('scroll', updatePosition, true);
-
-
-        return () => {
-            window.removeEventListener('resize', updatePosition);
-            window.removeEventListener('scroll', updatePosition, true);
-        };
-    }, []);
-
+    if(context.data.content) dataRef.current = context.data.content;
+    
     return (
         <div 
             ref={divRef}
-            className={clsx(style['inspector'], isActive ? style['active'] : null)}
-            style={{
-                position: 'fixed',
-                top: `${position.top}px`,
-                left: `${position.left}px`,
-            }}
+            className={clsx(style['inspector'])}
         >
             <div className={clsx(style['head'])}>
                 {dataRef.current?.inspector.head}
