@@ -37,6 +37,18 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             <div 
                 ref={divRef}
                 className={clsx('showcase', style['showcase'], props.design?.className)}
+                onMouseEnter={() => {
+                    clearTimeout(unfocusTimeout.current);
+                }}
+                onMouseLeave={() => {
+                    unfocusTimeout.current = setTimeout(() => {
+                        if(ref.current.target) {
+                            ref.current.target.state.setIsFocused(false);
+                            ref.current.target = null;
+                            ref.current.data.dispatch(null);
+                        }
+                    }, 75);
+                }}
             >
                 <div
                     className={clsx(style['panel'])}
