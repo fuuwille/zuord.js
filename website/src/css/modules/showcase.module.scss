@@ -75,12 +75,12 @@
                         white-space: nowrap;
                     }
 
-                    .text.default {
+                    .text.first {
                         opacity: 1;
                         transform: translateX(0);
                     }
 
-                    .text.focused {
+                    .text.second {
                         opacity: 0;
                         transform: translateX(100%);
                     }
@@ -89,12 +89,12 @@
 
             .control.focused {
                 .visual {
-                    .text.default {
+                    .text.first {
                         opacity: 0;
                         transform: translateX(-100%);
                     }
 
-                    .text.focused {
+                    .text.second {
                         opacity: 1;
                         transform: translateX(0);
                     }

@@ -138,7 +138,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
             }}
         >
             <span className={style['layout']}>
-                <span className={style['text']}>{props.text.zero}</span>
+                <span className={clsx(style['text'], style['zero'])}>{props.text.zero}</span>
             </span>
             <span className={style['visual']}>
                 <span className={clsx(style['text'], style['first'])}>{props.text.first}</span>
