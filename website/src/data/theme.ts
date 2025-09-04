@@ -17,5 +17,26 @@ export const theme = createTheme({
                 arrow: true,
             },
         },
+        MuiDivider: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#444950',
+                },
+            },
+            variants: [
+                {
+                    props: { orientation: 'horizontal' },
+                    style: {
+                        height: '1.5px',
+                    },
+                },
+                {
+                    props: { orientation: 'vertical' },
+                    style: {
+                        width: '1.5px',
+                    },
+                },
+            ],
+        },
     },
 });
