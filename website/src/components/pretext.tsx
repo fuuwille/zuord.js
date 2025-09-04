@@ -33,10 +33,10 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                             }
                         }
 
-                        const { Token, content, color } = meta;
+                        const { Token, ...rest } = meta;
 
                         return (
-                            <Token content={content} color={color} />
+                            <Token {...rest} />
                         );
                     })}
                 </div>
