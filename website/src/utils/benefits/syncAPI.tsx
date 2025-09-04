@@ -9,7 +9,7 @@ export const syncAPIControl = (data: SyncAPIControlData) => {
 
     return {
         text: {
-            zero: textFirst,
+            zero: textSecond,
             first: textFirst,
             second: textSecond
         },
