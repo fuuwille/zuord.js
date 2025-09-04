@@ -2,62 +2,63 @@
     .cards {
         display: flex;
         margin: 0 5%;
+    }
+}
 
-        .left-column, .right-column {
-            flex: 1;
-            min-width: 0;
+.left-column, .right-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.left-column {
+    .card {
+        margin-right: 8px;
+    }
+}
+
+.right-column {
+    .card {
+        margin-left: 8px;
+    }
+}
+
+.card {
+    background-color: #242526;
+    border: 1.5px solid #444950;
+    margin: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card {
+    .head {
+        padding: 16px;
+    }
+
+    .head {
+        .title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #E0E0E0;
         }
 
-        .left-column {
-            .card {
-                margin-right: 8px;
-            }
-        }
-
-        .right-column {
-            .card {
-                margin-left: 8px;
-            }
-        }
-
-        .card {
-            background-color: #242526;
-            border: 1.5px solid #444950;
-            margin: 16px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .card {
-            .head {
-                padding: 16px;
-            }
-
-            .head {
-                .title {
-                    font-family: 'Raleway', sans-serif;
-                    font-size: 20px;
-                    font-weight: bold;
-                    color: #E0E0E0;
-                }
-
-                .description {
-                    font-family: 'Atkinson Hyperlegible', sans-serif;
-                    font-size: 18px;
-                    color: #B0B0B0;
-                }
-            }
-
-            .content {
-                padding: 16px;
-                padding-top: 0px;
-            }
+        .description {
+            font-family: 'Atkinson Hyperlegible', sans-serif;
+            font-size: 18px;
+            color: #B0B0B0;
         }
     }
 
-    @media (max-width: 1740px) {
-        .cards {
-            margin: 0;
-        }
+    .content {
+        padding: 16px;
+        padding-top: 0px;
+    }
+}
+    
+
+@media (max-width: 1740px) {
+    .cards {
+        margin: 0;
     }
 }
