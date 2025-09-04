@@ -7,3 +7,22 @@ export const highlighter = createHighlighterCoreSync({
     langs: [ts],
     engine: createJavaScriptRegexEngine()
 })
+
+export const tokenModifier = {
+    const: (...contents : string[]) => {
+        return {
+            predicate: (content: string) => contents.includes(content),
+            props: {
+                color: '#4ebffd'
+            }
+        };
+    },
+    type: (...contents : string[]) => {
+        return {
+            predicate: (content: string) => contents.includes(content),
+            props: {
+                color: '#4ec9b0'
+            }
+        };
+    }
+}
