@@ -19,6 +19,10 @@ export type PretextTokenProps = PretextTokenData & {
     Token?: PretextTokenNode;
 }
 
+export type PretextFeaturedTokenProps = PretextTokenProps & {
+    title: React.ReactNode;
+}
+
 export type PretextTokenPredicate = (content: string) => boolean;
 
 export type PretextTokenModifier = {
