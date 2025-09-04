@@ -122,32 +122,7 @@
             .head, .body {            
                 display: flex;
                 width: 100%;
-            }
-
-            .head {
-                .title {
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                }
-            }
-
-            .body {
-                .code {
-                    background-color: #ffe0a825;                    
-                    flex: 1 1 0;
-                }
-
-                .result {
-                    background-color: #70617025;
-                    flex: 1 1 0;
-                }
-
-                .code, .result {
-                    min-width: 0;
-                    overflow-x:hidden;
-                    overflow-y: auto;
-                }
+                justify-content: center;
             }
         }
     }
