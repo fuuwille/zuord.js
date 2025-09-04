@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { Divider } from '@mui/material';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -185,6 +186,7 @@ const ShowcaseInspector: React.FC = () => {
             <div className={clsx(style['head'])}>
                 {dataRef.current?.inspector.head}
             </div>
+            <Divider orientation='horizontal' />
             <div className={clsx(style['body'])}>
                 {dataRef.current?.inspector.body}
             </div>
