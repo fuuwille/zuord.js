@@ -8,6 +8,8 @@ export const theme = createTheme({
                     backgroundColor: '#292a2cf1',
                     border: '1.5px solid #444950',
                     borderRadius: '8px',
+                    maxWidth: 'none',
+                    padding: '0px',
                 },
                 arrow: {
                     color: '#2E2E2E'
