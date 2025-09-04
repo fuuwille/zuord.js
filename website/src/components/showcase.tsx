@@ -171,10 +171,15 @@ const ShowcaseInspector: React.FC = () => {
     );
 }
 
-const ShowcaseHead: React.FC<{ content: React.ReactNode }> = ({ content }) => {
+export const ShowcaseDetailedHead: React.FC<{ content: React.ReactNode }> = ({ content }) => {
     return (
         <>
-            <div></div>
+            <div className={clsx(style['content'])}>
+                {content}
+            </div>
+            <div className={clsx(style['box'], style['copy'])}>
+                C
+            </div>
         </>
     );
 }
