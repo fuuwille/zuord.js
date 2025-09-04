@@ -52,7 +52,18 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                         ref.current.data.dispatch(null);
                     }
                 }}
-                sx={{ width: '800px' }}
+                slotProps={{
+                    popper: {
+                        modifiers:[
+                            {
+                                name: 'offset',
+                                options: {
+                                    offset: [0, -12]
+                                }
+                            }
+                        ]
+                    }
+                }}
             >
                 <div 
                     ref={divRef}
