@@ -31,10 +31,9 @@ export const tokenModifier = {
             predicate: (content: string) => contents.includes(content),
             props: {
                 Node: ({ content, color }) => (
-                    <span style={{ color }}>
-                        <InfoCircledIcon />
+                    <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center'}}>
                         {content}
-                    </span>
+                    </div>
                 )
             }
         };

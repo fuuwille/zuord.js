@@ -20,7 +20,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     return (
         <pre className={clsx('pretext', style['pretext'])} style={{ userSelect: props.design.selectable ? 'text' : 'none', ...props.design.style }}>
             {tokens.map((line, i) => (
-                <div key={i}>
+                <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
                         let data = { content: token.content, color: token.color, Node: null };
