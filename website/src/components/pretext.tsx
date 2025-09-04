@@ -11,7 +11,8 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         modifiers: [],
         language: 'typescript',
         design: {
-            selectable: false,
+            selectable: false,            
+            preWrap: true,
             style: {},
         }
     }, $props);
@@ -23,6 +24,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
             className={clsx('pretext', style['pretext'])} 
             style={{ 
                 userSelect: props.design.selectable ? 'text' : 'none',
+                whiteSpace: props.design.preWrap ? 'pre-wrap' : 'normal',
                 ...props.design.style
             }}
         >
