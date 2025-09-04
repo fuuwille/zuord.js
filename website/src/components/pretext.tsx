@@ -10,7 +10,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         modifiers: [],
         language: 'typescript',
         design: {
-            selectable: true,
+            selectable: false,
             style: {},
         }
     }, $props);
