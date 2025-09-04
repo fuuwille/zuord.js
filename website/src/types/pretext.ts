@@ -4,6 +4,7 @@ export type PretextProps = {
     language?: Prism.Grammar;
     design?: {
         selectable?: boolean;
+        preWrap?: boolean;
         style?: Partial<React.CSSProperties>;
     }
 }
