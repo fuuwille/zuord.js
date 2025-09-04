@@ -26,12 +26,12 @@ export const tokenModifier = {
             }
         };
     },
-    info: (...contents : string[]) => {
+    info: (content : string, title: React.ReactNode) => {
         return {
-            predicate: (content: string) => contents.includes(content),
+            predicate: ($content: string) => $content === content,
             props: {
                 Node: ({ content, color }) => (
-                    <Tooltip title={content} placement="top">
+                    <Tooltip title={title} placement="bottom">
                         <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center'}}>
                             {content}
                         </div>

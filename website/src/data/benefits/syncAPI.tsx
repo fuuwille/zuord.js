@@ -14,7 +14,14 @@ export const modifiers: Record<string, PretextTokenModifier[]> = {
     integrate: [
         tokenModifier.const("zuord", "defaultUser"),
         tokenModifier.type("Date", "User"),
-        tokenModifier.info("result", "defaultUser"),
+        tokenModifier.info("result", <Pretext text={`// Result: User`} design={{ selectable: false }} />),
+        tokenModifier.info("defaultUser", <Pretext text={
+`const defaultUser = {
+    profile: { 
+        username: 'unnamed',
+        location: 'Earth'
+    }, id: '31422200',
+}`} design={{ selectable: false }} />)
     ]
 }
 
