@@ -44,7 +44,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             <Tooltip 
                 title={<ShowcaseInspector />} 
                 placement="bottom" 
-                arrow={false}
                 open={data !== null}
                 onClose={() => {
                     if(ref.current.target) {
@@ -158,5 +157,13 @@ const ShowcaseInspector: React.FC = () => {
                 {dataRef.current?.inspector.body}
             </div>
         </div>
+    );
+}
+
+const ShowcaseHead: React.FC<{ content: React.ReactNode }> = ({ content }) => {
+    return (
+        <>
+            <div></div>
+        </>
     );
 }
