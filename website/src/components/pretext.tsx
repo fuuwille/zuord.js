@@ -23,7 +23,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i}>
                     {line.map((token, j) => {
                         
-                        let data = { ...token, Node: null };
+                        let data = { content: token.content, color: token.color, Node: null };
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(data.content)) {
