@@ -138,7 +138,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
             }}
         >
             <span className={style['layout']}>
-                <span className={style['text']}>{props.text.default}</span>
+                <span className={style['text']}>{props.text.focused}</span>
             </span>
             <span className={style['visual']}>
                 <span className={clsx(style['text'], style['default'])}>{props.text.default}</span>
