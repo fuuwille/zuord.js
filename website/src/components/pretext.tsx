@@ -1,8 +1,10 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
-import { PretextProps, PretextTokenProps } from '@site/src/types/pretext';
+import { PretextFeaturedTokenProps, PretextProps, PretextTokenProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
+import { title } from 'process';
+import { Tooltip } from '@mui/material';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -48,5 +50,15 @@ export const PretextToken: React.FC<PretextTokenProps> = (props) => {
         <span style={{ color: props.color }}>
             {props.content}
         </span>
+    );
+}
+
+export const PretextFeaturedToken: React.FC<PretextFeaturedTokenProps> = (props) => {
+    return (
+        <Tooltip title={props.title} placement="bottom">
+            <div style={{ border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+                {props.content}
+            </div>
+        </Tooltip>
     );
 }
