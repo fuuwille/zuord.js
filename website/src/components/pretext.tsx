@@ -19,7 +19,13 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
 
     return (
-        <pre className={clsx('pretext', style['pretext'])} style={{ userSelect: props.design.selectable ? 'text' : 'none', ...props.design.style }}>
+        <pre 
+            className={clsx('pretext', style['pretext'])} 
+            style={{ 
+                userSelect: props.design.selectable ? 'text' : 'none',
+                ...props.design.style
+            }}
+        >
             {tokens.map((line, i) => (
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
