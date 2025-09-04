@@ -14,14 +14,14 @@ export const Benefits: React.FC<BenefitsProps> = ({
         <div className={clsx('benefits', style['benefits'])}>
             <div className={style['cards']}>
                 <Grid container sx={{ display: { xs: "none", lg: "flex" } }}>
-                    <Grid size={{ lg: 7, xl: 6 }}>
+                    <Grid size={6}>
                         <div className={style['left-column']}>
                             {leftColumn.map((card, index) => (
                                 <BenefitsCard {...card} key={index} />
                             ))}
                         </div>
                     </Grid>
-                    <Grid size={{ lg: 5, xl: 6 }}>
+                    <Grid size={6}>
                         <div className={style['right-column']}>
                             {rightColumn.map((card, index) => (
                                 <BenefitsCard {...card} key={index} />
