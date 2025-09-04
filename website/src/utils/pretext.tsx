@@ -1,6 +1,7 @@
 import ts from '@shikijs/langs/typescript';
 import darkPlus from '@shikijs/themes/dark-plus';
 import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
+import { InfoCircledIcon } from '@radix-ui/react-icons';
 
 export const highlighter = createHighlighterCoreSync({
     themes: [darkPlus],
@@ -22,6 +23,19 @@ export const tokenModifier = {
             predicate: (content: string) => contents.includes(content),
             props: {
                 color: '#4ec9b0'
+            }
+        };
+    },
+    info: (...contents : string[]) => {
+        return {
+            predicate: (content: string) => contents.includes(content),
+            props: {
+                Node: ({ content, color }) => (
+                    <span style={{ color }}>
+                        <InfoCircledIcon />
+                        {content}
+                    </span>
+                )
             }
         };
     }
