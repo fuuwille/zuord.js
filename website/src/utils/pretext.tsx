@@ -1,7 +1,7 @@
 import ts from '@shikijs/langs/typescript';
 import darkPlus from '@shikijs/themes/dark-plus';
 import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
-import { Tooltip } from '@mui/material';
+import { PretextFeaturedToken } from '../components/pretext';
 
 export const highlighter = createHighlighterCoreSync({
     themes: [darkPlus],
@@ -30,13 +30,8 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Token: ({ content, color }) => (
-                    <Tooltip title={title} placement="bottom">
-                        <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
-                            {content}
-                        </div>
-                    </Tooltip>
-                )
+                Token: PretextFeaturedToken,
+                title: title,
             }
         };
     }
