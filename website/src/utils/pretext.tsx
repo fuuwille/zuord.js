@@ -30,7 +30,7 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Node: ({ content, color }) => (
+                Token: ({ content, color }) => (
                     <Tooltip title={title} placement="bottom">
                         <div style={{ border: `1px solid ${color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
                             {content}
