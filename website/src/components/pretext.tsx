@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
-import { PretextProps } from '@site/src/types/pretext';
+import { PretextProps, PretextTokenProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 
@@ -23,21 +23,18 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let data = { content: token.content, color: token.color, Node: null };
+                        let meta = { Token: PretextToken, content: token.content, color: token.color };
 
                         for (const modifier of props.modifiers) {
-                            if (modifier.predicate(data.content)) {
-                                data = { ...data, ...(modifier.props) };
+                            if (modifier.predicate(meta.content)) {
+                                meta = { ...meta, ...(modifier.props) };
                             }
                         }
 
+                        const { Token, content, color } = meta;
+
                         return (
-                            <span
-                                key={j}
-                                style={{ color: data.color }}
-                            >
-                                {data.Node ? <data.Node content={data.content} color={data.color} /> : data.content}
-                            </span>
+                            <Token content={content} color={color} />
                         );
                     })}
                 </div>
@@ -45,3 +42,11 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         </pre>
     );
 };
+
+export const PretextToken: React.FC<PretextTokenProps> = (props) => {
+    return (
+        <span style={{ color: props.color }}>
+            {props.content}
+        </span>
+    );
+}
