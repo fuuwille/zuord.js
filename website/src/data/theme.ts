@@ -5,7 +5,7 @@ export const theme = createTheme({
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    backgroundColor: '#2e2e2ef1',
+                    backgroundColor: '#292a2cf1',
                     border: '1.5px solid #444950',
                     borderRadius: '8px',
                 },
