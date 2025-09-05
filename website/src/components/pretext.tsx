@@ -71,7 +71,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
     }) satisfies React.FC<PretextTokenProps.Featured>,
     Animated: ((props) => {
         return (
-            <span style={{ color: props.color, textDecoration: 'underline', textDecorationColor: props.color, textDecorationStyle: 'dotted' }}>
+            <span className={clsx(style['token'], style['animated'])} style={{ color: props.color }}>
                 {props.content}
             </span>
         );
