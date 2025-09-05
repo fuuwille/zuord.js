@@ -8,10 +8,10 @@ export const benefitsBody = {
         },
         content: <BenefitsBody.SyncAPI />
     },
-    zeroRuntime: {
+    zeroCostRI: {
         head: {
-            title: "Zero runtime overhead",
-            description: "Zuord aims to provide a compiler experience that perfectly aligns with runtime behavior, without any runtime overhead."
+            title: "Zero-Cost Runtime Inference",
+            description: "Type inference is compiler-specific and doesn't add overhead to the runtime."
         }
     }
 }

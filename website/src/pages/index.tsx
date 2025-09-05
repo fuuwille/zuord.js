@@ -12,7 +12,7 @@ export default function Home() {
           <Benefits {...benefitsBody.syncAPI} />
         </Grid>
         <Grid size={{ lg: 4, xl: 6 }}>
-          <Benefits {...benefitsBody.zeroRuntime} />
+          <Benefits {...benefitsBody.zeroCostRI} />
         </Grid>
       </Grid>
       <Grid container margin={2} spacing={2} display={{ xs: 'flex', lg: 'none' }}>
@@ -20,7 +20,7 @@ export default function Home() {
           <Benefits {...benefitsBody.syncAPI} />
         </Grid>
         <Grid size={12}>
-          <Benefits {...benefitsBody.zeroRuntime} />
+          <Benefits {...benefitsBody.zeroCostRI} />
         </Grid>
       </Grid>
     </Layout>
