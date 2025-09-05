@@ -46,11 +46,14 @@ export const BenefitsBody = {
     )) satisfies React.FC,
     ZeroCostRT: (() => (
         <div className={clsx(style['zero-cost-rt'])}>
-            <Pretext 
-                text={`zuord.integrate = (...) : Zuord.Integrate => ...`} 
-                design={{ selectable: false, preWrap: false }} 
+            <Pretext
+                text={`zuord.integrate = ( ... ) : Zuord.Integrate => { ... }`}
+                design={{ selectable: false, preWrap: false }}
                 modifiers={[
-                    tokenModifier.const("zuord")
+                    tokenModifier.const("zuord"),
+                    tokenModifier.func("integrate", '(...)'),
+                    tokenModifier.info("integrate", null),
+                    tokenModifier.info("Integrate", null),
                 ]}
             />
         </div>
