@@ -8,7 +8,7 @@ export const benefitsBody = {
         },
         content: <BenefitsBody.SyncAPI />
     },
-    zeroCostRI: {
+    zeroCostRT: {
         head: {
             title: "Zero-Cost Return Types",
             description: "Return types fully managed by the compiler, with zero runtime cost.",
