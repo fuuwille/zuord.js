@@ -48,6 +48,7 @@ export const tokenModifier = {
             predicate: ($content: string) => $content === content,
             props: {
                 Token: PretextToken.Animated,
+                layout: content,
             }
         };
     }
