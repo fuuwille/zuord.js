@@ -109,7 +109,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
-                style={{ color: props.color }} 
+                style={{ border: `1px solid ${props.color}69`, color: props.color }} 
             >
                 <span className={style['layout']}>
                     <span className={clsx(style['text'], style['zero'])}>{props.layout}</span>
