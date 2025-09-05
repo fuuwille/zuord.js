@@ -1,15 +1,15 @@
 import { ShowcaseControlData } from '@site/src/types/showcase';
 
 export type BenefitsProps = {
-    head: BenefitsHead.Base
+    head: BenefitsHeadProps.Base
     body?: React.FC;
 };
 
-export namespace BenefitsHead {
+export namespace BenefitsHeadProps {
     export type Base = {
     }
 
-    export type Native = BenefitsHead.Base & {
+    export type Native = BenefitsHeadProps.Base & {
         title?: string;
         description?: string;
     };
