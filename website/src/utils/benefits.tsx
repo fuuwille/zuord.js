@@ -1,7 +1,7 @@
 import style from '@site/src/css/modules/benefits.module.scss';
 import { BenefitsBody } from '@site/src/types/benefits';
 
-export const benefitsBody = {
+export const benefitsBodyUtil = {
     syncAPI: {
         control: (data: BenefitsBody.SyncAPI.ControlData) => {
             const runtime = data.text[0] === data.text[0].toLowerCase();

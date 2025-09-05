@@ -4,7 +4,7 @@ import { BenefitsProps } from '@site/src/types/benefits';
 import { zuord } from 'zuord';
 import { Pretext } from './pretext';
 import { Showcase } from './showcase';
-import { benefitsBody } from '@site/src/utils/benefits';
+import { benefitsBodyUtil } from '@site/src/utils/benefits';
 import { controlData } from '@site/src/data/benefits/syncAPI';
 import { tokenModifier } from '@site/src/utils/pretext';
 import { Box } from '@mui/material';
@@ -40,8 +40,8 @@ export const BenefitsBody = {
             </div>
             <Showcase container={{
                 controls: [
-                    benefitsBody.syncAPI.control(controlData.integrate), benefitsBody.syncAPI.control(controlData.merge), benefitsBody.syncAPI.control(controlData.evolve), benefitsBody.syncAPI.control(controlData.pick), benefitsBody.syncAPI.control(controlData.omit),
-                    benefitsBody.syncAPI.control(controlData.Integrate), benefitsBody.syncAPI.control(controlData.Merge), benefitsBody.syncAPI.control(controlData.Evolve), benefitsBody.syncAPI.control(controlData.Pick), benefitsBody.syncAPI.control(controlData.Omit),
+                    benefitsBodyUtil.syncAPI.control(controlData.integrate), benefitsBodyUtil.syncAPI.control(controlData.merge), benefitsBodyUtil.syncAPI.control(controlData.evolve), benefitsBodyUtil.syncAPI.control(controlData.pick), benefitsBodyUtil.syncAPI.control(controlData.omit),
+                    benefitsBodyUtil.syncAPI.control(controlData.Integrate), benefitsBodyUtil.syncAPI.control(controlData.Merge), benefitsBodyUtil.syncAPI.control(controlData.Evolve), benefitsBodyUtil.syncAPI.control(controlData.Pick), benefitsBodyUtil.syncAPI.control(controlData.Omit),
                 ],
                 design: { columns: 5 }
             }} design={{ className: style['showcase'] }}/>
