@@ -49,7 +49,7 @@ export type ShowcaseControlProps = {
     id: number;
 } & ShowcaseControlData;
 
-export namespace ShowcaseInspectorBody {
+export namespace ShowcaseInspectorBodyProps {
     export type Trial = {
         example: React.ReactNode;
         resultType: React.ReactNode;
