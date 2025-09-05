@@ -15,7 +15,6 @@ export const modifiers: Record<string, PretextTokenModifier[]> = {
     integrate: [
         tokenModifier.const("zuord", "defaultUser"),
         tokenModifier.type("Date", "User"),
-        tokenModifier.featured("result", <Pretext text={`// Result: User`} design={{ selectable: false }} />),
         tokenModifier.featured("defaultUser", <Pretext text={
 `const defaultUser = {
     profile: { 
@@ -30,7 +29,7 @@ export const controlData = {
     integrate: {
         text: "integrate",
         inspector: {
-            head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(...)`} />} />,
+            head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
             body: <Pretext text={code.integrate} modifiers={modifiers.integrate} />
         }
     },
