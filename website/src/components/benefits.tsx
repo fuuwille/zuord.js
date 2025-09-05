@@ -16,7 +16,7 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
             title: 'Benefits Title',
             description: 'Benefits description goes here.',
         },
-        content: null,
+        body: null,
     }, $props);
 
     return (
@@ -26,7 +26,7 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
                 <div className={style['description']}>{props.head.description}</div>
             </div>
             <Box className={style['content']} display={{ xs: 'none', sm: 'block' }}>
-                <props.content />
+                <props.body />
             </Box>
         </div>
     );
