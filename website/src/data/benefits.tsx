@@ -7,7 +7,7 @@ import { benefitsBodyUtil } from "../utils/benefits";
 
 export const benefitsData = {
     syncAPI: {
-        head: () => <BenefitsHead.Native title={"Sync API"} description={"A powerful and flexible API for managing state with zero runtime cost."} />,
+        head: () => <BenefitsHead.Native title={"Sync Runtime & Type APIs"} description={"Experience APIs synchronized between runtime behavior and type system."} />,
         body: () => <BenefitsBody.SyncAPI />
     },
     zeroCostRT: {
