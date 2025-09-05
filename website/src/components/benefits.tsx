@@ -4,7 +4,7 @@ import { BenefitsProps } from '@site/src/types/benefits';
 import { zuord } from 'zuord';
 import { Pretext } from './pretext';
 import { Showcase } from './showcase';
-import { syncAPIControl } from '../utils/benefits/syncAPI';
+import { syncAPI } from '../utils/benefits';
 import { controlData } from '../data/benefits/syncAPI';
 import { tokenModifier } from '../utils/pretext';
 
@@ -36,8 +36,8 @@ export const SyncAPIBody: React.FC = () => (
         </div>
         <Showcase container={{
             controls: [
-                syncAPIControl(controlData.integrate), syncAPIControl(controlData.merge), syncAPIControl(controlData.evolve), syncAPIControl(controlData.pick), syncAPIControl(controlData.omit),
-                syncAPIControl(controlData.Integrate), syncAPIControl(controlData.Merge), syncAPIControl(controlData.Evolve), syncAPIControl(controlData.Pick), syncAPIControl(controlData.Omit),
+                syncAPI.control(controlData.integrate), syncAPI.control(controlData.merge), syncAPI.control(controlData.evolve), syncAPI.control(controlData.pick), syncAPI.control(controlData.omit),
+                syncAPI.control(controlData.Integrate), syncAPI.control(controlData.Merge), syncAPI.control(controlData.Evolve), syncAPI.control(controlData.Pick), syncAPI.control(controlData.Omit),
             ],
             design: { columns: 5 }
         }} design={{ className: style['showcase'] }}/>

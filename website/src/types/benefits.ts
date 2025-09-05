@@ -1,3 +1,5 @@
+import { ShowcaseControlData } from '@site/src/types/showcase';
+
 export type BenefitsProps = {
     head: {
         title?: string;
@@ -5,3 +7,10 @@ export type BenefitsProps = {
     }
     content?: React.ReactNode;
 };
+
+export namespace SyncAPI {
+    export type ControlData = {
+        text: string;
+        inspector: ShowcaseControlData['inspector'];
+    }
+}
