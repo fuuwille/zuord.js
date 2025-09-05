@@ -40,10 +40,10 @@
             }
         }
 
-        .visual.animating {
+        .visual.transition {
             .text {
                 translate: 0 100%;                
-                transition: all 0.3s ease-in-out;
+                transition: all 3s ease-in-out;
             }
 
             .text.first {

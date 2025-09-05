@@ -71,23 +71,23 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         );
     }) satisfies React.FC<PretextTokenProps.Featured>,
     Animated: ((props) => {
-        const [animating, setAnimating] = useState(false);
+        const [transition, setTransition] = useState(false);
 
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
                 style={{ color: props.color }}
                 onMouseEnter={() => {
-                    if(!animating) {
-                        setAnimating(true);
-                        setTimeout(() => setAnimating(false), 300);
+                    if(!transition) {
+                        setTransition(true);
+                        setTimeout(() => setTransition(false), 3000);
                     }
                 }}
             >
                 <span className={style['layout']}>
                     <span className={clsx(style['text'], style['zero'])}>{props.content}</span>
                 </span>
-                <span className={clsx(style['visual'], animating ? style['animating'] : null)}>
+                <span className={clsx(style['visual'], transition ? style['transition'] : null)}>
                     <span className={clsx(style['text'], style['first'])}>{props.content}</span>
                     <span className={clsx(style['text'], style['second'])}>{props.content}</span>
                 </span>
