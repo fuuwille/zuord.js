@@ -72,11 +72,13 @@ export const PretextToken : Record<string, PretextTokenNode> = {
     }) satisfies React.FC<PretextTokenProps.Featured>,
     Animated: ((props) => {
         const [transition, setTransition] = useState(false);
+        const [first, setFirst] = useState(props.content);
+        const [second, setSecond] = useState(null);
 
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
-                style={{ color: props.color }}
+                style={{ color: props.color }} 
                 onMouseEnter={() => {
                     if(!transition) {
                         setTransition(true);
@@ -85,13 +87,13 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 }}
             >
                 <span className={style['layout']}>
-                    <span className={clsx(style['text'], style['zero'])}>{props.content}</span>
+                    <span className={clsx(style['text'], style['zero'])}>{props.layout}</span>
                 </span>
                 <span className={clsx(style['visual'], transition ? style['transition'] : null)}>
-                    <span className={clsx(style['text'], style['first'])}>{props.content}</span>
-                    <span className={clsx(style['text'], style['second'])}>{props.content}</span>
+                    <span className={clsx(style['text'], style['first'])}>{first}</span>
+                    <span className={clsx(style['text'], style['second'])}>{second}</span>
                 </span>
             </span>
         );
-    }) satisfies React.FC<PretextTokenProps.Native>,
+    }) satisfies React.FC<PretextTokenProps.Animated>,
 }
