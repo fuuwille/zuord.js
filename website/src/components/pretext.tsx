@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
-import { PretextFeaturedTokenProps, PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/types/pretext';
+import { PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
@@ -59,7 +59,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 {props.content}
             </span>
         );
-    }) satisfies React.FC<PretextTokenProps>,
+    }) satisfies React.FC<PretextTokenProps.Native>,
     Featured: ((props) => {
         return (
             <Tooltip title={props.title} placement="bottom">
@@ -68,5 +68,5 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 </div>
             </Tooltip>
         );
-    }) satisfies React.FC<PretextFeaturedTokenProps>
+    }) satisfies React.FC<PretextTokenProps.Featured>
 }

@@ -16,17 +16,19 @@ export type PretextTokenData = {
 
 export type PretextTokenNode = React.FC<PretextTokenData>;
 
-export type PretextTokenProps = PretextTokenData & {
-    Token?: PretextTokenNode;
-}
+export namespace PretextTokenProps {
+    export type Native = PretextTokenData & {
+        Token?: PretextTokenNode;
+    }
 
-export type PretextFeaturedTokenProps = PretextTokenProps & {
-    title: React.ReactNode;
+    export type Featured = PretextTokenProps.Native & {
+        title: React.ReactNode;
+    }
 }
 
 export type PretextTokenPredicate = (content: string) => boolean;
 
 export type PretextTokenModifier = {
     predicate: PretextTokenPredicate;
-    props: Partial<PretextTokenProps>;
+    props: Partial<PretextTokenProps.Native>;
 }
