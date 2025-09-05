@@ -18,7 +18,7 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
 
     return (
         <div className={clsx(style['benefits'])}>
-            <Box className={style['body']} display={{ xs: 'none', sm: 'block' }}>
+            <Box className={style['head']}>
                 <props.head />
             </Box>
             <Box className={style['body']} display={{ xs: 'none', sm: 'block' }}>
