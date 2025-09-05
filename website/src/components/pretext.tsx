@@ -4,7 +4,7 @@ import { PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/typ
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -103,11 +103,14 @@ export const PretextToken : Record<string, PretextTokenNode> = {
             }
         }
 
+        useEffect(() => {
+            setInterval(nextStage, 3000);
+        }, []);
+
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
                 style={{ color: props.color }} 
-                onMouseEnter={nextStage}
             >
                 <span className={style['layout']}>
                     <span className={clsx(style['text'], style['zero'])}>{props.layout}</span>
