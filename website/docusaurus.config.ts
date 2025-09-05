@@ -29,21 +29,15 @@ const config: Config = {
     {
       tagName: 'link',
       attributes: {
-        rel: 'preload',
+        rel: 'font',
         href: '/fonts/Raleway-Regular.woff2',
-        as: 'font',
-        type: 'font/woff2',
-        crossorigin: 'anonymous',
       },
     },
     {
       tagName: 'link',
       attributes: {
-        rel: 'preload',
+        rel: 'font',
         href: '/fonts/AtkinsonHyperlegible-Regular.woff2',
-        as: 'font',
-        type: 'font/woff2',
-        crossorigin: 'anonymous',
       },
     },
   ],
