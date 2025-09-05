@@ -4,14 +4,14 @@ export const benefitsBody = {
     syncAPI: {
         head: {
             title: "Sync Runtime & Type APIs",
-            description: "Experience APIs that are in sync between runtime and type level",
+            description: "Experience APIs synchronized between runtime behavior and type system.",
         },
         content: <BenefitsBody.SyncAPI />
     },
     zeroCostRI: {
         head: {
             title: "Zero-Cost Return Types",
-            description: "Return types managed by the compiler only, adding no runtime cost"
+            description: "Return types fully managed by the compiler, with zero runtime cost."
         }
     }
 }
