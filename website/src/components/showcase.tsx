@@ -36,7 +36,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 
     useEffect(() => {
         ref.current.div = divRef.current;
-        console.log(ref.current.div);
     }, []);
 
     return (
