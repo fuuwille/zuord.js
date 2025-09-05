@@ -1,4 +1,4 @@
-import { BenefitsBody } from "@site/src/components/benefits";
+import { BenefitsBody, BenefitsHead } from "@site/src/components/benefits";
 import { Pretext } from "@site/src/components/pretext";
 import { ShowcaseInspectorHead, ShowcaseInspectorBody } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
@@ -7,17 +7,11 @@ import { benefitsBodyUtil } from "../utils/benefits";
 
 export const benefitsData = {
     syncAPI: {
-        head: {
-            title: "Sync Runtime & Type APIs",
-            description: "Experience APIs synchronized between runtime behavior and type system.",
-        },
+        head: () => <BenefitsHead.Native title={"Sync API"} description={"A powerful and flexible API for managing state with zero runtime cost."} />,
         body: () => <BenefitsBody.SyncAPI />
     },
     zeroCostRT: {
-        head: {
-            title: "Zero-Cost Return Types",
-            description: "Return types fully managed by the compiler, with zero runtime cost.",
-        },
+        head: () => <BenefitsHead.Native title={"Zero-Cost Return Types"} description={"Return types fully managed by the compiler, with zero runtime cost."} />,
         body: () => <BenefitsBody.ZeroCostRT />
     }
 }
