@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <Layout title="Zuord">
       <Grid container>
-        <Grid size={8}>
+        <Grid size={{ lg: 8, xl: 6 }}>
           <Benefits {...benefits.syncAPI} />
         </Grid>
-        <Grid size={4}>
+        <Grid size={{ lg: 4, xl: 6 }}>
           <Benefits {...benefits.zeroRuntime} />
         </Grid>
       </Grid>
