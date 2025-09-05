@@ -196,11 +196,11 @@ export const ShowcaseInspectorBody = {
                     {props.example}
                 </div>
                 <div className={clsx(style['result'])}>
-                    <div className={clsx(style['type'])}>
-                        {props.resultType}
+                    <div className={clsx(style['inference'])}>
+                        {props.inference}
                     </div>
                     <div className={clsx(style['value'])}>
-                        {props.resultValue}
+                        {props.value}
                     </div>
                 </div>
             </div>
