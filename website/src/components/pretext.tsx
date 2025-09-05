@@ -80,7 +80,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 onMouseEnter={() => {
                     if(!transition) {
                         setTransition(true);
-                        setTimeout(() => setTransition(false), 3000);
+                        setTimeout(() => setTransition(false), 500);
                     }
                 }}
             >
