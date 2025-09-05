@@ -43,12 +43,13 @@ export const tokenModifier = {
             }
         };
     },
-    animated: (content : string) => {
+    animated: (content : string, stages: React.ReactNode[]) => {
         return {
             predicate: ($content: string) => $content === content,
             props: {
                 Token: PretextToken.Animated,
                 layout: content,
+                stages: stages
             }
         };
     }
