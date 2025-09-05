@@ -44,7 +44,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         const { Token, ...rest } = meta;
 
                         return (
-                            <Token {...rest} />
+                            <Token {...rest} key={j} />
                         );
                     })}
                 </div>
