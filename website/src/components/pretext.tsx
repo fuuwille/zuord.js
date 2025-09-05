@@ -102,7 +102,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         }
 
         useEffect(() => {
-            const interval = setInterval(nextStage, 6500);
+            const interval = setInterval(nextStage, 4500);
             return () => clearInterval(interval);
         }, []);
 
