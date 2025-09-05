@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
-import { PretextFeaturedTokenProps, PretextProps, PretextTokenProps } from '@site/src/types/pretext';
+import { PretextFeaturedTokenProps, PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/types/pretext';
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
@@ -32,7 +32,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let meta = { Token: PretextToken, content: token.content, color: token.color };
+                        let meta = { Token: PretextToken.Native, content: token.content, color: token.color };
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
@@ -52,20 +52,21 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     );
 };
 
-export const PretextToken: React.FC<PretextTokenProps> = (props) => {
-    return (
-        <span style={{ color: props.color }}>
-            {props.content}
-        </span>
-    );
-}
-
-export const PretextFeaturedToken: React.FC<PretextFeaturedTokenProps> = (props) => {
-    return (
-        <Tooltip title={props.title} placement="bottom">
-            <div style={{ color: props.color, border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+export const PretextToken : Record<string, PretextTokenNode> = {
+    Native: ((props) => {
+        return (
+            <span style={{ color: props.color }}>
                 {props.content}
-            </div>
-        </Tooltip>
-    );
+            </span>
+        );
+    }) satisfies React.FC<PretextTokenProps>,
+    Featured: ((props) => {
+        return (
+            <Tooltip title={props.title} placement="bottom">
+                <div style={{ color: props.color, border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+                    {props.content}
+                </div>
+            </Tooltip>
+        );
+    }) satisfies React.FC<PretextFeaturedTokenProps>
 }
