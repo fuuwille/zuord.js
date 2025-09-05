@@ -1,4 +1,4 @@
-import { BenefitsSyncAPI } from "@site/src/components/benefits/syncAPI";
+import { BenefitsSyncAPI } from "@site/src/components/benefits";
 
 export const benefits = {
     syncAPI: {
