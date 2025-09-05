@@ -4,7 +4,7 @@ import { ShowcaseInspectorHead, ShowcaseInspectorBody } from "@site/src/componen
 import { tokenModifier } from "@site/src/utils/pretext";
 import { code, modifiers } from "./benefits/syncAPI";
 
-export const benefitsBody = {
+export const benefitsBodyData = {
     syncAPI: {
         head: {
             title: "Sync Runtime & Type APIs",
@@ -21,7 +21,7 @@ export const benefitsBody = {
     }
 }
 
-export const benefits = {
+export const benefitsData = {
     syncAPI: {
         control: {
             integrate: {
