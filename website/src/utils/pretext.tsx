@@ -26,6 +26,14 @@ export const tokenModifier = {
             }
         };
     },
+    func: (...contents : string[]) => {
+        return {
+            predicate: (content: string) => contents.includes(content),
+            props: {
+                color: '#dcdcaa'
+            }
+        };
+    },
     info: (content : string, title: React.ReactNode) => {
         return {
             predicate: ($content: string) => $content === content,
