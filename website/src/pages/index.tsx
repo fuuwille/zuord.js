@@ -7,19 +7,11 @@ import { Grid } from '@mui/material';
 export default function Home() {
   return (
     <Layout title="Zuord">
-      <Grid container margin={2} spacing={2} display={{ xs: 'none', xl: 'flex' }}>
-        <Grid size={{ lg: 6, xl: 6 }}>
+      <Grid container margin={2} spacing={2} display={'flex'}>
+        <Grid size={{ xs: 12, xl: 6 }}>
           <Benefits {...benefitsBody.syncAPI} />
         </Grid>
-        <Grid size={{ lg: 6, xl: 6 }}>
-          <Benefits {...benefitsBody.zeroCostRT} />
-        </Grid>
-      </Grid>
-      <Grid container margin={2} spacing={2} display={{ xs: 'flex', xl: 'none' }}>
-        <Grid size={12}>
-          <Benefits {...benefitsBody.syncAPI} />
-        </Grid>
-        <Grid size={12}>
+        <Grid size={{ xs: 12, xl: 6 }}>
           <Benefits {...benefitsBody.zeroCostRT} />
         </Grid>
       </Grid>
