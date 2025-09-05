@@ -8,7 +8,7 @@ import { benefitsBodyUtil } from '@site/src/utils/benefits';
 import { controlData } from '@site/src/data/benefits/syncAPI';
 import { tokenModifier } from '@site/src/utils/pretext';
 import { Box } from '@mui/material';
-import { benefitsData } from '../data/benefits';
+import { benefitsData } from '@site/src/data/benefits';
 
 export const Benefits: React.FC<BenefitsProps> = ($props) => {
     const props = zuord.integrate({
@@ -26,7 +26,7 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
                 <div className={style['description']}>{props.head.description}</div>
             </div>
             <Box className={style['content']} display={{ xs: 'none', sm: 'block' }}>
-                {props.content}
+                <props.content />
             </Box>
         </div>
     );

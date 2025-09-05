@@ -5,7 +5,7 @@ export type BenefitsProps = {
         title?: string;
         description?: string;
     }
-    content?: React.ReactNode;
+    content?: React.FC;
 };
 
 export namespace BenefitsBody {
