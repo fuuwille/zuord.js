@@ -1,7 +1,7 @@
 import { ShowcaseControlData } from '@site/src/types/showcase';
 
 export type BenefitsProps = {
-    head: BenefitsHeadProps.Base
+    head: React.FC;
     body?: React.FC;
 };
 

@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/benefits.module.scss';
 import clsx from 'clsx';
-import { BenefitsProps } from '@site/src/types/benefits';
+import { BenefitsHeadProps, BenefitsProps } from '@site/src/types/benefits';
 import { zuord } from 'zuord';
 import { Pretext } from './pretext';
 import { Showcase } from './showcase';
@@ -12,24 +12,29 @@ import { benefitsBodyData } from '@site/src/data/benefits';
 
 export const Benefits: React.FC<BenefitsProps> = ($props) => {
     const props = zuord.integrate({
-        head: {
-            title: 'Benefits Title',
-            description: 'Benefits description goes here.',
-        },
+        head: () => <BenefitsHead.Native title={"Benefits Title"} description={"Benefits description goes here."} />,
         body: null,
     }, $props);
 
     return (
         <div className={clsx(style['benefits'])}>
-            <div className={style['head']}>
-                <div className={style['title']}>{props.head.title}</div>
-                <div className={style['description']}>{props.head.description}</div>
-            </div>
+            <Box className={style['body']} display={{ xs: 'none', sm: 'block' }}>
+                <props.head />
+            </Box>
             <Box className={style['body']} display={{ xs: 'none', sm: 'block' }}>
                 <props.body />
             </Box>
         </div>
     );
+}
+
+export const BenefitsHead = {
+    Native: ((props) => (
+        <>
+            <div className={style['title']}>{props.title}</div>
+            <div className={style['description']}>{props.description}</div>
+        </>
+    )) satisfies React.FC<BenefitsHeadProps.Native>,
 }
 
 export const BenefitsBody = {
