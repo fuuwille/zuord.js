@@ -8,7 +8,7 @@ import { benefitsBodyUtil } from '@site/src/utils/benefits';
 import { controlData } from '@site/src/data/benefits/syncAPI';
 import { tokenModifier } from '@site/src/utils/pretext';
 import { Box } from '@mui/material';
-import { benefitsData } from '@site/src/data/benefits';
+import { benefitsBodyData } from '@site/src/data/benefits';
 
 export const Benefits: React.FC<BenefitsProps> = ($props) => {
     const props = zuord.integrate({
@@ -41,7 +41,7 @@ export const BenefitsBody = {
             </div>
             <Showcase container={{
                 controls: [
-                    benefitsData.syncAPI.control.integrate, benefitsBodyUtil.syncAPI.control(controlData.merge), benefitsBodyUtil.syncAPI.control(controlData.evolve), benefitsBodyUtil.syncAPI.control(controlData.pick), benefitsBodyUtil.syncAPI.control(controlData.omit),
+                    benefitsBodyData.syncAPI.control.integrate, benefitsBodyUtil.syncAPI.control(controlData.merge), benefitsBodyUtil.syncAPI.control(controlData.evolve), benefitsBodyUtil.syncAPI.control(controlData.pick), benefitsBodyUtil.syncAPI.control(controlData.omit),
                     benefitsBodyUtil.syncAPI.control(controlData.Integrate), benefitsBodyUtil.syncAPI.control(controlData.Merge), benefitsBodyUtil.syncAPI.control(controlData.Evolve), benefitsBodyUtil.syncAPI.control(controlData.Pick), benefitsBodyUtil.syncAPI.control(controlData.Omit),
                 ],
                 design: { columns: 5 }

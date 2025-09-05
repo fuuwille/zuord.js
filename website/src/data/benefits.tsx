@@ -5,7 +5,7 @@ import { tokenModifier } from "@site/src/utils/pretext";
 import { code, modifiers } from "./benefits/syncAPI";
 import { benefitsBodyUtil } from "../utils/benefits";
 
-export const benefitsBodyData = {
+export const benefitsData = {
     syncAPI: {
         head: {
             title: "Sync Runtime & Type APIs",
@@ -22,7 +22,7 @@ export const benefitsBodyData = {
     }
 }
 
-export const benefitsData = {
+export const benefitsBodyData = {
     syncAPI: {
         control: {
             integrate: benefitsBodyUtil.syncAPI.control({
