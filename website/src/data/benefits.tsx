@@ -1,6 +1,6 @@
 import { BenefitsBody } from "@site/src/components/benefits";
 
-export const benefits = {
+export const benefitsBody = {
     syncAPI: {
         head: {
             title: "Runtime & Type Harmony",
