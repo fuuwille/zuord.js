@@ -170,18 +170,20 @@ const ShowcaseInspector: React.FC = () => {
     );
 }
 
-export const ShowcaseDetailedHead: React.FC<{ content: React.ReactNode }> = ({ content }) => {
-    return (
-        <>
-            <div className={clsx(style['box'], style['link'])}>
-                L
-            </div>
-            <div className={clsx(style['content'])}>
-                {content}
-            </div>
-            <div className={clsx(style['box'], style['copy'])}>
-                C
-            </div>
-        </>
-    );
+export const ShowcaseInspectorHead = {
+    Detailed : ((props) => {
+        return (
+            <>
+                <div className={clsx(style['box'], style['link'])}>
+                    L
+                </div>
+                <div className={clsx(style['content'])}>
+                    {props.content}
+                </div>
+                <div className={clsx(style['box'], style['copy'])}>
+                    C
+                </div>
+            </>
+        );
+    }) satisfies React.FC<{ content: React.ReactNode }>
 }

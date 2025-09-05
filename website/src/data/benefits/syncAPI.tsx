@@ -1,5 +1,5 @@
 import { Pretext } from "@site/src/components/pretext";
-import { ShowcaseDetailedHead } from "@site/src/components/showcase";
+import { ShowcaseInspectorHead } from "@site/src/components/showcase";
 import { PretextTokenModifier } from "@site/src/types/pretext";
 import { tokenModifier } from "@site/src/utils/pretext";
 
@@ -30,7 +30,7 @@ export const controlData = {
     integrate: {
         text: "integrate",
         inspector: {
-            head: <ShowcaseDetailedHead content={<Pretext text={`zuord.integrate(...)`} />} />,
+            head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(...)`} />} />,
             body: <Pretext text={code.integrate} modifiers={modifiers.integrate} />
         }
     },
