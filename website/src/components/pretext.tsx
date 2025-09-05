@@ -4,7 +4,7 @@ import { PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/typ
 import { zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -77,19 +77,17 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         const [first, setFirst] = useState<React.ReactNode>(props.content);
         const [second, setSecond] = useState<React.ReactNode>(null);
 
-        const getNextIndex = () => {
-            if(index >= props.stages.length - 1) {
-                return 0;
-            }
+        const indexRef = useRef(index);
 
-            return index + 1;
-        }
+        useEffect(() => {
+            indexRef.current = index;
+        }, [index]);
 
         const nextStage = () => {
             if(!transition) {
                 setTransition(true);
 
-                let nextIndex = getNextIndex();
+                let nextIndex = indexRef.current >= props.stages.length - 1 ? 0 : indexRef.current + 1;
                 setSecond(props.stages[nextIndex]);
 
                 setIndex(nextIndex);
@@ -104,7 +102,8 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         }
 
         useEffect(() => {
-            setInterval(nextStage, 3000);
+            const interval = setInterval(nextStage, 7000);
+            return () => clearInterval(interval);
         }, []);
 
         return (
