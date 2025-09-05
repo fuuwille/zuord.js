@@ -1,9 +1,9 @@
 import style from '@site/src/css/modules/benefits.module.scss';
-import { SyncAPI } from '@site/src/types/benefits';
+import { BenefitsBody } from '@site/src/types/benefits';
 
 export const benefitsBody = {
     syncAPI: {
-        control: (data: SyncAPI.ControlData) => {
+        control: (data: BenefitsBody.SyncAPI.ControlData) => {
             const runtime = data.text[0] === data.text[0].toLowerCase();
 
             const textFirst = `.${data.text}`;

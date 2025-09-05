@@ -8,9 +8,11 @@ export type BenefitsProps = {
     content?: React.ReactNode;
 };
 
-export namespace SyncAPI {
-    export type ControlData = {
-        text: string;
-        inspector: ShowcaseControlData['inspector'];
+export namespace BenefitsBody {
+    export namespace SyncAPI {
+        export type ControlData = {
+            text: string;
+            inspector: ShowcaseControlData['inspector'];
+        }
     }
 }
