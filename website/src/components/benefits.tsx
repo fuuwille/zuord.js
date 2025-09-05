@@ -28,18 +28,20 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
     );
 }
 
-export const SyncAPIBody: React.FC = () => (  
-    <div className={clsx(style['sync-api'])}>
-        <div className={style['imports']}>
-            <Pretext text={`import { zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.const("zuord")]}/>
-            <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.type("Zuord")]}/>
+export const BenefitsBody = {
+    SyncAPI: (() => (  
+        <div className={clsx(style['sync-api'])}>
+            <div className={style['imports']}>
+                <Pretext text={`import { zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.const("zuord")]}/>
+                <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.type("Zuord")]}/>
+            </div>
+            <Showcase container={{
+                controls: [
+                    syncAPI.control(controlData.integrate), syncAPI.control(controlData.merge), syncAPI.control(controlData.evolve), syncAPI.control(controlData.pick), syncAPI.control(controlData.omit),
+                    syncAPI.control(controlData.Integrate), syncAPI.control(controlData.Merge), syncAPI.control(controlData.Evolve), syncAPI.control(controlData.Pick), syncAPI.control(controlData.Omit),
+                ],
+                design: { columns: 5 }
+            }} design={{ className: style['showcase'] }}/>
         </div>
-        <Showcase container={{
-            controls: [
-                syncAPI.control(controlData.integrate), syncAPI.control(controlData.merge), syncAPI.control(controlData.evolve), syncAPI.control(controlData.pick), syncAPI.control(controlData.omit),
-                syncAPI.control(controlData.Integrate), syncAPI.control(controlData.Merge), syncAPI.control(controlData.Evolve), syncAPI.control(controlData.Pick), syncAPI.control(controlData.Omit),
-            ],
-            design: { columns: 5 }
-        }} design={{ className: style['showcase'] }}/>
-    </div>
-);
+    )) satisfies React.FC
+}
