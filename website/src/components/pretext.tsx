@@ -74,11 +74,11 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         const [transition, setTransition] = useState(false);
 
         const [index, setIndex] = useState(0);
-        const [first, setFirst] = useState(props.content);
-        const [second, setSecond] = useState(null);
+        const [first, setFirst] = useState<React.ReactNode>(props.content);
+        const [second, setSecond] = useState<React.ReactNode>(null);
 
         const getNextIndex = () => {
-            if(props.stages.length >= index) {
+            if(index >= props.stages.length - 1) {
                 return 0;
             }
 
@@ -95,7 +95,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 setIndex(nextIndex);
 
                 setTimeout(() => {
-                    setFirst(second);
+                    setFirst(props.stages[nextIndex]);
                     setSecond(null);
 
                     setTransition(false);
