@@ -68,5 +68,12 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                 </div>
             </Tooltip>
         );
-    }) satisfies React.FC<PretextTokenProps.Featured>
+    }) satisfies React.FC<PretextTokenProps.Featured>,
+    Animated: ((props) => {
+        return (
+            <span style={{ color: props.color, textDecoration: 'underline', textDecorationColor: props.color, textDecorationStyle: 'dotted' }}>
+                {props.content}
+            </span>
+        );
+    }) satisfies React.FC<PretextTokenProps.Native>,
 }
