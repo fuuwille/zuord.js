@@ -11,7 +11,7 @@ export const benefitsBody = {
     zeroCostRI: {
         head: {
             title: "Zero-Cost Runtime Inference",
-            description: "Type inference is compiler-specific and doesn't add overhead to the runtime."
+            description: "Compiler-only type inference with no runtime cost"
         }
     }
 }
