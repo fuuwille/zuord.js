@@ -34,7 +34,7 @@ export const tokenModifier = {
             }
         };
     },
-    info: (content : string, title: React.ReactNode) => {
+    featured: (content : string, title: React.ReactNode) => {
         return {
             predicate: ($content: string) => $content === content,
             props: {
