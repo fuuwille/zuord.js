@@ -1,34 +1,4 @@
 .benefits {
-    .cards {
-        display: flex;
-        margin: 0 5%;
-    }
-
-    @media (max-width: 1740px) {
-        .cards {
-            margin: 0;
-        }
-    }
-}
-
-.left-column, .right-column {
-    flex: 1;
-    min-width: 0;
-}
-
-.left-column {
-    .card {
-        margin-right: 8px;
-    }
-}
-
-.right-column {
-    .card {
-        margin-left: 8px;
-    }
-}
-
-.card {
     background-color: #242526;
     border: 1.5px solid #444950;
     margin: 16px;
@@ -36,7 +6,7 @@
     overflow: hidden;
 }
 
-.card {
+.benefits {
     .head {
         padding: 16px;
     }
