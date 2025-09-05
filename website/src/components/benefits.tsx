@@ -28,7 +28,7 @@ export const Benefits: React.FC<BenefitsProps> = ($props) => {
     );
 }
 
-export const BenefitsSyncAPI: React.FC = () => (  
+export const SyncAPIBody: React.FC = () => (  
     <div className={clsx(style['sync-api'])}>
         <div className={style['imports']}>
             <Pretext text={`import { zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.const("zuord")]}/>
