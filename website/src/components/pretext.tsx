@@ -72,19 +72,13 @@ export const PretextToken : Record<string, PretextTokenNode> = {
     Animated: ((props) => {
         return (
             <span className={clsx(style['token'], style['animated'])} style={{ color: props.color }}>
-                <div className={clsx(style['layout'])}>
-                    <div className={clsx(style['text'], style['zero'])}>
-                        {props.content}
-                    </div>
-                </div>
-                <div className={clsx(style['visual'])}>
-                    <div className={clsx(style['text'], style['first'])}>
-                        {props.content}
-                    </div>
-                    <div className={clsx(style['text'], style['second'])}>
-                        {props.content}
-                    </div>
-                </div>
+                <span className={style['layout']}>
+                    <span className={clsx(style['text'], style['zero'])}>{props.content}</span>
+                </span>
+                <span className={style['visual']}>
+                    <span className={clsx(style['text'], style['first'])}>{props.content}</span>
+                    <span className={clsx(style['text'], style['second'])}>{props.content}</span>
+                </span>
             </span>
         );
     }) satisfies React.FC<PretextTokenProps.Native>,
