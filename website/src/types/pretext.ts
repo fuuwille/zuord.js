@@ -24,6 +24,11 @@ export namespace PretextTokenProps {
     export type Featured = PretextTokenProps.Native & {
         title: React.ReactNode;
     }
+
+    export type Animated = PretextTokenProps.Native & {
+        layout: React.ReactNode;
+        stages: React.ReactNode[];
+    }
 }
 
 export type PretextTokenPredicate = (content: string) => boolean;
