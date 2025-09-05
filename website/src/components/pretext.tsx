@@ -97,12 +97,12 @@ export const PretextToken : Record<string, PretextTokenNode> = {
                     setSecond(null);
 
                     setTransition(false);
-                }, 500);
+                }, 1000);
             }
         }
 
         useEffect(() => {
-            const interval = setInterval(nextStage, 4500);
+            const interval = setInterval(nextStage, 3000);
             return () => clearInterval(interval);
         }, []);
 
