@@ -52,8 +52,8 @@ export const BenefitsBody = {
                 modifiers={[
                     tokenModifier.const("zuord"),
                     tokenModifier.func("integrate", '(...)'),
-                    tokenModifier.featured("integrate", null),
-                    tokenModifier.featured("Integrate", null),
+                    tokenModifier.animated("integrate"),
+                    tokenModifier.animated("Integrate"),
                 ]}
             />
         </div>
