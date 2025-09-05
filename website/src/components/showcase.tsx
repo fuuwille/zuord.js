@@ -1,6 +1,6 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
-import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData } from '@site/src/types/showcase';
+import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData, ShowcaseInspectorBodyProps } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Divider, Tooltip } from '@mui/material';
@@ -186,4 +186,24 @@ export const ShowcaseInspectorHead = {
             </>
         );
     }) satisfies React.FC<{ content: React.ReactNode }>
+}
+
+export const ShowcaseInspectorBody = {
+    Trial : ((props) => {
+        return (
+            <div className={clsx(style['trial'])}>
+                <div className={clsx(style['example'])}>
+                    {props.example}
+                </div>
+                <div className={clsx(style['result'])}>
+                    <div className={clsx(style['type'])}>
+                        {props.resultType}
+                    </div>
+                    <div className={clsx(style['value'])}>
+                        {props.resultValue}
+                    </div>
+                </div>
+            </div>
+        );
+    }) satisfies React.FC<ShowcaseInspectorBodyProps.Trial>,
 }
