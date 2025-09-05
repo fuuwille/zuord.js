@@ -10,8 +10,8 @@ export const benefitsBody = {
     },
     zeroCostRI: {
         head: {
-            title: "Zero-Cost Runtime Inference",
-            description: "Compiler-only type inference with no runtime cost"
+            title: "Zero-Cost Return Types",
+            description: "Return types managed by the compiler only, adding no runtime cost"
         }
     }
 }
