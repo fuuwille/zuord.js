@@ -42,5 +42,13 @@ export const tokenModifier = {
                 title: title,
             }
         };
+    },
+    animated: (content : string) => {
+        return {
+            predicate: ($content: string) => $content === content,
+            props: {
+                Token: PretextToken.Animated,
+            }
+        };
     }
 }
