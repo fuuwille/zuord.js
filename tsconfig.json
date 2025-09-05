@@ -10,15 +10,10 @@
     "baseUrl": ".",
     "paths": {
       "zuord": ["library/src"],
-      "zuord/extended": ["library/src/extended"],
-      "zuord/internal": ["library/src/internal"],
       "@zuord/type": ["packages/type/src"],
       "@zuord/core": ["packages/core/src"],
-      "@zuord/core/internal": ["packages/core/src/internal"],
       "@zuord/util": ["packages/util/src"],
-      "@zuord/util/internal": ["packages/util/src/internal"],
       "@zuord/trait": ["packages/trait/src"],
-      "@zuord/trait/internal": ["packages/trait/src/internal"]
     }
   }
 }
