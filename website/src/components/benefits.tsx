@@ -47,7 +47,7 @@ export const BenefitsBody = {
     ZeroCostRT: (() => (
         <div className={clsx(style['zero-cost-rt'])}>
             <Pretext
-                text={`zuord.integrate = ( ... ) : Zuord.Integrate => { ... }`}
+                text={`zuord.integrate = function ( ... ) : Zuord.Integrate => { ... }`}
                 design={{ selectable: false, preWrap: false }}
                 modifiers={[
                     tokenModifier.const("zuord"),
