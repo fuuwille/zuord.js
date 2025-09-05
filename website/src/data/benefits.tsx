@@ -11,7 +11,8 @@ export const benefitsBody = {
     zeroCostRI: {
         head: {
             title: "Zero-Cost Return Types",
-            description: "Return types fully managed by the compiler, with zero runtime cost."
+            description: "Return types fully managed by the compiler, with zero runtime cost.",
+            content: <BenefitsBody.ZeroCostRT />
         }
     }
 }
