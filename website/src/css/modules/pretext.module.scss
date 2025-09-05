@@ -22,30 +22,36 @@
 
         .visual {
             position: absolute;
+            overflow: hidden;
             bottom: 0; left: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             align-items: center;
             width: 100%;
         }
 
         .visual {
-            .text {
-                transition: all 0.3s ease-in-out;
-            }
-
             .text.first {
-                color: #446922;
+                opacity: 1;
             }
 
             .text.second {
-                color: #d1d1d1;
+                opacity: 0;
             }
         }
 
         .visual:hover {
             .text {
-                translate: 0 100%;
+                translate: 0 100%;                
+                transition: all 0.3s ease-in-out;
+            }
+
+            .text.first {
+                opacity: 0;
+            }
+
+            .text.second {
+                opacity: 1;
             }
         }
     }
