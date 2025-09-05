@@ -3,10 +3,18 @@
     font-size: 14px;
     padding: 3px;
     margin: 3px;
+    overflow: hidden;
 
     .token.animated {
         padding: 4px 8px;
         border: 1.5px solid #727881;
         border-radius: 8px;
+        position: relative;
+    }
+
+    .token.animated {
+        .visual {
+            position: absolute;
+        }
     }
 }
