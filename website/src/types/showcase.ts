@@ -48,3 +48,11 @@ export type ShowcaseControlData = {
 export type ShowcaseControlProps = {
     id: number;
 } & ShowcaseControlData;
+
+export namespace ShowcaseInspectorBody {
+    export type Trial = {
+        example: React.ReactNode;
+        resultType: React.ReactNode;
+        resultValue: React.ReactNode;
+    }
+}
