@@ -74,7 +74,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         const [transition, setTransition] = useState(false);
 
         const [index, setIndex] = useState(0);
-        const [first, setFirst] = useState<React.ReactNode>(props.content);
+        const [first, setFirst] = useState<React.ReactNode>(props.stages[index]);
         const [second, setSecond] = useState<React.ReactNode>(null);
 
         const indexRef = useRef(index);
