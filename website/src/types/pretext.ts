@@ -26,6 +26,10 @@ export namespace PretextTokenProps {
         layout: React.ReactNode;
         stages: React.ReactNode[];
     }
+
+    export type Diff = PretextTokenProps.Native & {
+        level: "origin" | "modified" | "added";
+    }
 }
 
 export type PretextTokenPredicate = (content: string) => boolean;
