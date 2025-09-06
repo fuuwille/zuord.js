@@ -118,26 +118,24 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
     ref.current.props = props;
     ref.current.state.isFocused = isFocused[0];
+    const focusTimeout = useRef<NodeJS.Timeout>(null);
 
     return (
         <div
             className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
             onMouseEnter={() => {
-                if(context.target?.props.id === props.id) {
-                    context.target.state.setIsFocused(false);
-                    context.data.dispatch(null);
-                }
-                else {
+                focusTimeout.current = setTimeout(() => {
                     context.target?.state.setIsFocused(false);
                     context.target = ref.current;
                     context.target.state.setIsFocused(true);
 
                     context.data.dispatch(props);
-                }
+                }, context.target ? 200 : 100);
             }}
             onMouseLeave={() => {
-                ref.current.state.setIsFocused(false);
-                context.data.dispatch(null);
+                if(focusTimeout.current) {
+                    clearTimeout(focusTimeout.current);
+                }
             }}
         >
             <span className={style['layout']}>
