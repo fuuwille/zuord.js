@@ -1,10 +1,8 @@
 import { BenefitsBody, BenefitsHead } from "@site/src/components/benefits";
 import { Pretext } from "@site/src/components/pretext";
-import { ShowcaseInspectorHead, ShowcaseInspectorBody, Showcase } from "@site/src/components/showcase";
+import { ShowcaseInspectorHead, ShowcaseInspectorBody } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
 import { benefitsBodyUtil } from "../utils/benefits";
-import { evolve } from "zuord/dist/main/zuord.runtime";
-import { Integrate } from "zuord/dist/internal/zuord/integrate";
 
 export const benefitsData = {
     syncAPI: {
@@ -21,7 +19,7 @@ export const benefitsData = {
     },
     configurable: {
         head: () => <BenefitsHead.Native title={"Configurable Modes"} description={"Customize modes to fit your needs, with full type inference."} />,
-        body: () => null,
+        body: () => <BenefitsBody.Configurable />,
     }
 }
 
