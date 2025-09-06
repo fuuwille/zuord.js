@@ -5,7 +5,7 @@ export const source = {
     integrate:
 `const result = zuord.integrate(defaultConfig, {
     contact: { phone: 1234567890 },
-    founded: '08-01-2025'
+    founded: new Date('2025-01-08')
 });`
 }
 
@@ -35,7 +35,7 @@ export const value = {
         phone: 1234567890,
         email: 'contact@fuuwille.dev'
     },
-    founded: '08-01-2025'
+    founded: new Date('2025-01-08')
 }`
 }
 
