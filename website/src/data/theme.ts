@@ -14,6 +14,8 @@ export const theme = createTheme({
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
+                    fontFamily: 'sans-serif',
+                    fontSize: '16px',
                     backgroundColor: '#292a2cf1',
                     border: '1.5px solid #444950',
                     borderRadius: '8px',
