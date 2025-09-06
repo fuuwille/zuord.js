@@ -3,7 +3,6 @@ import { Pretext } from "@site/src/components/pretext";
 import { ShowcaseInspectorHead, ShowcaseInspectorBody, Showcase } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
 import { benefitsBodyUtil } from "../utils/benefits";
-import * as syncAPI from "@site/src/data/benefitsSyncAPI";
 
 export const benefitsData = {
     syncAPI: {
@@ -31,7 +30,7 @@ export const benefitsBodyData = {
                 text: "integrate",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Content example={syncAPI.inspector.body.source.integrate} value={syncAPI.inspector.body.value.integrate} inference={null} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch value into the source"} />
                 }
             })
         }
