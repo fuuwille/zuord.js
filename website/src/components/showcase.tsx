@@ -82,10 +82,12 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
 const ShowcaseContext = createContext<ShowcaseRef>(null);
 
 const ShowcaseContainer : React.FC<ShowcaseContainerProps> = (props) => {
+    const yUnit = props.controls.length / props.design.columns;
+
     return (
         <div 
             className={clsx(style['container'])} 
-            style={{ gridTemplateColumns: 'auto '.repeat(props.design.columns).trim() }}
+            style={{ gridTemplateColumns: 'auto '.repeat(props.design.columns).trim(), height: `${yUnit * 36}px` }}
         >
             {props.controls.map((control, index) => {
                 return (
