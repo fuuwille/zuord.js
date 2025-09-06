@@ -55,6 +55,13 @@ export const benefitsBodyData = {
                     body: <ShowcaseInspectorBody.Description text={() => "Picks values from the source based on the pattern."} />
                 },
             }),
+            omit: benefitsBodyUtil.syncAPI.control({
+                text: "omit",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.omit(source, pattern)`} modifiers={[tokenModifier.const("zuord")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Omits values from the source based on the pattern."} />
+                },
+            })
         }
     }
 }
