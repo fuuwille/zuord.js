@@ -5,6 +5,10 @@
     margin: 3px;
     overflow: hidden;
 
+    .token {
+        position: relative;
+    }
+
     .token.animated {
         padding: 2px 8px;
         border-radius: 8px;

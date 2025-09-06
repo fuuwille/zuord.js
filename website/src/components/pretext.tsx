@@ -139,6 +139,11 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                         borderRadius: '8px',
                         padding: '0 4px',
                         marginRight: '4px',
+                        textAlign: 'center',
+                        position: 'absolute',
+                        left: '-24px',
+                        height: '20px',
+                        width: '20px',
                     }}
                 >
                     {props.level[0].toUpperCase()}
