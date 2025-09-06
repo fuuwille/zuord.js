@@ -23,6 +23,13 @@ export const benefitsSyncAPIData = {
     contact: { email: 'contact@zuordjs.org' },
     founded: '08-01-2025'
 });`
+    },
+    modifiers: {
+        integrate: [
+            tokenModifier.const("zuord", "defaultConfig"),
+            tokenModifier.type("Date"),
+            tokenModifier.featured("defaultConfig", null)
+        ]
     }
 }
 
@@ -33,7 +40,7 @@ export const benefitsBodyData = {
                 text: "integrate",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Trial example={<Pretext text={benefitsSyncAPIData.code.integrate} modifiers={modifiers.integrate} />} value={null} inference={null} />
+                    body: <ShowcaseInspectorBody.Trial example={<Pretext text={benefitsSyncAPIData.code.integrate} modifiers={benefitsSyncAPIData.modifiers.integrate} />} value={null} inference={null} />
                 }
             })
         }
