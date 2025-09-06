@@ -162,10 +162,22 @@
             .box {
                 width: 16px;
                 height: 16px;
-                border: 1px solid #444950;
+                border: 1px solid white;
                 border-radius: 4px;
                 display: inline-block;
                 margin-right: 4px;
+            }
+            
+            .decl.source {
+                .box {
+                    background-color: #9A1356; //8B004B;
+                }
+            }
+
+            .decl.patch {
+                .box {
+                    background-color: #007A44; //007B8B;
+                }
             }
         }
     }
