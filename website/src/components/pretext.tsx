@@ -134,12 +134,18 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                 <span
                     style={{
                         color: props.level === "origin" ? '#c973a8' :
-                            props.level === "modified" ? '#d7b787' : '#73c991',
+                        props.level === "modified" ? '#d7b787' : '#73c991',
+                        border: '1px solid',
+                        borderRadius: '8px',
+                        padding: '0 4px',
+                        marginRight: '4px',
                     }}
                 >
                     {props.level[0].toUpperCase()}
                 </span>
-                {props.content}
+                <span>
+                    {props.content}
+                    </span>
             </>
         );
     }) satisfies React.FC<PretextTokenProps.Diff>
