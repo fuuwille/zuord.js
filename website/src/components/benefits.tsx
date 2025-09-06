@@ -76,7 +76,11 @@ export const BenefitsBody = {
     )) satisfies React.FC,
     Configurable: (() => (
         <div className={clsx(style['configurable'])}>
-
+            <Showcase container={{
+                controls: [
+                ],
+                design: { columns: 5 }
+            }} design={{ className: style['showcase'] }}/>
         </div>
     )) satisfies React.FC,
 }
