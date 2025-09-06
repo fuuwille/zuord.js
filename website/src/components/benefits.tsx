@@ -80,10 +80,11 @@ export const BenefitsBody = {
                 controls: [
                     benefitsBodyData.configurable.control.shallow,
                     benefitsBodyData.configurable.control.inferless,
+                    benefitsBodyData.configurable.control.validate,
                     benefitsBodyData.configurable.control.concat,
                     benefitsBodyData.configurable.control.unique
                 ],
-                design: { columns: 2 }
+                design: { columns: 3 }
             }} design={{ className: style['showcase'] }}/>
         </div>
     )) satisfies React.FC,
