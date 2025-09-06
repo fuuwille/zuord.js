@@ -129,12 +129,13 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
         );
     }) satisfies React.FC<PretextTokenProps.Animated>,
     Diff: ((props) => {
+        const color = props.level === "origin" ? '#c973a8' : props.level === "modified" ? '#d7b787' : '#73c991';
+
         return (
             <>
                 <span
                     style={{
-                        color: props.level === "origin" ? '#c973a8' :
-                        props.level === "modified" ? '#d7b787' : '#73c991',
+                        color,
                         border: '1px solid',
                         borderRadius: '6px',
                         textAlign: 'center',
@@ -153,7 +154,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                 </span>
                 <span>
                     {props.content}
-                    </span>
+                </span>
             </>
         );
     }) satisfies React.FC<PretextTokenProps.Diff>
