@@ -162,7 +162,7 @@ const ShowcaseInspector: React.FC = () => {
             <div className={clsx(style['head'])}>
                 {dataRef.current?.inspector.head}
             </div>
-            <Divider orientation='horizontal' />
+            <Divider orientation='horizontal' flexItem/>
             <div className={clsx(style['body'])}>
                 {dataRef.current?.inspector.body}
             </div>
