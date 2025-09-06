@@ -104,7 +104,14 @@ export const benefitsBodyData = {
                 text: "shallow",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.shallow`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
-                    body: <ShowcaseInspectorBody.Description text={() => "Configures the transformation to be shallow."} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Apply transformation to the first level"} />
+                },
+            },
+            inferless: {
+                text: "inferless",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.inferless`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Transform without any type inference"} />
                 },
             }
         }
