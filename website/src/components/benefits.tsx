@@ -78,6 +78,10 @@ export const BenefitsBody = {
         <div className={clsx(style['configurable'])}>
             <Showcase container={{
                 controls: [
+                    benefitsBodyData.configurable.control.shallow,
+                    benefitsBodyData.configurable.control.inferless,
+                    benefitsBodyData.configurable.control.concat,
+                    benefitsBodyData.configurable.control.unique
                 ],
                 design: { columns: 5 }
             }} design={{ className: style['showcase'] }}/>
