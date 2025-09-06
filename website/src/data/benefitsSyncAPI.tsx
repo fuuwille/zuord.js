@@ -32,8 +32,8 @@ export const value = {
 `const result = {
     organization: 'fuuwille',
     contact: { 
-        email: 'contact@zuordjs.org',
-        phone: '+1234567890'
+        phone: '+1234567890',
+        email: 'contact@zuordjs.org'
     },
     founded: '08-01-2025'
 }`
