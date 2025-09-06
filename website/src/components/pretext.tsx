@@ -132,12 +132,12 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
         return (
             <>
                 <span
-                    style={
-                        props.level === "origin" ? { color: '#c973a8' } : 
-                        props.level === "modified" ? { color: '#d7b787' } : { color: '#73c991' }
-                    }
+                    style={{
+                        color: props.level === "origin" ? '#c973a8' :
+                            props.level === "modified" ? '#d7b787' : '#73c991',
+                    }}
                 >
-                    {props.level}
+                    {props.level[0].toUpperCase()}
                 </span>
                 {props.content}
             </>
