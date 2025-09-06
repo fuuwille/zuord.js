@@ -48,7 +48,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
 
                         if (meta.tips) {
                             return (
-                                <Tooltip key={j} title={<meta.tips />} placement="top">
+                                <Tooltip key={j} title={<meta.tips />}>
                                     <span {...bodyProps}>
                                         <Body {...data} />
                                     </span>
