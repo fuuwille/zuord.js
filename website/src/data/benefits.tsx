@@ -15,11 +15,11 @@ export const benefitsData = {
         body: () => <BenefitsBody.ZeroCostRT />
     },
     recursiveFirst: {
-        head: () => <BenefitsHead.Native title={"Recursive-first Behavior"} description={"Transform structures recursive-first, with optional shallow mode."} />,
+        head: () => <BenefitsHead.Native title={"Recursive Transformation"} description={"Transform structures recursive-first, with optional shallow mode."} />,
         body: () => null,
     },
     configurableModes: {
-        head: () => <BenefitsHead.Native title={"Configurable Modes"} description={"Customize transformation mode behaviors to your use case."} />,
+        head: () => <BenefitsHead.Native title={"Configurable Modes"} description={"Customize transformation modes to fit your needs, with full type inference."} />,
         body: () => null,
     }
 }
