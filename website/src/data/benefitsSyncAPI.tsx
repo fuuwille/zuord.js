@@ -1,7 +1,7 @@
 import { tokenModifier } from "@site/src/utils/pretext"
 import { Pretext } from "@site/src/components/pretext"
 
-export const code = {
+export const source = {
     integrate:
 `const result = zuord.integrate(defaultConfig, {
     contact: { email: 'contact@zuordjs.org' },
@@ -30,8 +30,8 @@ export const modifiers = {
 
 export const inspector = {
     body: {
-        example: {
-            integrate: () => <Pretext text={code.integrate} modifiers={modifiers.integrate} />
+        source: {
+            integrate: () => <Pretext text={source.integrate} modifiers={modifiers.integrate} />
         },
         value: {
             integrate: () => <Pretext text={value.integrate} modifiers={[

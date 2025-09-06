@@ -23,7 +23,7 @@ export const benefitsBodyData = {
                 text: "integrate",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Content example={syncAPI.inspector.body.example.integrate} value={syncAPI.inspector.body.value.integrate} inference={null} />
+                    body: <ShowcaseInspectorBody.Content example={syncAPI.inspector.body.source.integrate} value={syncAPI.inspector.body.value.integrate} inference={null} />
                 }
             })
         }
