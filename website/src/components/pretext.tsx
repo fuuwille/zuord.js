@@ -1,7 +1,7 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
 import { PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/types/pretext';
-import { zuordX } from 'zuord';
+import { zuord, zuordX } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
@@ -34,17 +34,19 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                     {line.map((token, j) => {
                         
                         let meta = { Content: PretextTokenContent.Native, content: token.content, color: token.color };
+                        let patchedStyle = {};
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
                                 meta = { ...meta, ...(modifier.props) };
+                                patchedStyle = zuordX.integrate.plain.loose(patchedStyle, modifier.props.style || {});
                             }
                         }
 
                         const { Content, ...rest } = meta;
 
                         return (
-                            <span className={clsx(style['token'])} style={{ color: meta.color }} key={j}>
+                            <span className={clsx(style['token'])} style={{ color: meta.color, ...patchedStyle }} key={j}>
                                 <Content {...rest} key={j} />
                             </span>
                         );
@@ -63,15 +65,6 @@ export const PretextTokenContent : Record<string, PretextTokenNode> = {
             </>
         );
     }) satisfies React.FC<PretextTokenProps.Native>,
-    Featured: ((props) => {
-        return (
-            <Tooltip title={props.title} placement="bottom">
-                <div style={{ color: props.color, border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer', ...props.style }}>
-                    {props.content}
-                </div>
-            </Tooltip>
-        );
-    }) satisfies React.FC<PretextTokenProps.Featured>,
     Animated: ((props) => {
         const [transition, setTransition] = useState(false);
 
