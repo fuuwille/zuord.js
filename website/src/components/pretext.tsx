@@ -136,7 +136,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                         color: props.level === "origin" ? '#c973a8' :
                         props.level === "modified" ? '#d7b787' : '#73c991',
                         border: '1px solid',
-                        borderRadius: '8px',
+                        borderRadius: '6px',
                         textAlign: 'center',
                         position: 'absolute',
                         justifyContent: 'center',
@@ -146,6 +146,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                         fontSize: '12px',
                         height: '16px',
                         width: '16px',
+                        lineHeight: '16px',
                     }}
                 >
                     {props.level[0].toUpperCase()}
