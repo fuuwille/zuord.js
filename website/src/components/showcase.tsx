@@ -44,6 +44,13 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                 title={<ShowcaseInspector />} 
                 placement="bottom" 
                 open={data !== null}
+                onClose={() => {
+                    if(ref.current.target) {
+                        ref.current.target.state.setIsFocused(false);
+                        ref.current.target = null;
+                        ref.current.data.dispatch(null);
+                    }
+                }}
                 slotProps={{
                     popper: {
                         modifiers:[
