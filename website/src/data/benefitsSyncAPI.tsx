@@ -42,12 +42,16 @@ export const value = {
 export const valueModifiers = {
     integrate: [
         {
-            predicate: (content) => ["contact:", "email:", "founded:"].includes(content),
-            props: { style: { color: '#1bff99' } }
+            predicate: (content) => ["founded:"].includes(content),
+            props: { style: { color: '#73c991' } }
+        },
+        {
+            predicate: (content) => ["contact:", "email:"].includes(content),
+            props: { style: { color: '#d7b787' } }
         },
         {
             predicate: (content) => ["organization:", "phone:"].includes(content),
-            props: { style: { color: '#ff6598' } }
+            props: { style: { color: '#c973a8' } }
         }
     ]
 }
