@@ -38,7 +38,7 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Token: PretextTokenContent.Featured,
+                Content: PretextTokenContent.Featured,
                 title: title,
             }
         };
@@ -47,7 +47,7 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Token: PretextTokenContent.Animated,
+                Content: PretextTokenContent.Animated,
                 layout: content,
                 stages: stages
             }

@@ -33,7 +33,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let meta = { Token: PretextTokenContent.Native, content: token.content, color: token.color };
+                        let meta = { Content: PretextTokenContent.Native, content: token.content, color: token.color };
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
@@ -41,10 +41,10 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                             }
                         }
 
-                        const { Token, ...rest } = meta;
+                        const { Content, ...rest } = meta;
 
                         return (
-                            <Token {...rest} key={j} />
+                            <Content {...rest} key={j} />
                         );
                     })}
                 </div>
