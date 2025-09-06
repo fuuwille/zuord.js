@@ -49,7 +49,12 @@ export const BenefitsBody = {
                     benefitsBodyData.syncAPI.control.merge,
                     benefitsBodyData.syncAPI.control.evolve,
                     benefitsBodyData.syncAPI.control.pick,
-                    benefitsBodyData.syncAPI.control.omit
+                    benefitsBodyData.syncAPI.control.omit,
+                    benefitsBodyData.syncAPI.control.Integrate,
+                    benefitsBodyData.syncAPI.control.Merge,
+                    benefitsBodyData.syncAPI.control.Evolve,
+                    benefitsBodyData.syncAPI.control.Pick,
+                    benefitsBodyData.syncAPI.control.Omit
                 ],
                 design: { columns: 5 }
             }} design={{ className: style['showcase'] }}/>
