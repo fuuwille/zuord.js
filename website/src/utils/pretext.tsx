@@ -26,6 +26,22 @@ export const tokenModifier = {
             }
         };
     },
+    allType: () => {
+        return [
+            {
+                predicate: () => true,
+                props: {
+                    style: { color: '#4ec9b0' }
+                }
+            },
+            {
+                predicate: (content: string) => ["<", ">", ".", ","].includes(content.trim()),
+                props: {
+                    style: { color: '#d4d4d4' }
+                }
+            }
+        ];
+    },
     func: (...contents : string[]) => {
         return {
             predicate: (content: string) => contents.includes(content),
