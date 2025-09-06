@@ -44,7 +44,9 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         const { Content, ...rest } = meta;
 
                         return (
-                            <Content {...rest} key={j} />
+                            <div className={clsx(style['token'])} style={{ color: meta.color }} key={j}>
+                                <Content {...rest} key={j} />
+                            </div>
                         );
                     })}
                 </div>
