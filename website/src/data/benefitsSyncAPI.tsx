@@ -9,6 +9,13 @@ export const source = {
 });`
 }
 
+export const sourceModifiers = {
+    integrate: [
+        tokenModifier.const("zuord", "defaultConfig"),
+        tokenModifier.featured("defaultConfig", null)
+    ]
+}
+
 export const value = {
     integrate:
 `const result = {
@@ -20,18 +27,10 @@ export const value = {
     founded: '08-01-2025'
 }`
 }
-
-export const modifiers = {
-    integrate: [
-        tokenModifier.const("zuord", "defaultConfig"),
-        tokenModifier.featured("defaultConfig", null)
-    ]
-}
-
 export const inspector = {
     body: {
         source: {
-            integrate: () => <Pretext text={source.integrate} modifiers={modifiers.integrate} />
+            integrate: () => <Pretext text={source.integrate} modifiers={sourceModifiers.integrate} />
         },
         value: {
             integrate: () => <Pretext text={value.integrate} modifiers={[
