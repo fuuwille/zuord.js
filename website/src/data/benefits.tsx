@@ -2,8 +2,8 @@ import { BenefitsBody, BenefitsHead } from "@site/src/components/benefits";
 import { Pretext } from "@site/src/components/pretext";
 import { ShowcaseInspectorHead, ShowcaseInspectorBody } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
-import { modifiers } from "./benefits/syncAPI";
 import { benefitsBodyUtil } from "../utils/benefits";
+import * as syncAPI from "@site/src/data/benefitsSyncAPI";
 
 export const benefitsData = {
     syncAPI: {
@@ -16,23 +16,6 @@ export const benefitsData = {
     }
 }
 
-export const benefitsSyncAPIData = {
-    code: {
-        integrate:
-`const result = zuord.integrate(defaultConfig, {
-    contact: { email: 'contact@zuordjs.org' },
-    founded: '08-01-2025'
-});`
-    },
-    modifiers: {
-        integrate: [
-            tokenModifier.const("zuord", "defaultConfig"),
-            tokenModifier.type("Date"),
-            tokenModifier.featured("defaultConfig", null)
-        ]
-    }
-}
-
 export const benefitsBodyData = {
     syncAPI: {
         control: {
@@ -40,7 +23,7 @@ export const benefitsBodyData = {
                 text: "integrate",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Trial example={<Pretext text={benefitsSyncAPIData.code.integrate} modifiers={benefitsSyncAPIData.modifiers.integrate} />} value={null} inference={null} />
+                    body: <ShowcaseInspectorBody.Trial example={syncAPI.inspector.body.example.integrate} value={null} inference={null} />
                 }
             })
         }
