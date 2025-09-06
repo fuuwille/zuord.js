@@ -74,4 +74,9 @@ export const BenefitsBody = {
             />
         </div>
     )) satisfies React.FC,
+    Configurable: (() => (
+        <div className={clsx(style['configurable'])}>
+
+        </div>
+    )) satisfies React.FC,
 }
