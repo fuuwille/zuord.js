@@ -131,14 +131,14 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
     Diff: ((props) => {
         return (
             <>
-                <div
+                <span
                     style={
                         props.level === "origin" ? { color: '#c973a8' } : 
                         props.level === "modified" ? { color: '#d7b787' } : { color: '#73c991' }
                     }
                 >
                     {props.level}
-                </div>
+                </span>
                 {props.content}
             </>
         );
