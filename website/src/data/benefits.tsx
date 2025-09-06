@@ -29,9 +29,16 @@ export const benefitsBodyData = {
             integrate: benefitsBodyUtil.syncAPI.control({
                 text: "integrate",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(source, patch)`} modifiers={[tokenModifier.const("zuord")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch value into the source"} />
-                }
+                },
+            }),
+            merge: benefitsBodyUtil.syncAPI.control({
+                text: "merge",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.merge(contents)`} modifiers={[tokenModifier.const("zuord")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Merges the content values to one result"} />
+                },
             })
         }
     }
