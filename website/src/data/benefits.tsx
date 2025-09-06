@@ -127,7 +127,14 @@ export const benefitsBodyData = {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.unique`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Include only unique values in arrays"} />
                 },
-            })
+            }),
+            validate: benefitsBodyUtil.configurable.control({
+                text: "validate",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.validate`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Validate the value in general at runtime"} />
+                },
+            }),
         }
     }
 }
