@@ -30,7 +30,7 @@ export const controlData = {
         text: "integrate",
         inspector: {
             head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(base, input)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-            body: <ShowcaseInspectorBody.Trial example={<Pretext text={code.integrate} modifiers={modifiers.integrate} />} value={null} inference={null} />
+            body: <ShowcaseInspectorBody.Trial example={() => <Pretext text={"code.integrate"} modifiers={modifiers.integrate} />} value={null} inference={null} />
         }
     },
     merge: {

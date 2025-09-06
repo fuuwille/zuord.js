@@ -51,8 +51,8 @@ export type ShowcaseControlProps = {
 
 export namespace ShowcaseInspectorBodyProps {
     export type Trial = {
-        example: React.ReactNode;
-        value: React.ReactNode;
-        inference: React.ReactNode;
+        example: React.FC;
+        value: React.FC;
+        inference: React.FC;
     }
 }

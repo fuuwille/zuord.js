@@ -20,7 +20,7 @@ export const modifiers = {
 export const inspector = {
     body: {
         example: {
-            integrate: <Pretext text={code.integrate} modifiers={modifiers.integrate} />
+            integrate: () => <Pretext text={code.integrate} modifiers={modifiers.integrate} />
         }
     }
 }
