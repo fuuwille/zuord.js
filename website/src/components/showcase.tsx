@@ -203,6 +203,16 @@ export const ShowcaseInspectorBody = {
                         {props.value && <props.value />}
                     </div>
                 </div>
+                <div className={clsx(style['footer'])}>
+                    <div className={clsx(style['source'])}>
+                        <div className={clsx(style['box'])} />
+                        <span className={clsx(style['text'])}>source content</span>
+                    </div>
+                    <div className={clsx(style['patch'])}>
+                        <div className={clsx(style['box'])} />
+                        <span className={clsx(style['text'])}>patched content</span>
+                    </div>
+                </div>
             </div>
         );
     }) satisfies React.FC<ShowcaseInspectorBodyProps.Content>,
