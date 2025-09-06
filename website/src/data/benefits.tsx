@@ -66,35 +66,35 @@ export const benefitsBodyData = {
             Integrate: benefitsBodyUtil.syncAPI.control({
                 text: "Integrate",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Integrate(source, patch)`} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Integrate<TSource, TPatch>`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source type."} />
                 },
             }),
             Merge: benefitsBodyUtil.syncAPI.control({
                 text: "Merge",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Merge(contents)`} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Merge<TContents>`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content types into a single result type."} />
                 },
             }),
             Evolve: benefitsBodyUtil.syncAPI.control({
                 text: "Evolve",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Evolve(source, contents)`} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Evolve<TSource, TContents>`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Evolves the source type using the provided contents."} />
                 },
             }),
             Pick: benefitsBodyUtil.syncAPI.control({
                 text: "Pick",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Pick(source, pattern)`} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Pick<TSource, TPattern>`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Picks types from the source based on the pattern."} />
                 },
             }),
             Omit: benefitsBodyUtil.syncAPI.control({
                 text: "Omit",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Omit(source, pattern)`} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Omit<TSource, TPattern>`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Omits types from the source based on the pattern."} />
                 },
             }),
