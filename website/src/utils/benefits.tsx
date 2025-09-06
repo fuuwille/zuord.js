@@ -15,5 +15,16 @@ export const benefitsBodyUtil = {
                 inspector: data.inspector
             };
         }
+    },
+    configurable: {
+        control: (data: BenefitsBody.SyncAPI.ControlData) => {
+            const textFirst = `${data.text}`;
+            const textSecond = `-${data.text}-`;
+
+            return {
+                text: { zero: textSecond, first: textFirst, second: textSecond },
+                inspector: data.inspector
+            };
+        }
     }
 };
