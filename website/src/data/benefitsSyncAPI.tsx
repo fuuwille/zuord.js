@@ -23,7 +23,7 @@ export const sourceDefault = {
 export const sourceModifiers = {
     integrate: [
         tokenModifier.const("zuord", "defaultConfig"),
-        tokenModifier.featured("defaultConfig", null)
+        tokenModifier.featured("defaultConfig", () => <Pretext text={sourceDefault.integrate} />),
     ]
 }
 
