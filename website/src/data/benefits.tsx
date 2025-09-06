@@ -4,6 +4,7 @@ import { ShowcaseInspectorHead, ShowcaseInspectorBody, Showcase } from "@site/sr
 import { tokenModifier } from "@site/src/utils/pretext";
 import { benefitsBodyUtil } from "../utils/benefits";
 import { evolve } from "zuord/dist/main/zuord.runtime";
+import { Integrate } from "zuord/dist/internal/zuord/integrate";
 
 export const benefitsData = {
     syncAPI: {
@@ -61,7 +62,14 @@ export const benefitsBodyData = {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.omit(source, pattern)`} modifiers={[tokenModifier.const("zuord")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Omits values from the source based on the pattern."} />
                 },
-            })
+            }),
+            Integrate: benefitsBodyUtil.syncAPI.control({
+                text: "Integrate",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Integrate(source, patch)`} modifiers={[tokenModifier.type("Integrate")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source type."} />
+                },
+            }),
         }
     }
 }
