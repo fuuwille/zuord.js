@@ -24,7 +24,6 @@ export const value = {
 export const modifiers = {
     integrate: [
         tokenModifier.const("zuord", "defaultConfig"),
-        tokenModifier.type("Date"),
         tokenModifier.featured("defaultConfig", null)
     ]
 }
@@ -35,7 +34,16 @@ export const inspector = {
             integrate: () => <Pretext text={code.integrate} modifiers={modifiers.integrate} />
         },
         value: {
-            integrate: () => <Pretext text={value.integrate} modifiers={modifiers.integrate} />
+            integrate: () => <Pretext text={value.integrate} modifiers={[
+                {
+                    predicate: (content) => ["contact:", "email:", "founded:"].includes(content),
+                    props: { color: '#1bff99' }
+                },
+                {
+                    predicate: (content) => ["organization:", "phone:"].includes(content),
+                    props: { color: '#ff6598' }
+                }
+            ]} />
         }
     }
 }
