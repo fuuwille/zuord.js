@@ -129,7 +129,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
         );
     }) satisfies React.FC<PretextTokenProps.Animated>,
     Diff: ((props) => {
-        const color = props.level === "origin" ? '#c973a8' : props.level === "modified" ? '#d7b787' : '#73c991';
+        const color = props.level === "origin" ? '#ff76c6ff' : props.level === "modified" ? '#fff176ff' : '#76ff88ff';
 
         return (
             <>
@@ -152,7 +152,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
                 >
                     {props.level[0].toUpperCase()}
                 </span>
-                <span>
+                <span style={{ color }}>
                     {props.content}
                 </span>
             </>
