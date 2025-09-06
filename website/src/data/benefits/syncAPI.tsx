@@ -15,7 +15,7 @@ export const modifiers: Record<string, PretextTokenModifier[]> = {
     integrate: [
         tokenModifier.const("zuord", "defaultUser"),
         tokenModifier.type("Date", "User"),
-        tokenModifier.featured("defaultUser", <Pretext text={
+        tokenModifier.featured("defaultUser", () => <Pretext text={
 `const defaultUser = {
     profile: { 
         username: 'unnamed',
