@@ -144,4 +144,29 @@
             margin: 6px;
         }
     }
+
+    .body-content {
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px;
+        }
+
+        .footer {
+            .decl {
+                display: flex;
+                align-items: center;
+            }
+
+            .box {
+                width: 16px;
+                height: 16px;
+                border: 1px solid #444950;
+                border-radius: 4px;
+                display: inline-block;
+                margin-right: 4px;
+            }
+        }
+    }
 } 
