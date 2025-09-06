@@ -13,9 +13,9 @@ export const sourceDefault = {
     integrate:
 `const defaultConfig = {
     organization: 'fuuwille',
-    contact: { 
-        phone: '+1234567890',
+    contact: {         
         email: 'contact@fuuwille.dev',
+        phone: '+1234567890',
     }
 };`
 }
@@ -33,8 +33,8 @@ export const value = {
 `const result = {
     organization: 'fuuwille',
     contact: { 
-        phone: 1234567890,
-        email: 'contact@fuuwille.dev'
+        email: 'contact@fuuwille.dev',
+        phone: 1234567890
     },
     founded: new Date('2025-01-08')
 }`
@@ -43,8 +43,8 @@ export const value = {
 export const valueModifiers = {
     integrate: [        
         tokenModifier.type("Date"),
-        tokenModifier.diff(["organization:", "phone:"], "origin"),
-        tokenModifier.diff(["contact:", "email:"], "modified"),
+        tokenModifier.diff(["organization:", "email:"], "origin"),
+        tokenModifier.diff(["contact:", "phone:"], "modified"),
         tokenModifier.diff(["founded:"], "added"),
     ]
 }
