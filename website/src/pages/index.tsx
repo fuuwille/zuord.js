@@ -18,7 +18,7 @@ export default function Home() {
         </Grid>
         <Grid size={12} container alignItems="flex-start" flexDirection={{ xs: 'column-reverse', xl: 'row' }}>
           <Grid size={{ xs: 12, xl: 6 }}>
-            <Benefits {...benefitsData.recursiveNature} />
+            <Benefits {...benefitsData.recursiveFirst} />
           </Grid>
         </Grid>
       </Grid>
