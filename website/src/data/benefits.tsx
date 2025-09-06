@@ -48,6 +48,13 @@ export const benefitsBodyData = {
                     body: <ShowcaseInspectorBody.Description text={() => "Evolves the source value using the provided contents"} />
                 },
             }),
+            pick: benefitsBodyUtil.syncAPI.control({
+                text: "pick",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.pick(source, pattern)`} modifiers={[tokenModifier.const("zuord")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Picks values from the source based on the pattern."} />
+                },
+            }),
         }
     }
 }
