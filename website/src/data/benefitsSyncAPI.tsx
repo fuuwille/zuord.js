@@ -9,6 +9,17 @@ export const source = {
 });`
 }
 
+export const sourceDefault = {
+    integrate:
+`const defaultConfig = {
+    organization: 'fuuwille',
+    contact: { 
+        email: 'contact@fuuwille.dev',
+        phone: '+1234567890'
+    }
+};`
+}
+
 export const sourceModifiers = {
     integrate: [
         tokenModifier.const("zuord", "defaultConfig"),
