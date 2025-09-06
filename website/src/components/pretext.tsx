@@ -44,7 +44,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         }
 
                         const { Body, ...data } = meta;
-                        const bodyProps = { className: clsx(style['token']), style: { ...patchedStyle }, key: j };
+                        const bodyProps = { className: clsx(style['token']), style: { color: token.color, ...patchedStyle }, key: j };
 
                         if (meta.tips) {
                             return (
