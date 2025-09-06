@@ -191,7 +191,7 @@ export const ShowcaseInspectorHead = {
 export const ShowcaseInspectorBody = {
     Content : ((props) => {
         return (
-            <div className={clsx(style['trial'])}>
+            <div className={clsx(style['body-content'])}>
                 <div className={clsx(style['example'])}>
                     {props.example && <props.example />}
                 </div>
@@ -204,11 +204,11 @@ export const ShowcaseInspectorBody = {
                     </div>
                 </div>
                 <div className={clsx(style['footer'])}>
-                    <div className={clsx(style['source'])}>
+                    <div className={clsx(style['decl'], style['source'])}>
                         <div className={clsx(style['box'])} />
                         <span className={clsx(style['text'])}>source content</span>
                     </div>
-                    <div className={clsx(style['patch'])}>
+                    <div className={clsx(style['decl'], style['patch'])}>
                         <div className={clsx(style['box'])} />
                         <span className={clsx(style['text'])}>patched content</span>
                     </div>
