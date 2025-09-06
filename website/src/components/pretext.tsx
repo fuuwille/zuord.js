@@ -44,12 +44,24 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         }
 
                         const { Body, ...data } = meta;
+                        const bodyProps = { className: clsx(style['token']), style: { color: meta.color, ...patchedStyle }, key: j };
 
-                        return (
-                            <span className={clsx(style['token'])} style={{ color: meta.color, ...patchedStyle }} key={j}>
-                                <Body {...data} key={j} />
-                            </span>
-                        );
+                        if (meta.tips) {
+                            return (
+                                <Tooltip key={j} title={<meta.tips />} placement="top">
+                                    <span {...bodyProps}>
+                                        <Body {...data} />
+                                    </span>
+                                </Tooltip>
+                            );
+                        }
+                        else {
+                            return (
+                                <span {...bodyProps}>
+                                    <Body {...data} key={j} />
+                                </span>
+                            );
+                        }
                     })}
                 </div>
             ))}
