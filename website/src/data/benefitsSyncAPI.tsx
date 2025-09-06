@@ -1,4 +1,5 @@
 import { tokenModifier } from "@site/src/utils/pretext"
+import { Pretext } from "@site/src/components/pretext"
 
 export const code = {
     integrate:
@@ -14,4 +15,12 @@ export const modifiers = {
         tokenModifier.type("Date"),
         tokenModifier.featured("defaultConfig", null)
     ]
+}
+
+export const inspector = {
+    body: {
+        example: {
+            integrate: <Pretext text={code.integrate} modifiers={modifiers.integrate} />
+        }
+    }
 }
