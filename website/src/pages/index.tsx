@@ -20,6 +20,9 @@ export default function Home() {
           <Grid size={{ xs: 12, xl: 6 }}>
             <Benefits {...benefitsData.recursiveFirst} />
           </Grid>
+          <Grid size={{ xs: 12, xl: 6 }}>
+            <Benefits {...benefitsData.configurableModes} />
+          </Grid>
         </Grid>
       </Grid>
     </Layout>
