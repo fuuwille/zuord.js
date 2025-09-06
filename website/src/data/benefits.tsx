@@ -39,7 +39,7 @@ export const benefitsBodyData = {
                 text: "merge",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuord.merge(contents)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content values into a single result."} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple values into a single result."} />
                 },
             }),
             evolve: benefitsBodyUtil.syncAPI.control({
@@ -74,7 +74,7 @@ export const benefitsBodyData = {
                 text: "Merge",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`Zuord.Merge<TContents>`} modifiers={tokenModifier.allType()} />} />,
-                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content types into a single result type."} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple types into a single result."} />
                 },
             }),
             Evolve: benefitsBodyUtil.syncAPI.control({
