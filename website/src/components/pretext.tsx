@@ -56,7 +56,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
 export const PretextToken : Record<string, PretextTokenNode> = {
     Native: ((props) => {
         return (
-            <span style={{ color: props.color }}>
+            <span style={{ color: props.color, ...props.style }}>
                 {props.content}
             </span>
         );
@@ -64,7 +64,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
     Featured: ((props) => {
         return (
             <Tooltip title={props.title} placement="bottom">
-                <div style={{ color: props.color, border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+                <div style={{ color: props.color, border: `1px solid ${props.color}69`, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer', ...props.style }}>
                     {props.content}
                 </div>
             </Tooltip>
@@ -109,7 +109,7 @@ export const PretextToken : Record<string, PretextTokenNode> = {
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
-                style={{ border: `1.5px solid ${props.color}69`, color: props.color }} 
+                style={{ border: `1.5px solid ${props.color}69`, color: props.color, ...props.style }} 
             >
                 <span className={style['layout']}>
                     <span className={clsx(style['text'], style['zero'])}>{props.layout}</span>
