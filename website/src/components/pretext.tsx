@@ -44,9 +44,9 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         const { Content, ...rest } = meta;
 
                         return (
-                            <div className={clsx(style['token'])} style={{ color: meta.color }} key={j}>
+                            <span className={clsx(style['token'])} style={{ color: meta.color }} key={j}>
                                 <Content {...rest} key={j} />
-                            </div>
+                            </span>
                         );
                     })}
                 </div>
@@ -58,9 +58,9 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
 export const PretextTokenContent : Record<string, PretextTokenNode> = {
     Native: ((props) => {
         return (
-            <span style={{ color: props.color, ...props.style }}>
+            <>
                 {props.content}
-            </span>
+            </>
         );
     }) satisfies React.FC<PretextTokenProps.Native>,
     Featured: ((props) => {
