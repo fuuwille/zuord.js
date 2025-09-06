@@ -33,8 +33,8 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let meta = { Body: PretextTokenBody.Native, content: token.content, color: token.color, tips: null };
-                        let patchedStyle = {};
+                        let meta = { Body: PretextTokenBody.Native, content: token.content, tips: null, style: { color: token.color } };
+                        let patchedStyle = { };
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
@@ -44,7 +44,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         }
 
                         const { Body, ...data } = meta;
-                        const bodyProps = { className: clsx(style['token']), style: { color: meta.color, ...patchedStyle }, key: j };
+                        const bodyProps = { className: clsx(style['token']), style: { ...patchedStyle }, key: j };
 
                         if (meta.tips) {
                             return (
