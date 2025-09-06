@@ -77,6 +77,13 @@ export const benefitsBodyData = {
                     body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content types into a single result type."} />
                 },
             }),
+            Evolve: benefitsBodyUtil.syncAPI.control({
+                text: "Evolve",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Evolve(source, contents)`} modifiers={[tokenModifier.type("Evolve")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Evolves the source type using the provided contents."} />
+                },
+            }),
         }
     }
 }
