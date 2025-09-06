@@ -16,6 +16,11 @@ export default function Home() {
             <Benefits {...benefitsData.zeroCostRT} />
           </Grid>
         </Grid>
+        <Grid size={12} container alignItems="flex-start" flexDirection={{ xs: 'column-reverse', xl: 'row' }}>
+          <Grid size={{ xs: 12, xl: 6 }}>
+            <Benefits {...benefitsData.recursiveNature} />
+          </Grid>
+        </Grid>
       </Grid>
     </Layout>
   );
