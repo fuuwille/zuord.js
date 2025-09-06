@@ -41,18 +41,9 @@ export const value = {
 
 export const valueModifiers = {
     integrate: [
-        {
-            predicate: (content) => ["founded:"].includes(content),
-            props: { style: { color: '#73c991' } }
-        },
-        {
-            predicate: (content) => ["contact:", "email:"].includes(content),
-            props: { style: { color: '#d7b787' } }
-        },
-        {
-            predicate: (content) => ["organization:", "phone:"].includes(content),
-            props: { style: { color: '#c973a8' } }
-        }
+        tokenModifier.diff(["organization:", "phone:"], "origin"),
+        tokenModifier.diff(["contact:", "email:"], "modified"),
+        tokenModifier.diff(["founded:"], "added"),
     ]
 }
 
