@@ -122,7 +122,7 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
     return (
         <div
             className={clsx(style['control'], ref.current.state.isFocused ? style['focused'] : null, props.design?.className)}
-            onClick={() => {
+            onMouseEnter={() => {
                 if(context.target?.props.id === props.id) {
                     context.target.state.setIsFocused(false);
                     context.data.dispatch(null);
@@ -134,6 +134,10 @@ const ShowcaseControl: React.FC<ShowcaseControlProps> = (props) => {
 
                     context.data.dispatch(props);
                 }
+            }}
+            onMouseLeave={() => {
+                ref.current.state.setIsFocused(false);
+                context.data.dispatch(null);
             }}
         >
             <span className={style['layout']}>
