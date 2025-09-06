@@ -38,8 +38,8 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Content: PretextTokenContent.Featured,
                 title: title,
+                style: { /*color: props.color, */border: '1px solid'/*`1px solid ${props.color}69`*/, borderRadius: '800px', height: '20px', padding: '0px 8px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }
             }
         };
     },
