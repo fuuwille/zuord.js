@@ -120,6 +120,13 @@ export const benefitsBodyData = {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.concat`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Concat arrays without overriding"} />
                 },
+            },
+            unique: {
+                text: "unique",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.unique`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Include only unique values in arrays"} />
+                },
             }
         }
     }
