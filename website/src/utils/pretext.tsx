@@ -52,5 +52,14 @@ export const tokenModifier = {
                 stages: stages
             }
         };
+    },
+    diff: (contents : string[], level: "origin" | "modified" | "") => {
+        return {
+            predicate: ($content: string) => contents.includes($content),
+            props: {
+                Body: PretextTokenBody.Diff,
+                level
+            }
+        };
     }
 }
