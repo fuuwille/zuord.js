@@ -53,7 +53,7 @@ export const tokenModifier = {
             }
         };
     },
-    diff: (contents : string[], level: "origin" | "modified" | "") => {
+    diff: (contents : string[], level: "origin" | "modified" | "added") => {
         return {
             predicate: ($content: string) => contents.includes($content),
             props: {
