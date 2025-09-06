@@ -100,34 +100,34 @@ export const benefitsBodyData = {
     },
     configurable: {
         control: {
-            shallow: {
+            shallow: benefitsBodyUtil.configurable.control({
                 text: "shallow",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.shallow`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Apply transformation to the first level"} />
                 },
-            },
-            inferless: {
+            }),
+            inferless: benefitsBodyUtil.configurable.control({
                 text: "inferless",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.inferless`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Transform without any type inference"} />
                 },
-            },
-            concat: {
+            }),
+            concat: benefitsBodyUtil.configurable.control({
                 text: "concat",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.concat`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Concat arrays without overriding"} />
                 },
-            },
-            unique: {
+            }),
+            unique: benefitsBodyUtil.configurable.control({
                 text: "unique",
                 inspector: {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.unique`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Include only unique values in arrays"} />
                 },
-            }
+            })
         }
     }
 }
