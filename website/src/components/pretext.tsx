@@ -33,7 +33,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let meta = { Body: PretextTokenBody.Native, content: token.content, color: token.color };
+                        let meta = { Body: PretextTokenBody.Native, content: token.content, color: token.color, tips: null };
                         let patchedStyle = {};
 
                         for (const modifier of props.modifiers) {

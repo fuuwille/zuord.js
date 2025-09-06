@@ -9,13 +9,17 @@ export type PretextProps = {
     }
 }
 
-export type PretextTokenNode = React.FC<PretextTokenProps.Native>;
+export type PretextTokenData = {
+    content: string;
+    tips?: React.FC;
+    style?: Partial<React.CSSProperties>;
+}
+
+export type PretextTokenNode = React.FC<PretextTokenData>;
 
 export namespace PretextTokenProps {
-    export type Native = {
-        content: string;
-        Body?: PretextTokenNode;
-        style?: Partial<React.CSSProperties>;
+    export type Native = PretextTokenData & {
+        Body: PretextTokenNode;
     }
 
     export type Featured = PretextTokenProps.Native & {
