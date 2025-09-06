@@ -195,6 +195,7 @@ export const ShowcaseInspectorBody = {
                 <div className={clsx(style['example'])}>
                     {props.example && <props.example />}
                 </div>
+                <Divider orientation='horizontal' flexItem />
                 <Box display={{ xs: 'none', lg: 'block' }}>
                     <div className={clsx(style['result'])}>
                         <div className={clsx(style['inference'])}>
