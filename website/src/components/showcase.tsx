@@ -173,6 +173,13 @@ const ShowcaseInspector: React.FC = () => {
 }
 
 export const ShowcaseInspectorHead = {
+    Native: ((props) => {
+        return (
+            <div className={clsx(style['head-native'])}>
+                {props.content}
+            </div>
+        );
+    }) satisfies React.FC<{ content: React.ReactNode }>,
     Detailed : ((props) => {
         return (
             <>
