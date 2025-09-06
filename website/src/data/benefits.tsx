@@ -17,6 +17,10 @@ export const benefitsData = {
     recursiveFirst: {
         head: () => <BenefitsHead.Native title={"Recursive-first Behaviors"} description={"Transform structures recursive-first, with optional shallow mode."} />,
         body: () => null,
+    },
+    confBehaviors: {
+        head: () => <BenefitsHead.Native title={"Configurable Behaviors"} description={"Customize transformation behaviors to your use case."} />,
+        body: () => null,
     }
 }
 
