@@ -14,7 +14,7 @@ export type PretextTokenData = {
     color: string;
 }
 
-export type PretextTokenNode = React.FC<PretextTokenData>;
+export type PretextTokenNode = React.FC<PretextTokenProps.Native>;
 
 export namespace PretextTokenProps {
     export type Native = PretextTokenData & {
