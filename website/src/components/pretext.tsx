@@ -128,4 +128,19 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
             </span>
         );
     }) satisfies React.FC<PretextTokenProps.Animated>,
+    Diff: ((props) => {
+        return (
+            <>
+                <div
+                    style={
+                        props.level === "origin" ? { color: '#c973a8' } : 
+                        props.level === "modified" ? { color: '#d7b787' } : { color: '#73c991' }
+                    }
+                >
+                    {props.level}
+                </div>
+                {props.content}
+            </>
+        );
+    }) satisfies React.FC<PretextTokenProps.Diff>
 }
