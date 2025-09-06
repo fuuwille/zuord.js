@@ -38,7 +38,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
-                                meta = { ...meta, ...(modifier.props) };
+                                meta = zuordX.integrate.plain.loose(meta, modifier.props || {});
                                 patchedStyle = zuordX.integrate.plain.loose(patchedStyle, modifier.props.style || {});
                             }
                         }
