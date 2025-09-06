@@ -18,10 +18,10 @@ export default function Home() {
         </Grid>
         <Grid size={12} container alignItems="flex-start" flexDirection={{ xs: 'column-reverse', xl: 'row' }}>
           <Grid size={{ xs: 12, xl: 6 }}>
-            <Benefits {...benefitsData.recursiveFirst} />
+            <Benefits {...benefitsData.recursive} />
           </Grid>
           <Grid size={{ xs: 12, xl: 6 }}>
-            <Benefits {...benefitsData.configurableModes} />
+            <Benefits {...benefitsData.configurable} />
           </Grid>
         </Grid>
       </Grid>

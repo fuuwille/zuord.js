@@ -14,12 +14,12 @@ export const benefitsData = {
         head: () => <BenefitsHead.Native title={"Zero-Cost Return Types"} description={"Return types fully managed by the compiler, with zero runtime cost."} />,
         body: () => <BenefitsBody.ZeroCostRT />
     },
-    recursiveFirst: {
+    recursive: {
         head: () => <BenefitsHead.Native title={"Recursive Transformation"} description={"Transform structures recursive-first, with optional shallow mode."} />,
         body: () => null,
     },
-    configurableModes: {
-        head: () => <BenefitsHead.Native title={"Configurable Modes"} description={"Customize transformation modes to fit your needs, with full type inference."} />,
+    configurable: {
+        head: () => <BenefitsHead.Native title={"Configurable Modes"} description={"Customize modes to fit your needs, with full type inference."} />,
         body: () => null,
     }
 }
