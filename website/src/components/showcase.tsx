@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData, ShowcaseInspectorBodyProps } from '@site/src/types/showcase';
 import { zuordX } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { Divider, Tooltip } from '@mui/material';
+import { Box, Divider, Tooltip } from '@mui/material';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
     const props = zuordX.integrate.plain.loose({
@@ -195,24 +195,26 @@ export const ShowcaseInspectorBody = {
                 <div className={clsx(style['example'])}>
                     {props.example && <props.example />}
                 </div>
-                <div className={clsx(style['result'])}>
-                    <div className={clsx(style['inference'])}>
-                        {props.inference && <props.inference />}
+                <Box display={{ xs: 'none', xl: 'block' }}>
+                    <div className={clsx(style['result'])}>
+                        <div className={clsx(style['inference'])}>
+                            {props.inference && <props.inference />}
+                        </div>
+                        <div className={clsx(style['value'])}>
+                            {props.value && <props.value />}
+                        </div>
                     </div>
-                    <div className={clsx(style['value'])}>
-                        {props.value && <props.value />}
+                    <div className={clsx(style['footer'])}>
+                        <div className={clsx(style['decl'], style['source'])}>
+                            <div className={clsx(style['box'])} />
+                            <span className={clsx(style['text'])}>source content</span>
+                        </div>
+                        <div className={clsx(style['decl'], style['patch'])}>
+                            <div className={clsx(style['box'])} />
+                            <span className={clsx(style['text'])}>patched content</span>
+                        </div>
                     </div>
-                </div>
-                <div className={clsx(style['footer'])}>
-                    <div className={clsx(style['decl'], style['source'])}>
-                        <div className={clsx(style['box'])} />
-                        <span className={clsx(style['text'])}>source content</span>
-                    </div>
-                    <div className={clsx(style['decl'], style['patch'])}>
-                        <div className={clsx(style['box'])} />
-                        <span className={clsx(style['text'])}>patched content</span>
-                    </div>
-                </div>
+                </Box>
             </div>
         );
     }) satisfies React.FC<ShowcaseInspectorBodyProps.Content>,
