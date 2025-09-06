@@ -113,6 +113,13 @@ export const benefitsBodyData = {
                     head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.inferless`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Transform without any type inference"} />
                 },
+            },
+            concat: {
+                text: "concat",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.concat`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Concat arrays without overriding"} />
+                },
             }
         }
     }
