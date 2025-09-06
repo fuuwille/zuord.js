@@ -70,6 +70,13 @@ export const benefitsBodyData = {
                     body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source type."} />
                 },
             }),
+            Merge: benefitsBodyUtil.syncAPI.control({
+                text: "Merge",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Merge(contents)`} modifiers={[tokenModifier.type("Merge")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content types into a single result type."} />
+                },
+            }),
         }
     }
 }
