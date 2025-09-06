@@ -175,7 +175,7 @@ const ShowcaseInspector: React.FC = () => {
 export const ShowcaseInspectorHead = {
     Native: ((props) => {
         return (
-            <div className={clsx(style['head-native'])}>
+            <div style={{ padding: '0 8px' }}>
                 {props.content}
             </div>
         );
@@ -200,7 +200,7 @@ export const ShowcaseInspectorHead = {
 export const ShowcaseInspectorBody = {
     Description: ((props) => {
         return (
-            <div className={clsx(style['body-description'])}>
+            <div style={{ padding: '0 8px' }}>
                 {<props.text />}
             </div>
         );
