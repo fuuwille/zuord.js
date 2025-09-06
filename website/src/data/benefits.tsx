@@ -3,6 +3,7 @@ import { Pretext } from "@site/src/components/pretext";
 import { ShowcaseInspectorHead, ShowcaseInspectorBody, Showcase } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
 import { benefitsBodyUtil } from "../utils/benefits";
+import { evolve } from "zuord/dist/main/zuord.runtime";
 
 export const benefitsData = {
     syncAPI: {
@@ -30,16 +31,23 @@ export const benefitsBodyData = {
                 text: "integrate",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.integrate(source, patch)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch value into the source"} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source value."} />
                 },
             }),
             merge: benefitsBodyUtil.syncAPI.control({
                 text: "merge",
                 inspector: {
                     head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.merge(contents)`} modifiers={[tokenModifier.const("zuord")]} />} />,
-                    body: <ShowcaseInspectorBody.Description text={() => "Merges the content values to one result"} />
+                    body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content values into a single result."} />
                 },
-            })
+            }),
+            evolve: benefitsBodyUtil.syncAPI.control({
+                text: "evolve",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`zuord.evolve(source, contents)`} modifiers={[tokenModifier.const("zuord")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Evolves the source value using the provided contents"} />
+                },
+            }),
         }
     }
 }
