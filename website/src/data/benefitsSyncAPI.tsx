@@ -4,7 +4,7 @@ import { Pretext } from "@site/src/components/pretext"
 export const source = {
     integrate:
 `const result = zuord.integrate(defaultConfig, {
-    contact: { email: 'contact@zuordjs.org' },
+    contact: { phone: 1234567890 },
     founded: '08-01-2025'
 });`
 }
@@ -14,8 +14,8 @@ export const sourceDefault = {
 `const defaultConfig = {
     organization: 'fuuwille',
     contact: { 
+        phone: '+1234567890',
         email: 'contact@fuuwille.dev',
-        phone: '+1234567890'
     }
 };`
 }
@@ -32,8 +32,8 @@ export const value = {
 `const result = {
     organization: 'fuuwille',
     contact: { 
-        phone: '+1234567890',
-        email: 'contact@zuordjs.org'
+        phone: 1234567890,
+        email: 'contact@fuuwille.dev'
     },
     founded: '08-01-2025'
 }`
