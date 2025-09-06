@@ -189,7 +189,7 @@ export const ShowcaseInspectorHead = {
 }
 
 export const ShowcaseInspectorBody = {
-    Trial : ((props) => {
+    Content : ((props) => {
         return (
             <div className={clsx(style['trial'])}>
                 <div className={clsx(style['example'])}>
@@ -205,5 +205,5 @@ export const ShowcaseInspectorBody = {
                 </div>
             </div>
         );
-    }) satisfies React.FC<ShowcaseInspectorBodyProps.Trial>,
+    }) satisfies React.FC<ShowcaseInspectorBodyProps.Content>,
 }

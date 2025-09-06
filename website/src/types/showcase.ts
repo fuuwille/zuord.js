@@ -50,7 +50,7 @@ export type ShowcaseControlProps = {
 } & ShowcaseControlData;
 
 export namespace ShowcaseInspectorBodyProps {
-    export type Trial = {
+    export type Content = {
         example: React.FC;
         value: React.FC;
         inference: React.FC;
