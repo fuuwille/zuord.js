@@ -23,6 +23,7 @@ export const sourceDefault = {
 export const sourceModifiers = {
     integrate: [
         tokenModifier.const("zuord", "defaultConfig"),
+        tokenModifier.type("Date"),
         tokenModifier.featured("defaultConfig", () => <Pretext text={sourceDefault.integrate} />),
     ]
 }
@@ -40,7 +41,8 @@ export const value = {
 }
 
 export const valueModifiers = {
-    integrate: [
+    integrate: [        
+        tokenModifier.type("Date"),
         tokenModifier.diff(["organization:", "phone:"], "origin"),
         tokenModifier.diff(["contact:", "email:"], "modified"),
         tokenModifier.diff(["founded:"], "added"),
