@@ -14,7 +14,7 @@ export const tokenModifier = {
         return {
             predicate: (content: string) => contents.includes(content),
             props: {
-                color: '#4ebffd'
+                style: { color: '#4ebffd' }
             }
         };
     },
@@ -22,7 +22,7 @@ export const tokenModifier = {
         return {
             predicate: (content: string) => contents.includes(content),
             props: {
-                color: '#4ec9b0'
+                style: { color: '#4ec9b0' }
             }
         };
     },
@@ -30,7 +30,7 @@ export const tokenModifier = {
         return {
             predicate: (content: string) => contents.includes(content),
             props: {
-                color: '#dcdcaa'
+                style: { color: '#dcdcaa' }
             }
         };
     },

@@ -104,7 +104,7 @@ export const PretextTokenBody : Record<string, PretextTokenNode> = {
         return (
             <span 
                 className={clsx(style['token'], style['animated'])} 
-                style={{ border: `1.5px solid ${props.color}69`, color: props.color, ...props.style }} 
+                style={{ border: `1.5px solid ${props.style?.color}69`, ...props.style }} 
             >
                 <span className={style['layout']}>
                     <span className={clsx(style['text'], style['zero'])}>{props.layout}</span>
