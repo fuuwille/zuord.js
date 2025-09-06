@@ -66,21 +66,21 @@ export const benefitsBodyData = {
             Integrate: benefitsBodyUtil.syncAPI.control({
                 text: "Integrate",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Integrate(source, patch)`} modifiers={[tokenModifier.type("Integrate")]} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Integrate(source, patch)`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source type."} />
                 },
             }),
             Merge: benefitsBodyUtil.syncAPI.control({
                 text: "Merge",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Merge(contents)`} modifiers={[tokenModifier.type("Merge")]} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Merge(contents)`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Merges multiple content types into a single result type."} />
                 },
             }),
             Evolve: benefitsBodyUtil.syncAPI.control({
                 text: "Evolve",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Evolve(source, contents)`} modifiers={[tokenModifier.type("Evolve")]} />} />,
+                    head: <ShowcaseInspectorHead.Detailed content={<Pretext text={`Zuord.Evolve(source, contents)`} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Evolves the source type using the provided contents."} />
                 },
             }),
