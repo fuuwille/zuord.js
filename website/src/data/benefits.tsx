@@ -13,6 +13,10 @@ export const benefitsData = {
     zeroCostRT: {
         head: () => <BenefitsHead.Native title={"Zero-Cost Return Types"} description={"Return types fully managed by the compiler, with zero runtime cost."} />,
         body: () => <BenefitsBody.ZeroCostRT />
+    },
+    recursiveNature: {
+        head: () => <BenefitsHead.Native title={"Recursive by Nature"} description={"Embrace the recursive nature of data structures with Zuord."} />,
+        body: () => null,
     }
 }
 
