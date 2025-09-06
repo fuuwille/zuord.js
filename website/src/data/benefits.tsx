@@ -97,5 +97,16 @@ export const benefitsBodyData = {
                 },
             }),
         }
+    },
+    configurable: {
+        control: {
+            shallow: {
+                text: "shallow",
+                inspector: {
+                    head: <ShowcaseInspectorHead.Native content={<Pretext text={`zuordMode.shallow`} modifiers={[tokenModifier.const("zuordMode")]} />} />,
+                    body: <ShowcaseInspectorBody.Description text={() => "Configures the transformation to be shallow."} />
+                },
+            }
+        }
     }
 }
