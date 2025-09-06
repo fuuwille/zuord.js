@@ -4,8 +4,8 @@ import { Pretext } from "@site/src/components/pretext"
 export const code = {
     integrate:
 `const result = zuord.integrate(defaultConfig, {
-    contact: { email: 'contact@zuordjs.org' },
-    founded: '08-01-2025'
+    founded: '08-01-2025',
+    contact: { email: 'contact@zuordjs.org' }
 });`
 }
 
