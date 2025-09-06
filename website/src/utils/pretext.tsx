@@ -1,7 +1,7 @@
 import ts from '@shikijs/langs/typescript';
 import darkPlus from '@shikijs/themes/dark-plus';
 import { createHighlighterCoreSync, createJavaScriptRegexEngine } from 'shiki';
-import { PretextTokenContent } from '../components/pretext';
+import { PretextTokenBody } from '../components/pretext';
 
 export const highlighter = createHighlighterCoreSync({
     themes: [darkPlus],
@@ -47,7 +47,7 @@ export const tokenModifier = {
         return {
             predicate: ($content: string) => $content === content,
             props: {
-                Content: PretextTokenContent.Animated,
+                Body: PretextTokenBody.Animated,
                 layout: content,
                 stages: stages
             }

@@ -33,7 +33,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                 <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
                     {line.map((token, j) => {
                         
-                        let meta = { Content: PretextTokenContent.Native, content: token.content, color: token.color };
+                        let meta = { Body: PretextTokenBody.Native, content: token.content, color: token.color };
                         let patchedStyle = {};
 
                         for (const modifier of props.modifiers) {
@@ -43,11 +43,11 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                             }
                         }
 
-                        const { Content, ...rest } = meta;
+                        const { Body, ...rest } = meta;
 
                         return (
                             <span className={clsx(style['token'])} style={{ color: meta.color, ...patchedStyle }} key={j}>
-                                <Content {...rest} key={j} />
+                                <Body {...rest} key={j} />
                             </span>
                         );
                     })}
@@ -57,7 +57,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     );
 };
 
-export const PretextTokenContent : Record<string, PretextTokenNode> = {
+export const PretextTokenBody : Record<string, PretextTokenNode> = {
     Native: ((props) => {
         return (
             <>
