@@ -195,7 +195,7 @@ export const ShowcaseInspectorBody = {
                 <div className={clsx(style['example'])}>
                     {props.example && <props.example />}
                 </div>
-                <Box display={{ xs: 'none', xl: 'block' }}>
+                <Box display={{ xs: 'none', lg: 'block' }}>
                     <div className={clsx(style['result'])}>
                         <div className={clsx(style['inference'])}>
                             {props.inference && <props.inference />}
