@@ -27,22 +27,28 @@ export const value = {
     founded: '08-01-2025'
 }`
 }
+
+export const valueModifiers = {
+    integrate: [
+        {
+            predicate: (content) => ["contact:", "email:", "founded:"].includes(content),
+            props: { color: '#1bff99' }
+        },
+        {
+            predicate: (content) => ["organization:", "phone:"].includes(content),
+            props: { color: '#ff6598' }
+        }
+    ]
+}
+
+
 export const inspector = {
     body: {
         source: {
             integrate: () => <Pretext text={source.integrate} modifiers={sourceModifiers.integrate} />
         },
         value: {
-            integrate: () => <Pretext text={value.integrate} modifiers={[
-                {
-                    predicate: (content) => ["contact:", "email:", "founded:"].includes(content),
-                    props: { color: '#1bff99' }
-                },
-                {
-                    predicate: (content) => ["organization:", "phone:"].includes(content),
-                    props: { color: '#ff6598' }
-                }
-            ]} />
+            integrate: () => <Pretext text={value.integrate} modifiers={valueModifiers.integrate} />
         }
     }
 }
