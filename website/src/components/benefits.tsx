@@ -46,6 +46,10 @@ export const BenefitsBody = {
             <Showcase container={{
                 controls: [
                     benefitsBodyData.syncAPI.control.integrate,
+                    benefitsBodyData.syncAPI.control.merge,
+                    benefitsBodyData.syncAPI.control.evolve,
+                    benefitsBodyData.syncAPI.control.pick,
+                    benefitsBodyData.syncAPI.control.omit
                 ],
                 design: { columns: 5 }
             }} design={{ className: style['showcase'] }}/>
