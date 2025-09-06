@@ -3,7 +3,7 @@ import { Pretext } from "@site/src/components/pretext"
 
 export const source = {
     integrate:
-`const result = zuord.integrate(defaultConfig, {
+`const config = zuord.integrate(defaultConfig, {
     contact: { phone: 1234567890 },
     founded: new Date('2025-01-08')
 });`
@@ -30,7 +30,7 @@ export const sourceModifiers = {
 
 export const value = {
     integrate:
-`const result = {
+`const config = {
     organization: 'fuuwille',
     contact: { 
         email: 'contact@fuuwille.dev',
