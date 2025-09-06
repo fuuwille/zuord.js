@@ -43,11 +43,11 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                             }
                         }
 
-                        const { Body, ...rest } = meta;
+                        const { Body, ...data } = meta;
 
                         return (
                             <span className={clsx(style['token'])} style={{ color: meta.color, ...patchedStyle }} key={j}>
-                                <Body {...rest} key={j} />
+                                <Body {...data} key={j} />
                             </span>
                         );
                     })}
