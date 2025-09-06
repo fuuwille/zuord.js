@@ -1,6 +1,6 @@
 import { BenefitsBody, BenefitsHead } from "@site/src/components/benefits";
 import { Pretext } from "@site/src/components/pretext";
-import { ShowcaseInspectorHead, ShowcaseInspectorBody } from "@site/src/components/showcase";
+import { ShowcaseInspectorHead, ShowcaseInspectorBody, Showcase } from "@site/src/components/showcase";
 import { tokenModifier } from "@site/src/utils/pretext";
 import { benefitsBodyUtil } from "../utils/benefits";
 import * as syncAPI from "@site/src/data/benefitsSyncAPI";
