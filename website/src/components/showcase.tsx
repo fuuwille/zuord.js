@@ -55,18 +55,6 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
                             ref.current.data.dispatch(null);
                         }
                     }}
-                    slotProps={{
-                        popper: {
-                            modifiers:[
-                                {
-                                    name: 'offset',
-                                    options: {
-                                        offset: [0, -12]
-                                    }
-                                }
-                            ]
-                        }
-                    }}
                 >
                     <div
                         className={clsx(style['panel'])}
