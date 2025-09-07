@@ -11,7 +11,7 @@ export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be a plain object");
     }
 
-    return resolvePlain(source, content, zuordCore.mode.resolve(mode));
+    return resolvePlain(source, content, zuordCore.mode.resolve(mode)) as ZuordType.Plain;
 }
 
 export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
@@ -58,7 +58,7 @@ export const array = <TSource extends ZuordType.Array, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be an array");
     }
 
-    return resolveArray(source, content, zuordCore.mode.resolve(modeUpdate));
+    return resolveArray(source, content, zuordCore.mode.resolve(modeUpdate)) as ZuordType.Array;
 }
 
 export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
