@@ -27,7 +27,7 @@ const $array = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordModeX
         throw new TypeError("Integrate function expects the input to be a valid array.");
     }
 
-    return $zuord.integrate.array($base, $input, core.mode.resolve([zuordModeX.integrate.array, $mode]));
+    return $zuord.integrate.array($base, $input, [zuordModeX.integrate.array, $mode]);
 }
 
 

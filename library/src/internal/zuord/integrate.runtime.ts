@@ -49,7 +49,7 @@ export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends Zuord
     return result;
 }
 
-export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
+export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TModeUpdate extends $ZuordMode.ModeUpdate<$ZuordMode.Integrate.Array>>(source: TSource, content: TContent, modeUpdate: TModeUpdate) => {
     if(!zuordType.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
     }
@@ -58,7 +58,7 @@ export const array = <TSource extends ZuordType.Array, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be an array");
     }
 
-    return resolveArray(source, content, mode);
+    return resolveArray(source, content, zuordCore.mode.resolve(modeUpdate));
 }
 
 export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
