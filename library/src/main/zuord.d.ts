@@ -1,16 +1,12 @@
 import type { integrate as $integrate } from "./zuord.runtime";
-import type { integrateArray as $integrateArray } from "./zuord.runtime";
 import type { merge as $merge } from "./zuord.runtime";
-import type { mergeArray as $mergeArray } from "./zuord.runtime";
 import type { evolve as $evolve } from "./zuord.runtime";
 import type { pick as $pick } from "./zuord.runtime";
 import type { omit as $omit } from "./zuord.runtime";
 
 type zuordAPI = {
     integrate: typeof $integrate;
-    integrateArray: typeof $integrateArray;
     merge: typeof $merge;
-    mergeArray: typeof $mergeArray;
     evolve: typeof $evolve;
     pick: typeof $pick;
     omit: typeof $omit;
