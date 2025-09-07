@@ -6,34 +6,34 @@ import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType, ZuordPlain } from "@zuord/type";
 import type { ZuordUtil } from "@zuord/util";
 
-const $plain = ($base: ZuordType.Plain, $content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Evolve.Plain>) => {
-    if(!zuordPlain.array($content)) {
+const $plain = ($source: ZuordType.Plain, $patches: ZuordPlain.Array, $mode: Partial<ZuordModeX.Evolve.Plain>) => {
+    if(!zuordPlain.array($patches)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
 
-    return $zuord.evolve.plain($base, $content, zuordCore.mode.resolve([zuordModeX.evolve.plain, $mode]));
+    return $zuord.evolve.plain($source, $patches, zuordCore.mode.resolve([zuordModeX.evolve.plain, $mode]));
 }
 
 
 // LOOSE
 
-export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
-    : ZuordX.Evolve.Restrict<TBase, TContent>;
+export function restrict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>> (source: TSource, patches: [...TPatches])
+    : ZuordX.Evolve.Restrict<TSource, TPatches>;
 
-export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
-    : ZuordX.Evolve.Restrict<TBase, TContent, TMode>;
+export function restrict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode)
+    : ZuordX.Evolve.Restrict<TSource, TPatches, TMode>;
 
-export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Restrict<TBase, TContent, TMode> { return $plain(base, content, mode); }
+export function restrict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
+    : ZuordX.Evolve.Restrict<TSource, TPatches, TMode> { return $plain(source, patches, mode); }
 
 
 // STRICT
 
-export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
-    : ZuordX.Evolve.Strict<TBase, TContent>;
+export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>> (source: TSource, patches: [...TPatches])
+    : ZuordX.Evolve.Strict<TSource, TPatches>;
 
-export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
-    : ZuordX.Evolve.Strict<TBase, TContent, TMode>;
+export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode)
+    : ZuordX.Evolve.Strict<TSource, TPatches, TMode>;
 
-export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Strict<TBase, TContent, TMode> { return $plain(base, content, mode); }
+export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
+    : ZuordX.Evolve.Strict<TSource, TPatches, TMode> { return $plain(source, patches, mode); }
