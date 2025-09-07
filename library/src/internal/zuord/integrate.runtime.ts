@@ -1,8 +1,8 @@
-import { zuordType as type, ZuordType as Type } from "@zuord/type";
+import { zuordType as type, ZuordType } from "@zuord/type";
 import { ZuordCore as Core } from "@zuord/core";
 import { $ZuordMode } from "../mode";
 
-export const plain = <TSource extends Type.Plain, TContent extends Type.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
+export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
     if(!type.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
     }
@@ -14,11 +14,11 @@ export const plain = <TSource extends Type.Plain, TContent extends Type.Plain, T
     return resolvePlain(source, content, mode);
 }
 
-export const resolvePlain = <TBase extends Type.Plain, TInput extends Type.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
+export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
     const { shallow } = mode as Core.Mode.Flags;
 
     const result: any = {};
-    const stack: Array<{ target: Type.Plain; sourceA: Type.Plain; sourceB: Type.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
+    const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
 
     while (stack.length) {
         const { target, sourceA, sourceB } = stack.pop()!;
@@ -49,7 +49,7 @@ export const resolvePlain = <TBase extends Type.Plain, TInput extends Type.Plain
     return result;
 }
 
-export const array = <TSource extends Type.Array, TContent extends Type.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
+export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
     if(!type.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
     }
@@ -61,12 +61,12 @@ export const array = <TSource extends Type.Array, TContent extends Type.Array, T
     return resolveArray(source, content, mode);
 }
 
-export const resolveArray = <TBase extends Type.Array, TInput extends Type.Array, TMode>(base: TBase, input: TInput, mode: TMode) => {
+export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
     const { concat, unique } = mode as Core.Mode.Flags;
 
     if (concat) {
-        return unique ? Array.from(new Set([...base, ...input])) : [...base, ...input];
+        return unique ? Array.from(new Set([...source, ...content])) : [...source, ...content];
     }
 
-    return input;
+    return content;
 }
