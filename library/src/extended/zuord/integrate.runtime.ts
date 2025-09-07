@@ -55,18 +55,6 @@ export function restrict <TBase extends Type.Plain, TInput extends Util.Restrict
     : ZuordX.Integrate.Restrict<TBase, TInput, TMode> { return $plain(base, input, mode); }
 
 
-// STRICT
-
-export function strict <TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>> (base: TBase, input: TInput)
-    : ZuordX.Integrate.Strict<TBase, TInput>;
-
-export function strict <TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>, TMode extends Partial<ZuordModeX.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
-    : ZuordX.Integrate.Strict<TBase, TInput, TMode>;
-
-export function strict <TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>, TMode extends Partial<ZuordModeX.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Strict<TBase, TInput, TMode> { return $plain(base, input, mode); }
-
-
 // ARRAY
 
 export function array <TBase extends Type.Array, TInput extends Type.Array> (base: [...TBase], input: [...TInput])

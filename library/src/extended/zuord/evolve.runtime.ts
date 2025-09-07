@@ -25,15 +25,3 @@ export function restrict <TSource extends ZuordType.Plain, TPatches extends Zuor
 
 export function restrict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
     : ZuordX.Evolve.Restrict<TSource, TPatches, TMode> { return $plain(source, patches, mode); }
-
-
-// STRICT
-
-export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>> (source: TSource, patches: [...TPatches])
-    : ZuordX.Evolve.Strict<TSource, TPatches>;
-
-export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode)
-    : ZuordX.Evolve.Strict<TSource, TPatches, TMode>;
-
-export function strict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Strict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Strict<TSource, TPatches, TMode> { return $plain(source, patches, mode); }

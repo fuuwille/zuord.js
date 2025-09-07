@@ -16,8 +16,5 @@ export type Loose<TBase extends Type.Plain, TInput extends Type.Plain, TMode ext
 export type Restrict<TBase extends Type.Plain, TInput extends Util.Restrict.Keys<TBase, TInput>, TMode extends Partial<ZuordModeX.Integrate.Plain> = {}> 
     = $Plain<TBase, TInput, TMode>;
 
-export type Strict<TBase extends Type.Plain, TInput extends Util.Strict.Keys<TBase, TInput>, TMode extends Partial<ZuordModeX.Integrate.Plain> = {}> 
-    = $Plain<TBase, TInput, TMode>;
-
 export type Array<TBase extends Type.Array, TInput extends Type.Array, TMode extends Partial<ZuordModeX.Integrate.Array> = {}> 
     = $Array<TBase, TInput, TMode>;
