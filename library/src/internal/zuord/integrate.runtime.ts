@@ -1,8 +1,8 @@
 import { zuordType as type, ZuordType } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";
+import { zuordCore, ZuordCore as Core } from "@zuord/core";
 import { $ZuordMode } from "../mode";
 
-export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
+export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.ModeUpdate<$ZuordMode.Integrate.Plain>>(source: TSource, content: TContent, mode: TMode) => {
     if(!type.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
     }
@@ -11,7 +11,7 @@ export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be a plain object");
     }
 
-    return resolvePlain(source, content, mode);
+    return resolvePlain(source, content, zuordCore.mode.resolve(mode));
 }
 
 export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {

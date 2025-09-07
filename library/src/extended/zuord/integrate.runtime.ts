@@ -15,7 +15,7 @@ const $plain = ($base: Type.Plain, $input: Type.Plain, $mode: Partial<ZuordModeX
         throw new TypeError("Integrate function expects the input to be a valid plain.");
     }
 
-    return $zuord.integrate.plain($base, $input, core.mode.resolve([zuordModeX.integrate.plain, $mode]));
+    return $zuord.integrate.plain($base, $input, [zuordModeX.integrate.plain, $mode]);
 }
 
 const $array = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordModeX.Integrate.Array>) => {
