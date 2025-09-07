@@ -6,7 +6,7 @@ import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType, ZuordPlain } from "@zuord/type";
 import type { ZuordUtil } from "@zuord/util";
 
-const $ = ($base: ZuordType.Plain, $content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Evolve.Plain>) => {
+const $plain = ($base: ZuordType.Plain, $content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Evolve.Plain>) => {
     if(!zuordPlain.array($content)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
@@ -24,7 +24,7 @@ export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordU
     : ZuordX.Evolve.Restrict<TBase, TContent, TMode>;
 
 export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Restrict<TBase, TContent, TMode> { return $(base, content, mode); }
+    : ZuordX.Evolve.Restrict<TBase, TContent, TMode> { return $plain(base, content, mode); }
 
 
 // STRICT
@@ -36,4 +36,4 @@ export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUti
     : ZuordX.Evolve.Strict<TBase, TContent, TMode>;
 
 export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Strict<TBase, TContent, TMode> { return $(base, content, mode); }
+    : ZuordX.Evolve.Strict<TBase, TContent, TMode> { return $plain(base, content, mode); }

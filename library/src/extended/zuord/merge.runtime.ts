@@ -5,7 +5,7 @@ import { zuordCore as core } from "@zuord/core";
 import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType, ZuordPlain } from "@zuord/type";
 
-const $Plain = ($content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Merge.Plain>) => {
+const $plain = ($content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Merge.Plain>) => {
     if(!zuordPlain.array($content)) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
@@ -14,7 +14,7 @@ const $Plain = ($content: ZuordPlain.Array, $mode: Partial<ZuordModeX.Merge.Plai
 }
 
     
-const $Array = ($content: ZuordType.Array<ZuordType.Array>, $mode: Partial<ZuordModeX.Merge.Array>) => {
+const $array = ($content: ZuordType.Array<ZuordType.Array>, $mode: Partial<ZuordModeX.Merge.Array>) => {
     if(!zuordType.array($content, { item: zuordType.array })) {
         throw new TypeError("Integrate function expects the base to be a valid plain.");
     }
@@ -32,7 +32,7 @@ export function loose <TContent extends ZuordPlain.Array, TMode extends Partial<
     : ZuordX.Merge.Loose<TContent, TMode>;
 
 export function loose <TContent extends ZuordPlain.Array, TMode extends Partial<ZuordModeX.Merge.Plain>> (content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Merge.Loose<TContent, TMode> { return $Plain(content, mode); }
+    : ZuordX.Merge.Loose<TContent, TMode> { return $plain(content, mode); }
 
 
 // LOOSE
@@ -44,4 +44,4 @@ export function array <TContent extends ZuordType.Array<ZuordType.Array>, TMode 
     : ZuordX.Merge.Array<TContent, TMode>;
 
 export function array <TContent extends ZuordType.Array<ZuordType.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Merge.Array<TContent, TMode> { return $Array(content, mode); }
+    : ZuordX.Merge.Array<TContent, TMode> { return $array(content, mode); }
