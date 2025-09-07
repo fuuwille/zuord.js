@@ -1,7 +1,8 @@
 import { zuordType as type, ZuordType as Type } from "@zuord/type";
-import { ZuordCore as Core } from "@zuord/core";""
+import { ZuordCore as Core } from "@zuord/core";
+import { $ZuordMode } from "../mode";
 
-export const plain = <TSource extends Type.Plain, TContent extends Type.Plain, TMode>(source: TSource, content: TContent, mode: TMode) => {
+export const plain = <TSource extends Type.Plain, TContent extends Type.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
     if(!type.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
     }
@@ -34,7 +35,7 @@ export const resolvePlain = <TBase extends Type.Plain, TInput extends Type.Plain
             const valB = sourceB?.[key];
 
             if (Array.isArray(valA) && Array.isArray(valB)) {
-                target[key] = array(valA, valB, mode);
+                target[key] = resolveArray(valA, valB, mode);
             } else if (valB !== undefined && type.plain(valA) && type.plain(valB)) {
                 stack.push({ target: target[key] = {}, sourceA: valA, sourceB: valB });
             } else if (valB !== undefined) {
@@ -48,7 +49,7 @@ export const resolvePlain = <TBase extends Type.Plain, TInput extends Type.Plain
     return result;
 }
 
-export const array = <TSource extends Type.Array, TContent extends Type.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
+export const array = <TSource extends Type.Array, TContent extends Type.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
     if(!type.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
     }
