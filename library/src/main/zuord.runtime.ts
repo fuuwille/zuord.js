@@ -6,6 +6,6 @@ export const merge = zuordX.merge.loose;
 
 export const evolve = zuordX.evolve.restrict;
 
-export const pick = zuordX.pick.plain.loose;
+export const pick = zuordX.pick.loose;
 
-export const omit = zuordX.omit.plain.loose;
+export const omit = zuordX.omit.loose;

@@ -13,7 +13,7 @@ export type Evolve<TBase extends ZuordType.Plain, TContent extends ZuordUtil.Res
     = ZuordX.Evolve.Restrict<TBase, TContent, TMode>;
 
 export type Pick<TTarget extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TTarget>, TMode extends Partial<ZuordMode.Pick> = {}>
-    = ZuordX.Pick.Plain.Loose<TTarget, TPattern, TMode>;
+    = ZuordX.Pick.Loose<TTarget, TPattern, TMode>;
 
 export type Omit<TTarget extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TTarget>, TMode extends Partial<ZuordMode.Omit> = {}> 
-    = ZuordX.Omit.Plain.Loose<TTarget, TPattern, TMode>;
+    = ZuordX.Omit.Loose<TTarget, TPattern, TMode>;
