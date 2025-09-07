@@ -33,14 +33,14 @@ const $array = ($base: Type.Array, $input: Type.Array, $mode: Partial<ZuordModeX
 
 // LOOSE
 
-export function loose <TBase extends Type.Plain, TInput extends Type.Plain> (base: TBase, input: TInput)
-    : ZuordX.Integrate.Loose<TBase, TInput>;
+export function loose <TSource extends Type.Plain, TInput extends Type.Plain> (source: TSource, input: TInput)
+    : ZuordX.Integrate.Loose<TSource, TInput>;
 
-export function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<ZuordModeX.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode)
-    : ZuordX.Integrate.Loose<TBase, TInput, TMode>;
+export function loose <TSource extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<ZuordModeX.Integrate.Plain>> (source: TSource, input: TInput, mode: TMode)
+    : ZuordX.Integrate.Loose<TSource, TInput, TMode>;
 
-export function loose <TBase extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<ZuordModeX.Integrate.Plain>> (base: TBase, input: TInput, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Loose<TBase, TInput, TMode> { return $plain(base, input, mode); }
+export function loose <TSource extends Type.Plain, TInput extends Type.Plain, TMode extends Partial<ZuordModeX.Integrate.Plain>> (source: TSource, input: TInput, mode: TMode = {} as TMode)
+    : ZuordX.Integrate.Loose<TSource, TInput, TMode> { return $plain(source, input, mode); }
 
 
 // RESTRICT
