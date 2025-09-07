@@ -46,7 +46,7 @@ export const Showcase: React.FC<ShowcaseProps> = ($props) => {
             >
                 <Tooltip 
                     title={<ShowcaseInspector />} 
-                    placement="bottom" 
+                    placement="top" 
                     open={data !== null}
                     onClose={() => {
                         if(ref.current.target) {
