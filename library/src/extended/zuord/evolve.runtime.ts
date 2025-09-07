@@ -1,5 +1,5 @@
-import { $zuord } from "../../../internal";
-import { zuordModeX } from "../../mode";
+import { $zuord } from "../../internal";
+import { zuordModeX } from "../mode";
 import { zuordPlain } from "@zuord/type";
 import { zuordCore } from "@zuord/core";
 import type { ZuordX, ZuordModeX } from "../../";
@@ -18,22 +18,22 @@ const $ = ($base: ZuordType.Plain, $content: ZuordPlain.Array, $mode: Partial<Zu
 // LOOSE
 
 export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
-    : ZuordX.Evolve.Plain.Restrict<TBase, TContent>;
+    : ZuordX.Evolve.Restrict<TBase, TContent>;
 
 export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
-    : ZuordX.Evolve.Plain.Restrict<TBase, TContent, TMode>;
+    : ZuordX.Evolve.Restrict<TBase, TContent, TMode>;
 
 export function restrict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Restrict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Plain.Restrict<TBase, TContent, TMode> { return $(base, content, mode); }
+    : ZuordX.Evolve.Restrict<TBase, TContent, TMode> { return $(base, content, mode); }
 
 
 // STRICT
 
 export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>> (base: TBase, content: [...TContent])
-    : ZuordX.Evolve.Plain.Strict<TBase, TContent>;
+    : ZuordX.Evolve.Strict<TBase, TContent>;
 
 export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode)
-    : ZuordX.Evolve.Plain.Strict<TBase, TContent, TMode>;
+    : ZuordX.Evolve.Strict<TBase, TContent, TMode>;
 
 export function strict <TBase extends ZuordType.Plain, TContent extends ZuordUtil.Strict.KeysBatch<TBase, TContent>, TMode extends Partial<ZuordModeX.Evolve.Plain>> (base: TBase, content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Plain.Strict<TBase, TContent, TMode> { return $(base, content, mode); }
+    : ZuordX.Evolve.Strict<TBase, TContent, TMode> { return $(base, content, mode); }
