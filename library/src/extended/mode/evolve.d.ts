@@ -1,8 +1,8 @@
-import type { plain as $plain } from "./evolve.runtime";
+import type { restrict as $restrict } from "./evolve.runtime";
 import type { array as $array } from "./evolve.runtime";
 
 type evolveAPI = {
-    plain: typeof $plain;
+    restrict: typeof $restrict;
     array: typeof $array;
 };
 

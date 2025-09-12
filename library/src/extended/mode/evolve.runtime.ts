@@ -4,6 +4,6 @@ import type { ZuordModeX } from ".";
 
 //
 
-export const plain = integrate.plain satisfies ZuordModeX.Evolve.Plain;
+export const restrict = integrate.restrict satisfies ZuordModeX.Evolve.Restrict;
 
 export const array = integrate.array satisfies ZuordModeX.Evolve.Array;
