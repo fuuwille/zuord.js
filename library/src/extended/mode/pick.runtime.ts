@@ -1,4 +1,4 @@
-import { zuordCore } from "@zuord/core";
 import type { ZuordModeX } from ".";
+import { $zuordMode } from "library/src/internal";
 
-export const plain = zuordCore.mode.resolve([zuordCore.flags.base]) satisfies ZuordModeX.Pick.Plain;
+export const loose = $zuordMode.pick.plain satisfies ZuordModeX.Pick.Loose;

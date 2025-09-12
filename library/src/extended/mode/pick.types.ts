@@ -1,3 +1,3 @@
-import type { ZuordCore as Core } from "@zuord/core";
+import { $ZuordMode } from "library/src/internal";
 
-export type Plain = Core.Mode.Resolve<[Core.Flags.Base]>;
+export type Loose = $ZuordMode.Pick.Plain;

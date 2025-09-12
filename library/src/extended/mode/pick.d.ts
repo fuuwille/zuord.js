@@ -1,7 +1,7 @@
-import type { plain as $plain } from "./pick.runtime";
+import type { loose as $loose } from "./pick.runtime";
 
 type pickAPI = {
-    plain: typeof $plain;
+    loose: typeof $loose;
 }
 
 export declare const pick: pickAPI;
