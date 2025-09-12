@@ -1,12 +1,11 @@
-export type Flags<K = string, V = boolean> = K extends string ? {
-    [P in K]: V
-} : never;
+import type { $ZuordCore } from "..";
 
-export type Resolve<TModes> = TModes extends [...infer TRest, infer TLast] ? (
-    Resolve<TRest> extends infer TResolved ? {
-        [K in keyof TResolved | keyof TLast]: (
-            K extends keyof TLast ? TLast[K] :
-            K extends keyof TResolved ? TResolved[K] : never
-        ) extends infer TValue extends boolean ? TValue : false
-    } : never
-) : {};
+export type Shallow = $ZuordCore.ModeRecord<"shallow">;
+
+export type Inferless = $ZuordCore.ModeRecord<"inferless">;
+
+export type Validate = $ZuordCore.ModeRecord<"validate">;
+
+export type Concat = $ZuordCore.ModeRecord<"concat">;
+
+export type Unique = $ZuordCore.ModeRecord<"unique">;

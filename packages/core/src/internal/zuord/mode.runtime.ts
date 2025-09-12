@@ -1,16 +1,12 @@
-import type { $ZuordCore } from "../../internal";
+import { modeRecord } from "./index.runtime";
+import type { $ZuordCore } from "..";
 
-export const flags = <const K, const V>(key: K | K[], value: V) => {
-    let field : Record<string, boolean> = {};
+export const shallow = modeRecord("shallow", false) satisfies $ZuordCore.Mode.Shallow;
 
-    const keys = Array.isArray(key) ? key : [key];
-    for (const k of keys) {
-        field[k as string] = value as boolean;
-    }
+export const inferless = modeRecord("inferless", false) satisfies $ZuordCore.Mode.Inferless;
 
-    return field as $ZuordCore.Mode.Flags<K, V>;
-}
+export const validate = modeRecord("validate", false) satisfies $ZuordCore.Mode.Validate;
 
-export const resolve = <const TModes extends $ZuordCore.Mode.Flags[]>(modes: TModes) => {
-    return Object.assign({}, ...modes) as $ZuordCore.Mode.Resolve<TModes>;
-};
+export const concat = modeRecord("concat", false) satisfies $ZuordCore.Mode.Concat;
+
+export const unique = modeRecord("unique", false) satisfies $ZuordCore.Mode.Unique;
