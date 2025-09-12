@@ -1,10 +1,9 @@
-import { zuordCore as core } from "@zuord/core";
+import { $zuordMode } from "../../internal";
 
 import type { ZuordModeX } from ".";
 
+export const loose = $zuordMode.integrate.plain satisfies ZuordModeX.Integrate.Loose;
 
-//
+export const restrict = $zuordMode.integrate.plain satisfies ZuordModeX.Integrate.Restrict;
 
-export const plain = core.mode.resolve([core.flags.shallow, core.flags.concat]) satisfies ZuordModeX.Integrate.Plain;
-
-export const array = core.mode.resolve([core.flags.shallow, core.flags.unique]) satisfies ZuordModeX.Integrate.Array;
+export const array = $zuordMode.integrate.array satisfies ZuordModeX.Integrate.Array;

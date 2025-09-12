@@ -1,5 +1,7 @@
-import type { ZuordCore as Core } from "@zuord/core";
+import { $ZuordMode } from "../../internal";
 
-export type Plain = Core.Mode.Resolve<[Core.Flags.Shallow, Core.Flags.Concat]>;
+export type Loose = $ZuordMode.Integrate.Plain;
 
-export type Array = Core.Mode.Resolve<[Core.Flags.Shallow, Core.Flags.Unique]>;
+export type Restrict = $ZuordMode.Integrate.Plain;
+
+export type Array = $ZuordMode.Integrate.Array;

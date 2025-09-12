@@ -1,8 +1,10 @@
-import type { plain as $plain } from "./integrate.runtime";
+import type { loose as $loose } from "./integrate.runtime";
+import type { restrict as $restrict } from "./integrate.runtime";
 import type { array as $array } from "./integrate.runtime";
 
 type integrateAPI = {
-    plain: typeof $plain;
+    loose: typeof $loose;
+    restrict: typeof $restrict;
     array: typeof $array;
 }
 
