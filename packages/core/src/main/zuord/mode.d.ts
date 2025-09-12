@@ -14,4 +14,6 @@ type modeAPI = {
 
 export declare const mode: modeAPI;
 
+export type Mode = {};
+
 export type * as Mode from "./mode.types";
