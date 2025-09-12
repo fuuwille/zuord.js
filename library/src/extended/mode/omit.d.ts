@@ -1,7 +1,7 @@
-import type { plain as $plain } from "./omit.runtime";
+import type { loose as $loose } from "./omit.runtime";
 
 type omitAPI = {
-    plain: typeof $plain;
+    loose: typeof $loose;
 }
 
 export declare const omit: omitAPI;

@@ -1,4 +1,4 @@
-import { zuordCore } from "@zuord/core";
 import type { ZuordModeX } from ".";
+import { $zuordMode } from "../../internal";
 
-export const plain = zuordCore.mode.resolve([zuordCore.flags.base]) satisfies ZuordModeX.Omit.Plain;
+export const loose = $zuordMode.omit.plain satisfies ZuordModeX.Omit.Loose;
