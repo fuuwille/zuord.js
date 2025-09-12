@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*.d.ts\" dist"
+    "build": "rimraf dist && rollup -c && cpy \"src/**/*{.d.ts,.js}\" dist"
   },
   "keywords": [
     "zuord"
