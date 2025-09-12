@@ -1,4 +1,4 @@
-import { $ZuordCore } from ".";
+import type { $ZuordCore } from ".";
 
 export { mode } from "./mode";
 
