@@ -1,2 +1,2 @@
 export type { Mode } from "./mode";
-export type * from "./_types";
+export type * from "./_.types";
