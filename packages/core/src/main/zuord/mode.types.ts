@@ -1,5 +1,11 @@
 import type { $ZuordCore } from "../../internal";
 
-export type Flags<K extends string = string, V extends boolean = boolean> = $ZuordCore.Mode.Flags<K, V>;
+export type Shallow = $ZuordCore.Mode.Shallow;
 
-export type Resolve<TModes extends Flags[]> = $ZuordCore.Mode.Resolve<TModes>;
+export type Inferless = $ZuordCore.Mode.Inferless;
+
+export type Validate = $ZuordCore.Mode.Validate;
+
+export type Concat = $ZuordCore.Mode.Concat;
+
+export type Unique = $ZuordCore.Mode.Unique;

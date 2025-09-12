@@ -1,19 +1,12 @@
 import { $zuordCore } from "../../internal";
 import type { ZuordCore } from "..";
 
-export function flags <K extends string, const V extends boolean = false>(key: K, value?: V) 
-    : ZuordCore.Mode.Flags<K, V>
+export const shallow = $zuordCore.mode.shallow satisfies ZuordCore.Mode.Shallow;
 
-export function flags <K extends string, const V extends boolean = false>(key: K[], value?: V) 
-    : ZuordCore.Mode.Flags<K, V>
+export const inferless = $zuordCore.mode.inferless satisfies ZuordCore.Mode.Inferless;
 
-export function flags <K extends string, const V extends boolean = false>(key: K | K[], value?: V) 
-    : ZuordCore.Mode.Flags<K, V>;
+export const validate = $zuordCore.mode.validate satisfies ZuordCore.Mode.Validate;
 
-export function flags <K extends string, const V extends boolean = false>(key: K | K[], value?: V) {
-    return $zuordCore.mode.flags(key, value ?? false) as ZuordCore.Mode.Flags<K, V>;
-}
+export const concat = $zuordCore.mode.concat satisfies ZuordCore.Mode.Concat;
 
-export function resolve <const TModes extends ZuordCore.Mode.Flags[]>(modes: TModes) {
-    return $zuordCore.mode.resolve(modes) as ZuordCore.Mode.Resolve<TModes>;
-};
+export const unique = $zuordCore.mode.unique satisfies ZuordCore.Mode.Unique;
