@@ -82,8 +82,8 @@ importers:
   packages/bundle:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.22
-        version: 3.0.0-alpha.22
+        specifier: 3.0.0-alpha.26
+        version: 3.0.0-alpha.26
       '@zuord/trait':
         specifier: 3.0.0-alpha.14
         version: 3.0.0-alpha.14
@@ -2447,6 +2447,9 @@ packages:
 
   '@zuord/core@3.0.0-alpha.22':
     resolution: {integrity: sha512-r7/GJhJv31MsVw7JKKwUJShcnWgFt4Jbv9udYr3YWvzf6sk8AcCVBFoMH0Zm1Fj+RskKBfwZo0TZLHpLYpEcSg==}
+
+  '@zuord/core@3.0.0-alpha.26':
+    resolution: {integrity: sha512-l4HR5K+i9jJMbHJ9g2Ibn/p6Su0vPtG3xLvK0GY/Ctd8MUA9NIwNO294acpv4bhChtkltQuja4xkUtkjS7HXxQ==}
 
   '@zuord/trait@3.0.0-alpha.14':
     resolution: {integrity: sha512-f4mNHOYmFaoOQGRzJkkO65k+7KgBf2UzpHg/NCnItOL/ZSQ3vbrS8zs3UZoWgLylX2OC//YU18C7dObrt8eLhA==}
@@ -9392,6 +9395,8 @@ snapshots:
   '@xtuc/long@4.2.2': {}
 
   '@zuord/core@3.0.0-alpha.22': {}
+
+  '@zuord/core@3.0.0-alpha.26': {}
 
   '@zuord/trait@3.0.0-alpha.14':
     dependencies:
