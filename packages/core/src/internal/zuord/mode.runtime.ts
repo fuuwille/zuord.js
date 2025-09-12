@@ -1,4 +1,4 @@
-import { modeRecord } from "./index.runtime";
+import { modeRecord } from "./_runtime";
 import type { $ZuordCore } from "..";
 
 export const shallow = modeRecord("shallow", false) satisfies $ZuordCore.Mode.Shallow;
