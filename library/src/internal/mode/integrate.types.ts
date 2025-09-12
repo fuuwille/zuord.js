@@ -1,5 +1,5 @@
 import type { ZuordCore as Core } from "@zuord/core";
 
-export type Plain = Core.Mode.Resolve<[Core.Flags.Shallow, Core.Flags.Concat]>;
+export type Plain = Core.ModeResolve<[Core.Mode.Shallow, Core.Mode.Concat]>;
 
-export type Array = Core.Mode.Resolve<[Core.Flags.Shallow, Core.Flags.Unique]>;
+export type Array = Core.ModeResolve<[Core.Mode.Shallow, Core.Mode.Unique]>;

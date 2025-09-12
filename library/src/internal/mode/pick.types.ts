@@ -1,3 +1,3 @@
 import type { ZuordCore as Core } from "@zuord/core";
 
-export type Plain = Core.Mode.Resolve<[Core.Flags.Base]>;
+export type Plain = Core.ModeResolve<[Core.Mode.Shallow]>;
