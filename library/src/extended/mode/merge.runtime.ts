@@ -4,6 +4,6 @@ import type { ZuordModeX } from ".";
 
 //
 
-export const plain = integrate.plain satisfies ZuordModeX.Merge.Plain;
+export const loose = integrate.loose satisfies ZuordModeX.Merge.Loose;
 
 export const array = integrate.array satisfies ZuordModeX.Merge.Array;

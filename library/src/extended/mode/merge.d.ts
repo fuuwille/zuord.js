@@ -1,8 +1,8 @@
-import type { plain as $plain } from "./merge.runtime";
+import type { loose as $loose } from "./merge.runtime";
 import type { array as $array } from "./merge.runtime";
 
 type mergeAPI = {
-    plain: typeof $plain;
+    loose: typeof $loose;
     array: typeof $array;
 }
 
