@@ -118,14 +118,14 @@ importers:
   packages/util:
     dependencies:
       '@zuord/core':
-        specifier: 3.0.0-alpha.22
-        version: 3.0.0-alpha.22
+        specifier: 3.0.0-alpha.28
+        version: 3.0.0-alpha.28
       '@zuord/trait':
         specifier: 3.0.0-alpha.14
         version: 3.0.0-alpha.14
       '@zuord/type':
-        specifier: 2.0.0-alpha.15
-        version: 2.0.0-alpha.15
+        specifier: 2.0.0-alpha.18
+        version: 2.0.0-alpha.18
 
   tests:
     devDependencies:

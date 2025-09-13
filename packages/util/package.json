@@ -13,8 +13,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@zuord/core": "3.0.0-alpha.22",
+    "@zuord/core": "3.0.0-alpha.28",
     "@zuord/trait": "3.0.0-alpha.14",
-    "@zuord/type": "2.0.0-alpha.15"
+    "@zuord/type": "2.0.0-alpha.18"
   }
 }
