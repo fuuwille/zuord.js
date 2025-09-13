@@ -3,9 +3,9 @@
   "name": "zuord-monorepo",
   "scripts": {},
   "dependencies": {
-    "@zuord/core": "3.0.0-alpha.27",
+    "@zuord/core": "3.0.0-alpha.28",
     "@zuord/trait": "3.0.0-alpha.14",
-    "@zuord/type": "2.0.0-alpha.15",
+    "@zuord/type": "2.0.0-alpha.18",
     "@zuord/util": "4.0.0-alpha.13",
     "zuord": "5.0.0-alpha.20"
   },
