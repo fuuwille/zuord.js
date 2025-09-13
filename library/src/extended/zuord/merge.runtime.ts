@@ -7,23 +7,23 @@ import type { ZuordType, ZuordPlain } from "@zuord/type";
 
 // LOOSE
 
-export function loose <TContent extends ZuordPlain.Array> (content: [...TContent])
-    : ZuordX.Merge.Loose<TContent>;
+export function loose <TContents extends ZuordPlain.Array> (contents: [...TContents])
+    : ZuordX.Merge.Loose<TContents>;
 
-export function loose <TContent extends ZuordPlain.Array, TMode extends Partial<ZuordModeX.Merge.Loose>> (content: [...TContent], mode: TMode)
-    : ZuordX.Merge.Loose<TContent, TMode>;
+export function loose <TContents extends ZuordPlain.Array, TMode extends Partial<ZuordModeX.Merge.Loose>> (contents: [...TContents], mode: TMode)
+    : ZuordX.Merge.Loose<TContents, TMode>;
 
-export function loose <TContent extends ZuordPlain.Array, TMode extends Partial<ZuordModeX.Merge.Loose>> (content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Merge.Loose<TContent, TMode> { return $zuord.merge.plain(content, zuordCore.modeResolve([zuordModeX.merge.loose, mode])); }
+export function loose <TContents extends ZuordPlain.Array, TMode extends Partial<ZuordModeX.Merge.Loose>> (contents: [...TContents], mode: TMode = {} as TMode)
+    : ZuordX.Merge.Loose<TContents, TMode> { return $zuord.merge.plain(contents, zuordCore.modeResolve([zuordModeX.merge.loose, mode])); }
 
 
 // LOOSE
 
-export function array <TContent extends ZuordType.Array<ZuordType.Array>> (content: [...TContent])
-    : ZuordX.Merge.Array<TContent>;
+export function array <TContents extends ZuordType.Array<ZuordType.Array>> (contents: [...TContents])
+    : ZuordX.Merge.Array<TContents>;
 
-export function array <TContent extends ZuordType.Array<ZuordType.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: [...TContent], mode: TMode)
-    : ZuordX.Merge.Array<TContent, TMode>;
+export function array <TContents extends ZuordType.Array<ZuordType.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (contents: [...TContents], mode: TMode)
+    : ZuordX.Merge.Array<TContents, TMode>;
 
-export function array <TContent extends ZuordType.Array<ZuordType.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (content: [...TContent], mode: TMode = {} as TMode)
-    : ZuordX.Merge.Array<TContent, TMode> { return $zuord.merge.array(content, zuordCore.modeResolve([zuordModeX.merge.array, mode])); }
+export function array <TContents extends ZuordType.Array<ZuordType.Array>, TMode extends Partial<ZuordModeX.Merge.Array>> (contents: [...TContents], mode: TMode = {} as TMode)
+    : ZuordX.Merge.Array<TContents, TMode> { return $zuord.merge.array(contents, zuordCore.modeResolve([zuordModeX.merge.array, mode])); }
