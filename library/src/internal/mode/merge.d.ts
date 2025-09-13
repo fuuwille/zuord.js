@@ -8,7 +8,7 @@ type mergeAPI = {
 
 export declare const merge: mergeAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type Merge = any;
 
 export type * as Merge from "./merge.types";

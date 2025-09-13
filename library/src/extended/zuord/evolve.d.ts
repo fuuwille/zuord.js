@@ -6,7 +6,7 @@ type evolveAPI = {
 
 export declare const evolve: evolveAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type Evolve = any;
 
 export type * as Evolve from "./evolve.types";

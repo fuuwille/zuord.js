@@ -6,7 +6,7 @@ type pickAPI = {
 
 export declare const pick: pickAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type Pick = any;
 
 export type * as Pick from "./pick.types";

@@ -6,7 +6,7 @@ type omitAPI = {
 
 export declare const omit: omitAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type Omit = any;
 
 export type * as Omit from "./omit.types";

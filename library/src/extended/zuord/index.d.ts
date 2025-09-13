@@ -14,7 +14,7 @@ type zuordXAPI = {
 
 export declare const zuordX: zuordXAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type ZuordX = any;
 
 export type * as ZuordX from "./index.types";

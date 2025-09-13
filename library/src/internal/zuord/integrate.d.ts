@@ -8,7 +8,7 @@ type integrateAPI = {
 
 export declare const integrate: integrateAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type Integrate = any;
 
 export type * as Integrate from "./integrate.types";

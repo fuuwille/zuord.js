@@ -17,7 +17,7 @@ function processFile(srcPath, outPath) {
   const filteredLines = [];
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (line.trim() === "// @ts-ignore") {
+    if (line.trim() === "// @zuord-exclude") {
       i++; // Sonraki satırı da atla
       continue;
     }

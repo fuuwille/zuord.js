@@ -14,7 +14,7 @@ type $zuordAPI = {
 
 export declare const $zuord: $zuordAPI;
 
-// @ts-ignore
+// @zuord-exclude
 export type $Zuord = any;
 
 export type * as $Zuord from "./index.types";
