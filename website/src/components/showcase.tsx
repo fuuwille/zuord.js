@@ -1,12 +1,12 @@
 import style from '@site/src/css/modules/showcase.module.scss';
 import clsx from 'clsx';
 import { ShowcaseProps, ShowcaseControlProps, ShowcaseContainerProps, ShowcaseRef, ShowcaseControlRef, ShowcaseControlData, ShowcaseInspectorBodyProps } from '@site/src/types/showcase';
-import { zuordX } from 'zuord';
+import { zuord } from 'zuord';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Box, Divider, Tooltip } from '@mui/material';
 
 export const Showcase: React.FC<ShowcaseProps> = ($props) => {
-    const props = zuordX.integrate.plain.loose({
+    const props = zuord.integrate({
         container: {
             controls: [],
             design: { columns: 3 }

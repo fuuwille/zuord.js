@@ -1,13 +1,13 @@
 import style from '@site/src/css/modules/pretext.module.scss';
 import clsx from "clsx";
 import { PretextProps, PretextTokenNode, PretextTokenProps } from '@site/src/types/pretext';
-import { zuord, zuordX } from 'zuord';
+import { zuord } from 'zuord';
 import { highlighter } from '@site/src/utils/pretext';
 import { Tooltip } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
-    const props = zuordX.integrate.plain.loose({
+    const props = zuord.integrate({
         text: '',
         modifiers: [],
         language: 'typescript',
@@ -38,8 +38,8 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
 
                         for (const modifier of props.modifiers) {
                             if (modifier.predicate(meta.content)) {
-                                meta = zuordX.integrate.plain.loose(meta, modifier.props || {});
-                                patchedStyle = zuordX.integrate.plain.loose(patchedStyle, modifier.props.style || {});
+                                meta = zuord.integrate(meta, modifier.props || {});
+                                patchedStyle = zuord.integrate(patchedStyle, modifier.props.style || {});
                             }
                         }
 
