@@ -4,4 +4,4 @@ export type ModeRecord<K extends string = string, V extends boolean = boolean> =
 
 export type ModeResolve<TModes extends ModeRecord[]> = $ZuordCore.ModeResolve<TModes>;
 
-export type ModeBundle<TMode extends ModeRecord> = $ZuordCore.ModeBundle<TMode>;
+export type ModeBundle<TMode extends ModeRecord = ModeRecord> = $ZuordCore.ModeBundle<TMode>;
