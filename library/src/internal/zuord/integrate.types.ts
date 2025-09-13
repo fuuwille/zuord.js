@@ -3,15 +3,25 @@ import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
 import { $ZuordMode } from "../mode";
 
-export type ResolveAny<TSource, TContent, TMode> = (
-    [TSource, TContent] extends [infer A extends ZuordType.Plain, infer B extends ZuordType.Plain] ? ResolvePlain<A, B, TMode> :
-    [TSource, TContent] extends [infer A extends ZuordType.Array, infer B extends ZuordType.Array] ? ResolveArray<A, B, TMode> : TContent
-);
-
 export type Plain<TSource, TContent, TMode extends $ZuordMode.Integrate.Plain> = (
     ResolvePlain<TSource, TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
         Util.Unify.Plain<TPlain, Core.ModeResolve<[TMode, { unifyArray: true }]>>
     ) : never
+);
+
+export type Array<TSource, TContent, TMode> = (
+    [TMode] extends [infer TMode extends Core.ModeRecord] ? (
+        ResolveArray<TSource, TContent, { concat: true }> extends infer TArray extends ZuordType.Array ? (
+            Util.Unify.Array<TArray, TMode>
+        ) : never
+    ) : never
+);
+
+//
+
+export type ResolveAny<TSource, TContent, TMode> = (
+    [TSource, TContent] extends [infer A extends ZuordType.Plain, infer B extends ZuordType.Plain] ? ResolvePlain<A, B, TMode> :
+    [TSource, TContent] extends [infer A extends ZuordType.Array, infer B extends ZuordType.Array] ? ResolveArray<A, B, TMode> : TContent
 );
 
 export type ResolvePlain<TSource, TContent, TMode> = (
@@ -31,14 +41,6 @@ export type ResolvePlainOverrides<TSource, TContent, TMode> = ({
 export type ResolvePlainExtras<TSource, TContent> = ({
     [K in keyof TContent as K extends keyof TSource ? never : K]: TContent[K];
 });
-
-export type Array<TSource, TContent, TMode> = (
-    [TMode] extends [infer TMode extends Core.ModeRecord] ? (
-        ResolveArray<TSource, TContent, { concat: true }> extends infer TArray extends ZuordType.Array ? (
-            Util.Unify.Array<TArray, TMode>
-        ) : never
-    ) : never
-);
 
 export type ResolveArray<TSource, TContent, TMode> = (
     TMode extends { concat: true } ? (
