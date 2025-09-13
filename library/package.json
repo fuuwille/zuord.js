@@ -1,6 +1,6 @@
 {
   "name": "zuord",
-  "version": "5.0.0-alpha.14",
+  "version": "5.0.0-alpha.20",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
