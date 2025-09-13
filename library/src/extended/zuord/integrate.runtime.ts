@@ -31,11 +31,11 @@ export function restrict <TSource extends ZuordType.Plain, TPatch extends ZuordU
 
 // ARRAY
 
-export function array <TBase extends ZuordType.Array, TInput extends ZuordType.Array> (base: [...TBase], input: [...TInput])
-    : ZuordX.Integrate.Array<TBase, TInput>;
+export function array <TSource extends ZuordType.Array, TContent extends ZuordType.Array> (source: [...TSource], content: [...TContent])
+    : ZuordX.Integrate.Array<TSource, TContent>;
 
-export function array <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TMode extends Partial<ZuordModeX.Integrate.Array>> (base: [...TBase], input: [...TInput], mode : TMode)
-    : ZuordX.Integrate.Array<TBase, TInput, TMode>;
+export function array <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends Partial<ZuordModeX.Integrate.Array>> (source: [...TSource], content: [...TContent], mode : TMode)
+    : ZuordX.Integrate.Array<TSource, TContent, TMode>;
 
-export function array <TBase extends ZuordType.Array, TInput extends ZuordType.Array, TMode extends Partial<ZuordModeX.Integrate.Array>> (base: [...TBase], input: [...TInput], mode : TMode = {} as TMode)
-    : ZuordX.Integrate.Array<TBase, TInput, TMode> { return $zuord.integrate.array(base, input, [zuordModeX.integrate.array, mode]) as ZuordX.Integrate.Array<TBase, TInput, TMode>; }
+export function array <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends Partial<ZuordModeX.Integrate.Array>> (source: [...TSource], content: [...TContent], mode : TMode = {} as TMode)
+    : ZuordX.Integrate.Array<TSource, TContent, TMode> { return $zuord.integrate.array(source, content, [zuordModeX.integrate.array, mode]) as ZuordX.Integrate.Array<TSource, TContent, TMode>; }
