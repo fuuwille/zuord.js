@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/fuuwille/zuord#readme",
   "dependencies": {
-    "@zuord/core": "3.0.0-alpha.22",
+    "@zuord/core": "3.0.0-alpha.27",
     "@zuord/trait": "3.0.0-alpha.14",
     "@zuord/type": "2.0.0-alpha.15",
     "@zuord/util": "4.0.0-alpha.13"
