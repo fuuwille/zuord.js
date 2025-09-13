@@ -1,5 +1,6 @@
 import { $zuord } from "../../internal";
 import { zuordModeX } from "../mode";
+import { zuordCore } from "@zuord/core";
 import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType } from "@zuord/type";
 import type { ZuordUtil } from "@zuord/util";
@@ -14,7 +15,7 @@ export function loose <TSource extends ZuordType.Plain, TContent extends ZuordTy
     : ZuordX.Integrate.Loose<TSource, TContent, TMode>;
 
 export function loose <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends Partial<ZuordModeX.Integrate.Loose>> (source: TSource, content: TContent, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Loose<TSource, TContent, TMode> { return $zuord.integrate.plain(source, content, [zuordModeX.integrate.loose, mode]) as ZuordX.Integrate.Loose<TSource, TContent, TMode>; }
+    : ZuordX.Integrate.Loose<TSource, TContent, TMode> { return $zuord.integrate.plain(source, content, zuordCore.modeResolve([zuordModeX.integrate.loose, mode])) as ZuordX.Integrate.Loose<TSource, TContent, TMode>; }
 
 
 // RESTRICT
@@ -26,7 +27,7 @@ export function restrict <TSource extends ZuordType.Plain, TPatch extends ZuordU
     : ZuordX.Integrate.Restrict<TSource, TPatch, TMode>;
 
 export function restrict <TSource extends ZuordType.Plain, TPatch extends ZuordUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ZuordModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode = {} as TMode)
-    : ZuordX.Integrate.Restrict<TSource, TPatch, TMode> { return $zuord.integrate.plain(source, patch, [zuordModeX.integrate.restrict, mode]) as ZuordX.Integrate.Restrict<TSource, TPatch, TMode>; }
+    : ZuordX.Integrate.Restrict<TSource, TPatch, TMode> { return $zuord.integrate.plain(source, patch, zuordCore.modeResolve([zuordModeX.integrate.restrict, mode])) as ZuordX.Integrate.Restrict<TSource, TPatch, TMode>; }
 
 
 // ARRAY
@@ -38,4 +39,4 @@ export function array <TSource extends ZuordType.Array, TContent extends ZuordTy
     : ZuordX.Integrate.Array<TSource, TContent, TMode>;
 
 export function array <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends Partial<ZuordModeX.Integrate.Array>> (source: [...TSource], content: [...TContent], mode : TMode = {} as TMode)
-    : ZuordX.Integrate.Array<TSource, TContent, TMode> { return $zuord.integrate.array(source, content, [zuordModeX.integrate.array, mode]) as ZuordX.Integrate.Array<TSource, TContent, TMode>; }
+    : ZuordX.Integrate.Array<TSource, TContent, TMode> { return $zuord.integrate.array(source, content, zuordCore.modeResolve([zuordModeX.integrate.array, mode])) as ZuordX.Integrate.Array<TSource, TContent, TMode>; }

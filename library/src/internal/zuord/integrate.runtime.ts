@@ -2,7 +2,7 @@ import { zuordType, ZuordType } from "@zuord/type";
 import { $ZuordCore, zuordCore, ZuordCore } from "@zuord/core";
 import { $ZuordMode } from "../mode";
 
-export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordCore.ModeBundle<$ZuordMode.Integrate.Plain>>(source: TSource, content: TContent, mode: TMode) => {
+export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
     }
@@ -11,7 +11,7 @@ export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be a plain object");
     }
 
-    return resolvePlain(source, content, zuordCore.modeResolve(mode)) as ZuordType.Plain;
+    return resolvePlain(source, content, mode) as ZuordType.Plain;
 }
 
 export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
@@ -49,7 +49,7 @@ export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends Zuord
     return result;
 }
 
-export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TModeUpdate extends $ZuordCore.ModeBundle<$ZuordMode.Integrate.Array>>(source: TSource, content: TContent, modeUpdate: TModeUpdate) => {
+export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
     }
@@ -58,7 +58,7 @@ export const array = <TSource extends ZuordType.Array, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be an array");
     }
 
-    return resolveArray(source, content, zuordCore.modeResolve(modeUpdate)) as ZuordType.Array;
+    return resolveArray(source, content, mode) as ZuordType.Array;
 }
 
 export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
