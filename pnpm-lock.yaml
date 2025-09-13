@@ -21,8 +21,8 @@ importers:
         specifier: 4.0.0-alpha.13
         version: 4.0.0-alpha.13
       zuord:
-        specifier: 5.0.0-alpha.20
-        version: 5.0.0-alpha.20
+        specifier: 5.0.0-alpha.21
+        version: 5.0.0-alpha.21
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -94,8 +94,8 @@ importers:
         specifier: 4.0.0-alpha.13
         version: 4.0.0-alpha.13
       zuord:
-        specifier: 5.0.0-alpha.20
-        version: 5.0.0-alpha.20
+        specifier: 5.0.0-alpha.21
+        version: 5.0.0-alpha.21
 
   packages/core:
     devDependencies:
@@ -2447,9 +2447,6 @@ packages:
 
   '@zuord/core@3.0.0-alpha.22':
     resolution: {integrity: sha512-r7/GJhJv31MsVw7JKKwUJShcnWgFt4Jbv9udYr3YWvzf6sk8AcCVBFoMH0Zm1Fj+RskKBfwZo0TZLHpLYpEcSg==}
-
-  '@zuord/core@3.0.0-alpha.27':
-    resolution: {integrity: sha512-Q249Xx0YEkkEPHRVOvzGoTZkkpcCdSUajJyZKrE3bhXlnizS5Zxog1CjnqAIgb9xcPyw68iDpYIZVr2UPCzKeg==}
 
   '@zuord/core@3.0.0-alpha.28':
     resolution: {integrity: sha512-stBz7dZLACtlFefBPwGV4CdckUkbaObbqB1X3Zdjs+sFEtIql3vjxR8kKANpYFcw/DCYxJK263UmM9MK2wTMcw==}
@@ -6270,8 +6267,8 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
-  zuord@5.0.0-alpha.20:
-    resolution: {integrity: sha512-5Vy/lebeceX1SCy4ukfuVVHp/ZT6iac6MdivWmTpYHKtaSiA8IcsnAwkOE33ogGp5HuwKa/l9dbN6qkyhNPoXA==}
+  zuord@5.0.0-alpha.21:
+    resolution: {integrity: sha512-TIAJP2HNwimS4AJaqcwNo+uE0RModTBvfAYv+GveaS34qnX/UWy9XpcF26u7L7S7InmKfwc6QyfZPD8k+D8Smg==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -9401,8 +9398,6 @@ snapshots:
   '@xtuc/long@4.2.2': {}
 
   '@zuord/core@3.0.0-alpha.22': {}
-
-  '@zuord/core@3.0.0-alpha.27': {}
 
   '@zuord/core@3.0.0-alpha.28': {}
 
@@ -13830,11 +13825,11 @@ snapshots:
 
   yocto-queue@1.2.1: {}
 
-  zuord@5.0.0-alpha.20:
+  zuord@5.0.0-alpha.21:
     dependencies:
-      '@zuord/core': 3.0.0-alpha.27
+      '@zuord/core': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
-      '@zuord/type': 2.0.0-alpha.15
+      '@zuord/type': 2.0.0-alpha.18
       '@zuord/util': 4.0.0-alpha.13
 
   zwitch@2.0.4: {}
