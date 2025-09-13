@@ -11,11 +11,11 @@ export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be a plain object");
     }
 
-    return resolvePlain(source, content, zuordCore.mode.resolve(mode)) as ZuordType.Plain;
+    return resolvePlain(source, content, zuordCore.modeResolve(mode)) as ZuordType.Plain;
 }
 
 export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
-    const { shallow } = mode as ZuordCore.Mode.Flags;
+    const { shallow } = mode as ZuordCore.ModeRecord;
 
     const result: any = {};
     const stack: Array<{ target: ZuordType.Plain; sourceA: ZuordType.Plain; sourceB: ZuordType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
@@ -58,11 +58,11 @@ export const array = <TSource extends ZuordType.Array, TContent extends ZuordTyp
         throw new TypeError("[Zuord-Integrate]: Expected content to be an array");
     }
 
-    return resolveArray(source, content, zuordCore.mode.resolve(modeUpdate)) as ZuordType.Array;
+    return resolveArray(source, content, zuordCore.modeResolve(modeUpdate)) as ZuordType.Array;
 }
 
 export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
-    const { concat, unique } = mode as ZuordCore.Mode.Flags;
+    const { concat, unique } = mode as ZuordCore.ModeRecord;
 
     if (concat) {
         return unique ? Array.from(new Set([...source, ...content])) : [...source, ...content];
