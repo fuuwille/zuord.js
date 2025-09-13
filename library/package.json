@@ -22,6 +22,6 @@
     "@zuord/core": "3.0.0-alpha.28",
     "@zuord/trait": "3.0.0-alpha.14",
     "@zuord/type": "2.0.0-alpha.18",
-    "@zuord/util": "4.0.0-alpha.13"
+    "@zuord/util": "4.0.0-alpha.17"
   }
 }
