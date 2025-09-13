@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 if (process.argv.length < 4) {
-  console.error("Usage: node filter-tsignore.js <sourceDir> <targetDir>");
+  console.error("Usage: node extractor.js <sourceDir> <targetDir>");
   process.exit(1);
 }
 
@@ -26,7 +26,6 @@ function processFile(srcPath, outPath) {
 
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, filteredLines.join("\n"));
-  console.log(`Processed: ${srcPath} -> ${outPath}`);
 }
 
 function walkDir(dirSrc, dirOut) {
