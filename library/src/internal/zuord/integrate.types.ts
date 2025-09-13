@@ -1,11 +1,12 @@
 import type { ZuordType, ZuordTuple } from "@zuord/type";
 import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
-import { $ZuordMode } from "../mode";
 
-export type Plain<TSource, TContent, TMode extends $ZuordMode.Integrate.Plain> = (
-    ResolvePlain<TSource, TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
-        Util.Unify.Plain<TPlain, Core.ModeResolve<[TMode, { unifyArray: true }]>>
+export type Plain<TSource, TContent, TMode> = (
+    [TMode] extends [infer TMode extends Core.ModeRecord] ? (
+        ResolvePlain<TSource, TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
+            Util.Unify.Plain<TPlain, Core.ModeResolve<[TMode, { unifyArray: true }]>>
+        ) : never
     ) : never
 );
 
