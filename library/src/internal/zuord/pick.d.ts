@@ -6,6 +6,7 @@ type pickAPI = {
 
 export declare const pick: pickAPI;
 
-export type Pick = {};
+// @ts-ignore
+export type Pick = any;
 
 export type * as Pick from "./pick.types";
