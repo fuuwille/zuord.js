@@ -7,7 +7,6 @@
     "@zuord/trait": "3.0.0-alpha.14",
     "@zuord/type": "2.0.0-alpha.18",
     "@zuord/util": "4.0.0-alpha.17",
-    "typedoc-plugin-markdown": "^4.8.1",
     "typedocs": "^0.6.7",
     "zuord": "5.0.0-alpha.21"
   },
@@ -24,6 +23,8 @@
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
+    "typedoc": "^0.28.10",
+    "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "~5.6.3"
   }
 }
