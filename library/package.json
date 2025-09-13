@@ -1,10 +1,10 @@
 {
   "name": "zuord",
-  "version": "5.0.0-alpha.20",
+  "version": "5.0.0-alpha.21",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*.d.ts\" dist"
+    "build": "rimraf dist && rollup -c && cpy \"src/**/*{.js,.d.ts}\" dist"
   },
   "repository": {
     "type": "git",
