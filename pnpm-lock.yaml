@@ -20,6 +20,9 @@ importers:
       '@zuord/util':
         specifier: 4.0.0-alpha.17
         version: 4.0.0-alpha.17
+      typedocs:
+        specifier: ^0.6.7
+        version: 0.6.7
       zuord:
         specifier: 5.0.0-alpha.21
         version: 5.0.0-alpha.21
@@ -4192,6 +4195,11 @@ packages:
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
 
+  marked@0.7.0:
+    resolution: {integrity: sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==}
+    engines: {node: '>=0.10.0'}
+    hasBin: true
+
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
@@ -5907,10 +5915,18 @@ packages:
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
 
+  typedocs@0.6.7:
+    resolution: {integrity: sha512-ZWpgwfPyJoqpLVUX+XdOqQLGcZJneSIWDLSlKt0ItkGeFrz2BFPIr38/mfR11Yw50mmPInkd4MC0KLU7PV+XUA==}
+
   typescript-paths@1.5.1:
     resolution: {integrity: sha512-lYErSLCON2MSplVV5V/LBgD4UNjMgY3guATdFCZY2q1Nr6OZEu4q6zX/rYMsG1TaWqqQSszg6C9EU7AGWMDrIw==}
     peerDependencies:
       typescript: ^4.7.2 || ^5
+
+  typescript@3.2.4:
+    resolution: {integrity: sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
 
   typescript@5.6.3:
     resolution: {integrity: sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==}
@@ -11291,6 +11307,8 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
+  marked@0.7.0: {}
+
   math-intrinsics@1.1.0: {}
 
   mdast-util-directive@3.1.0:
@@ -13409,9 +13427,16 @@ snapshots:
     dependencies:
       is-typedarray: 1.0.0
 
+  typedocs@0.6.7:
+    dependencies:
+      marked: 0.7.0
+      typescript: 3.2.4
+
   typescript-paths@1.5.1(typescript@5.6.3):
     dependencies:
       typescript: 5.6.3
+
+  typescript@3.2.4: {}
 
   typescript@5.6.3: {}
 
