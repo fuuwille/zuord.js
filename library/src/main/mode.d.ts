@@ -14,4 +14,7 @@ type zuordModeAPI = {
 
 export declare const zuordMode: zuordModeAPI;
 
+// @zuord-exclude
+export type ZuordMode = any;
+
 export type * as ZuordMode from "./mode.types";
