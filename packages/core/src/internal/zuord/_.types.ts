@@ -10,3 +10,5 @@ export type ModeResolve<TModes> = TModes extends [...infer TRest, infer TLast] ?
         ) extends infer TValue extends boolean ? TValue : false
     } : never
 ) : {};
+
+export type ModeBundle<TMode> = [TMode, Partial<TMode>];
