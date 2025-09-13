@@ -1,1 +1,1 @@
-export * as zuordModeX from "./index.runtime";
+export * as $zuordMode from "./index.runtime";
