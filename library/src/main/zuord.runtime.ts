@@ -1,6 +1,6 @@
 import { zuordX } from "../extended";
 
-export const integrate = zuordX.integrate.loose;
+export const integrate = zuordX.integrate.restrict;
 
 export const merge = zuordX.merge.loose;
 

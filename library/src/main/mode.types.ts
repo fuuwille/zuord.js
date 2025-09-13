@@ -1,15 +1,11 @@
 import type { ZuordModeX } from "../extended";
 
-export type Integrate = ZuordModeX.Integrate.Plain;
+export type Integrate = ZuordModeX.Integrate.Restrict;
 
-export type IntegrateArray = ZuordModeX.Integrate.Array;
+export type Merge = ZuordModeX.Merge.Loose;
 
-export type Merge = ZuordModeX.Merge.Plain;
+export type Evolve = ZuordModeX.Evolve.Restrict;
 
-export type MergeArray = ZuordModeX.Merge.Array;
+export type Pick = ZuordModeX.Pick.Loose;
 
-export type Evolve = ZuordModeX.Evolve.Plain;
-
-export type Pick = ZuordModeX.Pick.Plain;
-
-export type Omit = ZuordModeX.Omit.Plain;
+export type Omit = ZuordModeX.Omit.Loose;

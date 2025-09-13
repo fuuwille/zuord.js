@@ -1,15 +1,11 @@
 import { zuordModeX } from "../extended";
 
-export const integrate = zuordModeX.integrate.plain;
+export const integrate = zuordModeX.integrate.restrict;
 
-export const integrateArray = zuordModeX.integrate.array;
+export const merge = zuordModeX.merge.loose;
 
-export const merge = zuordModeX.merge.plain;
+export const evolve = zuordModeX.evolve.restrict;
 
-export const mergeArray = zuordModeX.merge.array;
+export const pick = zuordModeX.pick.loose;
 
-export const evolve = zuordModeX.evolve.plain;
-
-export const pick = zuordModeX.pick.plain;
-
-export const omit = zuordModeX.omit.plain;
+export const omit = zuordModeX.omit.loose;
