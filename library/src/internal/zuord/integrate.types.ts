@@ -8,9 +8,9 @@ export type ResolveAny<TBase, TOverlay, TMode> = (
 );
 
 export type Plain<TBase, TOverlay, TMode> = (
-    [TMode] extends [infer TMode extends Core.Mode.Flags] ? (
+    [TMode] extends [infer TMode extends Core.ModeRecord] ? (
         ResolvePlain<TBase, TOverlay, TMode> extends infer TPlain extends ZuordType.Plain ? (
-            Util.Unify.Plain<TPlain, Core.Mode.Resolve<[TMode, { unifyArray: true }]>>
+            Util.Unify.Plain<TPlain, Core.ModeResolve<[TMode, { unifyArray: true }]>>
         ) : never
     ) : never
 );
@@ -34,7 +34,7 @@ export type ResolvePlainExtras<TBase, TOverlay> = ({
 });
 
 export type Array<TBase, TOverlay, TMode> = (
-    [TMode] extends [infer TMode extends Core.Mode.Flags] ? (
+    [TMode] extends [infer TMode extends Core.ModeRecord] ? (
         ResolveArray<TBase, TOverlay, { concat: true }> extends infer TArray extends ZuordType.Array ? (
             Util.Unify.Array<TArray, TMode>
         ) : never
