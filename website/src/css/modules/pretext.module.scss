@@ -1,10 +1,4 @@
 .pretext {
-    background: transparent;
-    font-size: 14px;
-    padding: 3px;
-    margin: 3px;
-    overflow: hidden;
-
     .token {
         position: relative;
         justify-content: center;
@@ -68,4 +62,12 @@
             }
         }
     }
+}
+
+.pretext.flatten {
+    background: transparent;
+    font-size: 14px;
+    padding: 3px;
+    margin: 3px;
+    overflow: hidden;
 }
