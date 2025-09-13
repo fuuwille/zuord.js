@@ -1,3 +1,3 @@
-import { $ZuordMode } from "library/src/internal";
+import { $ZuordMode } from "../../internal";
 
 export type Loose = $ZuordMode.Pick.Plain;
