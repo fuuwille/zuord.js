@@ -1,5 +1,5 @@
 import { zuordType, ZuordType } from "@zuord/type";
-import { $ZuordCore, zuordCore, ZuordCore } from "@zuord/core";
+import { ZuordCore } from "@zuord/core";
 import { $ZuordMode } from "../mode";
 
 export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
