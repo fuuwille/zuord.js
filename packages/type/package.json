@@ -1,11 +1,11 @@
 {
   "name": "@zuord/type",
-  "version": "2.0.0-alpha.15",
+  "version": "2.0.0-alpha.18",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*.d.ts\" dist"
+    "build": "rimraf dist && rollup -c && cpy \"src/**/*{.js,.d.ts}\" dist"
   },
   "keywords": [
     "zuord"
