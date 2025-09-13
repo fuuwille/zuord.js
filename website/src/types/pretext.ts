@@ -5,6 +5,7 @@ export type PretextProps = {
     design?: {
         selectable?: boolean;
         preWrap?: boolean;
+        flatten?: boolean;
         style?: Partial<React.CSSProperties>;
     }
 }

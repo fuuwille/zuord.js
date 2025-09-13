@@ -12,6 +12,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         modifiers: [],
         language: 'typescript',
         design: {
+            flatten: true,
             selectable: false,            
             preWrap: true,
             style: {},
@@ -19,10 +20,11 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
     }, $props);
 
     const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
+    const flatten = props.design.flatten || false;
 
     return (
         <pre 
-            className={clsx('pretext', style['pretext'])} 
+            className={clsx('pretext', style['pretext'], flatten ? style['flatten'] : null)} 
             style={{ 
                 userSelect: props.design.selectable ? 'text' : 'none',
                 whiteSpace: props.design.preWrap ? 'pre-wrap' : 'none',
