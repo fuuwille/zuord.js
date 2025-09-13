@@ -31,12 +31,12 @@
         }
     },
     "scripts": {
-        "cpy:lib": "cpy 'node_modules/zuord/dist/**/*' $/lib",
-        "cpy:type": "cpy 'node_modules/@zuord/type/dist/**/*' $/type",
-        "cpy:core": "cpy 'node_modules/@zuord/core/dist/**/*' $/core",
-        "cpy:trait": "cpy 'node_modules/@zuord/trait/dist/**/*' $/trait",
-        "cpy:util": "cpy 'node_modules/@zuord/util/dist/**/*' $/util",
-        "cpy": "npm run cpy:lib && npm run cpy:type && npm run cpy:core && npm run cpy:trait && npm run cpy:util",
-        "build": "rimraf $ lib type core trait util && npm run cpy && rollup -c"
+        "extract:lib": "node extractor.js node_modules/zuord/dist $/lib",
+        "extract:type": "node extractor.js node_modules/@zuord/type/dist $/type",
+        "extract:core": "node extractor.js node_modules/@zuord/core/dist $/core",
+        "extract:trait": "node extractor.js node_modules/@zuord/trait/dist $/trait",
+        "extract:util": "node extractor.js node_modules/@zuord/util/dist $/util",
+        "extract": "npm run extract:lib && npm run extract:type && npm run extract:core && npm run extract:trait && npm run extract:util",
+        "build": "rimraf $ lib type core trait util && npm run extract && rollup -c"
     }
 }
