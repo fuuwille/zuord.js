@@ -1,4 +1,4 @@
-export const plain = <T, P, TMode>(plain: T, pattern: P, _omit: TMode) => {
+export const plain = <TSource, TPattern, TMode>(plain: TSource, pattern: TPattern, _omit: TMode) => {
     const result: any = {};
     const stack: Array<{ source: any; pattern: any; target: any }> = [
         { source: plain, pattern, target: result },
