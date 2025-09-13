@@ -10,6 +10,7 @@ type $zuordCoreAPI = {
 
 export declare const $zuordCore: $zuordCoreAPI;
 
-export type $ZuordCore = {};
+// @zuord-exclude
+export type $ZuordCore = any;
 
 export type * as $ZuordCore from "./index.types";
