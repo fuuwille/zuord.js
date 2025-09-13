@@ -14,4 +14,6 @@ type zuordModeXAPI = {
 
 export declare const zuordModeX: zuordModeXAPI;
 
+export type ZuordModeX = {};
+
 export type * as ZuordModeX from "./index.types";

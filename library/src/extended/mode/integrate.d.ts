@@ -10,4 +10,6 @@ type integrateAPI = {
 
 export declare const integrate: integrateAPI;
 
+export type Integrate = {};
+
 export type * as Integrate from "./integrate.types";
