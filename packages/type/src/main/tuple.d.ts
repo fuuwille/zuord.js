@@ -10,4 +10,7 @@ type zuordTupleAPI = {
 
 export declare const zuordTuple: zuordTupleAPI;
 
+// @zuord-exclude
+export type ZuordTuple = any;
+
 export type * as ZuordTuple from "./tuple.types";

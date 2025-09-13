@@ -8,4 +8,7 @@ type zuordPlainAPI = {
 
 export declare const zuordPlain: zuordPlainAPI;
 
+// @zuord-exclude
+export type ZuordPlain = any;
+
 export type * as ZuordPlain from "./plain.types";
