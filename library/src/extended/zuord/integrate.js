@@ -1,1 +1,1 @@
-export * as integrate from "./index.runtime";
+export * as integrate from "./integrate.runtime";
