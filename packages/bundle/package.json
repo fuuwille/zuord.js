@@ -6,7 +6,7 @@
         "@zuord/trait": "3.0.0-alpha.14",
         "@zuord/type": "2.0.0-alpha.15",
         "@zuord/util": "4.0.0-alpha.13",
-        "zuord": "5.0.0-alpha.14"
+        "zuord": "5.0.0-alpha.20"
     },
     "exports": {
         ".": {

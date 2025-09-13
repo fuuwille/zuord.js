@@ -21,8 +21,8 @@ importers:
         specifier: 4.0.0-alpha.13
         version: 4.0.0-alpha.13
       zuord:
-        specifier: 5.0.0-alpha.14
-        version: 5.0.0-alpha.14
+        specifier: 5.0.0-alpha.20
+        version: 5.0.0-alpha.20
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -94,8 +94,8 @@ importers:
         specifier: 4.0.0-alpha.13
         version: 4.0.0-alpha.13
       zuord:
-        specifier: 5.0.0-alpha.14
-        version: 5.0.0-alpha.14
+        specifier: 5.0.0-alpha.20
+        version: 5.0.0-alpha.20
 
   packages/core:
     devDependencies:
@@ -6267,8 +6267,8 @@ packages:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
 
-  zuord@5.0.0-alpha.14:
-    resolution: {integrity: sha512-W1Jk0kH1rATRyQhylAFv4FMqXlVhnCEvqNLVwWUm+hs5Yhv88bUa7UKvnWKhG5rHZx0xsUuaSjfow1HFCPV1Kw==}
+  zuord@5.0.0-alpha.20:
+    resolution: {integrity: sha512-5Vy/lebeceX1SCy4ukfuVVHp/ZT6iac6MdivWmTpYHKtaSiA8IcsnAwkOE33ogGp5HuwKa/l9dbN6qkyhNPoXA==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -13825,9 +13825,9 @@ snapshots:
 
   yocto-queue@1.2.1: {}
 
-  zuord@5.0.0-alpha.14:
+  zuord@5.0.0-alpha.20:
     dependencies:
-      '@zuord/core': 3.0.0-alpha.22
+      '@zuord/core': 3.0.0-alpha.27
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.15
       '@zuord/util': 4.0.0-alpha.13
