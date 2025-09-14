@@ -1,0 +1,29 @@
+.docsapi-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.docsapi-head {
+    .content {
+        display: inline
+    }
+
+    .content {
+        .tag {
+            display: inline-block;
+            padding: 0 6px;
+            margin-right: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            min-width: max-content;
+        }
+
+        .description {
+            display: inline;
+            vertical-align: top;
+            line-height: 20px;
+        }
+    }
+}
