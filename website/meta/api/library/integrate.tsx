@@ -2,14 +2,14 @@ import { getTokens, tokenModifier } from "@site/src/utils/pretext"
 
 export const signature = {
     runtime: [
-`zuord.integrate(source, patch, mode?)`,
+`zuord.integrate`,
 `function integrate <TSource, TPatch>(source: TSource, patch: TPatch) 
     : Zuord.Integrate<TSource, TPatch>`,
 `function integrate <TSource, TPatch, TMode>(source: TSource, patch: TPatch, mode: TMode)
     : Zuord.Integrate<TSource, TPatch, TMode>`
     ],
     type: [
-`Zuord.Integrate<TSource, TPatch, TMode?>`,
+`Zuord.Integrate`,
 `type Integrate<TSource, TPatch>`,
 `type Integrate<TSource, TPatch, TMode>`
     ]
@@ -30,7 +30,7 @@ export const tokens = {
 
 export const modifiers = {
     runtime: [
-        [tokenModifier.const("zuord")],
+        [tokenModifier.const("zuord"), tokenModifier.func("integrate")],
         [tokenModifier.type("Zuord", "Integrate")],
         [tokenModifier.type("Zuord", "Integrate")]
     ],
