@@ -5,20 +5,20 @@ sidebar_label: integrate
 sidebar_position: 1
 ---
 
-import { tokens } from '@site/meta/api/library/integrate';
+import { tokens, modifiers } from '@site/meta/api/library/integrate';
 import { Pretext } from '@site/src/components/pretext';
 
 # Zuord Integrate
 
 ### Runtime: ```zuord.integrate()```
 
-<Pretext source={tokens.runtime[0]} />
-<Pretext source={tokens.runtime[1]} design={{ flatten: false }} />
-<Pretext source={tokens.runtime[2]} design={{ flatten: false }} />
+<Pretext source={tokens.runtime[0]} modifiers={modifiers.runtime[0]}/>
+<Pretext source={tokens.runtime[1]} modifiers={modifiers.runtime[1]} design={{ flatten: false }} />
+<Pretext source={tokens.runtime[2]} modifiers={modifiers.runtime[2]} design={{ flatten: false }} />
 
 
 ### Type: ```Zuord.Integrate<>```
 
-<Pretext source={tokens.type[0]} />
+<Pretext source={tokens.type[0]} modifiers={modifiers.type[0]} />
 <Pretext source={tokens.type[1]} design={{ flatten: false }} />
 <Pretext source={tokens.type[2]} design={{ flatten: false }} />
