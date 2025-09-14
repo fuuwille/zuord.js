@@ -38,10 +38,12 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
                         let meta = { Body: PretextTokenBody.Native, content: token.content, tips: null, style: { color: token.color } };
                         let patchedStyle = { };
 
-                        for (const modifier of props.modifiers) {
-                            if (modifier.predicate(meta.content)) {
-                                meta = zuord.integrate(meta, modifier.props || {});
-                                patchedStyle = zuordX.integrate.loose(patchedStyle, modifier.props.style || {});
+                        if(props.modifiers) {
+                            for (const modifier of props.modifiers) {
+                                if (modifier?.predicate?.(meta.content)) {
+                                    meta = zuord.integrate(meta, modifier.props || {});
+                                    patchedStyle = zuordX.integrate.loose(patchedStyle, modifier.props.style || {});
+                                }
                             }
                         }
 
