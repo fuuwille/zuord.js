@@ -7,7 +7,7 @@ export const DocsapiDefinition : React.FC<{ pretext: PretextProps, description: 
         <div className={style['docsapi-definition']}>
             <div className={style['content']}>
                 <div className={style['head']}>
-                    <Pretext {...props.pretext} style={{ padding: 0, margin: 0 }} design={{ selectable: true }} />
+                    <Pretext {...props.pretext} style={{ display: 'inline', padding: 0, margin: 0 }} design={{ selectable: true }} />
                 </div>
                 <div className={style['separator']}>
                     :
