@@ -15,10 +15,13 @@
         .tag {
             display: inline-block;
             padding: 0 6px;
-            margin-right: 6px;
             border: 1px solid #ccc;
             border-radius: 8px;
             min-width: max-content;
+        }
+
+        .separator {
+            padding: 0 6px;
         }
 
         .description {
