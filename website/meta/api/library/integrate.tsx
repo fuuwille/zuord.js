@@ -17,10 +17,12 @@ export const signature = {
 
 export const tokens = {
     runtime: [
+        getTokens(signature.runtime[0]),
         getTokens(signature.runtime[1]),
         getTokens(signature.runtime[2])
     ],
     type: [
+        getTokens(signature.type[0]),
         getTokens(signature.type[1]),
         getTokens(signature.type[2])
     ]
