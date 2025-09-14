@@ -32,7 +32,7 @@ export const modifiers = {
     runtime: [
         [tokenModifier.const("zuord")],
         [tokenModifier.type("Zuord", "Integrate")],
-        null
+        [tokenModifier.type("Zuord", "Integrate")]
     ],
     type: [
         [tokenModifier.allType()],
