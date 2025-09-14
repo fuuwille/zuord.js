@@ -23,3 +23,14 @@ import { DocsapiDefinition, DocsapiSignature } from '@site/src/components/docsap
 <DocsapiDefinition pretext={{ source: tokens.type[0], modifiers: modifiers.type[0] }} description="Produces a new type with the given patch integrated into the source." />
 <DocsapiSignature pretext={{ source: tokens.type[1], modifiers: modifiers.type[1] }} />
 <DocsapiSignature pretext={{ source: tokens.type[2], modifiers: modifiers.type[2] }} />
+
+### Demonstration / Integrate
+
+<Pretext source={`
+import { zuord } from 'zuord';
+const source = { a: { b: { x: "zuord", y: "is" } } };
+const patch = { a: { b: { z: "cool" as const } } };
+const out = zuord.integrate(source, patch);
+// Value: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
+// Type: { a: { b: { x: string, y: string, z: "cool" } } }`} design={{ flatten: false }}
+/>
