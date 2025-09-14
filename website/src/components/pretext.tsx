@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export const Pretext: React.FC<PretextProps> = ($props) => {
     const props = zuord.integrate({
-        text: '',
+        source: [],
         modifiers: [],
         language: 'typescript',
         design: {
@@ -19,7 +19,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
         }
     }, $props);
 
-    const { tokens } = highlighter.codeToTokens(props.text, { lang: 'ts', theme: 'dark-plus' });
+    const tokens = typeof props.source == "string" ? highlighter.codeToTokens(props.source, { lang: 'ts', theme: 'dark-plus' }).tokens : props.source;
     const flatten = props.design.flatten || false;
 
     return (
