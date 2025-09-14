@@ -8,8 +8,8 @@ export type PretextProps = {
         selectable?: boolean;
         preWrap?: boolean;
         flatten?: boolean;
-        style?: Partial<React.CSSProperties>;
     }
+    style?: Partial<React.CSSProperties>;
 }
 
 export type PretextTokenData = {

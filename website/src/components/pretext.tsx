@@ -15,8 +15,8 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
             flatten: true,
             selectable: false,            
             preWrap: true,
-            style: {},
-        }
+        },
+        style: {}
     }, $props);
 
     const tokens = typeof props.source == "string" ? highlighter.codeToTokens(props.source, { lang: 'ts', theme: 'dark-plus' }).tokens : props.source;
@@ -28,7 +28,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
             style={{ 
                 userSelect: props.design.selectable ? 'text' : 'none',
                 whiteSpace: props.design.preWrap ? 'pre-wrap' : 'none',
-                ...props.design.style
+                ...props.style
             }}
         >
             {tokens.map((line, i) => (
