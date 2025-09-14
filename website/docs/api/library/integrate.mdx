@@ -5,6 +5,7 @@ sidebar_label: integrate
 sidebar_position: 1
 ---
 
+import { tokens } from '@site/meta/api/library/integrate';
 import { Pretext } from '@site/src/components/pretext';
 
 # Zuord Integrate
@@ -13,29 +14,13 @@ import { Pretext } from '@site/src/components/pretext';
 
 #### ```zuord.integrate(source, patch, mode?)```
 
-<Pretext 
-    source={
-`function integrate <TSource, TPatch>(source: TSource, patch: TPatch) 
-    : Zuord.Integrate<TSource, TPatch>`} design={{ flatten: false }}
-/>
+<Pretext source={tokens.runtime[0]} design={{ flatten: false }} />
+<Pretext source={tokens.runtime[1]} design={{ flatten: false }} />
 
-<Pretext 
-    source={
-`function integrate <TSource, TPatch, TMode>(source: TSource, patch: TPatch, mode: TMode)
-    : Zuord.Integrate<TSource, TPatch, TMode>`} design={{ flatten: false }}
-/>
 
 ### Type: ```Zuord.Integrate<>```
 
 #### ```Zuord.Integrate<TSource, TPatch, TMode?>```
 
-<Pretext 
-    source={`type Integrate<TSource, TPatch>`}
-    design={{ flatten: false }}
-/>
-
-<Pretext 
-    source={`type Integrate<TSource, TPatch, TMode>`}
-    design={{ flatten: false }}
-/>
-
+<Pretext source={tokens.type[0]} design={{ flatten: false }} />
+<Pretext source={tokens.type[1]} design={{ flatten: false }} />
