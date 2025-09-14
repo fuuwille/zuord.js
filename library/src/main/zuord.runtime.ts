@@ -24,7 +24,14 @@ export function merge <TContents extends ZuordPlain.Array, TMode extends Partial
 export function merge <TContents extends ZuordPlain.Array, TMode extends Partial<ZuordMode.Merge>> (contents: [...TContents], mode: TMode = {} as TMode)
     : Zuord.Merge<TContents, TMode> { return $zuord.merge.plain(contents, zuordCore.modeResolve([zuordMode.merge, mode])); }
 
-export const evolve = zuordX.evolve.restrict;
+export function evolve <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>> (source: TSource, patches: [...TPatches])
+    : Zuord.Evolve<TSource, TPatches>;
+
+export function evolve <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordMode.Evolve>> (source: TSource, patches: [...TPatches], mode: TMode)
+    : Zuord.Evolve<TSource, TPatches, TMode>;
+
+export function evolve <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordMode.Evolve>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
+    : Zuord.Evolve<TSource, TPatches, TMode> { return $zuord.evolve.plain(source, patches, zuordCore.modeResolve([zuordMode.evolve, mode])); }
 
 export const pick = zuordX.pick.loose;
 
