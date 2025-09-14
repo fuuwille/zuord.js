@@ -1,4 +1,4 @@
-import { getTokens } from "@site/src/utils/pretext"
+import { getTokens, tokenModifier } from "@site/src/utils/pretext"
 
 export const signature = {
     runtime: [
@@ -25,5 +25,18 @@ export const tokens = {
         getTokens(signature.type[0]),
         getTokens(signature.type[1]),
         getTokens(signature.type[2])
+    ]
+}
+
+export const modifiers = {
+    runtime: [
+        [tokenModifier.const("zuord")],
+        [tokenModifier.type("Zuord", "Integrate")],
+        null
+    ],
+    type: [
+        [tokenModifier.allType()],
+        null,
+        null
     ]
 }
