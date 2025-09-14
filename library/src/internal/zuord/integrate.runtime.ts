@@ -2,6 +2,9 @@ import { zuordType, ZuordType } from "@zuord/type";
 import { ZuordCore } from "@zuord/core";
 import { $ZuordMode } from "../mode";
 
+/**
+ * @internal
+ */
 export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
@@ -14,6 +17,9 @@ export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordTyp
     return resolvePlain(source, content, mode) as ZuordType.Plain;
 }
 
+/**
+ * @internal
+ */
 export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends ZuordType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
     const { shallow } = mode as ZuordCore.ModeRecord;
 
@@ -49,6 +55,9 @@ export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends Zuord
     return result;
 }
 
+/**
+ * @internal
+ */
 export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
@@ -61,6 +70,9 @@ export const array = <TSource extends ZuordType.Array, TContent extends ZuordTyp
     return resolveArray(source, content, mode) as ZuordType.Array;
 }
 
+/**
+ * @internal
+ */
 export const resolveArray = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
     const { concat, unique } = mode as ZuordCore.ModeRecord;
 

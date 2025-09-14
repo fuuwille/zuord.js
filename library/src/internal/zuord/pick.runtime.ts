@@ -1,3 +1,6 @@
+/**
+ * @internal
+ */
 export const plain = <TSource, TPattern, TMode>(plain: TSource, pattern: TPattern, _mode: TMode) => {
     const result: any = {};
     const stack: Array<{ source: any; pattern: any; target: any }> = [
