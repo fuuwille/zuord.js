@@ -1,18 +1,18 @@
-.docsapi-head {
+.docsapi-definition {
     display: flex;
     align-items: center;
     gap: 8px;
     margin: 16px 0;
 }
 
-.docsapi-head {
+.docsapi-definition {
     .content {
         display: inline-flex;
         align-items: center;
     }
 
     .content {
-        .tag {
+        .head {
             display: inline-block;
             padding: 0 6px;
             border: 1px solid #ccc;
@@ -24,7 +24,7 @@
             padding: 0 6px;
         }
 
-        .description {
+        .label {
             display: inline;
             line-height: 20px;
         }
