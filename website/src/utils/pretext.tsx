@@ -80,6 +80,10 @@ export const tokenModifier = {
     }
 }
 
+export function getTokens(text: string) {
+    return highlighter.codeToTokens(text, { lang: 'ts', theme: 'dark-plus' }).tokens;
+}
+
 interface TokenRange {
   startLine: number;
   startToken: number;
