@@ -19,3 +19,11 @@ export const DocsapiDefinition : React.FC<{ pretext: PretextProps, description: 
         </div>
     )
 }
+
+export const DocsapiSignature: React.FC<{ pretext: PretextProps }> = (props) => {
+    return (
+        <div className={style['docsapi-signature']}>
+            <Pretext {...props.pretext} design={{ flatten: false }} />
+        </div>
+    )
+}
