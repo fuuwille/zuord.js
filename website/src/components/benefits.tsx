@@ -40,8 +40,8 @@ export const BenefitsBody = {
     SyncAPI: (() => (  
         <div className={clsx(style['sync-api'])}>
             <div className={style['imports']}>
-                <Pretext text={`import { zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.const("zuord")]}/>
-                <Pretext text={`import { Zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.type("Zuord")]}/>
+                <Pretext source={`import { zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.const("zuord")]}/>
+                <Pretext source={`import { Zuord } from 'zuord';`} design={{ selectable: false, preWrap: false }} modifiers={[tokenModifier.type("Zuord")]}/>
             </div>
             <Showcase container={{
                 controls: [
@@ -63,7 +63,7 @@ export const BenefitsBody = {
     ZeroCostRT: (() => (
         <div className={clsx(style['zero-cost-rt'])}>
             <Pretext
-                text={`zuord.integrate = function ( ... ) : Zuord.Integrate => { ... }`}
+                source={`zuord.integrate = function ( ... ) : Zuord.Integrate => { ... }`}
                 design={{ selectable: false, preWrap: false }}
                 modifiers={[
                     tokenModifier.const("zuord"),

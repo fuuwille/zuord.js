@@ -14,13 +14,13 @@ import { Pretext } from '@site/src/components/pretext';
 #### ```zuord.integrate(source, patch, mode?)```
 
 <Pretext 
-    text={
+    source={
 `function integrate <TSource, TPatch>(source: TSource, patch: TPatch) 
     : Zuord.Integrate<TSource, TPatch>`} design={{ flatten: false }}
 />
 
 <Pretext 
-    text={
+    source={
 `function integrate <TSource, TPatch, TMode>(source: TSource, patch: TPatch, mode: TMode)
     : Zuord.Integrate<TSource, TPatch, TMode>`} design={{ flatten: false }}
 />
@@ -30,11 +30,12 @@ import { Pretext } from '@site/src/components/pretext';
 #### ```Zuord.Integrate<TSource, TPatch, TMode?>```
 
 <Pretext 
-    text={`type Integrate<TSource, TPatch>`}
+    source={`type Integrate<TSource, TPatch>`}
     design={{ flatten: false }}
 />
 
 <Pretext 
-    text={`type Integrate<TSource, TPatch, TMode>`}
+    source={`type Integrate<TSource, TPatch, TMode>`}
     design={{ flatten: false }}
 />
+

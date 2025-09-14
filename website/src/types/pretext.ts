@@ -1,5 +1,7 @@
+import { ThemedToken } from "shiki";
+
 export type PretextProps = {
-    text: string;
+    source: string | ThemedToken[][];
     modifiers?: PretextTokenModifier[];
     language?: Prism.Grammar;
     design?: {
