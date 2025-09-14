@@ -7,7 +7,8 @@ import { Pretext } from '@site/src/components/pretext';
 
 # Integrate API
 
-### ```zuord.integrate(source, patch, mode?)```
+### Runtime
+#### ```zuord.integrate(source, patch, mode?)```
 
 <Pretext 
     text={
@@ -19,4 +20,17 @@ import { Pretext } from '@site/src/components/pretext';
     text={
 `function integrate <TSource, TPatch, TMode>(source: TSource, patch: TPatch, mode: TMode)
     : Zuord.Integrate<TSource, TPatch, TMode>`} design={{ flatten: false }}
+/>
+
+### Type
+#### ```Zuord.Integrate<TSource, TPatch, TMode?>```
+
+<Pretext 
+    text={`type Integrate<TSource, TPatch>`}
+    design={{ flatten: false }}
+/>
+
+<Pretext 
+    text={`type Integrate<TSource, TPatch, TMode>`}
+    design={{ flatten: false }}
 />
