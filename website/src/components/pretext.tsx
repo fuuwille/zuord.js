@@ -32,7 +32,7 @@ export const Pretext: React.FC<PretextProps> = ($props) => {
             }}
         >
             {tokens.map((line, i) => (
-                <div key={i} style={{ minHeight: '24px', lineHeight: '24px' }}>
+                <div key={i}>
                     {line.map((token, j) => {
                         
                         let meta = { Body: PretextTokenBody.Native, content: token.content, tips: null, style: { color: token.color } };
