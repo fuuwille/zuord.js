@@ -33,6 +33,13 @@ export function evolve <TSource extends ZuordType.Plain, TPatches extends ZuordU
 export function evolve <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordMode.Evolve>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
     : Zuord.Evolve<TSource, TPatches, TMode> { return $zuord.evolve.plain(source, patches, zuordCore.modeResolve([zuordMode.evolve, mode])); }
 
-export const pick = zuordX.pick.loose;
+export function pick <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>> (source: TSource, pattern: TPattern)
+    : Zuord.Pick<TSource, TPattern>;
+
+export function pick <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>, TMode extends Partial<ZuordMode.Pick>> (source: TSource, pattern: TPattern, mode: TMode)
+    : Zuord.Pick<TSource, TPattern, TMode>;
+
+export function pick <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>, TMode extends Partial<ZuordMode.Pick>> (source: TSource, pattern: TPattern, mode: TMode = {} as TMode)
+    : Zuord.Pick<TSource, TPattern, TMode> { return $zuord.pick.plain(source, pattern, zuordCore.modeResolve([zuordMode.pick, mode])); }
 
 export const omit = zuordX.omit.loose;
