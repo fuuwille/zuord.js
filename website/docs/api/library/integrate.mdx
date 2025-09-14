@@ -12,12 +12,16 @@ import { Pretext } from '@site/src/components/pretext';
 
 ### Runtime: ```zuord.integrate()```
 
+Produces a new object with the given patch integrated into the source
+
 <Pretext source={tokens.runtime[0]} modifiers={modifiers.runtime[0]}/>
 <Pretext source={tokens.runtime[1]} modifiers={modifiers.runtime[1]} design={{ flatten: false }} />
 <Pretext source={tokens.runtime[2]} modifiers={modifiers.runtime[2]} design={{ flatten: false }} />
 
 
 ### Type: ```Zuord.Integrate<>```
+
+Produces a new type with the given patch integrated into the source
 
 <Pretext source={tokens.type[0]} modifiers={modifiers.type[0]} />
 <Pretext source={tokens.type[1]} design={{ flatten: false }} />
