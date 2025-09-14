@@ -6,9 +6,15 @@ type evolveAPI = {
     array: typeof $array;
 };
 
+/**
+ * @internal
+ */
 export declare const evolve: evolveAPI;
 
 // @zuord-exclude
 export type Evolve = any;
 
+/**
+ * @internal
+ */
 export type * as Evolve from "./evolve.types";

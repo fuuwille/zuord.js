@@ -12,9 +12,15 @@ type $zuordAPI = {
     omit: typeof $omit;
 }
 
+/**
+ * @internal
+ */
 export declare const $zuord: $zuordAPI;
 
 // @zuord-exclude
 export type $Zuord = any;
 
+/**
+ * @internal
+ */
 export type * as $Zuord from "./index.types";

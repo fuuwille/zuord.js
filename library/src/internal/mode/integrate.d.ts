@@ -6,9 +6,15 @@ type integrateAPI = {
     array: typeof $array;
 }
 
+/**
+ * @internal
+ */
 export declare const integrate: integrateAPI;
 
 // @zuord-exclude
 export type Integrate = any;
 
+/**
+ * @internal
+ */
 export type * as Integrate from "./integrate.types";

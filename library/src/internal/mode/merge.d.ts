@@ -6,9 +6,15 @@ type mergeAPI = {
     array: typeof $array;
 }
 
+/**
+ * @internal
+ */
 export declare const merge: mergeAPI;
 
 // @zuord-exclude
 export type Merge = any;
 
+/**
+ * @internal
+ */
 export type * as Merge from "./merge.types";

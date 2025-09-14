@@ -12,9 +12,15 @@ type $zuordModeAPI = {
     omit: typeof $omit;
 }
 
+/**
+ * @internal
+ */
 export declare const $zuordMode: $zuordModeAPI;
 
 // @zuord-exclude
 export type $ZuordMode = any;
 
+/**
+ * @internal
+ */
 export type * as $ZuordMode from "./index.types";
