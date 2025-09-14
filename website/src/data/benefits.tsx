@@ -64,35 +64,35 @@ export const benefitsBodyData = {
             Integrate: benefitsBodyUtil.syncAPI.control({
                 text: "Integrate",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Integrate<TSource, TPatch>`} modifiers={tokenModifier.allType()} />} />,
+                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Integrate<TSource, TPatch>`} modifiers={[tokenModifier.allType()]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Integrates the patch into the source type."} />
                 },
             }),
             Merge: benefitsBodyUtil.syncAPI.control({
                 text: "Merge",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Merge<TContents>`} modifiers={tokenModifier.allType()} />} />,
+                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Merge<TContents>`} modifiers={[tokenModifier.allType()]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Merges multiple types into a single result."} />
                 },
             }),
             Evolve: benefitsBodyUtil.syncAPI.control({
                 text: "Evolve",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Evolve<TSource, TContents>`} modifiers={tokenModifier.allType()} />} />,
+                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Evolve<TSource, TContents>`} modifiers={[tokenModifier.allType()]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Evolves the source type using the provided contents."} />
                 },
             }),
             Pick: benefitsBodyUtil.syncAPI.control({
                 text: "Pick",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Pick<TSource, TPattern>`} modifiers={tokenModifier.allType()} />} />,
+                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Pick<TSource, TPattern>`} modifiers={[tokenModifier.allType()]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Picks types from the source based on the pattern."} />
                 },
             }),
             Omit: benefitsBodyUtil.syncAPI.control({
                 text: "Omit",
                 inspector: {
-                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Omit<TSource, TPattern>`} modifiers={tokenModifier.allType()} />} />,
+                    head: <ShowcaseInspectorHead.Native content={<Pretext source={`Zuord.Omit<TSource, TPattern>`} modifiers={[tokenModifier.allType()]} />} />,
                     body: <ShowcaseInspectorBody.Description text={() => "Omits types from the source based on the pattern."} />
                 },
             }),
