@@ -1,5 +1,4 @@
 import { zuordMode } from "./mode";
-import { zuordX } from "../extended";
 import { $zuord } from "../internal";
 import { zuordCore } from "@zuord/core";
 import type { Zuord, ZuordMode } from ".";
@@ -42,4 +41,11 @@ export function pick <TSource extends ZuordType.Plain, TPattern extends ZuordUti
 export function pick <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>, TMode extends Partial<ZuordMode.Pick>> (source: TSource, pattern: TPattern, mode: TMode = {} as TMode)
     : Zuord.Pick<TSource, TPattern, TMode> { return $zuord.pick.plain(source, pattern, zuordCore.modeResolve([zuordMode.pick, mode])); }
 
-export const omit = zuordX.omit.loose;
+export function omit <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>> (source: TSource, pattern: TPattern)
+    : Zuord.Omit<TSource, TPattern>;
+
+export function omit <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>, TMode extends Partial<ZuordMode.Omit>> (source: TSource, pattern: TPattern, mode: TMode)
+    : Zuord.Omit<TSource, TPattern, TMode>;
+
+export function omit <TSource extends ZuordType.Plain, TPattern extends ZuordUtil.Pattern.Plain<TSource>, TMode extends Partial<ZuordMode.Omit>> (source: TSource, pattern: TPattern, mode: TMode = {} as TMode)
+    : Zuord.Omit<TSource, TPattern, TMode> { return $zuord.omit.plain(source, pattern, zuordCore.modeResolve([zuordMode.omit, mode])); }
