@@ -28,8 +28,8 @@ type TPatch = { a: { b: { z: "cool" } } };
 type TOut = Zuord.Integrate<TSource, TPatch>;`,
             },
             result: {
-                runtime: null,
-                type: null,
+                runtime: '',
+                type: '',
             }
         }
     ]
@@ -68,18 +68,18 @@ export const modifiers = {
     ],
     type: [
         [tokenModifier.allType()],
-        null,
-        null
+        undefined,
+        undefined
     ],
     demonstration: [
         {
             source: {
-                runtime: null,
-                type: null
+                runtime: undefined,
+                type: undefined
             },
             result: {
-                runtime: null,
-                type: null
+                runtime: undefined,
+                type: undefined
             }
         }
     ]
