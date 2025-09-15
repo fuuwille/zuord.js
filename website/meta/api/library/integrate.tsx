@@ -40,3 +40,16 @@ export const modifiers = {
         null
     ]
 }
+
+export const props = {
+    runtime: [
+        { pretext: { source: tokens.runtime[0], modifiers: modifiers.runtime[0] }, description: "Produces a new object with the given patch integrated into the source" },
+        { pretext: { source: tokens.runtime[1], modifiers: modifiers.runtime[1] }},
+        { pretext: { source: tokens.runtime[2], modifiers: modifiers.runtime[2] }}
+    ],
+    type: [
+        { pretext: { source: tokens.type[0], modifiers: modifiers.type[0] }, description: "Produces a new type with the given patch integrated into the source." },
+        { pretext: { source: tokens.type[1], modifiers: modifiers.type[1] }},
+        { pretext: { source: tokens.type[2], modifiers: modifiers.type[2] }}
+    ]
+}
