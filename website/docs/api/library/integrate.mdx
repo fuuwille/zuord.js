@@ -5,7 +5,7 @@ sidebar_label: integrate
 sidebar_position: 1
 ---
 
-import { tokens, modifiers } from '@site/meta/api/library/integrate';
+import { properties } from '@site/meta/api/library/integrate';
 import { Pretext } from '@site/src/components/pretext';
 import { DocsapiDefinition, DocsapiSignature } from '@site/src/components/docsapi';
 
@@ -13,16 +13,16 @@ import { DocsapiDefinition, DocsapiSignature } from '@site/src/components/docsap
 
 ### Runtime: ```zuord.integrate()```
 
-<DocsapiDefinition pretext={{ source: tokens.runtime[0], modifiers: modifiers.runtime[0] }} description="Produces a new object with the given patch integrated into the source" />
-<DocsapiSignature pretext={{ source: tokens.runtime[1], modifiers: modifiers.runtime[1] }} />
-<DocsapiSignature pretext={{ source: tokens.runtime[2], modifiers: modifiers.runtime[2] }} />
+<DocsapiDefinition {...properties.runtime[0]} />
+<DocsapiSignature {...properties.runtime[1]} />
+<DocsapiSignature {...properties.runtime[2]} />
 
 
 ### Type: ```Zuord.Integrate<>```
 
-<DocsapiDefinition pretext={{ source: tokens.type[0], modifiers: modifiers.type[0] }} description="Produces a new type with the given patch integrated into the source." />
-<DocsapiSignature pretext={{ source: tokens.type[1], modifiers: modifiers.type[1] }} />
-<DocsapiSignature pretext={{ source: tokens.type[2], modifiers: modifiers.type[2] }} />
+<DocsapiDefinition {...properties.type[0]} />
+<DocsapiSignature {...properties.type[1]} />
+<DocsapiSignature {...properties.type[2]} />
 
 ### Demonstration / Integrate
 
