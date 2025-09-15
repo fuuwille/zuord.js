@@ -1,6 +1,6 @@
 import { getTokens, tokenModifier } from "@site/src/utils/pretext"
 
-export const tokenSource = {
+export const source = {
     runtime: [
 `zuord.integrate`,
 `function integrate <TSource, TPatch>(source: TSource, patch: TPatch) 
@@ -17,14 +17,14 @@ export const tokenSource = {
 
 export const tokens = {
     runtime: [
-        getTokens(tokenSource.runtime[0]),
-        getTokens(tokenSource.runtime[1]),
-        getTokens(tokenSource.runtime[2])
+        getTokens(source.runtime[0]),
+        getTokens(source.runtime[1]),
+        getTokens(source.runtime[2])
     ],
     type: [
-        getTokens(tokenSource.type[0]),
-        getTokens(tokenSource.type[1]),
-        getTokens(tokenSource.type[2])
+        getTokens(source.type[0]),
+        getTokens(source.type[1]),
+        getTokens(source.type[2])
     ]
 }
 
