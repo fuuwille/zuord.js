@@ -5,9 +5,8 @@ sidebar_label: integrate
 sidebar_position: 1
 ---
 
+import { DocsapiDefinition, DocsapiExample, DocsapiSignature } from '@site/src/components/docsapi';
 import { properties } from '@site/meta/api/library/integrate';
-import { Pretext } from '@site/src/components/pretext';
-import { DocsapiDefinition, DocsapiSignature } from '@site/src/components/docsapi';
 
 # Zuord Integrate
 
@@ -24,13 +23,12 @@ import { DocsapiDefinition, DocsapiSignature } from '@site/src/components/docsap
 <DocsapiSignature {...properties.type[1]} />
 <DocsapiSignature {...properties.type[2]} />
 
-### Demonstration / Integrate
+### Demonstration / integrate
 
-<Pretext source={`
+<DocsapiExample source={`
 import { zuord } from 'zuord';
 const source = { a: { b: { x: "zuord", y: "is" } } };
 const patch = { a: { b: { z: "cool" as const } } };
 const out = zuord.integrate(source, patch);
 // Value: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
-// Type: { a: { b: { x: string, y: string, z: "cool" } } }`} design={{ flatten: false }}
-/>
+// Type: { a: { b: { x: string, y: string, z: "cool" } } }`} />
