@@ -41,7 +41,7 @@ export const modifiers = {
     ]
 }
 
-export const props = {
+export const properties = {
     runtime: [
         { pretext: { source: tokens.runtime[0], modifiers: modifiers.runtime[0] }, description: "Produces a new object with the given patch integrated into the source" },
         { pretext: { source: tokens.runtime[1], modifiers: modifiers.runtime[1] }},
