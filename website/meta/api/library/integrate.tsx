@@ -12,6 +12,26 @@ export const source = {
 `Zuord.Integrate`,
 `type Integrate<TSource, TPatch>`,
 `type Integrate<TSource, TPatch, TMode>`
+    ],
+    demonstration: [
+        {
+            source: {
+                runtime:
+`import { zuord } from 'zuord';
+const source = { a: { b: { x: "zuord", y: "is" } } };
+const patch = { a: { b: { z: "cool" as const } } };
+const out = zuord.integrate(source, patch);`,
+                type:
+`import { zuord } from 'zuord';
+type TSource = { a: { b: { x: string, y: string } } };
+type TPatch = { a: { b: { z: "cool" } } };
+type TOut = Zuord.Integrate<TSource, TPatch>;`,
+            },
+            result: {
+                runtime: null,
+                type: null,
+            }
+        }
     ]
 }
 
