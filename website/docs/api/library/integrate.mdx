@@ -25,10 +25,4 @@ import { properties } from '@site/meta/api/library/integrate';
 
 ### Demonstration / integrate
 
-<DocsapiExample source={`
-import { zuord } from 'zuord';
-const source = { a: { b: { x: "zuord", y: "is" } } };
-const patch = { a: { b: { z: "cool" as const } } };
-const out = zuord.integrate(source, patch);
-// Value: { a: { b: { x: "zuord", y: "is", z: "cool" } } }
-// Type: { a: { b: { x: string, y: string, z: "cool" } } }`} />
+<DocsapiExample {...properties.demonstration[0]} />
