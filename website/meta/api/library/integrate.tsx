@@ -45,6 +45,18 @@ export const tokens = {
         getTokens(source.type[0]),
         getTokens(source.type[1]),
         getTokens(source.type[2])
+    ],
+    demonstration: [
+        {
+            source: {
+                runtime: getTokens(source.demonstration[0].source.runtime),
+                type: getTokens(source.demonstration[0].source.type)
+            },
+            result: {
+                runtime: getTokens(source.demonstration[0].result.runtime),
+                type: getTokens(source.demonstration[0].result.type)
+            }
+        }
     ]
 }
 
@@ -58,6 +70,18 @@ export const modifiers = {
         [tokenModifier.allType()],
         null,
         null
+    ],
+    demonstration: [
+        {
+            source: {
+                runtime: null,
+                type: null
+            },
+            result: {
+                runtime: null,
+                type: null
+            }
+        }
     ]
 }
 
@@ -71,5 +95,17 @@ export const properties = {
         { pretext: { source: tokens.type[0], modifiers: modifiers.type[0] }, description: "Produces a new type with the given patch integrated into the source." },
         { pretext: { source: tokens.type[1], modifiers: modifiers.type[1] }},
         { pretext: { source: tokens.type[2], modifiers: modifiers.type[2] }}
+    ],
+    demonstration: [
+        {
+            source: {
+                runtime: { pretext: { source: tokens.demonstration[0].source.runtime, modifiers: modifiers.demonstration[0].source.runtime } },
+                type: { pretext: { source: tokens.demonstration[0].source.type, modifiers: modifiers.demonstration[0].source.type } }
+            },
+            result: {
+                runtime: { pretext: { source: tokens.demonstration[0].result.runtime, modifiers: modifiers.demonstration[0].result.runtime } },
+                type: { pretext: { source: tokens.demonstration[0].result.type, modifiers: modifiers.demonstration[0].result.type } }
+            }
+        }
     ]
 }
