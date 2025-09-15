@@ -18,9 +18,24 @@ export const source = {
             source: {
                 runtime:
 `import { zuord } from 'zuord';
-const source = { a: { b: { x: "zuord", y: "is" } } };
-const patch = { a: { b: { z: "cool" as const } } };
-const out = zuord.integrate(source, patch);`,
+
+const defaultConfig = {
+    appName: 'MyApp',
+    maxUsers: 100,
+    api: {
+        endpoint: "https://api.example.com",
+        retryAttempts: 3,
+        logRequests: true,
+    }
+}
+    
+const config = zuord.integrate(defaultConfig, {
+    maxUsers: 200,
+    api: {
+        retryAttempts: 5,
+        timeout: 5000
+    }
+})`,
                 type:
 `import { zuord } from 'zuord';
 type TSource = { a: { b: { x: string, y: string } } };
