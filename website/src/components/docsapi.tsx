@@ -28,10 +28,10 @@ export const DocsapiSignature: React.FC<{ pretext: PretextProps }> = (props) => 
     )
 }
 
-export const DocsapiExample: React.FC<{ source: string }> = (props) => {
+export const DocsapiExample: React.FC<{ source: { runtime: { pretext: PretextProps } } }> = (props) => {
     return (
         <div className={style['docsapi-example']}>
-            <Pretext source={props.source} design={{ flatten: false }} />
+            <Pretext {...props.source.runtime.pretext} design={{ flatten: false }} />
         </div>
     )
 }
