@@ -1,7 +1,7 @@
-import { $ZuordMode } from "../../internal";
+import { $ProduceMode } from "../../internal";
 
-export type Loose = $ZuordMode.Integrate.Plain;
+export type Loose = $ProduceMode.Integrate.Plain;
 
-export type Restrict = $ZuordMode.Integrate.Plain;
+export type Restrict = $ProduceMode.Integrate.Plain;
 
-export type Array = $ZuordMode.Integrate.Array;
+export type Array = $ProduceMode.Integrate.Array;

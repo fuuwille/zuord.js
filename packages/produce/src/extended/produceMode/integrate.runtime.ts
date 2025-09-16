@@ -1,9 +1,8 @@
-import { $zuordMode } from "../../internal";
+import { $produceMode } from "../../internal";
+import type { ProduceModeX } from ".";
 
-import type { ZuordXMode } from ".";
+export const loose = $produceMode.integrate.plain satisfies ProduceModeX.Integrate.Loose;
 
-export const loose = $zuordMode.integrate.plain satisfies ZuordXMode.Integrate.Loose;
+export const restrict = $produceMode.integrate.plain satisfies ProduceModeX.Integrate.Restrict;
 
-export const restrict = $zuordMode.integrate.plain satisfies ZuordXMode.Integrate.Restrict;
-
-export const array = $zuordMode.integrate.array satisfies ZuordXMode.Integrate.Array;
+export const array = $produceMode.integrate.array satisfies ProduceModeX.Integrate.Array;

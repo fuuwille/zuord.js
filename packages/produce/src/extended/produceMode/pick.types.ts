@@ -1,3 +1,3 @@
-import { $ZuordMode } from "../../internal";
+import { $ProduceMode } from "../../internal";
 
-export type Loose = $ZuordMode.Pick.Plain;
+export type Loose = $ProduceMode.Pick.Plain;

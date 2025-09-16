@@ -1,4 +1,4 @@
-import type { ZuordXMode } from ".";
-import { $zuordMode } from "../../internal";
+import type { ProduceModeX } from ".";
+import { $produceMode } from "../../internal";
 
-export const loose = $zuordMode.omit.plain satisfies ZuordXMode.Omit.Loose;
+export const loose = $produceMode.omit.plain satisfies ProduceModeX.Omit.Loose;

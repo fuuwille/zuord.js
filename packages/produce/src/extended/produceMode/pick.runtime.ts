@@ -1,4 +1,4 @@
-import type { ZuordXMode } from ".";
-import { $zuordMode } from "../../internal";
+import { $produceMode } from "../../internal";
+import type { ProduceModeX } from ".";
 
-export const loose = $zuordMode.pick.plain satisfies ZuordXMode.Pick.Loose;
+export const loose = $produceMode.pick.plain satisfies ProduceModeX.Pick.Loose;

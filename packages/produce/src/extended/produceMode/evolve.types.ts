@@ -1,5 +1,5 @@
-import type { ZuordXMode } from ".";
+import type { ProduceModeX } from ".";
 
-export type Restrict = ZuordXMode.Integrate.Restrict;
+export type Restrict = ProduceModeX.Integrate.Restrict;
 
-export type Array = ZuordXMode.Integrate.Array;
+export type Array = ProduceModeX.Integrate.Array;

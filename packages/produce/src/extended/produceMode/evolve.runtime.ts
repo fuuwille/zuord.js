@@ -1,9 +1,6 @@
 import { integrate } from "./integrate";
-import type { ZuordXMode } from ".";
+import type { ProduceModeX } from ".";
 
+export const restrict = integrate.restrict satisfies ProduceModeX.Evolve.Restrict;
 
-//
-
-export const restrict = integrate.restrict satisfies ZuordXMode.Evolve.Restrict;
-
-export const array = integrate.array satisfies ZuordXMode.Evolve.Array;
+export const array = integrate.array satisfies ProduceModeX.Evolve.Array;
