@@ -1,1 +1,0 @@
-export type * as $ZuordTrait from "./index.types";

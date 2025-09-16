@@ -1,1 +1,1 @@
-export type { $ZuordTrait } from "./zuord";
+export type * as $ZuordTrait from "./index.types";
