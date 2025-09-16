@@ -1,2 +1,2 @@
-export type { $TypeTrait as $ZuordTrait } from "./internal";
-export type { TypeTrait as ZuordTrait } from "./main";
+export type { $TypeTrait } from "./internal";
+export type { TypeTrait } from "./main";
