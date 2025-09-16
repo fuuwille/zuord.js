@@ -1,0 +1,1 @@
+export * as zuordArray from "./arrayType.runtime";
