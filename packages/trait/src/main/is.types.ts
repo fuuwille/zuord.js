@@ -1,4 +1,4 @@
-import { $TypeTrait } from "../../internal";
+import { $TypeTrait } from "../internal";
 
 export type Base<TSource extends unknown, TBase extends unknown> = $TypeTrait.Is.Base<TSource, TBase>;
 

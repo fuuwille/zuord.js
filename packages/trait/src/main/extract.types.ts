@@ -1,4 +1,4 @@
-import { $TypeTrait } from "../../internal";
+import { $TypeTrait } from "../internal";
 
 export type Is<TSource extends unknown, TExtract extends unknown> = $TypeTrait.Extract.Is<TSource, TExtract>;
 

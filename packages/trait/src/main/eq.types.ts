@@ -1,4 +1,4 @@
-import { $TypeTrait } from "../../internal";
+import { $TypeTrait } from "../internal";
 import { FundType } from "@zuord/type";
 
 export type Both<T1 extends unknown, T2 extends unknown> = $TypeTrait.Eq.Both<T1, T2>;
