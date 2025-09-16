@@ -1,5 +1,5 @@
-import type { ZuordModeX } from ".";
+import type { ZuordXMode } from ".";
 
-export type Loose = ZuordModeX.Integrate.Loose;
+export type Loose = ZuordXMode.Integrate.Loose;
 
-export type Array = ZuordModeX.Integrate.Array;
+export type Array = ZuordXMode.Integrate.Array;

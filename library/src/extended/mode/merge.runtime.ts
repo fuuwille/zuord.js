@@ -1,9 +1,9 @@
 import { integrate } from "./integrate";
-import type { ZuordModeX } from ".";
+import type { ZuordXMode } from ".";
 
 
 //
 
-export const loose = integrate.loose satisfies ZuordModeX.Merge.Loose;
+export const loose = integrate.loose satisfies ZuordXMode.Merge.Loose;
 
-export const array = integrate.array satisfies ZuordModeX.Merge.Array;
+export const array = integrate.array satisfies ZuordXMode.Merge.Array;

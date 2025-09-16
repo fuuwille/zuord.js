@@ -1,4 +1,4 @@
-import type { ZuordModeX } from ".";
+import type { ZuordXMode } from ".";
 import { $zuordMode } from "../../internal";
 
-export const loose = $zuordMode.pick.plain satisfies ZuordModeX.Pick.Loose;
+export const loose = $zuordMode.pick.plain satisfies ZuordXMode.Pick.Loose;

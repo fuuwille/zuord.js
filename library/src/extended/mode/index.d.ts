@@ -4,7 +4,7 @@ import type { evolve as $evolve } from "./index.runtime";
 import type { pick as $pick } from "./index.runtime";
 import type { omit as $omit } from "./index.runtime";
 
-type zuordModeXAPI = {
+type zuordXModeAPI = {
     integrate: typeof $integrate;
     merge: typeof $merge;
     evolve: typeof $evolve;
@@ -12,9 +12,9 @@ type zuordModeXAPI = {
     omit: typeof $omit;
 }
 
-export declare const zuordModeX: zuordModeXAPI;
+export declare const zuordXMode: zuordXModeAPI;
 
 // @zuord-exclude
-export type ZuordModeX = any;
+export type ZuordXMode = any;
 
-export type * as ZuordModeX from "./index.types";
+export type * as ZuordXMode from "./index.types";

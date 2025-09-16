@@ -1,5 +1,5 @@
 import { $zuord } from "../../internal";
-import { zuordModeX } from "../mode";
+import { zuordXMode } from "../mode";
 import { zuordCore } from "@zuord/core";
 import type { ZuordX, ZuordModeX } from "../../";
 import type { ZuordType } from "@zuord/type";
@@ -15,4 +15,4 @@ export function restrict <TSource extends ZuordType.Plain, TPatches extends Zuor
     : ZuordX.Evolve.Restrict<TSource, TPatches, TMode>;
 
 export function restrict <TSource extends ZuordType.Plain, TPatches extends ZuordUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ZuordModeX.Evolve.Restrict>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
-    : ZuordX.Evolve.Restrict<TSource, TPatches, TMode> { return $zuord.evolve.plain(source, patches, zuordCore.modeResolve([zuordModeX.evolve.restrict, mode])); }
+    : ZuordX.Evolve.Restrict<TSource, TPatches, TMode> { return $zuord.evolve.plain(source, patches, zuordCore.modeResolve([zuordXMode.evolve.restrict, mode])); }
