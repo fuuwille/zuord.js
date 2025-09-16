@@ -12,14 +12,14 @@ importers:
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
-        specifier: 3.0.0-alpha.14
-        version: 3.0.0-alpha.14
+        specifier: 3.0.0-alpha.18
+        version: 3.0.0-alpha.18
       '@zuord/type':
-        specifier: 2.0.0-alpha.18
-        version: 2.0.0-alpha.18
+        specifier: 2.0.0-alpha.25
+        version: 2.0.0-alpha.25
       '@zuord/util':
-        specifier: 4.0.0-alpha.17
-        version: 4.0.0-alpha.17
+        specifier: 4.0.0-alpha.22
+        version: 4.0.0-alpha.22
       ts-morph:
         specifier: ^26.0.0
         version: 26.0.0
@@ -114,6 +114,21 @@ importers:
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
+
+  packages/produce:
+    dependencies:
+      '@zuord/core':
+        specifier: 3.0.0-alpha.28
+        version: 3.0.0-alpha.28
+      '@zuord/trait':
+        specifier: 3.0.0-alpha.18
+        version: 3.0.0-alpha.18
+      '@zuord/type':
+        specifier: 2.0.0-alpha.25
+        version: 2.0.0-alpha.25
+      '@zuord/util':
+        specifier: 4.0.0-alpha.22
+        version: 4.0.0-alpha.22
 
   packages/trait:
     dependencies:
@@ -2472,17 +2487,26 @@ packages:
   '@zuord/trait@3.0.0-alpha.14':
     resolution: {integrity: sha512-f4mNHOYmFaoOQGRzJkkO65k+7KgBf2UzpHg/NCnItOL/ZSQ3vbrS8zs3UZoWgLylX2OC//YU18C7dObrt8eLhA==}
 
+  '@zuord/trait@3.0.0-alpha.18':
+    resolution: {integrity: sha512-90/IcKnSv07Ymzx5ubFT9mrUKjAXNxFeMBnS5MkjnkZHIRp3ztiXXLmO1KuSwf8PAkdhlsnX+ovO3iPqOD49hg==}
+
   '@zuord/type@2.0.0-alpha.15':
     resolution: {integrity: sha512-OzDSuqnKkgeYHavW1DKtcDEc9X0+QdAw7FszhGRGlGQn9GbMm4Du1xJBSTJ24m8Q597gEOYVilZya06ZLruD/w==}
 
   '@zuord/type@2.0.0-alpha.18':
     resolution: {integrity: sha512-ypavSoQKGGyjNnjJCgydKzVqlurghE8y+9Jt2rmtuSEcF7gflOYTVX4WPjkxXOPgASvu8XBEQImFraCO/TgIoQ==}
 
+  '@zuord/type@2.0.0-alpha.25':
+    resolution: {integrity: sha512-YWJCHxAIE+KwiIWfCGYx4EXTwOEYMA65Xk3UjUF5SlTx8MfuTf1toqVlrpSB8dn/0oWb0kSVOBuEAKQo80VxEA==}
+
   '@zuord/util@4.0.0-alpha.13':
     resolution: {integrity: sha512-kj119rFObWsArnR6FXMfo2D1Lck8/eRXyefoBQk2NzrueYuRY+dWEYF5If4oPOSEGBqFX0bskJsVUfffS79/mQ==}
 
   '@zuord/util@4.0.0-alpha.17':
     resolution: {integrity: sha512-KhlUQJSe5SWNxCqvEufX2NAFZ5LWdTu4ziyw1lUzVf2j7rf5fxNDgojFLpWtgMPg0jZqvCGZZP37nHkRo9AjSw==}
+
+  '@zuord/util@4.0.0-alpha.22':
+    resolution: {integrity: sha512-lyH/7bXAAOBx16Ag9iHCSxz0ek2Yc3YnY6s0iDdGP36wr/v0P2YGaMkqoXR/wiW5oS73fUCyGgbG9yJ/bl6Uog==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -6357,6 +6381,7 @@ packages:
 
   zuord@5.0.0-alpha.21:
     resolution: {integrity: sha512-TIAJP2HNwimS4AJaqcwNo+uE0RModTBvfAYv+GveaS34qnX/UWy9XpcF26u7L7S7InmKfwc6QyfZPD8k+D8Smg==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -9507,9 +9532,15 @@ snapshots:
     dependencies:
       '@zuord/type': 2.0.0-alpha.15
 
+  '@zuord/trait@3.0.0-alpha.18':
+    dependencies:
+      '@zuord/type': 2.0.0-alpha.15
+
   '@zuord/type@2.0.0-alpha.15': {}
 
   '@zuord/type@2.0.0-alpha.18': {}
+
+  '@zuord/type@2.0.0-alpha.25': {}
 
   '@zuord/util@4.0.0-alpha.13':
     dependencies:
@@ -9518,6 +9549,12 @@ snapshots:
       '@zuord/type': 2.0.0-alpha.15
 
   '@zuord/util@4.0.0-alpha.17':
+    dependencies:
+      '@zuord/core': 3.0.0-alpha.28
+      '@zuord/trait': 3.0.0-alpha.14
+      '@zuord/type': 2.0.0-alpha.18
+
+  '@zuord/util@4.0.0-alpha.22':
     dependencies:
       '@zuord/core': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
