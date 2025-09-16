@@ -1,5 +1,5 @@
 import type { $Produce } from ".";
-import type { ZuordType, ZuordTuple } from "@zuord/type";
+import type { FundType, TupleType } from "@zuord/type";
 import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
 
@@ -8,9 +8,9 @@ import type { ZuordUtil as Util } from "@zuord/util";
  */
 export type Plain<TContent, TMode> = (
     [TMode] extends [infer TMode extends Core.ModeRecord] ? (
-        ResolvePlain<TContent, TMode> extends infer TResolved extends ZuordType.Plain ? (
+        ResolvePlain<TContent, TMode> extends infer TResolved extends FundType.Plain ? (
             Util.Unify.Hybrid<TResolved, Core.ModeResolve<[TMode, { 
-                unifyPlain: TContent extends ZuordTuple.Nest ? false : true
+                unifyPlain: TContent extends TupleType.Nest ? false : true
             }]>>
         ) : never
     ) : never
@@ -19,9 +19,9 @@ export type Plain<TContent, TMode> = (
 /**
  * @internal
  */
-export type Array<TContent extends ZuordType.Array, TMode extends Core.ModeRecord> = (
+export type Array<TContent extends FundType.Array, TMode extends Core.ModeRecord> = (
     [TMode] extends [infer TMode extends Core.ModeRecord] ? (
-        [ResolveArray<TContent, TMode>] extends [infer TResolved extends ZuordType.Array] ? (
+        [ResolveArray<TContent, TMode>] extends [infer TResolved extends FundType.Array] ? (
             Util.Unify.Hybrid<TResolved, TMode>
         ) : never
     ) : never
@@ -33,34 +33,34 @@ export type Array<TContent extends ZuordType.Array, TMode extends Core.ModeRecor
  * @internal
  */
 export type ResolvePlain<TContent, TMode extends Core.ModeRecord> = (
-    [TContent] extends [ZuordTuple.Nest] ? BuildPlain<TContent, TMode> : 
-    [TContent] extends [ZuordType.Array<infer TInfer extends ZuordType.Plain>] ? Util.Only.Required<TInfer, TMode> : never
+    [TContent] extends [TupleType.Nest] ? BuildPlain<TContent, TMode> : 
+    [TContent] extends [FundType.Array<infer TInfer extends FundType.Plain>] ? Util.Only.Required<TInfer, TMode> : never
 );
 
 /**
  * @internal
  */
 export type BuildPlain<TContent, TMode extends Core.ModeRecord> = (
-    TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Plain ,infer TRest extends ZuordType.Plain[]> ? (
+    TContent extends TupleType.Last<infer TLast extends FundType.Plain ,infer TRest extends FundType.Plain[]> ? (
         TRest["length"] extends 0 ? TLast : 
         TRest["length"] extends 1 ? $Produce.Integrate.ResolvePlain<TRest[0], TLast, TMode> 
         : $Produce.Integrate.ResolvePlain<BuildPlain<TRest, TMode>, TLast, TMode>
     ) : never
-) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
+) extends infer TPlain extends FundType.Plain ? TPlain : never;
 
 /**
  * @internal
  */
 export type ResolveArray<TContent, TMode extends Core.ModeRecord> = (
-    [TContent] extends [ZuordTuple.Nest] ? BuildArray<Util.Mutable.Hybrid<TContent>, TMode> : 
-    [TContent] extends [ZuordType.Array<infer TInfer extends ZuordType.Array>] ? TInfer : never
+    [TContent] extends [TupleType.Nest] ? BuildArray<Util.Mutable.Hybrid<TContent>, TMode> : 
+    [TContent] extends [FundType.Array<infer TInfer extends FundType.Array>] ? TInfer : never
 )
 
 /**
  * @internal
  */
 export type BuildArray<TContent, TMode extends Core.ModeRecord> = (
-    TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Array, infer TRest extends ZuordType.Array[]> ? (
+    TContent extends TupleType.Last<infer TLast extends FundType.Array, infer TRest extends FundType.Array[]> ? (
         TRest["length"] extends 0 ? TLast : 
         TRest["length"] extends 1 ? $Produce.Integrate.ResolveArray<TRest[0], TLast, { concat: true }> : 
         $Produce.Integrate.ResolveArray<BuildArray<TRest, TMode>, TLast, { concat: true }>

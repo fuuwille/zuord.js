@@ -1,4 +1,4 @@
-import { ZuordArray } from "@zuord/type";
+import { ArrayType } from "@zuord/type";
 
 export type Base<TSource, TBase> = [TSource] extends [TBase] ? (
     [TSource] extends [never] ? ([TBase] extends [never] ? true : false) : true
@@ -9,7 +9,7 @@ export type Any<TSources, TBase> = TSources extends [infer TSource, ...infer TSo
 ) : false;
 
 export type Every<TSources, TBase> = TSources extends [infer TSource, ...infer TSourceRest] ? (
-    [Base<TSource, TBase>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : Every<TSourceRest, TBase>) : false
+    [Base<TSource, TBase>] extends [true] ? (TSourceRest extends ArrayType.Empty ? true : Every<TSourceRest, TBase>) : false
 ) : false;
 
 export type Some<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
@@ -17,7 +17,7 @@ export type Some<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseR
 ) : false;
 
 export type Each<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
-    [Base<TSource, TBase>] extends [true] ? (TBaseRest extends ZuordArray.Empty ? true : Each<TSource, TBaseRest>) : false
+    [Base<TSource, TBase>] extends [true] ? (TBaseRest extends ArrayType.Empty ? true : Each<TSource, TBaseRest>) : false
 ) : false;
 
 export type AnySome<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
@@ -29,9 +29,9 @@ export type AnyEach<TSources, TBases> = TSources extends [infer TSource, ...infe
 ) : false;
 
 export type EverySome<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
-    [Some<TSource, TBases>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : EverySome<TSourceRest, TBases>) : false
+    [Some<TSource, TBases>] extends [true] ? (TSourceRest extends ArrayType.Empty ? true : EverySome<TSourceRest, TBases>) : false
 ) : false;
 
 export type EveryEach<TSources, TBases> = TSources extends [infer TSource, ...infer TSourceRest] ? (
-    [Each<TSource, TBases>] extends [true] ? (TSourceRest extends ZuordArray.Empty ? true : EveryEach<TSourceRest, TBases>) : false
+    [Each<TSource, TBases>] extends [true] ? (TSourceRest extends ArrayType.Empty ? true : EveryEach<TSourceRest, TBases>) : false
 ) : false;

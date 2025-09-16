@@ -1,5 +1,5 @@
 import type { $ZuordUtil } from "..";
-import type { ZuordType } from "@zuord/type";
+import type { FundType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { ZuordTrait } from "@zuord/trait";
 
@@ -8,9 +8,9 @@ export type Hybrid<T, TMode> = TMode extends ZuordCore.ModeRecord ? (
 ) : never;
 
 export type DistributeHybrid<T, TMode> = (
-    [ZuordTrait.Has.Base<T, ZuordType.Plain>] extends [true] ? DistributePlain<T, TMode> :
-    [ZuordTrait.Has.Base<T, ZuordType.Tuple>] extends [true] ? DistributeTuple<T, TMode> :
-    [ZuordTrait.Has.Base<T, ZuordType.Array>] extends [true] ? DistributeArray<T, TMode> : T
+    [ZuordTrait.Has.Base<T, FundType.Plain>] extends [true] ? DistributePlain<T, TMode> :
+    [ZuordTrait.Has.Base<T, FundType.Tuple>] extends [true] ? DistributeTuple<T, TMode> :
+    [ZuordTrait.Has.Base<T, FundType.Array>] extends [true] ? DistributeArray<T, TMode> : T
 );
 
 export type Plain<T, TMode> = TMode extends ZuordCore.ModeRecord ? (
@@ -19,8 +19,8 @@ export type Plain<T, TMode> = TMode extends ZuordCore.ModeRecord ? (
 
 export type DistributePlain<T, TMode> = [ZuordTrait.Eq.Both<T, any>] extends [false] ? (
     (
-        | (ExcludePlain<ZuordTrait.Exclude.Is<T, ZuordType.Plain>, TMode>)
-        | (ExtractPlain<ZuordTrait.Extract.Is<T, ZuordType.Plain>, TMode>)
+        | (ExcludePlain<ZuordTrait.Exclude.Is<T, FundType.Plain>, TMode>)
+        | (ExtractPlain<ZuordTrait.Extract.Is<T, FundType.Plain>, TMode>)
     ) extends infer T ? T : never
 ) : any;
 
@@ -62,8 +62,8 @@ export type Tuple<T, TMode> = TMode extends ZuordCore.ModeRecord ? (
 
 export type DistributeTuple<T, TMode> = [ZuordTrait.Eq.Both<T, any>] extends [false] ? (
     (
-        | (ExcludeTuple<ZuordTrait.Exclude.Is<T, ZuordType.Tuple>, TMode>)
-        | (ExtractTuple<ZuordTrait.Extract.Is<T, ZuordType.Tuple>, TMode>)
+        | (ExcludeTuple<ZuordTrait.Exclude.Is<T, FundType.Tuple>, TMode>)
+        | (ExtractTuple<ZuordTrait.Extract.Is<T, FundType.Tuple>, TMode>)
     ) extends infer T ? T : never
 ) : any;
 
@@ -97,8 +97,8 @@ export type Array<T, TMode> = TMode extends ZuordCore.ModeRecord ? (
 
 export type DistributeArray<T, TMode> = [ZuordTrait.Eq.Both<T, any>] extends [false] ? (
     (
-        | (ExcludeArray<ZuordTrait.Exclude.Is<T, ZuordType.Array>, TMode>)
-        | (ExtractArray<ZuordTrait.Extract.Is<T, ZuordType.Array>, TMode>)
+        | (ExcludeArray<ZuordTrait.Exclude.Is<T, FundType.Array>, TMode>)
+        | (ExtractArray<ZuordTrait.Extract.Is<T, FundType.Array>, TMode>)
     ) extends infer T ? T : never
 ) : any;
 
@@ -114,7 +114,7 @@ export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
     ) : SkipArray<$ZuordUtil.Union.ToIntersection<T>, TMode>
 );
 
-export type ResolveArray<T, TMode> = [T] extends [ZuordType.Array] ? (
+export type ResolveArray<T, TMode> = [T] extends [FundType.Array] ? (
     TMode extends { shallow: true } ? (
         T[number][]
     ) : (
@@ -125,5 +125,5 @@ export type ResolveArray<T, TMode> = [T] extends [ZuordType.Array] ? (
 ) : never
 
 export type SkipArray<T, TMode> = (
-    T extends ZuordType.Array<infer TInfer> ? DistributeHybrid<TInfer, TMode>[] : never
+    T extends FundType.Array<infer TInfer> ? DistributeHybrid<TInfer, TMode>[] : never
 );

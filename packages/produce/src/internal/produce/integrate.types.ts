@@ -1,4 +1,4 @@
-import type { ZuordType, ZuordTuple } from "@zuord/type";
+import type { FundType, TupleType } from "@zuord/type";
 import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
 
@@ -7,7 +7,7 @@ import type { ZuordUtil as Util } from "@zuord/util";
  */
 export type Plain<TSource, TContent, TMode> = (
     [TMode] extends [infer TMode extends Core.ModeRecord] ? (
-        ResolvePlain<TSource, TContent, TMode> extends infer TPlain extends ZuordType.Plain ? (
+        ResolvePlain<TSource, TContent, TMode> extends infer TPlain extends FundType.Plain ? (
             Util.Unify.Plain<TPlain, Core.ModeResolve<[TMode, { unifyArray: true }]>>
         ) : never
     ) : never
@@ -18,7 +18,7 @@ export type Plain<TSource, TContent, TMode> = (
  */
 export type Array<TSource, TContent, TMode> = (
     [TMode] extends [infer TMode extends Core.ModeRecord] ? (
-        ResolveArray<TSource, TContent, { concat: true }> extends infer TArray extends ZuordType.Array ? (
+        ResolveArray<TSource, TContent, { concat: true }> extends infer TArray extends FundType.Array ? (
             Util.Unify.Array<TArray, TMode>
         ) : never
     ) : never
@@ -30,8 +30,8 @@ export type Array<TSource, TContent, TMode> = (
  * @internal
  */
 export type ResolveAny<TSource, TContent, TMode> = (
-    [TSource, TContent] extends [infer A extends ZuordType.Plain, infer B extends ZuordType.Plain] ? ResolvePlain<A, B, TMode> :
-    [TSource, TContent] extends [infer A extends ZuordType.Array, infer B extends ZuordType.Array] ? ResolveArray<A, B, TMode> : TContent
+    [TSource, TContent] extends [infer A extends FundType.Plain, infer B extends FundType.Plain] ? ResolvePlain<A, B, TMode> :
+    [TSource, TContent] extends [infer A extends FundType.Array, infer B extends FundType.Array] ? ResolveArray<A, B, TMode> : TContent
 );
 
 /**
@@ -66,7 +66,7 @@ export type ResolvePlainExtras<TSource, TContent> = ({
  */
 export type ResolveArray<TSource, TContent, TMode> = (
     TMode extends { concat: true } ? (
-        [TSource, TContent] extends [infer A extends ZuordTuple.Nest, infer B extends ZuordTuple.Nest] ? (
+        [TSource, TContent] extends [infer A extends TupleType.Nest, infer B extends TupleType.Nest] ? (
             [...A, ...B]
         ) : TSource | TContent
     ) : TContent

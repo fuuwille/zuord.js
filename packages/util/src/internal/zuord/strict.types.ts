@@ -1,6 +1,6 @@
-import type { ZuordType } from "@zuord/type";
+import type { FundType } from "@zuord/type";
 
-export type ResolveKeys<TBase, TInput> = TBase extends ZuordType.Plain ? (
+export type ResolveKeys<TBase, TInput> = TBase extends FundType.Plain ? (
   ResolveIncludedKeys<TBase, TInput> & ResolveExcludedKeys<TBase, TInput>
 ) : TInput;
 

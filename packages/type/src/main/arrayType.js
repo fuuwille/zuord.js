@@ -1,1 +1,1 @@
-export * as zuordArray from "./arrayType.runtime";
+export * as ArrayType from "./arrayType.runtime";

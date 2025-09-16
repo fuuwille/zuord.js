@@ -1,1 +1,1 @@
-export * as zuordTuple from "./tuple.runtime";
+export * as TupleType from "./tuple.runtime";

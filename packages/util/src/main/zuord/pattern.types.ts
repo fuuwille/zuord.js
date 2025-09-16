@@ -1,4 +1,4 @@
 import type { $ZuordUtil } from "../../internal";
-import type { ZuordType } from "@zuord/type";
+import type { FundType } from "@zuord/type";
 
-export type Plain<T extends ZuordType.Plain> = $ZuordUtil.Pattern.PlainResolve<T>;
+export type Plain<T extends FundType.Plain> = $ZuordUtil.Pattern.PlainResolve<T>;

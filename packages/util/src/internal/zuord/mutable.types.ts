@@ -1,10 +1,10 @@
-import type { ZuordType } from "@zuord/type";
+import type { FundType } from "@zuord/type";
  
 export type Resolve<T> = (
-    T extends ZuordType.Plain | ZuordType.Tuple ? (
+    T extends FundType.Plain | FundType.Tuple ? (
         StructResolve<T>
     ) :
-    T extends ZuordType.Array ? ( 
+    T extends FundType.Array ? ( 
         ArrayResolve<T>
     ) : T
 )
@@ -14,5 +14,5 @@ export type StructResolve<T> = ({
 }) extends infer V ? V : never;
 
 export type ArrayResolve<T> = (
-    T extends ZuordType.Array<infer U> ?  Resolve<U>[] : never
+    T extends FundType.Array<infer U> ?  Resolve<U>[] : never
 );
