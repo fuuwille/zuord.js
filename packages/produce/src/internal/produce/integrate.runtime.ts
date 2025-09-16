@@ -1,6 +1,6 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { ZuordCore } from "@zuord/core";
-import { $ZuordMode } from "../mode";
+import { $ZuordMode } from "../produceMode";
 
 /**
  * @internal
