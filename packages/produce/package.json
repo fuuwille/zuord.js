@@ -1,6 +1,6 @@
 {
-  "name": "zuord",
-  "version": "5.0.0-alpha.25",
+  "name": "@zuord/produce",
+  "version": "5.0.0-alpha.30",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
