@@ -1,0 +1,1 @@
+export * as fundType from "./type.runtime";
