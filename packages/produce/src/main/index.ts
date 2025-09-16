@@ -1,4 +1,4 @@
 export { zuordProduce as zuord } from "./produce";
-export { zuordMode } from "./mode";
+export { zuordMode } from "./produceMode";
 export type { ZuordProduce } from "./produce";
-export type { ZuordMode } from "./mode";
+export type { ZuordMode } from "./produceMode";

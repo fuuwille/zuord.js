@@ -1,6 +1,6 @@
 import { ZuordPlain, ZuordType } from "@zuord/type";
 import { ZuordX } from "../extended";
-import { ZuordMode } from "./mode";
+import { ZuordMode } from "./produceMode";
 import { ZuordUtil } from "@zuord/util";
 
 export type Integrate<TBase extends ZuordType.Plain, TInput extends ZuordUtil.Restrict.Keys<TBase, TInput>, TMode extends Partial<ZuordMode.Integrate> = {}>
