@@ -1,11 +1,11 @@
-import type { $ZuordMode } from ".";
+import type { $ProduceMode } from ".";
 
 /**
  * @internal
  */
-export type Plain = $ZuordMode.Integrate.Plain;
+export type Plain = $ProduceMode.Integrate.Plain;
 
 /**
  * @internal
  */
-export type Array = $ZuordMode.Integrate.Array;
+export type Array = $ProduceMode.Integrate.Array;

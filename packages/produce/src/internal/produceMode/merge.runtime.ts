@@ -1,5 +1,5 @@
 import { integrate } from "./integrate";
-import type { $ZuordMode } from ".";
+import type { $ProduceMode } from ".";
 
 
 //
@@ -7,9 +7,9 @@ import type { $ZuordMode } from ".";
 /**
  * @internal
  */
-export const plain = integrate.plain satisfies $ZuordMode.Merge.Plain;
+export const plain = integrate.plain satisfies $ProduceMode.Merge.Plain;
 
 /**
  * @internal
  */
-export const array = integrate.array satisfies $ZuordMode.Merge.Array;
+export const array = integrate.array satisfies $ProduceMode.Merge.Array;

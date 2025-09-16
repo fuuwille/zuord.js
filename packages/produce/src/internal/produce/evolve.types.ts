@@ -1,4 +1,4 @@
-import type { $ZuordProduce } from ".";
+import type { $Produce } from ".";
 import type { ZuordType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { ZuordUtil } from "@zuord/util";
@@ -18,4 +18,4 @@ export type Plain<TBase, TContent, TMode> = (
  * @internal
  */
 export type ResolvePlain<TBase, TContent, TMode extends ZuordCore.ModeRecord> 
-    = $ZuordProduce.Integrate.ResolvePlain<TBase, $ZuordProduce.Merge.ResolvePlain<TContent, TMode>, TMode>;
+    = $Produce.Integrate.ResolvePlain<TBase, $Produce.Merge.ResolvePlain<TContent, TMode>, TMode>;

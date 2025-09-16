@@ -1,11 +1,11 @@
 import { zuordType, ZuordType } from "@zuord/type";
 import { ZuordCore } from "@zuord/core";
-import { $ZuordMode } from "../produceMode";
+import { $ProduceMode } from "../produceMode";
 
 /**
  * @internal
  */
-export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ZuordMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
+export const plain = <TSource extends ZuordType.Plain, TContent extends ZuordType.Plain, TMode extends $ProduceMode.Integrate.Plain>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.plain(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be a plain object");
     }
@@ -58,7 +58,7 @@ export const resolvePlain = <TBase extends ZuordType.Plain, TInput extends Zuord
 /**
  * @internal
  */
-export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ZuordMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
+export const array = <TSource extends ZuordType.Array, TContent extends ZuordType.Array, TMode extends $ProduceMode.Integrate.Array>(source: TSource, content: TContent, mode: TMode) => {
     if(!zuordType.array(source)) {
         throw new TypeError("[Zuord-Integrate]: Expected source to be an array");
     }

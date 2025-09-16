@@ -1,4 +1,4 @@
-import type { $ZuordProduce } from ".";
+import type { $Produce } from ".";
 import type { ZuordType, ZuordTuple } from "@zuord/type";
 import type { ZuordCore as Core } from "@zuord/core";
 import type { ZuordUtil as Util } from "@zuord/util";
@@ -43,8 +43,8 @@ export type ResolvePlain<TContent, TMode extends Core.ModeRecord> = (
 export type BuildPlain<TContent, TMode extends Core.ModeRecord> = (
     TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Plain ,infer TRest extends ZuordType.Plain[]> ? (
         TRest["length"] extends 0 ? TLast : 
-        TRest["length"] extends 1 ? $ZuordProduce.Integrate.ResolvePlain<TRest[0], TLast, TMode> 
-        : $ZuordProduce.Integrate.ResolvePlain<BuildPlain<TRest, TMode>, TLast, TMode>
+        TRest["length"] extends 1 ? $Produce.Integrate.ResolvePlain<TRest[0], TLast, TMode> 
+        : $Produce.Integrate.ResolvePlain<BuildPlain<TRest, TMode>, TLast, TMode>
     ) : never
 ) extends infer TPlain extends ZuordType.Plain ? TPlain : never;
 
@@ -62,7 +62,7 @@ export type ResolveArray<TContent, TMode extends Core.ModeRecord> = (
 export type BuildArray<TContent, TMode extends Core.ModeRecord> = (
     TContent extends ZuordTuple.Last<infer TLast extends ZuordType.Array, infer TRest extends ZuordType.Array[]> ? (
         TRest["length"] extends 0 ? TLast : 
-        TRest["length"] extends 1 ? $ZuordProduce.Integrate.ResolveArray<TRest[0], TLast, { concat: true }> : 
-        $ZuordProduce.Integrate.ResolveArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
+        TRest["length"] extends 1 ? $Produce.Integrate.ResolveArray<TRest[0], TLast, { concat: true }> : 
+        $Produce.Integrate.ResolveArray<BuildArray<TRest, TMode>, TLast, { concat: true }>
     ) : never
 );
