@@ -1,1 +1,0 @@
-export type { $ZuordUtil } from "./zuord";

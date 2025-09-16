@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from "..";
+import type { $ZuordUtil } from ".";
 import type { FundType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { TypeTrait } from "@zuord/trait";
