@@ -1,11 +1,11 @@
-import type { ProduceModeX } from "../extended";
+import type { $ProduceMode } from "../internal";
 
-export type Integrate = ProduceModeX.Integrate.Restrict;
+export type Integrate = $ProduceMode.Integrate.Plain;
 
-export type Merge = ProduceModeX.Merge.Loose;
+export type Merge = $ProduceMode.Merge.Plain;
 
-export type Evolve = ProduceModeX.Evolve.Restrict;
+export type Evolve = $ProduceMode.Evolve.Plain;
 
-export type Pick = ProduceModeX.Pick.Loose;
+export type Pick = $ProduceMode.Pick.Plain;
 
-export type Omit = ProduceModeX.Omit.Loose;
+export type Omit = $ProduceMode.Omit.Plain;
