@@ -1,7 +1,7 @@
-import { $ZuordTrait } from ".";
+import { $TypeTrait } from ".";
 
 export type Is<TSource, TBase> = TSource extends any ? (
-    [$ZuordTrait.Is.Base<TSource, TBase>] extends [false] ? TSource : never
+    [$TypeTrait.Is.Base<TSource, TBase>] extends [false] ? TSource : never
 ) : never;
 
 export type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (
@@ -9,7 +9,7 @@ export type IsEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBas
 ) : TSource;
 
 export type Eq<TSource, TBase> = TSource extends any ? (
-    [$ZuordTrait.Eq.Both<TSource, TBase>] extends [false] ? TSource : never
+    [$TypeTrait.Eq.Both<TSource, TBase>] extends [false] ? TSource : never
 ) : never;
 
 export type EqEach<TSource, TBases> = TBases extends [infer TBase, ...infer TBaseRest] ? (

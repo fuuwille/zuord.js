@@ -1,7 +1,7 @@
-import { $ZuordTrait } from ".";
+import { $TypeTrait } from ".";
 import { ArrayType } from "@zuord/type";
 
-export type Base<TSource, TBase> = true extends (TSource extends any ? $ZuordTrait.Is.Base<TSource, TBase> : never) ? true : false;
+export type Base<TSource, TBase> = true extends (TSource extends any ? $TypeTrait.Is.Base<TSource, TBase> : never) ? true : false;
 
 export type Any<TSources, TBase> = TSources extends [infer TSource, ...infer TSourceRest] ? (
     [Base<TSource, TBase>] extends [true] ? true : Any<TSourceRest, TBase>
