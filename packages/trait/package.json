@@ -1,6 +1,6 @@
 {
   "name": "@zuord/trait",
-  "version": "3.0.0-alpha.14",
+  "version": "3.0.0-alpha.18",
   "description": "",
   "types": "dist/index.d.ts",
   "scripts": {
