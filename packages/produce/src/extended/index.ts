@@ -1,4 +1,4 @@
-export { zuordX } from "./produce";
+export { produceX } from "./produce";
 export { produceModeX } from "./produceMode";
-export type { ZuordX } from "./produce";
+export type { ProduceX } from "./produce";
 export type { ProduceModeX } from "./produceMode";
