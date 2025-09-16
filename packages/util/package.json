@@ -1,6 +1,6 @@
 {
   "name": "@zuord/util",
-  "version": "4.0.0-alpha.17",
+  "version": "4.0.0-alpha.22",
   "description": "",
   "types": "dist/index.d.ts",
   "scripts": {
