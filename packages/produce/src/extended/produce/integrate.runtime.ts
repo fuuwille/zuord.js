@@ -3,7 +3,7 @@ import { produceModeX } from "../produceMode";
 import { zuordCore } from "@zuord/core";
 import type { ProduceX, ProduceModeX } from "../..";
 import type { FundType } from "@zuord/type";
-import type { ZuordUtil } from "@zuord/util";
+import type { TypeUtil } from "@zuord/util";
 
 
 // LOOSE
@@ -20,13 +20,13 @@ export function loose <TSource extends FundType.Plain, TContent extends FundType
 
 // RESTRICT
 
-export function restrict <TSource extends FundType.Plain, TPatch extends ZuordUtil.Restrict.Keys<TSource, TPatch>> (source: TSource, patch: TPatch)
+export function restrict <TSource extends FundType.Plain, TPatch extends TypeUtil.Restrict.Keys<TSource, TPatch>> (source: TSource, patch: TPatch)
     : ProduceX.Integrate.Restrict<TSource, TPatch>;
 
-export function restrict <TSource extends FundType.Plain, TPatch extends ZuordUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ProduceModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode)
+export function restrict <TSource extends FundType.Plain, TPatch extends TypeUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ProduceModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode)
     : ProduceX.Integrate.Restrict<TSource, TPatch, TMode>;
 
-export function restrict <TSource extends FundType.Plain, TPatch extends ZuordUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ProduceModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode = {} as TMode)
+export function restrict <TSource extends FundType.Plain, TPatch extends TypeUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ProduceModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode = {} as TMode)
     : ProduceX.Integrate.Restrict<TSource, TPatch, TMode> { return $produce.integrate.plain(source, patch, zuordCore.modeResolve([produceModeX.integrate.restrict, mode])) as ProduceX.Integrate.Restrict<TSource, TPatch, TMode>; }
 
 
