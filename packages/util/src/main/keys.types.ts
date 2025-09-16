@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from "../../internal";
+import type { $ZuordUtil } from "../internal";
 
 export type All<T> = $ZuordUtil.Keys.All<T>;
 
