@@ -1,9 +1,9 @@
-import type { $ZuordUtil } from "../internal";
+import type { $TypeUtil } from "../internal";
 
-export type IsUnion<T> = $ZuordUtil.Union.IsUnion<T>;
+export type IsUnion<T> = $TypeUtil.Union.IsUnion<T>;
 
-export type ToIntersection<U> = $ZuordUtil.Union.ToIntersection<U>;
+export type ToIntersection<U> = $TypeUtil.Union.ToIntersection<U>;
 
-export type ToLast<U> = $ZuordUtil.Union.ToLast<U>;
+export type ToLast<U> = $TypeUtil.Union.ToLast<U>;
 
-export type ToTuple<U> = $ZuordUtil.Union.ToTuple<U>;
+export type ToTuple<U> = $TypeUtil.Union.ToTuple<U>;

@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from ".";
+import type { $TypeUtil } from ".";
 import type { FundType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { TypeTrait } from "@zuord/trait";
@@ -11,7 +11,7 @@ export type ResolveAll<T, TMode extends ZuordCore.ModeRecord> =
 ) : T;
 
 export type ResolveRequired<T, TMode extends ZuordCore.ModeRecord> = [TypeTrait.Is.Base<T, FundType.Plain>] extends [true] ? {
-    [K in $ZuordUtil.Keys.Required<T>]: (
+    [K in $TypeUtil.Keys.Required<T>]: (
         [TMode] extends [{ "$one.all": true }] ? (
             ResolveAll<T[K], TMode>
         ) : ResolveRequired<T[K], TMode>
@@ -19,7 +19,7 @@ export type ResolveRequired<T, TMode extends ZuordCore.ModeRecord> = [TypeTrait.
 } : T;
 
 export type ResolveOptional<T, TMode extends ZuordCore.ModeRecord> = [TypeTrait.Is.Base<T, FundType.Plain>] extends [true] ? {
-    [K in $ZuordUtil.Keys.Optional<T>]?: T extends any ? (
+    [K in $TypeUtil.Keys.Optional<T>]?: T extends any ? (
         K extends keyof T ? (
             [TMode] extends [{ "$one.all": true }] ? (
                 ResolveAll<T[K], TMode>

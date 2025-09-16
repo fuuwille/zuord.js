@@ -1,4 +1,4 @@
-import type { $ZuordUtil } from ".";
+import type { $TypeUtil } from ".";
 import type { FundType } from "@zuord/type";
 import type { ZuordCore } from "@zuord/core";
 import type { TypeTrait } from "@zuord/trait";
@@ -31,13 +31,13 @@ export type ExcludePlain<T, TMode> = (
 )
 
 export type ExtractPlain<T, TMode> = (
-    [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
+    [$TypeUtil.Union.IsUnion<T>, TMode] extends [true, { unifyPlain: true }] ? (
         ResolvePlain<T, TMode>
-    ) : SkipPlain<$ZuordUtil.Union.ToIntersection<T>, TMode>
+    ) : SkipPlain<$TypeUtil.Union.ToIntersection<T>, TMode>
 );
 
 export type ResolvePlain<T, TMode> =  (
-    $ZuordUtil.Plain.Unify<T> extends infer TOne ? {
+    $TypeUtil.Plain.Unify<T> extends infer TOne ? {
         [K in keyof TOne]: TMode extends { shallow: true } ? (
             TOne[K]
         ) : (
@@ -74,13 +74,13 @@ export type ExcludeTuple<T, TMode> = (
 )
 
 export type ExtractTuple<T, TMode> = (
-    [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyTuple: true }] ? (
+    [$TypeUtil.Union.IsUnion<T>, TMode] extends [true, { unifyTuple: true }] ? (
         ResolveTuple<T, TMode>
     ) : ExtractArray<T, TMode>
 );
 
 export type ResolveTuple<T, TMode> = (
-    $ZuordUtil.Tuple.Unify<T> extends infer TTuple ? ({
+    $TypeUtil.Tuple.Unify<T> extends infer TTuple ? ({
         [K in keyof TTuple]: TMode extends { shallow: true } ? (
             TTuple[K]
         ) : (
@@ -109,9 +109,9 @@ export type ExcludeArray<T, TMode> = (
 )
 
 export type ExtractArray<T, TMode> = [T] extends [[]] ? never : (
-    [$ZuordUtil.Union.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
+    [$TypeUtil.Union.IsUnion<T>, TMode] extends [true, { unifyArray: true }] ? (
         ResolveArray<T, TMode>
-    ) : SkipArray<$ZuordUtil.Union.ToIntersection<T>, TMode>
+    ) : SkipArray<$TypeUtil.Union.ToIntersection<T>, TMode>
 );
 
 export type ResolveArray<T, TMode> = [T] extends [FundType.Array] ? (

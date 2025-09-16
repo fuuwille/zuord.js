@@ -1,3 +1,3 @@
-import type { $ZuordUtil } from "../internal";
+import type { $TypeUtil } from "../internal";
 
-export type Hybrid<T extends object> = $ZuordUtil.Mutable.Resolve<T>;
+export type Hybrid<T extends object> = $TypeUtil.Mutable.Resolve<T>;

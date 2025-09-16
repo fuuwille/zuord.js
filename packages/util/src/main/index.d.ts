@@ -1,4 +1,4 @@
 // @zuord-exclude
-export type ZuordUtil = any;
+export type TypeUtil = any;
 
-export type * as ZuordUtil from "./index.types";
+export type * as TypeUtil from "./index.types";

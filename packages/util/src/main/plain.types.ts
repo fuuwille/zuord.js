@@ -1,3 +1,3 @@
-import type { $ZuordUtil } from "../internal";
+import type { $TypeUtil } from "../internal";
 
-export type Unify<T> = $ZuordUtil.Plain.Unify<T>;
+export type Unify<T> = $TypeUtil.Plain.Unify<T>;
