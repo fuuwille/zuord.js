@@ -1,1 +1,1 @@
-export * as fundType from "./type.runtime";
+export * as fundType from "./fundType.runtime";

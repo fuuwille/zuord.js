@@ -1,1 +1,1 @@
-export * as plainType from "./plain.runtime";
+export * as plainType from "./plainType.runtime";

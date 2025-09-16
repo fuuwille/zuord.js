@@ -1,1 +1,1 @@
-export * as TupleType from "./tuple.runtime";
+export * as TupleType from "./tupleType.runtime";

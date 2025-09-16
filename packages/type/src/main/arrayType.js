@@ -1,1 +1,1 @@
-export * as ArrayType from "./arrayType.runtime";
+export * as arrayType from "./arrayType.runtime";
