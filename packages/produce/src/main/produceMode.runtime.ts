@@ -1,11 +1,11 @@
-import { zuordXMode } from "../extended";
+import { $produceMode } from "../internal";
 
-export const integrate = zuordXMode.integrate.restrict;
+export const integrate = $produceMode.integrate.plain;
 
-export const merge = zuordXMode.merge.loose;
+export const merge = $produceMode.merge.plain;
 
-export const evolve = zuordXMode.evolve.restrict;
+export const evolve = $produceMode.evolve.plain;
 
-export const pick = zuordXMode.pick.loose;
+export const pick = $produceMode.pick.plain;
 
-export const omit = zuordXMode.omit.loose;
+export const omit = $produceMode.omit.plain;

@@ -4,7 +4,7 @@ import type { evolve as $evolve } from "./produceMode.runtime";
 import type { pick as $pick } from "./produceMode.runtime";
 import type { omit as $omit } from "./produceMode.runtime";
 
-type zuordProduceModeAPI = {
+type produceModeAPI = {
     integrate: typeof $integrate;
     merge: typeof $merge;
     evolve: typeof $evolve;
@@ -12,9 +12,9 @@ type zuordProduceModeAPI = {
     omit: typeof $omit;
 }
 
-export declare const zuordProduceMode: zuordProduceModeAPI;
+export declare const produceMode: produceModeAPI;
 
 // @zuord-exclude
-export type ZuordProduceMode = any;
+export type ProduceMode = any;
 
-export type * as ZuordProduceMode from "./produceMode.types";
+export type * as ProduceMode from "./produceMode.types";

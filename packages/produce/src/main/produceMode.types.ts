@@ -1,11 +1,11 @@
-import type { ZuordXMode } from "../extended";
+import type { ProduceModeX } from "../extended";
 
-export type Integrate = ZuordXMode.Integrate.Restrict;
+export type Integrate = ProduceModeX.Integrate.Restrict;
 
-export type Merge = ZuordXMode.Merge.Loose;
+export type Merge = ProduceModeX.Merge.Loose;
 
-export type Evolve = ZuordXMode.Evolve.Restrict;
+export type Evolve = ProduceModeX.Evolve.Restrict;
 
-export type Pick = ZuordXMode.Pick.Loose;
+export type Pick = ProduceModeX.Pick.Loose;
 
-export type Omit = ZuordXMode.Omit.Loose;
+export type Omit = ProduceModeX.Omit.Loose;
