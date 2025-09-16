@@ -9,11 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["library/src"],
       "@zuord/type": ["packages/type/src"],
       "@zuord/core": ["packages/core/src"],
       "@zuord/util": ["packages/util/src"],
       "@zuord/trait": ["packages/trait/src"],
+      "@zuord/produce": ["packages/produce/src"],
     }
   }
 }
