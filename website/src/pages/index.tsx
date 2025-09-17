@@ -11,7 +11,7 @@ export default function Home() {
       <Box className="hero">
         <div className="title">Zuord</div>
         <div className="divider">/</div>
-        <div className="description">Runtime & Type Sync APIs within TS-first Packages</div>
+        <div className="description">Synchronous Runtime & Type APIs within TS-first Packages</div>
       </Box>
 
       <Grid container margin={2} spacing={2}>
