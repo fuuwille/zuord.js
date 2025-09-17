@@ -46,14 +46,14 @@
 .hero {
   display: flex;
   justify-content: center;
-  background-color: #aaa;
+  background: linear-gradient(135deg, #3a92b3, #399f91, #4ec9b0);
 }
 
 .hero {
   .title {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--ifm-color-primary-darkest);
+    background-color: 399fa8;
   }
 
   .divider {
