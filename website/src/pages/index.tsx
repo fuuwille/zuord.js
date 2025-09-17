@@ -1,35 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
+import { Hero } from '../components/hero';
 
 export default function Home() {
-  const now = new Date();
-  const duration = 60;
-  const seconds = now.getSeconds() + now.getMinutes() * 60;
-  const progress = (seconds % duration) / duration;
-
   return (
     <Layout title="Zuord">
-
-      <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-        <Box className="wave" 
-          style={{ animationDelay: `-${progress * duration}s` }}
-        />
-        <Box className="content">
-          <Box className="title">Zuord</Box>
-          <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
-          <Box className="description"
-            display={{ xs: 'block', sm: 'inline-flex' }} 
-            fontSize={{ xs: '1rem', sm: '1.25rem' }}
-          >
-            <Box>Synchronous Runtime & Type APIs</Box>
-            <Box>within TS-first Packages</Box>
-          </Box>
-        </Box>
-      </Box>
-
+      <Hero />
       <Grid container margin={2} spacing={2}>
         <Grid size={12} container alignItems="flex-end">
           <Grid size={{ xs: 12, xl: 6 }}>
