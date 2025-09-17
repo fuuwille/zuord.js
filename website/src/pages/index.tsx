@@ -1,20 +1,32 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
 import { Box, Grid } from '@mui/material';
 
 export default function Home() {
-  const now = new Date();
-  const duration = 60;
-  const seconds = now.getSeconds() + now.getMinutes() * 60;
-  const progress = (seconds % duration) / duration;
-  
+  const waveRef = useRef(null);
+  const [clientTime, setClientTime] = useState(null);
+
+  useEffect(() => {
+    setClientTime(new Date()); // yalnızca client-side çalışır
+  }, []);
+
+  useEffect(() => {
+    if (!clientTime || !waveRef.current) return;
+
+    const duration = 60;
+    const seconds = clientTime.getSeconds() + clientTime.getMinutes() * 60;
+    const progress = (seconds % duration) / duration;
+
+    waveRef.current.style.animationDelay = `-${progress * duration}s`;
+  }, [clientTime]);
+
   return (
     <Layout title="Zuord">
 
       <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-        <Box className="wave" style={{ animationDelay: `-${progress * duration}s` }}></Box>
+        <Box className="wave" ref={waveRef}></Box>
         <Box className="content">
           <Box className="title">Zuord</Box>
           <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
