@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
 import { Box, Grid } from '@mui/material';
 
 export default function Home() {
+  const waveRef = useRef(null);
+
+  useEffect(() => {
+    const wave = waveRef.current;
+    if (!wave) return;
+
+    const duration = 60;
+    const now = new Date();
+    const seconds = now.getSeconds() + now.getMinutes() * 60;
+    const progress = (seconds % duration) / duration;
+
+    wave.style.animationDelay = `-${progress * duration}s`;
+  }, []);
+
   return (
     <Layout title="Zuord">
 
       <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-        <Box className="wave"></Box>
+        <Box ref={waveRef} className="wave"></Box>
         <Box className="content">
           <Box className="title">Zuord</Box>
           <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
