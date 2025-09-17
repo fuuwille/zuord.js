@@ -3,10 +3,12 @@ import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
 import { Grid } from '@mui/material';
+import { Hero } from '@site/src/components/hero';
 
 export default function Home() {
   return (
     <Layout title="Zuord">
+      <Hero />
       <Grid container margin={2} spacing={2}>
         <Grid size={12} container alignItems="flex-end">
           <Grid size={{ xs: 12, xl: 6 }}>
