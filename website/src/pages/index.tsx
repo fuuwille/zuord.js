@@ -9,8 +9,8 @@ export default function Home() {
     <Layout title="Zuord">
 
       <Box className="hero">
-        <div className="hero-title">Zuord</div>
-        <div className="hero-description">Runtime & Type Sync APIs within TS-first Packages</div>
+        <div className="title">Zuord</div>
+        <div className="description">Runtime & Type Sync APIs within TS-first Packages</div>
       </Box>
 
       <Grid container margin={2} spacing={2}>
