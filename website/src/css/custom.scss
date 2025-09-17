@@ -105,12 +105,14 @@
       color: white;
       text-align: center;
       justify-content: center;
+      align-items: center;
       gap: 6px;
     }
 
     .description {
       * {
-        min-width: max-content
+        min-width: max-content;
+        max-height: max-content;
       }
     }
   }
