@@ -13,13 +13,20 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!clientTime || !waveRef.current) return;
+    const wave = waveRef.current;
+    if (!wave) return;
 
     const duration = 60;
-    const seconds = clientTime.getSeconds() + clientTime.getMinutes() * 60;
+    const now = new Date();
+    const seconds = now.getSeconds() + now.getMinutes() * 60;
     const progress = (seconds % duration) / duration;
 
-    waveRef.current.style.animationDelay = `-${progress * duration}s`;
+    wave.style.animationPlayState = 'paused';
+    wave.style.animationDelay = `-${progress * duration}s`;
+
+    requestAnimationFrame(() => {
+      wave.style.animationPlayState = 'running';
+    });
   }, [clientTime]);
 
   return (
