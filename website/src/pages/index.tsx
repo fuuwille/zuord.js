@@ -10,6 +10,7 @@ export default function Home() {
 
       <Box className="hero">
         <div className="title">Zuord</div>
+        <div className="divider">/</div>
         <div className="description">Runtime & Type Sync APIs within TS-first Packages</div>
       </Box>
 
