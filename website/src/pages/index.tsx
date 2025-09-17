@@ -2,13 +2,17 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
-import { Grid } from '@mui/material';
-import { Hero } from '@site/src/components/hero';
+import { Box, Grid } from '@mui/material';
 
 export default function Home() {
   return (
     <Layout title="Zuord">
-      <Hero />
+
+      <Box className="hero">
+        <div className="hero-title">Zuord</div>
+        <div className="hero-description">Runtime & Type Sync APIs within TS-first Packages</div>
+      </Box>
+
       <Grid container margin={2} spacing={2}>
         <Grid size={12} container alignItems="flex-end">
           <Grid size={{ xs: 12, xl: 6 }}>
