@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import { Benefits } from '@site/src/components/benefits';
 import { benefitsData } from '@site/src/data/benefits';
@@ -7,7 +7,7 @@ import { Box, Grid } from '@mui/material';
 export default function Home() {
   const waveRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const wave = waveRef.current;
     if (!wave) return;
 
