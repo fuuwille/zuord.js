@@ -8,10 +8,16 @@ export default function Home() {
   return (
     <Layout title="Zuord">
 
-      <Box className="hero">
-        <div className="title">Zuord</div>
-        <div className="divider">/</div>
-        <div className="description">Synchronous Runtime & Type APIs within TS-first Packages</div>
+      <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
+        <Box className="title">Zuord</Box>
+        <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
+        <Box className="description"
+          display={{ xs: 'block', sm: 'inline-flex' }} 
+          fontSize={{ xs: '1rem', sm: '1.5rem' }}
+        >
+          <Box>Synchronous Runtime & Type APIs</Box>
+          <Box>within TS-first Packages</Box>
+        </Box>
       </Box>
 
       <Grid container margin={2} spacing={2}>
