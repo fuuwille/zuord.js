@@ -13,7 +13,7 @@ export default function Home() {
         <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
         <Box className="description"
           display={{ xs: 'block', sm: 'inline-flex' }} 
-          fontSize={{ xs: '1rem', sm: '1.5rem' }}
+          fontSize={{ xs: '1rem', sm: '1.25rem' }}
         >
           <Box>Synchronous Runtime & Type APIs</Box>
           <Box>within TS-first Packages</Box>
