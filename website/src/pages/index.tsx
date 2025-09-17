@@ -5,35 +5,18 @@ import { benefitsData } from '@site/src/data/benefits';
 import { Box, Grid } from '@mui/material';
 
 export default function Home() {
-  const waveRef = useRef(null);
-  const [clientTime, setClientTime] = useState(null);
-
-  useEffect(() => {
-    setClientTime(new Date()); // yalnızca client-side çalışır
-  }, []);
-
-  useEffect(() => {
-    const wave = waveRef.current;
-    if (!wave) return;
-
-    const duration = 60;
-    const now = new Date();
-    const seconds = now.getSeconds() + now.getMinutes() * 60;
-    const progress = (seconds % duration) / duration;
-
-    wave.style.animationPlayState = 'paused';
-    wave.style.animationDelay = `-${progress * duration}s`;
-
-    requestAnimationFrame(() => {
-      wave.style.animationPlayState = 'running';
-    });
-  }, [clientTime]);
+  const now = new Date();
+  const duration = 60;
+  const seconds = now.getSeconds() + now.getMinutes() * 60;
+  const progress = (seconds % duration) / duration;
 
   return (
     <Layout title="Zuord">
 
       <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-        <Box className="wave" ref={waveRef}></Box>
+        <Box className="wave" 
+          style={{ animationDelay: `-${progress * duration}s` }}
+        />
         <Box className="content">
           <Box className="title">Zuord</Box>
           <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
