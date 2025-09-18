@@ -4,11 +4,11 @@ import { dirname, join } from "path";
 import { exec } from "child_process";
 import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const tsconfigUrl = import.meta.resolve("zuord/meta/tsconfig-dist.json");
+const tsconfigPath = fileURLToPath(tsconfigUrl);
 
-const tsconfigPath = join(__dirname, "../../meta/tsconfig-dist.json");
-const rollupConfigPath = join(__dirname, "../../meta/rollup.config.mjs");
+const rollupConfigUrl = import.meta.resolve("zuord/meta/rollup.config.mjs");
+const rollupConfigPath = fileURLToPath(rollupConfigUrl);
 
 const program = new Command();
 
