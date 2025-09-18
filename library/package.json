@@ -1,6 +1,6 @@
 {
-  "name": "@zuord/core",
-  "version": "3.0.0-alpha.28",
+  "name": "zuord",
+  "version": "3.0.0-alpha.30",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
