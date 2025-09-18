@@ -1,12 +1,12 @@
 import { modeRecord } from "./mode_.runtime";
-import type { $ZuordCore } from "..";
+import type { $Zuord } from "..";
 
-export const shallow = modeRecord("shallow", false) satisfies $ZuordCore.Mode.Shallow;
+export const shallow = modeRecord("shallow", false) satisfies $Zuord.Mode.Shallow;
 
-export const inferless = modeRecord("inferless", false) satisfies $ZuordCore.Mode.Inferless;
+export const inferless = modeRecord("inferless", false) satisfies $Zuord.Mode.Inferless;
 
-export const validate = modeRecord("validate", false) satisfies $ZuordCore.Mode.Validate;
+export const validate = modeRecord("validate", false) satisfies $Zuord.Mode.Validate;
 
-export const concat = modeRecord("concat", false) satisfies $ZuordCore.Mode.Concat;
+export const concat = modeRecord("concat", false) satisfies $Zuord.Mode.Concat;
 
-export const unique = modeRecord("unique", false) satisfies $ZuordCore.Mode.Unique;
+export const unique = modeRecord("unique", false) satisfies $Zuord.Mode.Unique;

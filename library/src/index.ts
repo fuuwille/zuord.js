@@ -1,4 +1,4 @@
-export { $zuordCore } from "./internal";
-export { zuordCore } from "./main";
-export type { $ZuordCore } from "./internal";
-export type { ZuordCore } from "./main";
+export { $zuord } from "./internal";
+export { zuord } from "./main";
+export type { $Zuord } from "./internal";
+export type { Zuord } from "./main";

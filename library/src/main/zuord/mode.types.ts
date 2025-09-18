@@ -1,11 +1,11 @@
-import type { $ZuordCore } from "../../internal";
+import type { $Zuord } from "../../internal";
 
-export type Shallow = $ZuordCore.Mode.Shallow;
+export type Shallow = $Zuord.Mode.Shallow;
 
-export type Inferless = $ZuordCore.Mode.Inferless;
+export type Inferless = $Zuord.Mode.Inferless;
 
-export type Validate = $ZuordCore.Mode.Validate;
+export type Validate = $Zuord.Mode.Validate;
 
-export type Concat = $ZuordCore.Mode.Concat;
+export type Concat = $Zuord.Mode.Concat;
 
-export type Unique = $ZuordCore.Mode.Unique;
+export type Unique = $Zuord.Mode.Unique;

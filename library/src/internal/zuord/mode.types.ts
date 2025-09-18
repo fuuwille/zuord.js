@@ -1,11 +1,11 @@
-import type { $ZuordCore } from "..";
+import type { $Zuord } from "..";
 
-export type Shallow = $ZuordCore.ModeRecord<"shallow">;
+export type Shallow = $Zuord.ModeRecord<"shallow">;
 
-export type Inferless = $ZuordCore.ModeRecord<"inferless">;
+export type Inferless = $Zuord.ModeRecord<"inferless">;
 
-export type Validate = $ZuordCore.ModeRecord<"validate">;
+export type Validate = $Zuord.ModeRecord<"validate">;
 
-export type Concat = $ZuordCore.ModeRecord<"concat">;
+export type Concat = $Zuord.ModeRecord<"concat">;
 
-export type Unique = $ZuordCore.ModeRecord<"unique">;
+export type Unique = $Zuord.ModeRecord<"unique">;

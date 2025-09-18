@@ -1,5 +1,5 @@
-import { $ZuordCore } from ".";
+import { $Zuord } from ".";
 
-export const definePackage = (definition : $ZuordCore.PackageDefinition) => {
+export const definePackage = (definition : $Zuord.PackageDefinition) => {
     return definition;
 }

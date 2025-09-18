@@ -1,1 +1,1 @@
-export * as $zuordCore from "./index.runtime";
+export * as $zuord from "./index.runtime";
