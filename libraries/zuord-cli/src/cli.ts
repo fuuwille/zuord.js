@@ -1,18 +1,45 @@
 #!/usr/bin/env node
-import { exec } from 'child_process';
-import path from 'path';
+import { exec } from "child_process";
+import { existsSync } from "fs";
+import { join } from "path";
 
-const rootDir = path.resolve('./');
+async function main() {
+    const cwd = process.cwd();
+    const packagePath = join(cwd, "zuord-package.ts");
 
-const command = 'npx rimraf dist && npx rollup -c && npx cpy "src/**/*{.js,.d.ts}" dist';
+    if (!existsSync(packagePath)) {
+        console.error("❌ Does not found zuord-package.ts");
+        process.exit(1);
+    }
 
-console.log(`Building Zuord Package...`);
+    console.info("Building zuord package...");
+    var pkg;
 
-const child = exec(command, { cwd: rootDir });
+    try {
+        pkg = await import(packagePath);
+    } catch (err) {
+        console.error("An error occured while importing zuord-package file", err);
+        process.exit(1);
+    }
 
-child.stdout?.pipe(process.stdout);
-child.stderr?.pipe(process.stderr);
+    const typeOnly = pkg.default?.typeOnly;
+    const command = typeOnly 
+        ? "npx rimraf dist && npx rollup -c && npx cpy \"src/**/*{.js,.d.ts}\" dist"
+        : "npx rimraf dist && npx tsc --project tsconfig-dist.json && npx cpy 'src/**/*.d.ts' dist";
 
-child.on('exit', (code) => {
-    process.exit(code || 0);
-});
+    const child = exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`❌ Error: ${error.message}`);
+            process.exit(1);
+        }
+        if (stderr) {
+            console.error(`⚠️ Stderr: ${stderr}`);
+        }
+        console.log(stdout);
+    });
+
+    child.stdout?.pipe(process.stdout);
+    child.stderr?.pipe(process.stderr);
+}
+
+main();
