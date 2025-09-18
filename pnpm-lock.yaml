@@ -124,11 +124,11 @@ importers:
   packages/util:
     dependencies:
       '@zuord/trait':
-        specifier: 3.0.0-alpha.14
-        version: 3.0.0-alpha.14
+        specifier: 3.0.0-alpha.20
+        version: 3.0.0-alpha.20
       '@zuord/type':
-        specifier: 2.0.0-alpha.18
-        version: 2.0.0-alpha.18
+        specifier: 2.0.0-alpha.28
+        version: 2.0.0-alpha.28
       zuord:
         specifier: 3.0.0-alpha.34
         version: 3.0.0-alpha.34

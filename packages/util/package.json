@@ -1,20 +1,13 @@
 {
   "name": "@zuord/util",
-  "version": "4.0.0-alpha.22",
+  "version": "4.0.0-alpha.24",
   "description": "",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "rimraf dist && tsc --project tsconfig-dist.json && cpy 'src/**/*.d.ts' dist"
-  },
-  "keywords": [
-    "zuord"
-  ],
   "author": "k4yr2",
-  "license": "ISC",
   "type": "module",
   "dependencies": {
-    "zuord": "3.0.0-alpha.34",
-    "@zuord/trait": "3.0.0-alpha.14",
-    "@zuord/type": "2.0.0-alpha.18"
+    "@zuord/trait": "3.0.0-alpha.20",
+    "@zuord/type": "2.0.0-alpha.28",
+    "zuord": "3.0.0-alpha.34"
   }
 }
