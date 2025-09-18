@@ -2,8 +2,8 @@
   "name": "zuord",
   "version": "3.0.0-alpha.34",
   "description": "",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "dist/api/index.js",
+  "types": "dist/api/index.d.ts",
   "scripts": {
     "build": "rimraf dist && rollup -c && cpy \"src/**/*{.d.ts,.js}\" dist"
   },
