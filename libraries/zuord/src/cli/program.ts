@@ -50,7 +50,7 @@ program
         console.log("📦 Library build seçildi");
     }
 
-    const child = exec(command + " && chmod +x dist/cli/program.js", (error) => {
+    const child = exec(command + " && chmod +x /home/k4yr2/.npm-global/bin/zuord", (error) => {
         if (error) {
             console.error(`❌ Hata: ${error.message}`);
             process.exit(1);
