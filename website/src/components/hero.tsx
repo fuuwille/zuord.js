@@ -1,14 +1,14 @@
-"use client";
+import style from '@site/src/css/modules/hero.module.scss';
 import { Box } from "@mui/material";
 
 export const Hero = () => {
     return (
-        <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-            <Box className="wave" />
-            <Box className="content">
-                <Box className="title">Zuord</Box>
-                <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
-                <Box className="description"
+        <Box className={style['hero']} flexDirection={{ xs: 'column', md: 'row' }}>
+            <Box className={style['wave']} />
+            <Box className={style['content']}>
+                <Box className={style['title']}>Zuord</Box>
+                <Box className={style['divider']} display={{ xs: 'none', md: 'block' }}>/</Box>
+                <Box className={style['description']}
                     display={{ xs: 'block', sm: 'inline-flex' }} 
                     fontSize={{ xs: '1rem', sm: '1.25rem' }}
                 >
