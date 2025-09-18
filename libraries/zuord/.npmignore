@@ -1,5 +1,4 @@
 src/
-meta/
 tsconfig.json
 tsconfig-dist.json
 rollup.config.mjs
