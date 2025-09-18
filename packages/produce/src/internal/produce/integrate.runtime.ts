@@ -1,5 +1,5 @@
 import { fundType, FundType } from "@zuord/type";
-import { ZuordCore } from "@zuord/core";
+import { Zuord } from "zuord";
 import { $ProduceMode } from "../produceMode";
 
 /**
@@ -21,7 +21,7 @@ export const plain = <TSource extends FundType.Plain, TContent extends FundType.
  * @internal
  */
 export const resolvePlain = <TBase extends FundType.Plain, TInput extends FundType.Plain, TMode>(base: TBase, input: TInput, mode: TMode ) => {
-    const { shallow } = mode as ZuordCore.ModeRecord;
+    const { shallow } = mode as Zuord.ModeRecord;
 
     const result: any = {};
     const stack: Array<{ target: FundType.Plain; sourceA: FundType.Plain; sourceB: FundType.Plain }> = [{ target: result, sourceA: base, sourceB: input }];
@@ -74,7 +74,7 @@ export const array = <TSource extends FundType.Array, TContent extends FundType.
  * @internal
  */
 export const resolveArray = <TSource extends FundType.Array, TContent extends FundType.Array, TMode>(source: TSource, content: TContent, mode: TMode) => {
-    const { concat, unique } = mode as ZuordCore.ModeRecord;
+    const { concat, unique } = mode as Zuord.ModeRecord;
 
     if (concat) {
         return unique ? Array.from(new Set([...source, ...content])) : [...source, ...content];

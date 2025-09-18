@@ -1,6 +1,6 @@
 import type { $Produce } from ".";
 import type { FundType, TupleType } from "@zuord/type";
-import type { ZuordCore as Core } from "@zuord/core";
+import type { Zuord as Core } from "zuord";
 import type { TypeUtil as Util } from "@zuord/util";
 
 /**

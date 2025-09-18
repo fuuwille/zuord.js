@@ -1,4 +1,4 @@
-import { zuordCore as core } from "@zuord/core";
+import { zuord as core } from "zuord";
 import type { $ProduceMode } from ".";
 
 

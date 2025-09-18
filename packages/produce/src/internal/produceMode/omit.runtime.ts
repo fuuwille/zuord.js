@@ -1,7 +1,7 @@
-import { zuordCore } from "@zuord/core";
+import { zuord } from "zuord";
 import type { $ProduceMode } from ".";
 
 /**
  * @internal
  */
-export const plain = zuordCore.modeResolve([zuordCore.mode.shallow]) satisfies $ProduceMode.Omit.Plain;
+export const plain = zuord.modeResolve([zuord.mode.shallow]) satisfies $ProduceMode.Omit.Plain;

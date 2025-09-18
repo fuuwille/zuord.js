@@ -1,6 +1,6 @@
 import { $produce } from "../../internal";
 import { produceModeX } from "../produceMode";
-import { zuordCore } from "@zuord/core";
+import { zuord } from "zuord";
 import type { ProduceX, ProduceModeX } from "../..";
 import type { FundType } from "@zuord/type";
 import type { TypeUtil } from "@zuord/util";
@@ -15,4 +15,4 @@ export function loose <TSource extends FundType.Plain, TPattern extends TypeUtil
     : ProduceX.Omit.Loose<TSource, TPattern, TMode>;
 
 export function loose <TSource extends FundType.Plain, TPattern extends TypeUtil.Pattern.Plain<TSource>, TMode extends Partial<ProduceModeX.Omit.Loose>> (source: TSource, pattern: TPattern, mode: TMode = {} as TMode)
-    : ProduceX.Omit.Loose<TSource, TPattern, TMode> { return $produce.omit.plain(source, pattern, zuordCore.modeResolve([produceModeX.omit.loose, mode])); }
+    : ProduceX.Omit.Loose<TSource, TPattern, TMode> { return $produce.omit.plain(source, pattern, zuord.modeResolve([produceModeX.omit.loose, mode])); }

@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@zuord/core':
+      'zuord':
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
@@ -78,7 +78,7 @@ importers:
 
   library:
     dependencies:
-      '@zuord/core':
+      'zuord':
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
@@ -93,7 +93,7 @@ importers:
 
   packages/bundle:
     dependencies:
-      '@zuord/core':
+      'zuord':
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
@@ -114,7 +114,7 @@ importers:
 
   packages/produce:
     dependencies:
-      '@zuord/core':
+      'zuord':
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
@@ -141,7 +141,7 @@ importers:
 
   packages/util:
     dependencies:
-      '@zuord/core':
+      'zuord':
         specifier: 3.0.0-alpha.28
         version: 3.0.0-alpha.28
       '@zuord/trait':
@@ -2475,10 +2475,10 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@zuord/core@3.0.0-alpha.22':
+  'zuord@3.0.0-alpha.22':
     resolution: {integrity: sha512-r7/GJhJv31MsVw7JKKwUJShcnWgFt4Jbv9udYr3YWvzf6sk8AcCVBFoMH0Zm1Fj+RskKBfwZo0TZLHpLYpEcSg==}
 
-  '@zuord/core@3.0.0-alpha.28':
+  'zuord@3.0.0-alpha.28':
     resolution: {integrity: sha512-stBz7dZLACtlFefBPwGV4CdckUkbaObbqB1X3Zdjs+sFEtIql3vjxR8kKANpYFcw/DCYxJK263UmM9MK2wTMcw==}
 
   '@zuord/trait@3.0.0-alpha.14':
@@ -9521,9 +9521,9 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@zuord/core@3.0.0-alpha.22': {}
+  'zuord@3.0.0-alpha.22': {}
 
-  '@zuord/core@3.0.0-alpha.28': {}
+  'zuord@3.0.0-alpha.28': {}
 
   '@zuord/trait@3.0.0-alpha.14':
     dependencies:
@@ -9541,19 +9541,19 @@ snapshots:
 
   '@zuord/util@4.0.0-alpha.13':
     dependencies:
-      '@zuord/core': 3.0.0-alpha.22
+      'zuord': 3.0.0-alpha.22
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.15
 
   '@zuord/util@4.0.0-alpha.17':
     dependencies:
-      '@zuord/core': 3.0.0-alpha.28
+      'zuord': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.18
 
   '@zuord/util@4.0.0-alpha.22':
     dependencies:
-      '@zuord/core': 3.0.0-alpha.28
+      'zuord': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.18
 
@@ -14032,7 +14032,7 @@ snapshots:
 
   zuord@5.0.0-alpha.21:
     dependencies:
-      '@zuord/core': 3.0.0-alpha.28
+      'zuord': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.18
       '@zuord/util': 4.0.0-alpha.13

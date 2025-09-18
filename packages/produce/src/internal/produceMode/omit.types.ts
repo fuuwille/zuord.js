@@ -1,6 +1,6 @@
-import type { ZuordCore } from "@zuord/core";
+import type { Zuord } from "zuord";
 
 /**
  * @internal
  */
-export type Plain = ZuordCore.ModeResolve<[ZuordCore.Mode.Shallow]>;
+export type Plain = Zuord.ModeResolve<[Zuord.Mode.Shallow]>;

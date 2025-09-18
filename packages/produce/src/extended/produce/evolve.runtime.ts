@@ -1,6 +1,6 @@
 import { $produce } from "../../internal";
 import { produceModeX } from "../produceMode";
-import { zuordCore } from "@zuord/core";
+import { zuord } from "zuord";
 import type { ProduceX, ProduceModeX } from "../..";
 import type { FundType } from "@zuord/type";
 import type { TypeUtil } from "@zuord/util";
@@ -15,4 +15,4 @@ export function restrict <TSource extends FundType.Plain, TPatches extends TypeU
     : ProduceX.Evolve.Restrict<TSource, TPatches, TMode>;
 
 export function restrict <TSource extends FundType.Plain, TPatches extends TypeUtil.Restrict.KeysBatch<TSource, TPatches>, TMode extends Partial<ProduceModeX.Evolve.Restrict>> (source: TSource, patches: [...TPatches], mode: TMode = {} as TMode)
-    : ProduceX.Evolve.Restrict<TSource, TPatches, TMode> { return $produce.evolve.plain(source, patches, zuordCore.modeResolve([produceModeX.evolve.restrict, mode])); }
+    : ProduceX.Evolve.Restrict<TSource, TPatches, TMode> { return $produce.evolve.plain(source, patches, zuord.modeResolve([produceModeX.evolve.restrict, mode])); }

@@ -1,6 +1,6 @@
 import { $produce } from "../../internal";
 import { produceModeX } from "../produceMode";
-import { zuordCore } from "@zuord/core";
+import { zuord } from "zuord";
 import type { ProduceX, ProduceModeX } from "../..";
 import type { FundType } from "@zuord/type";
 import type { TypeUtil } from "@zuord/util";
@@ -15,7 +15,7 @@ export function loose <TSource extends FundType.Plain, TContent extends FundType
     : ProduceX.Integrate.Loose<TSource, TContent, TMode>;
 
 export function loose <TSource extends FundType.Plain, TContent extends FundType.Plain, TMode extends Partial<ProduceModeX.Integrate.Loose>> (source: TSource, content: TContent, mode: TMode = {} as TMode)
-    : ProduceX.Integrate.Loose<TSource, TContent, TMode> { return $produce.integrate.plain(source, content, zuordCore.modeResolve([produceModeX.integrate.loose, mode])) as ProduceX.Integrate.Loose<TSource, TContent, TMode>; }
+    : ProduceX.Integrate.Loose<TSource, TContent, TMode> { return $produce.integrate.plain(source, content, zuord.modeResolve([produceModeX.integrate.loose, mode])) as ProduceX.Integrate.Loose<TSource, TContent, TMode>; }
 
 
 // RESTRICT
@@ -27,7 +27,7 @@ export function restrict <TSource extends FundType.Plain, TPatch extends TypeUti
     : ProduceX.Integrate.Restrict<TSource, TPatch, TMode>;
 
 export function restrict <TSource extends FundType.Plain, TPatch extends TypeUtil.Restrict.Keys<TSource, TPatch>, TMode extends Partial<ProduceModeX.Integrate.Restrict>> (source: TSource, patch: TPatch, mode: TMode = {} as TMode)
-    : ProduceX.Integrate.Restrict<TSource, TPatch, TMode> { return $produce.integrate.plain(source, patch, zuordCore.modeResolve([produceModeX.integrate.restrict, mode])) as ProduceX.Integrate.Restrict<TSource, TPatch, TMode>; }
+    : ProduceX.Integrate.Restrict<TSource, TPatch, TMode> { return $produce.integrate.plain(source, patch, zuord.modeResolve([produceModeX.integrate.restrict, mode])) as ProduceX.Integrate.Restrict<TSource, TPatch, TMode>; }
 
 
 // ARRAY
@@ -39,4 +39,4 @@ export function array <TSource extends FundType.Array, TContent extends FundType
     : ProduceX.Integrate.Array<TSource, TContent, TMode>;
 
 export function array <TSource extends FundType.Array, TContent extends FundType.Array, TMode extends Partial<ProduceModeX.Integrate.Array>> (source: [...TSource], content: [...TContent], mode : TMode = {} as TMode)
-    : ProduceX.Integrate.Array<TSource, TContent, TMode> { return $produce.integrate.array(source, content, zuordCore.modeResolve([produceModeX.integrate.array, mode])) as ProduceX.Integrate.Array<TSource, TContent, TMode>; }
+    : ProduceX.Integrate.Array<TSource, TContent, TMode> { return $produce.integrate.array(source, content, zuord.modeResolve([produceModeX.integrate.array, mode])) as ProduceX.Integrate.Array<TSource, TContent, TMode>; }

@@ -1,4 +1,4 @@
-import type { ZuordCore as Core } from "@zuord/core";
+import type { Zuord as Core } from "zuord";
 
 /**
  * @internal
