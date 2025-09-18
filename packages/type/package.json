@@ -1,6 +1,6 @@
 {
   "name": "@zuord/type",
-  "version": "2.0.0-alpha.25",
+  "version": "2.0.0-alpha.26",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,7 @@
   "author": "k4yr2",
   "license": "Apache-2.0",
   "type": "module",
-  "devDependencies": {
-    "cpy-cli": "^5.0.0"
+  "dependencies": {
+    "zuord": "3.0.0-alpha.34"
   }
 }

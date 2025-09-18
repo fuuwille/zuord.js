@@ -3,12 +3,12 @@
   "name": "zuord-monorepo",
   "scripts": {},
   "dependencies": {
-    "zuord": "3.0.0-alpha.28",
     "@zuord/trait": "3.0.0-alpha.18",
     "@zuord/type": "2.0.0-alpha.25",
     "@zuord/util": "4.0.0-alpha.22",
     "ts-morph": "^26.0.0",
-    "typedocs": "^0.6.7"
+    "typedocs": "^0.6.7",
+    "zuord": "3.0.0-alpha.34"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
