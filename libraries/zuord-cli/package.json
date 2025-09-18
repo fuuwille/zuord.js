@@ -5,6 +5,7 @@
   "keywords": [],
   "author": "k4yr2",
   "dependencies": {
+    "commander": "^14.0.0",
     "zuord": "3.0.0-alpha.34"
   },
   "bin": {
