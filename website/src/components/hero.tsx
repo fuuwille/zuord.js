@@ -1,26 +1,22 @@
 "use client";
 import { Box } from "@mui/material";
-import { useLayoutEffect, useRef } from "react";
 
 export const Hero = () => {
-    const waveRef = useRef<HTMLDivElement>(null);
+    const duration = 60;
 
-    useLayoutEffect(() => {
-        const now = new Date();
-        const duration = 60;
-        const seconds = now.getSeconds() + now.getMinutes() * 60;
-        const progress = (seconds % duration) / duration;
+    // Saniyeyi client-side hemen hesapla, SSR'da 0 olarak bırak
+    const seconds =
+        typeof window !== "undefined"
+        ? new Date().getSeconds() + new Date().getMinutes() * 60
+        : 0;
 
-        const wave = waveRef.current;
-
-        if (wave) {
-            wave.style.animationDelay = `-${progress * duration}s`;
-        }
-    }, []);
+    const progress = (seconds % duration) / duration;
 
     return (
         <Box className="hero" flexDirection={{ xs: 'column', md: 'row' }}>
-            <Box className="wave" ref={waveRef} />
+            <Box className="wave"
+                style={{ animationDelay: `-${progress * duration}s` }}
+            />
             <Box className="content">
                 <Box className="title">Zuord</Box>
                 <Box className="divider" display={{ xs: 'none', md: 'block' }}>/</Box>
