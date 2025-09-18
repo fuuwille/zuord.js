@@ -1,6 +1,6 @@
 {
     "name": "@zuord/bundle",
-    "version": "1.0.0-alpha.8",
+    "version": "1.0.0-alpha.9",
     "dependencies": {
         "@zuord/core": "3.0.0-alpha.28",
         "@zuord/trait": "3.0.0-alpha.14",
