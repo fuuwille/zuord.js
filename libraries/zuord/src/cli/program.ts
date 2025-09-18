@@ -19,11 +19,6 @@ program
     const cwd = process.cwd();
     const packagePath = join(cwd, "zuord-package.ts");
 
-    if (!existsSync(packagePath)) {
-        console.error("❌ zuord-package.ts bulunamadı");
-        process.exit(1);
-    }
-
     console.info("Building zuord package...");
     let pkg;
 
@@ -55,7 +50,7 @@ program
         console.log("📦 Library build seçildi");
     }
 
-    const child = exec(command, (error) => {
+    const child = exec(command + " && chmod +x dist/cli/program.js", (error) => {
         if (error) {
             console.error(`❌ Hata: ${error.message}`);
             process.exit(1);
