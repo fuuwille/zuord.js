@@ -10,7 +10,7 @@ export const Hero = () => {
                 <Box className={style['divider']} display={{ xs: 'none', md: 'block' }}>/</Box>
                 <Box className={style['description']}
                     display={{ xs: 'block', sm: 'inline-flex' }} 
-                    fontSize={{ xs: '1rem', sm: '1.25rem' }}
+                    fontSize={{ xs: '16px', sm: '20px' }}
                 >
                     <Box>Synchronous Runtime & Type APIs</Box>
                     <Box>within TS-first Packages</Box>

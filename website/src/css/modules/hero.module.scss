@@ -14,13 +14,13 @@
         position: absolute;
         z-index: 0;
         top: 0;
-        left: -50%; /* Başlangıçta solda */
-        width: 100%; /* Hero genişliğinin yarısı kadar */
+        left: -50%;
+        width: 100%;
         height: 100%;
         background: linear-gradient(
-            135deg, 
+            90deg, 
             #3a92b3 0%, 
-            #3a92b3 15%,
+            #3a92b3 15%, 
             #4ec9b0 45%,
             #4ec9b0 55%, 
             #3a92b3 85%,
@@ -75,6 +75,7 @@
             * {
                 min-width: max-content;
                 max-height: max-content;
+                font-style: italic;
             }
         }
     }
