@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { exec } from 'child_process';
 
-const command = 'rimraf dist && rollup -c && cpy "src/**/*{.js,.d.ts}" dist';
+const command = 'npx rimraf dist && npx rollup -c && npx cpy "src/**/*{.js,.d.ts}" dist';
 
 console.log(`Running: ${command}`);
 
