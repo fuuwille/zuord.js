@@ -18,23 +18,26 @@
         width: 100%; /* Hero genişliğinin yarısı kadar */
         height: 100%;
         background: linear-gradient(
-            90deg, 
+            135deg, 
             #3a92b3 0%, 
-            #4ec9b0 45%, 
+            #3a92b3 15%,
+            #4ec9b0 45%,
             #4ec9b0 55%, 
+            #3a92b3 85%,
             #3a92b3 100%
         );
-        animation: waveMove 60s linear infinite;
-        animation-delay: -40s;
+        animation: waveMove 30s linear infinite;
+        animation-delay: -20s;
     }
 
     .wave {
         @keyframes waveMove {
-            0% { left: -50%; }
-            45% { left: 50%; }
-            50% { left: 50%; }
-            95% { left: -50%; }
-            100% { left: -50%; }
+            0% { left: -15%; }
+            10% { left: -15%; }
+            45% { left: 15%; }
+            55% { left: 15%; }
+            90% { left: -15%; }
+            100% { left: -15%; }
         }
     }
 
