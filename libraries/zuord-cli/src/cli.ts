@@ -24,8 +24,8 @@ async function main() {
 
     const typeOnly = pkg.default?.typeOnly;
     const command = typeOnly 
-        ? "npx rimraf dist && npx rollup -c && npx cpy \"src/**/*{.js,.d.ts}\" dist"
-        : "npx rimraf dist && npx tsc --project tsconfig-dist.json && npx cpy 'src/**/*.d.ts' dist";
+        ? "npx rimraf dist && npx tsc --project tsconfig-dist.json && npx cpy 'src/**/*.d.ts' dist"
+        : "npx rimraf dist && npx rollup -c && npx cpy \"src/**/*{.js,.d.ts}\" dist";
 
     const child = exec(command, (error, stdout, stderr) => {
         if (error) {
