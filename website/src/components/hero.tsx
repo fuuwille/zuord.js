@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 export const Hero = () => {
     return (
         <Box className={style['hero']}>
-            <Box className={style['wave']} display={{ xs: 'none', sm: 'block' }} />
+            <Box className={style['wave']}/>
             <Box className={style['content']} flexDirection={{ xs: 'column', md: 'row' }}>
                 <Box className={style['title']}>Zuord</Box>
                 <Box className={style['divider']} display={{ xs: 'none', md: 'block' }}>/</Box>
