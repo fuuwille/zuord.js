@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "zuord": ["library/src"],
+      "zuord": ["libraries/zuord/src"],
       "@zuord/type": ["packages/type/src"],
       "@zuord/util": ["packages/util/src"],
       "@zuord/trait": ["packages/trait/src"],
