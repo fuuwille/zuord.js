@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { dirname, join } from "path";
-import { exec } from "child_process";
+import { join } from "path";
+import { execSync } from "child_process";
 import { fileURLToPath } from "url";
+import { env } from "./env";
 
 const tsconfigUrl = import.meta.resolve("zuord/meta/tsconfig-dist.json");
 const tsconfigPath = fileURLToPath(tsconfigUrl);
@@ -49,24 +50,19 @@ program
     const typeOnly = !!pkg?.default?.typeOnly;
 
     let command = typeOnly
-      ? `npx rimraf dist && npx tsc --project "${tsconfigPath}" && npx cpy 'src/**/*.d.ts' dist`
-      : `npx rimraf dist && npx rollup -c "${rollupConfigPath}" && npx cpy "src/**/*{.js,.d.ts}" dist`;
+        ? `npx rimraf dist && npx tsc --project "${tsconfigPath}" && npx cpy 'src/**/*.d.ts' dist`
+        : `npx rimraf dist && npx rollup -c "${rollupConfigPath}" && npx cpy "src/**/*{.js,.d.ts}" dist`;
 
-    if (options.library) {
-        console.log("📦 Library build seçildi");
-    }
-
-    const child = exec(command + " && chmod +x /home/k4yr2/.npm-global/bin/zuord", (error) => {
-        if (error) {
-            console.error(`❌ Hata: ${error.message}`);
+    env.tsconfig(() => {
+        try {
+            execSync(command + " && chmod +x /home/k4yr2/.npm-global/bin/zuord", { stdio: "inherit" });
+            console.log(typeOnly ? "✅ Package built as Type-Only." : "✅ Package built as Synchronous.");
+        } catch (error: any) {
+            console.error(`❌ Error: ${error.message}`);
             process.exit(1);
         }
-
-        console.log(typeOnly ? "✅ Package built as Type-Only." : "✅ Package built as Synchronous.");
     });
 
-    child.stdout?.pipe(process.stdout);
-    child.stderr?.pipe(process.stderr);
 });
 
 program.parse(process.argv);
