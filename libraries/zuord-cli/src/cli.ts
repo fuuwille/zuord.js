@@ -35,7 +35,12 @@ async function main() {
         if (stderr) {
             console.error(`⚠️ Stderr: ${stderr}`);
         }
-        console.log(stdout);
+        
+        if (typeOnly) {
+            console.log("✅ Package built as Type-Only.");
+        } else {
+            console.log("✅ Package built as Synchronous.");
+        }
     });
 
     child.stdout?.pipe(process.stdout);
