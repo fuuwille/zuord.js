@@ -1,10 +1,8 @@
 {
   "name": "@zuord/trait",
-  "version": "3.0.0-alpha.18",
-  "description": "",
+  "version": "3.0.0-alpha.20",
   "types": "dist/index.d.ts",
   "author": "k4yr2",
-  "license": "ISC",
   "type": "module",
   "dependencies": {
     "@zuord/type": "2.0.0-alpha.28",
