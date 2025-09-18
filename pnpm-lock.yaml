@@ -97,11 +97,11 @@ importers:
         specifier: 3.0.0-alpha.20
         version: 3.0.0-alpha.20
       '@zuord/type':
-        specifier: 2.0.0-alpha.25
-        version: 2.0.0-alpha.25
+        specifier: 2.0.0-alpha.28
+        version: 2.0.0-alpha.28
       '@zuord/util':
-        specifier: 4.0.0-alpha.22
-        version: 4.0.0-alpha.22
+        specifier: 4.0.0-alpha.24
+        version: 4.0.0-alpha.24
       zuord:
         specifier: 3.0.0-alpha.34
         version: 3.0.0-alpha.34
@@ -2476,14 +2476,14 @@ packages:
   '@zuord/type@2.0.0-alpha.18':
     resolution: {integrity: sha512-ypavSoQKGGyjNnjJCgydKzVqlurghE8y+9Jt2rmtuSEcF7gflOYTVX4WPjkxXOPgASvu8XBEQImFraCO/TgIoQ==}
 
-  '@zuord/type@2.0.0-alpha.25':
-    resolution: {integrity: sha512-YWJCHxAIE+KwiIWfCGYx4EXTwOEYMA65Xk3UjUF5SlTx8MfuTf1toqVlrpSB8dn/0oWb0kSVOBuEAKQo80VxEA==}
-
   '@zuord/type@2.0.0-alpha.28':
     resolution: {integrity: sha512-ILoHojCV6hMI4m/9uvhFtplv7kveJIUyB+oqpCk59yQBi3WJeXv4yT2MdWcX5ly/OXqfgnaApToxAUCm6uYDKg==}
 
   '@zuord/util@4.0.0-alpha.22':
     resolution: {integrity: sha512-lyH/7bXAAOBx16Ag9iHCSxz0ek2Yc3YnY6s0iDdGP36wr/v0P2YGaMkqoXR/wiW5oS73fUCyGgbG9yJ/bl6Uog==}
+
+  '@zuord/util@4.0.0-alpha.24':
+    resolution: {integrity: sha512-6QYC05YO0nR45kF/D8KnQBJOf2iSCVG+1o2nOqsutT/0eAoSgA0AfFDQB+8pqFTNJ3FYmhiJM4Oisorj/q6VCw==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -9525,8 +9525,6 @@ snapshots:
 
   '@zuord/type@2.0.0-alpha.18': {}
 
-  '@zuord/type@2.0.0-alpha.25': {}
-
   '@zuord/type@2.0.0-alpha.28':
     dependencies:
       zuord: 3.0.0-alpha.34
@@ -9536,6 +9534,12 @@ snapshots:
       '@zuord/core': 3.0.0-alpha.28
       '@zuord/trait': 3.0.0-alpha.14
       '@zuord/type': 2.0.0-alpha.18
+
+  '@zuord/util@4.0.0-alpha.24':
+    dependencies:
+      '@zuord/trait': 3.0.0-alpha.20
+      '@zuord/type': 2.0.0-alpha.28
+      zuord: 3.0.0-alpha.34
 
   accepts@1.3.8:
     dependencies:

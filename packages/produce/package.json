@@ -20,8 +20,8 @@
   "homepage": "https://github.com/fuuwille/zuord#readme",
   "dependencies": {
     "@zuord/trait": "3.0.0-alpha.20",
-    "@zuord/type": "2.0.0-alpha.25",
-    "@zuord/util": "4.0.0-alpha.22",
+    "@zuord/type": "2.0.0-alpha.28",
+    "@zuord/util": "4.0.0-alpha.24",
     "zuord": "3.0.0-alpha.34"
   }
 }
