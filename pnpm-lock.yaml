@@ -73,6 +73,12 @@ importers:
         specifier: ~5.6.3
         version: 5.6.3
 
+  libraries/zuord:
+    devDependencies:
+      commander:
+        specifier: ^14.0.0
+        version: 14.0.0
+
   libraries/zuord-cli:
     dependencies:
       commander:

@@ -12,5 +12,8 @@
   ],
   "author": "k4yr2",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "commander": "^14.0.0"
+  }
 }
