@@ -7,6 +7,9 @@
   "dependencies": {
     "zuord": "3.0.0-alpha.34"
   },
+  "bin": {
+    "zuord-cli": "./dist/cli.js"
+  },
   "devDependencies": {
     "cpy-cli": "^5.0.0",
     "ts-node": "^10.9.2",
