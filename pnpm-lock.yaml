@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@zuord/trait':
-        specifier: 3.0.0-alpha.18
-        version: 3.0.0-alpha.18
+        specifier: 3.0.0-alpha.20
+        version: 3.0.0-alpha.20
       '@zuord/type':
         specifier: 2.0.0-alpha.28
         version: 2.0.0-alpha.28
@@ -94,8 +94,8 @@ importers:
   packages/produce:
     dependencies:
       '@zuord/trait':
-        specifier: 3.0.0-alpha.18
-        version: 3.0.0-alpha.18
+        specifier: 3.0.0-alpha.20
+        version: 3.0.0-alpha.20
       '@zuord/type':
         specifier: 2.0.0-alpha.25
         version: 2.0.0-alpha.25
@@ -2467,8 +2467,8 @@ packages:
   '@zuord/trait@3.0.0-alpha.14':
     resolution: {integrity: sha512-f4mNHOYmFaoOQGRzJkkO65k+7KgBf2UzpHg/NCnItOL/ZSQ3vbrS8zs3UZoWgLylX2OC//YU18C7dObrt8eLhA==}
 
-  '@zuord/trait@3.0.0-alpha.18':
-    resolution: {integrity: sha512-90/IcKnSv07Ymzx5ubFT9mrUKjAXNxFeMBnS5MkjnkZHIRp3ztiXXLmO1KuSwf8PAkdhlsnX+ovO3iPqOD49hg==}
+  '@zuord/trait@3.0.0-alpha.20':
+    resolution: {integrity: sha512-JlZP6nrmrwMABwVZ0Zm31VXPHwv/bcNLB5rfWzZkOlD73GcUwubgOonAm/1aWA2C2d9Ik0I93Y8436aoVUR9Jg==}
 
   '@zuord/type@2.0.0-alpha.15':
     resolution: {integrity: sha512-OzDSuqnKkgeYHavW1DKtcDEc9X0+QdAw7FszhGRGlGQn9GbMm4Du1xJBSTJ24m8Q597gEOYVilZya06ZLruD/w==}
@@ -9516,9 +9516,10 @@ snapshots:
     dependencies:
       '@zuord/type': 2.0.0-alpha.15
 
-  '@zuord/trait@3.0.0-alpha.18':
+  '@zuord/trait@3.0.0-alpha.20':
     dependencies:
-      '@zuord/type': 2.0.0-alpha.15
+      '@zuord/type': 2.0.0-alpha.28
+      zuord: 3.0.0-alpha.34
 
   '@zuord/type@2.0.0-alpha.15': {}
 
