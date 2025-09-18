@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "keywords": [],
-  "author": "k4yr2"
+  "author": "k4yr2",
+  "dependencies": {
+    "zuord": "3.0.0-alpha.34"
+  },
+  "devDependencies": {
+    "cpy-cli": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
 }
