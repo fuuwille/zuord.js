@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import { existsSync } from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
 import { exec } from "child_process";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const tsconfigPath = join(__dirname, "../../meta/tsconfig-dist.json");
+const rollupConfigPath = join(__dirname, "../../meta/rollup.config.mjs");
 
 const program = new Command();
 
@@ -43,8 +49,8 @@ program
     const typeOnly = !!pkg?.default?.typeOnly;
 
     let command = typeOnly
-        ? "npx rimraf dist && npx tsc --project tsconfig-dist.json && npx cpy 'src/**/*.d.ts' dist"
-        : "npx rimraf dist && npx rollup -c && npx cpy \"src/**/*{.js,.d.ts}\" dist";
+      ? `npx rimraf dist && npx tsc --project "${tsconfigPath}" && npx cpy 'src/**/*.d.ts' dist`
+      : `npx rimraf dist && npx rollup -c "${rollupConfigPath}" && npx cpy "src/**/*{.js,.d.ts}" dist`;
 
     if (options.library) {
         console.log("📦 Library build seçildi");
