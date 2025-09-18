@@ -13,6 +13,9 @@
   "author": "k4yr2",
   "license": "ISC",
   "type": "module",
+  "bin": {
+    "zuord": "./dist/cli/program.js"
+  },
   "devDependencies": {
     "commander": "^14.0.0"
   }
