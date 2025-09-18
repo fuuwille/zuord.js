@@ -1,23 +1,10 @@
 {
   "name": "@zuord/produce",
-  "version": "5.0.0-alpha.40",
+  "version": "5.0.0-alpha.42",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*{.js,.d.ts}\" dist"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fuuwille/zuord.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "k4yr2",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/fuuwille/zuord/issues"
-  },
-  "homepage": "https://github.com/fuuwille/zuord#readme",
   "dependencies": {
     "@zuord/trait": "3.0.0-alpha.20",
     "@zuord/type": "2.0.0-alpha.28",
