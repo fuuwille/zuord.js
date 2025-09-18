@@ -4,7 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import tsconfigPaths from "rollup-plugin-tsconfig-paths";
 import glob from 'fast-glob';
 
-const tscDistPath = './tsconfig-dist.json';
+const tscDistPath = './tsconfig.dist.json';
 
 export default {
     input: await glob(['src/**/*.ts', '!src/**/*.types.ts', '!**/*.d.ts']),
