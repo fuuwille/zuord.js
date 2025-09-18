@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "dist",
+        "sourceMap": false,
+        "declaration": true,
+        "declarationMap": false
+    }
+}
