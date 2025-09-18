@@ -6,7 +6,7 @@ import glob from 'fast-glob';
 
 const tscDistPath = './tsconfig-dist.json';
 
-export const rollupConfig = {
+export default {
     input: await glob(['src/**/*.ts', '!src/**/*.types.ts', '!**/*.d.ts']),
     output: {
         dir: 'dist',
