@@ -70,6 +70,7 @@
     #2196F3 100%
   );
   animation: waveMove 60s linear infinite;
+  animation-delay: -40s;
 }
 
 @keyframes waveMove {
