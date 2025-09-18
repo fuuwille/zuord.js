@@ -5,7 +5,7 @@ import { execSync } from "child_process";
 import { fileURLToPath } from "url";
 import { env } from "./env";
 
-const tsconfigUrl = import.meta.resolve("zuord/meta/tsconfig-dist.json");
+const tsconfigUrl = import.meta.resolve("zuord/meta/tsconfig.dist.json");
 const tsconfigPath = fileURLToPath(tsconfigUrl);
 
 const rollupConfigUrl = import.meta.resolve("zuord/meta/rollup.config.mjs");
