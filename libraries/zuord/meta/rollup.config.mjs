@@ -1,3 +1,4 @@
+// ROLLUP CONFIG FOR SYNC BUILD
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import tsconfigPaths from "rollup-plugin-tsconfig-paths";
