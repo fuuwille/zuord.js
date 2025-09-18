@@ -1,8 +1,0 @@
-{
-  "name": "@zuord/tests-lib",
-  "version": "0.1.0",
-  "devDependencies": {
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4"
-  }
-}
