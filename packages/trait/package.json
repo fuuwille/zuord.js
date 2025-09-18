@@ -6,6 +6,6 @@
   "type": "module",
   "dependencies": {
     "@zuord/type": "2.0.0-alpha.28",
-    "zuord": "3.0.0-alpha.34"
+    "zuord": "3.0.0-alpha.40"
   }
 }

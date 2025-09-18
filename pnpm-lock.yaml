@@ -24,8 +24,8 @@ importers:
         specifier: ^0.6.7
         version: 0.6.7
       zuord:
-        specifier: 3.0.0-alpha.34
-        version: 3.0.0-alpha.34
+        specifier: 3.0.0-alpha.40
+        version: 3.0.0-alpha.40
     devDependencies:
       '@rollup/plugin-node-resolve':
         specifier: ^16.0.1
@@ -112,8 +112,8 @@ importers:
         specifier: 4.0.0-alpha.24
         version: 4.0.0-alpha.24
       zuord:
-        specifier: 3.0.0-alpha.34
-        version: 3.0.0-alpha.34
+        specifier: 3.0.0-alpha.40
+        version: 3.0.0-alpha.40
 
   packages/trait:
     dependencies:
@@ -121,14 +121,14 @@ importers:
         specifier: 2.0.0-alpha.28
         version: 2.0.0-alpha.28
       zuord:
-        specifier: 3.0.0-alpha.34
-        version: 3.0.0-alpha.34
+        specifier: 3.0.0-alpha.40
+        version: 3.0.0-alpha.40
 
   packages/type:
     dependencies:
       zuord:
-        specifier: 3.0.0-alpha.34
-        version: 3.0.0-alpha.34
+        specifier: 3.0.0-alpha.40
+        version: 3.0.0-alpha.40
 
   packages/util:
     dependencies:
@@ -139,8 +139,8 @@ importers:
         specifier: 2.0.0-alpha.28
         version: 2.0.0-alpha.28
       zuord:
-        specifier: 3.0.0-alpha.34
-        version: 3.0.0-alpha.34
+        specifier: 3.0.0-alpha.40
+        version: 3.0.0-alpha.40
 
   tests:
     devDependencies:
@@ -6374,6 +6374,10 @@ packages:
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
+
+  zuord@3.0.0-alpha.40:
+    resolution: {integrity: sha512-FAwJc2+rhYszjId4qnD8F5G0TIkA/I6xuuGKHU/5P3g6FWwywYGYPMfDeLeLgDtxOKr9mK1msRPSHFMRUsT0rg==}
+    hasBin: true
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -14047,5 +14051,7 @@ snapshots:
   yocto-queue@1.2.1: {}
 
   zuord@3.0.0-alpha.34: {}
+
+  zuord@3.0.0-alpha.40: {}
 
   zwitch@2.0.4: {}
