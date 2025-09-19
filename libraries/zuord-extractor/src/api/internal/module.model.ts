@@ -7,9 +7,9 @@ export interface ModuleNode {
 }
 
 export interface ModuleModel extends ModuleNode {
-    impls: ModuleImpl[];
+    variants: ModuleVariant[];
 }
 
-export interface ModuleImpl extends ModuleNode {
+export interface ModuleVariant extends ModuleNode {
 
 }
