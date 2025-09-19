@@ -1,4 +1,4 @@
-src/
-tsconfig.json
-tsconfig-dist.json
-rollup.config.mjs
+/src/
+/tsconfig.json
+/tsconfig.dist.json
+/rollup.config.mjs
