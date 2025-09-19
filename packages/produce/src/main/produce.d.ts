@@ -1,18 +1,6 @@
-import type { integrate as $integrate } from "./produce.runtime";
-import type { merge as $merge } from "./produce.runtime";
-import type { evolve as $evolve } from "./produce.runtime";
-import type { pick as $pick } from "./produce.runtime";
-import type { omit as $omit } from "./produce.runtime";
+import * as $produce from "./produce.runtime";
 
-type produceAPI = {
-    integrate: typeof $integrate;
-    merge: typeof $merge;
-    evolve: typeof $evolve;
-    pick: typeof $pick;
-    omit: typeof $omit;
-}
-
-export declare const produce: produceAPI;
+export declare const produce: typeof $produce;
 
 // @zuord-exclude
 export type Produce = any;
