@@ -1,16 +1,15 @@
 import style from '@site/src/css/modules/benefits.module.scss';
 import clsx from 'clsx';
 import { BenefitsHeadProps, BenefitsProps } from '@site/src/types/benefits';
-import { zuord } from 'zuord';
+import { produce } from '@zuord/produce';
 import { Pretext } from './pretext';
 import { Showcase } from './showcase';
-import { benefitsBodyUtil } from '@site/src/utils/benefits';
 import { tokenModifier } from '@site/src/utils/pretext';
 import { Box } from '@mui/material';
 import { benefitsBodyData } from '@site/src/data/benefits';
 
 export const Benefits: React.FC<BenefitsProps> = ($props) => {
-    const props = zuord.integrate({
+    const props = produce.integrate({
         head: () => <BenefitsHead.Native title={"Benefits Title"} description={"Benefits description goes here."} />,
         body: null,
     }, $props);
