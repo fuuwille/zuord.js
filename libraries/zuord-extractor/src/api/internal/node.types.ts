@@ -1,4 +1,4 @@
-import { FunctionDeclaration, ArrowFunction, FunctionExpression, VariableDeclaration, ExportAssignment, ObjectLiteralExpression } from "ts-morph";
+import { FunctionDeclaration, ArrowFunction, FunctionExpression, VariableDeclaration, ExportAssignment, ObjectLiteralExpression, InterfaceDeclaration, TypeAliasDeclaration } from "ts-morph";
 
 export type RuntimeNode =
   | FunctionDeclaration
@@ -7,3 +7,7 @@ export type RuntimeNode =
   | VariableDeclaration
   | ExportAssignment
   | ObjectLiteralExpression;
+
+export type TypeNode =
+    | InterfaceDeclaration
+    | TypeAliasDeclaration;
