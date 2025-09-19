@@ -1,7 +1,7 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { RuntimeNode, TypeNode } from "./node.model";
+import { VariantNode, ModelNode } from "./node.model";
 
-export const isModelNode = (node: Node): node is TypeNode => {
+export const isModelNode = (node: Node): node is ModelNode => {
     switch (node.getKind()) {
         case SyntaxKind.InterfaceDeclaration:
         case SyntaxKind.TypeAliasDeclaration:
@@ -11,7 +11,7 @@ export const isModelNode = (node: Node): node is TypeNode => {
     }
 }
 
-export const isVariantNode = (node: Node): node is RuntimeNode => {
+export const isVariantNode = (node: Node): node is VariantNode => {
     switch (node.getKind()) {
         case SyntaxKind.FunctionDeclaration:
         case SyntaxKind.ArrowFunction:
