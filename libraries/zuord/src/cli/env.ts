@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import url from 'url';
+import * as fs from "fs";
+import * as path from "path";
+import * as url from "url";
 
 export const env = {
     tsconfig: async (func: Function) => {
