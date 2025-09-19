@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { Project, Node } from "ts-morph";
+import { Project } from "ts-morph";
 import { Module, ModuleModel } from "./module.model";
 import { isModelNode } from "./node.variants";
 
