@@ -4,7 +4,7 @@
   "main": "dist/api/index.js",
   "types": "dist/api/index.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c && cpy \"src/**/*{.d.ts,.js}\" dist",
+    "build": "node --loader ./_/loader.mjs _/build.ts",
     "chmod": "chmod +x /home/k4yr2/.npm-global/bin/zuord",
     "postinstall": "npm run chmod",
     "postbuild": "npm run chmod"
