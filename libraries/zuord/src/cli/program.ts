@@ -54,7 +54,7 @@ program
 
     env.tsconfig(() => {
         try {
-            execSync(command + " && chmod +x /home/k4yr2/.npm-global/bin/zuord", { stdio: "inherit" });
+            execSync(command, { stdio: "inherit" });
             console.log(typeOnly ? "✅ Package built as Type-Only." : "✅ Package built as Synchronous.");
         } catch (error: any) {
             console.error(`❌ Error: ${error.message}`);
