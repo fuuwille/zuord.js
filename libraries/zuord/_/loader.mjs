@@ -3,7 +3,6 @@ import { existsSync } from "node:fs";
 import { resolve as pathResolve, dirname, extname } from "node:path";
 
 export async function resolve(specifier, context, defaultResolveFn) {
-  // Eğer uzantı belli ise zinciri Node'a devret
   if (extname(specifier)) {
     return defaultResolveFn(specifier, context, defaultResolveFn);
   }
@@ -21,6 +20,5 @@ export async function resolve(specifier, context, defaultResolveFn) {
     return { url: pathToFileURL(tsPath).href, shortCircuit: true };
   }
 
-  // Bulamazsa zinciri Node’a bırak
   return defaultResolveFn(specifier, context, defaultResolveFn);
 }
