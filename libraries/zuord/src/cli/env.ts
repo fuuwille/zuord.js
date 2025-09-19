@@ -8,8 +8,6 @@ export const env = {
         const tsconfigPath = url.fileURLToPath(tsconfigUrl);
 
         const tsconfig = JSON.parse(fs.readFileSync(tsconfigPath, 'utf-8'));
-        tsconfig.compilerOptions = tsconfig.compilerOptions || {};
-        tsconfig.compilerOptions.baseUrl = process.cwd();
 
         const tempTsconfigPath = path.join(process.cwd(), 'tsconfig.dist.json');
         fs.writeFileSync(tempTsconfigPath, JSON.stringify(tsconfig, null, 2));
