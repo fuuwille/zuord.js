@@ -1,28 +1,29 @@
 import * as fs from "fs";
 import * as path from "path";
-import { ts } from "ts-morph";
-import { Module } from "./module.model";
+import { Project, Node } from "ts-morph";
+import { Module, ModuleModel } from "./module.model";
+import { isModelNode } from "./node.variants";
 
-export const extractModule = (dir: string, name: string) : Module => {
+export const extractModule = (dir: string, name: string): Module => {
     const modelPath = path.join(dir, `${name}.model.ts`);
-    const variantsPath = path.join(dir, `${name}.variants.ts`);
-
     const modelText = fs.readFileSync(modelPath, "utf-8");
-    const variantsText = fs.readFileSync(variantsPath, "utf-8");
 
-    const modelSource = ts.createSourceFile(
-        modelPath,
-        modelText,
-        ts.ScriptTarget.Latest,
-        true
-    );
+    const project = new Project();
+    const sourceFile = project.createSourceFile(modelPath, modelText, { overwrite: true });
 
-    const variantsSource = ts.createSourceFile(
-        variantsPath,
-        variantsText,
-        ts.ScriptTarget.Latest,
-        true
-    );
+    const models: ModuleModel[] = [];
 
-    return { models: [] };
+    sourceFile.forEachChild((node) => {
+        if (isModelNode(node)) {
+            const modelName = node.getName?.() || "Unnamed";
+            models.push({
+                node,
+                type: "type",
+                name: modelName,
+                variants: [],
+            });
+        }
+    });
+
+    return { models };
 };
