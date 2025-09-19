@@ -1,4 +1,4 @@
-// ROLLUP CONFIG FOR SYNC BUILD
+import shebang from 'rollup-plugin-preserve-shebang';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import tsconfigPaths from "rollup-plugin-tsconfig-paths";
@@ -14,7 +14,8 @@ export default {
         preserveModules: true,
     },
     external: [/node_modules/, /^@?zuord\//],
-    plugins: [
+    plugins: [   
+        shebang(),
         resolve({
             extensions: ['.js', '.ts']
         }),
