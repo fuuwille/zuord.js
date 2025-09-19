@@ -9,11 +9,11 @@ export const extractModule = (dir: string, name: string): Module => {
     const modelText = fs.readFileSync(modelPath, "utf-8");
 
     const project = new Project();
-    const sourceFile = project.createSourceFile(modelPath, modelText, { overwrite: true });
+    const modelSource = project.createSourceFile(modelPath, modelText, { overwrite: true });
 
     const models: ModuleModel[] = [];
 
-    sourceFile.forEachChild((node) => {
+    modelSource.forEachChild((node) => {
         if (isModelNode(node)) {
             const modelName = node.getName?.() || "Unnamed";
             models.push({
