@@ -12,7 +12,7 @@ export const Hero = () => {
                     display={{ xs: 'block', sm: 'inline-flex' }} 
                     fontSize={{ xs: '16px', sm: '20px' }}
                 >
-                    <Box>Synchronous Model & Variants APIs</Box>
+                    <Box>Synchronous Model & Variants Modules</Box>
                     <Box>within TS-first Packages</Box>
                 </Box>
             </Box>
