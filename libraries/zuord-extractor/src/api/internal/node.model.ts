@@ -1,4 +1,4 @@
-import { FunctionDeclaration, ArrowFunction, FunctionExpression, VariableDeclaration, ExportAssignment, ObjectLiteralExpression, InterfaceDeclaration, TypeAliasDeclaration } from "ts-morph";
+import { FunctionDeclaration, VariableDeclaration, InterfaceDeclaration, TypeAliasDeclaration } from "ts-morph";
 
 export type ModelNode =
     | ModelTypeNode
@@ -9,9 +9,9 @@ export type ModelTypeNode = TypeAliasDeclaration;
 export type ModelInterfaceNode = InterfaceDeclaration;
 
 export type VariantNode =
-    | FunctionDeclaration
-    | ArrowFunction
-    | FunctionExpression
-    | VariableDeclaration
-    | ExportAssignment
-    | ObjectLiteralExpression;
+    | VariantFunctionNode
+    | VariantVariableNode;
+
+export type VariantFunctionNode = FunctionDeclaration;
+
+export type VariantVariableNode = VariableDeclaration;
