@@ -6,5 +6,7 @@
         "sourceMap": false,
         "declaration": true,
         "declarationMap": false
-    }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "zuord-package.ts"]
 }
