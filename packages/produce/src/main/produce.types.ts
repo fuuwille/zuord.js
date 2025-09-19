@@ -3,6 +3,10 @@ import { ProduceX } from "../extended";
 import { ProduceMode } from "./produceMode";
 import { TypeUtil } from "@zuord/util";
 
+/**
+ * Produces a new type with the given patch integrated into the source.
+ * @zuordID integrate
+ */
 export type Integrate<TBase extends FundType.Plain, TInput extends TypeUtil.Restrict.Keys<TBase, TInput>, TMode extends Partial<ProduceMode.Integrate> = {}>
     = ProduceX.Integrate.Restrict<TBase, TInput, TMode>;
 
