@@ -10,9 +10,10 @@ export interface ModuleElement {
 }
 
 export interface ModuleModel extends ModuleElement {
+    type: "type" | "interface";
     variants: ModuleVariant[];
 }
 
 export interface ModuleVariant extends ModuleElement {
-
+    type: "function" | "value";
 }
