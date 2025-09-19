@@ -1,4 +1,3 @@
-// TSCONFIG FOR TYPE-ONLY BUILDS
 {
     "compilerOptions": {
         "baseUrl": ".",
