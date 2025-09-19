@@ -2,6 +2,7 @@ import { Node } from "ts-morph";
 
 export type Module = {
     models: ModuleModel[];
+    variants: ModuleVariant[];
 }
 
 export interface ModuleElement {

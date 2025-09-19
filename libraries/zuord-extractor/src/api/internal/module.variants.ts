@@ -30,5 +30,5 @@ export const extractModule = (dir: string, name: string): Module => {
         }
     });
 
-    return { models };
+    return { models, variants: [] };
 };
