@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModelNode, VariantNode, VariantFunctionNode } from "./node.model";
+import { ModelNode, VariantNode, VariantFunctionNode, VariantVariableNode } from "./node.model";
 
 export const isModelNode = (node: Node): node is ModelNode => {
     switch (node.getKind()) {
@@ -23,4 +23,8 @@ export const isVariantNode = (node: Node): node is VariantNode => {
 
 export const isVariantFunctionNode = (node: Node): node is VariantFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
+}
+
+export const isVariantVariableNode = (node: Node): node is VariantVariableNode => {
+    return node.getKind() === SyntaxKind.VariableDeclaration;
 }
