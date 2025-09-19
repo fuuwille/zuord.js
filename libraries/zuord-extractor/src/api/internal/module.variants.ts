@@ -1,8 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
 import { ts } from "ts-morph";
+import { Module } from "./module.model";
 
-export const extractModule = (dir: string, name: string) => {
+export const extractModule = (dir: string, name: string) : Module => {
     const modelPath = path.join(dir, `${name}.model.ts`);
     const variantsPath = path.join(dir, `${name}.variants.ts`);
 
@@ -23,5 +24,5 @@ export const extractModule = (dir: string, name: string) => {
         true
     );
 
-    return { modelSource, variantsSource };
+    return { models: [] };
 };
