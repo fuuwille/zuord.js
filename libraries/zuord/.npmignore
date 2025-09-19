@@ -1,4 +1,5 @@
 /src/
+/build.ts
 /tsconfig.json
 /tsconfig.dist.json
 /rollup.config.mjs
