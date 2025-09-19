@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { RuntimeNode, TypeNode } from "./node.models";
+import { RuntimeNode, TypeNode } from "./node.model";
 
 export const isRuntimeNode = (node: Node): node is RuntimeNode => {
     switch (node.getKind()) {
