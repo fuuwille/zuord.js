@@ -4,11 +4,12 @@ import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from 
 import { extractModuleModelMember, extractModuleVariantMember } from "./moduleMember.variants";
 import { ModuleMember } from "./moduleMember.model";
 import { isModuleMemberModelNode, isModuleMemberNode, isModuleMemberVariableNode } from "./moduleMemberNode.variants";
+import { ModuleMemberNode } from "./moduleMemberNode.model";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, solve: {
-        extract: (node: Node) => ModuleMember, 
-        discard: (node: Node) => boolean 
+        extract: (node: ModuleMemberNode) => ModuleMember, 
+        discard: (node: ModuleMemberNode) => boolean 
     }
 ) : ModuleFile => {
 

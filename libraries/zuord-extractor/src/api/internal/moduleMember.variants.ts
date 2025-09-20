@@ -1,9 +1,10 @@
-import { Node, SyntaxKind, VariableStatement } from "ts-morph";
+import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot } from "./moduleMember.model";
 import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
+import { ModuleMemberNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
-    node: Node, resolve?: (member: ModuleMember) => void
+    node: ModuleMemberNode, resolve?: (member: ModuleMember) => void
 ) : ModuleMember => {
 
     const moduleMember = {
@@ -15,11 +16,11 @@ export const initializeModuleMember = (
     return moduleMember;
 }
 
-export const extractModuleModelMember = (node: Node) : ModuleModelMember => {
+export const extractModuleModelMember = (node: ModuleMemberNode) : ModuleModelMember => {
     return initializeModuleMember(node) as ModuleModelMember;
 };
 
-export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => {
+export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVariantMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();
@@ -44,7 +45,7 @@ export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => 
     }) as ModuleVariantMember;
 }
 
-export const getModuleMemberKind = (node: Node): ModuleMemberKind | undefined => {
+export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind | undefined => {
     if (isModuleMemberTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
