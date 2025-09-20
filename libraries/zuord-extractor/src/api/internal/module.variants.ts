@@ -1,12 +1,12 @@
 import { Module } from "./module.model";
-import { extractModuleModelFile, extractModuleVariantsFile } from "./moduleFile.variants";
+import { ModuleFileKind } from "./moduleFile.model";
+import { extractModuleFileIfExists } from "./moduleFile.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
-    const modelFile = extractModuleModelFile(dir, name);
-    const variantsFile = extractModuleVariantsFile(dir, name);
+    const module = {
+        modelFile: extractModuleFileIfExists(dir, name, ModuleFileKind.Model) ?? null,
+        variantsFile: extractModuleFileIfExists(dir, name, ModuleFileKind.Variants) ?? null
+    } as Module;
 
-    return {
-        modelFile,
-        variantsFile
-    };
+    return module;
 };
