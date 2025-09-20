@@ -6,7 +6,7 @@ export const isModuleMember = (node: TSNode): node is ModuleMember => {
 }
 
 export const isModuleModelMember = (node: TSNode): node is ModuleModelMember => {
-    return isModuleTypeMember(node) || isModuleInterfaceMember(node);
+    return isModuleTypeMember(node) || isModuleInterfaceMember(node) || isModuleEnumMember(node);
 }
 
 export const isModuleTypeMember = (node: TSNode): node is ModuleTypeMember => {
