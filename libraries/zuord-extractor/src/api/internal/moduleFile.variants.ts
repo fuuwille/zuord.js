@@ -11,7 +11,8 @@ export const initializeModuleFile = ($dir: string, $name: string, $kind: ModuleF
 
     const moduleFile : ModuleFile = {
         kind,
-        members: []
+        members: [],
+        others: []
     };
 
     const sourceFile = new Project().createSourceFile(filePath);
@@ -27,6 +28,8 @@ export const extractModuleModelFile = ($dir: string, $name: string) : ModuleMode
 
             if (moduleNode) {
                 data.members.push(moduleNode);
+            } else {
+                data.others.push(node);
             }
         });
     }) as ModuleModelFile;
