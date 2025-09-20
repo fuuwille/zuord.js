@@ -1,7 +1,7 @@
-import { Node } from "ts-morph"
+import { ModuleDeclaration } from "./moduleDeclaration.model";
 
 export type ModuleNode = {
-    source: Node;
+    declaration: ModuleDeclaration;
     kind: ModuleNodeKind;
 };
 

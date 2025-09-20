@@ -1,12 +1,17 @@
 import { Node, SourceFile } from "ts-morph";
 import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
+import { isModuleDeclaration } from "./moduleDeclaration.variants";
 
-export const extractModuleNode = (node: Node) : ModuleNode => {
-    const source = node;
-    const kind = getModuleNodeKind(source);
+export const extractModuleNode = (node: Node) : ModuleNode | null => {
+    if(!isModuleDeclaration(node)) {
+        return null;
+    }
+
+    const declaration = node;
+    const kind = getModuleNodeKind(declaration);
 
     return {
-        source,
+        declaration,
         kind
     };
 };
@@ -16,7 +21,10 @@ export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
 
     $sourceFile.forEachChild((node) => {
         const moduleNode = extractModuleNode(node);
-        nodes.push(moduleNode);
+
+        if (moduleNode) {
+            nodes.push(moduleNode);
+        }
     });
 
     return nodes;
