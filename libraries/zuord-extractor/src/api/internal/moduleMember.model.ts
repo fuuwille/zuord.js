@@ -1,7 +1,7 @@
 import { ModuleNode as ModuleNode } from "./moduleNode.model";
 
 export type ModuleMember = {
-    declaration: ModuleNode;
+    node: ModuleNode;
     kind: ModuleMemberKind;
 };
 
