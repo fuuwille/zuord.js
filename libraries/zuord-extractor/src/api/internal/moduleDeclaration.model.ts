@@ -1,4 +1,4 @@
-import { FunctionDeclaration, VariableDeclaration, InterfaceDeclaration, TypeAliasDeclaration, EnumDeclaration } from "ts-morph";
+import { FunctionDeclaration, VariableDeclaration, InterfaceDeclaration, TypeAliasDeclaration, EnumDeclaration, VariableStatement } from "ts-morph";
 
 export type ModuleDeclaration = 
     | ModuleModelDeclaration
@@ -21,4 +21,4 @@ export type ModuleVariantDeclaration =
 
 export type ModuleFunctionDeclaration = FunctionDeclaration;
 
-export type ModuleVariableDeclaration = VariableDeclaration;
+export type ModuleVariableDeclaration = VariableDeclaration | VariableStatement;

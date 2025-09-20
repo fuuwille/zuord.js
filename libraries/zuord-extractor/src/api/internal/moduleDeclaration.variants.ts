@@ -26,7 +26,7 @@ export const isModuleFunctionDeclaration = (node: TSNode): node is ModuleFunctio
 }
 
 export const isModuleVariableDeclaration = (node: TSNode): node is ModuleVariableDeclaration => {
-    return node.getKind() === SyntaxKind.VariableDeclaration;
+    return node.getKind() === SyntaxKind.VariableDeclaration || node.getKind() === SyntaxKind.VariableStatement;
 }
 
 export const isModuleVariantDeclaration = (node: TSNode): node is ModuleVariantDeclaration => {
