@@ -3,10 +3,12 @@ import { Node, Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind } from "./moduleFile.model";
 import { extractModuleModelMember } from "./moduleMember.variants";
 import { ModuleMember } from "./moduleMember.model";
+import { isModuleVariableNode } from "./moduleNode.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, 
-    solveMember: (node: Node) => ModuleMember | null
+    solveMember: (node: Node) => ModuleMember | null,
+    solveInvalids: (node: Node) => boolean
 ) : ModuleFile => {
 
     const fileName = `${name}.${kind.toLowerCase()}.ts`;
@@ -26,7 +28,9 @@ export const initializeModuleFile = (
         if (moduleNode) {
             moduleFile.members.push(moduleNode);
         } else {
-            
+            if(solveInvalids(node)) {
+                moduleFile.invalids.push(node);
+            }
         }
     });
 
@@ -34,5 +38,5 @@ export const initializeModuleFile = (
 };
 
 export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, extractModuleModelMember) as ModuleModelFile;
+    return initializeModuleFile($dir, $name, ModuleFileKind.Model, extractModuleModelMember, isModuleVariableNode) as ModuleModelFile;
 };
