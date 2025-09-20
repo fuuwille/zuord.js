@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode } from "./moduleMemberNode.model";
+import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode } from "./moduleMemberNode.model";
 
 export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
     return isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
@@ -31,4 +31,14 @@ export const isModuleMemberFunctionNode = (node: Node): node is ModuleMemberFunc
 
 export const isModuleMemberVariableNode = (node: Node): node is ModuleMemberVariableNode => {
     return node.getKind() === SyntaxKind.VariableStatement;
+}
+
+//
+
+export const isModuleMemberDiscardedModelNode = (node: Node): node is ModuleMemberDiscardedModelNode => {
+    return isModuleMemberVariantNode(node);
+}
+
+export const isModuleMemberDiscardedVariantNode = (node: Node): node is ModuleMemberDiscardedVariantNode => {
+    return isModuleMemberModelNode(node);
 }
