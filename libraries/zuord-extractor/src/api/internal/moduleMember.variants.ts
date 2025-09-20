@@ -1,10 +1,10 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
-import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot } from "./moduleMember.model";
+import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember } from "./moduleMember.model";
 import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
 import { ModuleMemberNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
-    node: ModuleMemberNode, resolve?: (member: ModuleMember) => void
+    node: ModuleMemberNode, resolve?: (member: ModuleRawMember) => void
 ) : ModuleMember => {
 
     const moduleMember = {
@@ -13,7 +13,7 @@ export const initializeModuleMember = (
         errors: []
     } as ModuleMember;
 
-    resolve?.(moduleMember);
+    resolve?.(moduleMember as ModuleRawMember);
 
     if(moduleMember.errors!.length == 0) {
         delete moduleMember.errors;
@@ -32,12 +32,12 @@ export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVaria
             const declarations = member.node.getDeclarations();
 
             if(declarations.length == 0) {
-                member.errors!.push("VariableStatement has no declaration");
+                member.errors.push("VariableStatement has no declaration");
                 return;
             }
 
             if(declarations.length > 1) {
-                member.errors!.push("VariableStatement must have exactly one declaration");
+                member.errors.push("VariableStatement must have exactly one declaration");
             }
 
             const declaration = declarations[0];
