@@ -36,6 +36,17 @@ export const initializeModuleFile = (
     return moduleFile;
 };
 
+export const extractModuleFile = (dir: string, name: string, kind: ModuleFileKind) : ModuleFile => {
+    switch(kind) {
+        case ModuleFileKind.Model:
+            return extractModuleModelFile(dir, name);
+        case ModuleFileKind.Variants:
+            return extractModuleVariantsFile(dir, name);
+        default:
+            throw new Error(`Unknown module file kind: ${kind}`);
+    }
+};
+
 export const extractModuleModelFile = (dir: string, name: string) : ModuleModelFile => {
     return initializeModuleFile(dir, name, ModuleFileKind.Model, isModuleMemberDiscardedModelNode) as ModuleModelFile;
 };
