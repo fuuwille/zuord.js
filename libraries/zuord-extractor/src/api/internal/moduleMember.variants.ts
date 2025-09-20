@@ -20,19 +20,8 @@ export const initializeModuleMember = (
 
 }
 
-export const extractModuleModelMember = ($node: Node) : ModuleModelMember | null => {
-    const node = $node;
-    
-    if(!isModuleModelNode(node)) {
-        return null;
-    }
-
-    const kind = getModuleMemberKind(node)!;
-
-    return {
-        node,
-        kind
-    };
+export const extractModuleModelMember = (node: Node) : ModuleModelMember | null => {
+    return initializeModuleMember(node, isModuleModelNode) as ModuleModelMember;
 };
 
 export const getModuleMemberKind = (node: Node): ModuleMemberKind | undefined => {
