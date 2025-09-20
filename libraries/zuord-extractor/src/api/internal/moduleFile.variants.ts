@@ -6,8 +6,10 @@ import { ModuleMember } from "./moduleMember.model";
 import { isModuleMemberModelNode, isModuleMemberNode, isModuleMemberVariableNode } from "./moduleMemberNode.variants";
 
 export const initializeModuleFile = (
-    dir: string, name: string, kind: ModuleFileKind, 
-    solve: { member: (node: Node) => ModuleMember | null, invalid: (node: Node) => boolean }
+    dir: string, name: string, kind: ModuleFileKind, solve: {
+        extract: (node: Node) => ModuleMember | null, 
+        cancel: (node: Node) => boolean 
+    }
 ) : ModuleFile => {
 
     const fileName = `${name}.${kind.toLowerCase()}.ts`;
@@ -23,12 +25,12 @@ export const initializeModuleFile = (
 
     sourceFile.forEachChild((node) => {
         if(isModuleMemberNode(node)) {
-            const moduleNode = solve.member(node);
+            const moduleNode = solve.extract(node);
 
             if (moduleNode) {
                 moduleFile.members.push(moduleNode);
             } else {
-                if(solve.invalid(node)) {
+                if(solve.cancel(node)) {
                     moduleFile.invalids.push(node);
                 }
             }
@@ -39,9 +41,9 @@ export const initializeModuleFile = (
 };
 
 export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, { member: extractModuleModelMember, invalid: isModuleMemberVariableNode }) as ModuleModelFile;
+    return initializeModuleFile($dir, $name, ModuleFileKind.Model, { extract: extractModuleModelMember, cancel: isModuleMemberVariableNode }) as ModuleModelFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
-    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { member: extractModuleVariantMember, invalid: isModuleMemberModelNode }) as ModuleVariantsFile;
+    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { extract: extractModuleVariantMember, cancel: isModuleMemberModelNode }) as ModuleVariantsFile;
 };
