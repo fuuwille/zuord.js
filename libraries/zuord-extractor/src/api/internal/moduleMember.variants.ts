@@ -1,4 +1,4 @@
-import { Node } from "ts-morph";
+import { Node, SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot } from "./moduleMember.model";
 import { ModuleNode } from "./moduleNode.model";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode } from "./moduleNode.variants";
@@ -16,8 +16,16 @@ export const initializeModuleMember = (
         kind: getModuleMemberKind(node)!
     } as ModuleMember;
 
-    if(moduleMember.kind === ModuleMemberKind.Variable) {
-        moduleMember.slot = ModuleMemberSlot.Value;
+    if(moduleMember.node instanceof VariableStatement) {
+        const declaration = moduleMember.node.getDeclarations()[0];
+        const initializer = declaration.getInitializer();
+
+        if (initializer?.isKind(SyntaxKind.ArrowFunction || SyntaxKind.FunctionExpression)) {
+            moduleMember.slot = ModuleMemberSlot.Function;
+        }
+        else {
+            moduleMember.slot = ModuleMemberSlot.Value;
+        }
     }
 
     return moduleMember;
