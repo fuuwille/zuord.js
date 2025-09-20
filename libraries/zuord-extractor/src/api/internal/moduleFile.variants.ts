@@ -1,6 +1,6 @@
 import path from "path";
 import { Node, Project } from "ts-morph";
-import { ModuleFile, ModuleModelFile, ModuleFileKind } from "./moduleFile.model";
+import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
 import { extractModuleModelMember, extractModuleVariantMember } from "./moduleMember.variants";
 import { ModuleMember } from "./moduleMember.model";
 import { isModuleModelNode, isModuleVariableNode } from "./moduleNode.variants";
@@ -40,6 +40,6 @@ export const extractModuleModelFile = ($dir: string, $name: string) : ModuleMode
     return initializeModuleFile($dir, $name, ModuleFileKind.Model, { member: extractModuleModelMember, invalid: isModuleVariableNode }) as ModuleModelFile;
 };
 
-export const extractModuleVariantsFile = (dir: string, name: string) : ModuleModelFile => {
-    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { member: extractModuleVariantMember, invalid: isModuleModelNode }) as ModuleModelFile;
+export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
+    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { member: extractModuleVariantMember, invalid: isModuleModelNode }) as ModuleVariantsFile;
 };
