@@ -14,6 +14,11 @@ export const initializeModuleMember = (
     } as ModuleMember;
 
     resolve?.(moduleMember);
+
+    if(moduleMember.errors!.length == 0) {
+        delete moduleMember.errors;
+    }
+
     return moduleMember;
 }
 
@@ -27,12 +32,12 @@ export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVaria
             const declarations = member.node.getDeclarations();
 
             if(declarations.length == 0) {
-                member.errors.push("VariableStatement has no declaration");
+                member.errors!.push("VariableStatement has no declaration");
                 return;
             }
 
             if(declarations.length > 1) {
-                member.errors.push("VariableStatement must have exactly one declaration");
+                member.errors!.push("VariableStatement must have exactly one declaration");
             }
 
             const declaration = declarations[0];
