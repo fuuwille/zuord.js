@@ -7,4 +7,7 @@ export type Module = {
     nodes: ModuleNode[];
 }
 
-export type ModuleType = "model" | "variants";
+export enum ModuleType {
+    Model = "model",
+    Variants = "variants"
+}
