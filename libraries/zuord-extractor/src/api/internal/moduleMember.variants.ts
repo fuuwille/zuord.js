@@ -1,7 +1,7 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember } from "./moduleMember.model";
 import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
-import { ModuleMemberNode } from "./moduleMemberNode.model";
+import { ModuleMemberModelNode, ModuleMemberNode, ModuleMemberVariantNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
     node: ModuleMemberNode, resolve?: (member: ModuleRawMember) => void
@@ -22,11 +22,11 @@ export const initializeModuleMember = (
     return moduleMember;
 }
 
-export const extractModuleModelMember = (node: ModuleMemberNode) : ModuleModelMember => {
+export const extractModuleModelMember = (node: ModuleMemberModelNode) : ModuleModelMember => {
     return initializeModuleMember(node) as ModuleModelMember;
 };
 
-export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVariantMember => {
+export const extractModuleVariantMember = (node: ModuleMemberVariantNode) : ModuleVariantMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();
