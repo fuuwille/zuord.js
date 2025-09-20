@@ -3,7 +3,7 @@ import { Node, Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
 import { extractModuleModelMember, extractModuleVariantMember } from "./moduleMember.variants";
 import { ModuleMember } from "./moduleMember.model";
-import { isModuleMemberModelNode, isModuleMemberVariableNode } from "./moduleMemberNode.variants";
+import { isModuleMemberModelNode, isModuleMemberNode, isModuleMemberVariableNode } from "./moduleMemberNode.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, 
@@ -22,13 +22,15 @@ export const initializeModuleFile = (
     };
 
     sourceFile.forEachChild((node) => {
-        const moduleNode = solve.member(node);
+        if(isModuleMemberNode(node)) {
+            const moduleNode = solve.member(node);
 
-        if (moduleNode) {
-            moduleFile.members.push(moduleNode);
-        } else {
-            if(solve.invalid(node)) {
-                moduleFile.invalids.push(node);
+            if (moduleNode) {
+                moduleFile.members.push(moduleNode);
+            } else {
+                if(solve.invalid(node)) {
+                    moduleFile.invalids.push(node);
+                }
             }
         }
     });
