@@ -1,4 +1,4 @@
-export type ModuleFile = {
+export interface ModuleFile {
     kind: ModuleFileKind;
 };
 
