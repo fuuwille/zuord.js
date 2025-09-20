@@ -7,8 +7,10 @@ import { isModuleVariableNode } from "./moduleNode.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, 
-    solveMember: (node: Node) => ModuleMember | null,
-    solveInvalids: (node: Node) => boolean
+    solve: {
+        member: (node: Node) => ModuleMember | null,
+        invalid: (node: Node) => boolean
+    }
 ) : ModuleFile => {
 
     const fileName = `${name}.${kind.toLowerCase()}.ts`;
@@ -23,12 +25,12 @@ export const initializeModuleFile = (
     };
 
     sourceFile.forEachChild((node) => {
-        const moduleNode = solveMember(node);
+        const moduleNode = solve.member(node);
 
         if (moduleNode) {
             moduleFile.members.push(moduleNode);
         } else {
-            if(solveInvalids(node)) {
+            if(solve.invalid(node)) {
                 moduleFile.invalids.push(node);
             }
         }
@@ -38,5 +40,8 @@ export const initializeModuleFile = (
 };
 
 export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, extractModuleModelMember, isModuleVariableNode) as ModuleModelFile;
+    return initializeModuleFile($dir, $name, ModuleFileKind.Model, {
+        member: extractModuleModelMember,
+        invalid: isModuleVariableNode
+    }) as ModuleModelFile;
 };
