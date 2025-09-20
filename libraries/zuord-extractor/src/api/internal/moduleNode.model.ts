@@ -1,7 +1,7 @@
-import { ModuleDeclaration } from "./moduleMember.model";
+import { ModuleMember } from "./moduleMember.model";
 
 export type ModuleNode = {
-    declaration: ModuleDeclaration;
+    declaration: ModuleMember;
     kind: ModuleNodeKind;
 };
 

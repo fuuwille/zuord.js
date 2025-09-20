@@ -1,9 +1,9 @@
 import { Node, SourceFile, VariableStatement } from "ts-morph";
 import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
-import { isModuleDeclaration, isModuleEnumDeclaration, isModuleFunctionDeclaration, isModuleTypeDeclaration, isModuleVariableDeclaration, isModuleInterfaceDeclaration } from "./moduleMember.variants";
+import { isModuleMember, isModuleEnumMember, isModuleFunctionMember, isModuleTypeMember, isModuleVariableMember, isModuleInterfaceMember } from "./moduleMember.variants";
 
 export const extractModuleNode = (node: Node) : ModuleNode | null => {
-    if(!isModuleDeclaration(node)) {
+    if(!isModuleMember(node)) {
         return null;
     }
 
@@ -27,23 +27,23 @@ export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
 };
 
 export const getModuleNodeKind = (node: Node): ModuleNodeKind => {
-    if (isModuleTypeDeclaration(node)) {
+    if (isModuleTypeMember(node)) {
         return ModuleNodeKind.Type;
     }
 
-    if (isModuleInterfaceDeclaration(node)) {
+    if (isModuleInterfaceMember(node)) {
         return ModuleNodeKind.Interface;
     }
 
-    if (isModuleEnumDeclaration(node)) {
+    if (isModuleEnumMember(node)) {
         return ModuleNodeKind.Enum;
     }
 
-    if (isModuleFunctionDeclaration(node)) {
+    if (isModuleFunctionMember(node)) {
         return ModuleNodeKind.Function;
     }
 
-    if (isModuleVariableDeclaration(node)) {
+    if (isModuleVariableMember(node)) {
         return ModuleNodeKind.Variable;
     }
 
