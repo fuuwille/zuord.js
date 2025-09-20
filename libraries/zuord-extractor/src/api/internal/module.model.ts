@@ -1,10 +1,7 @@
-import { ModuleMember } from "./moduleMember.model";
+import { ModuleModelFile } from "./moduleFile.model";
 
 export type Module = {
-    dir: string;
-    name: string;
-    type: ModuleType;
-    nodes: ModuleMember[];
+    modelFile: ModuleModelFile;
 }
 
 export enum ModuleType {
