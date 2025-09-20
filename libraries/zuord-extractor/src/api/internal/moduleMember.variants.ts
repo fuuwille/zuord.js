@@ -20,7 +20,10 @@ export const initializeModuleMember = (
         const declaration = moduleMember.node.getDeclarations()[0];
         const initializer = declaration.getInitializer();
 
-        if (initializer?.isKind(SyntaxKind.ArrowFunction || SyntaxKind.FunctionExpression)) {
+        if (
+            initializer?.isKind(SyntaxKind.ArrowFunction) ||
+            initializer?.isKind(SyntaxKind.FunctionExpression)
+        ) {
             moduleMember.slot = ModuleMemberSlot.Function;
         }
         else {
