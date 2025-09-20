@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "node",
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["zuord.config.ts"]
+}
