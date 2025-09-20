@@ -36,3 +36,17 @@ export const getModuleNodeKind = (node: Node): ModuleNodeKind => {
 
     return ModuleNodeKind.Unknown;
 };
+
+export const getModuleNodeCategory = (kind: ModuleNodeKind): ModuleNodeCategory => {
+    switch (kind) {
+        case ModuleNodeKind.Type:
+        case ModuleNodeKind.Interface:
+        case ModuleNodeKind.Enum:
+            return ModuleNodeCategory.Model;
+        case ModuleNodeKind.Function:
+        case ModuleNodeKind.Variable:
+            return ModuleNodeCategory.Variant;
+        default:
+            return ModuleNodeCategory.Unknown;
+    }
+};
