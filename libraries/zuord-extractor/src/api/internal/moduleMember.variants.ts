@@ -1,9 +1,9 @@
 import { Node, SourceFile } from "ts-morph";
 import { ModuleMember, ModuleMemberKind } from "./moduleMember.model";
-import { isModuleMember, isModuleEnumMember, isModuleFunctionMember, isModuleTypeMember, isModuleVariableMember, isModuleInterfaceMember } from "./_moduleMember.variants";
+import { isModuleNode, isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode } from "./moduleNode.variants";
 
 export const extractModuleMember = (node: Node) : ModuleMember | null => {
-    if(!isModuleMember(node)) {
+    if(!isModuleNode(node)) {
         return null;
     }
 
@@ -27,23 +27,23 @@ export const extractModuleMembers = ($sourceFile: SourceFile) : ModuleMember[] =
 };
 
 export const getModuleMemberKind = (node: Node): ModuleMemberKind => {
-    if (isModuleTypeMember(node)) {
+    if (isModuleTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
 
-    if (isModuleInterfaceMember(node)) {
+    if (isModuleInterfaceNode(node)) {
         return ModuleMemberKind.Interface;
     }
 
-    if (isModuleEnumMember(node)) {
+    if (isModuleEnumNode(node)) {
         return ModuleMemberKind.Enum;
     }
 
-    if (isModuleFunctionMember(node)) {
+    if (isModuleFunctionNode(node)) {
         return ModuleMemberKind.Function;
     }
 
-    if (isModuleVariableMember(node)) {
+    if (isModuleVariableNode(node)) {
         return ModuleMemberKind.Variable;
     }
 
