@@ -4,7 +4,7 @@ import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeN
 
 export const initializeModuleMember = (
     node: Node, resolve: (member: ModuleMember) => void
-) : ModuleMember | null => {
+) : ModuleMember => {
 
     const moduleMember = {
         node,
@@ -15,11 +15,11 @@ export const initializeModuleMember = (
     return moduleMember;
 }
 
-export const extractModuleModelMember = (node: Node) : ModuleModelMember | null => {
+export const extractModuleModelMember = (node: Node) : ModuleModelMember => {
     return initializeModuleMember(node, () => {}) as ModuleModelMember;
 };
 
-export const extractModuleVariantMember = (node: Node) : ModuleVariantMember | null => {
+export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
             const declaration = member.node.getDeclarations()[0];
