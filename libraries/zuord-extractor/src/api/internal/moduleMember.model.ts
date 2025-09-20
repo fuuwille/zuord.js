@@ -1,4 +1,4 @@
-import { ModuleModelNode } from "./moduleNode.model";
+import { ModuleModelNode, ModuleVariantNode } from "./moduleNode.model";
 
 export interface ModuleMember {
     kind: ModuleMemberKind;
@@ -6,6 +6,10 @@ export interface ModuleMember {
 
 export interface ModuleModelMember extends ModuleMember {
     node: ModuleModelNode;
+}
+
+export interface ModuleVariantMember extends ModuleMember {
+    node: ModuleVariantNode;
 }
 
 export enum ModuleMemberKind {
