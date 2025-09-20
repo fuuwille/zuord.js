@@ -22,7 +22,13 @@ export const extractModuleModelMember = (node: Node) : ModuleModelMember => {
 export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
-            const declaration = member.node.getDeclarations()[0];
+            const declarations = member.node.getDeclarations();
+
+            if(declarations.length != 1) {
+                throw new Error();
+            }
+
+            const declaration = declarations[0];
             const initializer = declaration.getInitializer();
 
             if (
