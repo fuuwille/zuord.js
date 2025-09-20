@@ -3,8 +3,8 @@ import { ModuleNode, ModuleNodeKind, ModuleNodeCategory } from "./moduleNode.mod
 
 export const extractModuleNode = (node: Node) : ModuleNode => {
     const source = node;
-    const kind = ModuleNodeKind.Type;
-    const category = ModuleNodeCategory.Model;
+    const kind = getModuleNodeKind(node);
+    const category = getModuleNodeCategory(kind);
 
     return {
         source,
