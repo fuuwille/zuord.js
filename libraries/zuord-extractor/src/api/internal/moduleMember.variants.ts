@@ -11,13 +11,12 @@ export const initializeModuleMember = (
         return null;
     }
 
-    const kind = getModuleMemberKind(node)!;
-
-    return {
+    const moduleMember = {
         node,
-        kind
-    };
+        kind: getModuleMemberKind(node)!
+    }
 
+    return moduleMember;
 }
 
 export const extractModuleModelMember = (node: Node) : ModuleModelMember | null => {
