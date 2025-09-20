@@ -1,8 +1,7 @@
 import path from "path";
 import { Project } from "ts-morph";
 import { Module, ModuleType } from "./module.model";
-import { ModuleNode } from "./moduleNode.model";
-import { extractModuleNode } from "./moduleNode.variants";
+import { extractModuleNodes } from "./moduleNode.variants";
 
 export const extractModule = ($dir: string, $name: string, $type: ModuleType): Module => {
     const dir = $dir;
@@ -18,12 +17,7 @@ export const extractModule = ($dir: string, $name: string, $type: ModuleType): M
     const project = new Project();
     const sourceFile = project.addSourceFileAtPath(fullPath);
 
-    const nodes : ModuleNode[] = [];
-    sourceFile.forEachChild((node) => {
-        const moduleNode = extractModuleNode(node);
-        nodes.push(moduleNode);
-    });
-
+    const nodes = extractModuleNodes(sourceFile);
 
     return {
         dir,
