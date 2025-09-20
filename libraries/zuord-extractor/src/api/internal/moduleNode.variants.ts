@@ -1,4 +1,4 @@
-import { Node } from "ts-morph";
+import { Node, SourceFile } from "ts-morph";
 import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
 
 export const extractModuleNode = (node: Node) : ModuleNode => {
@@ -9,6 +9,17 @@ export const extractModuleNode = (node: Node) : ModuleNode => {
         source,
         kind
     };
+};
+
+export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
+    const nodes : ModuleNode[] = [];
+    
+    $sourceFile.forEachChild((node) => {
+        const moduleNode = extractModuleNode(node);
+        nodes.push(moduleNode);
+    });
+
+    return nodes;
 };
 
 export const getModuleNodeKind = (node: Node): ModuleNodeKind => {
