@@ -1,15 +1,13 @@
 import { Node } from "ts-morph";
-import { ModuleNode, ModuleNodeKind, ModuleNodeCategory } from "./moduleNode.model";
+import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
 
 export const extractModuleNode = (node: Node) : ModuleNode => {
     const source = node;
     const kind = getModuleNodeKind(node);
-    const category = getModuleNodeCategory(kind);
 
     return {
         source,
-        kind,
-        category,   
+        kind
     };
 };
 
@@ -35,18 +33,4 @@ export const getModuleNodeKind = (node: Node): ModuleNodeKind => {
     }
 
     return ModuleNodeKind.Unknown;
-};
-
-export const getModuleNodeCategory = (kind: ModuleNodeKind): ModuleNodeCategory => {
-    switch (kind) {
-        case ModuleNodeKind.Type:
-        case ModuleNodeKind.Interface:
-        case ModuleNodeKind.Enum:
-            return ModuleNodeCategory.Model;
-        case ModuleNodeKind.Function:
-        case ModuleNodeKind.Variable:
-            return ModuleNodeCategory.Variant;
-        default:
-            return ModuleNodeCategory.Unknown;
-    }
 };
