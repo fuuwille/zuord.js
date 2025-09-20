@@ -7,6 +7,10 @@ export interface ModuleMember {
     errors?: string[];
 };
 
+export interface ModuleRawMember extends ModuleMember {
+    errors: string[];
+}
+
 export interface ModuleModelMember extends ModuleMember {
     node: ModuleMemberModelNode;
 }
