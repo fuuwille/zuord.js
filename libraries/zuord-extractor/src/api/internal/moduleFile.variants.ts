@@ -19,7 +19,8 @@ export const initializeModuleFile = (
     const moduleFile : ModuleFile = {
         kind,
         members: [],
-        discarded: []
+        discarded: [],
+        others: []
     };
 
     sourceFile.forEachChild((node) => {
@@ -31,6 +32,9 @@ export const initializeModuleFile = (
                 : moduleFile.members;
 
             collection.push(moduleMember);
+        }
+        else {
+            moduleFile.others.push(node);
         }
     });
 
