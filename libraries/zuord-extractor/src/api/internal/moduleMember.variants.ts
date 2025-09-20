@@ -1,6 +1,24 @@
 import { Node } from "ts-morph";
-import { ModuleModelMember, ModuleMemberKind } from "./moduleMember.model";
+import { ModuleModelMember, ModuleMemberKind, ModuleMember } from "./moduleMember.model";
+import { ModuleNode } from "./moduleNode.model";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode } from "./moduleNode.variants";
+
+export const initializeModuleMember = (
+    node: Node, resolve: (node: Node) => node is ModuleNode
+) : ModuleMember | null => {
+    
+    if(!resolve(node)) {
+        return null;
+    }
+
+    const kind = getModuleMemberKind(node)!;
+
+    return {
+        node,
+        kind
+    };
+
+}
 
 export const extractModuleModelMember = ($node: Node) : ModuleModelMember | null => {
     const node = $node;
