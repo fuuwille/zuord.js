@@ -1,4 +1,4 @@
-import { ModuleMember } from "./moduleMember.model";
+import { ModuleMember } from "./_moduleMember.model";
 
 export type ModuleNode = {
     declaration: ModuleMember;
