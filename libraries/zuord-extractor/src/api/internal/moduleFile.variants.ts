@@ -1,7 +1,6 @@
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind } from "./moduleFile.model";
-import { ModuleModelMember } from "./moduleMember.model";
 import { extractModuleModelMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = ($dir: string, $name: string, $kind: ModuleFileKind, $solve: (source: SourceFile, data: ModuleFile) => void) : ModuleFile => {
@@ -15,7 +14,7 @@ export const initializeModuleFile = ($dir: string, $name: string, $kind: ModuleF
         others: []
     };
 
-    const sourceFile = new Project().createSourceFile(filePath);
+    const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     $solve(sourceFile, moduleFile);
     return moduleFile;
