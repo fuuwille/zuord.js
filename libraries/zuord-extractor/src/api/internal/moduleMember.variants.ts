@@ -22,6 +22,10 @@ export const extractModuleMembers = ($sourceFile: SourceFile) : ModuleMember[] =
 
     $sourceFile.forEachChild((node) => {
         const moduleNode = extractModuleMember(node);
+
+        if (moduleNode) {
+            nodes.push(moduleNode);
+        }
     });
 
     return nodes;
