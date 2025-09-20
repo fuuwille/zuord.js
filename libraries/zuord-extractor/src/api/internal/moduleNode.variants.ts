@@ -35,6 +35,18 @@ export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => 
 
 //
 
+export const isModuleNodeValid = (node: ModuleNode): boolean => {
+    if(isModuleFunctionNode(node)) {
+        return isModuleFunctionNodeValid(node);
+    }
+
+    if(isModuleVariableNode(node)) {
+        return isModuleVariableNodeValid(node);
+    }
+
+    return true;
+}
+
 export const isModuleFunctionNodeValid = (node: ModuleFunctionNode): boolean => {
     if(node instanceof FunctionLikeDeclaration) {
         return true;
