@@ -7,8 +7,8 @@ import { isModuleMemberModelNode, isModuleMemberNode, isModuleMemberVariableNode
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, solve: {
-        extract: (node: Node) => ModuleMember | null, 
-        cancel: (node: Node) => boolean 
+        extract: (node: Node) => ModuleMember, 
+        discard: (node: Node) => boolean 
     }
 ) : ModuleFile => {
 
@@ -20,20 +20,19 @@ export const initializeModuleFile = (
     const moduleFile : ModuleFile = {
         kind,
         members: [],
-        invalids: []
+        discarded: []
     };
 
     sourceFile.forEachChild((node) => {
         if(isModuleMemberNode(node)) {
             const moduleNode = solve.extract(node);
 
-            if (moduleNode) {
-                moduleFile.members.push(moduleNode);
-            } else {
-                if(solve.cancel(node)) {
-                    moduleFile.invalids.push(node);
-                }
+            if(solve.discard(node)) {
+                moduleFile.discarded.push(moduleNode);
+                return;
             }
+
+            moduleFile.members.push(moduleNode);
         }
     });
 
@@ -41,9 +40,9 @@ export const initializeModuleFile = (
 };
 
 export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, { extract: extractModuleModelMember, cancel: isModuleMemberVariableNode }) as ModuleModelFile;
+    return initializeModuleFile($dir, $name, ModuleFileKind.Model, { extract: extractModuleModelMember, discard: isModuleMemberVariableNode }) as ModuleModelFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
-    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { extract: extractModuleVariantMember, cancel: isModuleMemberModelNode }) as ModuleVariantsFile;
+    return initializeModuleFile(dir, name, ModuleFileKind.Variants, { extract: extractModuleVariantMember, discard: isModuleMemberModelNode }) as ModuleVariantsFile;
 };
