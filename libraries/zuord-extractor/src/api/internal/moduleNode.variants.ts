@@ -1,6 +1,6 @@
 import { Node, SourceFile } from "ts-morph";
 import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
-import { isModuleDeclaration } from "./moduleDeclaration.variants";
+import { isModuleDeclaration, isModuleEnumDeclaration, isModuleFunctionDeclaration, isModuleTypeDeclaration, isModuleVariableDeclaration, isModuleInterfaceDeclaration } from "./moduleDeclaration.variants";
 
 export const extractModuleNode = (node: Node) : ModuleNode | null => {
     if(!isModuleDeclaration(node)) {
@@ -31,23 +31,23 @@ export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
 };
 
 export const getModuleNodeKind = (node: Node): ModuleNodeKind => {
-    if (Node.isTypeAliasDeclaration(node)) {
+    if (isModuleTypeDeclaration(node)) {
         return ModuleNodeKind.Type;
     }
 
-    if (Node.isInterfaceDeclaration(node)) {
+    if (isModuleInterfaceDeclaration(node)) {
         return ModuleNodeKind.Interface;
     }
 
-    if (Node.isEnumDeclaration(node)) {
+    if (isModuleEnumDeclaration(node)) {
         return ModuleNodeKind.Enum;
     }
 
-    if (Node.isFunctionDeclaration(node)) {
+    if (isModuleFunctionDeclaration(node)) {
         return ModuleNodeKind.Function;
     }
 
-    if (Node.isVariableDeclaration(node)) {
+    if (isModuleVariableDeclaration(node)) {
         return ModuleNodeKind.Variable;
     }
 
