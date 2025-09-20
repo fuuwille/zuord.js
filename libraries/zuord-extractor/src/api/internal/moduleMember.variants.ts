@@ -25,7 +25,7 @@ export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => 
             const declarations = member.node.getDeclarations();
 
             if(declarations.length != 1) {
-                throw new Error();
+                throw new Error("VariableStatement with multiple declarations is not supported");
             }
 
             const declaration = declarations[0];
