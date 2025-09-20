@@ -1,10 +1,10 @@
-import { ModuleNode } from "./moduleNode.model";
+import { ModuleMember } from "./moduleMember.model";
 
 export type Module = {
     dir: string;
     name: string;
     type: ModuleType;
-    nodes: ModuleNode[];
+    nodes: ModuleMember[];
 }
 
 export enum ModuleType {
