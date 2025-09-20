@@ -3,7 +3,7 @@ import { ModuleNode, ModuleModelNode, ModuleVariantNode } from "./moduleNode.mod
 export interface ModuleMember {
     node: ModuleNode
     kind: ModuleMemberKind;
-    initz?: ModuleMemberInitz;
+    initializer?: ModuleMemberInitializer;
 };
 
 export interface ModuleModelMember extends ModuleMember {
@@ -22,7 +22,7 @@ export enum ModuleMemberKind {
     Variable = "variable",
 }
 
-export enum ModuleMemberInitz {
+export enum ModuleMemberInitializer {
     Value = "value",
     Function = "function"
 }
