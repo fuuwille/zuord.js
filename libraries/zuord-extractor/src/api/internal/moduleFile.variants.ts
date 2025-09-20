@@ -7,7 +7,7 @@ import { extractModuleMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind,         
-    isDiscarded: (node: ModuleMemberNode) => boolean 
+    isDiscardedNode: (node: ModuleMemberNode) => boolean 
 ) : ModuleFile => {
 
     const fileName = `${name}.${kind.toLowerCase()}.ts`;
@@ -25,7 +25,7 @@ export const initializeModuleFile = (
         if(isModuleMemberNode(node)) {
             const moduleMember = extractModuleMember(node);
 
-            const collection = isDiscarded(node)
+            const collection = isDiscardedNode(node)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
