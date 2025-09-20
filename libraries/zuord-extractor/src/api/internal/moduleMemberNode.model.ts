@@ -22,3 +22,11 @@ export type ModuleMemberVariantNode =
 export type ModuleMemberFunctionNode = FunctionDeclaration;
 
 export type ModuleMemberVariableNode = VariableStatement;
+
+//
+
+export type ModuleMemberDiscardedModelNode = 
+    | ModuleMemberVariantNode;
+
+export type ModuleMemberDiscardedVariantNode =
+    | ModuleMemberModelNode;
