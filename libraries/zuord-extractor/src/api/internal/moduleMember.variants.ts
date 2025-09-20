@@ -1,5 +1,5 @@
 import { Node } from "ts-morph";
-import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberInitializer } from "./moduleMember.model";
+import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot } from "./moduleMember.model";
 import { ModuleNode } from "./moduleNode.model";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode } from "./moduleNode.variants";
 
@@ -17,7 +17,7 @@ export const initializeModuleMember = (
     } as ModuleMember;
 
     if(moduleMember.kind === ModuleMemberKind.Variable) {
-        moduleMember.initializer = ModuleMemberInitializer.Value;
+        moduleMember.slot = ModuleMemberSlot.Value;
     }
 
     return moduleMember;
