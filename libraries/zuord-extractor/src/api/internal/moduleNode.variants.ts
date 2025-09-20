@@ -1,4 +1,4 @@
-import { ClassDeclaration, Node, SyntaxKind, VariableStatement } from "ts-morph";
+import { Node, SyntaxKind } from "ts-morph";
 import { ModuleNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode } from "./moduleNode.model";
 
 export const isModuleNode = (node: Node): node is ModuleNode => {
@@ -30,25 +30,5 @@ export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => 
 }
 
 export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
-    if(node instanceof VariableStatement) {
-        const declarations = node.getDeclarations();
-
-        if(declarations.length == 0) {
-            return false;
-        }
-
-        if(declarations.length > 1) {
-            return false;
-        }
-
-        const declaration = declarations[0];
-
-        if(declaration instanceof ClassDeclaration) {
-            return false;
-        }
-
-        return true;
-    }
-    
-    return false;
+    return node.getKind() === SyntaxKind.VariableStatement;
 }
