@@ -10,6 +10,7 @@ export const initializeModuleMember = (
     const moduleMember = {
         node,
         kind: getModuleMemberKind(node),
+        errors: []
     } as ModuleMember;
 
     resolve?.(moduleMember);
@@ -25,8 +26,13 @@ export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVaria
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();
 
-            if(declarations.length != 1) {
-                throw new Error("VariableStatement with multiple declarations is not supported");
+            if(declarations.length == 0) {
+                member.errors.push("VariableStatement has no declaration");
+                return;
+            }
+
+            if(declarations.length > 1) {
+                member.errors.push("VariableStatement must have exactly one declaration");
             }
 
             const declaration = declarations[0];
