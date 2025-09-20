@@ -1,13 +1,13 @@
 import path from "path";
 import { Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
-import { isModuleMemberModelNode, isModuleMemberNode, isModuleMemberVariableNode } from "./moduleMemberNode.variants";
+import { isModuleMemberDiscardedModelNode, isModuleMemberDiscardedVariantNode, isModuleMemberNode } from "./moduleMemberNode.variants";
 import { ModuleMemberNode } from "./moduleMemberNode.model";
 import { extractModuleMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind,         
-    discard: (node: ModuleMemberNode) => boolean 
+    isDiscarded: (node: ModuleMemberNode) => boolean 
 ) : ModuleFile => {
 
     const fileName = `${name}.${kind.toLowerCase()}.ts`;
@@ -25,7 +25,7 @@ export const initializeModuleFile = (
         if(isModuleMemberNode(node)) {
             const moduleMember = extractModuleMember(node);
 
-            const collection = discard(node)
+            const collection = isDiscarded(node)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
@@ -36,10 +36,10 @@ export const initializeModuleFile = (
     return moduleFile;
 };
 
-export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, isModuleMemberVariableNode) as ModuleModelFile;
+export const extractModuleModelFile = (dir: string, name: string) : ModuleModelFile => {
+    return initializeModuleFile(dir, name, ModuleFileKind.Model, isModuleMemberDiscardedModelNode) as ModuleModelFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
-    return initializeModuleFile(dir, name, ModuleFileKind.Variants, isModuleMemberModelNode) as ModuleVariantsFile;
+    return initializeModuleFile(dir, name, ModuleFileKind.Variants, isModuleMemberDiscardedVariantNode) as ModuleVariantsFile;
 };
