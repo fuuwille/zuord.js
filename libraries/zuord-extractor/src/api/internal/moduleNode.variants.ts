@@ -3,7 +3,7 @@ import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
 
 export const extractModuleNode = (node: Node) : ModuleNode => {
     const source = node;
-    const kind = getModuleNodeKind(node);
+    const kind = getModuleNodeKind(source);
 
     return {
         source,
@@ -13,7 +13,7 @@ export const extractModuleNode = (node: Node) : ModuleNode => {
 
 export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
     const nodes : ModuleNode[] = [];
-    
+
     $sourceFile.forEachChild((node) => {
         const moduleNode = extractModuleNode(node);
         nodes.push(moduleNode);
