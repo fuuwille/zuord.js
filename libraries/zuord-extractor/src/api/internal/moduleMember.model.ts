@@ -4,7 +4,6 @@ export interface ModuleMember {
     node: ModuleMemberNode
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
-    errors: string[];
 };
 
 export interface ModuleModelMember extends ModuleMember {

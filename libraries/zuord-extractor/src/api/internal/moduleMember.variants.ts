@@ -10,7 +10,6 @@ export const initializeModuleMember = (
     const moduleMember = {
         node,
         kind: getModuleMemberKind(node)!,
-        errors: []
     } as ModuleMember;
 
     resolve?.(moduleMember);
