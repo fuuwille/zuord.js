@@ -25,14 +25,17 @@ export const initializeModuleFile = (
 
     sourceFile.forEachChild((node) => {
         if(isModuleMemberNode(node)) {
-            const moduleNode = solve.extract(node);
-
             if(solve.discard(node)) {
-                moduleFile.discarded.push(moduleNode);
+                moduleFile.discarded.push(node);
                 return;
             }
 
-            moduleFile.members.push(moduleNode);
+            try {
+                const moduleNode = solve.extract(node);
+                moduleFile.members.push(moduleNode);
+            } catch (e) {
+                
+            }
         }
     });
 

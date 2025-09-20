@@ -1,9 +1,10 @@
+import { Node } from "ts-morph";
 import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
 
 export interface ModuleFile {
     kind: ModuleFileKind;
+    discarded: Node[];
     members: ModuleMember[];
-    discarded: ModuleMember[];
 };
 
 export interface ModuleModelFile extends ModuleFile {
