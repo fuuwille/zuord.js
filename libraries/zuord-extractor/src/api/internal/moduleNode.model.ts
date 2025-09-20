@@ -19,9 +19,6 @@ export type ModuleVariantNode =
     | ModuleFunctionNode
     | ModuleVariableNode;
 
-export type ModuleFunctionNode = 
-    | FunctionDeclaration 
-    | FunctionExpression 
-    | ArrowFunction;
+export type ModuleFunctionNode = FunctionDeclaration;
 
 export type ModuleVariableNode = VariableStatement;

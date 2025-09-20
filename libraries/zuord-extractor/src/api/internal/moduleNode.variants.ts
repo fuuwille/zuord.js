@@ -26,7 +26,7 @@ export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
 }
 
 export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
-    return node.getKind() === SyntaxKind.FunctionDeclaration || node.getKind() === SyntaxKind.FunctionExpression || node.getKind() === SyntaxKind.ArrowFunction;
+    return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
 export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
