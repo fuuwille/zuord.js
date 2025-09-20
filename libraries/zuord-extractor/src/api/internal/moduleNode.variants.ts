@@ -1,4 +1,4 @@
-import { Node, SyntaxKind, VariableStatement, ClassDeclaration } from "ts-morph";
+import { Node, SyntaxKind, VariableStatement, ClassDeclaration, FunctionLikeDeclaration } from "ts-morph";
 import { ModuleNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode } from "./moduleNode.model";
 
 export const isModuleNode = (node: Node): node is ModuleNode => {
@@ -34,6 +34,14 @@ export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => 
 }
 
 //
+
+export const isModuleFunctionNodeValid = (node: ModuleFunctionNode): boolean => {
+    if(node instanceof FunctionLikeDeclaration) {
+        return true;
+    }
+
+    return false;
+}
 
 export const isModuleVariableNodeValid = (node: ModuleVariableNode): boolean => {
     if(node instanceof VariableStatement) {
