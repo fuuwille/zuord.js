@@ -8,7 +8,7 @@ export const extractModuleMember = (node: Node) : ModuleMember | null => {
     }
 
     const declaration = node;
-    const kind = getModuleMemberKind(declaration);
+    const kind = getModuleMemberKind(declaration)!;
 
     return {
         declaration,
@@ -26,7 +26,7 @@ export const extractModuleMembers = ($sourceFile: SourceFile) : ModuleMember[] =
     return nodes;
 };
 
-export const getModuleMemberKind = (node: Node): ModuleMemberKind => {
+export const getModuleMemberKind = (node: Node): ModuleMemberKind | undefined => {
     if (isModuleTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
@@ -47,5 +47,5 @@ export const getModuleMemberKind = (node: Node): ModuleMemberKind => {
         return ModuleMemberKind.Variable;
     }
 
-    return ModuleMemberKind.Unknown;
+    return undefined;
 };

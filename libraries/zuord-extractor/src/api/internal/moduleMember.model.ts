@@ -6,7 +6,6 @@ export type ModuleMember = {
 };
 
 export enum ModuleMemberKind {
-    Unknown = "unknown",
     Type = "type",
     Interface = "interface",
     Enum = "enum",
