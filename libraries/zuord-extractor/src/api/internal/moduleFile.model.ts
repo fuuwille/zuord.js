@@ -1,7 +1,8 @@
-import { ModuleModelMember } from "./moduleMember.model";
+import { ModuleMember, ModuleModelMember } from "./moduleMember.model";
 
 export interface ModuleFile {
     kind: ModuleFileKind;
+    members: ModuleMember[];
 };
 
 export interface ModuleModelFile extends ModuleFile {
