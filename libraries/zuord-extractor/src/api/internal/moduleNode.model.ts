@@ -25,8 +25,3 @@ export type ModuleFunctionNode =
     | ArrowFunction;
 
 export type ModuleVariableNode = VariableStatement;
-
-export type ModuleImportNode = ImportDeclaration;
-
-export type ModuleExportNode = ExportDeclaration | ExportAssignment | ExportSpecifier;
-
