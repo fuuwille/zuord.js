@@ -1,5 +1,5 @@
 import { Node } from "ts-morph";
-import { ModuleMember, ModuleModelMember } from "./moduleMember.model";
+import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
 
 export interface ModuleFile {
     kind: ModuleFileKind;
@@ -13,7 +13,7 @@ export interface ModuleModelFile extends ModuleFile {
 }
 
 export interface ModuleVariantsFile extends ModuleFile {
-
+    members: ModuleVariantMember[];
 }
 
 export enum ModuleFileKind {
