@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
@@ -45,6 +46,17 @@ export const extractModuleFile = (dir: string, name: string, kind: ModuleFileKin
         default:
             throw new Error(`Unknown module file kind: ${kind}`);
     }
+};
+
+export const extractModuleFileIfExists = (dir: string, name: string, kind: ModuleFileKind) : ModuleFile | undefined => {
+    const fileName = `${name}.${kind.toLowerCase()}.ts`;
+    const filePath = path.join(dir, fileName);
+
+    if(fs.existsSync(filePath)) {
+        return extractModuleFile(dir, name, kind);
+    }
+
+    return undefined;
 };
 
 export const extractModuleModelFile = (dir: string, name: string) : ModuleModelFile => {
