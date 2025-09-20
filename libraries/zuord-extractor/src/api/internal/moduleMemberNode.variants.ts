@@ -1,34 +1,34 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode } from "./moduleMemberNode.model";
+import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode } from "./moduleMemberNode.model";
 
-export const isModuleNode = (node: Node): node is ModuleNode => {
-    return isModuleModelNode(node) || isModuleVariantNode(node);
+export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
+    return isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
 }
 
-export const isModuleModelNode = (node: Node): node is ModuleModelNode => {
-    return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
+export const isModuleMemberModelNode = (node: Node): node is ModuleMemberModelNode => {
+    return isModuleMemberTypeNode(node) || isModuleMemberInterfaceNode(node) || isModuleMemberEnumNode(node);
 }
 
-export const isModuleTypeNode = (node: Node): node is ModuleTypeNode => {
+export const isModuleMemberTypeNode = (node: Node): node is ModuleMemberTypeNode => {
     return node.getKind() === SyntaxKind.TypeAliasDeclaration;
 }
 
-export const isModuleInterfaceNode = (node: Node): node is ModuleInterfaceNode => {
+export const isModuleMemberInterfaceNode = (node: Node): node is ModuleMemberInterfaceNode => {
     return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
-export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
+export const isModuleMemberEnumNode = (node: Node): node is ModuleMemberEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
 }
 
-export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
-    return isModuleFunctionNode(node) || isModuleVariableNode(node);
+export const isModuleMemberVariantNode = (node: Node): node is ModuleMemberVariantNode => {
+    return isModuleMemberFunctionNode(node) || isModuleMemberVariableNode(node);
 }
 
-export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
+export const isModuleMemberFunctionNode = (node: Node): node is ModuleMemberFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
-export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
+export const isModuleMemberVariableNode = (node: Node): node is ModuleMemberVariableNode => {
     return node.getKind() === SyntaxKind.VariableStatement;
 }

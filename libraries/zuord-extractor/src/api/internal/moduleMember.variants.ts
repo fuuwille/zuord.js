@@ -1,10 +1,10 @@
 import { Node, SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot } from "./moduleMember.model";
-import { ModuleNode } from "./moduleMemberNode.model";
-import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode } from "./moduleMemberNode.variants";
+import { ModuleMemberNode } from "./moduleMemberNode.model";
+import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
 
 export const initializeModuleMember = (
-    node: Node, resolve: (node: Node) => node is ModuleNode
+    node: Node, resolve: (node: Node) => node is ModuleMemberNode
 ) : ModuleMember | null => {
     
     if(!resolve(node)) {
@@ -32,31 +32,31 @@ export const initializeModuleMember = (
 }
 
 export const extractModuleModelMember = (node: Node) : ModuleModelMember | null => {
-    return initializeModuleMember(node, isModuleModelNode) as ModuleModelMember;
+    return initializeModuleMember(node, isModuleMemberModelNode) as ModuleModelMember;
 };
 
 export const extractModuleVariantMember = (node: Node) : ModuleVariantMember | null => {
-    return initializeModuleMember(node, isModuleVariantNode) as ModuleVariantMember;
+    return initializeModuleMember(node, isModuleMemberVariantNode) as ModuleVariantMember;
 }
 
 export const getModuleMemberKind = (node: Node): ModuleMemberKind | undefined => {
-    if (isModuleTypeNode(node)) {
+    if (isModuleMemberTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
 
-    if (isModuleInterfaceNode(node)) {
+    if (isModuleMemberInterfaceNode(node)) {
         return ModuleMemberKind.Interface;
     }
 
-    if (isModuleEnumNode(node)) {
+    if (isModuleMemberEnumNode(node)) {
         return ModuleMemberKind.Enum;
     }
 
-    if (isModuleFunctionNode(node)) {
+    if (isModuleMemberFunctionNode(node)) {
         return ModuleMemberKind.Function;
     }
 
-    if (isModuleVariableNode(node)) {
+    if (isModuleMemberVariableNode(node)) {
         return ModuleMemberKind.Variable;
     }
 

@@ -1,24 +1,24 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement } from "ts-morph";
 
-export type ModuleNode = 
-    | ModuleModelNode
-    | ModuleVariantNode;
+export type ModuleMemberNode = 
+    | ModuleMemberModelNode
+    | ModuleMemberVariantNode;
 
-export type ModuleModelNode =
-    | ModuleTypeNode
-    | ModuleInterfaceNode
-    | ModuleEnumNode;
+export type ModuleMemberModelNode =
+    | ModuleMemberTypeNode
+    | ModuleMemberInterfaceNode
+    | ModuleMemberEnumNode;
 
-export type ModuleTypeNode = TypeAliasDeclaration;
+export type ModuleMemberTypeNode = TypeAliasDeclaration;
 
-export type ModuleInterfaceNode = InterfaceDeclaration;
+export type ModuleMemberInterfaceNode = InterfaceDeclaration;
 
-export type ModuleEnumNode = EnumDeclaration;
+export type ModuleMemberEnumNode = EnumDeclaration;
 
-export type ModuleVariantNode =
-    | ModuleFunctionNode
-    | ModuleVariableNode;
+export type ModuleMemberVariantNode =
+    | ModuleMemberFunctionNode
+    | ModuleMemberVariableNode;
 
-export type ModuleFunctionNode = FunctionDeclaration;
+export type ModuleMemberFunctionNode = FunctionDeclaration;
 
-export type ModuleVariableNode = VariableStatement;
+export type ModuleMemberVariableNode = VariableStatement;
