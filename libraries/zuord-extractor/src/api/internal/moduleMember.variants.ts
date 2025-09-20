@@ -9,7 +9,7 @@ export const initializeModuleMember = (
 
     const moduleMember = {
         node,
-        kind: getModuleMemberKind(node)!,
+        kind: getModuleMemberKind(node),
     } as ModuleMember;
 
     resolve?.(moduleMember);
@@ -45,7 +45,7 @@ export const extractModuleVariantMember = (node: ModuleMemberNode) : ModuleVaria
     }) as ModuleVariantMember;
 }
 
-export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind | undefined => {
+export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind => {
     if (isModuleMemberTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
@@ -66,5 +66,5 @@ export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind | 
         return ModuleMemberKind.Variable;
     }
 
-    return undefined;
+    return ModuleMemberKind.Unknown;
 };
