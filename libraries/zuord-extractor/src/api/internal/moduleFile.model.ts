@@ -5,6 +5,7 @@ export interface ModuleFile {
     kind: ModuleFileKind;
     members: ModuleMember[];
     others: Node[];
+    invalids: Node[];
 };
 
 export interface ModuleModelFile extends ModuleFile {

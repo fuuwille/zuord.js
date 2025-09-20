@@ -17,7 +17,8 @@ export const initializeModuleFile = (
     const moduleFile : ModuleFile = {
         kind,
         members: [],
-        others: []
+        others: [],
+        invalids: []
     };
 
     sourceFile.forEachChild((node) => {
