@@ -1,12 +1,18 @@
 import path from "path";
-import { Project, SourceFile } from "ts-morph";
+import { Node, Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind } from "./moduleFile.model";
 import { extractModuleModelMember } from "./moduleMember.variants";
+import { ModuleMember } from "./moduleMember.model";
 
-export const initializeModuleFile = ($dir: string, $name: string, $kind: ModuleFileKind, $solve: (source: SourceFile, data: ModuleFile) => void) : ModuleFile => {
-    const kind = $kind;
-    const fileName = `${$name}.${$kind.toLowerCase()}.ts`;
-    const filePath = path.join($dir, fileName);
+export const initializeModuleFile = (
+    dir: string, name: string, kind: ModuleFileKind, 
+    solveMember: (node: Node) => ModuleMember | null
+) : ModuleFile => {
+
+    const fileName = `${name}.${kind.toLowerCase()}.ts`;
+    const filePath = path.join(dir, fileName);
+
+    const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     const moduleFile : ModuleFile = {
         kind,
@@ -14,22 +20,19 @@ export const initializeModuleFile = ($dir: string, $name: string, $kind: ModuleF
         others: []
     };
 
-    const sourceFile = new Project().addSourceFileAtPath(filePath);
+    sourceFile.forEachChild((node) => {
+        const moduleNode = solveMember(node);
 
-    $solve(sourceFile, moduleFile);
+        if (moduleNode) {
+            moduleFile.members.push(moduleNode);
+        } else {
+            moduleFile.others.push(node);
+        }
+    });
+
     return moduleFile;
 };
 
 export const extractModuleModelFile = ($dir: string, $name: string) : ModuleModelFile => {
-    return initializeModuleFile($dir, $name, ModuleFileKind.Model, (file, data) => {
-        file.forEachChild((node) => {
-            const moduleNode = extractModuleModelMember(node);
-
-            if (moduleNode) {
-                data.members.push(moduleNode);
-            } else {
-                data.others.push(node);
-            }
-        });
-    }) as ModuleModelFile;
+    return initializeModuleFile($dir, $name, ModuleFileKind.Model, extractModuleModelMember) as ModuleModelFile;
 };
