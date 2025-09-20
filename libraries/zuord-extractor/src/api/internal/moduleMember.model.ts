@@ -1,6 +1,7 @@
-import { ModuleModelNode, ModuleVariantNode } from "./moduleNode.model";
+import { ModuleNode, ModuleModelNode, ModuleVariantNode } from "./moduleNode.model";
 
 export interface ModuleMember {
+    node: ModuleNode
     kind: ModuleMemberKind;
 };
 
