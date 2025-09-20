@@ -1,5 +1,5 @@
 import { Node as TSNode, SyntaxKind } from "ts-morph";
-import { ModuleDeclaration, ModuleModelDeclaration, ModuleTypeDeclaration, ModuleInterfaceDeclaration, ModuleVariantDeclaration, ModuleFunctionDeclaration, ModuleVariableDeclaration, ModuleEnumDeclaration } from "./moduleDeclaration.model";
+import { ModuleDeclaration, ModuleModelDeclaration, ModuleTypeDeclaration, ModuleInterfaceDeclaration, ModuleVariantDeclaration, ModuleFunctionDeclaration, ModuleVariableDeclaration, ModuleEnumDeclaration } from "./moduleMember.model";
 
 export const isModuleDeclaration = (node: TSNode): node is ModuleDeclaration => {
     return isModuleModelDeclaration(node) || isModuleVariantDeclaration(node);

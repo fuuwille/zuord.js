@@ -1,6 +1,6 @@
-import { Node, SourceFile } from "ts-morph";
+import { Node, SourceFile, VariableStatement } from "ts-morph";
 import { ModuleNode, ModuleNodeKind } from "./moduleNode.model";
-import { isModuleDeclaration, isModuleEnumDeclaration, isModuleFunctionDeclaration, isModuleTypeDeclaration, isModuleVariableDeclaration, isModuleInterfaceDeclaration } from "./moduleDeclaration.variants";
+import { isModuleDeclaration, isModuleEnumDeclaration, isModuleFunctionDeclaration, isModuleTypeDeclaration, isModuleVariableDeclaration, isModuleInterfaceDeclaration } from "./moduleMember.variants";
 
 export const extractModuleNode = (node: Node) : ModuleNode | null => {
     if(!isModuleDeclaration(node)) {
@@ -21,10 +21,6 @@ export const extractModuleNodes = ($sourceFile: SourceFile) : ModuleNode[] => {
 
     $sourceFile.forEachChild((node) => {
         const moduleNode = extractModuleNode(node);
-
-        if (moduleNode) {
-            nodes.push(moduleNode);
-        }
     });
 
     return nodes;
