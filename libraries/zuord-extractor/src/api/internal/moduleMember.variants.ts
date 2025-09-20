@@ -22,6 +22,18 @@ export const initializeModuleMember = (
     return moduleMember;
 }
 
+export const extractModuleMember = (node: ModuleMemberNode) : ModuleMember => {
+    if(isModuleMemberModelNode(node)) {
+        return extractModuleModelMember(node);
+    }
+
+    if(isModuleMemberVariantNode(node)) {
+        return extractModuleVariantMember(node);
+    }
+
+    throw new Error("Unknown module member node");
+};
+
 export const extractModuleModelMember = (node: ModuleMemberModelNode) : ModuleModelMember => {
     return initializeModuleMember(node) as ModuleModelMember;
 };
