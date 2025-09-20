@@ -1,9 +1,12 @@
-import { ModuleNode as ModuleNode } from "./moduleNode.model";
+import { ModuleModelNode } from "./moduleNode.model";
 
-export type ModuleMember = {
-    node: ModuleNode;
+export interface ModuleMember {
     kind: ModuleMemberKind;
 };
+
+export interface ModuleModelMember extends ModuleMember {
+    node: ModuleModelNode;
+}
 
 export enum ModuleMemberKind {
     Type = "type",

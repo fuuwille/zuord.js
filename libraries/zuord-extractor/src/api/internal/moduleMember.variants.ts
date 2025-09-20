@@ -1,11 +1,11 @@
 import { Node, SourceFile } from "ts-morph";
-import { ModuleMember, ModuleMemberKind } from "./moduleMember.model";
-import { isModuleNode, isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode } from "./moduleNode.variants";
+import { ModuleModelMember, ModuleMemberKind } from "./moduleMember.model";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode } from "./moduleNode.variants";
 
-export const extractModuleMember = ($node: Node) : ModuleMember | null => {
+export const extractModuleModelMember = ($node: Node) : ModuleModelMember | null => {
     const node = $node;
     
-    if(!isModuleNode(node)) {
+    if(!isModuleModelNode(node)) {
         return null;
     }
 
@@ -17,11 +17,11 @@ export const extractModuleMember = ($node: Node) : ModuleMember | null => {
     };
 };
 
-export const extractModuleMembers = ($sourceFile: SourceFile) : ModuleMember[] => {
-    const nodes : ModuleMember[] = [];
+export const extractModuleMembers = ($sourceFile: SourceFile) : ModuleModelMember[] => {
+    const nodes : ModuleModelMember[] = [];
 
     $sourceFile.forEachChild((node) => {
-        const moduleNode = extractModuleMember(node);
+        const moduleNode = extractModuleModelMember(node);
 
         if (moduleNode) {
             nodes.push(moduleNode);
