@@ -3,7 +3,7 @@ import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember,
 import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
 
 export const initializeModuleMember = (
-    node: Node, resolve: (member: ModuleMember) => void
+    node: Node, resolve?: (member: ModuleMember) => void
 ) : ModuleMember => {
 
     const moduleMember = {
@@ -11,12 +11,12 @@ export const initializeModuleMember = (
         kind: getModuleMemberKind(node)!
     } as ModuleMember;
 
-    resolve(moduleMember);
+    resolve?.(moduleMember);
     return moduleMember;
 }
 
 export const extractModuleModelMember = (node: Node) : ModuleModelMember => {
-    return initializeModuleMember(node, () => {}) as ModuleModelMember;
+    return initializeModuleMember(node) as ModuleModelMember;
 };
 
 export const extractModuleVariantMember = (node: Node) : ModuleVariantMember => {
