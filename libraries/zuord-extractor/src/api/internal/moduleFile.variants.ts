@@ -3,7 +3,7 @@ import { Node, Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
 import { extractModuleModelMember, extractModuleVariantMember } from "./moduleMember.variants";
 import { ModuleMember } from "./moduleMember.model";
-import { isModuleModelNode, isModuleVariableNode } from "./moduleNode.variants";
+import { isModuleModelNode, isModuleVariableNode } from "./moduleMemberNode.variants";
 
 export const initializeModuleFile = (
     dir: string, name: string, kind: ModuleFileKind, 
