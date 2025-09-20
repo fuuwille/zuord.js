@@ -17,7 +17,6 @@ export const initializeModuleFile = (
     const moduleFile : ModuleFile = {
         kind,
         members: [],
-        others: [],
         invalids: []
     };
 
@@ -27,7 +26,7 @@ export const initializeModuleFile = (
         if (moduleNode) {
             moduleFile.members.push(moduleNode);
         } else {
-            moduleFile.others.push(node);
+            
         }
     });
 
