@@ -24,9 +24,9 @@ export const initializeModuleFile = (
     };
 
     sourceFile.forEachChild((node) => {
-        if(isModuleKnownNode(node)) {
-            const moduleMember = extractModuleMember(node);
+        const moduleMember = extractModuleMember(node);
 
+        if(isModuleKnownNode(node)) {
             const collection = isDiscardedNode(node)
                 ? moduleFile.discarded
                 : moduleFile.members;
@@ -34,7 +34,7 @@ export const initializeModuleFile = (
             collection.push(moduleMember);
         }
         else {
-            moduleFile.others.push(node);
+            moduleFile.others.push(moduleMember);
         }
     });
 
