@@ -1,6 +1,6 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember, ModuleESMMember } from "./moduleMember.model";
-import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleMemberExportNode, isModuleMemberDefaultNode, isModuleMemberImportNode } from "./moduleMemberNode.variants";
+import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleMemberExportNode, isModuleMemberDefaultNode, isModuleMemberImportNode, isModuleMemberESMNode } from "./moduleMemberNode.variants";
 import { ModuleMemberModelNode, ModuleMemberNode, ModuleMemberVariantNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
@@ -23,6 +23,11 @@ export const initializeModuleMember = (
 }
 
 export const extractModuleMember = (node: ModuleMemberNode) : ModuleMember => {
+
+    if(isModuleMemberESMNode(node)) {
+        return extractModuleESMMember(node);
+    }
+
     if(isModuleMemberModelNode(node)) {
         return extractModuleModelMember(node);
     }
@@ -31,7 +36,7 @@ export const extractModuleMember = (node: ModuleMemberNode) : ModuleMember => {
         return extractModuleVariantMember(node);
     }
 
-    throw new Error("Unknown module member node");
+    return initializeModuleMember(node);
 };
 
 export const extractModuleESMMember = (node: ModuleMemberNode) : ModuleESMMember => {
