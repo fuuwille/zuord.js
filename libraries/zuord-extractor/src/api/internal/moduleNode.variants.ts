@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode } from "./moduleNode.model";
+import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
@@ -57,4 +57,8 @@ export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedM
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
     return isModuleModelNode(node);
+}
+
+export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
+    return isModuleFunctionNode(node) || isModuleVariableNode(node);
 }

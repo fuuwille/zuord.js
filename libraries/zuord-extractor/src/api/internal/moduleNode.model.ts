@@ -33,9 +33,18 @@ export type ModuleVariantNode =
     | ModuleFunctionNode
     | ModuleVariableNode;
 
+export type ModuleVariableNode = VariableStatement;
+
+export type ModuleFunctionLikeNode =
+    | ModuleFunctionNode
+    | ModuleArrowFunctionNode
+    | ModuleFunctionExpressionNode;
+
 export type ModuleFunctionNode = FunctionDeclaration;
 
-export type ModuleVariableNode = VariableStatement;
+export type ModuleArrowFunctionNode = ArrowFunction;
+
+export type ModuleFunctionExpressionNode = FunctionExpression;
 
 //
 
@@ -44,8 +53,3 @@ export type ModuleDiscardedModelNode =
 
 export type ModuleDiscardedVariantNode =
     | ModuleModelNode;
-
-export type ModuleFunctionLikeNode =
-    | ModuleFunctionNode
-    | ArrowFunction
-    | FunctionExpression;
