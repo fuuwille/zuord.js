@@ -40,11 +40,11 @@ export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
 };
 
 export const extractModuleESMMember = (node: ModuleNode) : ModuleESMMember => {
-    return initializeModuleMember(node) as ModuleESMMember;
+    return initializeModuleMember(node);
 };
 
 export const extractModuleModelMember = (node: ModuleModelNode) : ModuleModelMember => {
-    return initializeModuleMember(node) as ModuleModelMember;
+    return initializeModuleMember(node);
 };
 
 export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVariantMember => {
@@ -76,7 +76,7 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
                 member.errors!.push("VariableStatement has no initializer");
             }
         }
-    }) as ModuleVariantMember;
+    });
 }
 
 export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
