@@ -5,6 +5,7 @@ import { ModuleMode } from "./module.model";
 import { ModuleFile, ModuleModelFile, ModuleVariantsFile } from "./moduleFile.model";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
+import { ModuleMemberKind } from "./moduleMember.model";
 
 export const initializeModuleFile = (
     dir: string, name: string, mode: ModuleMode
@@ -17,6 +18,8 @@ export const initializeModuleFile = (
 
     const moduleFile : ModuleFile = {
         mode,
+        node: sourceFile,
+        kind: ModuleMemberKind.File,
         members: [],
         discarded: [],
         others: []

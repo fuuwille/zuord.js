@@ -1,8 +1,11 @@
 import { ModuleMode } from "./module.model";
-import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
+import { ModuleMember, ModuleMemberKind, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
+import { ModuleFileNode } from "./moduleNode.model";
 
-export interface ModuleFile {
+export interface ModuleFile extends ModuleMember {
     mode: ModuleMode;
+    node: ModuleFileNode;
+    kind: ModuleMemberKind.File;
     members: ModuleMember[];
     discarded: ModuleMember[];
     others: ModuleMember[];
