@@ -4,12 +4,12 @@ export interface ModuleItem {
     member: ModuleMember
 }
 
-export interface ModuleModelItem {
+export interface ModuleModelItem extends ModuleItem {
     member: ModuleModelMember;
     variants: ModuleVariantMember[];
 }
 
-export interface ModuleVariantItem {
-    member: ModuleVariantMember
-    model: ModuleModelItem
+export interface ModuleVariantItem extends ModuleItem {
+    member: ModuleVariantMember;
+    model: ModuleModelItem;
 }
