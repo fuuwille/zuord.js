@@ -3,13 +3,11 @@ import path from "path";
 import { Project } from "ts-morph";
 import { ModuleMode } from "./module.model";
 import { ModuleFile, ModuleModelFile, ModuleVariantsFile } from "./moduleFile.model";
-import { isModuleDiscardedModelNode, isModuleDiscardedVariantNode, isModuleKnownNode } from "./moduleNode.variants";
-import { ModuleNode } from "./moduleNode.model";
+import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = (
-    dir: string, name: string, mode: ModuleMode,         
-    isDiscardedNode: (node: ModuleNode) => boolean 
+    dir: string, name: string, mode: ModuleMode
 ) : ModuleFile => {
 
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
@@ -28,7 +26,7 @@ export const initializeModuleFile = (
         const moduleMember = extractModuleMember(node);
 
         if(isModuleKnownNode(node)) {
-            const collection = isDiscardedNode(node)
+            const collection = isModuleDiscardedNode(node, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
@@ -65,9 +63,9 @@ export const extractModuleFileIfExists = (dir: string, name: string, mode: Modul
 };
 
 export const extractModuleModelFile = (dir: string, name: string) : ModuleModelFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Model, isModuleDiscardedModelNode) as ModuleModelFile;
+    return initializeModuleFile(dir, name, ModuleMode.Model) as ModuleModelFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Variants, isModuleDiscardedVariantNode) as ModuleVariantsFile;
+    return initializeModuleFile(dir, name, ModuleMode.Variants) as ModuleVariantsFile;
 };
