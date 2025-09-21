@@ -32,7 +32,6 @@ export interface ModuleVariantMember extends ModuleMember {
 
 export enum ModuleMemberKind {
     Unknown = "unknown",
-    File = "file",
     Import = "import",
     Export = "export",
     Default = "default",
