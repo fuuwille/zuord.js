@@ -1,5 +1,6 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode } from "./moduleNode.model";
+import { ModuleMode } from "./module.model";
+import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
@@ -66,6 +67,17 @@ export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => 
 }
 
 //
+
+export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is ModuleDiscardedNode => {
+    switch(mode) {
+        case ModuleMode.Model:
+            return isModuleDiscardedModelNode(node);
+        case ModuleMode.Variants:
+            return isModuleDiscardedVariantNode(node);
+        default:
+            return false;
+    }
+}
 
 export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedModelNode => {
     return isModuleVariantNode(node);
