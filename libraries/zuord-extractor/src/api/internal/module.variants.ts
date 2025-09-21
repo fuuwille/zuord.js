@@ -1,6 +1,7 @@
 import { Module } from "./module.model";
 import { ModuleMode } from "./module.model";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
+import { createModuleModelItem } from "./moduleItem.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
@@ -11,7 +12,12 @@ export const extractModule = (dir: string, name: string): Module => {
     } as Module;
 
     if(module.modelFile) {
+        const members = module.modelFile.members;
 
+        for(const member of members) {
+            const modelItem = createModuleModelItem(module, member);
+            module.models.push(modelItem);
+        }
     }
     else {
         module.errors!.push(`Model file not found`);
