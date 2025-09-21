@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
-import { isModuleDiscardedModelNode, isModuleDiscardedVariantNode, isModuleNode } from "./moduleNode.variants";
+import { isModuleDiscardedModelNode, isModuleDiscardedVariantNode, isModuleKnownNode } from "./moduleNode.variants";
 import { ModuleNode } from "./moduleNode.model";
 import { extractModuleMember } from "./moduleMember.variants";
 
@@ -24,7 +24,7 @@ export const initializeModuleFile = (
     };
 
     sourceFile.forEachChild((node) => {
-        if(isModuleNode(node)) {
+        if(isModuleKnownNode(node)) {
             const moduleMember = extractModuleMember(node);
 
             const collection = isDiscardedNode(node)
