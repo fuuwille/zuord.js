@@ -11,4 +11,5 @@ export interface ModuleModelItem {
 
 export interface ModuleVariantItem {
     member: ModuleVariantMember
+    model: ModuleModelItem
 }
