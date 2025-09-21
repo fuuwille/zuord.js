@@ -10,6 +10,6 @@ export interface ModuleModelItem extends ModuleItem {
 }
 
 export interface ModuleVariantItem extends ModuleItem {
-    member: ModuleVariantMember;
     model: ModuleModelItem;
+    member: ModuleVariantMember;
 }
