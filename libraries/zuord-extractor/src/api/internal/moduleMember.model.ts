@@ -1,7 +1,8 @@
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode } from "./moduleMemberNode.model";
+import { ModuleNode } from "./module.model";
+import { ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode } from "./moduleMemberNode.model";
 
 export interface ModuleMember {
-    node: ModuleMemberNode
+    node: ModuleNode
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
     errors?: string[];
