@@ -35,12 +35,15 @@ export type ModuleVariantNode =
 
 export type ModuleVariableNode = VariableStatement;
 
-export type ModuleFunctionLikeNode =
+export type ModuleFunctionNode = FunctionDeclaration;
+
+export type ModuleFunctionBaseNode =
     | ModuleFunctionNode
+    | ModuleFunctionLikeNode;
+
+export type ModuleFunctionLikeNode = 
     | ModuleArrowFunctionNode
     | ModuleFunctionExpressionNode;
-
-export type ModuleFunctionNode = FunctionDeclaration;
 
 export type ModuleArrowFunctionNode = ArrowFunction;
 

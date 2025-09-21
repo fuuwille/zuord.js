@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode } from "./moduleNode.model";
+import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
@@ -41,12 +41,16 @@ export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
     return isModuleFunctionNode(node) || isModuleVariableNode(node);
 }
 
-export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
-    return isModuleFunctionNode(node) || isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
-}
-
 export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
+}
+
+export const isModuleFunctionBaseNode = (node: Node): node is ModuleFunctionBaseNode => {
+    return isModuleFunctionNode(node) || isModuleFunctionLikeNode(node);
+}
+
+export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
+    return isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
 }
 
 export const isModuleArrowFunctionNode = (node: Node): node is ModuleArrowFunctionNode => {
