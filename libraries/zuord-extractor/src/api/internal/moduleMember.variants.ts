@@ -1,6 +1,6 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
-import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember } from "./moduleMember.model";
-import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode } from "./moduleMemberNode.variants";
+import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember, ModuleESMMember } from "./moduleMember.model";
+import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleMemberExportNode, isModuleMemberDefaultNode, isModuleMemberImportNode } from "./moduleMemberNode.variants";
 import { ModuleMemberModelNode, ModuleMemberNode, ModuleMemberVariantNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
@@ -32,6 +32,10 @@ export const extractModuleMember = (node: ModuleMemberNode) : ModuleMember => {
     }
 
     throw new Error("Unknown module member node");
+};
+
+export const extractModuleESMMember = (node: ModuleMemberNode) : ModuleESMMember => {
+    return initializeModuleMember(node) as ModuleESMMember;
 };
 
 export const extractModuleModelMember = (node: ModuleMemberModelNode) : ModuleModelMember => {
@@ -69,15 +73,15 @@ export const extractModuleVariantMember = (node: ModuleMemberVariantNode) : Modu
 }
 
 export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind => {
-    if (isModuleImportNode(node)) {
+    if (isModuleMemberImportNode(node)) {
         return ModuleMemberKind.Import;
     }
 
-    if (isModuleExportNode(node)) {
+    if (isModuleMemberExportNode(node)) {
         return ModuleMemberKind.Export;
     }
 
-    if (isModuleDefaultNode(node)) {
+    if (isModuleMemberDefaultNode(node)) {
         return ModuleMemberKind.Default;
     }
 
