@@ -1,6 +1,6 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember, ModuleESMMember } from "./moduleMember.model";
-import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMNode } from "./moduleNode.variants";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
 import { ModuleModelNode, ModuleNode, ModuleVariantNode } from "./moduleNode.model";
 
 export const initializeModuleMember = (
@@ -64,14 +64,16 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
             const declaration = declarations[0];
             const initializer = declaration.getInitializer();
 
-            if (
-                initializer?.isKind(SyntaxKind.ArrowFunction) ||
-                initializer?.isKind(SyntaxKind.FunctionExpression)
-            ) {
-                member.slot = ModuleMemberSlot.Function;
+            if(initializer) {
+                if (isModuleFunctionLikeNode(initializer)) {
+                    member.slot = ModuleMemberSlot.Function;
+                }
+                else {
+                    member.slot = ModuleMemberSlot.Value;
+                }
             }
             else {
-                member.slot = ModuleMemberSlot.Value;
+                member.errors.push("VariableStatement has no initializer");
             }
         }
     }) as ModuleVariantMember;
