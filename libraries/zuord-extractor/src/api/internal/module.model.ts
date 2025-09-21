@@ -5,5 +5,3 @@ export type Module = {
     modelFile: ModuleModelFile | null;
     variantsFile: ModuleVariantsFile | null;
 }
-
-export type ModuleNode = Node;
