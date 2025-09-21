@@ -1,8 +1,8 @@
 import { Module } from "./module.model";
 import { ModuleMode } from "./module.model";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
-import { createModuleModelItem } from "./moduleItem.variants";
-import { isModuleModelNode } from "./moduleNode.variants";
+import { createModuleModelItem, createModuleVariantItem } from "./moduleItem.variants";
+import { isModuleModelNode, isModuleVariantNode } from "./moduleNode.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
@@ -13,12 +13,25 @@ export const extractModule = (dir: string, name: string): Module => {
     } as Module;
 
     if(module.modelFile) {
-        const members = module.modelFile.members;
 
-        for(const member of members) {
+        const variantMembers = module.variantsFile
+            ?.members.filter(m => isModuleVariantNode(m.node)) 
+            ?? [];
+
+        const modelMembers = module.modelFile.members;
+
+
+        for(const member of modelMembers) {
             if(isModuleModelNode(member.node)) {
                 const modelItem = createModuleModelItem(module, member);
                 module.models.push(modelItem);
+
+                const matchedVariants = variantMembers.filter(v => v.target === member.id);
+
+                for(const variantMember of matchedVariants) {
+                    const variantItem = createModuleVariantItem(modelItem, variantMember);
+                    modelItem.variants.push(variantItem);
+                }
             }
         }
     }
