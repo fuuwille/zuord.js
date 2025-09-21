@@ -69,6 +69,9 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
             if(initializer) {
                 if (isModuleFunctionLikeNode(initializer)) {
                     member.slot = ModuleMemberSlot.Function;
+
+                    const returnType = initializer.getReturnType();
+                    member.target = returnType.getAliasSymbol()?.getName() ?? "";
                 }
                 else {
                     member.slot = ModuleMemberSlot.Value;

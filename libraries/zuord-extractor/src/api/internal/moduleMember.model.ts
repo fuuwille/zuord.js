@@ -25,6 +25,7 @@ export interface ModuleModelMember extends ModuleMember {
 export interface ModuleVariantMember extends ModuleMember {
     node: ModuleVariantNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
+    target: string;
 }
 
 export enum ModuleMemberKind {
