@@ -5,7 +5,8 @@ export interface ModuleItem {
 }
 
 export interface ModuleModelItem {
-    member: ModuleModelMember
+    member: ModuleModelMember;
+    variants: ModuleVariantMember[];
 }
 
 export interface ModuleVariantItem {
