@@ -1,4 +1,4 @@
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberVariantNode } from "./moduleMemberNode.model";
+import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode } from "./moduleMemberNode.model";
 
 export interface ModuleMember {
     node: ModuleMemberNode
@@ -9,6 +9,10 @@ export interface ModuleMember {
 
 export interface ModuleRawMember extends ModuleMember {
     errors: string[];
+}
+
+export interface ModuleESMMember extends ModuleMember {
+    node: ModuleMemberESMNode;
 }
 
 export interface ModuleModelMember extends ModuleMember {
