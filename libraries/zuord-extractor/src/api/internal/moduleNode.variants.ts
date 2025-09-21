@@ -84,9 +84,9 @@ export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is Mo
 }
 
 export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedModelNode => {
-    return isModuleVariantNode(node);
+    return isModuleFileNode(node) || isModuleVariantNode(node);
 }
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
-    return isModuleModelNode(node);
+    return isModuleFileNode(node) || isModuleModelNode(node);
 }
