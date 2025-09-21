@@ -13,14 +13,17 @@ export interface ModuleRawMember extends ModuleMember {
 
 export interface ModuleESMMember extends ModuleMember {
     node: ModuleMemberESMNode;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
 }
 
 export interface ModuleModelMember extends ModuleMember {
     node: ModuleMemberModelNode;
+    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
 
 export interface ModuleVariantMember extends ModuleMember {
     node: ModuleMemberVariantNode;
+    kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
 }
 
 export enum ModuleMemberKind {
