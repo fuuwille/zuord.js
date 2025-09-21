@@ -3,23 +3,23 @@ import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember,
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
 import { ModuleModelNode, ModuleNode, ModuleVariantNode } from "./moduleNode.model";
 
-export const initializeModuleMember = (
-    node: ModuleNode, resolve?: (member: ModuleRawMember) => void
-) : ModuleMember => {
+export const initializeModuleMember = <TMember extends ModuleMember>(
+    node: ModuleNode, resolve?: (member: TMember) => void
+) : TMember => {
 
-    const moduleMember = {
+    const moduleMember : ModuleMember = {
         node,
         kind: getModuleMemberKind(node),
         errors: []
-    } as ModuleMember;
+    };
 
-    resolve?.(moduleMember as ModuleRawMember);
+    resolve?.(moduleMember as TMember);
 
     if(moduleMember.errors!.length == 0) {
         delete moduleMember.errors;
     }
 
-    return moduleMember;
+    return moduleMember as TMember;
 }
 
 export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
@@ -53,12 +53,12 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
             const declarations = member.node.getDeclarations();
 
             if(declarations.length == 0) {
-                member.errors.push("VariableStatement has no declaration");
+                member.errors!.push("VariableStatement has no declaration");
                 return;
             }
 
             if(declarations.length > 1) {
-                member.errors.push("VariableStatement must have exactly one declaration");
+                member.errors!.push("VariableStatement must have exactly one declaration");
             }
 
             const declaration = declarations[0];
@@ -73,7 +73,7 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
                 }
             }
             else {
-                member.errors.push("VariableStatement has no initializer");
+                member.errors!.push("VariableStatement has no initializer");
             }
         }
     }) as ModuleVariantMember;
