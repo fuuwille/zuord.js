@@ -71,8 +71,10 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
                     member.slot = ModuleMemberSlot.Function;
 
                     const returnType = initializer.getReturnType();
-                    const symbol = returnType.isTypeParameter()
-                        ? returnType.getAliasSymbol()
+                    const constraint = returnType.getConstraint();
+
+                    const symbol = constraint 
+                        ? constraint.getSymbol()
                         : returnType.getSymbol();
 
                     if (symbol) {
