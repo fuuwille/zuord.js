@@ -71,7 +71,22 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
                     member.slot = ModuleMemberSlot.Function;
 
                     const returnType = initializer.getReturnType();
-                    member.target = returnType.getAliasSymbol()?.getName() ?? "";
+                    if (returnType.isTypeParameter()) {
+                        const constraint = returnType.getConstraint();
+
+                        if (constraint) {
+                            member.target = constraint.getText();
+                        } else {
+                            const symbol = returnType.getSymbol();
+
+                            if (symbol) {
+                                member.target = symbol.getName();
+                            }
+                            else {
+                                member.errors!.push("Could not resolve model");
+                            }
+                        }
+                    }
                 }
                 else {
                     member.slot = ModuleMemberSlot.Value;
