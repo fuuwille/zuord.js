@@ -2,6 +2,7 @@ import { Module } from "./module.model";
 import { ModuleMode } from "./module.model";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
 import { createModuleModelItem } from "./moduleItem.variants";
+import { isModuleModelNode } from "./moduleNode.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
@@ -15,8 +16,10 @@ export const extractModule = (dir: string, name: string): Module => {
         const members = module.modelFile.members;
 
         for(const member of members) {
-            const modelItem = createModuleModelItem(module, member);
-            module.models.push(modelItem);
+            if(isModuleModelNode(member.node)) {
+                const modelItem = createModuleModelItem(module, member);
+                module.models.push(modelItem);
+            }
         }
     }
     else {
