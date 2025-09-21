@@ -1,8 +1,24 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode } from "./moduleMemberNode.model";
+import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode } from "./moduleMemberNode.model";
 
 export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
     return isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
+}
+
+export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
+    return isModuleImportNode(node) || isModuleExportNode(node) || isModuleDefaultNode(node);
+}
+
+export const isModuleImportNode = (node: Node): node is ModuleImportNode => {
+    return node.getKind() === SyntaxKind.ImportDeclaration;
+}
+
+export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
+    return node.getKind() === SyntaxKind.ExportDeclaration;
+}
+
+export const isModuleDefaultNode = (node: Node): node is ModuleDefaultNode => {
+    return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
 export const isModuleMemberModelNode = (node: Node): node is ModuleMemberModelNode => {
