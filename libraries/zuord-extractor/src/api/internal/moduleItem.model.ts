@@ -1,3 +1,4 @@
+import { Module } from "./module.model";
 import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
 
 export interface ModuleItem {
@@ -5,6 +6,7 @@ export interface ModuleItem {
 }
 
 export interface ModuleModelItem extends ModuleItem {
+    module: Module;
     member: ModuleModelMember;
     variants: ModuleVariantMember[];
 }
