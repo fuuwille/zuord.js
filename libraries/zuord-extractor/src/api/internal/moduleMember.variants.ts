@@ -72,19 +72,20 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
 
                     const returnType = initializer.getReturnType();
                     if (returnType.isTypeParameter()) {
-                        const constraint = returnType.getConstraint();
+                        const constraint = returnType.getAliasSymbol();
 
                         if (constraint) {
-                            member.target = constraint.getText();
-                        } else {
-                            const symbol = returnType.getSymbol();
+                            member.target = constraint.getName();
+                        }
+                    }
+                    else {
+                        const symbol = returnType.getSymbol();
 
-                            if (symbol) {
-                                member.target = symbol.getName();
-                            }
-                            else {
-                                member.errors!.push("Could not resolve model");
-                            }
+                        if (symbol) {
+                            member.target = symbol.getName();
+                        }
+                        else {
+                            member.errors!.push("Could not resolve model");
                         }
                     }
                 }
