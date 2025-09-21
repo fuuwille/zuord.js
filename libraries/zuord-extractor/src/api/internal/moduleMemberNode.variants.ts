@@ -2,7 +2,7 @@ import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode } from "./moduleMemberNode.model";
 
 export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
-    return isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
+    return isModuleESMNode(node) || isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
 }
 
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
