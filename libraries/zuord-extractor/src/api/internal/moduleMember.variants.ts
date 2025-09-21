@@ -1,10 +1,10 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember, ModuleESMMember } from "./moduleMember.model";
-import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleMemberExportNode, isModuleMemberDefaultNode, isModuleMemberImportNode, isModuleMemberESMNode } from "./moduleNode.variants";
-import { ModuleMemberModelNode, ModuleMemberNode, ModuleMemberVariantNode } from "./moduleNode.model";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMNode } from "./moduleNode.variants";
+import { ModuleModelNode, ModuleNode, ModuleVariantNode } from "./moduleNode.model";
 
 export const initializeModuleMember = (
-    node: ModuleMemberNode, resolve?: (member: ModuleRawMember) => void
+    node: ModuleNode, resolve?: (member: ModuleRawMember) => void
 ) : ModuleMember => {
 
     const moduleMember = {
@@ -22,32 +22,32 @@ export const initializeModuleMember = (
     return moduleMember;
 }
 
-export const extractModuleMember = (node: ModuleMemberNode) : ModuleMember => {
+export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
 
-    if(isModuleMemberESMNode(node)) {
+    if(isModuleESMNode(node)) {
         return extractModuleESMMember(node);
     }
 
-    if(isModuleMemberModelNode(node)) {
+    if(isModuleModelNode(node)) {
         return extractModuleModelMember(node);
     }
 
-    if(isModuleMemberVariantNode(node)) {
+    if(isModuleVariantNode(node)) {
         return extractModuleVariantMember(node);
     }
 
     return initializeModuleMember(node);
 };
 
-export const extractModuleESMMember = (node: ModuleMemberNode) : ModuleESMMember => {
+export const extractModuleESMMember = (node: ModuleNode) : ModuleESMMember => {
     return initializeModuleMember(node) as ModuleESMMember;
 };
 
-export const extractModuleModelMember = (node: ModuleMemberModelNode) : ModuleModelMember => {
+export const extractModuleModelMember = (node: ModuleModelNode) : ModuleModelMember => {
     return initializeModuleMember(node) as ModuleModelMember;
 };
 
-export const extractModuleVariantMember = (node: ModuleMemberVariantNode) : ModuleVariantMember => {
+export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVariantMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();
@@ -77,36 +77,36 @@ export const extractModuleVariantMember = (node: ModuleMemberVariantNode) : Modu
     }) as ModuleVariantMember;
 }
 
-export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind => {
-    if (isModuleMemberImportNode(node)) {
+export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
+    if (isModuleImportNode(node)) {
         return ModuleMemberKind.Import;
     }
 
-    if (isModuleMemberExportNode(node)) {
+    if (isModuleExportNode(node)) {
         return ModuleMemberKind.Export;
     }
 
-    if (isModuleMemberDefaultNode(node)) {
+    if (isModuleDefaultNode(node)) {
         return ModuleMemberKind.Default;
     }
 
-    if (isModuleMemberTypeNode(node)) {
+    if (isModuleTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
 
-    if (isModuleMemberInterfaceNode(node)) {
+    if (isModuleInterfaceNode(node)) {
         return ModuleMemberKind.Interface;
     }
 
-    if (isModuleMemberEnumNode(node)) {
+    if (isModuleEnumNode(node)) {
         return ModuleMemberKind.Enum;
     }
 
-    if (isModuleMemberFunctionNode(node)) {
+    if (isModuleFunctionNode(node)) {
         return ModuleMemberKind.Function;
     }
 
-    if (isModuleMemberVariableNode(node)) {
+    if (isModuleVariableNode(node)) {
         return ModuleMemberKind.Variable;
     }
 

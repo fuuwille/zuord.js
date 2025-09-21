@@ -1,60 +1,60 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode, ModuleMemberImportNode, ModuleMemberExportNode, ModuleMemberDefaultNode, ModuleMemberESMNode } from "./moduleNode.model";
+import { ModuleNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode } from "./moduleNode.model";
 
-export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
-    return isModuleMemberESMNode(node) || isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);
+export const isModuleNode = (node: Node): node is ModuleNode => {
+    return isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
 }
 
-export const isModuleMemberESMNode = (node: Node): node is ModuleMemberESMNode => {
-    return isModuleMemberImportNode(node) || isModuleMemberExportNode(node) || isModuleMemberDefaultNode(node);
+export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
+    return isModuleImportNode(node) || isModuleExportNode(node) || isModuleDefaultNode(node);
 }
 
-export const isModuleMemberImportNode = (node: Node): node is ModuleMemberImportNode => {
+export const isModuleImportNode = (node: Node): node is ModuleImportNode => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
 }
 
-export const isModuleMemberExportNode = (node: Node): node is ModuleMemberExportNode => {
+export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
     return node.getKind() === SyntaxKind.ExportDeclaration;
 }
 
-export const isModuleMemberDefaultNode = (node: Node): node is ModuleMemberDefaultNode => {
+export const isModuleDefaultNode = (node: Node): node is ModuleDefaultNode => {
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-export const isModuleMemberModelNode = (node: Node): node is ModuleMemberModelNode => {
-    return isModuleMemberTypeNode(node) || isModuleMemberInterfaceNode(node) || isModuleMemberEnumNode(node);
+export const isModuleModelNode = (node: Node): node is ModuleModelNode => {
+    return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
 }
 
-export const isModuleMemberTypeNode = (node: Node): node is ModuleMemberTypeNode => {
+export const isModuleTypeNode = (node: Node): node is ModuleTypeNode => {
     return node.getKind() === SyntaxKind.TypeAliasDeclaration;
 }
 
-export const isModuleMemberInterfaceNode = (node: Node): node is ModuleMemberInterfaceNode => {
+export const isModuleInterfaceNode = (node: Node): node is ModuleInterfaceNode => {
     return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
-export const isModuleMemberEnumNode = (node: Node): node is ModuleMemberEnumNode => {
+export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
 }
 
-export const isModuleMemberVariantNode = (node: Node): node is ModuleMemberVariantNode => {
-    return isModuleMemberFunctionNode(node) || isModuleMemberVariableNode(node);
+export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
+    return isModuleFunctionNode(node) || isModuleVariableNode(node);
 }
 
-export const isModuleMemberFunctionNode = (node: Node): node is ModuleMemberFunctionNode => {
+export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
-export const isModuleMemberVariableNode = (node: Node): node is ModuleMemberVariableNode => {
+export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
     return node.getKind() === SyntaxKind.VariableStatement;
 }
 
 //
 
-export const isModuleMemberDiscardedModelNode = (node: Node): node is ModuleMemberDiscardedModelNode => {
-    return isModuleMemberVariantNode(node);
+export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedModelNode => {
+    return isModuleVariantNode(node);
 }
 
-export const isModuleMemberDiscardedVariantNode = (node: Node): node is ModuleMemberDiscardedVariantNode => {
-    return isModuleMemberModelNode(node);
+export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
+    return isModuleModelNode(node);
 }

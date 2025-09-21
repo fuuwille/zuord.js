@@ -1,7 +1,7 @@
-import { ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode, ModuleMemberNode } from "./moduleNode.model";
+import { ModuleModelNode, ModuleVariantNode, ModuleESMNode, ModuleNode } from "./moduleNode.model";
 
 export interface ModuleMember {
-    node: ModuleMemberNode
+    node: ModuleNode
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
     errors?: string[];
@@ -16,17 +16,17 @@ export interface ModuleUnknownMember extends ModuleMember {
 }
 
 export interface ModuleESMMember extends ModuleMember {
-    node: ModuleMemberESMNode;
+    node: ModuleESMNode;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
 }
 
 export interface ModuleModelMember extends ModuleMember {
-    node: ModuleMemberModelNode;
+    node: ModuleModelNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
 
 export interface ModuleVariantMember extends ModuleMember {
-    node: ModuleMemberVariantNode;
+    node: ModuleVariantNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
 }
 

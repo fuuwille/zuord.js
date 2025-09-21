@@ -1,41 +1,41 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node } from "ts-morph";
 
-export type ModuleMemberNode = Node;
+export type ModuleNode = Node;
 
-export type ModuleMemberESMNode = 
-    | ModuleMemberImportNode
-    | ModuleMemberExportNode
-    | ModuleMemberDefaultNode;
+export type ModuleESMNode = 
+    | ModuleImportNode
+    | ModuleExportNode
+    | ModuleDefaultNode;
 
-export type ModuleMemberImportNode = ImportDeclaration;
+export type ModuleImportNode = ImportDeclaration;
 
-export type ModuleMemberExportNode = ExportDeclaration;
+export type ModuleExportNode = ExportDeclaration;
 
-export type ModuleMemberDefaultNode = ExportAssignment;
+export type ModuleDefaultNode = ExportAssignment;
 
-export type ModuleMemberModelNode =
-    | ModuleMemberTypeNode
-    | ModuleMemberInterfaceNode
-    | ModuleMemberEnumNode;
+export type ModuleModelNode =
+    | ModuleTypeNode
+    | ModuleInterfaceNode
+    | ModuleEnumNode;
 
-export type ModuleMemberTypeNode = TypeAliasDeclaration;
+export type ModuleTypeNode = TypeAliasDeclaration;
 
-export type ModuleMemberInterfaceNode = InterfaceDeclaration;
+export type ModuleInterfaceNode = InterfaceDeclaration;
 
-export type ModuleMemberEnumNode = EnumDeclaration;
+export type ModuleEnumNode = EnumDeclaration;
 
-export type ModuleMemberVariantNode =
-    | ModuleMemberFunctionNode
-    | ModuleMemberVariableNode;
+export type ModuleVariantNode =
+    | ModuleFunctionNode
+    | ModuleVariableNode;
 
-export type ModuleMemberFunctionNode = FunctionDeclaration;
+export type ModuleFunctionNode = FunctionDeclaration;
 
-export type ModuleMemberVariableNode = VariableStatement;
+export type ModuleVariableNode = VariableStatement;
 
 //
 
-export type ModuleMemberDiscardedModelNode = 
-    | ModuleMemberVariantNode;
+export type ModuleDiscardedModelNode = 
+    | ModuleVariantNode;
 
-export type ModuleMemberDiscardedVariantNode =
-    | ModuleMemberModelNode;
+export type ModuleDiscardedVariantNode =
+    | ModuleModelNode;
