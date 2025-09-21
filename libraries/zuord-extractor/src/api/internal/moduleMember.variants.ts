@@ -44,7 +44,9 @@ export const extractModuleESMMember = (node: ModuleNode) : ModuleESMMember => {
 };
 
 export const extractModuleModelMember = (node: ModuleModelNode) : ModuleModelMember => {
-    return initializeModuleMember(node);
+    return initializeModuleMember(node, (member) => {
+        member.id = node.getName();
+    });
 };
 
 export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVariantMember => {
