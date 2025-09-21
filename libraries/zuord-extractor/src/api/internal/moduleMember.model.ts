@@ -21,6 +21,9 @@ export interface ModuleVariantMember extends ModuleMember {
 
 export enum ModuleMemberKind {
     Unknown = "unknown",
+    Import = "import",
+    Export = "export",
+    Default = "default",
     Type = "type",
     Interface = "interface",
     Enum = "enum",
