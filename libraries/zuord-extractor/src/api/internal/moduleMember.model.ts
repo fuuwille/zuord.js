@@ -12,6 +12,10 @@ export interface ModuleRawMember extends ModuleMember {
     errors: string[];
 }
 
+export interface ModuleUnknownMember extends ModuleMember {
+    kind: ModuleMemberKind.Unknown;
+}
+
 export interface ModuleESMMember extends ModuleMember {
     node: ModuleMemberESMNode;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
