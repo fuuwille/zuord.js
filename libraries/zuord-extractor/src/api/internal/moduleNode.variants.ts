@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode, ModuleMemberImportNode, ModuleMemberExportNode, ModuleMemberDefaultNode, ModuleMemberESMNode } from "./moduleMemberNode.model";
+import { ModuleMemberNode, ModuleMemberModelNode, ModuleMemberTypeNode, ModuleMemberInterfaceNode, ModuleMemberEnumNode, ModuleMemberVariantNode, ModuleMemberFunctionNode, ModuleMemberVariableNode, ModuleMemberDiscardedModelNode, ModuleMemberDiscardedVariantNode, ModuleMemberImportNode, ModuleMemberExportNode, ModuleMemberDefaultNode, ModuleMemberESMNode } from "./moduleNode.model";
 
 export const isModuleMemberNode = (node: Node): node is ModuleMemberNode => {
     return isModuleMemberESMNode(node) || isModuleMemberModelNode(node) || isModuleMemberVariantNode(node);

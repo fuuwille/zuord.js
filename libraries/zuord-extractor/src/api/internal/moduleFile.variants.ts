@@ -2,8 +2,8 @@ import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
 import { ModuleFile, ModuleModelFile, ModuleFileKind, ModuleVariantsFile } from "./moduleFile.model";
-import { isModuleMemberDiscardedModelNode, isModuleMemberDiscardedVariantNode, isModuleMemberNode } from "./moduleMemberNode.variants";
-import { ModuleMemberNode } from "./moduleMemberNode.model";
+import { isModuleMemberDiscardedModelNode, isModuleMemberDiscardedVariantNode, isModuleMemberNode } from "./moduleNode.variants";
+import { ModuleMemberNode } from "./moduleNode.model";
 import { extractModuleMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = (

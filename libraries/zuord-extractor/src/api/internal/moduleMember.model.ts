@@ -1,4 +1,4 @@
-import { ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode, ModuleMemberNode } from "./moduleMemberNode.model";
+import { ModuleMemberModelNode, ModuleMemberVariantNode, ModuleMemberESMNode, ModuleMemberNode } from "./moduleNode.model";
 
 export interface ModuleMember {
     node: ModuleMemberNode
