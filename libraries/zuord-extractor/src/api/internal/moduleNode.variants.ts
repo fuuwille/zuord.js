@@ -1,13 +1,9 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.model";
-import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode, ModuleFileNode } from "./moduleNode.model";
+import { ModuleKnownNode, ModuleModelNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
-    return isModuleFileNode(node) || isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
-}
-
-export const isModuleFileNode = (node: Node): node is ModuleFileNode => {
-    return node.getKind() === SyntaxKind.SourceFile;
+    return isModuleESMNode(node) || isModuleModelNode(node) || isModuleVariantNode(node);
 }
 
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
@@ -84,9 +80,9 @@ export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is Mo
 }
 
 export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedModelNode => {
-    return isModuleVariantNode(node) || isModuleFileNode(node);
+    return isModuleVariantNode(node);
 }
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
-    return isModuleModelNode(node) || isModuleFileNode(node);
+    return isModuleModelNode(node);
 }

@@ -3,12 +3,9 @@ import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDe
 export type ModuleNode = Node;
 
 export type ModuleKnownNode =
-    | ModuleFileNode
     | ModuleESMNode
     | ModuleModelNode
     | ModuleVariantNode;
-
-export type ModuleFileNode = SourceFile;
 
 export type ModuleESMNode = 
     | ModuleImportNode
