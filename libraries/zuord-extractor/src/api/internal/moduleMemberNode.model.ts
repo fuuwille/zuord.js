@@ -4,16 +4,16 @@ export type ModuleMemberNode =
     | ModuleMemberModelNode
     | ModuleMemberVariantNode;
 
-export type ModuleESMNode = 
-    | ModuleImportNode
-    | ModuleExportNode
-    | ModuleDefaultNode;
+export type ModuleMemberESMNode = 
+    | ModuleMemberImportNode
+    | ModuleMemberExportNode
+    | ModuleMemberDefaultNode;
 
-export type ModuleImportNode = ImportDeclaration;
+export type ModuleMemberImportNode = ImportDeclaration;
 
-export type ModuleExportNode = ExportDeclaration;
+export type ModuleMemberExportNode = ExportDeclaration;
 
-export type ModuleDefaultNode = ExportAssignment;
+export type ModuleMemberDefaultNode = ExportAssignment;
 
 export type ModuleMemberModelNode =
     | ModuleMemberTypeNode
