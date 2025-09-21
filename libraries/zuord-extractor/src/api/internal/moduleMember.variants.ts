@@ -1,6 +1,6 @@
 import { SyntaxKind, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleRawMember } from "./moduleMember.model";
-import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode } from "./moduleMemberNode.variants";
+import { isModuleMemberEnumNode, isModuleMemberFunctionNode, isModuleMemberTypeNode, isModuleMemberVariableNode, isModuleMemberInterfaceNode, isModuleMemberModelNode, isModuleMemberVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode } from "./moduleMemberNode.variants";
 import { ModuleMemberModelNode, ModuleMemberNode, ModuleMemberVariantNode } from "./moduleMemberNode.model";
 
 export const initializeModuleMember = (
@@ -69,6 +69,18 @@ export const extractModuleVariantMember = (node: ModuleMemberVariantNode) : Modu
 }
 
 export const getModuleMemberKind = (node: ModuleMemberNode): ModuleMemberKind => {
+    if (isModuleImportNode(node)) {
+        return ModuleMemberKind.Import;
+    }
+
+    if (isModuleExportNode(node)) {
+        return ModuleMemberKind.Export;
+    }
+
+    if (isModuleDefaultNode(node)) {
+        return ModuleMemberKind.Default;
+    }
+
     if (isModuleMemberTypeNode(node)) {
         return ModuleMemberKind.Type;
     }
