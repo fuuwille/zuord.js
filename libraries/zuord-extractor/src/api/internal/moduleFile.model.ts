@@ -1,7 +1,8 @@
+import { ModuleMode } from "./module.model";
 import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
 
 export interface ModuleFile {
-    kind: ModuleFileKind;
+    mode: ModuleMode;
     members: ModuleMember[];
     discarded: ModuleMember[];
     others: ModuleMember[];
@@ -13,9 +14,4 @@ export interface ModuleModelFile extends ModuleFile {
 
 export interface ModuleVariantsFile extends ModuleFile {
     members: ModuleVariantMember[];
-}
-
-export enum ModuleFileKind {
-    Model = "model",
-    Variants = "variants"
 }
