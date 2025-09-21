@@ -6,6 +6,7 @@ export const extractModule = (dir: string, name: string): Module => {
     const module = {
         modelFile: extractModuleFileIfExists(dir, name, ModuleMode.Model) ?? null,
         variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
+        models: [],
         errors: []
     } as Module;
 
