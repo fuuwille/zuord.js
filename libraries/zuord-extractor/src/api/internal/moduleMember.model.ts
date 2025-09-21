@@ -7,10 +7,6 @@ export interface ModuleMember {
     errors?: string[];
 };
 
-export interface ModuleRawMember extends ModuleMember {
-    errors: string[];
-}
-
 export interface ModuleUnknownMember extends ModuleMember {
     kind: ModuleMemberKind.Unknown;
 }
@@ -23,6 +19,7 @@ export interface ModuleESMMember extends ModuleMember {
 export interface ModuleModelMember extends ModuleMember {
     node: ModuleModelNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
+    id: string;
 }
 
 export interface ModuleVariantMember extends ModuleMember {
