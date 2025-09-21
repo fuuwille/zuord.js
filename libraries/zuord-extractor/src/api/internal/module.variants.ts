@@ -9,6 +9,13 @@ export const extractModule = (dir: string, name: string): Module => {
         errors: []
     } as Module;
 
+    if(module.modelFile) {
+
+    }
+    else {
+        module.errors!.push(`Model file not found`);
+    }
+
     if(module.errors!.length == 0) {
         delete module.errors;
     }
