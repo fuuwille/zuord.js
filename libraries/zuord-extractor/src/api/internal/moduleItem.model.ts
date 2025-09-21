@@ -8,7 +8,7 @@ export interface ModuleItem {
 export interface ModuleModelItem extends ModuleItem {
     module: Module;
     member: ModuleModelMember;
-    variants: ModuleVariantMember[];
+    variants: ModuleVariantItem[];
 }
 
 export interface ModuleVariantItem extends ModuleItem {
