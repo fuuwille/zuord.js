@@ -16,7 +16,8 @@ export const initializeModuleFile = (
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     const moduleFile : ModuleFile = {
-        mode,
+        source: sourceFile,
+        mode: mode,
         members: [],
         discarded: [],
         others: []
