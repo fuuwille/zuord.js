@@ -8,7 +8,7 @@ export const extractModule = (dir: string, name: string): Module => {
     const module = {
         modelFile: extractModuleFileIfExists(dir, name, ModuleMode.Model) ?? null,
         variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
-        models: [],
+        types: [],
         errors: []
     } as Module;
 
@@ -24,7 +24,7 @@ export const extractModule = (dir: string, name: string): Module => {
         for(const member of modelMembers) {
             if(isModuleTypeLikeNode(member.node)) {
                 const modelItem = createModuleTypeItem(module, member);
-                module.models.push(modelItem);
+                module.types.push(modelItem);
 
                 const matchedVariants = variantMembers.filter(v => v.target === member.id);
 

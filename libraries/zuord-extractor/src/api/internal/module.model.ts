@@ -4,7 +4,7 @@ import { ModuleTypeItem } from "./moduleItem.model";
 export type Module = {
     modelFile: ModuleTypeFile | null;
     variantsFile: ModuleVariantsFile | null;
-    models: ModuleTypeItem[];
+    types: ModuleTypeItem[];
     errors?: string[];
 }
 
