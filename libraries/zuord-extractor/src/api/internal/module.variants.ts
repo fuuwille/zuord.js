@@ -1,7 +1,7 @@
 import { Module } from "./module.model";
 import { ModuleMode } from "./module.model";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
-import { createModuleModelItem, createModuleVariantItem } from "./moduleItem.variants";
+import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
 import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
@@ -23,7 +23,7 @@ export const extractModule = (dir: string, name: string): Module => {
 
         for(const member of modelMembers) {
             if(isModuleTypeLikeNode(member.node)) {
-                const modelItem = createModuleModelItem(module, member);
+                const modelItem = createModuleTypeItem(module, member);
                 module.models.push(modelItem);
 
                 const matchedVariants = variantMembers.filter(v => v.target === member.id);

@@ -1,10 +1,10 @@
 import { Module } from "./module.model";
-import { ModuleModelItem, ModuleVariantItem } from "./moduleItem.model";
+import { ModuleTypeItem, ModuleVariantItem } from "./moduleItem.model";
 import { ModuleTypeMember, ModuleVariantMember } from "./moduleMember.model";
 
-export const createModuleModelItem = (
+export const createModuleTypeItem = (
     module: Module, member: ModuleTypeMember
-) : ModuleModelItem => {
+) : ModuleTypeItem => {
 
     return {
         module,
@@ -14,7 +14,7 @@ export const createModuleModelItem = (
 };
 
 export const createModuleVariantItem = (
-    model: ModuleModelItem, member: ModuleVariantMember
+    model: ModuleTypeItem, member: ModuleVariantMember
 ) : ModuleVariantItem => {
 
     return {

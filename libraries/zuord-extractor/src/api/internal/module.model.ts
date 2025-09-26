@@ -1,10 +1,10 @@
 import { ModuleModelFile, ModuleVariantsFile } from "./moduleFile.model";
-import { ModuleModelItem } from "./moduleItem.model";
+import { ModuleTypeItem } from "./moduleItem.model";
 
 export type Module = {
     modelFile: ModuleModelFile | null;
     variantsFile: ModuleVariantsFile | null;
-    models: ModuleModelItem[];
+    models: ModuleTypeItem[];
     errors?: string[];
 }
 
