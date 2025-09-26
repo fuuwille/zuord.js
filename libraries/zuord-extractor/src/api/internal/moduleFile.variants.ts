@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
-import { ModuleMode } from "./module.model";
-import { ModuleFile, ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.model";
+import { ModuleMode } from "./module.type";
+import { ModuleFile, ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
 

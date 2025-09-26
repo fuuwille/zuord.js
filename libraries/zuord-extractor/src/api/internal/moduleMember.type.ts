@@ -1,4 +1,4 @@
-import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode } from "./moduleNode.model";
+import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode } from "./moduleNode.type";
 
 export interface ModuleMember {
     node: ModuleNode

@@ -1,6 +1,6 @@
-import { Module } from "./module.model";
-import { ModuleTypeItem, ModuleVariantItem } from "./moduleItem.model";
-import { ModuleTypeMember, ModuleVariantMember } from "./moduleMember.model";
+import { Module } from "./module.type";
+import { ModuleTypeItem, ModuleVariantItem } from "./moduleItem.type";
+import { ModuleTypeMember, ModuleVariantMember } from "./moduleMember.type";
 
 export const createModuleTypeItem = (
     module: Module, member: ModuleTypeMember

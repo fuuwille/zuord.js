@@ -1,5 +1,5 @@
-import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.model";
-import { ModuleTypeItem } from "./moduleItem.model";
+import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
+import { ModuleTypeItem } from "./moduleItem.type";
 
 export type Module = {
     modelFile: ModuleTypeFile | null;

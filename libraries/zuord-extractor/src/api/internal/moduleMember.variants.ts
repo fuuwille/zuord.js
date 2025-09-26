@@ -1,7 +1,7 @@
 import { ts, VariableStatement } from "ts-morph";
-import { ModuleTypeMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.model";
+import { ModuleTypeMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
-import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.model";
+import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 
 export const initializeModuleMember = <TMember extends ModuleMember>(
     node: ModuleNode, resolve?: (member: TMember) => void

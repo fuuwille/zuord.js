@@ -1,5 +1,5 @@
-import { Module } from "./module.model";
-import { ModuleMode } from "./module.model";
+import { Module } from "./module.type";
+import { ModuleMode } from "./module.type";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
 import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
 import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";

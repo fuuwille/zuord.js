@@ -1,5 +1,5 @@
-import { Module } from "./module.model";
-import { ModuleMember, ModuleTypeMember, ModuleVariantMember } from "./moduleMember.model";
+import { Module } from "./module.type";
+import { ModuleMember, ModuleTypeMember, ModuleVariantMember } from "./moduleMember.type";
 
 export interface ModuleItem {
     member: ModuleMember
