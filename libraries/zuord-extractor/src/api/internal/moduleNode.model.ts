@@ -52,10 +52,10 @@ export type ModuleFunctionExpressionNode = FunctionExpression;
 //
 
 export type ModuleDiscardedNode =
-    | ModuleDiscardedModelNode
+    | ModuleDiscardedTypeNode
     | ModuleDiscardedVariantNode;
 
-export type ModuleDiscardedModelNode = 
+export type ModuleDiscardedTypeNode = 
     | ModuleVariantLikeNode;
 
 export type ModuleDiscardedVariantNode =
