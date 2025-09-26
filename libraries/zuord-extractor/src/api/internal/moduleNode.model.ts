@@ -3,11 +3,11 @@ import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDe
 export type ModuleNode = Node;
 
 export type ModuleKnownNode =
-    | ModuleESMNode
+    | ModuleESMLikeNode
     | ModuleTypeLikeNode
     | ModuleVariantLikeNode;
 
-export type ModuleESMNode = 
+export type ModuleESMLikeNode = 
     | ModuleImportNode
     | ModuleExportNode
     | ModuleDefaultNode;

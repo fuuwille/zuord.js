@@ -1,12 +1,12 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.model";
-import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
+import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMLikeNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
-    return isModuleESMNode(node) || isModuleTypeLikeNode(node) || isModuleVariantLikeNode(node);
+    return isModuleESMLikeNode(node) || isModuleTypeLikeNode(node) || isModuleVariantLikeNode(node);
 }
 
-export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
+export const isModuleESMLikeNode = (node: Node): node is ModuleESMLikeNode => {
     return isModuleImportNode(node) || isModuleExportNode(node) || isModuleDefaultNode(node);
 }
 
