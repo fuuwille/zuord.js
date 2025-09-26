@@ -4,7 +4,7 @@ export type ModuleNode = Node;
 
 export type ModuleKnownNode =
     | ModuleESMNode
-    | ModuleModelNode
+    | ModuleTypeLikeNode
     | ModuleVariantNode;
 
 export type ModuleESMNode = 
@@ -18,7 +18,7 @@ export type ModuleExportNode = ExportDeclaration;
 
 export type ModuleDefaultNode = ExportAssignment;
 
-export type ModuleModelNode =
+export type ModuleTypeLikeNode =
     | ModuleTypeNode
     | ModuleInterfaceNode
     | ModuleEnumNode;
@@ -59,4 +59,4 @@ export type ModuleDiscardedModelNode =
     | ModuleVariantNode;
 
 export type ModuleDiscardedVariantNode =
-    | ModuleModelNode;
+    | ModuleTypeLikeNode;

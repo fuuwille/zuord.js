@@ -1,4 +1,4 @@
-import { ModuleModelNode, ModuleVariantNode, ModuleESMNode, ModuleNode } from "./moduleNode.model";
+import { ModuleTypeLikeNode, ModuleVariantNode, ModuleESMNode, ModuleNode } from "./moduleNode.model";
 
 export interface ModuleMember {
     node: ModuleNode
@@ -17,7 +17,7 @@ export interface ModuleESMMember extends ModuleMember {
 }
 
 export interface ModuleModelMember extends ModuleMember {
-    node: ModuleModelNode;
+    node: ModuleTypeLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
     id: string;
 }
