@@ -70,7 +70,7 @@ export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => 
 
 export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is ModuleDiscardedNode => {
     switch(mode) {
-        case ModuleMode.Model:
+        case ModuleMode.Type:
             return isModuleDiscardedTypeNode(node);
         case ModuleMode.Variants:
             return isModuleDiscardedVariantNode(node);

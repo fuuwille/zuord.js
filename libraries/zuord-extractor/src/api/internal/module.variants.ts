@@ -6,7 +6,7 @@ import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.vari
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
-        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Model) ?? null,
+        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Type) ?? null,
         variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         errors: []

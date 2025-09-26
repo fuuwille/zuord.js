@@ -9,6 +9,6 @@ export type Module = {
 }
 
 export enum ModuleMode {
-    Model = "model",
+    Type = "type",
     Variants = "variants"
 }

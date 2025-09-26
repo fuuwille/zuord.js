@@ -43,7 +43,7 @@ export const initializeModuleFile = (
 
 export const extractModuleFile = (dir: string, name: string, mode: ModuleMode) : ModuleFile => {
     switch(mode) {
-        case ModuleMode.Model:
+        case ModuleMode.Type:
             return extractModuleTypeFile(dir, name);
         case ModuleMode.Variants:
             return extractModuleVariantsFile(dir, name);
@@ -64,7 +64,7 @@ export const extractModuleFileIfExists = (dir: string, name: string, mode: Modul
 };
 
 export const extractModuleTypeFile = (dir: string, name: string) : ModuleTypeFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Model) as ModuleTypeFile;
+    return initializeModuleFile(dir, name, ModuleMode.Type) as ModuleTypeFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
