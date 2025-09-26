@@ -1,4 +1,4 @@
-import { VariableStatement } from "ts-morph";
+import { ts, VariableStatement } from "ts-morph";
 import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.model";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleModelNode, isModuleVariantNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
 import { ModuleModelNode, ModuleNode, ModuleVariantNode } from "./moduleNode.model";
@@ -81,7 +81,15 @@ export const extractModuleVariantMember = (node: ModuleVariantNode) : ModuleVari
                         member.target = symbol.getName();
                     }
                     else {
-                        member.errors!.push("Could not resolve model");
+                        const compilerNode = initializer.compilerNode;
+                        const typeNode = compilerNode.type;
+
+                        if(typeNode && ts.isTypePredicateNode(typeNode)) {
+                            member.target = typeNode.getText();
+                        }
+                        else {
+                            member.errors!.push("Could not resolve model");
+                        }
                     }
                 }
                 else {
