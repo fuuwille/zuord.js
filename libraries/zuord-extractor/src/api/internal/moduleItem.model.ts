@@ -1,5 +1,5 @@
 import { Module } from "./module.model";
-import { ModuleMember, ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
+import { ModuleMember, ModuleTypeMember, ModuleVariantMember } from "./moduleMember.model";
 
 export interface ModuleItem {
     member: ModuleMember
@@ -7,7 +7,7 @@ export interface ModuleItem {
 
 export interface ModuleModelItem extends ModuleItem {
     module: Module;
-    member: ModuleModelMember;
+    member: ModuleTypeMember;
     variants: ModuleVariantItem[];
 }
 

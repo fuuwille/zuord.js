@@ -1,5 +1,5 @@
 import { ts, VariableStatement } from "ts-morph";
-import { ModuleModelMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.model";
+import { ModuleTypeMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.model";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.model";
 
@@ -29,7 +29,7 @@ export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
     }
 
     if(isModuleTypeLikeNode(node)) {
-        return extractModuleModelMember(node);
+        return extractModuleTypeMember(node);
     }
 
     if(isModuleVariantLikeNode(node)) {
@@ -43,7 +43,7 @@ export const extractModuleESMMember = (node: ModuleNode) : ModuleESMMember => {
     return initializeModuleMember(node);
 };
 
-export const extractModuleModelMember = (node: ModuleTypeLikeNode) : ModuleModelMember => {
+export const extractModuleTypeMember = (node: ModuleTypeLikeNode) : ModuleTypeMember => {
     return initializeModuleMember(node, (member) => {
         member.id = node.getName();
     });

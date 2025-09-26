@@ -1,9 +1,9 @@
 import { Module } from "./module.model";
 import { ModuleModelItem, ModuleVariantItem } from "./moduleItem.model";
-import { ModuleModelMember, ModuleVariantMember } from "./moduleMember.model";
+import { ModuleTypeMember, ModuleVariantMember } from "./moduleMember.model";
 
 export const createModuleModelItem = (
-    module: Module, member: ModuleModelMember
+    module: Module, member: ModuleTypeMember
 ) : ModuleModelItem => {
 
     return {

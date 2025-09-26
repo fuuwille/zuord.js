@@ -16,7 +16,7 @@ export interface ModuleESMMember extends ModuleMember {
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
 }
 
-export interface ModuleModelMember extends ModuleMember {
+export interface ModuleTypeMember extends ModuleMember {
     node: ModuleTypeLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
     id: string;
