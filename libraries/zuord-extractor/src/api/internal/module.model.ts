@@ -1,8 +1,8 @@
-import { ModuleModelFile, ModuleVariantsFile } from "./moduleFile.model";
+import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.model";
 import { ModuleTypeItem } from "./moduleItem.model";
 
 export type Module = {
-    modelFile: ModuleModelFile | null;
+    modelFile: ModuleTypeFile | null;
     variantsFile: ModuleVariantsFile | null;
     models: ModuleTypeItem[];
     errors?: string[];

@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { Project } from "ts-morph";
 import { ModuleMode } from "./module.model";
-import { ModuleFile, ModuleModelFile, ModuleVariantsFile } from "./moduleFile.model";
+import { ModuleFile, ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.model";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
 
@@ -44,7 +44,7 @@ export const initializeModuleFile = (
 export const extractModuleFile = (dir: string, name: string, mode: ModuleMode) : ModuleFile => {
     switch(mode) {
         case ModuleMode.Model:
-            return extractModuleModelFile(dir, name);
+            return extractModuleTypeFile(dir, name);
         case ModuleMode.Variants:
             return extractModuleVariantsFile(dir, name);
         default:
@@ -63,8 +63,8 @@ export const extractModuleFileIfExists = (dir: string, name: string, mode: Modul
     return undefined;
 };
 
-export const extractModuleModelFile = (dir: string, name: string) : ModuleModelFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Model) as ModuleModelFile;
+export const extractModuleTypeFile = (dir: string, name: string) : ModuleTypeFile => {
+    return initializeModuleFile(dir, name, ModuleMode.Model) as ModuleTypeFile;
 };
 
 export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
