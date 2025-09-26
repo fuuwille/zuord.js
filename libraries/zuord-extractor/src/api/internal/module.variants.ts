@@ -6,19 +6,19 @@ import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.vari
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
-        modelFile: extractModuleFileIfExists(dir, name, ModuleMode.Model) ?? null,
+        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Model) ?? null,
         variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         errors: []
     } as Module;
 
-    if(module.modelFile) {
+    if(module.typeFile) {
 
         const variantMembers = module.variantsFile
             ?.members.filter(m => isModuleVariantLikeNode(m.node)) 
             ?? [];
 
-        const modelMembers = module.modelFile.members;
+        const modelMembers = module.typeFile.members;
 
 
         for(const member of modelMembers) {
