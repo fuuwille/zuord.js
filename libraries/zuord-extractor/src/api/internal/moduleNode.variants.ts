@@ -1,9 +1,9 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.model";
-import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
+import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedModelNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionLikeNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionBaseNode, ModuleDiscardedNode } from "./moduleNode.model";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
-    return isModuleESMNode(node) || isModuleTypeLikeNode(node) || isModuleVariantNode(node);
+    return isModuleESMNode(node) || isModuleTypeLikeNode(node) || isModuleVariantLikeNode(node);
 }
 
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
@@ -38,7 +38,7 @@ export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
 }
 
-export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
+export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantLikeNode => {
     return isModuleFunctionNode(node) || isModuleVariableNode(node);
 }
 
@@ -80,7 +80,7 @@ export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is Mo
 }
 
 export const isModuleDiscardedModelNode = (node: Node): node is ModuleDiscardedModelNode => {
-    return isModuleVariantNode(node);
+    return isModuleVariantLikeNode(node);
 }
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {

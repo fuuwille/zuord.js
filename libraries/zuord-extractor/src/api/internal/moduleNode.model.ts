@@ -5,7 +5,7 @@ export type ModuleNode = Node;
 export type ModuleKnownNode =
     | ModuleESMNode
     | ModuleTypeLikeNode
-    | ModuleVariantNode;
+    | ModuleVariantLikeNode;
 
 export type ModuleESMNode = 
     | ModuleImportNode
@@ -29,7 +29,7 @@ export type ModuleInterfaceNode = InterfaceDeclaration;
 
 export type ModuleEnumNode = EnumDeclaration;
 
-export type ModuleVariantNode =
+export type ModuleVariantLikeNode =
     | ModuleFunctionNode
     | ModuleVariableNode;
 
@@ -56,7 +56,7 @@ export type ModuleDiscardedNode =
     | ModuleDiscardedVariantNode;
 
 export type ModuleDiscardedModelNode = 
-    | ModuleVariantNode;
+    | ModuleVariantLikeNode;
 
 export type ModuleDiscardedVariantNode =
     | ModuleTypeLikeNode;

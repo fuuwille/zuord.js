@@ -2,7 +2,7 @@ import { Module } from "./module.model";
 import { ModuleMode } from "./module.model";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
 import { createModuleModelItem, createModuleVariantItem } from "./moduleItem.variants";
-import { isModuleTypeLikeNode, isModuleVariantNode } from "./moduleNode.variants";
+import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
@@ -15,7 +15,7 @@ export const extractModule = (dir: string, name: string): Module => {
     if(module.modelFile) {
 
         const variantMembers = module.variantsFile
-            ?.members.filter(m => isModuleVariantNode(m.node)) 
+            ?.members.filter(m => isModuleVariantLikeNode(m.node)) 
             ?? [];
 
         const modelMembers = module.modelFile.members;
