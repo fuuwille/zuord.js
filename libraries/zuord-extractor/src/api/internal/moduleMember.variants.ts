@@ -1,4 +1,4 @@
-import { Expression, ts, VariableStatement } from "ts-morph";
+import { Expression, Node, ts, VariableStatement } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
@@ -104,9 +104,12 @@ export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTy
 
 export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
     return initializeModuleMember(node, (member) => {
-        let body: Expression | undefined;
+        let body: Node | undefined;
 
-        if(member.node instanceof VariableStatement) {
+        if(isModuleFunctionMember(member)) {            
+            body = member.node.getBody();
+        }
+        else if(isModuleVariableMember(member)) {
             const declarations = member.node.getDeclarations();
 
             if(declarations.length == 0) {
