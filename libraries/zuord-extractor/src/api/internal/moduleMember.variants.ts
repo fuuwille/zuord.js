@@ -1,6 +1,6 @@
 import { ts, VariableStatement } from "ts-morph";
 import { ModuleTypeMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.type";
-import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionLikeNode } from "./moduleNode.variants";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 
 export const initializeModuleMember = <TMember extends ModuleMember>(
@@ -67,7 +67,7 @@ export const extractModuleVariantMember = (node: ModuleVariantLikeNode) : Module
             const initializer = declaration.getInitializer();
 
             if(initializer) {
-                if (isModuleFunctionLikeNode(initializer)) {
+                if (isModuleFunctionAltNode(initializer)) {
                     member.slot = ModuleMemberSlot.Function;
 
                     const returnType = initializer.getReturnType();

@@ -37,11 +37,11 @@ export type ModuleVariableNode = VariableStatement;
 
 export type ModuleFunctionNode = FunctionDeclaration;
 
-export type ModuleFunctionBaseNode =
+export type ModuleFunctionLikeNode =
     | ModuleFunctionNode
-    | ModuleFunctionLikeNode;
+    | ModuleFunctionAltNode;
 
-export type ModuleFunctionLikeNode = 
+export type ModuleFunctionAltNode = 
     | ModuleArrowFunctionNode
     | ModuleFunctionExpressionNode;
 
