@@ -6,6 +6,10 @@ import { extractTypeRef } from "./~typeRef.variants";
 import { getTypeID } from "./~typeID.variants";
 import { extractVariantID } from "./~variantID.variants";
 
+export const isModuleMember = (member: ModuleMember): member is ModuleMember => {
+    return isUnknownMember(member) || isModuleESMLikeMember(member) || isModuleDefinitionLikeMember(member);
+}
+
 export const isUnknownMember = (member: ModuleMember): member is ModuleUnknownMember => {
     return member.kind === ModuleMemberKind.Unknown;
 }
