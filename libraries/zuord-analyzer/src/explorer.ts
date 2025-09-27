@@ -121,6 +121,10 @@ export class ExplorerDirectory {
         this.#uri = uri;
     }
 
+    public get workspace(): ExplorerWorkspace {
+        return this.#workspace;
+    }
+
     public get uri(): vscode.Uri {
         return this.#uri;
     }
