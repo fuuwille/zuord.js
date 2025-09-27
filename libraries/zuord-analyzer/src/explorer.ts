@@ -9,7 +9,22 @@ export class ExplorerProvider {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
     }
 
-    public get workspaces(): ExplorerWorkspace[] {
+    public get workspace(): ExplorerWorkspace | undefined {
+        const folder = this.getWorkspaceFolder();
+
+        if (folder) {
+            let workspace = this.#workspaces.get(folder.uri.fsPath);
+
+            if (!workspace) {
+                workspace = new ExplorerWorkspace(folder);
+                this.#workspaces.set(folder.uri.fsPath, workspace);
+            }
+
+            return workspace;
+        }    
+    }
+
+    public get workspaceList(): ExplorerWorkspace[] {
         return Array.from(this.#workspaces.values());
     }
 
@@ -28,23 +43,6 @@ export class ExplorerProvider {
         }
 
         return undefined;
-    }
-
-    getWorkspace(): ExplorerWorkspace {
-        const folder = this.getWorkspaceFolder();
-
-        if (folder) {
-            let workspace = this.#workspaces.get(folder.uri.fsPath);
-
-            if (!workspace) {
-                workspace = new ExplorerWorkspace(folder);
-                this.#workspaces.set(folder.uri.fsPath, workspace);
-            }
-
-            return workspace;
-        }
-
-        throw new Error("No workspace found");
     }
 
     getRootDir(): string | undefined {
