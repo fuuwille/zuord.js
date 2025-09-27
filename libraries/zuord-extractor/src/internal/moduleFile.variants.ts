@@ -47,7 +47,7 @@ export const extractModuleFile = (sourceFile: SourceFile, mode: ModuleMode) : Mo
     }
 };
 
-export const extractModuleFileIfExists = (dir: string, name: string, mode: ModuleMode) : ModuleFile | undefined => {
+export const extractModuleFileAtPath = (dir: string, name: string, mode: ModuleMode) : ModuleFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 

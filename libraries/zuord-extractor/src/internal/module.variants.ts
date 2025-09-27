@@ -1,6 +1,6 @@
 import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
-import { extractModuleFileIfExists } from "./moduleFile.variants";
+import { extractModuleFileAtPath } from "./moduleFile.variants";
 import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
 import { isModuleTypeLikeMember } from "./moduleMember.variants";
 import { isModuleVariantLikeNode } from "./moduleNode.variants";
@@ -40,8 +40,8 @@ export const initializeModule = (module: Module): Module => {
 export const extractModule = (dir: string, name: string): Module => {
     return initializeModule({
         name,
-        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Type) ?? null,
-        variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
+        typeFile: extractModuleFileAtPath(dir, name, ModuleMode.Type) ?? null,
+        variantsFile: extractModuleFileAtPath(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         errors: []
     } as Module);
