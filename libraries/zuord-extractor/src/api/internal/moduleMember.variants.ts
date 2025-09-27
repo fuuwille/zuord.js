@@ -4,6 +4,7 @@ import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVaria
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { extractTypeRef } from "./~typeRef.variants";
 import { getTypeID } from "./~typeID.variants";
+import { extractVariantID } from "./~variantID.variants";
 
 export const isUnknownMember = (member: ModuleMember): member is ModuleUnknownMember => {
     return member.kind === ModuleMemberKind.Unknown;
@@ -106,6 +107,8 @@ export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTy
 
 export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
     return initializeModuleMember(node, (member) => {
+        member.id = extractVariantID(member.node)!;
+
         let body: Node | undefined;
 
         if(isModuleFunctionMember(member)) {            

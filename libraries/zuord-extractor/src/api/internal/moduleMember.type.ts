@@ -61,6 +61,7 @@ export interface ModuleEnumMember extends ModuleTypeLikeMember {
 export interface ModuleVariantLikeMember extends ModuleMember {
     node: ModuleVariantLikeNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
+    id: string;
     type?: Type;
 }
 
