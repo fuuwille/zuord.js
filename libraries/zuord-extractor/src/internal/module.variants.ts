@@ -1,6 +1,7 @@
+import { SourceFile } from "ts-morph";
 import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
-import { extractModuleFileAtPath } from "./moduleFile.variants";
+import { extractModuleFileAtPath, extractModuleTypeFile } from "./moduleFile.variants";
 import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
 import { isModuleTypeLikeMember } from "./moduleMember.variants";
 import { isModuleVariantLikeNode } from "./moduleNode.variants";
@@ -44,5 +45,12 @@ export const extractModule = (dir: string, name: string): Module => {
         variantsFile: extractModuleFileAtPath(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         errors: []
+    } as Module);
+};
+
+export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile) => {
+    return initializeModule({
+        ...module,
+        typeFile: extractModuleTypeFile(sourceFile),
     } as Module);
 };
