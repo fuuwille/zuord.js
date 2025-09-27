@@ -8,6 +8,10 @@ import { isModuleVariantLikeNode } from "./moduleNode.variants";
 import { getTypeID } from "./~typeID.variants";
 
 export const initializeModule = (module: Module): Module => {
+    if(!module.errors) {
+        module.errors = [];
+    }
+    
     if(module.typeFile) {
         const variantMembers = module.variantsFile
             ?.members.filter(m => isModuleVariantLikeNode(m.node)) 
