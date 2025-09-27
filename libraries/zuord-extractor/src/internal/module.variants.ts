@@ -20,6 +20,8 @@ export const initializeModule = (module: Module) => {
 
         const modelMembers = module.typeFile.members;
 
+        module.types = [];
+
         for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
             const modelItem = createModuleTypeItem(module, member);
             module.types.push(modelItem);
