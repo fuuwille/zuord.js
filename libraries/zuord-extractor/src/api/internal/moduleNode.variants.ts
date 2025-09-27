@@ -43,15 +43,15 @@ export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
 }
 
 export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantLikeNode => {
-    return isModuleFunctionNode(node) || isModuleVariableNode(node);
-}
-
-export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
-    return node.getKind() === SyntaxKind.FunctionDeclaration;
+    return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
 
 export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
     return isModuleFunctionNode(node) || isModuleFunctionAltNode(node);
+}
+
+export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
+    return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
 export const isModuleFunctionAltNode = (node: Node): node is ModuleFunctionAltNode => {
