@@ -88,3 +88,15 @@ export class ExplorerWorkspace {
         return this.#folder;
     }
 }
+
+export class ExplorerDirectory {
+    #uri: vscode.Uri;
+
+    constructor(uri: vscode.Uri) {
+        this.#uri = uri;
+    }
+
+    public get uri(): vscode.Uri {
+        return this.#uri;
+    }
+}
