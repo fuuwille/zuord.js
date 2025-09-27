@@ -1,7 +1,23 @@
 import { ts, VariableStatement } from "ts-morph";
-import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember } from "./moduleMember.type";
+import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
+
+export const isModuleTypeLikeMember = (member: ModuleMember): member is ModuleTypeLikeMember => {
+    return isModuleTypeMember(member) || isModuleInterfaceMember(member) || isModuleEnumMember(member);
+}
+
+export const isModuleTypeMember = (member: ModuleMember): member is ModuleTypeMember => {
+    return member.kind === ModuleMemberKind.Type;
+}
+
+export const isModuleInterfaceMember = (member: ModuleMember): member is ModuleInterfaceMember => {
+    return member.kind === ModuleMemberKind.Interface;
+}
+
+export const isModuleEnumMember = (member: ModuleMember): member is ModuleEnumMember => {
+    return member.kind === ModuleMemberKind.Enum;
+}
 
 export const isModuleVariantLikeMember = (member: ModuleMember): member is ModuleVariantLikeMember => {
     return isModuleFunctionMember(member) || isModuleVariableMember(member);
