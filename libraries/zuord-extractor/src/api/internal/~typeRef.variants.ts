@@ -1,18 +1,16 @@
-import { Identifier, ts, Symbol, Type } from "ts-morph";
+import { Identifier, ts, Type } from "ts-morph";
 import { ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode } from "./moduleNode.variants";
-import { getTypeIDFromSymbol } from "./~typeID.variants";
 
-
-export const extractVariantLikeType = (node: ModuleVariantLikeNode): Type | undefined => {
+export const extractTypeRef = (node: ModuleVariantLikeNode): Type | undefined => {
     if(isModuleFunctionLikeNode(node)) {
-        return extractFunctionLikeType(node);
+        return extractTypeRefAsFunctionLike(node);
     }
 
     return undefined;
 }
 
-export const extractFunctionLikeType = (node: ModuleFunctionLikeNode): Type | undefined => {
+export const extractTypeRefAsFunctionLike = (node: ModuleFunctionLikeNode): Type | undefined => {
 
     const returnType = node.getReturnTypeNode();
     if(!returnType) return undefined;
@@ -40,18 +38,4 @@ export const extractFunctionLikeType = (node: ModuleFunctionLikeNode): Type | un
     }
 
     return type;
-}
-
-export const extractVariantLikeTypeSymbol = (node: ModuleVariantLikeNode): Symbol | undefined => {
-    const type = extractVariantLikeType(node);
-    if(!type) return undefined;
-
-    const symbol = (type.getAliasSymbol() ?? type.getSymbol());
-
-    return symbol;
-}
-
-export const extractVariantLikeTypeID = (node: ModuleVariantLikeNode): string | undefined => {
-    const symbol = extractVariantLikeTypeSymbol(node);
-    return getTypeIDFromSymbol(symbol);
 }
