@@ -20,6 +20,22 @@ export class ExplorerProvider {
         const workspaceFolder = this.getWorkspaceFolder();
         return workspaceFolder ? workspaceFolder.uri.fsPath : undefined;
     }
+
+    getCurrentPath(): string | undefined {
+        const activeEditor = this.getEditor();
+        return activeEditor ? activeEditor.document.uri.fsPath : undefined;
+    }
+
+    getRelativePath(): string | undefined {
+        const currentPath = this.getCurrentPath();
+        const rootDir = this.getRootDir();
+
+        if (currentPath && rootDir) {
+            return vscode.workspace.asRelativePath(currentPath, true);
+        }
+
+        return undefined;
+    }
 }
 
 export const explorer = new ExplorerProvider();
