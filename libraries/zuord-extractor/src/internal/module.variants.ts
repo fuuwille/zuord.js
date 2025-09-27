@@ -6,23 +6,13 @@ import { isModuleTypeLikeMember } from "./moduleMember.variants";
 import { isModuleVariantLikeNode } from "./moduleNode.variants";
 import { getTypeID } from "./~typeID.variants";
 
-export const extractModule = (dir: string, name: string): Module => {
-    const module = {
-        name,
-        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Type) ?? null,
-        variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
-        types: [],
-        errors: []
-    } as Module;
-
+export const initializeModule = (module: Module): Module => {
     if(module.typeFile) {
-
         const variantMembers = module.variantsFile
             ?.members.filter(m => isModuleVariantLikeNode(m.node)) 
             ?? [];
 
         const modelMembers = module.typeFile.members;
-
 
         for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
             const modelItem = createModuleTypeItem(module, member);
@@ -45,4 +35,14 @@ export const extractModule = (dir: string, name: string): Module => {
     }
 
     return module;
+};
+
+export const extractModule = (dir: string, name: string): Module => {
+    return initializeModule({
+        name,
+        typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Type) ?? null,
+        variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
+        types: [],
+        errors: []
+    } as Module);
 };
