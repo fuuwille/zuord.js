@@ -21,7 +21,7 @@ export type ModuleExportNode = ExportDeclaration;
 export type ModuleExportDefaultNode = ExportAssignment;
 
 export type ModuleDefinitionLikeNode =
-    | ModuleFunctionLikeNode
+    | ModuleTypeLikeNode
     | ModuleVariantLikeNode;
 
 export type ModuleTypeLikeNode =
