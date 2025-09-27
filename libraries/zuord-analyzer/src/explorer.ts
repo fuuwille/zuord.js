@@ -1,3 +1,4 @@
+import path from "path";
 import vscode from "vscode";
 
 export class ExplorerProvider {
@@ -31,7 +32,7 @@ export class ExplorerProvider {
         const rootDir = this.getRootDir();
 
         if (currentPath && rootDir) {
-            return vscode.workspace.asRelativePath(currentPath, true);
+            return path.relative(rootDir, currentPath);
         }
 
         return undefined;
