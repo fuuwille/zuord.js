@@ -1,7 +1,6 @@
 # pnpm-workspace.yaml
 
 packages:
-  - "library"
-  - "website"
+  - "libraries/**"
   - "packages/**"
-  - "tests/**"
+  - "website"
