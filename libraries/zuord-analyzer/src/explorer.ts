@@ -104,7 +104,7 @@ export class ExplorerWorkspace {
         let directory = this.#directories.get(uri.fsPath);
 
         if(!directory) {
-            directory = new ExplorerDirectory(uri);
+            directory = new ExplorerDirectory(this, uri);
             this.#directories.set(uri.fsPath, directory);
         }
 
@@ -113,9 +113,11 @@ export class ExplorerWorkspace {
 }
 
 export class ExplorerDirectory {
+    #workspace: ExplorerWorkspace;
     #uri: vscode.Uri;
 
-    constructor(uri: vscode.Uri) {
+    constructor(workspace: ExplorerWorkspace, uri: vscode.Uri) {
+        this.#workspace = workspace;
         this.#uri = uri;
     }
 
