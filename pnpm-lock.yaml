@@ -83,6 +83,10 @@ importers:
         version: 14.0.0
 
   libraries/zuord-analyzer:
+    dependencies:
+      zuord-extractor:
+        specifier: 3.0.0-alpha.3
+        version: 3.0.0-alpha.3
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.10
@@ -6633,6 +6637,9 @@ packages:
   yocto-queue@1.2.1:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
+
+  zuord-extractor@3.0.0-alpha.3:
+    resolution: {integrity: sha512-4oLOVk/SCDhEotdhz5rz5QKt/n4OZYKouSbsgy+WotA0MhpxWT+4U74JUIeXCV7cLTBH9aEaXc/AZ0W3CUCp8A==}
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
@@ -14659,6 +14666,8 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.2.1: {}
+
+  zuord-extractor@3.0.0-alpha.3: {}
 
   zuord@3.0.0-alpha.34: {}
 
