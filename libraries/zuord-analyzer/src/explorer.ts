@@ -9,19 +9,8 @@ export class ExplorerProvider {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
     }
 
-    public get workspace(): ExplorerWorkspace | undefined {
-        const folder = this.getWorkspaceFolder();
-
-        if (folder) {
-            let workspace = this.#workspaces.get(folder.uri.fsPath);
-
-            if (!workspace) {
-                workspace = new ExplorerWorkspace(folder);
-                this.#workspaces.set(folder.uri.fsPath, workspace);
-            }
-
-            return workspace;
-        }    
+    public get workspaces(): Map<string, ExplorerWorkspace> {
+        return this.#workspaces;
     }
 
     public get workspaceList(): ExplorerWorkspace[] {
@@ -43,6 +32,21 @@ export class ExplorerProvider {
         }
 
         return undefined;
+    }
+
+    getWorkspace(): ExplorerWorkspace | undefined {
+        const folder = this.getWorkspaceFolder();
+
+        if (folder) {
+            let workspace = this.#workspaces.get(folder.uri.fsPath);
+
+            if (!workspace) {
+                workspace = new ExplorerWorkspace(folder);
+                this.#workspaces.set(folder.uri.fsPath, workspace);
+            }
+
+            return workspace;
+        }    
     }
 
     getRootDir(): string | undefined {
