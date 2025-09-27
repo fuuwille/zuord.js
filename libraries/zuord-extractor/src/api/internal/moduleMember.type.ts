@@ -1,4 +1,4 @@
-import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode } from "./moduleNode.type";
+import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode, ModuleExportLikeNode } from "./moduleNode.type";
 
 export interface ModuleMember {
     node: ModuleNode
@@ -13,7 +13,7 @@ export interface ModuleUnknownMember extends ModuleMember {
 
 export interface ModuleESMLikeMember extends ModuleMember {
     node: ModuleESMLikeNode;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
 export interface ModuleImportMember extends ModuleESMLikeMember {
@@ -21,14 +21,19 @@ export interface ModuleImportMember extends ModuleESMLikeMember {
     kind: ModuleMemberKind.Import;
 }
 
-export interface ModuleExportMember extends ModuleESMLikeMember {
+export interface ModuleExportLikeMember extends ModuleESMLikeMember {
+    node: ModuleExportLikeNode;
+    kind: ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
+}
+
+export interface ModuleExportMember extends ModuleExportLikeMember {
     node: ModuleExportNode;
     kind: ModuleMemberKind.Export;
 }
 
-export interface ModuleDefaultMember extends ModuleESMLikeMember {
-    node: ModuleDefaultNode;
-    kind: ModuleMemberKind.Default;
+export interface ModuleExportDefaultMember extends ModuleExportLikeMember {
+    node: ModuleExportDefaultNode;
+    kind: ModuleMemberKind.ExportDefault;
 }
 
 export interface ModuleTypeLikeMember extends ModuleMember {
@@ -72,7 +77,7 @@ export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
     Export = "export",
-    Default = "default",
+    ExportDefault = "export-default",
     Type = "type",
     Interface = "interface",
     Enum = "enum",

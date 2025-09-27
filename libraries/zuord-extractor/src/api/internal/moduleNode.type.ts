@@ -9,14 +9,17 @@ export type ModuleKnownNode =
 
 export type ModuleESMLikeNode = 
     | ModuleImportNode
-    | ModuleExportNode
-    | ModuleDefaultNode;
+    | ModuleExportLikeNode;
 
 export type ModuleImportNode = ImportDeclaration;
 
+export type ModuleExportLikeNode = 
+    | ModuleExportNode
+    | ModuleExportDefaultNode;
+
 export type ModuleExportNode = ExportDeclaration;
 
-export type ModuleDefaultNode = ExportAssignment;
+export type ModuleExportDefaultNode = ExportAssignment;
 
 export type ModuleTypeLikeNode =
     | ModuleTypeNode

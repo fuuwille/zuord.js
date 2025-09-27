@@ -1,6 +1,6 @@
 import { ts, VariableStatement } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember } from "./moduleMember.type";
-import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 
 export const isModuleTypeLikeMember = (member: ModuleMember): member is ModuleTypeLikeMember => {
@@ -140,8 +140,8 @@ export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
         return ModuleMemberKind.Export;
     }
 
-    if (isModuleDefaultNode(node)) {
-        return ModuleMemberKind.Default;
+    if (isModuleExportDefaultNode(node)) {
+        return ModuleMemberKind.ExportDefault;
     }
 
     if (isModuleTypeNode(node)) {

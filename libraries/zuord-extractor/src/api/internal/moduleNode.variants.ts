@@ -1,24 +1,28 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.type";
-import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedTypeNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMLikeNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode } from "./moduleNode.type";
+import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedTypeNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMLikeNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode } from "./moduleNode.type";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMLikeNode(node) || isModuleTypeLikeNode(node) || isModuleVariantLikeNode(node);
 }
 
 export const isModuleESMLikeNode = (node: Node): node is ModuleESMLikeNode => {
-    return isModuleImportNode(node) || isModuleExportNode(node) || isModuleDefaultNode(node);
+    return isModuleImportNode(node) || isModuleExportLikeNode(node);
 }
 
 export const isModuleImportNode = (node: Node): node is ModuleImportNode => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
 }
 
+export const isModuleExportLikeNode = (node: Node): node is ModuleExportLikeNode => {
+    return isModuleExportNode(node) || isModuleExportDefaultNode(node);
+}
+
 export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
     return node.getKind() === SyntaxKind.ExportDeclaration;
 }
 
-export const isModuleDefaultNode = (node: Node): node is ModuleDefaultNode => {
+export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefaultNode => {
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
