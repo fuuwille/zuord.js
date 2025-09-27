@@ -2,7 +2,8 @@ import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileIfExists } from "./moduleFile.variants";
 import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
-import { isModuleTypeLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";
+import { isModuleTypeLikeMember } from "./moduleMember.variants";
+import { isModuleVariantLikeNode } from "./moduleNode.variants";
 import { getTypeID } from "./~typeID.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
@@ -22,17 +23,15 @@ export const extractModule = (dir: string, name: string): Module => {
         const modelMembers = module.typeFile.members;
 
 
-        for(const member of modelMembers) {
-            if(isModuleTypeLikeNode(member.node)) {
-                const modelItem = createModuleTypeItem(module, member);
-                module.types.push(modelItem);
+        for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
+            const modelItem = createModuleTypeItem(module, member);
+            module.types.push(modelItem);
 
-                const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
+            const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
 
-                for(const variantMember of matchedVariants) {
-                    const variantItem = createModuleVariantItem(modelItem, variantMember);
-                    modelItem.variants.push(variantItem);
-                }
+            for(const variantMember of matchedVariants) {
+                const variantItem = createModuleVariantItem(modelItem, variantMember);
+                modelItem.variants.push(variantItem);
             }
         }
     }
