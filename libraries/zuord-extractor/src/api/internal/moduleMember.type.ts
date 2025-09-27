@@ -11,18 +11,18 @@ export interface ModuleUnknownMember extends ModuleMember {
     kind: ModuleMemberKind.Unknown;
 }
 
-export interface ModuleESMMember extends ModuleMember {
+export interface ModuleESMLikeMember extends ModuleMember {
     node: ModuleESMLikeNode;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
 }
 
-export interface ModuleTypeMember extends ModuleMember {
+export interface ModuleTypeLikeMember extends ModuleMember {
     node: ModuleTypeLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
     id: string;
 }
 
-export interface ModuleVariantMember extends ModuleMember {
+export interface ModuleVariantLikeMember extends ModuleMember {
     node: ModuleVariantLikeNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
     target: string;

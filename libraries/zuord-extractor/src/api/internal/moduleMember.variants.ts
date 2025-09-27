@@ -1,5 +1,5 @@
 import { ts, VariableStatement } from "ts-morph";
-import { ModuleTypeMember, ModuleMemberKind, ModuleMember, ModuleVariantMember, ModuleMemberSlot, ModuleESMMember } from "./moduleMember.type";
+import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 
@@ -25,31 +25,31 @@ export const initializeModuleMember = <TMember extends ModuleMember>(
 export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
 
     if(isModuleESMLikeNode(node)) {
-        return extractModuleESMMember(node);
+        return extractModuleESMLikeMember(node);
     }
 
     if(isModuleTypeLikeNode(node)) {
-        return extractModuleTypeMember(node);
+        return extractModuleTypeLikeMember(node);
     }
 
     if(isModuleVariantLikeNode(node)) {
-        return extractModuleVariantMember(node);
+        return extractModuleVariantLikeMember(node);
     }
 
     return initializeModuleMember(node);
 };
 
-export const extractModuleESMMember = (node: ModuleNode) : ModuleESMMember => {
+export const extractModuleESMLikeMember = (node: ModuleNode) : ModuleESMLikeMember => {
     return initializeModuleMember(node);
 };
 
-export const extractModuleTypeMember = (node: ModuleTypeLikeNode) : ModuleTypeMember => {
+export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTypeLikeMember => {
     return initializeModuleMember(node, (member) => {
         member.id = node.getName();
     });
 };
 
-export const extractModuleVariantMember = (node: ModuleVariantLikeNode) : ModuleVariantMember => {
+export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
     return initializeModuleMember(node, (member) => {
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();

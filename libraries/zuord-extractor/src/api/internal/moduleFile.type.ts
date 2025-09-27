@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.type";
-import { ModuleMember, ModuleTypeMember, ModuleVariantMember } from "./moduleMember.type";
+import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
 
 export interface ModuleFile {
     source: SourceFile
@@ -11,9 +11,9 @@ export interface ModuleFile {
 };
 
 export interface ModuleTypeFile extends ModuleFile {
-    members: ModuleTypeMember[];
+    members: ModuleTypeLikeMember[];
 }
 
 export interface ModuleVariantsFile extends ModuleFile {
-    members: ModuleVariantMember[];
+    members: ModuleVariantLikeMember[];
 }
