@@ -1,4 +1,4 @@
-import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode } from "./moduleNode.type";
+import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode } from "./moduleNode.type";
 
 export interface ModuleMember {
     node: ModuleNode
@@ -61,6 +61,11 @@ export interface ModuleVariantLikeMember extends ModuleMember {
 export interface ModuleFunctionMember extends ModuleVariantLikeMember {
     node: ModuleFunctionNode;
     kind: ModuleMemberKind.Function;
+}
+
+export interface ModuleVariableMember extends ModuleVariantLikeMember {
+    node: ModuleVariableNode;
+    kind: ModuleMemberKind.Variable;
 }
 
 export enum ModuleMemberKind {
