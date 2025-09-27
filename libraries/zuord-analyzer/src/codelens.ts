@@ -14,11 +14,11 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const kind = getSecondToLastPart(name);
         const project = new Project();
 
-        let module = explorerModule?.module;
+        const module = explorerModule?.module;
 
         if(module) {
             if(kind == "type") {
-                module = $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
+                $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
 
                 module.types.forEach(type => {
                     const node = type.member.node;
@@ -34,7 +34,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 });
             }
             else if(kind == "variants") {
-                module = $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
+                $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
 
                 module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
                     const node = variant.node;
