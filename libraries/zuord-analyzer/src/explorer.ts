@@ -82,12 +82,28 @@ export class ExplorerProvider {
         return activeEditor ? activeEditor.document.uri.fsPath : undefined;
     }
 
+    getCurrentDir(): string | undefined {
+        const currentPath = this.getCurrentPath();
+        return currentPath ? path.dirname(currentPath) : undefined;
+    }
+
     getRelativePath(): string | undefined {
         const currentPath = this.getCurrentPath();
         const rootDir = this.getRootDir();
 
         if (currentPath && rootDir) {
             return path.relative(rootDir, currentPath);
+        }
+
+        return undefined;
+    }
+
+    getRelativeDir(): string | undefined {
+        const currentDir = this.getCurrentDir();
+        const rootDir = this.getRootDir();
+
+        if (currentDir && rootDir) {
+            return path.relative(rootDir, currentDir);
         }
 
         return undefined;
@@ -178,7 +194,7 @@ export class ExplorerModule {
 
     constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
-        this.#module = zuordExtractor.extractModule(directory.uri.fsPath, name);
+        this.#module = zuordExtractor.extractModule(directory.uri.path!, trimExtension(name));
     }
 
     public get directory(): ExplorerDirectory {
@@ -188,4 +204,10 @@ export class ExplorerModule {
     public get module(): ZuordExtractor.Module {
         return this.#module;
     }
+}
+
+function trimExtension(name: string): string {
+    const parts = name.split(".");
+    if (parts.length <= 2) return parts[0];
+    return parts.slice(0, parts.length - 2).join("."); 
 }
