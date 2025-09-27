@@ -1,7 +1,8 @@
-import { ts, VariableStatement } from "ts-morph";
+import { Expression, ts, VariableStatement } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
+import { extractTypeID } from "./~utilities.variants";
 
 export const isUnknownMember = (member: ModuleMember): member is ModuleUnknownMember => {
     return member.kind === ModuleMemberKind.Unknown;
@@ -103,6 +104,8 @@ export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTy
 
 export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
     return initializeModuleMember(node, (member) => {
+        let body: Expression | undefined;
+
         if(member.node instanceof VariableStatement) {
             const declarations = member.node.getDeclarations();
 
@@ -116,41 +119,19 @@ export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : Mo
             }
 
             const declaration = declarations[0];
-            const initializer = declaration.getInitializer();
+            body = declaration.getInitializer();
+        }
 
-            if(initializer) {
-                if (isModuleFunctionAltNode(initializer)) {
-                    member.slot = ModuleMemberSlot.Function;
+        if(body && isModuleVariantLikeNode(body)) {
+            const typeID = extractTypeID(body);
 
-                    const returnType = initializer.getReturnType();
-                    const constraint = returnType.getConstraint();
-
-                    const symbol = constraint 
-                        ? constraint.getSymbol()
-                        : returnType.getSymbol();
-
-                    if (symbol) {
-                        member.target = symbol.getName();
-                    }
-                    else {
-                        const compilerNode = initializer.compilerNode;
-                        const typeNode = compilerNode.type;
-
-                        if(typeNode && ts.isTypePredicateNode(typeNode)) {
-                            member.target = typeNode.getText();
-                        }
-                        else {
-                            member.errors!.push("Could not resolve model");
-                        }
-                    }
-                }
-                else {
-                    member.slot = ModuleMemberSlot.Value;
-                }
+            if(typeID) {
+                member.target = typeID;
             }
-            else {
-                member.errors!.push("VariableStatement has no initializer");
-            }
+        }
+
+        if(!member.target) {
+            member.errors!.push("Failed to extract type ID");
         }
     });
 }
