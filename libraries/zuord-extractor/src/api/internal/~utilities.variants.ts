@@ -1,4 +1,4 @@
-import { ts } from "ts-morph";
+import { ts, TypeReferenceNode } from "ts-morph";
 import { ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode } from "./moduleNode.variants";
 
@@ -27,7 +27,9 @@ export const extractFunctionLikeTypeID = (node: ModuleFunctionLikeNode): string 
         const typeNode = compilerNode.type;
 
         if(typeNode && ts.isTypePredicateNode(typeNode)) {
-            return typeNode.getText();
+            const typeReference = typeNode.getChildren().filter(ts.isTypeReferenceNode)?.[0];
+
+            return typeReference.getText();
         }
     }
 
