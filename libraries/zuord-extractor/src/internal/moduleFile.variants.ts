@@ -47,14 +47,14 @@ export const extractModuleFile = (sourceFile: SourceFile, mode: ModuleMode) : Mo
     }
 };
 
-export const extractModuleFileAtPath = (dir: string, name: string, mode: ModuleMode) : ModuleFile | undefined => {
+export const extractModuleFileAtPath = <TFile extends ModuleFile>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return extractModuleFile(sourceFile, mode);
+        return extractModuleFile(sourceFile, mode) as TFile;
     }
 
     return undefined;
