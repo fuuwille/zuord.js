@@ -1,8 +1,12 @@
 import vscode from "vscode";
 
 export class ExplorerProvider {
+    getEditor(): vscode.TextEditor | undefined {
+        return vscode.window.activeTextEditor;
+    }
+
     getWorkspaceFolder(): vscode.WorkspaceFolder | undefined {
-        const activeEditor = vscode.window.activeTextEditor;
+        const activeEditor = this.getEditor();
 
         if (activeEditor) {
             const uri = activeEditor.document.uri;
