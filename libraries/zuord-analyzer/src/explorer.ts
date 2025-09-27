@@ -123,3 +123,15 @@ export class ExplorerDirectory {
         return this.#uri;
     }
 }
+
+export class ExplorerModule {
+    #directory: ExplorerDirectory;
+
+    constructor(directory: ExplorerDirectory) {
+        this.#directory = directory;
+    }
+
+    public get directory(): ExplorerDirectory {
+        return this.#directory;
+    }
+}
