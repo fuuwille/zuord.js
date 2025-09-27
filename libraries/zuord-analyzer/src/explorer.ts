@@ -79,13 +79,19 @@ export default explorer;
 
 export class ExplorerWorkspace {
     #folder: vscode.WorkspaceFolder;
+    #directories: Map<string, ExplorerDirectory>;
 
     constructor(folder: vscode.WorkspaceFolder) {
         this.#folder = folder;
+        this.#directories = new Map<string, ExplorerDirectory>();
     }
 
     public get folder(): vscode.WorkspaceFolder {
         return this.#folder;
+    }
+
+    public get directories(): Map<string, ExplorerDirectory> {
+        return this.#directories;
     }
 }
 
