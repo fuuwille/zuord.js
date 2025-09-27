@@ -1,3 +1,4 @@
+import { Type } from "ts-morph";
 import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode, ModuleExportLikeNode } from "./moduleNode.type";
 
 export interface ModuleMember {
@@ -60,7 +61,7 @@ export interface ModuleEnumMember extends ModuleTypeLikeMember {
 export interface ModuleVariantLikeMember extends ModuleMember {
     node: ModuleVariantLikeNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
-    target: string;
+    type?: Type;
 }
 
 export interface ModuleFunctionMember extends ModuleVariantLikeMember {
