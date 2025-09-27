@@ -10,12 +10,9 @@ export const extractTypeRef = (node: ModuleDefinitionLikeNode): Type | undefined
     if(isModuleVariantLikeNode(node)) {
         return extractTypeRefAsVariantLike(node);
     }
-
-    return undefined;
 }
 
-export const extractTypeRefAsTypeLike = (node?: ModuleTypeLikeNode): Type | undefined => {
-    if(!node) return undefined;
+export const extractTypeRefAsTypeLike = (node: ModuleTypeLikeNode): Type => {
     return node.getType();
 }
 
@@ -23,12 +20,9 @@ export const extractTypeRefAsVariantLike = (node: ModuleVariantLikeNode): Type |
     if(isModuleFunctionLikeNode(node)) {
         return extractTypeRefAsFunctionLike(node);
     }
-
-    return undefined;
 }
 
 export const extractTypeRefAsFunctionLike = (node: ModuleFunctionLikeNode): Type | undefined => {
-
     const returnType = node.getReturnTypeNode();
     if(!returnType) return undefined;
 
