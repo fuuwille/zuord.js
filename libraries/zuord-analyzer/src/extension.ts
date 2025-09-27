@@ -1,13 +1,15 @@
-import * as vscode from 'vscode';
+import { ExtensionContext, languages} from 'vscode';
+import { CodelensProvider } from './codelens';
 
-export function activate(context: vscode.ExtensionContext) {
-	console.log('Congratulations, your extension "zuord-analyzer" is now active!');
+export function activate(context: ExtensionContext) {
+	const codelensProvider = new CodelensProvider();
 
-	const disposable = vscode.commands.registerCommand('zuord-analyzer.helloWorld', () => {
-		vscode.window.showInformationMessage('Hello World from zuord-analyzer!');
-	});
-
-	context.subscriptions.push(disposable);
+    context.subscriptions.push(
+        languages.registerCodeLensProvider(
+            { scheme: "file", language: "typescript" },
+            codelensProvider
+        )
+    );
 }
 
 export function deactivate() {}
