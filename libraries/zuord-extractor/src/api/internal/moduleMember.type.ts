@@ -1,5 +1,5 @@
 import { Type } from "ts-morph";
-import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode, ModuleExportLikeNode } from "./moduleNode.type";
+import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode, ModuleExportLikeNode, ModuleDefinitionLikeNode } from "./moduleNode.type";
 
 export interface ModuleMember {
     node: ModuleNode
@@ -37,10 +37,15 @@ export interface ModuleExportDefaultMember extends ModuleExportLikeMember {
     kind: ModuleMemberKind.ExportDefault;
 }
 
-export interface ModuleTypeLikeMember extends ModuleMember {
+export interface ModuleDefinitionLikeMember extends ModuleMember {
+    node: ModuleDefinitionLikeNode;
+    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum | ModuleMemberKind.Function | ModuleMemberKind.Variable;
+    id: string;
+}
+
+export interface ModuleTypeLikeMember extends ModuleDefinitionLikeMember {
     node: ModuleTypeLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
-    id: string;
 }
 
 export interface ModuleTypeMember extends ModuleTypeLikeMember {
@@ -58,10 +63,9 @@ export interface ModuleEnumMember extends ModuleTypeLikeMember {
     kind: ModuleMemberKind.Enum;
 }
 
-export interface ModuleVariantLikeMember extends ModuleMember {
+export interface ModuleVariantLikeMember extends ModuleDefinitionLikeMember {
     node: ModuleVariantLikeNode;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
-    id: string;
     type?: Type;
 }
 
