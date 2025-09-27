@@ -3,6 +3,7 @@ import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLike
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { extractTypeRef } from "./~typeRef.variants";
+import { getTypeID } from "./~typeID.variants";
 
 export const isUnknownMember = (member: ModuleMember): member is ModuleUnknownMember => {
     return member.kind === ModuleMemberKind.Unknown;
@@ -98,7 +99,8 @@ export const extractModuleESMLikeMember = (node: ModuleNode) : ModuleESMLikeMemb
 
 export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTypeLikeMember => {
     return initializeModuleMember(node, (member) => {
-        member.id = node.getName();
+        const type = member.node.getType();
+        member.id = getTypeID(type)!;
     });
 };
 
