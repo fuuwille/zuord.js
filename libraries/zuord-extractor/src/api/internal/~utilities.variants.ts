@@ -11,8 +11,8 @@ export const getTypeID = (name?: string): string | undefined => {
         .toLowerCase();
 }
 
-export const getSymbolTypeID = (symbol: Symbol): string | undefined => {
-    return getTypeID(symbol.getName());
+export const getSymbolTypeID = (symbol?: Symbol): string | undefined => {
+    return getTypeID(symbol?.getName());
 }
 
 export const extractVariantLikeType = (node: ModuleVariantLikeNode): Type | undefined => {
@@ -62,5 +62,5 @@ export const extractVariantLikeTypeSymbol = (node: ModuleVariantLikeNode): Symbo
 
 export const extractVariantLikeTypeID = (node: ModuleVariantLikeNode): string | undefined => {
     const symbol = extractVariantLikeTypeSymbol(node);
-    return symbol ? symbol.getName() : undefined;
+    return getSymbolTypeID(symbol);
 }
