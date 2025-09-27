@@ -44,6 +44,12 @@ export const extractFunctionLikeType = (node: ModuleFunctionLikeNode): Type | un
         type  = returnType.getType();
     }
 
+    const constraint = type.getConstraint();
+
+    if(constraint) {
+        type = constraint;
+    }
+
     return type;
 }
 
@@ -51,11 +57,7 @@ export const extractVariantLikeTypeSymbol = (node: ModuleVariantLikeNode): Symbo
     const type = extractVariantLikeType(node);
     if(!type) return undefined;
 
-    const constraint = type.getConstraint();
-
-    const symbol = constraint 
-        ? (constraint.getAliasSymbol() ?? constraint.getSymbol())
-        : (type.getAliasSymbol() ?? type.getSymbol())
+    const symbol = (type.getAliasSymbol() ?? type.getSymbol());
 
     return symbol;
 }
