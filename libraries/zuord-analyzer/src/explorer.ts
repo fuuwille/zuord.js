@@ -1,5 +1,6 @@
 import path from "path";
 import vscode from "vscode";
+import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
 
 export class ExplorerProvider {
 
@@ -132,12 +133,18 @@ export class ExplorerDirectory {
 
 export class ExplorerModule {
     #directory: ExplorerDirectory;
+    #module: ZuordExtractor.Module;
 
-    constructor(directory: ExplorerDirectory) {
+    constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
+        this.#module = zuordExtractor.extractModule(directory.uri.fsPath, name);
     }
 
     public get directory(): ExplorerDirectory {
         return this.#directory;
+    }
+
+    public get module(): ZuordExtractor.Module {
+        return this.#module;
     }
 }
