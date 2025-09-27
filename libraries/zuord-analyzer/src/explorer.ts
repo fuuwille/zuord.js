@@ -32,7 +32,7 @@ export class ExplorerProvider {
 
     getWorkspace(): ExplorerWorkspace {
         const folder = this.getWorkspaceFolder();
-        
+
         if (folder) {
             let workspace = this.#workspaces.get(folder.uri.fsPath);
 
@@ -66,6 +66,12 @@ export class ExplorerProvider {
         }
 
         return undefined;
+    }
+
+    //
+
+    reset() {
+        this.#workspaces.clear();
     }
 }
 
