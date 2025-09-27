@@ -1,19 +1,14 @@
 import fs from "fs";
 import path from "path";
-import { Project } from "ts-morph";
+import { Project, SourceFile, ts } from "ts-morph";
 import { ModuleMode } from "./module.type";
 import { ModuleFile, ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
 
 export const initializeModuleFile = (
-    dir: string, name: string, mode: ModuleMode
+    sourceFile: SourceFile, mode: ModuleMode
 ) : ModuleFile => {
-
-    const fileName = `${name}.${mode.toLowerCase()}.ts`;
-    const filePath = path.join(dir, fileName);
-
-    const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     const moduleFile : ModuleFile = {
         source: sourceFile,
@@ -41,12 +36,12 @@ export const initializeModuleFile = (
     return moduleFile;
 };
 
-export const extractModuleFile = (dir: string, name: string, mode: ModuleMode) : ModuleFile => {
+export const extractModuleFile = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile => {
     switch(mode) {
         case ModuleMode.Type:
-            return extractModuleTypeFile(dir, name);
+            return extractModuleTypeFile(sourceFile);
         case ModuleMode.Variants:
-            return extractModuleVariantsFile(dir, name);
+            return extractModuleVariantsFile(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${mode}`);
     }
@@ -56,17 +51,19 @@ export const extractModuleFileIfExists = (dir: string, name: string, mode: Modul
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
+    const sourceFile = new Project().addSourceFileAtPath(filePath);
+
     if(fs.existsSync(filePath)) {
-        return extractModuleFile(dir, name, mode);
+        return extractModuleFile(sourceFile, mode);
     }
 
     return undefined;
 };
 
-export const extractModuleTypeFile = (dir: string, name: string) : ModuleTypeFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Type) as ModuleTypeFile;
+export const extractModuleTypeFile = (sourceFile: SourceFile) : ModuleTypeFile => {
+    return initializeModuleFile(sourceFile, ModuleMode.Type) as ModuleTypeFile;
 };
 
-export const extractModuleVariantsFile = (dir: string, name: string) : ModuleVariantsFile => {
-    return initializeModuleFile(dir, name, ModuleMode.Variants) as ModuleVariantsFile;
+export const extractModuleVariantsFile = (sourceFile: SourceFile) : ModuleVariantsFile => {
+    return initializeModuleFile(sourceFile, ModuleMode.Variants) as ModuleVariantsFile;
 };
