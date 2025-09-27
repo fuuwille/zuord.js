@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import explorer from "./explorer";
-import { Node } from "ts-morph";
+import { Node, Project } from "ts-morph";
 import path from "path";
 import { $zuordExtractor } from "zuord-extractor";
 
@@ -11,12 +11,14 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 
         const explorerModule = explorer.getModule();
         const module = explorerModule?.module;
+        const name = path.basename(document.uri.path);
+        const kind = getSecondToLastPart(name);
+        const project = new Project();
 
         if(module) {
-            const name = path.basename(document.uri.path);
-            const kind = getSecondToLastPart(name);
-
             if(kind == "type") {
+                $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
+
                 module.types.forEach(type => {
                     const node = type.member.node;
                     const variantsCount = type.variants.length;
@@ -31,6 +33,8 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 });
             }
             else if(kind == "variants") {
+                $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
+
                 module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
                     const node = variant.node;
                     const range = nodeToRange(node);
