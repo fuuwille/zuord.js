@@ -97,6 +97,19 @@ export class ExplorerWorkspace {
     public get directories(): Map<string, ExplorerDirectory> {
         return this.#directories;
     }
+
+    //
+
+    public getDirectory(uri: vscode.Uri): ExplorerDirectory | undefined {
+        let directory = this.#directories.get(uri.fsPath);
+
+        if(!directory) {
+            directory = new ExplorerDirectory(uri);
+            this.#directories.set(uri.fsPath, directory);
+        }
+
+        return directory;
+    }
 }
 
 export class ExplorerDirectory {
