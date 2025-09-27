@@ -8,7 +8,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:typescript"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
