@@ -5,3 +5,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         return [];
     }
 }
+
+const codelens = new CodelensProvider();
+
+export default codelens;
