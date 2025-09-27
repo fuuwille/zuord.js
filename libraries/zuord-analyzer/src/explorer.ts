@@ -11,6 +11,11 @@ export class ExplorerProvider {
 
         return undefined;
     }
+
+    getRootDir(): string | undefined {
+        const workspaceFolder = this.getWorkspaceFolder();
+        return workspaceFolder ? workspaceFolder.uri.fsPath : undefined;
+    }
 }
 
 export const explorer = new ExplorerProvider();
