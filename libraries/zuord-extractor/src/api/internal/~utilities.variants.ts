@@ -2,6 +2,13 @@ import { Identifier, ts, Symbol, Type } from "ts-morph";
 import { ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode } from "./moduleNode.variants";
 
+export const getTypeID = (name: string) => {
+    return name
+        .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+        .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+        .toLowerCase();
+}
+
 export const extractVariantLikeType = (node: ModuleVariantLikeNode): Type | undefined => {
     if(isModuleFunctionLikeNode(node)) {
         return extractFunctionLikeType(node);
@@ -48,5 +55,6 @@ export const extractVariantLikeTypeSymbol = (node: ModuleVariantLikeNode): Symbo
 }
 
 export const extractVariantLikeTypeID = (node: ModuleVariantLikeNode): string | undefined => {
-    return extractVariantLikeTypeSymbol(node)?.getName();
+    const symbol = extractVariantLikeTypeSymbol(node);
+    return symbol ? symbol.getName() : undefined;
 }
