@@ -2,7 +2,7 @@ import { Expression, Node, ts, VariableStatement } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleMemberSlot, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode, isModuleFunctionAltNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
-import { extractVariantTypeID } from "./~utilities.variants";
+import { extractVariantLikeTypeID } from "./~utilities.variants";
 
 export const isUnknownMember = (member: ModuleMember): member is ModuleUnknownMember => {
     return member.kind === ModuleMemberKind.Unknown;
@@ -126,7 +126,7 @@ export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : Mo
         }
 
         if(body && isModuleVariantLikeNode(body)) {
-            const typeID = extractVariantTypeID(body);
+            const typeID = extractVariantLikeTypeID(body);
 
             if(typeID) {
                 member.target = typeID;
