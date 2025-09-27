@@ -42,3 +42,15 @@ export class ExplorerProvider {
 export const explorer = new ExplorerProvider();
 
 export default explorer;
+
+export class ExplorerWorkspace {
+    #folder: vscode.WorkspaceFolder;
+
+    constructor(folder: vscode.WorkspaceFolder) {
+        this.#folder = folder;
+    }
+
+    public get folder(): vscode.WorkspaceFolder {
+        return this.#folder;
+    }
+}
