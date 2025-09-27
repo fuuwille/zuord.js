@@ -2,6 +2,19 @@ import path from "path";
 import vscode from "vscode";
 
 export class ExplorerProvider {
+
+    #workspaces: Map<string, ExplorerWorkspace>;
+
+    public constructor() {
+        this.#workspaces = new Map<string, ExplorerWorkspace>();
+    }
+
+    public get workspaces(): ExplorerWorkspace[] {
+        return Array.from(this.#workspaces.values());
+    }
+
+    //
+
     getEditor(): vscode.TextEditor | undefined {
         return vscode.window.activeTextEditor;
     }
@@ -15,6 +28,23 @@ export class ExplorerProvider {
         }
 
         return undefined;
+    }
+
+    getWorkspace(): ExplorerWorkspace {
+        const folder = this.getWorkspaceFolder();
+        
+        if (folder) {
+            let workspace = this.#workspaces.get(folder.uri.fsPath);
+
+            if (!workspace) {
+                workspace = new ExplorerWorkspace(folder);
+                this.#workspaces.set(folder.uri.fsPath, workspace);
+            }
+
+            return workspace;
+        }
+
+        throw new Error("No workspace found");
     }
 
     getRootDir(): string | undefined {
