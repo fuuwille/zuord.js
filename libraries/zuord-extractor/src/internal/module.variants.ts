@@ -8,6 +8,7 @@ import { getTypeID } from "./~typeID.variants";
 
 export const extractModule = (dir: string, name: string): Module => {
     const module = {
+        name,
         typeFile: extractModuleFileIfExists(dir, name, ModuleMode.Type) ?? null,
         variantsFile: extractModuleFileIfExists(dir, name, ModuleMode.Variants) ?? null,
         types: [],
