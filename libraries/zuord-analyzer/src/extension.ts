@@ -1,9 +1,9 @@
-import { ExtensionContext, languages} from 'vscode';
+import vscode from 'vscode';
 import codelens from './codelens';
 
-export function activate(context: ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
-        languages.registerCodeLensProvider(
+        vscode.languages.registerCodeLensProvider(
             { scheme: "file", language: "typescript" },
             codelens
         )
