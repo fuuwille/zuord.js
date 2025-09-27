@@ -3,10 +3,10 @@ import { isModuleFunctionNode } from "./moduleNode.variants";
 
 export const extractVariantID = (node: ModuleVariantLikeNode): string | undefined => {
     if(isModuleFunctionNode(node)) {
-        return extractVariantIDFromFunction(node);
+        return extractVariantIDAsFunction(node);
     }
 }
 
-export const extractVariantIDFromFunction = (node: ModuleFunctionNode): string | undefined => {
+export const extractVariantIDAsFunction = (node: ModuleFunctionNode): string | undefined => {
     return node.getName();
 }
