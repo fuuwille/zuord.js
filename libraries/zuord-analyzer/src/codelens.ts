@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
 import explorer from "./explorer";
 import { Node } from "ts-morph";
+import path from "path";
+import { $zuordExtractor } from "zuord-extractor";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
@@ -11,10 +13,11 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const module = explorerModule?.module;
 
         if(module) {
-            const types = module.types;
+            const name = path.basename(document.uri.path);
+            const kind = getSecondToLastPart(name);
 
-            if(types) {
-                types.forEach(type => {
+            if(kind == "type") {
+                module.types.forEach(type => {
                     const node = type.member.node;
                     const variantsCount = type.variants.length;
 
@@ -22,6 +25,19 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                     const range = nodeToRange(node);
                     const codelens = new vscode.CodeLens(range, {
                         title: "Have " + variantsCount + " variants",
+                        command: ""
+                    });
+                    codelenses.push(codelens);
+                });
+            }
+            else if(kind == "variants") {
+                module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
+                    const node = variant.node;
+                    const range = nodeToRange(node);
+                    const type = variant.type!;
+
+                    const codelens = new vscode.CodeLens(range, {
+                        title: (type.getAliasSymbol() ?? type.getSymbol())?.getName() ?? "no type",
                         command: ""
                     });
                     codelenses.push(codelens);
@@ -43,4 +59,10 @@ function nodeToRange(node: Node): vscode.Range {
     const end = node.getEndLineNumber() - 1;
     const endChar = node.getEnd() - node.getStart(); // approximate
     return new vscode.Range(start, startChar, end, endChar);
+}
+
+function getSecondToLastPart(name: string): string | undefined {
+    const parts = name.split(".");
+    if (parts.length < 2) return undefined; // sondan ikinci yoksa
+    return parts[parts.length - 2];
 }
