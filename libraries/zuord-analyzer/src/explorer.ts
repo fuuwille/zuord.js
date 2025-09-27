@@ -50,6 +50,28 @@ export class ExplorerProvider {
         }    
     }
 
+    getDirectory(dirPath?: string): ExplorerDirectory | undefined {
+        dirPath ??= this.getCurrentPath();
+        const workspace = this.getWorkspace();
+
+        if (workspace && dirPath) {
+            return workspace.getDirectory(vscode.Uri.file(dirPath));
+        }
+
+        return undefined;
+    }
+
+    getModule(modulePath?: string): ExplorerModule | undefined {
+        modulePath ??= this.getCurrentPath();
+        const directory = this.getDirectory();
+
+        if (directory) {
+            return directory.getModule(path.basename(modulePath || ""));
+        }
+
+        return undefined;
+    }
+
     getRootDir(): string | undefined {
         const workspaceFolder = this.getWorkspaceFolder();
         return workspaceFolder ? workspaceFolder.uri.fsPath : undefined;
