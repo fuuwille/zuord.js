@@ -1,4 +1,4 @@
-import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode } from "./moduleNode.type";
+import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode } from "./moduleNode.type";
 
 export interface ModuleMember {
     node: ModuleNode
@@ -14,6 +14,21 @@ export interface ModuleUnknownMember extends ModuleMember {
 export interface ModuleESMLikeMember extends ModuleMember {
     node: ModuleESMLikeNode;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
+}
+
+export interface ModuleImportMember extends ModuleESMLikeMember {
+    node: ModuleImportNode;
+    kind: ModuleMemberKind.Import;
+}
+
+export interface ModuleExportMember extends ModuleESMLikeMember {
+    node: ModuleExportNode;
+    kind: ModuleMemberKind.Export;
+}
+
+export interface ModuleDefaultMember extends ModuleESMLikeMember {
+    node: ModuleDefaultNode;
+    kind: ModuleMemberKind.Default;
 }
 
 export interface ModuleTypeLikeMember extends ModuleMember {
