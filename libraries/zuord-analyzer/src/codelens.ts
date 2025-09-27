@@ -11,13 +11,19 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const module = explorerModule?.module;
 
         if(module) {
-            const file = module.typeFile;
+            const types = module.types;
 
-            if(file) {
-                file.members.forEach(member => {
-                    const node = member.node;
+            if(types) {
+                types.forEach(type => {
+                    const node = type.member.node;
+                    const variantsCount = type.variants.length;
+
+
                     const range = nodeToRange(node);
-                    const codelens = new vscode.CodeLens(range);
+                    const codelens = new vscode.CodeLens(range, {
+                        title: "Have " + variantsCount + " variants",
+                        command: ""
+                    });
                     codelenses.push(codelens);
                 });
             }
