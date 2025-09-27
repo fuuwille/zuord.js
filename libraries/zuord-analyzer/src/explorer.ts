@@ -55,7 +55,7 @@ export class ExplorerProvider {
         const workspace = this.getWorkspace();
 
         if (workspace && dirPath) {
-            return workspace.getDirectory(vscode.Uri.file(dirPath));
+            return workspace.getDirectory(vscode.Uri.file(path.dirname(dirPath)));
         }
 
         return undefined;
