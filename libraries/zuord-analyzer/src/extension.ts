@@ -1,5 +1,6 @@
 import vscode from 'vscode';
 import codelens from './codelens';
+import explorer from './explorer';
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
@@ -8,6 +9,13 @@ export function activate(context: vscode.ExtensionContext) {
             codelens
         )
     );
+
+    vscode.window.onDidChangeActiveTextEditor(editor => {
+        if (editor) {
+            const relativePath = explorer.getRelativePath();
+            console.log("Workspace içindeki yol:", relativePath);
+        }
+    });
 }
 
 export function deactivate() {}
