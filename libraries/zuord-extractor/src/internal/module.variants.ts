@@ -6,8 +6,9 @@ import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.vari
 import { isModuleTypeLikeMember } from "./moduleMember.variants";
 import { isModuleVariantLikeNode } from "./moduleNode.variants";
 import { getTypeID } from "./~typeID.variants";
+import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
-export const initializeModule = (module: Module): Module => {
+export const initializeModule = (module: Module) => {
     if(!module.errors) {
         module.errors = [];
     }
@@ -38,30 +39,27 @@ export const initializeModule = (module: Module): Module => {
     if(module.errors!.length == 0) {
         delete module.errors;
     }
-
-    return module;
 };
 
 export const extractModule = (dir: string, name: string): Module => {
-    return initializeModule({
+    const module: Module = {
         name,
-        typeFile: extractModuleFileAtPath(dir, name, ModuleMode.Type) ?? null,
-        variantsFile: extractModuleFileAtPath(dir, name, ModuleMode.Variants) ?? null,
+        typeFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Type) ?? null,
+        variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         errors: []
-    } as Module);
+    };
+
+    initializeModule(module);
+    return module;
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile) => {
-    return initializeModule({
-        ...module,
-        typeFile: extractModuleTypeFile(sourceFile),
-    } as Module);
+    module.typeFile = extractModuleTypeFile(sourceFile);
+    initializeModule(module);
 };
 
 export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile) => {
-    return initializeModule({
-        ...module,
-        variantsFile: extractModuleVariantsFile(sourceFile),
-    } as Module);
+    module.variantsFile = extractModuleVariantsFile(sourceFile);
+    initializeModule(module);
 };

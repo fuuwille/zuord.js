@@ -10,14 +10,15 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const codelenses: vscode.CodeLens[] = [];
 
         const explorerModule = explorer.getModule();
-        const module = explorerModule?.module;
         const name = path.basename(document.uri.path);
         const kind = getSecondToLastPart(name);
         const project = new Project();
 
+        let module = explorerModule?.module;
+
         if(module) {
             if(kind == "type") {
-                $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
+                module = $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
 
                 module.types.forEach(type => {
                     const node = type.member.node;
@@ -33,7 +34,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 });
             }
             else if(kind == "variants") {
-                $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
+                module = $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
 
                 module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
                     const node = variant.node;
