@@ -116,10 +116,12 @@ export class ExplorerWorkspace {
 export class ExplorerDirectory {
     #workspace: ExplorerWorkspace;
     #uri: vscode.Uri;
+    #modules: Map<string, ExplorerModule>;
 
     constructor(workspace: ExplorerWorkspace, uri: vscode.Uri) {
         this.#workspace = workspace;
         this.#uri = uri;
+        this.#modules = new Map<string, ExplorerModule>();
     }
 
     public get workspace(): ExplorerWorkspace {
@@ -128,6 +130,23 @@ export class ExplorerDirectory {
 
     public get uri(): vscode.Uri {
         return this.#uri;
+    }
+
+    public get modules(): Map<string, ExplorerModule> {
+        return this.#modules;
+    }
+
+    //
+
+    public getModule(name: string): ExplorerModule | undefined {
+        let module = this.#modules.get(name);
+
+        if(!module) {
+            module = new ExplorerModule(this, name);
+            this.#modules.set(name, module);
+        }
+
+        return module;
     }
 }
 
