@@ -1,5 +1,5 @@
 import { Node } from "ts-morph";
-import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember } from "./moduleMember.type";
+import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { extractTypeRef } from "./~typeRef.variants";
@@ -28,6 +28,10 @@ export const isModuleExportMember = (member: ModuleMember): member is ModuleExpo
 
 export const isModuleExportDefaultMember = (member: ModuleMember): member is ModuleExportDefaultMember => {
     return member.kind === ModuleMemberKind.ExportDefault;
+}
+
+export const isModuleDefinitionLikeMember = (member: ModuleMember): member is ModuleDefinitionLikeMember => {
+    return isModuleTypeLikeMember(member) || isModuleVariantLikeMember(member);
 }
 
 export const isModuleTypeLikeMember = (member: ModuleMember): member is ModuleTypeLikeMember => {
