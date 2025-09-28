@@ -18,18 +18,7 @@ export class ExplorerProvider {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
 
         vscode.workspace.onDidChangeTextDocument(e => {
-            const fsPath = e.document.uri.fsPath;
-
-            const module = this.getModule(fsPath);
-            const textDoc = e.document;
-
-            if(module) {
-                if(!this.#dirtyFiles.has(fsPath)) {
-                    this.#dirtyFiles.set(fsPath, { module, textDoc });
-                }
-
-                this.updateModule(module.source, textDoc);
-            }
+            this.update(e.document);
         });
 
         vscode.workspace.onDidSaveTextDocument(doc => {
@@ -62,6 +51,21 @@ export class ExplorerProvider {
     }
 
     //
+
+    update(document: vscode.TextDocument) {
+        const fsPath = document.uri.fsPath;
+
+        const module = this.getModule(fsPath);
+        const textDoc = document;
+
+        if(module) {
+            if(!this.#dirtyFiles.has(fsPath)) {
+                this.#dirtyFiles.set(fsPath, { module, textDoc });
+            }
+
+            this.updateModule(module.source, textDoc);
+        }
+    }
 
     getEditor(): vscode.TextEditor | undefined {
         return vscode.window.activeTextEditor;
