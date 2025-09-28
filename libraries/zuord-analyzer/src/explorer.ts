@@ -4,7 +4,7 @@ import { $zuordExtractor, $zuordExtractor as zuordExtractor, $ZuordExtractor as 
 import { getKind, getName } from "./utils";
 import { Project } from "ts-morph";
 
-export interface ExplorerDirtyDocument {
+export interface ExplorerDirtyFile {
     module: ExplorerModule;
     textDoc: vscode.TextDocument;
 }
@@ -12,7 +12,7 @@ export interface ExplorerDirtyDocument {
 export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
-    #dirtyDocs = new Map<string, ExplorerDirtyDocument>();
+    #dirtyFiles = new Map<string, ExplorerDirtyFile>();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
@@ -24,20 +24,20 @@ export class ExplorerProvider {
             const textDoc = e.document;
 
             if(module) {
-                this.#dirtyDocs.set(fsPath, { module, textDoc });
+                this.#dirtyFiles.set(fsPath, { module, textDoc });
             }
         });
 
         vscode.workspace.onDidSaveTextDocument(doc => {
-            this.#dirtyDocs.delete(doc.uri.fsPath);
+            this.#dirtyFiles.delete(doc.uri.fsPath);
         });
 
         vscode.workspace.onDidCloseTextDocument(doc => {
             const fsPath = doc.uri.fsPath;
 
-            if (this.#dirtyDocs.has(fsPath)) {
-                const dirtyDoc = this.#dirtyDocs.get(fsPath);
-                this.#dirtyDocs.delete(fsPath);
+            if (this.#dirtyFiles.has(fsPath)) {
+                const dirtyDoc = this.#dirtyFiles.get(fsPath);
+                this.#dirtyFiles.delete(fsPath);
 
                 if(dirtyDoc) {
                     const module = dirtyDoc.module;
