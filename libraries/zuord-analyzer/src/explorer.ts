@@ -20,9 +20,12 @@ export class ExplorerProvider {
 
         vscode.workspace.onDidCloseTextDocument(doc => {
             const fsPath = doc.uri.fsPath;
-            
+
             if (this.#dirtyDocs.has(fsPath)) {
                 this.#dirtyDocs.delete(fsPath);
+
+                const module = this.getModule(fsPath);
+                module?.refresh();
             }
         });
     }
