@@ -17,11 +17,12 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const module = explorerModule?.source;
 
         if(module) {
+            explorer.update(document);
+
             if(kind == "type") {
                 module.types.forEach(type => {
                     const node = type.member.node;
                     const variantsCount = type.variants.length;
-
 
                     const range = nodeToRange(node);
                     const codelens = new vscode.CodeLens(range, {

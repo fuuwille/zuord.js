@@ -17,10 +17,6 @@ export class ExplorerProvider {
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
 
-        vscode.workspace.onDidChangeTextDocument(e => {
-            this.update(e.document);
-        });
-
         vscode.workspace.onDidSaveTextDocument(doc => {
             this.#dirtyFiles.delete(doc.uri.fsPath);
         });
