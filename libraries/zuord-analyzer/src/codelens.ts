@@ -6,35 +6,8 @@ import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
-    #enabled: boolean = true;
-    #timeout: NodeJS.Timeout | null = null;
-
-    private _onDidChangeCodeLenses: vscode.EventEmitter<void> = new vscode.EventEmitter<void>();
-    public readonly onDidChangeCodeLenses: vscode.Event<void> = this._onDidChangeCodeLenses.event;
-
-
-    constructor() {
-        vscode.workspace.onDidChangeTextDocument(() => {
-            this.#enabled = false;
-
-            if(this.#timeout) clearTimeout(this.#timeout);
-            this.#timeout = setTimeout(() => { this.#enabled = true; this.refreshCodeLenses(); }, 1000);
-        });
-    }
-
-    public refreshCodeLenses(): void {
-        this._onDidChangeCodeLenses.fire();
-    }
-
-    private async waitForEnabled() {
-        while (!this.#enabled) {
-            await new Promise(resolve => setTimeout(resolve, 50));
-        }
-    }
-
     public async provideCodeLenses(document: vscode.TextDocument): Promise<vscode.CodeLens[]> {
         const codelenses: vscode.CodeLens[] = [];
-        await this.waitForEnabled();
 
         const explorerModule = explorer.getModule();
         const name = path.basename(document.uri.path);
