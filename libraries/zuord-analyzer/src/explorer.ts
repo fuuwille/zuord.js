@@ -44,19 +44,18 @@ export class ExplorerProvider {
         return vscode.window.activeTextEditor;
     }
 
-    getWorkspaceFolder(): vscode.WorkspaceFolder | undefined {
-        const activeEditor = this.getEditor();
+    getWorkspaceFolder(wsPath?: string): vscode.WorkspaceFolder | undefined {
+        const uri = wsPath ? vscode.Uri.file(wsPath) : this.getEditor()?.document.uri;
 
-        if (activeEditor) {
-            const uri = activeEditor.document.uri;
+        if (uri) {
             return vscode.workspace.getWorkspaceFolder(uri);
         }
 
         return undefined;
     }
 
-    getWorkspace(): ExplorerWorkspace | undefined {
-        const folder = this.getWorkspaceFolder();
+    getWorkspace(wsPath?: string): ExplorerWorkspace | undefined {
+        const folder = this.getWorkspaceFolder(wsPath);
 
         if (folder) {
             let workspace = this.#workspaces.get(folder.uri.fsPath);
