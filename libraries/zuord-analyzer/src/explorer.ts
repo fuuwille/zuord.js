@@ -190,10 +190,12 @@ export class ExplorerDirectory {
 
 export class ExplorerModule {
     #directory: ExplorerDirectory;
+    #name: string;
     #module: ZuordExtractor.Module;
 
     constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
+        this.#name = name;
         this.#module = zuordExtractor.extractModule(directory.uri.path!, trimExtension(name));
     }
 
@@ -203,6 +205,11 @@ export class ExplorerModule {
 
     public get module(): ZuordExtractor.Module {
         return this.#module;
+    }
+
+
+    public refresh() {
+        this.#module = zuordExtractor.extractModule(this.#directory.uri.path!, trimExtension(this.#name));
     }
 }
 
