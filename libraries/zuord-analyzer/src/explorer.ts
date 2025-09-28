@@ -5,26 +5,31 @@ import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } 
 export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
-    #dirtyDocs = new Set<string>();
+    #dirtyModules = new Map<string, ExplorerModule>();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
 
         vscode.workspace.onDidChangeTextDocument(e => {
-            this.#dirtyDocs.add(e.document.uri.fsPath);
+            const fsPath = e.document.uri.fsPath;
+            const module = this.getModule(fsPath);
+
+            if(module) {
+                this.#dirtyModules.set(fsPath, module);
+            }
         });
 
         vscode.workspace.onDidSaveTextDocument(doc => {
-            this.#dirtyDocs.delete(doc.uri.fsPath);
+            this.#dirtyModules.delete(doc.uri.fsPath);
         });
 
         vscode.workspace.onDidCloseTextDocument(doc => {
             const fsPath = doc.uri.fsPath;
 
-            if (this.#dirtyDocs.has(fsPath)) {
-                this.#dirtyDocs.delete(fsPath);
+            if (this.#dirtyModules.has(fsPath)) {
+                const module = this.#dirtyModules.get(fsPath);
+                this.#dirtyModules.delete(fsPath);
 
-                const module = this.getModule(fsPath);
                 module?.refresh();
             }
         });
