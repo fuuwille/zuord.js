@@ -1,37 +1,60 @@
 import path from "path";
 import vscode from "vscode";
-import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
-import { getName } from "./utils";
+import { $zuordExtractor, $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
+import { getKind, getName } from "./utils";
+import { Project } from "ts-morph";
+
+export interface ExplorerDirtyDocument {
+    module: ExplorerModule;
+    textDoc: vscode.TextDocument;
+}
 
 export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
-    #dirtyModules = new Map<string, ExplorerModule>();
+    #dirtyDocs = new Map<string, ExplorerDirtyDocument>();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
 
         vscode.workspace.onDidChangeTextDocument(e => {
             const fsPath = e.document.uri.fsPath;
+
             const module = this.getModule(fsPath);
+            const textDoc = e.document;
 
             if(module) {
-                this.#dirtyModules.set(fsPath, module);
+                this.#dirtyDocs.set(fsPath, { module, textDoc });
             }
         });
 
         vscode.workspace.onDidSaveTextDocument(doc => {
-            this.#dirtyModules.delete(doc.uri.fsPath);
+            this.#dirtyDocs.delete(doc.uri.fsPath);
         });
 
         vscode.workspace.onDidCloseTextDocument(doc => {
             const fsPath = doc.uri.fsPath;
 
-            if (this.#dirtyModules.has(fsPath)) {
-                const module = this.#dirtyModules.get(fsPath);
-                this.#dirtyModules.delete(fsPath);
+            if (this.#dirtyDocs.has(fsPath)) {
+                const dirtyDoc = this.#dirtyDocs.get(fsPath);
+                this.#dirtyDocs.delete(fsPath);
 
-                
+                if(dirtyDoc) {
+                    const module = dirtyDoc.module;
+                    const textDoc = dirtyDoc.textDoc;
+
+                    const kind = getKind(path.basename(fsPath));
+                    const sourceFile = new Project().createSourceFile(textDoc.getText());
+
+                    switch(kind) {
+                        case "type":
+                            $zuordExtractor.updateModuleTypeFile(module.module, sourceFile);
+                            break;
+                        case "variants":
+                            $zuordExtractor.updateModuleVariantsFile(module.module, sourceFile);
+                            break;
+                    }
+                }
             }
         });
     }
