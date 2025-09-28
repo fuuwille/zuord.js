@@ -5,7 +5,15 @@ export type ModuleRef =
     | ModuleFunctionLikeRef;
 
 export type ModuleTypeLikeRef = {
-    currentType?: Type;
+    type?: Type;
+}
+
+export type ModuleVariantLikeRef =
+    | ModuleVariableRef
+    | ModuleFunctionLikeRef;
+
+export type ModuleVariableRef = {
+    declarationType?: Type;
 }
 
 export type ModuleFunctionLikeRef = {
