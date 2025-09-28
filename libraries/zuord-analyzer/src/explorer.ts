@@ -13,6 +13,7 @@ export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
     #dirtyFiles = new Map<string, ExplorerDirtyFile>();
+    #project: Project = new Project();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
@@ -44,7 +45,7 @@ export class ExplorerProvider {
                     const textDoc = dirtyDoc.textDoc;
 
                     const kind = getKind(path.basename(fsPath));
-                    const sourceFile = new Project().createSourceFile(textDoc.getText());
+                    const sourceFile = this.#project.createSourceFile(textDoc.getText());
 
                     switch(kind) {
                         case "type":
