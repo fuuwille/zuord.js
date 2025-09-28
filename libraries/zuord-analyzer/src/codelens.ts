@@ -36,10 +36,10 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
                     const node = variant.node;
                     const range = nodeToRange(node);
-                    const type = variant.type!;
+                    const type = variant.type;
 
                     const codelens = new vscode.CodeLens(range, {
-                        title: (type.getAliasSymbol() ?? type.getSymbol())?.getName() ?? "no type",
+                        title: (type?.getAliasSymbol() ?? type?.getSymbol())?.getName() ?? "no type",
                         command: ""
                     });
                     codelenses.push(codelens);
