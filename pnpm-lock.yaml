@@ -116,7 +116,11 @@ importers:
         specifier: ^5.9.2
         version: 5.9.2
 
-  libraries/zuord-extractor: {}
+  libraries/zuord-extractor:
+    dependencies:
+      ts-morph:
+        specifier: ^26.0.0
+        version: 26.0.0
 
   packages/produce:
     dependencies:

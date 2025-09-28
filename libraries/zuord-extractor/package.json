@@ -1,5 +1,8 @@
 {
   "name": "zuord-extractor",
-  "version": "3.0.0-alpha.5",
-  "main": "dist/index.js"
+  "version": "3.0.0-alpha.8",
+  "main": "dist/index.js",
+  "dependencies": {
+    "ts-morph": "^26.0.0"
+  }
 }
