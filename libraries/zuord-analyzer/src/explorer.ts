@@ -66,7 +66,7 @@ export class ExplorerProvider {
         const directory = this.getDirectory();
 
         if (directory) {
-            return directory.getModule(path.basename(modulePath || ""));
+            return directory.getModule(trimExtension(path.basename(modulePath || "")));
         }
 
         return undefined;
