@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import explorer from "./explorer";
-import { Project } from "ts-morph";
 import path from "path";
 import { $zuordExtractor } from "zuord-extractor";
 import { getKind, nodeToRange } from "./utils";
