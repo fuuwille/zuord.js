@@ -9,12 +9,21 @@ export class CodelensProvider implements vscode.CodeLensProvider {
     private _onDidChangeCodeLenses: vscode.EventEmitter<void> = new vscode.EventEmitter<void>();
     public readonly onDidChangeCodeLenses: vscode.Event<void> = this._onDidChangeCodeLenses.event;
 
+    enabled: boolean = true;
+
     public refreshCodeLenses(): void {
         this._onDidChangeCodeLenses.fire();
     }
 
-    public provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
+    private async waitForEnabled() {
+        while (!this.enabled) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+    }
+
+    public async provideCodeLenses(document: vscode.TextDocument): Promise<vscode.CodeLens[]> {
         const codelenses: vscode.CodeLens[] = [];
+        await this.waitForEnabled();
 
         const explorerModule = explorer.getModule();
         const name = path.basename(document.uri.path);
@@ -60,3 +69,12 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 const codelens = new CodelensProvider();
 
 export default codelens;
+
+let timeout: NodeJS.Timeout | null = null;
+
+vscode.workspace.onDidChangeTextDocument(() => {
+    codelens.enabled = false;
+
+    if(timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => { codelens.enabled = true; codelens.refreshCodeLenses(); }, 1000);
+});
