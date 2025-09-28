@@ -55,12 +55,12 @@ export const extractModule = (dir: string, name: string): Module => {
     return module;
 };
 
-export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile) => {
-    module.typeFile = extractModuleTypeFile(sourceFile);
+export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null) => {
+    module.typeFile = sourceFile ? extractModuleTypeFile(sourceFile) : null;
     initializeModule(module);
 };
 
-export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile) => {
-    module.variantsFile = extractModuleVariantsFile(sourceFile);
+export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null) => {
+    module.variantsFile = sourceFile ? extractModuleVariantsFile(sourceFile) : null;
     initializeModule(module);
 };
