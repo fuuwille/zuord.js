@@ -9,7 +9,7 @@ export function nodeToRange(node: Node): vscode.Range {
     return new vscode.Range(start, startChar, end, endChar);
 }
 
-export function getSecondToLastPart(name: string): string | undefined {
+export function getKind(name: string): string | undefined {
     const parts = name.split(".");
     if (parts.length < 2) return undefined; // sondan ikinci yoksa
     return parts[parts.length - 2];

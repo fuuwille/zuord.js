@@ -3,7 +3,7 @@ import explorer from "./explorer";
 import { Project } from "ts-morph";
 import path from "path";
 import { $zuordExtractor } from "zuord-extractor";
-import { getSecondToLastPart, nodeToRange } from "./utils";
+import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
@@ -12,7 +12,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 
         const explorerModule = explorer.getModule();
         const name = path.basename(document.uri.path);
-        const kind = getSecondToLastPart(name);
+        const kind = getKind(name);
         const project = new Project();
 
         const module = explorerModule?.module;

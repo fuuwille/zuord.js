@@ -31,7 +31,7 @@ export class ExplorerProvider {
                 const module = this.#dirtyModules.get(fsPath);
                 this.#dirtyModules.delete(fsPath);
 
-                module?.refresh();
+                
             }
         });
     }
