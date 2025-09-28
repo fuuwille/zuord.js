@@ -1,6 +1,7 @@
 import path from "path";
 import vscode from "vscode";
 import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
+import { trimExtension } from "./utils";
 
 export class ExplorerProvider {
 
@@ -235,10 +236,4 @@ export class ExplorerModule {
     public refresh() {
         this.#module = zuordExtractor.extractModule(this.#directory.uri.path!, trimExtension(this.#name));
     }
-}
-
-function trimExtension(name: string): string {
-    const parts = name.split(".");
-    if (parts.length <= 2) return parts[0];
-    return parts.slice(0, parts.length - 2).join("."); 
 }

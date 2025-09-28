@@ -1,8 +1,9 @@
 import * as vscode from "vscode";
 import explorer from "./explorer";
-import { Node, Project } from "ts-morph";
+import { Project } from "ts-morph";
 import path from "path";
 import { $zuordExtractor } from "zuord-extractor";
+import { getSecondToLastPart, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
@@ -57,17 +58,3 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 const codelens = new CodelensProvider();
 
 export default codelens;
-
-function nodeToRange(node: Node): vscode.Range {
-    const start = node.getStartLineNumber() - 1; // VSCode 0 tabanlı
-    const startChar = node.getStart() - node.getPos(); // veya node.getStartLinePos()
-    const end = node.getEndLineNumber() - 1;
-    const endChar = node.getEnd() - node.getStart(); // approximate
-    return new vscode.Range(start, startChar, end, endChar);
-}
-
-function getSecondToLastPart(name: string): string | undefined {
-    const parts = name.split(".");
-    if (parts.length < 2) return undefined; // sondan ikinci yoksa
-    return parts[parts.length - 2];
-}
