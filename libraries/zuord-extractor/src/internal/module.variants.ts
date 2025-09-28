@@ -3,8 +3,7 @@ import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleTypeItem, createModuleVariantItem } from "./moduleItem.variants";
-import { isModuleTypeLikeMember } from "./moduleMember.variants";
-import { isModuleVariantLikeNode } from "./moduleNode.variants";
+import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { getTypeID } from "./~typeID.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
@@ -15,7 +14,7 @@ export const initializeModule = (module: Module) => {
     
     if(module.typeFile) {
         const variantMembers = module.variantsFile
-            ?.members.filter(m => isModuleVariantLikeNode(m.node)) 
+            ?.members.filter(isModuleVariantLikeMember) 
             ?? [];
 
         const modelMembers = module.typeFile.members;
