@@ -19,8 +19,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 
         if(module) {
             if(kind == "type") {
-                $zuordExtractor.updateModuleTypeFile(module, project.createSourceFile(name, document.getText()));
-
                 module.types.forEach(type => {
                     const node = type.member.node;
                     const variantsCount = type.variants.length;
@@ -35,8 +33,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 });
             }
             else if(kind == "variants") {
-                $zuordExtractor.updateModuleVariantsFile(module, project.createSourceFile(name, document.getText()));
-
                 module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
                     const node = variant.node;
                     const range = nodeToRange(node);
