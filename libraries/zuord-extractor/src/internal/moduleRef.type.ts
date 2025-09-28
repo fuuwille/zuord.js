@@ -2,7 +2,7 @@ import { Type } from "ts-morph";
 
 export type ModuleRef =
     | ModuleTypeLikeRef
-    | ModuleFunctionLikeRef;
+    | ModuleVariantLikeRef;
 
 export type ModuleTypeLikeRef = {
     type?: Type;
