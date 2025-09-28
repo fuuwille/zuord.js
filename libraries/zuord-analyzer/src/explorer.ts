@@ -13,7 +13,6 @@ export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
     #dirtyFiles = new Map<string, ExplorerDirtyFile>();
-    #project: Project = new Project();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
@@ -26,6 +25,18 @@ export class ExplorerProvider {
 
             if(module) {
                 this.#dirtyFiles.set(fsPath, { module, textDoc });
+
+                const kind = getKind(path.basename(fsPath));
+                const sourceFile = new Project().createSourceFile("__temp", textDoc.getText());
+
+                switch(kind) {
+                    case "type":
+                        $zuordExtractor.updateModuleTypeFile(module.source, sourceFile);
+                        break;
+                    case "variants":
+                        $zuordExtractor.updateModuleVariantsFile(module.source, sourceFile);
+                        break;
+                }
             }
         });
 
@@ -45,7 +56,7 @@ export class ExplorerProvider {
                     const textDoc = dirtyDoc.textDoc;
 
                     const kind = getKind(path.basename(fsPath));
-                    const sourceFile = this.#project.createSourceFile(textDoc.getText());
+                    const sourceFile = new Project().createSourceFile("__temp", textDoc.getText());
 
                     switch(kind) {
                         case "type":
