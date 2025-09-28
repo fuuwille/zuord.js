@@ -1,14 +1,14 @@
 import { Type } from "ts-morph";
 
-export type ModuleTypeLikeRef =
-    | ModuleTypeRef
-    | ModuleTypeFunctionLikeRef;
+export type ModuleRef =
+    | ModuleTypeLikeRef
+    | ModuleFunctionLikeRef;
 
-export type ModuleTypeRef = {
+export type ModuleTypeLikeRef = {
     current?: Type;
 }
 
-export type ModuleTypeFunctionLikeRef = {
+export type ModuleFunctionLikeRef = {
     return?: Type;
     parameter?: Type;
 }
