@@ -6,7 +6,7 @@ import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
-    public async provideCodeLenses(document: vscode.TextDocument): Promise<vscode.CodeLens[]> {
+    public provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
         const codelenses: vscode.CodeLens[] = [];
 
         const explorerModule = explorer.getModule();
