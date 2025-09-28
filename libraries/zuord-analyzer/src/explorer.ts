@@ -25,7 +25,7 @@ export class ExplorerProvider {
 
             if(module) {
                 if(!this.#dirtyFiles.has(fsPath)) {
-                this.#dirtyFiles.set(fsPath, { module, textDoc });
+                    this.#dirtyFiles.set(fsPath, { module, textDoc });
                 }
 
                 this.updateModule(module.source, textDoc);
@@ -154,10 +154,10 @@ export class ExplorerProvider {
     updateModule(module: ZuordExtractor.Module, textDoc: vscode.TextDocument) {
         const fsPath = textDoc.uri.fsPath;
         const kind = getKind(path.basename(fsPath));
-        const sourceFile = new Project().createSourceFile(fsPath, textDoc.getText());
+        const sourceFile = new Project().createSourceFile(fsPath, textDoc.getText(), { overwrite: true });
 
         switch(kind) {
-            case "type":
+            case "type":        
                 zuordExtractor.updateModuleTypeFile(module, sourceFile);
                 break;
             case "variants":
