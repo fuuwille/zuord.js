@@ -15,7 +15,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const kind = getKind(name);
         const project = new Project();
 
-        const module = explorerModule?.module;
+        const module = explorerModule?.source;
 
         if(module) {
             if(kind == "type") {

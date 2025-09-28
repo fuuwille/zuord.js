@@ -48,10 +48,10 @@ export class ExplorerProvider {
 
                     switch(kind) {
                         case "type":
-                            $zuordExtractor.updateModuleTypeFile(module.module, sourceFile);
+                            $zuordExtractor.updateModuleTypeFile(module.source, sourceFile);
                             break;
                         case "variants":
-                            $zuordExtractor.updateModuleVariantsFile(module.module, sourceFile);
+                            $zuordExtractor.updateModuleVariantsFile(module.source, sourceFile);
                             break;
                     }
                 }
@@ -239,24 +239,24 @@ export class ExplorerDirectory {
 export class ExplorerModule {
     #directory: ExplorerDirectory;
     #name: string;
-    #module: ZuordExtractor.Module;
+    #source: ZuordExtractor.Module;
 
     constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
         this.#name = name;
-        this.#module = zuordExtractor.extractModule(directory.uri.path!, getName(name));
+        this.#source = zuordExtractor.extractModule(directory.uri.path!, getName(name));
     }
 
     public get directory(): ExplorerDirectory {
         return this.#directory;
     }
 
-    public get module(): ZuordExtractor.Module {
-        return this.#module;
+    public get source(): ZuordExtractor.Module {
+        return this.#source;
     }
 
 
     public refresh() {
-        this.#module = zuordExtractor.extractModule(this.#directory.uri.path!, getName(this.#name));
+        this.#source = zuordExtractor.extractModule(this.#directory.uri.path!, getName(this.#name));
     }
 }
