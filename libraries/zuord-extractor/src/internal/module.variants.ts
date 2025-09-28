@@ -48,6 +48,7 @@ export const extractModule = (dir: string, name: string): Module => {
         typeFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Type) ?? null,
         variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         types: [],
+        variants: [],
         errors: []
     };
 
