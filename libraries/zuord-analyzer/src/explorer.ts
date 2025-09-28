@@ -80,7 +80,7 @@ export class ExplorerProvider {
 
     getModule(modulePath?: string): ExplorerModule | undefined {
         modulePath ??= this.getCurrentPath();
-        const directory = this.getDirectory();
+        const directory = this.getDirectory(modulePath);
 
         if (directory) {
             return directory.getModule(trimExtension(path.basename(modulePath || "")));
