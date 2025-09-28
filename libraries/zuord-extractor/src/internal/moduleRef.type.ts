@@ -5,10 +5,10 @@ export type ModuleRef =
     | ModuleFunctionLikeRef;
 
 export type ModuleTypeLikeRef = {
-    current?: Type;
+    currentType?: Type;
 }
 
 export type ModuleFunctionLikeRef = {
-    return?: Type;
-    parameter?: Type;
+    returnType?: Type;
+    parameterType?: Type;
 }
