@@ -15,7 +15,7 @@ export function getKind(name: string): string | undefined {
     return parts[parts.length - 2];
 }
 
-export function trimExtension(name: string): string {
+export function getName(name: string): string {
     const parts = name.split(".");
     if (parts.length <= 2) return parts[0];
     return parts.slice(0, parts.length - 2).join("."); 

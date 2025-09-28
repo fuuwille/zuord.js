@@ -1,7 +1,7 @@
 import path from "path";
 import vscode from "vscode";
 import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
-import { trimExtension } from "./utils";
+import { getName } from "./utils";
 
 export class ExplorerProvider {
 
@@ -91,7 +91,7 @@ export class ExplorerProvider {
         const directory = this.getDirectory(modulePath);
 
         if (directory) {
-            return directory.getModule(trimExtension(path.basename(modulePath)));
+            return directory.getModule(getName(path.basename(modulePath)));
         }
 
         return undefined;
@@ -221,7 +221,7 @@ export class ExplorerModule {
     constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
         this.#name = name;
-        this.#module = zuordExtractor.extractModule(directory.uri.path!, trimExtension(name));
+        this.#module = zuordExtractor.extractModule(directory.uri.path!, getName(name));
     }
 
     public get directory(): ExplorerDirectory {
@@ -234,6 +234,6 @@ export class ExplorerModule {
 
 
     public refresh() {
-        this.#module = zuordExtractor.extractModule(this.#directory.uri.path!, trimExtension(this.#name));
+        this.#module = zuordExtractor.extractModule(this.#directory.uri.path!, getName(this.#name));
     }
 }
