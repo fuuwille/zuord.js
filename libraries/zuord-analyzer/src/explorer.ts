@@ -5,9 +5,26 @@ import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } 
 export class ExplorerProvider {
 
     #workspaces: Map<string, ExplorerWorkspace>;
+    #dirtyDocs = new Set<string>();
 
     public constructor() {
         this.#workspaces = new Map<string, ExplorerWorkspace>();
+
+        vscode.workspace.onDidChangeTextDocument(e => {
+            this.#dirtyDocs.add(e.document.uri.fsPath);
+        });
+
+        vscode.workspace.onDidSaveTextDocument(doc => {
+            this.#dirtyDocs.delete(doc.uri.fsPath);
+        });
+
+        vscode.workspace.onDidCloseTextDocument(doc => {
+            const fsPath = doc.uri.fsPath;
+            
+            if (this.#dirtyDocs.has(fsPath)) {
+                this.#dirtyDocs.delete(fsPath);
+            }
+        });
     }
 
     public get workspaces(): Map<string, ExplorerWorkspace> {
