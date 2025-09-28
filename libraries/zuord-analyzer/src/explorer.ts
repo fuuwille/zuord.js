@@ -24,7 +24,10 @@ export class ExplorerProvider {
             const textDoc = e.document;
 
             if(module) {
+                if(!this.#dirtyFiles.has(fsPath)) {
                 this.#dirtyFiles.set(fsPath, { module, textDoc });
+                }
+
                 this.updateModule(module.source, textDoc);
             }
         });
