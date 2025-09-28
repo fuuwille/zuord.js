@@ -6,17 +6,28 @@ import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
+    #enabled: boolean = true;
+    #timeout: NodeJS.Timeout | null = null;
+
     private _onDidChangeCodeLenses: vscode.EventEmitter<void> = new vscode.EventEmitter<void>();
     public readonly onDidChangeCodeLenses: vscode.Event<void> = this._onDidChangeCodeLenses.event;
 
-    enabled: boolean = true;
+
+    constructor() {
+        vscode.workspace.onDidChangeTextDocument(() => {
+            this.#enabled = false;
+
+            if(this.#timeout) clearTimeout(this.#timeout);
+            this.#timeout = setTimeout(() => { this.#enabled = true; this.refreshCodeLenses(); }, 1000);
+        });
+    }
 
     public refreshCodeLenses(): void {
         this._onDidChangeCodeLenses.fire();
     }
 
     private async waitForEnabled() {
-        while (!this.enabled) {
+        while (!this.#enabled) {
             await new Promise(resolve => setTimeout(resolve, 50));
         }
     }
@@ -69,12 +80,3 @@ export class CodelensProvider implements vscode.CodeLensProvider {
 const codelens = new CodelensProvider();
 
 export default codelens;
-
-let timeout: NodeJS.Timeout | null = null;
-
-vscode.workspace.onDidChangeTextDocument(() => {
-    codelens.enabled = false;
-
-    if(timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => { codelens.enabled = true; codelens.refreshCodeLenses(); }, 1000);
-});
