@@ -1,4 +1,4 @@
-import { Type, ts, Identifier } from "ts-morph";
+import { ts, Identifier } from "ts-morph";
 import { ModuleDefinitionLikeNode, ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 import { ModuleFunctionLikeRef, ModuleRef, ModuleVariantLikeRef } from "./moduleRef.type";
@@ -14,7 +14,6 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
         return extractFunctionLikeRef(node);
     }
 }
-
 
 export const extractFunctionLikeRef = (node: ModuleFunctionLikeNode): ModuleFunctionLikeRef | undefined => {
     const returnTypeNode = node.getReturnTypeNode();
