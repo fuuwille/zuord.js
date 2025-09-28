@@ -13,7 +13,6 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         const explorerModule = explorer.getModule();
         const name = path.basename(document.uri.path);
         const kind = getKind(name);
-        const project = new Project();
 
         const module = explorerModule?.source;
 
