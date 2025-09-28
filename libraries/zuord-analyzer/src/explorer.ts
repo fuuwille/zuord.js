@@ -1,6 +1,6 @@
 import path from "path";
 import vscode from "vscode";
-import { $zuordExtractor, $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
+import { $zuordExtractor as zuordExtractor, $ZuordExtractor as ZuordExtractor } from "zuord-extractor";
 import { getKind, getName } from "./utils";
 import { Project } from "ts-morph";
 
@@ -25,18 +25,7 @@ export class ExplorerProvider {
 
             if(module) {
                 this.#dirtyFiles.set(fsPath, { module, textDoc });
-
-                const kind = getKind(path.basename(fsPath));
-                const sourceFile = new Project().createSourceFile("__temp", textDoc.getText());
-
-                switch(kind) {
-                    case "type":
-                        $zuordExtractor.updateModuleTypeFile(module.source, sourceFile);
-                        break;
-                    case "variants":
-                        $zuordExtractor.updateModuleVariantsFile(module.source, sourceFile);
-                        break;
-                }
+                this.updateModule(module.source, textDoc);
             }
         });
 
@@ -55,17 +44,7 @@ export class ExplorerProvider {
                     const module = dirtyDoc.module;
                     const textDoc = dirtyDoc.textDoc;
 
-                    const kind = getKind(path.basename(fsPath));
-                    const sourceFile = new Project().createSourceFile("__temp", textDoc.getText());
-
-                    switch(kind) {
-                        case "type":
-                            $zuordExtractor.updateModuleTypeFile(module.source, sourceFile);
-                            break;
-                        case "variants":
-                            $zuordExtractor.updateModuleVariantsFile(module.source, sourceFile);
-                            break;
-                    }
+                    this.updateModule(module.source, textDoc);
                 }
             }
         });
@@ -167,6 +146,21 @@ export class ExplorerProvider {
         }
 
         return undefined;
+    }
+
+    updateModule(module: ZuordExtractor.Module, textDoc: vscode.TextDocument) {
+        const fsPath = textDoc.uri.fsPath;
+        const kind = getKind(path.basename(fsPath));
+        const sourceFile = new Project().createSourceFile(fsPath, textDoc.getText());
+
+        switch(kind) {
+            case "type":
+                zuordExtractor.updateModuleTypeFile(module, sourceFile);
+                break;
+            case "variants":
+                zuordExtractor.updateModuleVariantsFile(module, sourceFile);
+                break;
+        }
     }
 
     //
