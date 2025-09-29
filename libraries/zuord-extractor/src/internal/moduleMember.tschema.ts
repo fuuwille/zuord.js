@@ -1,4 +1,4 @@
-import { ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
+import { ModuleClassNode, ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
 
 export abstract class ModuleMember {
     #node: ModuleNode
@@ -118,6 +118,20 @@ export class ModuleEnumMember extends ModuleSchemaLikeMember {
     }
 }
 
+export class ModuleClassMember extends ModuleSchemaLikeMember {
+    public constructor(node: ModuleClassNode) {
+        super(node);
+    }
+
+    public get node(): ModuleClassNode {
+        return super.node as ModuleClassNode;
+    }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Class;
+    }
+}
+
 export abstract class ModuleVariantLikeMember extends ModuleMember {
     public constructor(node: ModuleVariantLikeNode) {
         super(node);
@@ -164,6 +178,7 @@ export enum ModuleMemberKind {
     Type = "type",
     Interface = "interface",
     Enum = "enum",
+    Class = "class",
     Function = "function",
     Variable = "variable",
 }
