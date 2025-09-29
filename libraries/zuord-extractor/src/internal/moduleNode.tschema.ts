@@ -3,10 +3,10 @@ import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDe
 export type ModuleNode = Node;
 
 export type ModuleKnownNode =
-    | ModuleESMLikeNode
-    | ModuleDefinitionLikeNode;
+    | ModuleESMNode
+    | ModuleDefinitionNode;
 
-export type ModuleESMLikeNode = 
+export type ModuleESMNode = 
     | ModuleImportNode
     | ModuleExportLikeNode;
 
@@ -20,11 +20,11 @@ export type ModuleExportNode = ExportDeclaration;
 
 export type ModuleExportDefaultNode = ExportAssignment;
 
-export type ModuleDefinitionLikeNode =
-    | ModuleSchemaLikeNode
-    | ModuleVariantLikeNode;
+export type ModuleDefinitionNode =
+    | ModuleSchemaNode
+    | ModuleVariantNode;
 
-export type ModuleSchemaLikeNode =
+export type ModuleSchemaNode =
     | ModuleTypeNode
     | ModuleInterfaceNode
     | ModuleEnumNode
@@ -38,7 +38,7 @@ export type ModuleEnumNode = EnumDeclaration;
 
 export type ModuleClassNode = ClassDeclaration;
 
-export type ModuleVariantLikeNode =
+export type ModuleVariantNode =
     | ModuleFunctionNode
     | ModuleVariableNode;
 
@@ -65,7 +65,7 @@ export type ModuleDiscardedNode =
     | ModuleDiscardedVariantNode;
 
 export type ModuleDiscardedSchemaNode = 
-    | ModuleVariantLikeNode;
+    | ModuleVariantNode;
 
 export type ModuleDiscardedVariantNode =
-    | ModuleSchemaLikeNode;
+    | ModuleSchemaNode;

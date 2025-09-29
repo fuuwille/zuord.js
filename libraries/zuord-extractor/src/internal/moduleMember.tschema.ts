@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleClassNode, ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
+import { ModuleClassNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode } from "./moduleNode.tschema";
 import { getModuleMemberNameNode } from "./moduleMember.variants";
 
 export abstract class ModuleMember {
@@ -26,12 +26,12 @@ export abstract class ModuleMember {
 }
 
 export abstract class ModuleESMMember extends ModuleMember {
-    public constructor(node: ModuleESMLikeNode) {
+    public constructor(node: ModuleESMNode) {
         super(node);
     }
 
-    public get node(): ModuleESMLikeNode {
-        return super.node as ModuleESMLikeNode;
+    public get node(): ModuleESMNode {
+        return super.node as ModuleESMNode;
     }
 }
 
@@ -78,12 +78,12 @@ export class ModuleExportDefaultMember extends ModuleESMMember {
 }
 
 export abstract class ModuleSchemaMember extends ModuleMember {
-    public constructor(node: ModuleSchemaLikeNode) {
+    public constructor(node: ModuleSchemaNode) {
         super(node);
     }
 
-    public get node(): ModuleSchemaLikeNode {
-        return super.node as ModuleSchemaLikeNode;
+    public get node(): ModuleSchemaNode {
+        return super.node as ModuleSchemaNode;
     }
 }
 
@@ -146,12 +146,12 @@ export class ModuleClassMember extends ModuleSchemaMember {
 export abstract class ModuleVariantMember extends ModuleMember implements ModuleHasTypeNodeMember {
     #typeNode: TypeNode | null = null;
 
-    public constructor(node: ModuleVariantLikeNode) {
+    public constructor(node: ModuleVariantNode) {
         super(node);
     }
 
-    public get node(): ModuleVariantLikeNode {
-        return super.node as ModuleVariantLikeNode;
+    public get node(): ModuleVariantNode {
+        return super.node as ModuleVariantNode;
     }
 
     public get typeNode(): TypeNode | null {

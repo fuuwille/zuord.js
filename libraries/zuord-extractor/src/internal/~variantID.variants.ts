@@ -1,7 +1,7 @@
-import { ModuleFunctionNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
+import { ModuleFunctionNode, ModuleVariableNode, ModuleVariantNode } from "./moduleNode.tschema";
 import { isModuleFunctionNode, isModuleVariableNode } from "./moduleNode.variants";
 
-export const extractVariantID = (node: ModuleVariantLikeNode): string | undefined => {
+export const extractVariantID = (node: ModuleVariantNode): string | undefined => {
     if(isModuleFunctionNode(node)) {
         return extractVariantIDAsFunction(node);
     }

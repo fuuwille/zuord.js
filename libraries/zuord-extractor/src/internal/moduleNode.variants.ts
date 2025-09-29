@@ -1,12 +1,12 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleKnownNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMLikeNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleClassNode } from "./moduleNode.tschema";
+import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode, ModuleClassNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMLikeNode(node) || isModuleDefinitionLikeNode(node);
 }
 
-export const isModuleESMLikeNode = (node: Node): node is ModuleESMLikeNode => {
+export const isModuleESMLikeNode = (node: Node): node is ModuleESMNode => {
     return isModuleImportNode(node) || isModuleExportLikeNode(node);
 }
 
@@ -26,11 +26,11 @@ export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefau
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionLikeNode => {
+export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionNode => {
     return isModuleSchemaLikeNode(node) || isModuleVariantLikeNode(node);
 }
 
-export const isModuleSchemaLikeNode = (node: Node): node is ModuleSchemaLikeNode => {
+export const isModuleSchemaLikeNode = (node: Node): node is ModuleSchemaNode => {
     return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
 }
 
@@ -50,7 +50,7 @@ export const isModuleClassNode = (node: Node): node is ModuleClassNode => {
     return node.getKind() === SyntaxKind.ClassDeclaration;
 }
 
-export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantLikeNode => {
+export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantNode => {
     return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
 
