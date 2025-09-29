@@ -1,4 +1,4 @@
-import { TypeNode } from "ts-morph";
+import { Identifier, TypeNode } from "ts-morph";
 import { ModuleFunctionLikeNode, ModuleFunctionNode, ModuleNode, ModuleTypeLikeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.type";
 
 export interface ModuleRef {
@@ -8,7 +8,8 @@ export interface ModuleRef {
 
 export interface ModuleTypeLikeRef extends ModuleRef {
     node: ModuleTypeLikeNode;
-    typeNode?: TypeNode;
+    nameNode?: Identifier;
+    typeNode?: never;
 }
 
 export interface ModuleVariantLikeRef extends ModuleRef {
