@@ -1,7 +1,7 @@
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode } from "./moduleNode.variants";
 import { ModuleNode } from "./moduleNode.type";
-import { extractRef } from "./moduleRef.variants";
+import { extractModuleRef } from "./moduleRef.variants";
 
 export const isModuleMember = (member: ModuleMember): member is ModuleMember => {
     return isModuleUnknownMember(member) || isModuleESMLikeMember(member) || isModuleDefinitionLikeMember(member);
@@ -68,7 +68,7 @@ export const extractModuleMember = <TMember extends ModuleMember>(
 ) : TMember => {
 
     return {
-        ref: extractRef(node),
+        ref: extractModuleRef(node),
         kind: getModuleMemberKind(node)
     } as TMember;
 }

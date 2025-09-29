@@ -2,9 +2,9 @@ import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode, ModuleVariab
 import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 import { ModuleFunctionLikeRef, ModuleFunctionRef, ModuleRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
-export const extractRef = (node: ModuleNode): ModuleRef => {
+export const extractModuleRef = (node: ModuleNode): ModuleRef => {
     if(isModuleVariantLikeNode(node)) {
-        return extractVariantLikeRef(node);
+        return extractModuleVariantLikeRef(node);
     }
 
     return {
@@ -12,13 +12,13 @@ export const extractRef = (node: ModuleNode): ModuleRef => {
     }
 }
 
-export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVariantLikeRef => {
+export const extractModuleVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVariantLikeRef => {
     if(isModuleVariableNode(node)) {
-        return extractVariableRef(node);
+        return extractModuleVariableRef(node);
     }
 
     if(isModuleFunctionNode(node)) {
-        return extractFunctionLikeRef(node) as ModuleFunctionRef;
+        return extractModuleFunctionLikeRef(node) as ModuleFunctionRef;
     }
 
     return {
@@ -26,7 +26,7 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
     }
 }
 
-export const extractVariableRef = (node: ModuleVariableNode): ModuleVariableRef => {
+export const extractModuleVariableRef = (node: ModuleVariableNode): ModuleVariableRef => {
     const declaration = node.getDeclarations()[0];
     var initializer;
 
@@ -35,7 +35,7 @@ export const extractVariableRef = (node: ModuleVariableNode): ModuleVariableRef 
 
         if(initializerNode) {
             if(isModuleFunctionLikeNode(initializerNode)) {
-                initializer = extractFunctionLikeRef(initializerNode);
+                initializer = extractModuleFunctionLikeRef(initializerNode);
             }
         }
     }
@@ -46,7 +46,7 @@ export const extractVariableRef = (node: ModuleVariableNode): ModuleVariableRef 
     }
 }
 
-export const extractFunctionLikeRef = (node: ModuleFunctionLikeNode): ModuleFunctionLikeRef => {
+export const extractModuleFunctionLikeRef = (node: ModuleFunctionLikeNode): ModuleFunctionLikeRef => {
     const typeNode = node.getReturnTypeNode();
     const paramTypeNode = node.getParameters()[0]?.getTypeNode();
 
