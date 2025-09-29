@@ -2,30 +2,28 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
-import { initializeModuleTypeContent } from "./moduleContent.variants";
+import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
 export const initializeModule = (module: Module) => {
-    if(module.typeFile) {
-        const variantMembers = module.variantsFile
-            ?.members.filter(isModuleVariantLikeMember) 
-            ?? [];
+    const modelMembers = module.typeFile?.members;
+    const variantMembers = module.variantsFile?.members;
 
-        const modelMembers = module.typeFile.members;
+    module.types = [];
+    module.variants= [];
 
-        module.types = [];
-
+    if(modelMembers) {
         for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
             const modelItem = initializeModuleTypeContent(module, member);
             module.types.push(modelItem);
+        }
+    }
 
-            /*const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
-
-            for(const variantMember of matchedVariants) {
-                const variantItem = createModuleVariantItem(modelItem, variantMember);
-                modelItem.variants.push(variantItem);
-            }*/
+    if(variantMembers) {
+        for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
+            const modelItem = initializeModuleVariantContent(module, member);
+            module.variants.push(modelItem);
         }
     }
 };
