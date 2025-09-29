@@ -66,3 +66,13 @@ export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?
 
     return null;
 }
+
+export const getFunctionParameterType = (node: ModuleFunctionLikeNode): ModuleRefTypeDef => {
+    const parameter = node.getParameters()[0];
+
+    if(parameter) {
+        return parameter.getType();
+    }
+
+    return null;
+}
