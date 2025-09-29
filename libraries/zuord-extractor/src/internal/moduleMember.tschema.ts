@@ -36,20 +36,20 @@ export interface ModuleDefinitionLikeMember extends ModuleMember {
     id: string;
 }
 
-export interface ModuleTypeLikeMember extends ModuleDefinitionLikeMember {
+export interface ModuleSchemaLikeMember extends ModuleDefinitionLikeMember {
     ref: ModuleTypeLikeRef;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
 
-export interface ModuleTypeMember extends ModuleTypeLikeMember {
+export interface ModuleTypeMember extends ModuleSchemaLikeMember {
     kind: ModuleMemberKind.Type;
 }
 
-export interface ModuleInterfaceMember extends ModuleTypeLikeMember {
+export interface ModuleInterfaceMember extends ModuleSchemaLikeMember {
     kind: ModuleMemberKind.Interface;
 }
 
-export interface ModuleEnumMember extends ModuleTypeLikeMember {
+export interface ModuleEnumMember extends ModuleSchemaLikeMember {
     kind: ModuleMemberKind.Enum;
 }
 

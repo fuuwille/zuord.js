@@ -1,4 +1,4 @@
-import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.tschema";
+import { ModuleSchemaLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.tschema";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode } from "./moduleNode.variants";
 import { ModuleNode } from "./moduleNode.tschema";
 import { extractModuleRef } from "./moduleRef.variants";
@@ -32,10 +32,10 @@ export const isModuleExportDefaultMember = (member: ModuleMember): member is Mod
 }
 
 export const isModuleDefinitionLikeMember = (member: ModuleMember): member is ModuleDefinitionLikeMember => {
-    return isModuleTypeLikeMember(member) || isModuleVariantLikeMember(member);
+    return isModuleSchemaLikeMember(member) || isModuleVariantLikeMember(member);
 }
 
-export const isModuleTypeLikeMember = (member: ModuleMember): member is ModuleTypeLikeMember => {
+export const isModuleSchemaLikeMember = (member: ModuleMember): member is ModuleSchemaLikeMember => {
     return isModuleTypeMember(member) || isModuleInterfaceMember(member) || isModuleEnumMember(member);
 }
 

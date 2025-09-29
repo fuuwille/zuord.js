@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
-import { isModuleTypeLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
+import { isModuleSchemaLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
@@ -14,7 +14,7 @@ export const updateModule = (module: Module) => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(isModuleTypeLikeMember)) {
+        for(const member of schemaMembers.filter(isModuleSchemaLikeMember)) {
             const schemaContent = initializeModuleTypeContent(module, member);
             module.schemaContents.push(schemaContent);
         }
