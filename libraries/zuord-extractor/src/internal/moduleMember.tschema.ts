@@ -1,4 +1,4 @@
-import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.tschema";
+import { ModuleFunctionRef, ModuleRef, ModuleSchemaLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.tschema";
 
 export interface ModuleMember {
     ref: ModuleRef,
@@ -37,7 +37,7 @@ export interface ModuleDefinitionLikeMember extends ModuleMember {
 }
 
 export interface ModuleSchemaLikeMember extends ModuleDefinitionLikeMember {
-    ref: ModuleTypeLikeRef;
+    ref: ModuleSchemaLikeRef;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
 

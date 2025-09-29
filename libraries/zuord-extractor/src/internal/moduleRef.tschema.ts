@@ -6,7 +6,7 @@ export interface ModuleRef {
     typeNode?: TypeNode;
 };
 
-export interface ModuleTypeLikeRef extends ModuleRef {
+export interface ModuleSchemaLikeRef extends ModuleRef {
     node: ModuleSchemaLikeNode;
     nameNode?: Identifier;
     typeNode?: never;
