@@ -11,7 +11,11 @@ export const isPrimitiveType = (type: Type): boolean => {
     return (flags & primitiveFlags) !== 0;
 }
 
-export const getTypeName = (type: Type): string | undefined => {
+export const getTypeName = (type?: Type): string | undefined => {
+    if(!type){
+        return undefined;
+    }
+
     if (isPrimitiveType(type)) {
         return type.getText();
     }
