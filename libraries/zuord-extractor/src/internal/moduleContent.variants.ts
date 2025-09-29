@@ -21,3 +21,16 @@ export const initializeModuleVariantContent = (
         member
     };
 };
+
+export const completeModuleTypeContent = (
+    module: Module, member: ModuleTypeLikeMember
+) : ModuleTypeContent => {
+
+    const variants: ModuleVariantContent[] = [];
+
+    return {
+        module,
+        member,
+        variants
+    };
+};
