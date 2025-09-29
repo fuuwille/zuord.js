@@ -15,7 +15,7 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
     }
 
     if(isModuleFunctionNode(node)) {
-        return extractFunctionRef(node);
+        return extractFunctionLikeRef(node);
     }
 }
 
@@ -27,13 +27,13 @@ export const extractVariableRef = (node: ModuleVariableNode): ModuleVariableRef 
 
         if(initializer) {
             if(isModuleFunctionLikeNode(initializer)) {
-                return extractFunctionRef(initializer);
+                return extractFunctionLikeRef(initializer);
             }
         }
     }
 }
 
-export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef => {
+export const extractFunctionLikeRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef => {
     return {
         type: {
             return: getFunctionReturnType(node),
