@@ -1,9 +1,12 @@
-import { Type } from "ts-morph";
+import { Type, TypeFlags } from "ts-morph";
 
 export const isPrimitiveType = (type: Type): boolean => {
-    if (!type) return false;
+    const flags = type.compilerType.flags;
 
-    return type.isStringLiteral() || type.isNumberLiteral() || type.isBooleanLiteral() 
-        || type.isNull() || type.isUndefined() || type.isVoid() 
-        || type.isNever() || type.isUnknown() || type.isAny();
+    const primitiveFlags = TypeFlags.String | TypeFlags.Number | TypeFlags.Boolean
+        | TypeFlags.BigInt | TypeFlags.ESSymbol | TypeFlags.Void
+        | TypeFlags.Undefined | TypeFlags.Null | TypeFlags.Never
+        | TypeFlags.Any | TypeFlags.Unknown;
+
+    return (flags & primitiveFlags) !== 0;
 }
