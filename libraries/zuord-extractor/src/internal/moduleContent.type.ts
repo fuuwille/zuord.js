@@ -8,7 +8,7 @@ export interface ModuleContent {
 
 export interface ModuleTypeContent extends ModuleContent {
     member: ModuleTypeLikeMember;
-    variants: ModuleVariantContent[];
+    variants?: ModuleVariantContent[];
 }
 
 export interface ModuleVariantContent extends ModuleContent {

@@ -8,8 +8,7 @@ export const initializeModuleTypeContent = (
 
     return {
         module,
-        member,
-        variants: [],
+        member
     };
 };
 
