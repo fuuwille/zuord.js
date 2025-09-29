@@ -1,9 +1,6 @@
-import { Node } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.type";
-import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode } from "./moduleNode.variants";
-import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
-import { getTypeID } from "./~typeID.variants";
-import { extractVariantID } from "./~variantID.variants";
+import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode } from "./moduleNode.variants";
+import { ModuleNode } from "./moduleNode.type";
 import { extractRef } from "./moduleRef.variants";
 
 export const isModuleMember = (member: ModuleMember): member is ModuleMember => {
