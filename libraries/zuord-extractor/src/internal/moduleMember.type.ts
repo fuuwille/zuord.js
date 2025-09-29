@@ -1,8 +1,10 @@
 import { Type } from "ts-morph";
 import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleTypeNode, ModuleInterfaceNode, ModuleFunctionNode, ModuleVariableNode, ModuleEnumNode, ModuleExportLikeNode, ModuleDefinitionLikeNode } from "./moduleNode.type";
+import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
 export interface ModuleMember {
-    node: ModuleNode
+    node: ModuleNode,
+    ref?: ModuleRef,
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
     errors?: string[];
@@ -45,6 +47,7 @@ export interface ModuleDefinitionLikeMember extends ModuleMember {
 
 export interface ModuleTypeLikeMember extends ModuleDefinitionLikeMember {
     node: ModuleTypeLikeNode;
+    ref: ModuleTypeLikeRef;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
 
@@ -65,12 +68,13 @@ export interface ModuleEnumMember extends ModuleTypeLikeMember {
 
 export interface ModuleVariantLikeMember extends ModuleDefinitionLikeMember {
     node: ModuleVariantLikeNode;
+    ref: ModuleVariantLikeRef;
     kind: ModuleMemberKind.Function | ModuleMemberKind.Variable;
-    type?: Type;
 }
 
 export interface ModuleFunctionMember extends ModuleVariantLikeMember {
     node: ModuleFunctionNode;
+    ref: ModuleFunctionRef;
     kind: ModuleMemberKind.Function;
 }
 

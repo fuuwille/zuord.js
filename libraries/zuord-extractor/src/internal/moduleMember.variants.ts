@@ -2,9 +2,9 @@ import { Node } from "ts-morph";
 import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.type";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleTypeLikeNode, isModuleVariantLikeNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode, isModuleESMLikeNode } from "./moduleNode.variants";
 import { ModuleTypeLikeNode, ModuleNode, ModuleVariantLikeNode } from "./moduleNode.type";
-import { extractTypeRef } from "./~typeRef.variants";
 import { getTypeID } from "./~typeID.variants";
 import { extractVariantID } from "./~variantID.variants";
+import { extractRef } from "./moduleRef.variants";
 
 export const isModuleMember = (member: ModuleMember): member is ModuleMember => {
     return isModuleUnknownMember(member) || isModuleESMLikeMember(member) || isModuleDefinitionLikeMember(member);
@@ -72,6 +72,7 @@ export const initializeModuleMember = <TMember extends ModuleMember>(
 
     const moduleMember : ModuleMember = {
         node,
+        ref: extractRef(node),
         kind: getModuleMemberKind(node),
         errors: []
     };
@@ -136,18 +137,6 @@ export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : Mo
 
             const declaration = declarations[0];
             body = declaration.getInitializer();
-        }
-
-        if(body && isModuleVariantLikeNode(body)) {
-            const type = extractTypeRef(body);
-
-            if(type) {
-                member.type = type;
-            }
-        }
-
-        if(!member.type) {
-            member.errors!.push("Failed to extract type ID");
         }
     });
 }
