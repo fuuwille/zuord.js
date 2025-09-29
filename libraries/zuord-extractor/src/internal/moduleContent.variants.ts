@@ -18,7 +18,7 @@ export const createModuleVariantContent = (
 ) : ModuleVariantContent => {
 
     return {
-        member,
-        type
+        type,
+        member
     };
 };
