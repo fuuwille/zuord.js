@@ -7,10 +7,6 @@ import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMembe
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
 export const initializeModule = (module: Module) => {
-    if(!module.errors) {
-        module.errors = [];
-    }
-    
     if(module.typeFile) {
         const variantMembers = module.variantsFile
             ?.members.filter(isModuleVariantLikeMember) 
@@ -32,13 +28,6 @@ export const initializeModule = (module: Module) => {
             }*/
         }
     }
-    else {
-        module.errors!.push(`Model file not found`);
-    }
-
-    if(module.errors!.length == 0) {
-        delete module.errors;
-    }
 };
 
 export const extractModule = (dir: string, name: string): Module => {
@@ -48,7 +37,6 @@ export const extractModule = (dir: string, name: string): Module => {
         variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         types: [],
         variants: [],
-        errors: []
     };
 
     initializeModule(module);

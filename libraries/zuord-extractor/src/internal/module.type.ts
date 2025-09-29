@@ -7,7 +7,6 @@ export type Module = {
     variantsFile: ModuleVariantsFile | null;
     types: ModuleTypeContent[];
     variants: ModuleVariantContent[];
-    errors?: string[];
 }
 
 export enum ModuleMode {
