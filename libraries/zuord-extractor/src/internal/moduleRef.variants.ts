@@ -16,22 +16,7 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
 }
 
 export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef | undefined => {
-    const returnNode = node.getReturnTypeNode();
-    
-    var returnType;
-    {
-        returnType = getFunctionPredicateType(node, returnNode);
-
-        if(!returnType && returnNode) {
-            returnType  = returnNode.getType();
-        }
-
-        const constraint = returnType?.getConstraint();
-
-        if(constraint) {
-            returnType = constraint;
-        }
-    }
+    const returnType = getFunctionReturnType(node);
 
     const parameter = node.getParameters()[0];
     var parameterType;
@@ -46,6 +31,24 @@ export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunction
             parameter: parameterType ?? null
         }
     }
+}
+
+export const getFunctionReturnType = (node: ModuleFunctionLikeNode): ModuleRefTypeDef => {
+    const returnNode = node.getReturnTypeNode();
+
+    var returnType = getFunctionPredicateType(node, returnNode);
+
+    if(!returnType && returnNode) {
+        returnType  = returnNode.getType();
+    }
+
+    const constraint = returnType?.getConstraint();
+
+    if(constraint) {
+        returnType = constraint;
+    }
+
+    return returnType ?? null;
 }
 
 export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): ModuleRefTypeDef | undefined => {
