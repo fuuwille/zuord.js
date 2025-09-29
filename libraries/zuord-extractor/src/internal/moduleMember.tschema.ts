@@ -1,8 +1,16 @@
+import { ModuleNode } from "./moduleNode.tschema";
+
 class ModuleMember {
+    #node: ModuleNode
     #kind: ModuleMemberKind;
 
-    public constructor(kind: ModuleMemberKind) {
+    public constructor(node: ModuleNode, kind: ModuleMemberKind) {
+        this.#node = node;
         this.#kind = kind;
+    }
+
+    public get node(): ModuleNode {
+        return this.#node;
     }
 
     public get kind(): ModuleMemberKind {
