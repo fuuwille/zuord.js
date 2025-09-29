@@ -1,3 +1,4 @@
+import { TypeNode } from "ts-morph";
 import { ModuleClassNode, ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
 
 export abstract class ModuleMember {
@@ -168,6 +169,10 @@ export class ModuleFunctionMember extends ModuleVariantLikeMember {
     public get kind(): ModuleMemberKind {
         return ModuleMemberKind.Function;
     }
+}
+
+export interface ModuleHasTypeNodeMember {
+    typeNode: TypeNode;
 }
 
 export enum ModuleMemberKind {
