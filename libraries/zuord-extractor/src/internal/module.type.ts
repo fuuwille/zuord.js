@@ -1,12 +1,12 @@
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
-import { ModuleTypeItem, ModuleVariantItem } from "./moduleContent.type";
+import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.type";
 
 export type Module = {
     name: string;
     typeFile: ModuleTypeFile | null;
     variantsFile: ModuleVariantsFile | null;
-    types: ModuleTypeItem[];
-    variants: ModuleVariantItem[];
+    types: ModuleTypeContent[];
+    variants: ModuleVariantContent[];
     errors?: string[];
 }
 

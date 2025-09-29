@@ -1,17 +1,17 @@
 import { Module } from "./module.type";
 import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
 
-export interface ModuleItem {
+export interface ModuleContent {
     member: ModuleMember
 }
 
-export interface ModuleTypeItem extends ModuleItem {
+export interface ModuleTypeContent extends ModuleContent {
     module: Module;
     member: ModuleTypeLikeMember;
-    variants: ModuleVariantItem[];
+    variants: ModuleVariantContent[];
 }
 
-export interface ModuleVariantItem extends ModuleItem {
-    model: ModuleTypeItem;
+export interface ModuleVariantContent extends ModuleContent {
+    model: ModuleTypeContent;
     member: ModuleVariantLikeMember;
 }
