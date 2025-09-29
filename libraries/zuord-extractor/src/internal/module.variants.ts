@@ -10,20 +10,20 @@ export const initializeModule = (module: Module) => {
     const typeMembers = module.typeFile?.members;
     const variantMembers = module.variantsFile?.members;
 
-    module.types = [];
-    module.variants = [];
+    module.typeContents = [];
+    module.variantContents = [];
 
     if(typeMembers) {
         for(const member of typeMembers.filter(isModuleTypeLikeMember)) {
             const modelItem = initializeModuleTypeContent(module, member);
-            module.types.push(modelItem);
+            module.typeContents.push(modelItem);
         }
     }
 
     if(variantMembers) {
         for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
             const modelItem = initializeModuleVariantContent(module, member);
-            module.variants.push(modelItem);
+            module.variantContents.push(modelItem);
         }
     }
 };
@@ -33,8 +33,8 @@ export const extractModule = (dir: string, name: string): Module => {
         name,
         typeFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Type) ?? null,
         variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
-        types: [],
-        variants: [],
+        typeContents: [],
+        variantContents: [],
     };
 
     initializeModule(module);
