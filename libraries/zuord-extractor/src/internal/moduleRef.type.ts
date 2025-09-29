@@ -1,19 +1,19 @@
 import { Type } from "ts-morph";
 
 export interface ModuleRef {
-    type?: ModuleRefType;
+    type: ModuleRefType;
 };
 
 export interface ModuleTypeLikeRef extends ModuleRef {
-    type?: ModuleTypeLikeRefType;
+    type: ModuleTypeLikeRefType;
 }
 
 export interface ModuleVariantLikeRef extends ModuleRef {
-    type?: ModuleVariantLikeRefType;
+    type: ModuleVariantLikeRefType;
 }
 
 export interface ModuleVariableRef extends ModuleVariantLikeRef {
-    type?: ModuleVariableRefType;
+    type: ModuleVariableRefType;
 }
 
 export interface ModuleFunctionRef extends ModuleVariantLikeRef {
@@ -26,15 +26,17 @@ export type ModuleRefType =
     | ModuleTypeLikeRefType
     | ModuleVariantLikeRefType;
 
-export type ModuleTypeLikeRefType = Type;
+export type ModuleTypeLikeRefType = ModuleRefTypeDef;
 
 export type ModuleVariantLikeRefType =
     | ModuleVariableRefType
     | ModuleFunctionRefType;
 
-export type ModuleVariableRefType = Type;
+export type ModuleVariableRefType = ModuleRefTypeDef;
 
 export type ModuleFunctionRefType = {
-    return: Type | null;
-    parameter: Type | null;
+    return: ModuleRefTypeDef;
+    parameter: ModuleRefTypeDef;
 }
+
+export type ModuleRefTypeDef = Type | null;
