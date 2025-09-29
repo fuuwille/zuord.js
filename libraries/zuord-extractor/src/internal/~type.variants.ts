@@ -26,6 +26,18 @@ export const getTypeName = (type?: Type): string | undefined => {
     return symbol?.getName();
 }
 
+export const getTypeNodeName = (typeNode?: TypeNode): string | undefined => {
+    if (!typeNode) {
+        return undefined;
+    }
+
+    let text = typeNode.getText();
+
+    text = text.replace(/<.*>$/, "");
+
+    return text.split(".").pop();
+}
+
 export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): Type | undefined => {
     typeNode ??= node.getReturnTypeNode();
 
