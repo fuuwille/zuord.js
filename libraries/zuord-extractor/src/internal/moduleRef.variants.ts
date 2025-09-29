@@ -51,16 +51,18 @@ export const getFunctionReturnType = (node: ModuleFunctionLikeNode): ModuleRefTy
     return returnType ?? null;
 }
 
-export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): ModuleRefTypeDef | undefined => {
+export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): ModuleRefTypeDef => {
     typeNode ??= node.getReturnTypeNode();
 
     if(typeNode && ts.isTypePredicateNode(typeNode.compilerNode)) {
         const targetTypeNode = typeNode.compilerNode.type;
-        if (!targetTypeNode) return undefined;
+        if (!targetTypeNode) return null;
 
         const morphNode = node.getSourceFile().getDescendantAtPos(targetTypeNode.pos)! as unknown as Identifier;
-        if (!morphNode) return undefined;
+        if (!morphNode) return null;
 
         return morphNode.getType();
     }
+
+    return null;
 }
