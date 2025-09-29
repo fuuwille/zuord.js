@@ -3,7 +3,8 @@ import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./m
 
 export interface ModuleContent {
     module: Module;
-    member: ModuleMember
+    member: ModuleMember;
+    name?: string;
 }
 
 export interface ModuleTypeContent extends ModuleContent {
