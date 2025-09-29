@@ -7,7 +7,7 @@ import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMembe
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 import { getTypeNodeName } from "./~type.variants";
 
-export const initializeModule = (module: Module) => {
+export const updateModule = (module: Module) => {
     const typeMembers = module.typeFile?.members;
     const variantMembers = module.variantsFile?.members;
 
@@ -47,16 +47,16 @@ export const extractModule = (dir: string, name: string): Module => {
         variantContents: [],
     };
 
-    initializeModule(module);
+    updateModule(module);
     return module;
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null) => {
     module.typeFile = sourceFile ? extractModuleTypeFile(sourceFile) : null;
-    initializeModule(module);
+    updateModule(module);
 };
 
 export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null) => {
     module.variantsFile = sourceFile ? extractModuleVariantsFile(sourceFile) : null;
-    initializeModule(module);
+    updateModule(module);
 };
