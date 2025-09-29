@@ -7,12 +7,12 @@ export interface ModuleContent {
     name?: string;
 }
 
-export interface ModuleTypeContent extends ModuleContent {
+export interface ModuleSchemaContent extends ModuleContent {
     member: ModuleTypeLikeMember;
     variants?: ModuleVariantContent[];
 }
 
 export interface ModuleVariantContent extends ModuleContent {
-    type?: ModuleTypeContent;
+    schema?: ModuleSchemaContent;
     member: ModuleVariantLikeMember;
 }
