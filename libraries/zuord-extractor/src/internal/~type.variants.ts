@@ -1,4 +1,5 @@
-import { Type, TypeFlags } from "ts-morph";
+import { Identifier, ts, Type, TypeFlags, TypeNode } from "ts-morph";
+import { ModuleFunctionLikeNode } from "./moduleNode.type";
 
 export const isPrimitiveType = (type: Type): boolean => {
     const flags = type.compilerType.flags;
@@ -23,4 +24,20 @@ export const getTypeName = (type?: Type): string | undefined => {
     const symbol = type.getAliasSymbol() ?? type.getSymbol();
 
     return symbol?.getName();
+}
+
+export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): Type | undefined => {
+    typeNode ??= node.getReturnTypeNode();
+
+    if(typeNode && ts.isTypePredicateNode(typeNode.compilerNode)) {
+        const targetTypeNode = typeNode.compilerNode.type;
+        if (!targetTypeNode) return undefined;
+
+        const morphNode = node.getSourceFile().getDescendantAtPos(targetTypeNode.pos)! as unknown as Identifier;
+        if (!morphNode) return undefined;
+
+        return morphNode.getType();
+    }
+
+    return undefined;
 }
