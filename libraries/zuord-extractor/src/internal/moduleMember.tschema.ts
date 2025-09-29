@@ -2,25 +2,21 @@ import { ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExpor
 
 export abstract class ModuleMember {
     #node: ModuleNode
-    #kind: ModuleMemberKind;
 
-    public constructor(node: ModuleNode, kind: ModuleMemberKind) {
+    public constructor(node: ModuleNode) {
         this.#node = node;
-        this.#kind = kind;
     }
 
     public get node(): ModuleNode {
         return this.#node;
     }
 
-    public get kind(): ModuleMemberKind {
-        return this.#kind;
-    }
+    public abstract get kind(): ModuleMemberKind;
 }
 
 export abstract class ModuleESMLikeMember extends ModuleMember {
-    public constructor(node: ModuleESMLikeNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleESMLikeNode) {
+        super(node);
     }
 
     public get node(): ModuleESMLikeNode {
@@ -29,38 +25,50 @@ export abstract class ModuleESMLikeMember extends ModuleMember {
 }
 
 export class ModuleImportMember extends ModuleESMLikeMember {
-    public constructor(node: ModuleImportNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleImportNode) {
+        super(node);
     }
 
     public get node(): ModuleImportNode {
         return super.node as ModuleImportNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Import;
+    }
 }
 
 export class ModuleExportMember extends ModuleESMLikeMember {
-    public constructor(node: ModuleExportNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleExportNode) {
+        super(node);
     }
 
     public get node(): ModuleExportNode {
         return super.node as ModuleExportNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Export;
+    }
 }
 
 export class ModuleExportDefaultMember extends ModuleESMLikeMember {
-    public constructor(node: ModuleExportDefaultNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleExportDefaultNode) {
+        super(node);
     }
 
     public get node(): ModuleExportDefaultNode {
         return super.node as ModuleExportDefaultNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.ExportDefault;
+    }
 }
 
 export abstract class ModuleSchemaLikeMember extends ModuleMember {
-    public constructor(node: ModuleSchemaLikeNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleSchemaLikeNode) {
+        super(node);
     }
 
     public get node(): ModuleSchemaLikeNode {
@@ -69,38 +77,50 @@ export abstract class ModuleSchemaLikeMember extends ModuleMember {
 }
 
 export class ModuleTypeMember extends ModuleSchemaLikeMember {
-    public constructor(node: ModuleTypeNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleTypeNode) {
+        super(node);
     }
 
     public get node(): ModuleTypeNode {
         return super.node as ModuleTypeNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Type;
+    }
 }
 
 export class ModuleInterfaceMember extends ModuleSchemaLikeMember {
-    public constructor(node: ModuleInterfaceNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleInterfaceNode) {
+        super(node);
     }
 
     public get node(): ModuleInterfaceNode {
         return super.node as ModuleInterfaceNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Interface;
+    }
 }
 
 export class ModuleEnumMember extends ModuleSchemaLikeMember {
-    public constructor(node: ModuleEnumNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleEnumNode) {
+        super(node);
     }
 
     public get node(): ModuleEnumNode {
         return super.node as ModuleEnumNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Enum;
+    }
 }
 
 export abstract class ModuleVariantLikeMember extends ModuleMember {
-    public constructor(node: ModuleVariantLikeNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleVariantLikeNode) {
+        super(node);
     }
 
     public get node(): ModuleVariantLikeNode {
@@ -109,22 +129,30 @@ export abstract class ModuleVariantLikeMember extends ModuleMember {
 }
 
 export class ModuleVariableMember extends ModuleVariantLikeMember {
-    public constructor(node: ModuleVariableNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleVariableNode) {
+        super(node);
     }
 
     public get node(): ModuleVariableNode {
         return super.node as ModuleVariableNode;
     }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Variable;
+    }
 }
 
 export class ModuleFunctionMember extends ModuleVariantLikeMember {
-    public constructor(node: ModuleFunctionNode, kind: ModuleMemberKind) {
-        super(node, kind);
+    public constructor(node: ModuleFunctionNode) {
+        super(node);
     }
 
     public get node(): ModuleFunctionNode {
         return super.node as ModuleFunctionNode;
+    }
+
+    public get kind(): ModuleMemberKind {
+        return ModuleMemberKind.Function;
     }
 }
 
