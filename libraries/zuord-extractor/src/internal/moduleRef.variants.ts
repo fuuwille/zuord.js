@@ -1,9 +1,9 @@
 import { ts, Identifier } from "ts-morph";
-import { ModuleDefinitionLikeNode, ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
+import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 import { ModuleFunctionRef, ModuleRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
-export const extractRef = (node: ModuleDefinitionLikeNode): ModuleRef | undefined => {
+export const extractRef = (node: ModuleNode): ModuleRef | undefined => {
     if(isModuleVariantLikeNode(node)) {
         return extractVariantLikeRef(node);
     }
