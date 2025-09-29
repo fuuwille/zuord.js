@@ -1,8 +1,22 @@
 import { Type } from "ts-morph";
 
-export type ModuleRef = {
+export interface ModuleRef {
     type: ModuleRefType;
 };
+
+export interface ModuleTypeLikeRef extends ModuleRef {
+    type: ModuleTypeLikeRefType;
+}
+
+export interface ModuleVariantLikeRef extends ModuleRef {
+    type: ModuleVariantLikeRefType;
+}
+
+export interface ModuleFunctionLikeRef extends ModuleRef {
+    type: ModuleFunctionLikeRefType;
+}
+
+//
 
 export type ModuleRefType = 
     | ModuleTypeLikeRefType
