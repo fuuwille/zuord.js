@@ -133,13 +133,19 @@ export class ModuleClassMember extends ModuleSchemaLikeMember {
     }
 }
 
-export abstract class ModuleVariantLikeMember extends ModuleMember {
+export abstract class ModuleVariantLikeMember extends ModuleMember implements ModuleHasTypeNodeMember {
+    #typeNode: TypeNode | null = null;
+
     public constructor(node: ModuleVariantLikeNode) {
         super(node);
     }
 
     public get node(): ModuleVariantLikeNode {
         return super.node as ModuleVariantLikeNode;
+    }
+
+    public get typeNode(): TypeNode | null {
+        return this.#typeNode;
     }
 }
 
@@ -172,7 +178,7 @@ export class ModuleFunctionMember extends ModuleVariantLikeMember {
 }
 
 export interface ModuleHasTypeNodeMember {
-    typeNode: TypeNode;
+    typeNode: TypeNode | null;
 }
 
 export enum ModuleMemberKind {
