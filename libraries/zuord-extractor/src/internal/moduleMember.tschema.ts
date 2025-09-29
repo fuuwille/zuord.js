@@ -68,7 +68,7 @@ export abstract class ModuleSchemaLikeMember extends ModuleMember {
     }
 }
 
-export class ModuleTypeMember extends ModuleMember {
+export class ModuleTypeMember extends ModuleSchemaLikeMember {
     public constructor(node: ModuleTypeNode, kind: ModuleMemberKind) {
         super(node, kind);
     }
@@ -78,7 +78,7 @@ export class ModuleTypeMember extends ModuleMember {
     }
 }
 
-export class ModuleInterfaceMember extends ModuleMember {
+export class ModuleInterfaceMember extends ModuleSchemaLikeMember {
     public constructor(node: ModuleInterfaceNode, kind: ModuleMemberKind) {
         super(node, kind);
     }
@@ -88,7 +88,7 @@ export class ModuleInterfaceMember extends ModuleMember {
     }
 }
 
-export class ModuleEnumMember extends ModuleMember {
+export class ModuleEnumMember extends ModuleSchemaLikeMember {
     public constructor(node: ModuleEnumNode, kind: ModuleMemberKind) {
         super(node, kind);
     }
