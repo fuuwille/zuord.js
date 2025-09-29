@@ -1,7 +1,7 @@
 import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
 export interface ModuleMember {
-    ref?: ModuleRef,
+    ref: ModuleRef,
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
 };
