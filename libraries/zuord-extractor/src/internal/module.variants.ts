@@ -5,7 +5,6 @@ import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFi
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
-import { getTypeNodeName } from "./~type.variants";
 
 export const updateModule = (module: Module) => {
     const typeMembers = module.typeFile?.members;
@@ -31,7 +30,7 @@ export const updateModule = (module: Module) => {
     if(module.typeContents.length > 0) {
         for(const typeContent of module.typeContents) {
             const member = typeContent.member;
-            const name = getTypeNodeName(member.ref.typeNode);
+            const name = member.ref.nameNode?.getText();
 
             typeContent.name = name;
         }
