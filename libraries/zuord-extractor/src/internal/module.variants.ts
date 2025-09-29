@@ -25,12 +25,12 @@ export const initializeModule = (module: Module) => {
             const modelItem = createModuleTypeItem(module, member);
             module.types.push(modelItem);
 
-            const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
+            /*const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
 
             for(const variantMember of matchedVariants) {
                 const variantItem = createModuleVariantItem(modelItem, variantMember);
                 modelItem.variants.push(variantItem);
-            }
+            }*/
         }
     }
     else {
