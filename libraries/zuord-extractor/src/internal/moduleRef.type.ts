@@ -1,11 +1,11 @@
 import { Type } from "ts-morph";
 
 export interface ModuleRef {
-    type: ModuleRefType;
+    type?: ModuleRefType;
 };
 
 export interface ModuleTypeLikeRef extends ModuleRef {
-    type: ModuleTypeLikeRefType;
+    type?: ModuleTypeLikeRefType;
 }
 
 export interface ModuleVariantLikeRef extends ModuleRef {
@@ -22,9 +22,7 @@ export type ModuleRefType =
     | ModuleTypeLikeRefType
     | ModuleVariantLikeRefType;
 
-export type ModuleTypeLikeRefType = {
-    identifier: ModuleRefType;
-};
+export type ModuleTypeLikeRefType = Type;
 
 export type ModuleVariantLikeRefType =
     | ModuleFunctionType;
