@@ -10,6 +10,6 @@ export type Module = {
 }
 
 export enum ModuleMode {
-    Schema = "schema",
+    Schema = "tschema",
     Variants = "variants"
 }
