@@ -16,19 +16,10 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
 }
 
 export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef | undefined => {
-    const returnType = getFunctionReturnType(node);
-
-    const parameter = node.getParameters()[0];
-    var parameterType;
-
-    if(parameter) {
-        parameterType = parameter.getType();
-    }
-
     return {
         type: {
-            return: returnType ?? null,
-            parameter: parameterType ?? null
+            return: getFunctionReturnType(node),
+            parameter: getFunctionParameterType(node)
         }
     }
 }
