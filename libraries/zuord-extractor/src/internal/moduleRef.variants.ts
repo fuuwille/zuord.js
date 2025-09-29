@@ -2,6 +2,7 @@ import { ts, Identifier, TypeNode } from "ts-morph";
 import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode, ModuleVariableNode } from "./moduleNode.type";
 import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
 import { ModuleFunctionRef, ModuleRef, ModuleRefTypeDef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
+import { getTypeName, isPrimitiveType } from "./~type.variants";
 
 export const extractRef = (node: ModuleNode): ModuleRef | undefined => {
     if(isModuleVariantLikeNode(node)) {
@@ -84,4 +85,8 @@ export const getFunctionParameterType = (node: ModuleFunctionLikeNode): ModuleRe
     }
 
     return null;
+}
+
+export const getTypeDefName = (typeDef: ModuleRefTypeDef): string | undefined => {
+    return getTypeName(typeDef ?? undefined);
 }
