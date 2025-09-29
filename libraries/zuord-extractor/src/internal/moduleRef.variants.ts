@@ -1,7 +1,7 @@
 import { ts, Identifier, TypeNode } from "ts-morph";
-import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode } from "./moduleNode.type";
-import { isModuleFunctionNode, isModuleVariantLikeNode } from "./moduleNode.variants";
-import { ModuleFunctionRef, ModuleRef, ModuleRefTypeDef, ModuleVariantLikeRef } from "./moduleRef.type";
+import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode, ModuleVariableNode } from "./moduleNode.type";
+import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
+import { ModuleFunctionRef, ModuleRef, ModuleRefTypeDef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
 export const extractRef = (node: ModuleNode): ModuleRef | undefined => {
     if(isModuleVariantLikeNode(node)) {
@@ -10,8 +10,26 @@ export const extractRef = (node: ModuleNode): ModuleRef | undefined => {
 }
 
 export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVariantLikeRef | undefined => {
+    if(isModuleVariableNode(node)) {
+        return extractVariableRef(node);
+    }
+
     if(isModuleFunctionNode(node)) {
         return extractFunctionRef(node);
+    }
+}
+
+export const extractVariableRef = (node: ModuleVariableNode): ModuleVariableRef | undefined => {
+    const declaration = node.getDeclarations()[0];
+
+    if(declaration) {
+        const initializer = declaration.getInitializer();
+
+        if(initializer) {
+            if(isModuleFunctionLikeNode(initializer)) {
+                return extractFunctionRef(initializer);
+            }
+        }
     }
 }
 
