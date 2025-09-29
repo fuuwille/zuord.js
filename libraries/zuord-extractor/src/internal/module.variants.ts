@@ -7,23 +7,23 @@ import { isModuleTypeLikeMember, isModuleVariableMember, isModuleVariantLikeMemb
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
-    const typeMembers = module.typeFile?.members;
+    const schemaMembers = module.schemaFile?.members;
     const variantMembers = module.variantsFile?.members;
 
-    module.typeContents = [];
+    module.schemaContents = [];
     module.variantContents = [];
 
-    if(typeMembers) {
-        for(const member of typeMembers.filter(isModuleTypeLikeMember)) {
-            const modelItem = initializeModuleTypeContent(module, member);
-            module.typeContents.push(modelItem);
+    if(schemaMembers) {
+        for(const member of schemaMembers.filter(isModuleTypeLikeMember)) {
+            const schemaContent = initializeModuleTypeContent(module, member);
+            module.schemaContents.push(schemaContent);
         }
     }
 
     if(variantMembers) {
         for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
-            const modelItem = initializeModuleVariantContent(module, member);
-            module.variantContents.push(modelItem);
+            const variantContent = initializeModuleVariantContent(module, member);
+            module.variantContents.push(variantContent);
         }
     }
 
@@ -44,12 +44,12 @@ export const updateModule = (module: Module) => {
         }
     }
 
-    if(module.typeContents.length > 0) {
-        for(const typeContent of module.typeContents) {
-            const member = typeContent.member;
+    if(module.schemaContents.length > 0) {
+        for(const schemaContent of module.schemaContents) {
+            const member = schemaContent.member;
             const name = member.ref.nameNode?.getText();
 
-            typeContent.name = name;
+            schemaContent.name = name;
         }
     }
 };
@@ -57,9 +57,9 @@ export const updateModule = (module: Module) => {
 export const extractModule = (dir: string, name: string): Module => {
     const module: Module = {
         name,
-        typeFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Type) ?? null,
+        schemaFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Schema) ?? null,
         variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
-        typeContents: [],
+        schemaContents: [],
         variantContents: [],
     };
 
@@ -68,7 +68,7 @@ export const extractModule = (dir: string, name: string): Module => {
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null) => {
-    module.typeFile = sourceFile ? extractModuleTypeFile(sourceFile) : null;
+    module.schemaFile = sourceFile ? extractModuleTypeFile(sourceFile) : null;
     updateModule(module);
 };
 

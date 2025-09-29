@@ -3,13 +3,13 @@ import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.tschema
 
 export type Module = {
     name: string;
-    typeFile: ModuleTypeFile | null;
+    schemaFile: ModuleTypeFile | null;
     variantsFile: ModuleVariantsFile | null;
-    typeContents: ModuleTypeContent[];
+    schemaContents: ModuleTypeContent[];
     variantContents: ModuleVariantContent[];
 }
 
 export enum ModuleMode {
-    Type = "type",
+    Schema = "schema",
     Variants = "variants"
 }
