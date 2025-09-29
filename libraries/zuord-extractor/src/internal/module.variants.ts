@@ -7,14 +7,14 @@ import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMembe
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
 export const initializeModule = (module: Module) => {
-    const modelMembers = module.typeFile?.members;
+    const typeMembers = module.typeFile?.members;
     const variantMembers = module.variantsFile?.members;
 
     module.types = [];
-    module.variants= [];
+    module.variants = [];
 
-    if(modelMembers) {
-        for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
+    if(typeMembers) {
+        for(const member of typeMembers.filter(isModuleTypeLikeMember)) {
             const modelItem = initializeModuleTypeContent(module, member);
             module.types.push(modelItem);
         }
