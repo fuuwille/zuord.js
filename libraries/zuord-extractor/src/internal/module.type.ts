@@ -1,5 +1,5 @@
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
-import { ModuleTypeItem, ModuleVariantItem } from "./moduleItem.type";
+import { ModuleTypeItem, ModuleVariantItem } from "./moduleContent.type";
 
 export type Module = {
     name: string;

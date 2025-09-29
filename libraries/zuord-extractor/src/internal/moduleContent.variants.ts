@@ -1,5 +1,5 @@
 import { Module } from "./module.type";
-import { ModuleTypeItem, ModuleVariantItem } from "./moduleItem.type";
+import { ModuleTypeItem, ModuleVariantItem } from "./moduleContent.type";
 import { ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
 
 export const createModuleTypeItem = (

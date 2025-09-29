@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
-import { createModuleTypeItem } from "./moduleItem.variants";
+import { createModuleTypeItem } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
