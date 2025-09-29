@@ -10,7 +10,7 @@ export interface ModuleFile {
     others: ModuleMember[];
 };
 
-export interface ModuleTypeFile extends ModuleFile {
+export interface ModuleSchemaFile extends ModuleFile {
     members: ModuleTypeLikeMember[];
 }
 

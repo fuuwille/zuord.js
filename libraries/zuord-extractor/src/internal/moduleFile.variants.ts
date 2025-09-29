@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { Project, SourceFile, ts } from "ts-morph";
+import { Project, SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleFile, ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.tschema";
+import { ModuleFile, ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { extractModuleMember } from "./moduleMember.variants";
 
@@ -39,7 +39,7 @@ export const initializeModuleFile = (
 export const extractModuleFile = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile => {
     switch(mode) {
         case ModuleMode.Schema:
-            return extractModuleTypeFile(sourceFile);
+            return extractModuleSchemaFile(sourceFile);
         case ModuleMode.Variants:
             return extractModuleVariantsFile(sourceFile);
         default:
@@ -60,8 +60,8 @@ export const extractModuleFileAtPath = <TFile extends ModuleFile>(dir: string, n
     return undefined;
 };
 
-export const extractModuleTypeFile = (sourceFile: SourceFile) : ModuleTypeFile => {
-    return initializeModuleFile(sourceFile, ModuleMode.Schema) as ModuleTypeFile;
+export const extractModuleSchemaFile = (sourceFile: SourceFile) : ModuleSchemaFile => {
+    return initializeModuleFile(sourceFile, ModuleMode.Schema) as ModuleSchemaFile;
 };
 
 export const extractModuleVariantsFile = (sourceFile: SourceFile) : ModuleVariantsFile => {

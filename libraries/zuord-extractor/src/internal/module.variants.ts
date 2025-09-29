@@ -1,10 +1,10 @@
 import { SourceFile } from "ts-morph";
 import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
-import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
+import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
-import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.tschema";
+import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
     const schemaMembers = module.schemaFile?.members;
@@ -57,7 +57,7 @@ export const updateModule = (module: Module) => {
 export const extractModule = (dir: string, name: string): Module => {
     const module: Module = {
         name,
-        schemaFile: extractModuleFileAtPath<ModuleTypeFile>(dir, name, ModuleMode.Schema) ?? null,
+        schemaFile: extractModuleFileAtPath<ModuleSchemaFile>(dir, name, ModuleMode.Schema) ?? null,
         variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
@@ -68,7 +68,7 @@ export const extractModule = (dir: string, name: string): Module => {
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null) => {
-    module.schemaFile = sourceFile ? extractModuleTypeFile(sourceFile) : null;
+    module.schemaFile = sourceFile ? extractModuleSchemaFile(sourceFile) : null;
     updateModule(module);
 };
 
