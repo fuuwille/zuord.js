@@ -27,7 +27,8 @@ export type ModuleDefinitionLikeNode =
 export type ModuleSchemaLikeNode =
     | ModuleTypeNode
     | ModuleInterfaceNode
-    | ModuleEnumNode;
+    | ModuleEnumNode
+    | ModuleClassNode;
 
 export type ModuleTypeNode = TypeAliasDeclaration;
 
