@@ -1,45 +1,21 @@
-import { Type } from "ts-morph";
+import { TypeNode } from "ts-morph";
 
 export interface ModuleRef {
-    type: ModuleRefType;
+    typeNode: TypeNode;
 };
 
 export interface ModuleTypeLikeRef extends ModuleRef {
-    type: ModuleTypeLikeRefType;
+    typeNode: TypeNode;
 }
 
 export interface ModuleVariantLikeRef extends ModuleRef {
-    type: ModuleVariantLikeRefType;
+    typeNode: TypeNode;
 }
 
 export interface ModuleVariableRef extends ModuleVariantLikeRef {
-    type: ModuleVariableRefType;
+    typeNode: TypeNode;
 }
 
 export interface ModuleFunctionRef extends ModuleVariantLikeRef {
-    type: ModuleFunctionRefType;
+    typeNode: TypeNode;
 }
-
-//
-
-export type ModuleRefType = 
-    | ModuleTypeLikeRefType
-    | ModuleVariantLikeRefType;
-
-export type ModuleTypeLikeRefType = ModuleRefTypeDef;
-
-export type ModuleVariantLikeRefType =
-    | ModuleVariableRefType
-    | ModuleFunctionRefType;
-
-export type ModuleVariableRefType = 
-    | ModuleRefTypeDef
-    | ModuleFunctionRefType;
-
-
-export type ModuleFunctionRefType = {
-    return: ModuleRefTypeDef;
-    parameter: ModuleRefTypeDef;
-}
-
-export type ModuleRefTypeDef = Type | null;
