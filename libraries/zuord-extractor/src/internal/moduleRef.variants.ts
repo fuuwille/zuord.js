@@ -15,7 +15,7 @@ export const extractVariantLikeRef = (node: ModuleVariantLikeNode): ModuleVarian
     }
 }
 
-export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef | undefined => {
+export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunctionRef => {
     return {
         type: {
             return: getFunctionReturnType(node),
