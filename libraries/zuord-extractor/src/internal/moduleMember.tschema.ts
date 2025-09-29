@@ -1,6 +1,6 @@
-import { ModuleNode } from "./moduleNode.tschema";
+import { ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleImportNode, ModuleNode } from "./moduleNode.tschema";
 
-export class ModuleMember {
+export abstract class ModuleMember {
     #node: ModuleNode
     #kind: ModuleMemberKind;
 
@@ -15,6 +15,46 @@ export class ModuleMember {
 
     public get kind(): ModuleMemberKind {
         return this.#kind;
+    }
+}
+
+export abstract class ModuleESMLikeMember extends ModuleMember {
+    public constructor(node: ModuleESMLikeNode, kind: ModuleMemberKind) {
+        super(node, kind);
+    }
+
+    public get node(): ModuleESMLikeNode {
+        return super.node as ModuleESMLikeNode;
+    }
+}
+
+export class ModuleImportMember extends ModuleESMLikeMember {
+    public constructor(node: ModuleImportNode, kind: ModuleMemberKind) {
+        super(node, kind);
+    }
+
+    public get node(): ModuleImportNode {
+        return super.node as ModuleImportNode;
+    }
+}
+
+export class ModuleExportMember extends ModuleESMLikeMember {
+    public constructor(node: ModuleExportNode, kind: ModuleMemberKind) {
+        super(node, kind);
+    }
+
+    public get node(): ModuleExportNode {
+        return super.node as ModuleExportNode;
+    }
+}
+
+export class ModuleExportDefaultMember extends ModuleESMLikeMember {
+    public constructor(node: ModuleExportDefaultNode, kind: ModuleMemberKind) {
+        super(node, kind);
+    }
+
+    public get node(): ModuleExportDefaultNode {
+        return super.node as ModuleExportDefaultNode;
     }
 }
 
