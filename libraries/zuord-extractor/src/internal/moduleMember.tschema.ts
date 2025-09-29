@@ -1,9 +1,10 @@
 import { Identifier, TypeNode } from "ts-morph";
 import { ModuleClassNode, ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
+import { getModuleMemberNameNode } from "./moduleMember.variants";
 
 export abstract class ModuleMember {
     #node: ModuleNode
-    #nameNode: Identifier | null = null;
+    #nameNode: Identifier | undefined | null;
 
     public constructor(node: ModuleNode) {
         this.#node = node;
@@ -14,6 +15,10 @@ export abstract class ModuleMember {
     }
 
     public get nameNode(): Identifier | null {
+        if(this.#nameNode == undefined) {
+            this.#nameNode = getModuleMemberNameNode(this);
+        }
+
         return this.#nameNode;
     }
 
