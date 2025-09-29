@@ -5,6 +5,7 @@ import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFi
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
+import { getTypeNodeName } from "./~type.variants";
 
 export const initializeModule = (module: Module) => {
     const typeMembers = module.typeFile?.members;
@@ -24,6 +25,15 @@ export const initializeModule = (module: Module) => {
         for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
             const modelItem = initializeModuleVariantContent(module, member);
             module.variantContents.push(modelItem);
+        }
+    }
+
+    if(module.typeContents.length > 0) {
+        for(const typeContent of module.typeContents) {
+            const member = typeContent.member;
+            const name = getTypeNodeName(member.ref.typeNode);
+
+            typeContent.name = name;
         }
     }
 };
