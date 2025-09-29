@@ -12,6 +12,6 @@ export interface ModuleTypeContent extends ModuleContent {
 }
 
 export interface ModuleVariantContent extends ModuleContent {
-    type: ModuleTypeContent;
+    type?: ModuleTypeContent;
     member: ModuleVariantLikeMember;
 }
