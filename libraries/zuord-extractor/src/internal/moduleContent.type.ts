@@ -2,11 +2,11 @@ import { Module } from "./module.type";
 import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
 
 export interface ModuleContent {
+    module: Module;
     member: ModuleMember
 }
 
 export interface ModuleTypeContent extends ModuleContent {
-    module: Module;
     member: ModuleTypeLikeMember;
     variants: ModuleVariantContent[];
 }
