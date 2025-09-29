@@ -31,11 +31,9 @@ export const getTypeNodeName = (typeNode?: TypeNode): string | undefined => {
         return undefined;
     }
 
-    let text = typeNode.getText();
+    const withoutGenerics = typeNode.getText().replace(/<.*>$/, "");
 
-    text = text.replace(/<.*>$/, "");
-
-    return text.split(".").pop();
+    return withoutGenerics.split(".").pop();
 }
 
 export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): Type | undefined => {
