@@ -42,6 +42,8 @@ export const extractFunctionLikeRef = (node: ModuleFunctionLikeNode): ModuleFunc
     }
 
     return {
-        returnType
+        type: {
+            return: returnType
+        }
     }
 }
