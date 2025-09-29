@@ -1,5 +1,5 @@
 import { Module } from "./module.tschema";
-import { ModuleMember, ModuleSchemaLikeMember, ModuleVariantLikeMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export interface ModuleContent {
     module: Module;
@@ -8,11 +8,11 @@ export interface ModuleContent {
 }
 
 export interface ModuleSchemaContent extends ModuleContent {
-    member: ModuleSchemaLikeMember;
+    member: ModuleSchemaMember;
     variants?: ModuleVariantContent[];
 }
 
 export interface ModuleVariantContent extends ModuleContent {
     schema?: ModuleSchemaContent;
-    member: ModuleVariantLikeMember;
+    member: ModuleVariantMember;
 }

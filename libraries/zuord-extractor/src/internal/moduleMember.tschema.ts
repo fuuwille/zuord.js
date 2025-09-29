@@ -25,7 +25,7 @@ export abstract class ModuleMember {
     public abstract get kind(): ModuleMemberKind;
 }
 
-export abstract class ModuleESMLikeMember extends ModuleMember {
+export abstract class ModuleESMMember extends ModuleMember {
     public constructor(node: ModuleESMLikeNode) {
         super(node);
     }
@@ -35,7 +35,7 @@ export abstract class ModuleESMLikeMember extends ModuleMember {
     }
 }
 
-export class ModuleImportMember extends ModuleESMLikeMember {
+export class ModuleImportMember extends ModuleESMMember {
     public constructor(node: ModuleImportNode) {
         super(node);
     }
@@ -49,7 +49,7 @@ export class ModuleImportMember extends ModuleESMLikeMember {
     }
 }
 
-export class ModuleExportMember extends ModuleESMLikeMember {
+export class ModuleExportMember extends ModuleESMMember {
     public constructor(node: ModuleExportNode) {
         super(node);
     }
@@ -63,7 +63,7 @@ export class ModuleExportMember extends ModuleESMLikeMember {
     }
 }
 
-export class ModuleExportDefaultMember extends ModuleESMLikeMember {
+export class ModuleExportDefaultMember extends ModuleESMMember {
     public constructor(node: ModuleExportDefaultNode) {
         super(node);
     }
@@ -77,7 +77,7 @@ export class ModuleExportDefaultMember extends ModuleESMLikeMember {
     }
 }
 
-export abstract class ModuleSchemaLikeMember extends ModuleMember {
+export abstract class ModuleSchemaMember extends ModuleMember {
     public constructor(node: ModuleSchemaLikeNode) {
         super(node);
     }
@@ -87,7 +87,7 @@ export abstract class ModuleSchemaLikeMember extends ModuleMember {
     }
 }
 
-export class ModuleTypeMember extends ModuleSchemaLikeMember {
+export class ModuleTypeMember extends ModuleSchemaMember {
     public constructor(node: ModuleTypeNode) {
         super(node);
     }
@@ -101,7 +101,7 @@ export class ModuleTypeMember extends ModuleSchemaLikeMember {
     }
 }
 
-export class ModuleInterfaceMember extends ModuleSchemaLikeMember {
+export class ModuleInterfaceMember extends ModuleSchemaMember {
     public constructor(node: ModuleInterfaceNode) {
         super(node);
     }
@@ -115,7 +115,7 @@ export class ModuleInterfaceMember extends ModuleSchemaLikeMember {
     }
 }
 
-export class ModuleEnumMember extends ModuleSchemaLikeMember {
+export class ModuleEnumMember extends ModuleSchemaMember {
     public constructor(node: ModuleEnumNode) {
         super(node);
     }
@@ -129,7 +129,7 @@ export class ModuleEnumMember extends ModuleSchemaLikeMember {
     }
 }
 
-export class ModuleClassMember extends ModuleSchemaLikeMember {
+export class ModuleClassMember extends ModuleSchemaMember {
     public constructor(node: ModuleClassNode) {
         super(node);
     }
@@ -143,7 +143,7 @@ export class ModuleClassMember extends ModuleSchemaLikeMember {
     }
 }
 
-export abstract class ModuleVariantLikeMember extends ModuleMember implements ModuleHasTypeNodeMember {
+export abstract class ModuleVariantMember extends ModuleMember implements ModuleHasTypeNodeMember {
     #typeNode: TypeNode | null = null;
 
     public constructor(node: ModuleVariantLikeNode) {
@@ -159,7 +159,7 @@ export abstract class ModuleVariantLikeMember extends ModuleMember implements Mo
     }
 }
 
-export class ModuleVariableMember extends ModuleVariantLikeMember {
+export class ModuleVariableMember extends ModuleVariantMember {
     public constructor(node: ModuleVariableNode) {
         super(node);
     }
@@ -173,7 +173,7 @@ export class ModuleVariableMember extends ModuleVariantLikeMember {
     }
 }
 
-export class ModuleFunctionMember extends ModuleVariantLikeMember {
+export class ModuleFunctionMember extends ModuleVariantMember {
     public constructor(node: ModuleFunctionNode) {
         super(node);
     }

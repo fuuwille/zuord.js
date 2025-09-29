@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleMember, ModuleSchemaLikeMember, ModuleVariantLikeMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export interface ModuleFile {
     source: SourceFile
@@ -11,9 +11,9 @@ export interface ModuleFile {
 };
 
 export interface ModuleSchemaFile extends ModuleFile {
-    members: ModuleSchemaLikeMember[];
+    members: ModuleSchemaMember[];
 }
 
 export interface ModuleVariantsFile extends ModuleFile {
-    members: ModuleVariantLikeMember[];
+    members: ModuleVariantMember[];
 }
