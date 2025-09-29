@@ -18,4 +18,5 @@ export interface ModuleVariableRef extends ModuleVariantLikeRef {
 
 export interface ModuleFunctionRef extends ModuleVariantLikeRef {
     typeNode?: TypeNode;
+    paramTypeNode?: TypeNode;
 }
