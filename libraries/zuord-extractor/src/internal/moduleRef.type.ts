@@ -9,10 +9,14 @@ export interface ModuleTypeLikeRef extends ModuleRef {
 }
 
 export interface ModuleVariantLikeRef extends ModuleRef {
-    type: ModuleVariantLikeRefType;
+    type?: ModuleVariantLikeRefType;
 }
 
-export interface ModuleFunctionRef extends ModuleRef {
+export interface ModuleVariableRef extends ModuleVariantLikeRef {
+    type?: ModuleVariableRefType;
+}
+
+export interface ModuleFunctionRef extends ModuleVariantLikeRef {
     type: ModuleFunctionType;
 }
 
@@ -25,7 +29,10 @@ export type ModuleRefType =
 export type ModuleTypeLikeRefType = Type;
 
 export type ModuleVariantLikeRefType =
+    | ModuleVariableRefType
     | ModuleFunctionType;
+
+export type ModuleVariableRefType = Type;
 
 export type ModuleFunctionType = {
     return?: Type;
