@@ -1,6 +1,6 @@
-import { Module } from "./module.type";
-import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.type";
-import { ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
+import { Module } from "./module.tschema";
+import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.tschema";
+import { ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.tschema";
 
 export const initializeModuleTypeContent = (
     module: Module, member: ModuleTypeLikeMember

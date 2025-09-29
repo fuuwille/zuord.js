@@ -1,5 +1,5 @@
 import { Identifier, ts, Type, TypeFlags, TypeNode } from "ts-morph";
-import { ModuleFunctionLikeNode } from "./moduleNode.type";
+import { ModuleFunctionLikeNode } from "./moduleNode.tschema";
 
 export const isPrimitiveType = (type: Type): boolean => {
     const flags = type.compilerType.flags;

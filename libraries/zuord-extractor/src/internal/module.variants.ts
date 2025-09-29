@@ -1,10 +1,10 @@
 import { SourceFile } from "ts-morph";
-import { Module } from "./module.type";
-import { ModuleMode } from "./module.type";
+import { Module } from "./module.tschema";
+import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
-import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
+import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
     const typeMembers = module.typeFile?.members;

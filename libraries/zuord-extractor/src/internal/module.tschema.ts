@@ -1,5 +1,5 @@
-import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
-import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.type";
+import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.tschema";
+import { ModuleTypeContent, ModuleVariantContent } from "./moduleContent.tschema";
 
 export type Module = {
     name: string;

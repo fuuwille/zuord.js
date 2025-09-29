@@ -1,4 +1,4 @@
-import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
+import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.tschema";
 
 export interface ModuleMember {
     ref: ModuleRef,

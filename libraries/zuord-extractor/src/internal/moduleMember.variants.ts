@@ -1,6 +1,6 @@
-import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.type";
+import { ModuleTypeLikeMember, ModuleMemberKind, ModuleMember, ModuleVariantLikeMember, ModuleESMLikeMember, ModuleVariableMember, ModuleFunctionMember, ModuleEnumMember, ModuleInterfaceMember, ModuleTypeMember, ModuleExportMember, ModuleExportDefaultMember, ModuleExportLikeMember, ModuleImportMember, ModuleUnknownMember, ModuleDefinitionLikeMember } from "./moduleMember.tschema";
 import { isModuleEnumNode, isModuleFunctionNode, isModuleTypeNode, isModuleVariableNode, isModuleInterfaceNode, isModuleExportNode, isModuleExportDefaultNode, isModuleImportNode } from "./moduleNode.variants";
-import { ModuleNode } from "./moduleNode.type";
+import { ModuleNode } from "./moduleNode.tschema";
 import { extractModuleRef } from "./moduleRef.variants";
 
 export const isModuleMember = (member: ModuleMember): member is ModuleMember => {

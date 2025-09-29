@@ -1,5 +1,5 @@
-import { Module } from "./module.type";
-import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.type";
+import { Module } from "./module.tschema";
+import { ModuleMember, ModuleTypeLikeMember, ModuleVariantLikeMember } from "./moduleMember.tschema";
 
 export interface ModuleContent {
     module: Module;
