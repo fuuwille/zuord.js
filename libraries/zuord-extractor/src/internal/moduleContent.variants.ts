@@ -14,11 +14,11 @@ export const createModuleTypeContent = (
 };
 
 export const createModuleVariantContent = (
-    model: ModuleTypeContent, member: ModuleVariantLikeMember
+    type: ModuleTypeContent, member: ModuleVariantLikeMember
 ) : ModuleVariantContent => {
 
     return {
         member,
-        model
+        type
     };
 };
