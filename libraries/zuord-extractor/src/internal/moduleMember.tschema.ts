@@ -1,6 +1,6 @@
 import { ModuleNode } from "./moduleNode.tschema";
 
-class ModuleMember {
+export class ModuleMember {
     #node: ModuleNode
     #kind: ModuleMemberKind;
 
@@ -18,7 +18,7 @@ class ModuleMember {
     }
 }
 
-enum ModuleMemberKind {
+export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
     Export = "export",
