@@ -41,9 +41,17 @@ export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunction
         }
     }
 
+    const parameter = node.getParameters()[0];
+    var parameterType;
+
+    if(parameter) {
+        parameterType = parameter.getType();
+    }
+
     return {
         type: {
-            return: returnType
+            return: returnType,
+            parameter: parameterType
         }
     }
 }
