@@ -108,22 +108,22 @@ export const extractModuleESMLikeMember = (node: ModuleNode) : ModuleESMLikeMemb
 
 export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTypeLikeMember => {
     return initializeModuleMember(node, (member) => {
-        const type = member.node.getType();
+        const type = member.ref.node.getType();
         member.id = getTypeID(type)!;
     });
 };
 
 export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
     return initializeModuleMember(node, (member) => {
-        member.id = extractVariantID(member.node)!;
+        member.id = extractVariantID(member.ref.node)!;
 
         let body: Node | undefined;
 
         if(isModuleFunctionMember(member)) {            
-            body = member.node.getBody();
+            body = member.ref.node.getBody();
         }
         else if(isModuleVariableMember(member)) {
-            const declarations = member.node.getDeclarations();
+            const declarations = member.ref.node.getDeclarations();
 
             if(declarations.length == 0) {
                 member.errors!.push("VariableStatement has no declaration");
