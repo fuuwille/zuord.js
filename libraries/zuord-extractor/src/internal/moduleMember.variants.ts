@@ -66,78 +66,14 @@ export const isModuleVariableMember = (member: ModuleMember): member is ModuleVa
     return member.kind === ModuleMemberKind.Variable;
 }
 
-export const initializeModuleMember = <TMember extends ModuleMember>(
-    node: ModuleNode, resolve?: (member: TMember) => void
+export const extractModuleMember = <TMember extends ModuleMember>(
+    node: ModuleNode
 ) : TMember => {
 
-    const moduleMember : ModuleMember = {
+    return {
         ref: extractRef(node),
-        kind: getModuleMemberKind(node),
-        errors: []
-    };
-
-    resolve?.(moduleMember as TMember);
-
-    if(moduleMember.errors!.length == 0) {
-        delete moduleMember.errors;
-    }
-
-    return moduleMember as TMember;
-}
-
-export const extractModuleMember = (node: ModuleNode) : ModuleMember => {
-
-    if(isModuleESMLikeNode(node)) {
-        return extractModuleESMLikeMember(node);
-    }
-
-    if(isModuleTypeLikeNode(node)) {
-        return extractModuleTypeLikeMember(node);
-    }
-
-    if(isModuleVariantLikeNode(node)) {
-        return extractModuleVariantLikeMember(node);
-    }
-
-    return initializeModuleMember(node);
-};
-
-export const extractModuleESMLikeMember = (node: ModuleNode) : ModuleESMLikeMember => {
-    return initializeModuleMember(node);
-};
-
-export const extractModuleTypeLikeMember = (node: ModuleTypeLikeNode) : ModuleTypeLikeMember => {
-    return initializeModuleMember(node, (member) => {
-        const type = member.ref.node.getType();
-        member.id = getTypeID(type)!;
-    });
-};
-
-export const extractModuleVariantLikeMember = (node: ModuleVariantLikeNode) : ModuleVariantLikeMember => {
-    return initializeModuleMember(node, (member) => {
-        member.id = extractVariantID(member.ref.node)!;
-
-        let body: Node | undefined;
-
-        if(isModuleFunctionMember(member)) {            
-            body = member.ref.node.getBody();
-        }
-        else if(isModuleVariableMember(member)) {
-            const declarations = member.ref.node.getDeclarations();
-
-            if(declarations.length == 0) {
-                member.errors!.push("VariableStatement has no declaration");
-                return;
-            }
-
-            if(declarations.length > 1) {
-                member.errors!.push("VariableStatement must have exactly one declaration");
-            }
-
-            const declaration = declarations[0];
-            body = declaration.getInitializer();
-        }
-    });
+        kind: getModuleMemberKind(node)
+    } as TMember;
 }
 
 export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {

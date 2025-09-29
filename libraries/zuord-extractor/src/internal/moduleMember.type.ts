@@ -6,7 +6,6 @@ export interface ModuleMember {
     ref?: ModuleRef,
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;
-    errors?: string[];
 };
 
 export interface ModuleUnknownMember extends ModuleMember {
