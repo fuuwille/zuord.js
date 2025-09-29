@@ -18,7 +18,8 @@ export interface ModuleVariantLikeRef extends ModuleRef {
 
 export interface ModuleVariableRef extends ModuleVariantLikeRef {
     node: ModuleVariableNode;
-    typeNode?: TypeNode;
+    typeNode?: never;
+    initializer?: ModuleFunctionLikeRef;
 }
 
 export interface ModuleFunctionLikeRef extends ModuleRef {
