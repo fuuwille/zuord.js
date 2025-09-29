@@ -16,5 +16,7 @@ export const getTypeName = (type: Type): string | undefined => {
         return type.getText();
     }
 
-    return undefined;
+    const symbol = type.getAliasSymbol() ?? type.getSymbol();
+
+    return symbol?.getName();
 }
