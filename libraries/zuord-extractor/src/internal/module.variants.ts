@@ -3,7 +3,7 @@ import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
-import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
+import { isModuleTypeLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
 export const updateModule = (module: Module) => {
@@ -24,6 +24,23 @@ export const updateModule = (module: Module) => {
         for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
             const modelItem = initializeModuleVariantContent(module, member);
             module.variantContents.push(modelItem);
+        }
+    }
+
+    if(module.variantContents.length > 0) {
+        for(const variantContent of module.variantContents) {
+            const member = variantContent.member;
+            
+            var name;
+            if(isModuleVariableMember(member)) {
+                const initializer = member.ref.initializer;
+                name = initializer?.typeNode?.getText();
+            }
+            else {
+                name = member.ref.typeNode?.getText();
+            }
+
+            variantContent.name = name;
         }
     }
 
