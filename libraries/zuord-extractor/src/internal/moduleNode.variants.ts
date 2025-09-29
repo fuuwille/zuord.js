@@ -1,6 +1,6 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleKnownNode, ModuleTypeLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedTypeNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMLikeNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode } from "./moduleNode.tschema";
+import { ModuleKnownNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantLikeNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedTypeNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMLikeNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMLikeNode(node) || isModuleDefinitionLikeNode(node);
@@ -27,10 +27,10 @@ export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefau
 }
 
 export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionLikeNode => {
-    return isModuleTypeLikeNode(node) || isModuleVariantLikeNode(node);
+    return isModuleSchemaLikeNode(node) || isModuleVariantLikeNode(node);
 }
 
-export const isModuleTypeLikeNode = (node: Node): node is ModuleTypeLikeNode => {
+export const isModuleSchemaLikeNode = (node: Node): node is ModuleSchemaLikeNode => {
     return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
 }
 
@@ -92,5 +92,5 @@ export const isModuleDiscardedTypeNode = (node: Node): node is ModuleDiscardedTy
 }
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
-    return isModuleTypeLikeNode(node);
+    return isModuleSchemaLikeNode(node);
 }

@@ -21,10 +21,10 @@ export type ModuleExportNode = ExportDeclaration;
 export type ModuleExportDefaultNode = ExportAssignment;
 
 export type ModuleDefinitionLikeNode =
-    | ModuleTypeLikeNode
+    | ModuleSchemaLikeNode
     | ModuleVariantLikeNode;
 
-export type ModuleTypeLikeNode =
+export type ModuleSchemaLikeNode =
     | ModuleTypeNode
     | ModuleInterfaceNode
     | ModuleEnumNode;
@@ -65,4 +65,4 @@ export type ModuleDiscardedTypeNode =
     | ModuleVariantLikeNode;
 
 export type ModuleDiscardedVariantNode =
-    | ModuleTypeLikeNode;
+    | ModuleSchemaLikeNode;
