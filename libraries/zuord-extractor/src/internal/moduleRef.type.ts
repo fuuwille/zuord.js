@@ -32,7 +32,10 @@ export type ModuleVariantLikeRefType =
     | ModuleVariableRefType
     | ModuleFunctionRefType;
 
-export type ModuleVariableRefType = ModuleRefTypeDef;
+export type ModuleVariableRefType = 
+    | ModuleRefTypeDef
+    | ModuleFunctionRefType;
+
 
 export type ModuleFunctionRefType = {
     return: ModuleRefTypeDef;
