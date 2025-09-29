@@ -12,6 +12,7 @@ export interface ModuleMember {
 
 export interface ModuleUnknownMember extends ModuleMember {
     kind: ModuleMemberKind.Unknown;
+    ref: never;
 }
 
 export interface ModuleESMLikeMember extends ModuleMember {
