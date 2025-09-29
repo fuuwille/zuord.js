@@ -1,5 +1,5 @@
-import { ModuleClassMember, ModuleEnumMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleInterfaceMember, ModuleTypeMember } from "./moduleMember.tschema";
-import { ModuleClassNode, ModuleEnumNode, ModuleExportDefaultNode, ModuleExportNode, ModuleImportNode, ModuleInterfaceNode, ModuleTypeNode } from "./moduleNode.tschema";
+import { ModuleClassMember, ModuleEnumMember, ModuleExportDefaultMember, ModuleExportMember, ModuleFunctionMember, ModuleImportMember, ModuleInterfaceMember, ModuleTypeMember, ModuleVariableMember } from "./moduleMember.tschema";
+import { ModuleClassNode, ModuleEnumNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleTypeNode, ModuleVariableNode } from "./moduleNode.tschema";
 
 export const createModuleImportMember = (node: ModuleImportNode): ModuleImportMember => {
     return new ModuleImportMember(node);
@@ -27,4 +27,12 @@ export const createModuleEnumMember = (node: ModuleEnumNode): ModuleEnumMember =
 
 export const createModuleClassMember = (node: ModuleClassNode): ModuleClassMember => {
     return new ModuleClassMember(node);
+}
+
+export const createModuleVariableMember = (node: ModuleVariableNode): ModuleVariableMember => {
+    return new ModuleVariableMember(node);
+}
+
+export const createModuleFunctionMember = (node: ModuleFunctionNode): ModuleFunctionMember => {
+    return new ModuleFunctionMember(node);
 }
