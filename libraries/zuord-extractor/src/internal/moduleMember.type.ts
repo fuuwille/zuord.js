@@ -3,7 +3,6 @@ import { ModuleTypeLikeNode, ModuleVariantLikeNode, ModuleESMLikeNode, ModuleNod
 import { ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
 export interface ModuleMember {
-    node: ModuleNode,
     ref?: ModuleRef,
     kind: ModuleMemberKind;
     slot?: ModuleMemberSlot;

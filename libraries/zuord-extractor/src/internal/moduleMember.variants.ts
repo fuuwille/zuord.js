@@ -71,7 +71,6 @@ export const initializeModuleMember = <TMember extends ModuleMember>(
 ) : TMember => {
 
     const moduleMember : ModuleMember = {
-        node,
         ref: extractRef(node),
         kind: getModuleMemberKind(node),
         errors: []
