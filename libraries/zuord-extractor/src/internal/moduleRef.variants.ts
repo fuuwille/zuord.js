@@ -1,14 +1,28 @@
-import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode, ModuleVariableNode } from "./moduleNode.type";
-import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
-import { ModuleFunctionLikeRef, ModuleFunctionRef, ModuleRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
+import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantLikeNode, ModuleVariableNode, ModuleTypeLikeNode } from "./moduleNode.type";
+import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleTypeLikeNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
+import { ModuleFunctionLikeRef, ModuleFunctionRef, ModuleRef, ModuleTypeLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.type";
 
 export const extractModuleRef = (node: ModuleNode): ModuleRef => {
+
+    if(isModuleTypeLikeNode(node)) {
+        return extractModuleTypeLikeRef(node);
+    }
+
     if(isModuleVariantLikeNode(node)) {
         return extractModuleVariantLikeRef(node);
     }
 
     return {
         node
+    }
+}
+
+export const extractModuleTypeLikeRef = (node: ModuleTypeLikeNode): ModuleTypeLikeRef => {
+    const nameNode = node.getNameNode();
+
+    return {
+        node,
+        nameNode
     }
 }
 
