@@ -35,6 +35,6 @@ export type ModuleVariantLikeRefType =
 export type ModuleVariableRefType = Type;
 
 export type ModuleFunctionRefType = {
-    return?: Type;
-    parameter?: Type;
+    return: Type | null;
+    parameter: Type | null;
 }

@@ -50,8 +50,8 @@ export const extractFunctionRef = (node: ModuleFunctionLikeNode): ModuleFunction
 
     return {
         type: {
-            return: returnType,
-            parameter: parameterType
+            return: returnType ?? null,
+            parameter: parameterType ?? null
         }
     }
 }
