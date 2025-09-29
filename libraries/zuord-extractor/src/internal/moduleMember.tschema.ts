@@ -1,8 +1,9 @@
-import { TypeNode } from "ts-morph";
+import { Identifier, TypeNode } from "ts-morph";
 import { ModuleClassNode, ModuleEnumNode, ModuleESMLikeNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaLikeNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantLikeNode } from "./moduleNode.tschema";
 
 export abstract class ModuleMember {
     #node: ModuleNode
+    #nameNode: Identifier | null = null;
 
     public constructor(node: ModuleNode) {
         this.#node = node;
@@ -10,6 +11,10 @@ export abstract class ModuleMember {
 
     public get node(): ModuleNode {
         return this.#node;
+    }
+
+    public get nameNode(): Identifier | null {
+        return this.#nameNode;
     }
 
     public abstract get kind(): ModuleMemberKind;
