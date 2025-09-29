@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.type";
 import { ModuleMode } from "./module.type";
 import { extractModuleFileAtPath, extractModuleTypeFile, extractModuleVariantsFile } from "./moduleFile.variants";
-import { createModuleTypeContent } from "./moduleContent.variants";
+import { initializeModuleTypeContent } from "./moduleContent.variants";
 import { isModuleTypeLikeMember, isModuleVariantLikeMember } from "./moduleMember.variants";
 import { ModuleTypeFile, ModuleVariantsFile } from "./moduleFile.type";
 
@@ -17,7 +17,7 @@ export const initializeModule = (module: Module) => {
         module.types = [];
 
         for(const member of modelMembers.filter(isModuleTypeLikeMember)) {
-            const modelItem = createModuleTypeContent(module, member);
+            const modelItem = initializeModuleTypeContent(module, member);
             module.types.push(modelItem);
 
             /*const matchedVariants = variantMembers.filter(v => getTypeID(v.type) === member.id);
