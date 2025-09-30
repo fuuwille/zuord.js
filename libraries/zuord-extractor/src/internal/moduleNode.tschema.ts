@@ -27,16 +27,13 @@ export type ModuleDefinitionNode =
 export type ModuleSchemaNode =
     | ModuleTypeNode
     | ModuleInterfaceNode
-    | ModuleEnumNode
-    | ModuleClassNode;
+    | ModuleEnumNode;
 
 export type ModuleTypeNode = TypeAliasDeclaration;
 
 export type ModuleInterfaceNode = InterfaceDeclaration;
 
 export type ModuleEnumNode = EnumDeclaration;
-
-export type ModuleClassNode = ClassDeclaration;
 
 export type ModuleVariantNode =
     | ModuleFunctionNode

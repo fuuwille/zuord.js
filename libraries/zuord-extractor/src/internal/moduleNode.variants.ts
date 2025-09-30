@@ -1,6 +1,6 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode, ModuleClassNode } from "./moduleNode.tschema";
+import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMLikeNode(node) || isModuleDefinitionLikeNode(node);
@@ -44,10 +44,6 @@ export const isModuleInterfaceNode = (node: Node): node is ModuleInterfaceNode =
 
 export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
-}
-
-export const isModuleClassNode = (node: Node): node is ModuleClassNode => {
-    return node.getKind() === SyntaxKind.ClassDeclaration;
 }
 
 export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantNode => {
