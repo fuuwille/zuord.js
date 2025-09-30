@@ -1,9 +1,9 @@
 import { Module } from "./module.tschema";
-import { ModuleMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
+import { ModuleDefinitionLikeMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export interface ModuleContent {
     module: Module;
-    member: ModuleMember;
+    member: ModuleDefinitionLikeMember;
     kind: ModuleContentKind;
     name?: string | null;
 }
