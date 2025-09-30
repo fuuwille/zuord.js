@@ -83,6 +83,10 @@ export const createModuleMember = <TMember extends ModuleMember>(
     if(isModuleVariableMember(member)) {
         member.initializer = getModuleVariableMemberInitializer(member);
     }
+    else if(isModuleFunctionLikeMember(member)) {
+        member.typeNode = getModuleFunctionLikeMemberTypeNode(member);
+        member.paramTypeNode = getModuleFunctionLikeMemberParamTypeNode(member);
+    }
 
     return member;
 }
