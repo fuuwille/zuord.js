@@ -1,7 +1,7 @@
 import { Module } from "./module.tschema";
 import { ModuleContent, ModuleContentKind, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
-import { isModuleFunctionMember, isModuleVariableMember, updateModuleDefinitionLikeMemberNameNode } from "./moduleMember.variants";
+import { updateModuleDefinitionLikeMemberNameNode } from "./moduleMember.variants";
 
 export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
     return content.kind === ModuleContentKind.Schema;
@@ -37,23 +37,9 @@ export const createModuleVariantContent = (
 
 //
 
-export const updateModuleSchemaContentName = (content: ModuleSchemaContent) => {
+export const updateModuleContentName = (content: ModuleContent) => {
     if(content.name == undefined) {
         updateModuleDefinitionLikeMemberNameNode(content.member);
         content.name = content.member.nameNode?.getText();
-    }
-};
-
-export const updateModuleVariantContentName = (content: ModuleVariantContent) => {
-    if(content.name == undefined) {
-        const member = content.member;
-
-        if(isModuleFunctionMember(member)){
-            updateModuleDefinitionLikeMemberNameNode(member);
-            content.name = member.nameNode?.getText();
-        }
-        else if(isModuleVariableMember(member)) {
-            content.name = member.nameNode?.getText();
-        }
     }
 };

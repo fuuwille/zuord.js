@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
-import { createModuleSchemaContent, createModuleVariantContent, updateModuleSchemaContentName } from "./moduleContent.variants";
+import { createModuleSchemaContent, createModuleVariantContent, updateModuleContentName } from "./moduleContent.variants";
 import { isModuleFunctionMember, isModuleSchemaMember, isModuleVariantMember, updateModuleDefinitionLikeMemberNameNode } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
@@ -29,18 +29,13 @@ export const updateModule = (module: Module) => {
 
     if(module.variantContents.length > 0) {
         for(const variantContent of module.variantContents) {
-            const member = variantContent.member;
-            
-            if(isModuleFunctionMember(member)) {
-                updateModuleDefinitionLikeMemberNameNode(member);
-                variantContent.name = member.nameNode?.getText();
-            }
+            updateModuleContentName(variantContent);
         }
     }
 
     if(module.schemaContents.length > 0) {
         for(const schemaContent of module.schemaContents) {
-            updateModuleSchemaContentName(schemaContent);
+            updateModuleContentName(schemaContent);
         }
     }
 };
