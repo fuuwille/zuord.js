@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleTypeContent, createModuleVariantContent } from "./moduleContent.variants";
-import { isModuleSchemaMember, isModuleVariableMember, isModuleVariantMember, updateModuleMemberNameNode } from "./moduleMember.variants";
+import { isModuleFunctionMember, isModuleSchemaMember, isModuleVariableMember, isModuleVariantMember, updateModuleMemberNameNode } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
@@ -34,10 +34,20 @@ export const updateModule = (module: Module) => {
             var name;
             if(isModuleVariableMember(member)) {
                 const initializer = member.initializer;
-                name = initializer?.typeNode?.getText();
+                const type = initializer?.typeNode?.getType();
+
+                if(type) {
+                    if(type.isTypeParameter()) {
+                        name = "shiksuki";
+                    }
+                    else {
+                        name = type.getText();
+                    }
+                }
             }
-            else {
-                name = member.typeNode?.getText();
+            else if(isModuleFunctionMember(member)) {
+                updateModuleMemberNameNode(member);
+                name = member.nameNode?.getText();
             }
 
             variantContent.name = name;
