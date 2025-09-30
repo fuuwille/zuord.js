@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode } from "./moduleNode.tschema";
+import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
     node: ModuleNode;
@@ -111,6 +111,7 @@ export enum ModuleMemberKind {
 //
 
 export interface ModuleFunctionLikeMember extends ModuleMember {
+    node: ModuleFunctionLikeNode;
     typeNode?: TypeNode;
     paramTypeNode?: TypeNode;
 }
