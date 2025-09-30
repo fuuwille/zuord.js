@@ -1,5 +1,5 @@
 import { BindingName, Identifier, TypeNode } from "ts-morph";
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember, ModuleVariableFunctionMember, ModuleFunctionAltMember } from "./moduleMember.tschema";
 import { ModuleNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
 
@@ -67,6 +67,11 @@ export const isModuleKnownMember = (member: ModuleMember): member is ModuleKnown
 
 export const isModuleDefinitionLikeMember = (member: ModuleMember): member is ModuleDefinitionLikeMember => {
     return isModuleSchemaMember(member) || isModuleVariantMember(member);
+}
+
+
+export const isModuleVariableFunctionMember = (member: ModuleMember): member is ModuleVariableFunctionMember => {
+    return isModuleVariableMember(member) && !!member.initializer && isModuleFunctionAltMember(member.initializer);
 }
 
 export const isModuleFunctionLikeMember = (member: ModuleMember): member is ModuleFunctionLikeMember => {
