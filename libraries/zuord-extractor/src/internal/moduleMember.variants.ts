@@ -226,3 +226,11 @@ export const updateModuleFunctionLikeMemberParamTypeNode = (member: ModuleFuncti
         member.paramTypeNode = getModuleFunctionLikeMemberParamTypeNode(member);
     }
 };
+
+export const updateModuleFunctionalMemberReturnTypeNode = (member: ModuleFunctionalMember): void => {
+    return updateModuleFunctionLikeMemberReturnTypeNode(getModuleFunctionLikeMember(member)!);
+};
+
+export const updateModuleFunctionalMemberParamTypeNode = (member: ModuleFunctionalMember): void => {
+    return updateModuleFunctionLikeMemberParamTypeNode(getModuleFunctionLikeMember(member)!);
+};
