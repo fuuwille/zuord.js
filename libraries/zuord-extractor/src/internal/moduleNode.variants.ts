@@ -2,10 +2,7 @@ import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleInitializerNode } from "./moduleNode.tschema";
 
-export const isModuleNode = (node: Node): node is ModuleKnownNode => {
-    return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node);
-}
-
+// ESM Nodes
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
     return isModuleImportNode(node) || isModuleExportNode(node) || isModuleExportDefaultNode(node);
 }
@@ -22,6 +19,7 @@ export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefau
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
+// Schema Nodes
 export const isModuleSchemaNode = (node: Node): node is ModuleSchemaNode => {
     return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
 }
@@ -38,6 +36,7 @@ export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
 }
 
+// Variant Nodes
 export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
     return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
@@ -50,6 +49,7 @@ export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => 
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
+// Initializer Nodes
 export const isModuleInitializerNode = (node: Node): node is ModuleInitializerNode => {
     return isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
 }
@@ -63,6 +63,10 @@ export const isModuleFunctionExpressionNode = (node: Node): node is ModuleFuncti
 }
 
 //
+
+export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
+    return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node);
+}
 
 export const isModuleExportLikeNode = (node: Node): node is ModuleExportLikeNode => {
     return isModuleExportNode(node) || isModuleExportDefaultNode(node);
