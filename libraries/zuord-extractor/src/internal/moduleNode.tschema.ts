@@ -2,13 +2,15 @@ import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDe
 
 export type ModuleNode =
     | ModuleESMNode
-    | ModuleDefinitionNode;
+    | ModuleSchemaNode
+    | ModuleVariantNode;
 
 export type ModuleUnknownNode = Node;
 
 export type ModuleESMNode = 
     | ModuleImportNode
-    | ModuleExportLikeNode;
+    | ModuleExportNode
+    | ModuleExportDefaultNode;
 
 export type ModuleImportNode = ImportDeclaration;
 
@@ -48,7 +50,7 @@ export type ModuleFunctionExpressionNode = FunctionExpression;
 export type ModuleExportLikeNode = 
     | ModuleExportNode
     | ModuleExportDefaultNode;
-    
+
 export type ModuleDefinitionNode =
     | ModuleSchemaNode
     | ModuleVariantNode;
