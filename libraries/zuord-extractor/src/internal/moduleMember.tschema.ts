@@ -127,5 +127,6 @@ export interface ModuleFunctionLikeMember extends ModuleMember {
 //
 
 export interface ModuleMemberWithNameNode extends ModuleMember {
+    node: ModuleSchemaNode | ModuleFunctionNode;
     nameNode?: Identifier | null;
 }
