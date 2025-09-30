@@ -1,5 +1,5 @@
 import { Module } from "./module.tschema";
-import { ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
+import { ModuleContentKind, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export const createModuleSchemaContent = (
@@ -8,7 +8,8 @@ export const createModuleSchemaContent = (
 
     return {
         module,
-        member
+        member,
+        kind: ModuleContentKind.Schema
     };
 };
 
@@ -18,19 +19,7 @@ export const createModuleVariantContent = (
 
     return {
         module,
-        member
-    };
-};
-
-export const initializeModuleSchemaContent = (
-    module: Module, member: ModuleSchemaMember
-) : ModuleSchemaContent => {
-
-    const variants: ModuleVariantContent[] = [];
-
-    return {
-        module,
         member,
-        variants
+        kind: ModuleContentKind.Variant
     };
 };
