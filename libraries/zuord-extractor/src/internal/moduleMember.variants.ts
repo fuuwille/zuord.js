@@ -73,6 +73,10 @@ export const isModuleFunctionLikeMember = (member: ModuleMember): member is Modu
     return isModuleFunctionMember(member) || isModuleFunctionExpressionMember(member) || isModuleArrowFunctionMember(member);
 }
 
+export const isModuleMemberWithNameNode = (member: ModuleMember): member is ModuleMemberWithNameNode => {
+    return isModuleSchemaMember(member) || isModuleFunctionMember(member);
+}
+
 //
 
 export const createModuleMember = <TMember extends ModuleMember>(
