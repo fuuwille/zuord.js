@@ -119,6 +119,6 @@ export interface ModuleDefinitionLikeMember extends ModuleMember, ModuleKnownMem
 
 export interface ModuleFunctionLikeMember extends ModuleMember {
     node: ModuleFunctionLikeNode;
-    typeNode?: TypeNode;
+    returnTypeNode?: TypeNode;
     paramTypeNode?: TypeNode;
 }
