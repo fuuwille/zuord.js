@@ -50,7 +50,7 @@ export const isModuleFunctionMember = (member: ModuleMember): member is ModuleFu
     return member.kind === ModuleMemberKind.Function;
 }
 
-export const extractModuleMember = <TMember extends ModuleMember>(
+export const createModuleMember = <TMember extends ModuleMember>(
     node: ModuleNode
 ) : TMember => {
 
