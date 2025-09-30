@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode } from "./moduleNode.tschema";
+import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
     node: ModuleNode;
@@ -10,7 +10,7 @@ export interface ModuleMember {
 // ESM Members
 export interface ModuleESMMember extends ModuleMember {
     node: ModuleESMNode;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.Default;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
 export interface ModuleImportMember extends ModuleESMMember {
@@ -23,9 +23,9 @@ export interface ModuleExportMember extends ModuleESMMember {
     kind: ModuleMemberKind.Export;
 }
 
-export interface ModuleDefaultMember extends ModuleESMMember {
-    node: ModuleDefaultNode;
-    kind: ModuleMemberKind.Default;
+export interface ModuleExportDefaultMember extends ModuleESMMember {
+    node: ModuleExportDefaultNode;
+    kind: ModuleMemberKind.ExportDefault;
 }
 
 // Definition Members
@@ -97,7 +97,7 @@ export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
     Export = "export",
-    Default = "default",
+    ExportDefault = "exportDefault",
     Type = "type",
     Interface = "interface",
     Enum = "enum",

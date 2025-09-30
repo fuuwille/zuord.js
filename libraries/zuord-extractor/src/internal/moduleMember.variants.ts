@@ -1,10 +1,10 @@
 import { TypeNode } from "ts-morph";
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember } from "./moduleMember.tschema";
 import { ModuleNode } from "./moduleNode.tschema";
-import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
+import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
 
 export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
-    return isModuleExportMember(member) || isModuleImportMember(member) || isModuleDefaultMember(member);
+    return isModuleExportMember(member) || isModuleImportMember(member) || isModuleExportDefaultMember(member);
 }
 
 export const isModuleImportMember = (member: ModuleMember): member is ModuleImportMember => {
@@ -15,8 +15,8 @@ export const isModuleExportMember = (member: ModuleMember): member is ModuleExpo
     return member.kind === ModuleMemberKind.Export;
 }
 
-export const isModuleDefaultMember = (member: ModuleMember): member is ModuleDefaultMember => {
-    return member.kind === ModuleMemberKind.Default;
+export const isModuleExportDefaultMember = (member: ModuleMember): member is ModuleExportDefaultMember => {
+    return member.kind === ModuleMemberKind.ExportDefault;
 }
 
 export const isModuleDefinitionMember = (member: ModuleMember): member is ModuleDefinitionMember => {
@@ -100,8 +100,8 @@ export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
         return ModuleMemberKind.Export;
     }
 
-    if (isModuleDefaultNode(node)) {
-        return ModuleMemberKind.Default;
+    if (isModuleExportDefaultNode(node)) {
+        return ModuleMemberKind.ExportDefault;
     }
 
     if (isModuleTypeNode(node)) {

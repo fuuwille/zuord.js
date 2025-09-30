@@ -14,11 +14,11 @@ export type ModuleImportNode = ImportDeclaration;
 
 export type ModuleExportLikeNode = 
     | ModuleExportNode
-    | ModuleDefaultNode;
+    | ModuleExportDefaultNode;
 
 export type ModuleExportNode = ExportDeclaration;
 
-export type ModuleDefaultNode = ExportAssignment;
+export type ModuleExportDefaultNode = ExportAssignment;
 
 export type ModuleDefinitionNode =
     | ModuleSchemaNode
