@@ -1,10 +1,10 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node, ArrowFunction, FunctionExpression, ClassDeclaration } from "ts-morph";
 
-export type ModuleNode = Node;
-
-export type ModuleKnownNode =
+export type ModuleNode =
     | ModuleESMNode
     | ModuleDefinitionNode;
+
+export type ModuleUnknownNode = Node;
 
 export type ModuleESMNode = 
     | ModuleImportNode

@@ -1,6 +1,6 @@
 import { TypeNode } from "ts-morph";
 import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember } from "./moduleMember.tschema";
-import { ModuleNode } from "./moduleNode.tschema";
+import { ModuleUnknownNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
 
 export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
@@ -72,7 +72,7 @@ export const isModuleFunctionLikeMember = (member: ModuleMember): member is Modu
 //
 
 export const createModuleMember = <TMember extends ModuleMember>(
-    node: ModuleNode
+    node: ModuleUnknownNode
 ) : TMember => {
 
     const member = {
@@ -91,7 +91,7 @@ export const createModuleMember = <TMember extends ModuleMember>(
     return member;
 }
 
-export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
+export const getModuleMemberKind = (node: ModuleUnknownNode): ModuleMemberKind => {
     if (isModuleImportNode(node)) {
         return ModuleMemberKind.Import;
     }

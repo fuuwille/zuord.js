@@ -1,10 +1,14 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode } from "./moduleNode.tschema";
+import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleUnknownNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
-    node: ModuleNode;
+    node: ModuleUnknownNode;
     kind: ModuleMemberKind;
     nameNode?: Identifier | null;
+}
+
+export interface ModuleUnknownMember extends ModuleMember {
+    kind: ModuleMemberKind.Unknown;
 }
 
 // ESM Members
@@ -106,7 +110,7 @@ export enum ModuleMemberKind {
 //
 
 export interface ModuleKnownMember extends ModuleMember {
-    node: ModuleKnownNode;
+    node: ModuleNode;
 }
 
 export interface ModuleDefinitionMember extends ModuleMember, ModuleKnownMember {
