@@ -56,9 +56,10 @@ export interface ModuleEnumMember extends ModuleSchemaMember {
 }
 
 // Variant Members
-export interface ModuleVariantMember extends ModuleDefinitionMember, ModuleHasTypeNodeMember {
+export interface ModuleVariantMember extends ModuleDefinitionMember {
     node: ModuleVariantNode;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    typeNode?: TypeNode;
 }
 
 export interface ModuleVariableMember extends ModuleVariantMember {
@@ -71,10 +72,6 @@ export interface ModuleFunctionMember extends ModuleVariantMember {
     kind: ModuleMemberKind.Function;
 }
 
-export interface ModuleHasTypeNodeMember {
-    typeNode: TypeNode | null;
-}
-
 export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
@@ -84,6 +81,6 @@ export enum ModuleMemberKind {
     Interface = "interface",
     Enum = "enum",
     Class = "class",
-    Function = "function",
     Variable = "variable",
+    Function = "function",
 }
