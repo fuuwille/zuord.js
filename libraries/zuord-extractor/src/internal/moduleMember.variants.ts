@@ -61,7 +61,7 @@ export const createModuleMember = <TMember extends ModuleMember>(
     } as TMember;
 
     if(isModuleVariableMember(member)) {
-        member.initializer = getModuleInitializerMember(member);
+        member.initializer = getModuleVariableMemberInitializer(member);
     }
 
     return member;
@@ -103,7 +103,7 @@ export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
     return ModuleMemberKind.Unknown;
 };
 
-export const getModuleInitializerMember = (member: ModuleVariableMember): ModuleInitializerMember | undefined => {
+export const getModuleVariableMemberInitializer = (member: ModuleVariableMember): ModuleInitializerMember | undefined => {
     if(!member) return undefined;
 
     const declaration = member.node.getDeclarations()[0];
