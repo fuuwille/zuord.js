@@ -33,7 +33,7 @@ export interface ModuleExportDefaultMember extends ModuleESMMember {
 }
 
 // Schema Members
-export interface ModuleSchemaMember extends ModuleMember, ModuleDefinitionLikeMember, ModuleKnownMember {
+export interface ModuleSchemaMember extends ModuleMember, ModuleDefinitionLikeMember, ModuleKnownMember, ModuleMemberWithNameNode {
     node: ModuleSchemaNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
@@ -66,7 +66,7 @@ export interface ModuleVariableMember extends ModuleVariantMember {
     initializer?: ModuleInitializerMember;
 }
 
-export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember {
+export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember, ModuleMemberWithNameNode {
     node: ModuleFunctionNode;
     kind: ModuleMemberKind.Function;
 }
