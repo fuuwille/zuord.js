@@ -68,7 +68,7 @@ export interface ModuleVariableMember extends ModuleVariantMember {
     initializer?: ModuleInitializerMember;
 }
 
-export interface ModuleFunctionMember extends ModuleVariantMember {
+export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember {
     node: ModuleFunctionNode;
     kind: ModuleMemberKind.Function;
 }
@@ -80,12 +80,12 @@ export interface ModuleInitializerMember extends ModuleMember {
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
-export interface ModuleArrowFunctionMember extends ModuleInitializerMember {
+export interface ModuleArrowFunctionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
     node: ModuleArrowFunctionNode;
     kind: ModuleMemberKind.ArrowFunction;
 }
 
-export interface ModuleFunctionExpressionMember extends ModuleInitializerMember {
+export interface ModuleFunctionExpressionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
     node: ModuleFunctionExpressionNode;
     kind: ModuleMemberKind.FunctionExpression;
 }
