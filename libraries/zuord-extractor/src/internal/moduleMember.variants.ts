@@ -1,5 +1,8 @@
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember } from "./moduleMember.tschema";
 
+export const isModuleDefinitionMember = (member: ModuleMember): member is ModuleDefinitionMember => {
+    return isModuleSchemaMember(member) || isModuleVariantMember(member);
+}
 
 export const isModuleSchemaMember = (member: ModuleMember): member is ModuleSchemaMember => {
     return isModuleTypeMember(member) || isModuleInterfaceMember(member) || isModuleEnumMember(member);
