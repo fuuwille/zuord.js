@@ -18,6 +18,7 @@ export interface ModuleVariantContent extends ModuleContent {
     schema?: ModuleSchemaContent;
     kind: ModuleContentKind.Variant;
     member: ModuleVariantMember;
+    typeName?: string | null;
 }
 
 export enum ModuleContentKind {
