@@ -1,4 +1,20 @@
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember } from "./moduleMember.tschema";
+
+export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
+    return isModuleExportMember(member) || isModuleImportMember(member) || isModuleExportDefaultMember(member);
+}
+
+export const isModuleImportMember = (member: ModuleMember): member is ModuleImportMember => {
+    return member.kind === ModuleMemberKind.Import;
+}
+
+export const isModuleExportMember = (member: ModuleMember): member is ModuleExportMember => {
+    return member.kind === ModuleMemberKind.Export;
+}
+
+export const isModuleExportDefaultMember = (member: ModuleMember): member is ModuleExportDefaultMember => {
+    return member.kind === ModuleMemberKind.ExportDefault;
+}
 
 export const isModuleDefinitionMember = (member: ModuleMember): member is ModuleDefinitionMember => {
     return isModuleSchemaMember(member) || isModuleVariantMember(member);
