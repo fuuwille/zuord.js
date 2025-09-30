@@ -1,6 +1,6 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode } from "./moduleNode.tschema";
+import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode, ModuleInitializerNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMNode(node) || isModuleDefinitionNode(node);
@@ -50,11 +50,17 @@ export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
     return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
 
+export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
+    return node.getKind() === SyntaxKind.VariableStatement;
+}
 
 export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
+export const isModuleInitializerNode = (node: Node): node is ModuleInitializerNode => {
+    return isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
+}
 
 export const isModuleArrowFunctionNode = (node: Node): node is ModuleArrowFunctionNode => {
     return node.getKind() === SyntaxKind.ArrowFunction;
@@ -62,10 +68,6 @@ export const isModuleArrowFunctionNode = (node: Node): node is ModuleArrowFuncti
 
 export const isModuleFunctionExpressionNode = (node: Node): node is ModuleFunctionExpressionNode => {
     return node.getKind() === SyntaxKind.FunctionExpression;
-}
-
-export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
-    return node.getKind() === SyntaxKind.VariableStatement;
 }
 
 //
