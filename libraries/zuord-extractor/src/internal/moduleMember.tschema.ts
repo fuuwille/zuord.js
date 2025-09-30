@@ -78,6 +78,7 @@ export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctio
 export interface ModuleInitializerMember extends ModuleMember {
     node: ModuleInitializerNode;
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
+    typeNode?: TypeNode;
 }
 
 export interface ModuleArrowFunctionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
