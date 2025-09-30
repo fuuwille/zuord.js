@@ -64,3 +64,8 @@ export const getTypeReferenceDescendant = (node: TypeNode | undefined): TypeRefe
     if (!node) return undefined;
     return node.getFirstDescendant(isTypeReferenceNode) as TypeReferenceNode | undefined;
 }
+
+export const getIdentifierDescendant = (node: Node | undefined): Identifier | undefined => {
+    if (!node) return undefined;
+    return node.getFirstDescendant(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
+}
