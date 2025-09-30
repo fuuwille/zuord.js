@@ -65,7 +65,7 @@ export const isModuleFunctionExpressionNode = (node: ModuleNode): node is Module
 //
 
 export const isModuleKnownNode = (node: ModuleNode): node is ModuleKnownNode => {
-    return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node);
+    return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node) || isModuleInitializerNode(node);
 }
 
 export const isModuleExportLikeNode = (node: ModuleNode): node is ModuleExportLikeNode => {

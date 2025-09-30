@@ -45,7 +45,8 @@ export type ModuleFunctionExpressionNode = FunctionExpression;
 export type ModuleKnownNode =
     | ModuleESMNode
     | ModuleSchemaNode
-    | ModuleVariantNode;
+    | ModuleVariantNode
+    | ModuleInitializerNode;
 
 export type ModuleExportLikeNode = 
     | ModuleExportNode
