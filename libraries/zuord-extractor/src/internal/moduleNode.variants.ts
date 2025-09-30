@@ -50,17 +50,11 @@ export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantNode =
     return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
 
-export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
-    return isModuleFunctionNode(node) || isModuleFunctionAltNode(node);
-}
 
 export const isModuleFunctionNode = (node: Node): node is ModuleFunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
-export const isModuleFunctionAltNode = (node: Node): node is ModuleFunctionAltNode => {
-    return isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
-}
 
 export const isModuleArrowFunctionNode = (node: Node): node is ModuleArrowFunctionNode => {
     return node.getKind() === SyntaxKind.ArrowFunction;
@@ -72,6 +66,16 @@ export const isModuleFunctionExpressionNode = (node: Node): node is ModuleFuncti
 
 export const isModuleVariableNode = (node: Node): node is ModuleVariableNode => {
     return node.getKind() === SyntaxKind.VariableStatement;
+}
+
+//
+
+export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
+    return isModuleFunctionNode(node) || isModuleFunctionAltNode(node);
+}
+
+export const isModuleFunctionAltNode = (node: Node): node is ModuleFunctionAltNode => {
+    return isModuleArrowFunctionNode(node) || isModuleFunctionExpressionNode(node);
 }
 
 //
