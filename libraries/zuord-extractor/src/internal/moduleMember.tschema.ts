@@ -90,6 +90,8 @@ export interface ModuleFunctionExpressionMember extends ModuleInitializerMember 
     kind: ModuleMemberKind.FunctionExpression;
 }
 
+//
+
 export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
@@ -104,4 +106,11 @@ export enum ModuleMemberKind {
     Value = "value",
     ArrowFunction = "arrowFunction",
     FunctionExpression = "functionExpression"
+}
+
+//
+
+export interface ModuleFunctionLikeMember extends ModuleMember {
+    typeNode?: TypeNode;
+    paramTypeNode?: TypeNode;
 }
