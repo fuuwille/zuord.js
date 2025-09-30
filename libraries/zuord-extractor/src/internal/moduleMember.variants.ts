@@ -1,5 +1,5 @@
 import { TypeNode } from "ts-morph";
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember } from "./moduleMember.tschema";
 import { ModuleFunctionLikeNode, ModuleNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode } from "./moduleNode.variants";
 
@@ -61,6 +61,12 @@ export const isModuleArrowFunctionMember = (member: ModuleMember): member is Mod
 
 export const isModuleFunctionExpressionMember = (member: ModuleMember): member is ModuleFunctionExpressionMember => {
     return member.kind === ModuleMemberKind.FunctionExpression;
+}
+
+//
+
+export const isModuleFunctionLikeMember = (member: ModuleMember): member is ModuleFunctionLikeMember => {
+    return isModuleFunctionMember(member) || isModuleFunctionExpressionMember(member) || isModuleArrowFunctionMember(member);
 }
 
 //
