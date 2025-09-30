@@ -2,20 +2,16 @@ import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleInitializerNode } from "./moduleNode.tschema";
 
-export const isModuleKnownNode = (node: Node): node is ModuleNode => {
-    return isModuleESMNode(node) || isModuleDefinitionLikeNode(node);
+export const isModuleNode = (node: Node): node is ModuleNode => {
+    return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node);
 }
 
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
-    return isModuleImportNode(node) || isModuleExportLikeNode(node);
+    return isModuleImportNode(node) || isModuleExportNode(node) || isModuleExportDefaultNode(node);
 }
 
 export const isModuleImportNode = (node: Node): node is ModuleImportNode => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
-}
-
-export const isModuleExportLikeNode = (node: Node): node is ModuleExportLikeNode => {
-    return isModuleExportNode(node) || isModuleExportDefaultNode(node);
 }
 
 export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
@@ -24,10 +20,6 @@ export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
 
 export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefaultNode => {
     return node.getKind() === SyntaxKind.ExportAssignment;
-}
-
-export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionLikeNode => {
-    return isModuleSchemaNode(node) || isModuleVariantNode(node);
 }
 
 export const isModuleSchemaNode = (node: Node): node is ModuleSchemaNode => {
@@ -71,6 +63,14 @@ export const isModuleFunctionExpressionNode = (node: Node): node is ModuleFuncti
 }
 
 //
+
+export const isModuleExportLikeNode = (node: Node): node is ModuleExportLikeNode => {
+    return isModuleExportNode(node) || isModuleExportDefaultNode(node);
+}
+
+export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionLikeNode => {
+    return isModuleSchemaNode(node) || isModuleVariantNode(node);
+}
 
 export const isModuleFunctionLikeNode = (node: Node): node is ModuleFunctionLikeNode => {
     return isModuleFunctionNode(node) || isModuleFunctionAltNode(node);
