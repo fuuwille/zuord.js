@@ -6,11 +6,6 @@ export interface ModuleMember {
     kind: ModuleMemberKind;
 }
 
-// Unknown
-export interface ModuleUnknownMember extends ModuleMember {
-    kind: ModuleMemberKind.Unknown;
-}
-
 // ESM Members
 export interface ModuleESMMember extends ModuleMember, ModuleKnownMember {
     node: ModuleESMNode;
@@ -106,6 +101,10 @@ export enum ModuleMemberKind {
 }
 
 //
+
+export interface ModuleUnknownMember extends ModuleMember {
+    kind: ModuleMemberKind.Unknown;
+}
 
 export interface ModuleKnownMember extends ModuleMember {
     node: ModuleKnownNode;
