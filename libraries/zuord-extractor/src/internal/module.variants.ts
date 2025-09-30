@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleSchemaContent, createModuleVariantContent, updateModuleContentName } from "./moduleContent.variants";
-import { isModuleFunctionMember, isModuleSchemaMember, isModuleVariantMember, updateModuleDefinitionLikeMemberNameNode } from "./moduleMember.variants";
+import { isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
