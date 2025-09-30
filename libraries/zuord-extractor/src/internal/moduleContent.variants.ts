@@ -2,7 +2,7 @@ import { Module } from "./module.tschema";
 import { ModuleContent, ModuleContentKind, ModuleFunctionalContent, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 import { getModuleFunctionLikeMember, isModuleFunctionalMember, updateModuleDefinitionLikeMemberNameNode, updateModuleFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
-import { getIdentifierDescendant, getTypeReferenceDescendant, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
+import { getIdentifierChild, getTypeReferenceChild, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
 
 export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
     return content.kind === ModuleContentKind.Schema;
@@ -60,10 +60,10 @@ export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalCo
             typeRef = typeNode;
         }
         else {
-            typeRef = getTypeReferenceDescendant(typeNode);
+            typeRef = getTypeReferenceChild(typeNode);
         }
 
-        const identifier = getIdentifierDescendant(typeRef);
+        const identifier = getIdentifierChild(typeRef);
 
         return identifier?.getText();
     }

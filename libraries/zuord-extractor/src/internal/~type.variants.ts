@@ -60,12 +60,12 @@ export const isTypeReferenceNode = (node: Node | undefined): node is TypeReferen
     return !!node && node.getKind() === SyntaxKind.TypeReference;
 }
 
-export const getTypeReferenceDescendant = (node: TypeNode | undefined): TypeReferenceNode | undefined => {
+export const getTypeReferenceChild = (node: TypeNode | undefined): TypeReferenceNode | undefined => {
     if (!node) return undefined;
-    return node.getFirstDescendant(isTypeReferenceNode) as TypeReferenceNode | undefined;
+    return node.getFirstChild(isTypeReferenceNode) as TypeReferenceNode | undefined;
 }
 
-export const getIdentifierDescendant = (node: Node | undefined): Identifier | undefined => {
+export const getIdentifierChild = (node: Node | undefined): Identifier | undefined => {
     if (!node) return undefined;
-    return node.getFirstDescendant(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
+    return node.getFirstChild(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
 }
