@@ -57,7 +57,6 @@ export interface ModuleEnumMember extends ModuleSchemaMember {
 export interface ModuleVariantMember extends ModuleMember, ModuleKnownMember, ModuleDefinitionLikeMember {
     node: ModuleVariantNode;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
-    typeNode?: TypeNode;
 }
 
 export interface ModuleVariableMember extends ModuleVariantMember {
@@ -76,7 +75,6 @@ export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctio
 export interface ModuleInitializerMember extends ModuleMember, ModuleKnownMember {
     node: ModuleInitializerNode;
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
-    typeNode?: TypeNode;
 }
 
 export interface ModuleArrowFunctionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
