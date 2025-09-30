@@ -51,7 +51,7 @@ export type ModuleExportLikeNode =
     | ModuleExportNode
     | ModuleExportDefaultNode;
 
-export type ModuleDefinitionNode =
+export type ModuleDefinitionLikeNode =
     | ModuleSchemaNode
     | ModuleVariantNode;
 

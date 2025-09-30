@@ -1,9 +1,9 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode, ModuleInitializerNode } from "./moduleNode.tschema";
+import { ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleInitializerNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleNode => {
-    return isModuleESMNode(node) || isModuleDefinitionNode(node);
+    return isModuleESMNode(node) || isModuleDefinitionLikeNode(node);
 }
 
 export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
@@ -26,7 +26,7 @@ export const isModuleExportDefaultNode = (node: Node): node is ModuleExportDefau
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-export const isModuleDefinitionNode = (node: Node): node is ModuleDefinitionNode => {
+export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionLikeNode => {
     return isModuleSchemaNode(node) || isModuleVariantNode(node);
 }
 

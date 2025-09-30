@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleUnknownNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleNode } from "./moduleNode.tschema";
+import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleUnknownNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
     node: ModuleUnknownNode;
@@ -33,7 +33,7 @@ export interface ModuleExportDefaultMember extends ModuleESMMember {
 }
 
 // Schema Members
-export interface ModuleSchemaMember extends ModuleMember, ModuleDefinitionMember, ModuleKnownMember {
+export interface ModuleSchemaMember extends ModuleMember, ModuleDefinitionLikeMember, ModuleKnownMember {
     node: ModuleSchemaNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
@@ -54,7 +54,7 @@ export interface ModuleEnumMember extends ModuleSchemaMember {
 }
 
 // Variant Members
-export interface ModuleVariantMember extends ModuleMember, ModuleDefinitionMember, ModuleKnownMember {
+export interface ModuleVariantMember extends ModuleMember, ModuleDefinitionLikeMember, ModuleKnownMember {
     node: ModuleVariantNode;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
     typeNode?: TypeNode;
@@ -113,8 +113,8 @@ export interface ModuleKnownMember extends ModuleMember {
     node: ModuleNode;
 }
 
-export interface ModuleDefinitionMember extends ModuleMember, ModuleKnownMember {
-    node: ModuleDefinitionNode;
+export interface ModuleDefinitionLikeMember extends ModuleMember, ModuleKnownMember {
+    node: ModuleDefinitionLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum | ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
