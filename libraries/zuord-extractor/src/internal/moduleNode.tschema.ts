@@ -12,17 +12,9 @@ export type ModuleESMNode =
 
 export type ModuleImportNode = ImportDeclaration;
 
-export type ModuleExportLikeNode = 
-    | ModuleExportNode
-    | ModuleExportDefaultNode;
-
 export type ModuleExportNode = ExportDeclaration;
 
 export type ModuleExportDefaultNode = ExportAssignment;
-
-export type ModuleDefinitionNode =
-    | ModuleSchemaNode
-    | ModuleVariantNode;
 
 export type ModuleSchemaNode =
     | ModuleTypeNode
@@ -52,6 +44,14 @@ export type ModuleArrowFunctionNode = ArrowFunction;
 export type ModuleFunctionExpressionNode = FunctionExpression;
 
 //
+
+export type ModuleExportLikeNode = 
+    | ModuleExportNode
+    | ModuleExportDefaultNode;
+    
+export type ModuleDefinitionNode =
+    | ModuleSchemaNode
+    | ModuleVariantNode;
 
 export type ModuleFunctionLikeNode =
     | ModuleFunctionNode
