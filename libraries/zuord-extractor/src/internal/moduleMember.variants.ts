@@ -191,6 +191,22 @@ export const getModuleFunctionLikeMemberParamTypeNode = (member: ModuleFunctionL
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
 
+export const getModuleFunctionLikeMember = (member: ModuleFunctionalMember) : ModuleFunctionLikeMember | undefined => {
+    if(isModuleVariableFunctionMember(member)) {
+        return member.initializer!;
+    }
+
+    return member;
+}
+
+export const getModuleFunctionalMemberReturnType = (member: ModuleFunctionalMember) : TypeNode | undefined => {
+    return getModuleFunctionLikeMemberReturnTypeNode(getModuleFunctionLikeMember(member)!);
+}
+
+export const getModuleFunctionalMemberParamType = (member: ModuleFunctionalMember) : TypeNode | undefined => {
+    return getModuleFunctionLikeMemberParamTypeNode(getModuleFunctionLikeMember(member)!);
+}
+
 //
 
 export const updateModuleDefinitionLikeMemberNameNode = (member: ModuleDefinitionLikeMember): void => {
