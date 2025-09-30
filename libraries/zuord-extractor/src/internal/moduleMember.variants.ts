@@ -1,5 +1,5 @@
 import { BindingName, Identifier, TypeNode } from "ts-morph";
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember, ModuleVariableFunctionMember, ModuleFunctionAltMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember, ModuleVariableFunctionMember, ModuleFunctionAltMember, ModuleFunctionalMember } from "./moduleMember.tschema";
 import { ModuleNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
 
@@ -69,7 +69,6 @@ export const isModuleDefinitionLikeMember = (member: ModuleMember): member is Mo
     return isModuleSchemaMember(member) || isModuleVariantMember(member);
 }
 
-
 export const isModuleVariableFunctionMember = (member: ModuleMember): member is ModuleVariableFunctionMember => {
     return isModuleVariableMember(member) && !!member.initializer && isModuleFunctionAltMember(member.initializer);
 }
@@ -81,6 +80,12 @@ export const isModuleFunctionLikeMember = (member: ModuleMember): member is Modu
 export const isModuleFunctionAltMember = (member: ModuleMember): member is ModuleFunctionAltMember => {
     return isModuleArrowFunctionMember(member) || isModuleFunctionExpressionMember(member);
 }
+
+//
+
+export  const isModuleFunctionalMember = (member: ModuleMember): member is ModuleFunctionalMember => {
+    return isModuleFunctionMember(member) || isModuleVariableFunctionMember(member);
+};
 
 //
 
