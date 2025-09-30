@@ -54,10 +54,16 @@ export const createModuleMember = <TMember extends ModuleMember>(
     node: ModuleNode
 ) : TMember => {
 
-    return {
+    const member = {
         node,
         kind: getModuleMemberKind(node)
     } as TMember;
+
+    if(isModuleVariableMember(member)) {
+        member.initializer = getModuleInitializerMember(member);
+    }
+
+    return member;
 }
 
 export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
