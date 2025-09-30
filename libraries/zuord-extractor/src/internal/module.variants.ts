@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleTypeContent, createModuleVariantContent } from "./moduleContent.variants";
-import { getModuleMemberNameNode, isModuleSchemaMember, isModuleVariableMember, isModuleVariantMember } from "./moduleMember.variants";
+import { isModuleSchemaMember, isModuleVariableMember, isModuleVariantMember, updateModuleMemberNameNode } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
@@ -47,7 +47,7 @@ export const updateModule = (module: Module) => {
     if(module.schemaContents.length > 0) {
         for(const schemaContent of module.schemaContents) {
             const member = schemaContent.member;
-            member.nameNode = getModuleMemberNameNode(member);
+            updateModuleMemberNameNode(member);
 
             schemaContent.name = member.nameNode?.getText();
         }
