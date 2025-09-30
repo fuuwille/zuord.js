@@ -7,6 +7,7 @@ export interface ModuleMember {
     nameNode?: Identifier | null;
 }
 
+// Unknown
 export interface ModuleUnknownMember extends ModuleMember {
     kind: ModuleMemberKind.Unknown;
 }
