@@ -141,10 +141,10 @@ export const getModuleVariableMemberInitializer = (member: ModuleVariableMember)
     return undefined
 }
 
-export const getModuleFunctionLikeMemberTypeNode = (node: ModuleFunctionLikeNode): TypeNode | undefined => {
-    return node.getReturnTypeNode();
+export const getModuleFunctionLikeMemberTypeNode = (member: ModuleFunctionLikeMember): TypeNode | undefined => {
+    return member?.node?.getReturnTypeNode();
 }
 
-export const getModuleFunctionLikeMemberParamTypeNode = (node: ModuleFunctionLikeNode): TypeNode | undefined => {
-    return node.getParameters()[0]?.getTypeNode();
+export const getModuleFunctionLikeMemberParamTypeNode = (member: ModuleFunctionLikeMember): TypeNode | undefined => {
+    return member?.node?.getParameters()[0]?.getTypeNode();
 }
