@@ -1,6 +1,6 @@
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember } from "./moduleMember.tschema";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember } from "./moduleMember.tschema";
 import { ModuleNode } from "./moduleNode.tschema";
-import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode } from "./moduleNode.variants";
+import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode } from "./moduleNode.variants";
 
 export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
     return isModuleExportMember(member) || isModuleImportMember(member) || isModuleDefaultMember(member);
@@ -95,3 +95,21 @@ export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
 
     return ModuleMemberKind.Unknown;
 };
+
+export const getModuleInitializerMember = (member: ModuleVariableMember): ModuleInitializerMember | undefined => {
+    if(!member) return undefined;
+
+    const declaration = member.node.getDeclarations()[0];
+
+    if(declaration) {
+        const initializerNode = declaration.getInitializer();
+
+        if(initializerNode) {
+            if(isModuleInitializerNode(initializerNode)) {
+                return createModuleMember<ModuleInitializerMember>(initializerNode);
+            }
+        }
+    }
+
+    return undefined
+}
