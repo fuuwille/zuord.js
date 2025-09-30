@@ -43,9 +43,15 @@ export const createModuleVariantContent = (
 
 //
 
-export const updateModuleContentName = (content: ModuleContent) => {
+export const getModuleContentName = (content: ModuleContent) : string | undefined => {
+    updateModuleDefinitionLikeMemberNameNode(content.member);
+    return content.member.nameNode?.getText();
+}
+
+//
+
+export const updateModuleContentName = (content: ModuleContent) : void => {
     if(content.name == undefined) {
-        updateModuleDefinitionLikeMemberNameNode(content.member);
-        content.name = content.member.nameNode?.getText();
+        content.name = getModuleContentName(content);
     }
 };
