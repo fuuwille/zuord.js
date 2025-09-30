@@ -48,7 +48,7 @@ export const getModuleContentName = (content: ModuleContent) : string | undefine
     return content.member.nameNode?.getText();
 }
 
-export const getModuleFunctionalVariantContentReturnType = (content: ModuleFunctionalContent) : string | undefined => {
+export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalContent) : string | undefined => {
     updateModuleFunctionalMemberReturnTypeNode(content.member);
     return undefined;
 }
