@@ -1,5 +1,5 @@
 import { Module } from "./module.tschema";
-import { ModuleDefinitionLikeMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
+import { ModuleDefinitionLikeMember, ModuleFunctionalMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export interface ModuleContent {
     module: Module;
@@ -18,11 +18,17 @@ export interface ModuleVariantContent extends ModuleContent {
     schema?: ModuleSchemaContent;
     kind: ModuleContentKind.Variant;
     member: ModuleVariantMember;
-    returnSchemaName?: string | null;
-    paramSchemaName?: string | null;
 }
 
 export enum ModuleContentKind {
     Schema = "schema",
     Variant = "variant"
+}
+
+//
+
+export interface ModuleFunctionalVariantContent extends ModuleVariantContent {
+    member: ModuleFunctionalMember;
+    returnSchemaName?: string | null;
+    paramSchemaName?: string | null;
 }
