@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleSchemaContent, createModuleVariantContent, updateModuleSchemaContentName } from "./moduleContent.variants";
-import { isModuleFunctionMember, isModuleSchemaMember, isModuleVariantMember, updateModuleMemberNameNode } from "./moduleMember.variants";
+import { isModuleFunctionMember, isModuleSchemaMember, isModuleVariantMember, updateModuleDefinitionLikeMemberNameNode } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
@@ -32,7 +32,7 @@ export const updateModule = (module: Module) => {
             const member = variantContent.member;
             
             if(isModuleFunctionMember(member)) {
-                updateModuleMemberNameNode(member);
+                updateModuleDefinitionLikeMemberNameNode(member);
                 variantContent.name = member.nameNode?.getText();
             }
         }

@@ -1,5 +1,5 @@
-import { Identifier, TypeNode } from "ts-morph";
-import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember, ModuleMemberWithNameNode } from "./moduleMember.tschema";
+import { BindingName, Identifier, TypeNode } from "ts-morph";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionLikeMember, ModuleExportDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember, ModuleFunctionExpressionMember, ModuleArrowFunctionMember, ModuleFunctionLikeMember, ModuleKnownMember } from "./moduleMember.tschema";
 import { ModuleNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
 
@@ -73,10 +73,6 @@ export const isModuleFunctionLikeMember = (member: ModuleMember): member is Modu
     return isModuleFunctionMember(member) || isModuleFunctionExpressionMember(member) || isModuleArrowFunctionMember(member);
 }
 
-export const isModuleMemberWithNameNode = (member: ModuleMember): member is ModuleMemberWithNameNode => {
-    return isModuleSchemaMember(member) || isModuleFunctionMember(member);
-}
-
 //
 
 export const createModuleMember = <TMember extends ModuleMember>(
@@ -143,8 +139,20 @@ export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
     return ModuleMemberKind.Unknown;
 };
 
-export const getModuleMemberNameNode = (member: ModuleMemberWithNameNode): Identifier | null => {
-    return member?.node?.getNameNode() ?? null;
+export const getModuleDefinitionLikeMemberNameNode = (member: ModuleDefinitionLikeMember): BindingName | null => {
+    if("getNameNode" in member.node) {
+        return member.node.getNameNode() ?? null;
+    }
+
+    if(isModuleVariableMember(member)) {
+        const declaration = member.node.getDeclarations()[0];
+
+        if(declaration) {
+            return declaration.getNameNode() ?? null;
+        }
+    }
+
+    return null;
 }
 
 export const getModuleVariableMemberInitializer = (member: ModuleVariableMember): ModuleInitializerMember | undefined => {
@@ -175,8 +183,8 @@ export const getModuleFunctionLikeMemberParamTypeNode = (member: ModuleFunctionL
 
 //
 
-export const updateModuleMemberNameNode = (member: ModuleMemberWithNameNode): void => {
+export const updateModuleDefinitionLikeMemberNameNode = (member: ModuleDefinitionLikeMember): void => {
     if(member.nameNode == undefined) {
-        member.nameNode = getModuleMemberNameNode(member);
+        member.nameNode = getModuleDefinitionLikeMemberNameNode(member);
     }
 }

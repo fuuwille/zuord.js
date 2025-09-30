@@ -1,4 +1,4 @@
-import { Identifier, TypeNode } from "ts-morph";
+import { BindingName, TypeNode } from "ts-morph";
 import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
@@ -33,7 +33,7 @@ export interface ModuleExportDefaultMember extends ModuleESMMember {
 }
 
 // Schema Members
-export interface ModuleSchemaMember extends ModuleMember, ModuleKnownMember, ModuleDefinitionLikeMember, ModuleMemberWithNameNode {
+export interface ModuleSchemaMember extends ModuleMember, ModuleKnownMember, ModuleDefinitionLikeMember {
     node: ModuleSchemaNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
@@ -66,7 +66,7 @@ export interface ModuleVariableMember extends ModuleVariantMember {
     initializer?: ModuleInitializerMember;
 }
 
-export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember, ModuleMemberWithNameNode {
+export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember {
     node: ModuleFunctionNode;
     kind: ModuleMemberKind.Function;
 }
@@ -116,17 +116,11 @@ export interface ModuleKnownMember extends ModuleMember {
 export interface ModuleDefinitionLikeMember extends ModuleMember, ModuleKnownMember {
     node: ModuleDefinitionLikeNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    nameNode?: BindingName | null;
 }
 
 export interface ModuleFunctionLikeMember extends ModuleMember {
     node: ModuleFunctionLikeNode;
     typeNode?: TypeNode;
     paramTypeNode?: TypeNode;
-}
-
-//
-
-export interface ModuleMemberWithNameNode extends ModuleMember {
-    node: ModuleSchemaNode | ModuleFunctionNode;
-    nameNode?: Identifier | null;
 }
