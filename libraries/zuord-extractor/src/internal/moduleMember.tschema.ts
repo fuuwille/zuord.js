@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode } from "./moduleNode.tschema";
+import { ModuleDefinitionNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
     node: ModuleNode;
@@ -8,7 +8,7 @@ export interface ModuleMember {
 }
 
 // ESM Members
-export interface ModuleESMMember extends ModuleMember {
+export interface ModuleESMMember extends ModuleMember, ModuleKnownMember {
     node: ModuleESMNode;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
@@ -29,13 +29,13 @@ export interface ModuleExportDefaultMember extends ModuleESMMember {
 }
 
 // Definition Members
-export interface ModuleDefinitionMember extends ModuleMember {
+export interface ModuleDefinitionMember extends ModuleMember, ModuleKnownMember {
     node: ModuleDefinitionNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum | ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
 // Schema Members
-export interface ModuleSchemaMember extends ModuleDefinitionMember {
+export interface ModuleSchemaMember extends ModuleMember, ModuleDefinitionMember, ModuleKnownMember {
     node: ModuleSchemaNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum;
 }
@@ -56,7 +56,7 @@ export interface ModuleEnumMember extends ModuleSchemaMember {
 }
 
 // Variant Members
-export interface ModuleVariantMember extends ModuleDefinitionMember {
+export interface ModuleVariantMember extends ModuleMember, ModuleDefinitionMember, ModuleKnownMember {
     node: ModuleVariantNode;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
     typeNode?: TypeNode;
@@ -74,6 +74,10 @@ export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctio
 }
 
 // Initializer Members
+
+export interface ModuleKnownMember extends ModuleMember {
+    node: ModuleKnownNode;
+}
 
 export interface ModuleInitializerMember extends ModuleMember {
     node: ModuleInitializerNode;
