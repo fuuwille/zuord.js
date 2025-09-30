@@ -19,10 +19,6 @@ export const isModuleExportDefaultMember = (member: ModuleMember): member is Mod
     return member.kind === ModuleMemberKind.ExportDefault;
 }
 
-export const isModuleDefinitionMember = (member: ModuleMember): member is ModuleDefinitionLikeMember => {
-    return isModuleSchemaMember(member) || isModuleVariantMember(member);
-}
-
 export const isModuleSchemaMember = (member: ModuleMember): member is ModuleSchemaMember => {
     return isModuleTypeMember(member) || isModuleInterfaceMember(member) || isModuleEnumMember(member);
 }
@@ -64,6 +60,10 @@ export const isModuleFunctionExpressionMember = (member: ModuleMember): member i
 }
 
 //
+
+export const isModuleDefinitionLikeMember = (member: ModuleMember): member is ModuleDefinitionLikeMember => {
+    return isModuleSchemaMember(member) || isModuleVariantMember(member);
+}
 
 export const isModuleFunctionLikeMember = (member: ModuleMember): member is ModuleFunctionLikeMember => {
     return isModuleFunctionMember(member) || isModuleFunctionExpressionMember(member) || isModuleArrowFunctionMember(member);
