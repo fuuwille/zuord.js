@@ -27,7 +27,7 @@ export enum ModuleContentKind {
 
 //
 
-export interface ModuleFunctionalVariantContent extends ModuleVariantContent {
+export interface ModuleFunctionalContent extends ModuleVariantContent {
     member: ModuleFunctionalMember;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
