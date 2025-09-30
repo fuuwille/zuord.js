@@ -169,7 +169,7 @@ export const getModuleVariableMemberInitializer = (member: ModuleVariableMember)
     return undefined
 }
 
-export const getModuleFunctionLikeMemberTypeNode = (member: ModuleFunctionLikeMember): TypeNode | undefined => {
+export const getModuleFunctionLikeMemberReturnTypeNode = (member: ModuleFunctionLikeMember): TypeNode | undefined => {
     return member?.node?.getReturnTypeNode();
 }
 
@@ -184,3 +184,15 @@ export const updateModuleDefinitionLikeMemberNameNode = (member: ModuleDefinitio
         member.nameNode = getModuleDefinitionLikeMemberNameNode(member);
     }
 }
+
+export const updateModuleFunctionLikeMemberReturnTypeNode = (member: ModuleFunctionLikeMember): void => {
+    if(member.returnTypeNode == undefined) {
+        member.returnTypeNode = getModuleFunctionLikeMemberReturnTypeNode(member);
+    }
+};
+
+export const updateModuleFunctionLikeMemberParamTypeNode = (member: ModuleFunctionLikeMember): void => {
+    if(member.paramTypeNode == undefined) {
+        member.paramTypeNode = getModuleFunctionLikeMemberParamTypeNode(member);
+    }
+};
