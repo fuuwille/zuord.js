@@ -1,6 +1,16 @@
 import { Module } from "./module.tschema";
-import { ModuleContentKind, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
+import { ModuleContent, ModuleContentKind, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
+
+export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
+    return content.kind === ModuleContentKind.Schema;
+};
+
+export const isModuleVariantContent = (content: ModuleContent): content is ModuleVariantContent => {
+    return content.kind === ModuleContentKind.Variant;
+};
+
+//
 
 export const createModuleSchemaContent = (
     module: Module, member: ModuleSchemaMember
