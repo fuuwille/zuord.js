@@ -1,4 +1,6 @@
 import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember } from "./moduleMember.tschema";
+import { ModuleNode } from "./moduleNode.tschema";
+import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode } from "./moduleNode.variants";
 
 export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
     return isModuleExportMember(member) || isModuleImportMember(member) || isModuleDefaultMember(member);
@@ -47,3 +49,49 @@ export const isModuleVariableMember = (member: ModuleMember): member is ModuleVa
 export const isModuleFunctionMember = (member: ModuleMember): member is ModuleFunctionMember => {
     return member.kind === ModuleMemberKind.Function;
 }
+
+export const extractModuleMember = <TMember extends ModuleMember>(
+    node: ModuleNode
+) : TMember => {
+
+    return {
+        node,
+        kind: getModuleMemberKind(node)
+    } as TMember;
+}
+
+export const getModuleMemberKind = (node: ModuleNode): ModuleMemberKind => {
+    if (isModuleImportNode(node)) {
+        return ModuleMemberKind.Import;
+    }
+
+    if (isModuleExportNode(node)) {
+        return ModuleMemberKind.Export;
+    }
+
+    if (isModuleDefaultNode(node)) {
+        return ModuleMemberKind.Default;
+    }
+
+    if (isModuleTypeNode(node)) {
+        return ModuleMemberKind.Type;
+    }
+
+    if (isModuleInterfaceNode(node)) {
+        return ModuleMemberKind.Interface;
+    }
+
+    if (isModuleEnumNode(node)) {
+        return ModuleMemberKind.Enum;
+    }
+
+    if (isModuleFunctionNode(node)) {
+        return ModuleMemberKind.Function;
+    }
+
+    if (isModuleVariableNode(node)) {
+        return ModuleMemberKind.Variable;
+    }
+
+    return ModuleMemberKind.Unknown;
+};
