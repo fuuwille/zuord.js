@@ -5,7 +5,7 @@ export interface ModuleContent {
     module: Module;
     member: ModuleMember;
     kind: ModuleContentKind;
-    name?: string;
+    name?: string | null;
 }
 
 export interface ModuleSchemaContent extends ModuleContent {
