@@ -4,7 +4,6 @@ import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDe
 export interface ModuleMember {
     node: ModuleNode;
     kind: ModuleMemberKind;
-    nameNode?: Identifier | null;
 }
 
 // Unknown
@@ -123,4 +122,10 @@ export interface ModuleFunctionLikeMember extends ModuleMember {
     node: ModuleFunctionLikeNode;
     typeNode?: TypeNode;
     paramTypeNode?: TypeNode;
+}
+
+//
+
+export interface ModuleMemberWithNameNode extends ModuleMember {
+    nameNode?: Identifier | null;
 }
