@@ -1,5 +1,5 @@
 import { BindingName, TypeNode } from "ts-morph";
-import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode } from "./moduleNode.tschema";
+import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode, ModuleFunctionAltNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
     node: ModuleNode;
@@ -71,12 +71,12 @@ export interface ModuleInitializerMember extends ModuleMember, ModuleKnownMember
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
-export interface ModuleArrowFunctionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
+export interface ModuleArrowFunctionMember extends ModuleInitializerMember, ModuleFunctionAltMember {
     node: ModuleArrowFunctionNode;
     kind: ModuleMemberKind.ArrowFunction;
 }
 
-export interface ModuleFunctionExpressionMember extends ModuleInitializerMember, ModuleFunctionLikeMember {
+export interface ModuleFunctionExpressionMember extends ModuleInitializerMember, ModuleFunctionAltMember {
     node: ModuleFunctionExpressionNode;
     kind: ModuleMemberKind.FunctionExpression;
 }
@@ -119,4 +119,9 @@ export interface ModuleFunctionLikeMember extends ModuleMember {
     node: ModuleFunctionLikeNode;
     returnTypeNode?: TypeNode;
     paramTypeNode?: TypeNode;
+}
+
+export interface ModuleFunctionAltMember extends ModuleFunctionLikeMember {
+    node: ModuleFunctionAltNode;
+    kind: ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
