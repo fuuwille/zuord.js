@@ -168,3 +168,11 @@ export const getModuleFunctionLikeMemberTypeNode = (member: ModuleFunctionLikeMe
 export const getModuleFunctionLikeMemberParamTypeNode = (member: ModuleFunctionLikeMember): TypeNode | undefined => {
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
+
+//
+
+export const updateModuleMemberNameNode = (member: ModuleMemberWithNameNode): void => {
+    if(member.nameNode == undefined) {
+        member.nameNode = getModuleMemberNameNode(member);
+    }
+}
