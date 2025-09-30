@@ -16,6 +16,8 @@ export const updateModule = (module: Module) => {
     if(schemaMembers) {
         for(const member of schemaMembers.filter(isModuleSchemaMember)) {
             const schemaContent = createModuleSchemaContent(module, member);
+            updateModuleContentName(schemaContent);
+
             module.schemaContents.push(schemaContent);
         }
     }
@@ -23,19 +25,19 @@ export const updateModule = (module: Module) => {
     if(variantMembers) {
         for(const member of variantMembers.filter(isModuleVariantMember)) {
             const variantContent = createModuleVariantContent(module, member);
-            module.variantContents.push(variantContent);
-        }
-    }
-
-    if(module.variantContents.length > 0) {
-        for(const variantContent of module.variantContents) {
             updateModuleContentName(variantContent);
+
+            module.variantContents.push(variantContent);
         }
     }
 
     if(module.schemaContents.length > 0) {
         for(const schemaContent of module.schemaContents) {
-            updateModuleContentName(schemaContent);
+        }
+    }
+
+    if(module.variantContents.length > 0) {
+        for(const variantContent of module.variantContents) {
         }
     }
 };
