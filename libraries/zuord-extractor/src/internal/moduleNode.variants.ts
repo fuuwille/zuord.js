@@ -15,14 +15,14 @@ export const isModuleImportNode = (node: Node): node is ModuleImportNode => {
 }
 
 export const isModuleExportLikeNode = (node: Node): node is ModuleExportLikeNode => {
-    return isModuleExportNode(node) || isModuleExportDefaultNode(node);
+    return isModuleExportNode(node) || isModuleDefaultNode(node);
 }
 
 export const isModuleExportNode = (node: Node): node is ModuleExportNode => {
     return node.getKind() === SyntaxKind.ExportDeclaration;
 }
 
-export const isModuleExportDefaultNode = (node: Node): node is ModuleDefaultNode => {
+export const isModuleDefaultNode = (node: Node): node is ModuleDefaultNode => {
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
