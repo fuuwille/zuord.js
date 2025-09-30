@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { initializeModuleTypeContent, initializeModuleVariantContent } from "./moduleContent.variants";
-import { isModuleSchemaLikeMember, isModuleVariableMember, isModuleVariantLikeMember } from "./moduleMember.variants";
+import { isModuleSchemaMember, isModuleVariableMember, isModuleVariantMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
 export const updateModule = (module: Module) => {
@@ -14,14 +14,14 @@ export const updateModule = (module: Module) => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(isModuleSchemaLikeMember)) {
+        for(const member of schemaMembers.filter(isModuleSchemaMember)) {
             const schemaContent = initializeModuleTypeContent(module, member);
             module.schemaContents.push(schemaContent);
         }
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(isModuleVariantLikeMember)) {
+        for(const member of variantMembers.filter(isModuleVariantMember)) {
             const variantContent = initializeModuleVariantContent(module, member);
             module.variantContents.push(variantContent);
         }
@@ -33,11 +33,11 @@ export const updateModule = (module: Module) => {
             
             var name;
             if(isModuleVariableMember(member)) {
-                const initializer = member.ref.initializer;
+                const initializer = member.initializer;
                 name = initializer?.typeNode?.getText();
             }
             else {
-                name = member.ref.typeNode?.getText();
+                name = member.typeNode?.getText();
             }
 
             variantContent.name = name;
@@ -47,7 +47,7 @@ export const updateModule = (module: Module) => {
     if(module.schemaContents.length > 0) {
         for(const schemaContent of module.schemaContents) {
             const member = schemaContent.member;
-            const name = member.ref.nameNode?.getText();
+            const name = member.nameNode?.getText();
 
             schemaContent.name = name;
         }
