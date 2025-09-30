@@ -2,7 +2,7 @@ import { Module } from "./module.tschema";
 import { ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
-export const createModuleTypeContent = (
+export const createModuleSchemaContent = (
     module: Module, member: ModuleSchemaMember
 ) : ModuleSchemaContent => {
 
