@@ -1,14 +1,14 @@
 import { ModuleNode, ModuleFunctionLikeNode, ModuleVariantNode, ModuleVariableNode, ModuleSchemaNode } from "./moduleNode.tschema";
-import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleSchemaLikeNode, isModuleVariableNode, isModuleVariantLikeNode } from "./moduleNode.variants";
+import { isModuleFunctionLikeNode, isModuleFunctionNode, isModuleSchemaNode, isModuleVariableNode, isModuleVariantNode } from "./moduleNode.variants";
 import { ModuleFunctionLikeRef, ModuleFunctionRef, ModuleRef, ModuleSchemaLikeRef, ModuleVariableRef, ModuleVariantLikeRef } from "./moduleRef.tschema";
 
 export const extractModuleRef = (node: ModuleNode): ModuleRef => {
 
-    if(isModuleSchemaLikeNode(node)) {
+    if(isModuleSchemaNode(node)) {
         return extractModuleSchemaLikeRef(node);
     }
 
-    if(isModuleVariantLikeNode(node)) {
+    if(isModuleVariantNode(node)) {
         return extractModuleVariantLikeRef(node);
     }
 

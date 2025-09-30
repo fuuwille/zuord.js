@@ -72,6 +72,12 @@ export interface ModuleFunctionMember extends ModuleVariantMember {
     kind: ModuleMemberKind.Function;
 }
 
+// Initializer Members
+
+export interface ModuleInitializerMember extends ModuleMember {
+    
+}
+
 export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
@@ -83,4 +89,7 @@ export enum ModuleMemberKind {
     Class = "class",
     Variable = "variable",
     Function = "function",
+    Value = "value",
+    ArrowFunction = "arrowFunction",
+    FunctionExpression = "functionExpression"
 }

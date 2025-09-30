@@ -3,10 +3,10 @@ import { ModuleMode } from "./module.tschema";
 import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionNode } from "./moduleNode.tschema";
 
 export const isModuleKnownNode = (node: Node): node is ModuleKnownNode => {
-    return isModuleESMLikeNode(node) || isModuleDefinitionLikeNode(node);
+    return isModuleESMNode(node) || isModuleDefinitionNode(node);
 }
 
-export const isModuleESMLikeNode = (node: Node): node is ModuleESMNode => {
+export const isModuleESMNode = (node: Node): node is ModuleESMNode => {
     return isModuleImportNode(node) || isModuleExportLikeNode(node);
 }
 
@@ -26,11 +26,11 @@ export const isModuleDefaultNode = (node: Node): node is ModuleDefaultNode => {
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-export const isModuleDefinitionLikeNode = (node: Node): node is ModuleDefinitionNode => {
-    return isModuleSchemaLikeNode(node) || isModuleVariantLikeNode(node);
+export const isModuleDefinitionNode = (node: Node): node is ModuleDefinitionNode => {
+    return isModuleSchemaNode(node) || isModuleVariantNode(node);
 }
 
-export const isModuleSchemaLikeNode = (node: Node): node is ModuleSchemaNode => {
+export const isModuleSchemaNode = (node: Node): node is ModuleSchemaNode => {
     return isModuleTypeNode(node) || isModuleInterfaceNode(node) || isModuleEnumNode(node);
 }
 
@@ -46,7 +46,7 @@ export const isModuleEnumNode = (node: Node): node is ModuleEnumNode => {
     return node.getKind() === SyntaxKind.EnumDeclaration;
 }
 
-export const isModuleVariantLikeNode = (node: Node): node is ModuleVariantNode => {
+export const isModuleVariantNode = (node: Node): node is ModuleVariantNode => {
     return isModuleFunctionLikeNode(node) || isModuleVariableNode(node);
 }
 
@@ -92,9 +92,9 @@ export const isModuleDiscardedNode = (node: Node, mode : ModuleMode): node is Mo
 }
 
 export const isModuleDiscardedSchemaNode = (node: Node): node is ModuleDiscardedSchemaNode => {
-    return isModuleVariantLikeNode(node);
+    return isModuleVariantNode(node);
 }
 
 export const isModuleDiscardedVariantNode = (node: Node): node is ModuleDiscardedVariantNode => {
-    return isModuleSchemaLikeNode(node);
+    return isModuleSchemaNode(node);
 }
