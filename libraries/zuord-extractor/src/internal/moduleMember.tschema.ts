@@ -28,6 +28,7 @@ export interface ModuleExportDefaultMember extends ModuleESMMember {
     kind: ModuleMemberKind.ExportDefault;
 }
 
+// Definition Members
 export interface ModuleDefinitionMember extends ModuleBaseMember {
     node: ModuleDefinitionNode;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Enum | ModuleMemberKind.Variable | ModuleMemberKind.Function;
