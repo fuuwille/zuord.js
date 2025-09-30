@@ -1,5 +1,5 @@
 import { Identifier, TypeNode } from "ts-morph";
-import { ModuleClassNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode } from "./moduleNode.tschema";
+import { ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode } from "./moduleNode.tschema";
 import { getModuleMemberNameNode } from "./moduleMember.variants";
 
 export abstract class ModuleMember {
@@ -126,20 +126,6 @@ export class ModuleEnumMember extends ModuleSchemaMember {
 
     public get kind(): ModuleMemberKind {
         return ModuleMemberKind.Enum;
-    }
-}
-
-export class ModuleClassMember extends ModuleSchemaMember {
-    public constructor(node: ModuleClassNode) {
-        super(node);
-    }
-
-    public get node(): ModuleClassNode {
-        return super.node as ModuleClassNode;
-    }
-
-    public get kind(): ModuleMemberKind {
-        return ModuleMemberKind.Class;
     }
 }
 

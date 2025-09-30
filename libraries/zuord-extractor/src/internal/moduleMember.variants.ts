@@ -1,6 +1,6 @@
 import { Identifier } from "ts-morph";
-import { ModuleClassMember, ModuleEnumMember, ModuleExportDefaultMember, ModuleExportMember, ModuleFunctionMember, ModuleImportMember, ModuleInterfaceMember, ModuleMember, ModuleTypeMember, ModuleVariableMember } from "./moduleMember.tschema";
-import { ModuleClassNode, ModuleEnumNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleTypeNode, ModuleVariableNode } from "./moduleNode.tschema";
+import { ModuleEnumMember, ModuleExportDefaultMember, ModuleExportMember, ModuleFunctionMember, ModuleImportMember, ModuleInterfaceMember, ModuleMember, ModuleTypeMember, ModuleVariableMember } from "./moduleMember.tschema";
+import { ModuleEnumNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleTypeNode, ModuleVariableNode } from "./moduleNode.tschema";
 import { isModuleSchemaLikeNode } from "./moduleNode.variants";
 
 export const createModuleImportMember = (node: ModuleImportNode): ModuleImportMember => {
@@ -25,10 +25,6 @@ export const createModuleInterfaceMember = (node: ModuleInterfaceNode): ModuleIn
 
 export const createModuleEnumMember = (node: ModuleEnumNode): ModuleEnumMember => {
     return new ModuleEnumMember(node);
-}
-
-export const createModuleClassMember = (node: ModuleClassNode): ModuleClassMember => {
-    return new ModuleClassMember(node);
 }
 
 export const createModuleVariableMember = (node: ModuleVariableNode): ModuleVariableMember => {
