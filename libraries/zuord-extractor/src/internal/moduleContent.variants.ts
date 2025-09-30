@@ -2,7 +2,7 @@ import { Module } from "./module.tschema";
 import { ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
-export const initializeModuleTypeContent = (
+export const createModuleTypeContent = (
     module: Module, member: ModuleSchemaMember
 ) : ModuleSchemaContent => {
 
@@ -12,7 +12,17 @@ export const initializeModuleTypeContent = (
     };
 };
 
-export const completeModuleSchemaContent = (
+export const createModuleVariantContent = (
+    module: Module, member: ModuleVariantMember
+) : ModuleVariantContent => {
+
+    return {
+        module,
+        member
+    };
+};
+
+export const initializeModuleSchemaContent = (
     module: Module, member: ModuleSchemaMember
 ) : ModuleSchemaContent => {
 
@@ -22,15 +32,5 @@ export const completeModuleSchemaContent = (
         module,
         member,
         variants
-    };
-};
-
-export const initializeModuleVariantContent = (
-    module: Module, member: ModuleVariantMember
-) : ModuleVariantContent => {
-
-    return {
-        module,
-        member
     };
 };
