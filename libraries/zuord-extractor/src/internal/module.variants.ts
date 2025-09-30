@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
-import { createModuleSchemaContent, createModuleVariantContent, updateModuleContentName } from "./moduleContent.variants";
+import { createModuleSchemaContent, createModuleVariantContent, isModuleFunctionalContent, updateModuleContentName, updateModuleFunctionalContentReturnSchemaName } from "./moduleContent.variants";
 import { isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 
@@ -26,6 +26,10 @@ export const updateModule = (module: Module) => {
         for(const member of variantMembers.filter(isModuleVariantMember)) {
             const variantContent = createModuleVariantContent(module, member);
             updateModuleContentName(variantContent);
+
+            if(isModuleFunctionalContent(variantContent)) {
+                updateModuleFunctionalContentReturnSchemaName(variantContent);
+            }
 
             module.variantContents.push(variantContent);
         }
