@@ -43,6 +43,10 @@ export type ModuleVariableNode = VariableStatement;
 
 export type ModuleFunctionNode = FunctionDeclaration;
 
+export type ModuleInitializerNode = 
+    | ModuleArrowFunctionNode
+    | ModuleFunctionExpressionNode;
+
 export type ModuleArrowFunctionNode = ArrowFunction;
 
 export type ModuleFunctionExpressionNode = FunctionExpression;
