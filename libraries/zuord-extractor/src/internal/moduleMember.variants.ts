@@ -1,5 +1,6 @@
+import { TypeNode } from "ts-morph";
 import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember, ModuleFunctionMember, ModuleVariableMember, ModuleVariantMember, ModuleDefinitionMember, ModuleDefaultMember, ModuleExportMember, ModuleImportMember, ModuleESMMember, ModuleInitializerMember } from "./moduleMember.tschema";
-import { ModuleNode } from "./moduleNode.tschema";
+import { ModuleFunctionLikeNode, ModuleNode } from "./moduleNode.tschema";
 import { isModuleImportNode, isModuleExportNode, isModuleDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode } from "./moduleNode.variants";
 
 export const isModuleESMMember = (member: ModuleMember): member is ModuleESMMember => {
@@ -118,4 +119,12 @@ export const getModuleInitializerMember = (member: ModuleVariableMember): Module
     }
 
     return undefined
+}
+
+export const getModuleFunctionLikeMemberTypeNode = (node: ModuleFunctionLikeNode): TypeNode | undefined => {
+    return node.getReturnTypeNode();
+}
+
+export const getModuleFunctionLikeMemberParamTypeNode = (node: ModuleFunctionLikeNode): TypeNode | undefined => {
+    return node.getParameters()[0]?.getTypeNode();
 }
