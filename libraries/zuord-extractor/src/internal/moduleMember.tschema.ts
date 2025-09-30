@@ -60,6 +60,10 @@ export interface ModuleVariableMember extends ModuleVariantMember {
     initializer?: ModuleInitializerMember;
 }
 
+export interface ModuleVariableFunctionMember extends ModuleVariableMember {
+    initializer?: ModuleFunctionAltMember;
+}
+
 export interface ModuleFunctionMember extends ModuleVariantMember, ModuleFunctionLikeMember {
     node: ModuleFunctionNode;
     kind: ModuleMemberKind.Function;
