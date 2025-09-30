@@ -129,3 +129,9 @@ export interface ModuleFunctionAltMember extends ModuleFunctionLikeMember {
     node: ModuleFunctionAltNode;
     kind: ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
+
+//
+
+export type ModuleFunctionalMember =
+    | ModuleFunctionMember
+    | ModuleVariableFunctionMember;
