@@ -1,8 +1,8 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleInitializerNode } from "./moduleNode.tschema";
+import { ModuleKnownNode, ModuleSchemaNode, ModuleTypeNode, ModuleInterfaceNode, ModuleEnumNode, ModuleVariantNode, ModuleFunctionNode, ModuleVariableNode, ModuleDiscardedSchemaNode, ModuleDiscardedVariantNode, ModuleImportNode, ModuleExportNode, ModuleExportDefaultNode, ModuleESMNode, ModuleFunctionAltNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleDiscardedNode, ModuleExportLikeNode, ModuleDefinitionLikeNode, ModuleInitializerNode } from "./moduleNode.tschema";
 
-export const isModuleNode = (node: Node): node is ModuleNode => {
+export const isModuleNode = (node: Node): node is ModuleKnownNode => {
     return isModuleESMNode(node) || isModuleSchemaNode(node) || isModuleVariantNode(node);
 }
 

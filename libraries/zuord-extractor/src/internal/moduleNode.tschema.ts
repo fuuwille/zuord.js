@@ -1,11 +1,6 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node, ArrowFunction, FunctionExpression, ClassDeclaration } from "ts-morph";
 
-export type ModuleNode =
-    | ModuleESMNode
-    | ModuleSchemaNode
-    | ModuleVariantNode;
-
-export type ModuleUnknownNode = Node;
+export type ModuleNode = Node;
 
 export type ModuleESMNode = 
     | ModuleImportNode
@@ -46,6 +41,11 @@ export type ModuleArrowFunctionNode = ArrowFunction;
 export type ModuleFunctionExpressionNode = FunctionExpression;
 
 //
+
+export type ModuleKnownNode =
+    | ModuleESMNode
+    | ModuleSchemaNode
+    | ModuleVariantNode;
 
 export type ModuleExportLikeNode = 
     | ModuleExportNode
