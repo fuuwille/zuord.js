@@ -1,48 +1,18 @@
-import { Identifier } from "ts-morph";
-import { ModuleEnumMember, ModuleExportDefaultMember, ModuleExportMember, ModuleFunctionMember, ModuleImportMember, ModuleInterfaceMember, ModuleMember, ModuleTypeMember, ModuleVariableMember } from "./moduleMember.tschema";
-import { ModuleEnumNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleTypeNode, ModuleVariableNode } from "./moduleNode.tschema";
-import { isModuleSchemaLikeNode } from "./moduleNode.variants";
+import { ModuleMember, ModuleSchemaMember, ModuleTypeMember, ModuleMemberKind, ModuleInterfaceMember, ModuleEnumMember } from "./moduleMember.tschema";
 
-export const createModuleImportMember = (node: ModuleImportNode): ModuleImportMember => {
-    return new ModuleImportMember(node);
+
+export const isModuleSchemaMember = (member: ModuleMember): member is ModuleSchemaMember => {
+    return isModuleTypeMember(member) || isModuleInterfaceMember(member) || isModuleEnumMember(member);
 }
 
-export const createModuleExportMember = (node: ModuleExportNode): ModuleExportMember => {
-    return new ModuleExportMember(node);
+export const isModuleTypeMember = (member: ModuleMember): member is ModuleTypeMember => {
+    return member.kind === ModuleMemberKind.Type;
 }
 
-export const createModuleExportDefaultMember = (node: ModuleExportDefaultNode): ModuleExportDefaultMember => {
-    return new ModuleExportDefaultMember(node);
+export const isModuleInterfaceMember = (member: ModuleMember): member is ModuleInterfaceMember => {
+    return member.kind === ModuleMemberKind.Interface;
 }
 
-export const createModuleTypeMember = (node: ModuleTypeNode): ModuleTypeMember => {
-    return new ModuleTypeMember(node);
-}
-
-export const createModuleInterfaceMember = (node: ModuleInterfaceNode): ModuleInterfaceMember => {
-    return new ModuleInterfaceMember(node);
-}
-
-export const createModuleEnumMember = (node: ModuleEnumNode): ModuleEnumMember => {
-    return new ModuleEnumMember(node);
-}
-
-export const createModuleVariableMember = (node: ModuleVariableNode): ModuleVariableMember => {
-    return new ModuleVariableMember(node);
-}
-
-export const createModuleFunctionMember = (node: ModuleFunctionNode): ModuleFunctionMember => {
-    return new ModuleFunctionMember(node);
-}
-
-//
-
-export const getModuleMemberNameNode = (member: ModuleMember): Identifier | null => {
-    if(isModuleSchemaLikeNode(member.node)) {
-        const nameNode = member.node.getNameNode();
-
-        return nameNode ?? null;
-    }
-
-    return null;
+export const isModuleEnumMember = (member: ModuleMember): member is ModuleEnumMember => {
+    return member.kind === ModuleMemberKind.Enum;
 }
