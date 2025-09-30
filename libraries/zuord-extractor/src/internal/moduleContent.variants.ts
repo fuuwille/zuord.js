@@ -78,3 +78,9 @@ export const updateModuleContentName = (content: ModuleContent) : void => {
         content.name = getModuleContentName(content);
     }
 };
+
+export const updateModuleFunctionalContentReturnSchemaName = (content: ModuleFunctionalContent) : void => {
+    if(content.returnSchemaName == undefined) {
+        content.returnSchemaName = getModuleFunctionalContentReturnType(content);
+    }
+};
