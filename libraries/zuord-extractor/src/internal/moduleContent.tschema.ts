@@ -1,5 +1,5 @@
 import { Module } from "./module.tschema";
-import { ModuleDiagnostic } from "./moduleDiagnostic.tschema";
+import { Base } from "./moduleDiagnostic.tschema";
 import { ModuleDefinitionLikeMember, ModuleFunctionalMember, ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 
 export interface ModuleContent {
@@ -7,7 +7,7 @@ export interface ModuleContent {
     member: ModuleDefinitionLikeMember;
     kind: ModuleContentKind;
     name?: string | null;
-    diagnostics?: ModuleDiagnostic[];
+    diagnostics?: Base[];
 }
 
 export interface ModuleSchemaContent extends ModuleContent {

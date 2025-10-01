@@ -1,12 +1,12 @@
 import { ModuleNode } from "./moduleNode.tschema"
 
-export interface ModuleDiagnostic {
+export interface Base {
     node: ModuleNode;
     message: string;
-    level: ModuleDiagnosticLevel;
+    level: Level;
 }
 
-export enum ModuleDiagnosticLevel {
+export enum Level {
     Info = "info",
     Warning = "warning",
     Error = "error"
@@ -14,14 +14,14 @@ export enum ModuleDiagnosticLevel {
 
 //
 
-export interface ModuleInfoDiagnostic extends ModuleDiagnostic {
-    level: ModuleDiagnosticLevel.Info;
+export interface Info extends Base {
+    level: Level.Info;
 }
 
-export interface ModuleWarningDiagnostic extends ModuleDiagnostic {
-    level: ModuleDiagnosticLevel.Warning;
+export interface Warning extends Base {
+    level: Level.Warning;
 }
 
-export interface ModuleErrorDiagnostic extends ModuleDiagnostic {
-    level: ModuleDiagnosticLevel.Error;
+export interface Error extends Base {
+    level: Level.Error;
 }
