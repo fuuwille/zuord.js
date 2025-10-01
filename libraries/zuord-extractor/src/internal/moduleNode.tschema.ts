@@ -53,6 +53,7 @@ export type VariantLikeNode =
     | VariableNode;
 
 export type InitializerLikeNode = 
+    | ValueNode
     | ArrowFunctionNode
     | FunctionExpressionNode;
 
