@@ -1,12 +1,14 @@
 import vscode from "vscode";
-import { Node } from "ts-morph";
+import { Node, ts } from "ts-morph";
 
-export function nodeToRange(node: Node): vscode.Range {
-    const start = node.getStartLineNumber() - 1; // VSCode 0 tabanlı
-    const startChar = node.getStart() - node.getPos(); // veya node.getStartLinePos()
-    const end = node.getEndLineNumber() - 1;
-    const endChar = node.getEnd() - node.getStart(); // approximate
-    return new vscode.Range(start, startChar, end, endChar);
+export function nodeToRange(node: Node, document: vscode.TextDocument): vscode.Range {
+    const startOffset = node.getStart();
+    const endOffset = node.getEnd();
+
+    const startPos = document.positionAt(startOffset);
+    const endPos = document.positionAt(endOffset);
+
+    return new vscode.Range(startPos, endPos);
 }
 
 export function getKind(name: string): string | undefined {
