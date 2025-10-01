@@ -46,7 +46,7 @@ export const getIdentifierChild = (node: Node | undefined): Identifier | undefin
     return node.getFirstChild(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
 }
 
-export const getTypeName = (node?: Node): string | undefined => {
+export const getTypeText = (node?: Node): string | undefined => {
 
     var typeRef;
     if(isTypeReferenceNode(node)) {
@@ -59,4 +59,18 @@ export const getTypeName = (node?: Node): string | undefined => {
     const identifier = getIdentifierChild(typeRef);
 
     return identifier?.getText();
+}
+
+export const getTypeName = (node: Node | undefined, body: ModuleFunctionLikeNode): string | undefined => {
+    var name = getTypeText(node);
+
+    if(name) {
+        const typeParameter = body.getTypeParameter(name);
+
+        if(typeParameter) {
+            name = getTypeText(typeParameter);
+        }
+    }
+
+    return name;
 }

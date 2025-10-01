@@ -54,18 +54,7 @@ export const getModuleFunctionalContentReturnSchemaName = (content: ModuleFuncti
     if(member) {
         updateModuleFunctionLikeMemberReturnTypeNode(member);
         const typeNode = member.returnTypeNode;
-
-        var name = getTypeName(typeNode);
-
-        if(name) {
-            const typeParameter = member.node.getTypeParameter(name);
-
-            if(typeParameter) {
-                name = getTypeName(typeParameter);
-            }
-        }
-
-        return name;
+        return getTypeName(typeNode, member.node);
     }
 
     return undefined;
@@ -77,18 +66,7 @@ export const getModuleFunctionalContentParamSchemaName = (content: ModuleFunctio
     if(member) {
         updateModuleFunctionLikeMemberParamTypeNode(member);
         const typeNode = member.paramTypeNode;
-
-        var name = getTypeName(typeNode);
-
-        if(name) {
-            const typeParameter = member.node.getTypeParameter(name);
-
-            if(typeParameter) {
-                name = getTypeName(typeParameter);
-            }
-        }
-
-        return name;
+        return getTypeName(typeNode, member.node);
     }
 }
 
