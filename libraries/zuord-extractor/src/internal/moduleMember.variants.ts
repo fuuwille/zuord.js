@@ -29,15 +29,15 @@ export const isESMMember = (member: ModuleMember.BaseMember): member is ModuleMe
 }
 
 export const isImportMember = (member: ModuleMember.BaseMember): member is ModuleMember.ImportMember => {
-    return member.kind === "import";
+    return member.kind === importKind;
 }
 
 export const isExportMember = (member: ModuleMember.BaseMember): member is ModuleMember.ExportMember => {
-    return member.kind === "export";
+    return member.kind === exportKind;
 }
 
 export const isExportDefaultMember = (member: ModuleMember.BaseMember): member is ModuleMember.ExportDefaultMember => {
-    return member.kind === "exportDefault";
+    return member.kind === exportDefaultKind;
 }
 
 export const isSchemaMember = (member: ModuleMember.BaseMember): member is ModuleMember.SchemaMember => {
@@ -45,11 +45,11 @@ export const isSchemaMember = (member: ModuleMember.BaseMember): member is Modul
 }
 
 export const isTypeMember = (member: ModuleMember.BaseMember): member is ModuleMember.TypeMember => {
-    return member.kind === "type";
+    return member.kind === typeKind;
 }
 
 export const isInterfaceMember = (member: ModuleMember.BaseMember): member is ModuleMember.InterfaceMember => {
-    return member.kind === "interface";
+    return member.kind === interfaceKind;
 }
 
 export const isVariantMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariantMember => {
@@ -57,11 +57,11 @@ export const isVariantMember = (member: ModuleMember.BaseMember): member is Modu
 }
 
 export const isVariableMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariableMember => {
-    return member.kind === "variable";
+    return member.kind === variableKind;
 }
 
 export const isFunctionMember = (member: ModuleMember.BaseMember): member is ModuleMember.FunctionMember => {
-    return member.kind === "function";
+    return member.kind === functionKind;
 }
 
 export const isInitializerMember = (member: ModuleMember.BaseMember): member is ModuleMember.InitializerMember => {
@@ -69,11 +69,11 @@ export const isInitializerMember = (member: ModuleMember.BaseMember): member is 
 }
 
 export const isArrowFunctionMember = (member: ModuleMember.BaseMember): member is ModuleMember.ArrowFunctionMember => {
-    return member.kind === "arrowFunction";
+    return member.kind === arrowFunctionKind;
 }
 
 export const isFunctionExpressionMember = (member: ModuleMember.BaseMember): member is ModuleMember.FunctionExpressionMember => {
-    return member.kind === "functionExpression";
+    return member.kind === functionExpressionKind;
 }
 
 //
@@ -124,39 +124,39 @@ export const createMember = <TMember extends ModuleMember.BaseMember>(
 
 export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
     if (moduleNode.isImportNode(node)) {
-        return "import";
+        return importKind;
     }
 
     if (moduleNode.isExportNode(node)) {
-        return "export";
+        return exportKind;
     }
 
     if (moduleNode.isExportDefaultNode(node)) {
-        return "exportDefault";
+        return exportDefaultKind;
     }
 
     if (moduleNode.isTypeNode(node)) {
-        return "type";
+        return typeKind;
     }
 
     if (moduleNode.isInterfaceNode(node)) {
-        return "interface";
+        return interfaceKind;
     }
 
     if (moduleNode.isVariableNode(node)) {
-        return "variable";
+        return variableKind;
     }
 
     if (moduleNode.isFunctionNode(node)) {
-        return "function";
+        return functionKind;
     }
 
     if (moduleNode.isArrowFunctionNode(node)) {
-        return "arrowFunction";
+        return arrowFunctionKind;
     }
 
     if (moduleNode.isFunctionExpressionNode(node)) {
-        return "functionExpression";
+        return functionExpressionKind;
     }
 
     return "unknown";
