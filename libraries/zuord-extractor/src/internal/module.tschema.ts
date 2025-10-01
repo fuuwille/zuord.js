@@ -1,10 +1,10 @@
-import { SchemaFile, VariantsFile } from "./moduleFile.tschema";
+import { ModuleFile } from "./moduleFile";
 import { ModuleContent } from "./moduleContent";
 
 export type Module = {
     name: string;
-    schemaFile: SchemaFile | null;
-    variantsFile: VariantsFile | null;
+    schemaFile: ModuleFile.SchemaFile | null;
+    variantsFile: ModuleFile.VariantsFile | null;
     schemaContents: ModuleContent.SchemaContent[];
     variantContents: ModuleContent.VariantContent[];
 }
