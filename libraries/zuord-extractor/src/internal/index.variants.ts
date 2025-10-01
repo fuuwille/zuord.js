@@ -1,4 +1,4 @@
 export * from "./module.variants";
-export * from "./moduleFile.variants";
-export * from "./moduleMember.variants";
-export * from "./moduleNode.variants";
+export { moduleFile } from "./moduleFile";
+export { moduleMember } from "./moduleMember";
+export { moduleNode } from "./moduleNode";

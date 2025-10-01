@@ -1,4 +1,4 @@
-export * from "./module.tschema";
-export * from "./moduleFile.tschema";
-export * from "./moduleMember.tschema";
-export * from "./moduleNode.tschema";
+export type * from "./module.tschema";
+export type { ModuleFile } from "./moduleFile";
+export type { ModuleMember } from "./moduleMember";
+export type { ModuleNode } from "./moduleNode";
