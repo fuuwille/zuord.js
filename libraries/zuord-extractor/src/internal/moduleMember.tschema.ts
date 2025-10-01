@@ -47,7 +47,7 @@ export interface FunctionMember extends VariantLikeMember, FunctionLikeMember {
 }
 
 // Initializer Members
-export interface InitializerMember extends BaseMember, KnownMember {
+export interface InitializerMember extends BaseMember, KnownLikeMember {
     node: ModuleNode.InitializerNode;
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
@@ -64,27 +64,27 @@ export interface FunctionExpressionMember extends InitializerMember, FunctionAlt
 
 //
 
-export interface KnownMember extends BaseMember {
+export interface KnownLikeMember extends BaseMember {
     node: ModuleNode.KnownNode;
 }
 
-export interface ESMLikeMember extends BaseMember, KnownMember {
+export interface ESMLikeMember extends BaseMember, KnownLikeMember {
     node: ModuleNode.ESMNode;
     kind: ImportKind | ExportKind | ExportDefaultKind;
 }
 
-export interface DefinitionLikeMember extends BaseMember, KnownMember {
+export interface DefinitionLikeMember extends BaseMember, KnownLikeMember {
     node: ModuleNode.DefinitionLikeNode;
     kind: TypeKind | InterfaceKind | VariableKind | FunctionKind;
     nameNode?: BindingName | null;
 }
 
-export interface SchemaLikeMember extends BaseMember, KnownMember, DefinitionLikeMember {
+export interface SchemaLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.SchemaNode;
     kind: TypeKind | InterfaceKind;
 }
 
-export interface VariantLikeMember extends BaseMember, KnownMember, DefinitionLikeMember {
+export interface VariantLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.VariantNode;
     kind: VariableKind | FunctionKind;
 }

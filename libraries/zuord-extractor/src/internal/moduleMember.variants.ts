@@ -70,7 +70,7 @@ export const isFunctionExpressionMember = (member: ModuleMember.BaseMember): mem
 
 //
 
-export const isKnownMember = (member: ModuleMember.BaseMember): member is ModuleMember.KnownMember => {
+export const isKnownLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.KnownLikeMember => {
     return isESMLikeMember(member) || isSchemaLikeMember(member) || isVariantLikeMember(member);
 }
 
