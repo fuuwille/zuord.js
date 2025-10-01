@@ -1,7 +1,7 @@
 import { Module } from "./module.tschema";
 import { ModuleContent, ModuleContentKind, ModuleFunctionalContent, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
-import { getModuleFunctionLikeMember, isModuleFunctionalMember, updateModuleDefinitionLikeMemberNameNode, updateModuleFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
+import { getModuleFunctionLikeMember, isModuleFunctionalMember, updateModuleDefinitionLikeMemberNameNode, updateModuleFunctionLikeMemberParamTypeNode, updateModuleFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
 import { getIdentifierChild, getTypeName, getTypeReferenceChild, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
 
 export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
@@ -69,6 +69,27 @@ export const getModuleFunctionalContentReturnSchemaName = (content: ModuleFuncti
     }
 
     return undefined;
+}
+
+export const getModuleFunctionalContentParamSchemaName = (content: ModuleFunctionalContent) : string | undefined => {
+    const member = getModuleFunctionLikeMember(content.member);
+
+    if(member) {
+        updateModuleFunctionLikeMemberParamTypeNode(member);
+        const typeNode = member.paramTypeNode;
+
+        var name = getTypeName(typeNode);
+
+        if(name) {
+            const typeParameter = member.node.getTypeParameter(name);
+
+            if(typeParameter) {
+                name = getTypeName(typeParameter);
+            }
+        }
+
+        return name;
+    }
 }
 
 export const getModuleVariantContentSchema = (content: ModuleVariantContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
