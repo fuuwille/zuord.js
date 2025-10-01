@@ -50,10 +50,7 @@ export const updateModule = (module: Module): void => {
                 if(!returnNode) {
                     variantContent.diagnostics ??= [];
                     variantContent.diagnostics.push(
-                        moduleDiagnostic.error(
-                            variantContent.member.nameNode!,
-                            "Functional member has no return type",
-                        )
+                        moduleDiagnostic.noReturnType(variantContent.member.nameNode!)
                     );
                 }
             }
