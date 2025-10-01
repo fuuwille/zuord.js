@@ -1,6 +1,7 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleNode } from "./moduleNode";
+import { valueSyntaxKind } from "./~valueSyntax";
 
 export const isImportNode = (node: Node): node is ModuleNode.ImportNode => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
@@ -28,6 +29,10 @@ export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
 
 export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
+}
+
+export const isValueNode = (node: Node): node is ModuleNode.ValueNode => {
+    return node.getKind() === valueSyntaxKind;
 }
 
 export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
