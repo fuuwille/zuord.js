@@ -69,7 +69,7 @@ export const isVariantLikeMember = (member: ModuleMember.Member): member is Modu
 }
 
 export const isInitializerLikeMember = (member: ModuleMember.Member): member is ModuleMember.InitializerLikeMember => {
-    return isArrowFunctionMember(member) || isFunctionExpressionMember(member);
+    return isArrowFunctionMember(member) || isFunctionExpressionMember(member) || isValueMember(member);
 }
 
 export const isVariableFunctionMember = (member: ModuleMember.Member): member is ModuleMember.VariableFunctionMember => {
