@@ -27,21 +27,24 @@ export const updateModule = (module: Module) => {
             const variantContent = createModuleVariantContent(module, member);
             updateModuleContentName(variantContent);
 
-            if(isModuleFunctionalContent(variantContent)) {
-                updateModuleFunctionalContentReturnSchemaName(variantContent);
-            }
-
             module.variantContents.push(variantContent);
-        }
-    }
-
-    if(module.schemaContents.length > 0) {
-        for(const schemaContent of module.schemaContents) {
         }
     }
 
     if(module.variantContents.length > 0) {
         for(const variantContent of module.variantContents) {
+            if(isModuleFunctionalContent(variantContent)) {
+                updateModuleFunctionalContentReturnSchemaName(variantContent);
+
+                const schema = module.schemaContents.find(s => s.name === variantContent.returnSchemaName);
+
+                if(schema) {
+                    variantContent.schema = schema;
+
+                    schema.variants ??= [];
+                    schema.variants.push(variantContent);
+                }
+            }
         }
     }
 };
