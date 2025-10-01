@@ -101,3 +101,27 @@ export const isDiscardedSchemaNode = (node: Node): node is ModuleNode.DiscardedS
 export const isDiscardedVariantNode = (node: Node): node is ModuleNode.DiscardedVariantNode => {
     return isSchemaLikeNode(node);
 }
+
+//
+
+export const importKind = SyntaxKind.ImportDeclaration;
+
+export const exportKind = SyntaxKind.ExportDeclaration;
+
+export const exportDefaultKind = SyntaxKind.ExportAssignment;
+
+export const typeKind = SyntaxKind.TypeAliasDeclaration;
+
+export const interfaceKind = SyntaxKind.InterfaceDeclaration;
+
+export const enumKind = SyntaxKind.EnumDeclaration;
+
+export const variableKind = SyntaxKind.VariableStatement;
+
+export const valueKind = valueSyntaxKind;
+
+export const functionKind = SyntaxKind.FunctionDeclaration;
+
+export const arrowFunctionKind = SyntaxKind.ArrowFunction;
+
+export const functionExpressionKind = SyntaxKind.FunctionExpression;
