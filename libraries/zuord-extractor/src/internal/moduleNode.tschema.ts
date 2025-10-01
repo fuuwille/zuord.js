@@ -1,4 +1,4 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, TrueLiteral } from "ts-morph";
+import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, TrueLiteral, SyntaxKind } from "ts-morph";
 
 export type ImportNode = ImportDeclaration;
 
@@ -75,3 +75,27 @@ export type DiscardedSchemaNode =
 
 export type DiscardedVariantNode =
     | SchemaLikeNode;
+
+
+//
+
+
+export type ImportKind = SyntaxKind.ImportDeclaration;
+
+export type ExportKind = SyntaxKind.ExportDeclaration;
+
+export type ExportDefaultKind = SyntaxKind.ExportAssignment;
+
+export type TypeKind = SyntaxKind.TypeAliasDeclaration;
+
+export type InterfaceKind = SyntaxKind.InterfaceDeclaration;
+
+export type EnumKind = SyntaxKind.EnumDeclaration;
+
+export type VariableKind = SyntaxKind.VariableStatement;
+
+export type FunctionKind = SyntaxKind.FunctionDeclaration;
+
+export type ArrowFunctionKind = SyntaxKind.ArrowFunction;
+
+export type FunctionExpressionKind = SyntaxKind.FunctionExpression;
