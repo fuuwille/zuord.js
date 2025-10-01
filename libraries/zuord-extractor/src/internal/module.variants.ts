@@ -5,7 +5,7 @@ import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariants
 import { createModuleSchemaContent, createModuleVariantContent, getModuleVariantContentSchema, isModuleFunctionalContent, updateModuleContentName } from "./moduleContent.variants";
 import { getModuleFunctionLikeMember, isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
-import { createModuleErrorDiagnostic } from "./moduleDiagnostic.variants";
+import { moduleDiagnostic } from "./moduleDiagnostic";
 
 export const updateModule = (module: Module): void => {
     const schemaMembers = module.schemaFile?.members;
@@ -51,7 +51,7 @@ export const updateModule = (module: Module): void => {
                 if(!returnNode) {
                     variantContent.diagnostics ??= [];
                     variantContent.diagnostics.push(
-                        createModuleErrorDiagnostic(
+                        moduleDiagnostic.error(
                             variantContent.member.nameNode!,
                             "Functional member has no return type",
                         )
