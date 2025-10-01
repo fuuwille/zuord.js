@@ -104,24 +104,24 @@ export const isDiscardedVariantNode = (node: Node): node is ModuleNode.Discarded
 
 //
 
-export const importKind = SyntaxKind.ImportDeclaration;
+export const importKind: ModuleNode.ImportKind = SyntaxKind.ImportDeclaration;
 
-export const exportKind = SyntaxKind.ExportDeclaration;
+export const exportKind: ModuleNode.ExportKind = SyntaxKind.ExportDeclaration;
 
-export const exportDefaultKind = SyntaxKind.ExportAssignment;
+export const exportDefaultKind: ModuleNode.ExportDefaultKind = SyntaxKind.ExportAssignment;
 
-export const typeKind = SyntaxKind.TypeAliasDeclaration;
+export const typeKind: ModuleNode.TypeKind = SyntaxKind.TypeAliasDeclaration;
 
-export const interfaceKind = SyntaxKind.InterfaceDeclaration;
+export const interfaceKind: ModuleNode.InterfaceKind = SyntaxKind.InterfaceDeclaration;
 
-export const enumKind = SyntaxKind.EnumDeclaration;
+export const enumKind: ModuleNode.EnumKind = SyntaxKind.EnumDeclaration;
 
-export const variableKind = SyntaxKind.VariableStatement;
+export const variableKind: ModuleNode.VariableKind = SyntaxKind.VariableStatement;
 
-export const valueKind = valueSyntaxKind;
+export const valueKind: ModuleNode.ValueKind = valueSyntaxKind;
 
-export const functionKind = SyntaxKind.FunctionDeclaration;
+export const functionKind: ModuleNode.FunctionKind = SyntaxKind.FunctionDeclaration;
 
-export const arrowFunctionKind = SyntaxKind.ArrowFunction;
+export const arrowFunctionKind: ModuleNode.ArrowFunctionKind = SyntaxKind.ArrowFunction;
 
-export const functionExpressionKind = SyntaxKind.FunctionExpression;
+export const functionExpressionKind: ModuleNode.FunctionExpressionKind = SyntaxKind.FunctionExpression;
