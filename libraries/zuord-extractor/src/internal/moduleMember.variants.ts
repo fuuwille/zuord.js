@@ -72,7 +72,7 @@ export const isInitializerLikeMember = (member: ModuleMember.Member): member is 
     return isArrowFunctionMember(member) || isFunctionExpressionMember(member) || isValueMember(member);
 }
 
-export const isVariableFunctionMember = (member: ModuleMember.Member): member is ModuleMember.VariableFunctionMember => {
+export const isVariableFunctionalMember = (member: ModuleMember.Member): member is ModuleMember.VariableFunctionalMember => {
     return isVariableMember(member) && !!member.initializer && isFunctionAltMember(member.initializer);
 }
 
@@ -87,7 +87,7 @@ export const isFunctionAltMember = (member: ModuleMember.Member): member is Modu
 //
 
 export  const isFunctionalMember = (member: ModuleMember.Member): member is ModuleMember.FunctionalMember => {
-    return isFunctionMember(member) || isVariableFunctionMember(member);
+    return isFunctionMember(member) || isVariableFunctionalMember(member);
 };
 
 //
@@ -191,7 +191,7 @@ export const getFunctionLikeMemberParamTypeNode = (member: ModuleMember.Function
 }
 
 export const getFunctionLikeMember = (member: ModuleMember.FunctionalMember) : ModuleMember.FunctionLikeMember | undefined => {
-    if(isVariableFunctionMember(member)) {
+    if(isVariableFunctionalMember(member)) {
         return member.initializer!;
     }
 

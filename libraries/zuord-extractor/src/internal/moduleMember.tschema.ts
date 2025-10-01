@@ -94,7 +94,7 @@ export interface InitializerLikeMember extends Member, KnownLikeMember {
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
 
-export interface VariableFunctionMember extends VariableMember {
+export interface VariableFunctionalMember extends VariableMember {
     initializer?: FunctionAltMember;
 }
 
@@ -113,7 +113,7 @@ export interface FunctionAltMember extends FunctionLikeMember {
 
 export type FunctionalMember =
     | FunctionMember
-    | VariableFunctionMember;
+    | VariableFunctionalMember;
 
 //
 
