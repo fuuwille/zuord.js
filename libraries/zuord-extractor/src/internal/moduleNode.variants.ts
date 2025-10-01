@@ -4,43 +4,43 @@ import { ModuleNode } from "./moduleNode";
 import { valueSyntaxKind } from "./~valueSyntax";
 
 export const isImportNode = (node: Node): node is ModuleNode.ImportNode => {
-    return node.getKind() === SyntaxKind.ImportDeclaration;
+    return node.getKind() === importKind;
 }
 
 export const isExportNode = (node: Node): node is ModuleNode.ExportNode => {
-    return node.getKind() === SyntaxKind.ExportDeclaration;
+    return node.getKind() === exportKind;
 }
 
 export const isExportDefaultNode = (node: Node): node is ModuleNode.ExportDefaultNode => {
-    return node.getKind() === SyntaxKind.ExportAssignment;
+    return node.getKind() === exportDefaultKind;
 }
 
 export const isTypeNode = (node: Node): node is ModuleNode.TypeNode => {
-    return node.getKind() === SyntaxKind.TypeAliasDeclaration;
+    return node.getKind() === typeKind;
 }
 
 export const isInterfaceNode = (node: Node): node is ModuleNode.InterfaceNode => {
-    return node.getKind() === SyntaxKind.InterfaceDeclaration;
+    return node.getKind() === interfaceKind;
 }
 
 export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
-    return node.getKind() === SyntaxKind.VariableStatement;
+    return node.getKind() === variableKind;
 }
 
 export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
-    return node.getKind() === SyntaxKind.FunctionDeclaration;
+    return node.getKind() === functionKind;
 }
 
 export const isValueNode = (node: Node): node is ModuleNode.ValueNode => {
-    return node.getKind() === valueSyntaxKind;
+    return node.getKind() === valueKind;
 }
 
 export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
-    return node.getKind() === SyntaxKind.ArrowFunction;
+    return node.getKind() === arrowFunctionKind;
 }
 
 export const isFunctionExpressionNode = (node: Node): node is ModuleNode.FunctionExpressionNode => {
-    return node.getKind() === SyntaxKind.FunctionExpression;
+    return node.getKind() === functionExpressionKind;
 }
 
 //
