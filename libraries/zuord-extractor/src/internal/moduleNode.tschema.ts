@@ -15,9 +15,9 @@ export type EnumNode = EnumDeclaration;
 
 export type VariableNode = VariableStatement;
 
-export type ValueNode = ValueSyntaxNode;
-
 export type FunctionNode = FunctionDeclaration;
+
+export type ValueNode = ValueSyntaxNode;
 
 export type ArrowFunctionNode = ArrowFunction;
 
