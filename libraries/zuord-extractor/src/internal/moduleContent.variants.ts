@@ -65,6 +65,20 @@ export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalCo
 
         const identifier = getIdentifierChild(typeRef);
 
+        const name = identifier?.getText();
+
+        if(name) {
+            const typeParameter = member.node.getTypeParameter(name);
+
+            if(typeParameter) {
+                const typeRef = getTypeReferenceChild(typeParameter);
+
+                const identifier = getIdentifierChild(typeRef);
+
+                return identifier?.getText();
+            }
+        }
+
         return identifier?.getText();
     }
 
