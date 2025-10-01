@@ -49,7 +49,7 @@ export const getModuleContentName = (content: ModuleContent) : string | undefine
     return content.member.nameNode?.getText();
 }
 
-export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalContent) : string | undefined => {
+export const getModuleFunctionalContentReturnSchemaName = (content: ModuleFunctionalContent) : string | undefined => {
     const member = getModuleFunctionLikeMember(content.member);
     if(member) {
         updateModuleFunctionLikeMemberReturnTypeNode(member);
@@ -103,6 +103,6 @@ export const updateModuleContentName = (content: ModuleContent) : void => {
 
 export const updateModuleFunctionalContentReturnSchemaName = (content: ModuleFunctionalContent) : void => {
     if(content.returnSchemaName == undefined) {
-        content.returnSchemaName = getModuleFunctionalContentReturnType(content);
+        content.returnSchemaName = getModuleFunctionalContentReturnSchemaName(content);
     }
 };
