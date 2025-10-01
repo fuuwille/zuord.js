@@ -1,6 +1,29 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
 
+export type UnknownKind = "unknown";
+
+export type ImportKind = "import";
+
+export type ExportKind = "export";
+
+export type ExportDefaultKind = "exportDefault";
+
+export type TypeKind = "type";
+
+export type InterfaceKind = "interface";
+
+export type VariableKind = "variable";
+
+export type FunctionKind = "function";
+
+export type ValueKind = "value";
+
+export type ArrowFunctionKind = "arrowFunction";
+
+export type FunctionExpressionKind = "functionExpression";
+
+//
 
 export interface BaseMember {
     node: Node;
@@ -10,114 +33,92 @@ export interface BaseMember {
 // ESM Members
 export interface ESMMember extends BaseMember, KnownMember {
     node: ModuleNode.ESMNode;
-    kind: MemberImportKind | MemberExportKind | MemberExportDefaultKind;
+    kind: ImportKind | ExportKind | ExportDefaultKind;
 }
 
 export interface ImportMember extends ESMMember {
     node: ModuleNode.ImportNode;
-    kind: MemberImportKind;
+    kind: ImportKind;
 }
 
 export interface ExportMember extends ESMMember {
     node: ModuleNode.ExportNode;
-    kind: MemberExportKind;
+    kind: ExportKind;
 }
 
 export interface ExportDefaultMember extends ESMMember {
     node: ModuleNode.ExportDefaultNode;
-    kind: MemberExportDefaultKind;
+    kind: ExportDefaultKind;
 }
 
 // Schema Members
 export interface SchemaMember extends BaseMember, KnownMember, DefinitionLikeMember {
     node: ModuleNode.SchemaNode;
-    kind: MemberTypeKind | MemberInterfaceKind;
+    kind: TypeKind | InterfaceKind;
 }
 
 export interface TypeMember extends SchemaMember {
     node: ModuleNode.TypeNode;
-    kind: MemberTypeKind;
+    kind: TypeKind;
 }
 
 export interface InterfaceMember extends SchemaMember {
     node: ModuleNode.InterfaceNode;
-    kind: MemberInterfaceKind;
+    kind: InterfaceKind;
 }
 
 // Variant Members
 export interface VariantMember extends BaseMember, KnownMember, DefinitionLikeMember {
     node: ModuleNode.VariantNode;
-    kind: MemberVariableKind | MemberFunctionKind;
+    kind: VariableKind | FunctionKind;
 }
 
 export interface VariableMember extends VariantMember {
     node: ModuleNode.VariableNode;
-    kind: MemberVariableKind;
+    kind: VariableKind;
     initializer?: InitializerMember;
 }
 
 export interface FunctionMember extends VariantMember, FunctionLikeMember {
     node: ModuleNode.FunctionNode;
-    kind: MemberFunctionKind;
+    kind: FunctionKind;
 }
 
 // Initializer Members
 export interface InitializerMember extends BaseMember, KnownMember {
     node: ModuleNode.InitializerNode;
-    kind: MemberValueKind | MemberArrowFunctionKind | MemberFunctionExpressionKind;
+    kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
 
 export interface ArrowFunctionMember extends InitializerMember, FunctionAltMember {
     node: ModuleNode.ArrowFunctionNode;
-    kind: MemberArrowFunctionKind;
+    kind: ArrowFunctionKind;
 }
 
 export interface FunctionExpressionMember extends InitializerMember, FunctionAltMember {
     node: ModuleNode.FunctionExpressionNode;
-    kind: MemberFunctionExpressionKind;
+    kind: FunctionExpressionKind;
 }
 
 //
 
 export type MemberKind =
-    | MemberUnknownKind
-    | MemberImportKind
-    | MemberExportKind
-    | MemberExportDefaultKind
-    | MemberTypeKind
-    | MemberInterfaceKind
-    | MemberVariableKind
-    | MemberFunctionKind
-    | MemberValueKind
-    | MemberArrowFunctionKind
-    | MemberFunctionExpressionKind;
-
-export type MemberUnknownKind = "unknown";
-
-export type MemberImportKind = "import";
-
-export type MemberExportKind = "export";
-
-export type MemberExportDefaultKind = "exportDefault";
-
-export type MemberTypeKind = "type";
-
-export type MemberInterfaceKind = "interface";
-
-export type MemberVariableKind = "variable";
-
-export type MemberFunctionKind = "function";
-
-export type MemberValueKind = "value";
-
-export type MemberArrowFunctionKind = "arrowFunction";
-
-export type MemberFunctionExpressionKind = "functionExpression";
+    | UnknownKind
+    | ImportKind
+    | ExportKind
+    | ExportDefaultKind
+    | TypeKind
+    | InterfaceKind
+    | VariableKind
+    | FunctionKind
+    | ValueKind
+    | ArrowFunctionKind
+    | FunctionExpressionKind;
 
 //
 
 export interface UnknownMember extends BaseMember {
-    kind: MemberUnknownKind;
+    kind: UnknownKind;
 }
 
 export interface KnownMember extends BaseMember {
@@ -126,7 +127,7 @@ export interface KnownMember extends BaseMember {
 
 export interface DefinitionLikeMember extends BaseMember, KnownMember {
     node: ModuleNode.DefinitionLikeNode;
-    kind: MemberTypeKind | MemberInterfaceKind | MemberVariableKind | MemberFunctionKind;
+    kind: TypeKind | InterfaceKind | VariableKind | FunctionKind;
     nameNode?: BindingName | null;
 }
 
@@ -142,7 +143,7 @@ export interface FunctionLikeMember extends BaseMember {
 
 export interface FunctionAltMember extends FunctionLikeMember {
     node: ModuleNode.FunctionAltNode;
-    kind: MemberArrowFunctionKind | MemberFunctionExpressionKind;
+    kind: ArrowFunctionKind | FunctionExpressionKind;
 }
 
 //

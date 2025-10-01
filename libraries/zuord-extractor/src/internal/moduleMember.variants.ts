@@ -2,25 +2,25 @@ import { BindingName, Node, TypeNode } from "ts-morph";
 import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 
-export const unknownKind: ModuleMember.MemberUnknownKind = "unknown";
+export const unknownKind: ModuleMember.UnknownKind = "unknown";
 
-export const importKind: ModuleMember.MemberImportKind = "import";
+export const importKind: ModuleMember.ImportKind = "import";
 
-export const exportKind: ModuleMember.MemberExportKind = "export";
+export const exportKind: ModuleMember.ExportKind = "export";
 
-export const exportDefaultKind: ModuleMember.MemberExportDefaultKind = "exportDefault";
+export const exportDefaultKind: ModuleMember.ExportDefaultKind = "exportDefault";
 
-export const typeKind: ModuleMember.MemberTypeKind = "type";
+export const typeKind: ModuleMember.TypeKind = "type";
 
-export const interfaceKind: ModuleMember.MemberInterfaceKind = "interface";
+export const interfaceKind: ModuleMember.InterfaceKind = "interface";
 
-export const variableKind: ModuleMember.MemberVariableKind = "variable";
+export const variableKind: ModuleMember.VariableKind = "variable";
 
-export const functionKind: ModuleMember.MemberFunctionKind = "function";
+export const functionKind: ModuleMember.FunctionKind = "function";
 
-export const arrowFunctionKind: ModuleMember.MemberArrowFunctionKind = "arrowFunction";
+export const arrowFunctionKind: ModuleMember.ArrowFunctionKind = "arrowFunction";
 
-export const functionExpressionKind: ModuleMember.MemberFunctionExpressionKind = "functionExpression";
+export const functionExpressionKind: ModuleMember.FunctionExpressionKind = "functionExpression";
 
 //
 
