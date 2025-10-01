@@ -2,6 +2,27 @@ import { BindingName, Node, TypeNode } from "ts-morph";
 import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 
+export const unknownKind: ModuleMember.MemberUnknownKind = "unknown";
+
+export const importKind: ModuleMember.MemberImportKind = "import";
+
+export const exportKind: ModuleMember.MemberExportKind = "export";
+
+export const exportDefaultKind: ModuleMember.MemberExportDefaultKind = "exportDefault";
+
+export const typeKind: ModuleMember.MemberTypeKind = "type";
+
+export const interfaceKind: ModuleMember.MemberInterfaceKind = "interface";
+
+export const variableKind: ModuleMember.MemberVariableKind = "variable";
+
+export const functionKind: ModuleMember.MemberFunctionKind = "function";
+
+export const arrowFunctionKind: ModuleMember.MemberArrowFunctionKind = "arrowFunction";
+
+export const functionExpressionKind: ModuleMember.MemberFunctionExpressionKind = "functionExpression";
+
+//
 
 export const isESMMember = (member: ModuleMember.BaseMember): member is ModuleMember.ESMMember => {
     return isExportMember(member) || isImportMember(member) || isExportDefaultMember(member);
