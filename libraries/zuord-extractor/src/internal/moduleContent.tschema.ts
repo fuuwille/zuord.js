@@ -2,34 +2,34 @@ import { Module } from "./module.tschema";
 import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
 import { DefinitionLikeMember, FunctionalMember, SchemaMember, VariantMember } from "./moduleMember.tschema";
 
-export interface ModuleContent {
+export interface BaseContent {
     module: Module;
     member: DefinitionLikeMember;
-    kind: ModuleContentKind;
+    kind: ContentKind;
     name?: string | null;
     diagnostics?: BaseDiagnostic[];
 }
 
-export interface ModuleSchemaContent extends ModuleContent {
+export interface SchemaContent extends BaseContent {
     member: SchemaMember;
-    kind: ModuleContentKind.Schema;
-    variants?: ModuleVariantContent[];
+    kind: ContentKind.Schema;
+    variants?: VariantContent[];
 }
 
-export interface ModuleVariantContent extends ModuleContent {
-    schema?: ModuleSchemaContent;
-    kind: ModuleContentKind.Variant;
+export interface VariantContent extends BaseContent {
+    schema?: SchemaContent;
+    kind: ContentKind.Variant;
     member: VariantMember;
 }
 
-export enum ModuleContentKind {
+export enum ContentKind {
     Schema = "schema",
     Variant = "variant"
 }
 
 //
 
-export interface ModuleFunctionalContent extends ModuleVariantContent {
+export interface FunctionalContent extends VariantContent {
     member: FunctionalMember;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;

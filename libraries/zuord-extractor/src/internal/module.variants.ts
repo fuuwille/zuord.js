@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { ModuleFile, moduleFile } from "./moduleFile";
-import { createModuleSchemaContent, createModuleVariantContent, getModuleVariantContentSchema, isModuleFunctionalContent, updateModuleContentName } from "./moduleContent.variants";
+import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
@@ -15,8 +15,8 @@ export const updateModule = (module: Module): void => {
 
     if(schemaMembers) {
         for(const member of schemaMembers.filter(moduleMember.isSchemaMember)) {
-            const schemaContent = createModuleSchemaContent(module, member);
-            updateModuleContentName(schemaContent);
+            const schemaContent = moduleContent.createSchemaContent(module, member);
+            moduleContent.updateContentName(schemaContent);
 
             module.schemaContents.push(schemaContent);
         }
@@ -24,8 +24,8 @@ export const updateModule = (module: Module): void => {
 
     if(variantMembers) {
         for(const member of variantMembers.filter(moduleMember.isVariantMember)) {
-            const variantContent = createModuleVariantContent(module, member);
-            updateModuleContentName(variantContent);
+            const variantContent = moduleContent.createVariantContent(module, member);
+            moduleContent.updateContentName(variantContent);
 
             module.variantContents.push(variantContent);
         }
@@ -33,7 +33,7 @@ export const updateModule = (module: Module): void => {
 
     if(module.variantContents.length > 0) {
         for(const variantContent of module.variantContents) {
-            const schema = getModuleVariantContentSchema(variantContent, module.schemaContents);
+            const schema = moduleContent.getVariantContentSchema(variantContent, module.schemaContents);
 
             if(schema) {
                 variantContent.schema = schema;
@@ -42,7 +42,7 @@ export const updateModule = (module: Module): void => {
                 schema.variants.push(variantContent);
             }
 
-            if(isModuleFunctionalContent(variantContent)) {
+            if(moduleContent.isFunctionalContent(variantContent)) {
                 const member = moduleMember.getFunctionLikeMember(variantContent.member);
 
                 const returnNode = member?.returnTypeNode;

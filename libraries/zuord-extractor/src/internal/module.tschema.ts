@@ -1,12 +1,12 @@
 import { SchemaFile, VariantsFile } from "./moduleFile.tschema";
-import { ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
+import { ModuleContent } from "./moduleContent";
 
 export type Module = {
     name: string;
     schemaFile: SchemaFile | null;
     variantsFile: VariantsFile | null;
-    schemaContents: ModuleSchemaContent[];
-    variantContents: ModuleVariantContent[];
+    schemaContents: ModuleContent.SchemaContent[];
+    variantContents: ModuleContent.VariantContent[];
 }
 
 export enum ModuleMode {
