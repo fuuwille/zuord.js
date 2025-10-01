@@ -40,7 +40,7 @@ export const isFunctionExpressionNode = (node: Node): node is ModuleNode.Functio
 
 //
 
-export const isKnownNode = (node: Node): node is ModuleNode.KnownNode => {
+export const isKnownLikeNode = (node: Node): node is ModuleNode.KnownLikeNode => {
     return isESMLikeNode(node) || isSchemaLikeNode(node) || isVariantLikeNode(node) || isInitializerLikeNode(node);
 }
 

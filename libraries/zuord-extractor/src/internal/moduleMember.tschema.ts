@@ -59,7 +59,7 @@ export interface FunctionExpressionMember extends Member, KnownLikeMember, Initi
 //
 
 export interface KnownLikeMember extends Member {
-    node: ModuleNode.KnownNode;
+    node: ModuleNode.KnownLikeNode;
 }
 
 export interface ESMLikeMember extends Member, KnownLikeMember {

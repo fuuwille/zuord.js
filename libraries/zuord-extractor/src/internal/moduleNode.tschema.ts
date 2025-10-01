@@ -25,7 +25,7 @@ export type FunctionExpressionNode = FunctionExpression;
 
 //
 
-export type KnownNode =
+export type KnownLikeNode =
     | ESMLikeNode
     | SchemaLikeNode
     | VariantLikeNode
