@@ -56,10 +56,6 @@ export const isFunctionMember = (member: ModuleMember.Member): member is ModuleM
     return member.kind === functionKind;
 }
 
-export const isInitializerMember = (member: ModuleMember.Member): member is ModuleMember.InitializerMember => {
-    return isArrowFunctionMember(member) || isFunctionExpressionMember(member);
-}
-
 export const isArrowFunctionMember = (member: ModuleMember.Member): member is ModuleMember.ArrowFunctionMember => {
     return member.kind === arrowFunctionKind;
 }
@@ -88,6 +84,10 @@ export const isSchemaLikeMember = (member: ModuleMember.Member): member is Modul
 
 export const isVariantLikeMember = (member: ModuleMember.Member): member is ModuleMember.VariantLikeMember => {
     return isVariableMember(member) || isFunctionMember(member);
+}
+
+export const isInitializerLikeMember = (member: ModuleMember.Member): member is ModuleMember.InitializerLikeMember => {
+    return isArrowFunctionMember(member) || isFunctionExpressionMember(member);
 }
 
 export const isVariableFunctionMember = (member: ModuleMember.Member): member is ModuleMember.VariableFunctionMember => {
@@ -182,7 +182,7 @@ export const getDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionL
     return null;
 }
 
-export const getVariableMemberInitializer = (member: ModuleMember.VariableMember): ModuleMember.InitializerMember | undefined => {
+export const getVariableMemberInitializer = (member: ModuleMember.VariableMember): ModuleMember.InitializerLikeMember | undefined => {
     if(!member) return undefined;
 
     const declaration = member.node.getDeclarations()[0];
@@ -192,7 +192,7 @@ export const getVariableMemberInitializer = (member: ModuleMember.VariableMember
 
         if(initializerNode) {
             if(moduleNode.isInitializerNode(initializerNode)) {
-                return createMember<ModuleMember.InitializerMember>(initializerNode);
+                return createMember<ModuleMember.InitializerLikeMember>(initializerNode);
             }
         }
     }

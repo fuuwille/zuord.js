@@ -38,7 +38,7 @@ export interface InterfaceMember extends Member, SchemaLikeMember {
 export interface VariableMember extends Member, VariantLikeMember {
     node: ModuleNode.VariableNode;
     kind: VariableKind;
-    initializer?: InitializerMember;
+    initializer?: InitializerLikeMember;
 }
 
 export interface FunctionMember extends Member, VariantLikeMember, FunctionLikeMember {
@@ -46,18 +46,12 @@ export interface FunctionMember extends Member, VariantLikeMember, FunctionLikeM
     kind: FunctionKind;
 }
 
-// Initializer Members
-export interface InitializerMember extends Member, KnownLikeMember {
-    node: ModuleNode.InitializerNode;
-    kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
-}
-
-export interface ArrowFunctionMember extends Member, InitializerMember, FunctionAltMember {
+export interface ArrowFunctionMember extends Member, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.ArrowFunctionNode;
     kind: ArrowFunctionKind;
 }
 
-export interface FunctionExpressionMember extends Member, InitializerMember, FunctionAltMember {
+export interface FunctionExpressionMember extends Member, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.FunctionExpressionNode;
     kind: FunctionExpressionKind;
 }
@@ -87,6 +81,11 @@ export interface SchemaLikeMember extends Member, KnownLikeMember, DefinitionLik
 export interface VariantLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.VariantNode;
     kind: VariableKind | FunctionKind;
+}
+
+export interface InitializerLikeMember extends Member, KnownLikeMember {
+    node: ModuleNode.InitializerNode;
+    kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
 
 export interface VariableFunctionMember extends VariableMember {
