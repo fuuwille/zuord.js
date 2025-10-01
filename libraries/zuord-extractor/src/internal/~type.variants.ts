@@ -60,7 +60,7 @@ export const isTypeReferenceNode = (node: Node | undefined): node is TypeReferen
     return !!node && node.getKind() === SyntaxKind.TypeReference;
 }
 
-export const getTypeReferenceChild = (node: TypeNode | undefined): TypeReferenceNode | undefined => {
+export const getTypeReferenceChild = (node: Node | undefined): TypeReferenceNode | undefined => {
     if (!node) return undefined;
     return node.getFirstChild(isTypeReferenceNode) as TypeReferenceNode | undefined;
 }
