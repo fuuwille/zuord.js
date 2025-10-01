@@ -28,7 +28,7 @@ export const valueSyntaxKind =
     | SyntaxKind.AwaitExpression
     | SyntaxKind.YieldExpression;
 
-export type ValueSyntaxKind =
+export type ValueSyntaxNode =
     | NumericLiteral
     | BigIntLiteral
     | StringLiteral
