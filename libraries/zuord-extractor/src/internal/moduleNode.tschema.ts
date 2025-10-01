@@ -1,4 +1,4 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node, ArrowFunction, FunctionExpression, ClassDeclaration, Expression } from "ts-morph";
+import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, TrueLiteral } from "ts-morph";
 
 export type ImportNode = ImportDeclaration;
 
@@ -14,7 +14,7 @@ export type EnumNode = EnumDeclaration;
 
 export type VariableNode = VariableStatement;
 
-export type ValueNode = Expression;
+export type ValueNode = TrueLiteral;
 
 export type FunctionNode = FunctionDeclaration;
 
