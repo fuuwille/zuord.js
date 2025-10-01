@@ -12,3 +12,9 @@ export const createModuleWarningDiagnostic = (node: ModuleNode, message: string)
 export const createModuleErrorDiagnostic = (node: ModuleNode, message: string): ModuleErrorDiagnostic => {
     return { node, message, level: ModuleDiagnosticLevel.Error };
 }
+
+//
+
+export const getModuleNoReturnTypeDiagnostic = (node: ModuleNode): ModuleErrorDiagnostic => {
+    return createModuleErrorDiagnostic(node, "Return type must be specified");
+}
