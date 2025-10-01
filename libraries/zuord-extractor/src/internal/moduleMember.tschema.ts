@@ -10,38 +10,38 @@ export interface UnknownMember extends Member {
     kind: UnknownKind;
 }
 
-export interface ImportMember extends ESMLikeMember {
+export interface ImportMember extends Member, ESMLikeMember {
     node: ModuleNode.ImportNode;
     kind: ImportKind;
 }
 
-export interface ExportMember extends ESMLikeMember {
+export interface ExportMember extends Member, ESMLikeMember {
     node: ModuleNode.ExportNode;
     kind: ExportKind;
 }
 
-export interface ExportDefaultMember extends ESMLikeMember {
+export interface ExportDefaultMember extends Member, ESMLikeMember {
     node: ModuleNode.ExportDefaultNode;
     kind: ExportDefaultKind;
 }
 
-export interface TypeMember extends SchemaLikeMember {
+export interface TypeMember extends Member, SchemaLikeMember {
     node: ModuleNode.TypeNode;
     kind: TypeKind;
 }
 
-export interface InterfaceMember extends SchemaLikeMember {
+export interface InterfaceMember extends Member, SchemaLikeMember {
     node: ModuleNode.InterfaceNode;
     kind: InterfaceKind;
 }
 
-export interface VariableMember extends VariantLikeMember {
+export interface VariableMember extends Member, VariantLikeMember {
     node: ModuleNode.VariableNode;
     kind: VariableKind;
     initializer?: InitializerMember;
 }
 
-export interface FunctionMember extends VariantLikeMember, FunctionLikeMember {
+export interface FunctionMember extends Member, VariantLikeMember, FunctionLikeMember {
     node: ModuleNode.FunctionNode;
     kind: FunctionKind;
 }
@@ -52,12 +52,12 @@ export interface InitializerMember extends Member, KnownLikeMember {
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
 
-export interface ArrowFunctionMember extends InitializerMember, FunctionAltMember {
+export interface ArrowFunctionMember extends Member, InitializerMember, FunctionAltMember {
     node: ModuleNode.ArrowFunctionNode;
     kind: ArrowFunctionKind;
 }
 
-export interface FunctionExpressionMember extends InitializerMember, FunctionAltMember {
+export interface FunctionExpressionMember extends Member, InitializerMember, FunctionAltMember {
     node: ModuleNode.FunctionExpressionNode;
     kind: FunctionExpressionKind;
 }
