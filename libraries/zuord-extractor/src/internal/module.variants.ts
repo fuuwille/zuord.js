@@ -1,10 +1,9 @@
 import { SourceFile } from "ts-morph";
 import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
-import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
+import { ModuleFile, moduleFile } from "./moduleFile";
 import { createModuleSchemaContent, createModuleVariantContent, getModuleVariantContentSchema, isModuleFunctionalContent, updateModuleContentName } from "./moduleContent.variants";
 import { getModuleFunctionLikeMember, isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
-import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
 export const updateModule = (module: Module): void => {
@@ -65,8 +64,8 @@ export const updateModule = (module: Module): void => {
 export const extractModule = (dir: string, name: string): Module => {
     const module: Module = {
         name,
-        schemaFile: extractModuleFileAtPath<ModuleSchemaFile>(dir, name, ModuleMode.Schema) ?? null,
-        variantsFile: extractModuleFileAtPath<ModuleVariantsFile>(dir, name, ModuleMode.Variants) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Schema) ?? null,
+        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };
@@ -76,11 +75,11 @@ export const extractModule = (dir: string, name: string): Module => {
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null): void => {
-    module.schemaFile = sourceFile ? extractModuleSchemaFile(sourceFile) : null;
+    module.schemaFile = sourceFile ? moduleFile.extractSchema(sourceFile) : null;
     updateModule(module);
 };
 
 export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null): void => {
-    module.variantsFile = sourceFile ? extractModuleVariantsFile(sourceFile) : null;
+    module.variantsFile = sourceFile ? moduleFile.extractVariants(sourceFile) : null;
     updateModule(module);
 };

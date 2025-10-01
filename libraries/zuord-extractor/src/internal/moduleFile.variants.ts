@@ -2,15 +2,15 @@ import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { ModuleFile, ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
+import { ModuleFile } from "./moduleFile";
 import { isModuleDiscardedNode, isModuleKnownNode } from "./moduleNode.variants";
 import { createModuleMember } from "./moduleMember.variants";
 
-export const initializeModuleFile = (
+export const initialize = (
     sourceFile: SourceFile, mode: ModuleMode
-) : ModuleFile => {
+) : ModuleFile.Base => {
 
-    const moduleFile : ModuleFile = {
+    const moduleFile : ModuleFile.Base = {
         source: sourceFile,
         mode: mode,
         members: [],
@@ -36,34 +36,34 @@ export const initializeModuleFile = (
     return moduleFile;
 };
 
-export const extractModuleFile = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile => {
+export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.Base => {
     switch(mode) {
         case ModuleMode.Schema:
-            return extractModuleSchemaFile(sourceFile);
+            return extractSchema(sourceFile);
         case ModuleMode.Variants:
-            return extractModuleVariantsFile(sourceFile);
+            return extractVariants(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${mode}`);
     }
 };
 
-export const extractModuleFileAtPath = <TFile extends ModuleFile>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
+export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return extractModuleFile(sourceFile, mode) as TFile;
+        return extract(sourceFile, mode) as TFile;
     }
 
     return undefined;
 };
 
-export const extractModuleSchemaFile = (sourceFile: SourceFile) : ModuleSchemaFile => {
-    return initializeModuleFile(sourceFile, ModuleMode.Schema) as ModuleSchemaFile;
+export const extractSchema = (sourceFile: SourceFile) : ModuleFile.Schema => {
+    return initialize(sourceFile, ModuleMode.Schema) as ModuleFile.Schema;
 };
 
-export const extractModuleVariantsFile = (sourceFile: SourceFile) : ModuleVariantsFile => {
-    return initializeModuleFile(sourceFile, ModuleMode.Variants) as ModuleVariantsFile;
+export const extractVariants = (sourceFile: SourceFile) : ModuleFile.Variants => {
+    return initialize(sourceFile, ModuleMode.Variants) as ModuleFile.Variants;
 };
