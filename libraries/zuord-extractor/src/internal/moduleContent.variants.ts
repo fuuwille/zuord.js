@@ -114,6 +114,12 @@ export const getModuleFunctionalContentReturnSchema = (content: ModuleFunctional
     return schemas.find(s => s.name === content.returnSchemaName);
 }
 
+export const getModuleFunctionalContentParamSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
+    updateModuleFunctionalContentParamSchemaName(content);
+
+    return schemas.find(s => s.name === content.paramSchemaName);
+}
+
 //
 
 export const updateModuleContentName = (content: ModuleContent) : void => {
