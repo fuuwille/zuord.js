@@ -127,3 +127,9 @@ export const updateModuleFunctionalContentReturnSchemaName = (content: ModuleFun
         content.returnSchemaName = getModuleFunctionalContentReturnSchemaName(content);
     }
 };
+
+export const updateModuleFunctionalContentParamSchemaName = (content: ModuleFunctionalContent) : void => {
+    if(content.paramSchemaName == undefined) {
+        content.paramSchemaName = getModuleFunctionalContentParamSchemaName(content);
+    }
+}
