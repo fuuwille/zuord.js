@@ -99,13 +99,8 @@ export const getModuleVariantContentSchema = (content: ModuleVariantContent, sch
 }
 
 export const getModuleFunctionalContentSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
-    var schema = getModuleFunctionalContentReturnSchema(content, schemas);
-
-    if(!schema) {
-        schema = getModuleFunctionalContentParamSchema(content, schemas);
-    }
-
-    return schema;
+    return getModuleFunctionalContentReturnSchema(content, schemas)
+        ?? getModuleFunctionalContentParamSchema(content, schemas);
 }
 
 export const getModuleFunctionalContentReturnSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
