@@ -3,8 +3,9 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { extractModuleFileAtPath, extractModuleSchemaFile, extractModuleVariantsFile } from "./moduleFile.variants";
 import { createModuleSchemaContent, createModuleVariantContent, getModuleVariantContentSchema, isModuleFunctionalContent, updateModuleContentName } from "./moduleContent.variants";
-import { isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
+import { getModuleFunctionLikeMember, isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
+import { createModuleErrorDiagnostic } from "./moduleDiagnostic.variants";
 
 export const updateModule = (module: Module) => {
     const schemaMembers = module.schemaFile?.members;
@@ -40,6 +41,22 @@ export const updateModule = (module: Module) => {
 
                 schema.variants ??= [];
                 schema.variants.push(variantContent);
+            }
+
+            if(isModuleFunctionalContent(variantContent)) {
+                const member = getModuleFunctionLikeMember(variantContent.member);
+
+                const returnNode = member?.returnTypeNode;
+
+                if(!returnNode) {
+                    variantContent.diagnostics ??= [];
+                    variantContent.diagnostics.push(
+                        createModuleErrorDiagnostic(
+                            variantContent.member.nameNode!,
+                            "Functional member has no return type",
+                        )
+                    );
+                }
             }
         }
     }
