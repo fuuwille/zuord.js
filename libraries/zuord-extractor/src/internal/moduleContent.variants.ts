@@ -71,7 +71,7 @@ export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalCo
     return undefined;
 }
 
-export const getModuleVariantContentSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
+export const getModuleVariantContentSchema = (content: ModuleVariantContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
     if(isModuleFunctionalContent(content)) {
         return getModuleFunctionalContentSchema(content, schemas);
     }
