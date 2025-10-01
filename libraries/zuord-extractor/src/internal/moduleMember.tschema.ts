@@ -72,19 +72,13 @@ export interface InterfaceMember extends SchemaLikeMember {
     kind: InterfaceKind;
 }
 
-// Variant Members
-export interface VariantMember extends BaseMember, KnownMember, DefinitionLikeMember {
-    node: ModuleNode.VariantNode;
-    kind: VariableKind | FunctionKind;
-}
-
-export interface VariableMember extends VariantMember {
+export interface VariableMember extends VariantLikeMember {
     node: ModuleNode.VariableNode;
     kind: VariableKind;
     initializer?: InitializerMember;
 }
 
-export interface FunctionMember extends VariantMember, FunctionLikeMember {
+export interface FunctionMember extends VariantLikeMember, FunctionLikeMember {
     node: ModuleNode.FunctionNode;
     kind: FunctionKind;
 }
@@ -125,6 +119,11 @@ export interface DefinitionLikeMember extends BaseMember, KnownMember {
 export interface SchemaLikeMember extends BaseMember, KnownMember, DefinitionLikeMember {
     node: ModuleNode.SchemaNode;
     kind: TypeKind | InterfaceKind;
+}
+
+export interface VariantLikeMember extends BaseMember, KnownMember, DefinitionLikeMember {
+    node: ModuleNode.VariantNode;
+    kind: VariableKind | FunctionKind;
 }
 
 export interface VariableFunctionMember extends VariableMember {

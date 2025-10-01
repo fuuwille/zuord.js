@@ -48,10 +48,6 @@ export const isInterfaceMember = (member: ModuleMember.BaseMember): member is Mo
     return member.kind === interfaceKind;
 }
 
-export const isVariantMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariantMember => {
-    return isVariableMember(member) || isFunctionMember(member);
-}
-
 export const isVariableMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariableMember => {
     return member.kind === variableKind;
 }
@@ -75,7 +71,7 @@ export const isFunctionExpressionMember = (member: ModuleMember.BaseMember): mem
 //
 
 export const isKnownMember = (member: ModuleMember.BaseMember): member is ModuleMember.KnownMember => {
-    return isESMLikeMember(member) || isSchemaLikeMember(member) || isVariantMember(member);
+    return isESMLikeMember(member) || isSchemaLikeMember(member) || isVariantLikeMember(member);
 }
 
 export const isESMLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.ESMLikeMember => {
@@ -83,11 +79,15 @@ export const isESMLikeMember = (member: ModuleMember.BaseMember): member is Modu
 }
 
 export const isDefinitionLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.DefinitionLikeMember => {
-    return isSchemaLikeMember(member) || isVariantMember(member);
+    return isSchemaLikeMember(member) || isVariantLikeMember(member);
 }
 
 export const isSchemaLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.SchemaLikeMember => {
     return isTypeMember(member) || isInterfaceMember(member);
+}
+
+export const isVariantLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariantLikeMember => {
+    return isVariableMember(member) || isFunctionMember(member);
 }
 
 export const isVariableFunctionMember = (member: ModuleMember.BaseMember): member is ModuleMember.VariableFunctionMember => {

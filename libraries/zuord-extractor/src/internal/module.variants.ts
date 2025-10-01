@@ -23,7 +23,7 @@ export const updateModule = (module: Module): void => {
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(moduleMember.isVariantMember)) {
+        for(const member of variantMembers.filter(moduleMember.isVariantLikeMember)) {
             const variantContent = moduleContent.createVariantContent(module, member);
             moduleContent.updateContentName(variantContent);
 
