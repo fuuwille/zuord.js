@@ -70,7 +70,7 @@ export const isVariantLikeNode = (node: Node): node is ModuleNode.VariantLikeNod
 }
 
 export const isInitializerLikeNode = (node: Node): node is ModuleNode.InitializerLikeNode => {
-    return isArrowFunctionNode(node) || isFunctionExpressionNode(node);
+    return isValueNode(node) || isArrowFunctionNode(node) || isFunctionExpressionNode(node);
 }
 
 export const isFunctionLikeNode = (node: Node): node is ModuleNode.FunctionLikeNode => {
