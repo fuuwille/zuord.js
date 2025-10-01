@@ -61,8 +61,8 @@ export const updateModule = (module: Module): void => {
 export const extractModule = (dir: string, name: string): Module => {
     const module: Module = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.SchemaFile>(dir, name, ModuleMode.Schema) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.VariantsFile>(dir, name, ModuleMode.Variants) ?? null,
+        schemaFile: moduleFile.extractFileAtPath<ModuleFile.SchemaFile>(dir, name, ModuleMode.Schema) ?? null,
+        variantsFile: moduleFile.extractFileAtPath<ModuleFile.VariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };
@@ -72,11 +72,11 @@ export const extractModule = (dir: string, name: string): Module => {
 };
 
 export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null): void => {
-    module.schemaFile = sourceFile ? moduleFile.extractSchema(sourceFile) : null;
+    module.schemaFile = sourceFile ? moduleFile.extractSchemaFile(sourceFile) : null;
     updateModule(module);
 };
 
 export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null): void => {
-    module.variantsFile = sourceFile ? moduleFile.extractVariants(sourceFile) : null;
+    module.variantsFile = sourceFile ? moduleFile.extractVariantsFile(sourceFile) : null;
     updateModule(module);
 };
