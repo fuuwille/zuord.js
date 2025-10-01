@@ -34,6 +34,10 @@ export const isFunctionMember = (member: ModuleMember.Member): member is ModuleM
     return member.kind === functionKind;
 }
 
+export const isValueMember = (member: ModuleMember.Member): member is ModuleMember.ValueMember => {
+    return member.kind === valueKind;
+}
+
 export const isArrowFunctionMember = (member: ModuleMember.Member): member is ModuleMember.ArrowFunctionMember => {
     return member.kind === arrowFunctionKind;
 }
@@ -247,6 +251,8 @@ export const interfaceKind: ModuleMember.InterfaceKind = "interface";
 export const variableKind: ModuleMember.VariableKind = "variable";
 
 export const functionKind: ModuleMember.FunctionKind = "function";
+
+export const valueKind: ModuleMember.ValueKind = "value";
 
 export const arrowFunctionKind: ModuleMember.ArrowFunctionKind = "arrowFunction";
 
