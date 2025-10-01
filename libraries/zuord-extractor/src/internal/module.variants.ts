@@ -61,8 +61,8 @@ export const updateModule = (module: Module): void => {
 export const extractModule = (dir: string, name: string): Module => {
     const module: Module = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Schema) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleMode.Variants) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.SchemaFile>(dir, name, ModuleMode.Schema) ?? null,
+        variantsFile: moduleFile.extractAtPath<ModuleFile.VariantsFile>(dir, name, ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };

@@ -8,9 +8,9 @@ import { createMember } from "./moduleMember.variants";
 
 export const initialize = (
     sourceFile: SourceFile, mode: ModuleMode
-) : ModuleFile.Base => {
+) : ModuleFile.BaseFile => {
 
-    const moduleFile : ModuleFile.Base = {
+    const moduleFile : ModuleFile.BaseFile = {
         source: sourceFile,
         mode: mode,
         members: [],
@@ -36,7 +36,7 @@ export const initialize = (
     return moduleFile;
 };
 
-export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.Base => {
+export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.BaseFile => {
     switch(mode) {
         case ModuleMode.Schema:
             return extractSchema(sourceFile);
@@ -47,7 +47,7 @@ export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.B
     }
 };
 
-export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
+export const extractAtPath = <TFile extends ModuleFile.BaseFile>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
@@ -60,10 +60,10 @@ export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: 
     return undefined;
 };
 
-export const extractSchema = (sourceFile: SourceFile) : ModuleFile.Schema => {
-    return initialize(sourceFile, ModuleMode.Schema) as ModuleFile.Schema;
+export const extractSchema = (sourceFile: SourceFile) : ModuleFile.SchemaFile => {
+    return initialize(sourceFile, ModuleMode.Schema) as ModuleFile.SchemaFile;
 };
 
-export const extractVariants = (sourceFile: SourceFile) : ModuleFile.Variants => {
-    return initialize(sourceFile, ModuleMode.Variants) as ModuleFile.Variants;
+export const extractVariants = (sourceFile: SourceFile) : ModuleFile.VariantsFile => {
+    return initialize(sourceFile, ModuleMode.Variants) as ModuleFile.VariantsFile;
 };
