@@ -1,8 +1,9 @@
 import { ModuleNode } from "./moduleNode.tschema"
 
 export type ModuleDiagnostic = {
-    node: ModuleNode
-    message: string
+    node: ModuleNode;
+    message: string;
+    level: ModuleDiagnosticLevel;
 }
 
 export enum ModuleDiagnosticLevel {
