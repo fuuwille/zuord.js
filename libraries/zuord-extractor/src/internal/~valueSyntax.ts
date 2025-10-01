@@ -28,6 +28,34 @@ export const valueSyntaxKind =
     | SyntaxKind.AwaitExpression
     | SyntaxKind.YieldExpression;
 
+export type ValueSyntaxKind =
+    | SyntaxKind.NumericLiteral
+    | SyntaxKind.BigIntLiteral
+    | SyntaxKind.StringLiteral
+    | SyntaxKind.TrueKeyword
+    | SyntaxKind.FalseKeyword
+    | SyntaxKind.NullKeyword
+    | SyntaxKind.ObjectLiteralExpression
+    | SyntaxKind.ArrayLiteralExpression
+    | SyntaxKind.NoSubstitutionTemplateLiteral
+    | SyntaxKind.TemplateExpression
+    | SyntaxKind.Identifier
+    | SyntaxKind.ThisKeyword
+    | SyntaxKind.SuperKeyword
+    | SyntaxKind.PropertyAccessExpression
+    | SyntaxKind.ElementAccessExpression
+    | SyntaxKind.CallExpression
+    | SyntaxKind.NewExpression
+    | SyntaxKind.PrefixUnaryExpression
+    | SyntaxKind.PostfixUnaryExpression
+    | SyntaxKind.BinaryExpression
+    | SyntaxKind.ConditionalExpression
+    | SyntaxKind.AsExpression
+    | SyntaxKind.TypeAssertionExpression
+    | SyntaxKind.NonNullExpression
+    | SyntaxKind.AwaitExpression
+    | SyntaxKind.YieldExpression;
+
 export type ValueSyntaxNode =
     | NumericLiteral
     | BigIntLiteral
