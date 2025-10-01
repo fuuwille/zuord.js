@@ -1,4 +1,5 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, TrueLiteral, SyntaxKind } from "ts-morph";
+import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, SyntaxKind } from "ts-morph";
+import { ValueSyntaxKind, ValueSyntaxNode } from "./~valueSyntax";
 
 export type ImportNode = ImportDeclaration;
 
@@ -14,7 +15,7 @@ export type EnumNode = EnumDeclaration;
 
 export type VariableNode = VariableStatement;
 
-export type ValueNode = TrueLiteral;
+export type ValueNode = ValueSyntaxNode;
 
 export type FunctionNode = FunctionDeclaration;
 
@@ -93,6 +94,8 @@ export type InterfaceKind = SyntaxKind.InterfaceDeclaration;
 export type EnumKind = SyntaxKind.EnumDeclaration;
 
 export type VariableKind = SyntaxKind.VariableStatement;
+
+export type ValueKind = ValueSyntaxKind;
 
 export type FunctionKind = SyntaxKind.FunctionDeclaration;
 
