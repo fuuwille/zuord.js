@@ -1,43 +1,6 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
 
-export type MemberKind =
-    | UnknownKind
-    | ImportKind
-    | ExportKind
-    | ExportDefaultKind
-    | TypeKind
-    | InterfaceKind
-    | VariableKind
-    | FunctionKind
-    | ValueKind
-    | ArrowFunctionKind
-    | FunctionExpressionKind;
-
-export type UnknownKind = "unknown";
-
-export type ImportKind = "import";
-
-export type ExportKind = "export";
-
-export type ExportDefaultKind = "exportDefault";
-
-export type TypeKind = "type";
-
-export type InterfaceKind = "interface";
-
-export type VariableKind = "variable";
-
-export type FunctionKind = "function";
-
-export type ValueKind = "value";
-
-export type ArrowFunctionKind = "arrowFunction";
-
-export type FunctionExpressionKind = "functionExpression";
-
-//
-
 export interface BaseMember {
     node: Node;
     kind: MemberKind;
@@ -146,3 +109,40 @@ export interface FunctionAltMember extends FunctionLikeMember {
 export type FunctionalMember =
     | FunctionMember
     | VariableFunctionMember;
+
+//
+
+export type MemberKind =
+    | UnknownKind
+    | ImportKind
+    | ExportKind
+    | ExportDefaultKind
+    | TypeKind
+    | InterfaceKind
+    | VariableKind
+    | FunctionKind
+    | ValueKind
+    | ArrowFunctionKind
+    | FunctionExpressionKind;
+
+export type UnknownKind = "unknown";
+
+export type ImportKind = "import";
+
+export type ExportKind = "export";
+
+export type ExportDefaultKind = "exportDefault";
+
+export type TypeKind = "type";
+
+export type InterfaceKind = "interface";
+
+export type VariableKind = "variable";
+
+export type FunctionKind = "function";
+
+export type ValueKind = "value";
+
+export type ArrowFunctionKind = "arrowFunction";
+
+export type FunctionExpressionKind = "functionExpression";
