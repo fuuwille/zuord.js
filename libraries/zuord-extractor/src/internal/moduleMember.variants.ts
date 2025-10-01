@@ -24,8 +24,8 @@ export const functionExpressionKind: ModuleMember.FunctionExpressionKind = "func
 
 //
 
-export const isESMMember = (member: ModuleMember.BaseMember): member is ModuleMember.ESMMember => {
-    return isExportMember(member) || isImportMember(member) || isExportDefaultMember(member);
+export const isUnknownMember = (member: ModuleMember.BaseMember): member is ModuleMember.UnknownMember => {
+    return member.kind === unknownKind;
 }
 
 export const isImportMember = (member: ModuleMember.BaseMember): member is ModuleMember.ImportMember => {
@@ -79,7 +79,11 @@ export const isFunctionExpressionMember = (member: ModuleMember.BaseMember): mem
 //
 
 export const isKnownMember = (member: ModuleMember.BaseMember): member is ModuleMember.KnownMember => {
-    return isESMMember(member) || isSchemaMember(member) || isVariantMember(member);
+    return isESMLikeMember(member) || isSchemaMember(member) || isVariantMember(member);
+}
+
+export const isESMLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.ESMLikeMember => {
+    return isExportMember(member) || isImportMember(member) || isExportDefaultMember(member);
 }
 
 export const isDefinitionLikeMember = (member: ModuleMember.BaseMember): member is ModuleMember.DefinitionLikeMember => {

@@ -13,7 +13,7 @@ export type MemberKind =
     | ValueKind
     | ArrowFunctionKind
     | FunctionExpressionKind;
-    
+
 export type UnknownKind = "unknown";
 
 export type ImportKind = "import";
@@ -43,23 +43,21 @@ export interface BaseMember {
     kind: MemberKind;
 }
 
-// ESM Members
-export interface ESMMember extends BaseMember, KnownMember {
-    node: ModuleNode.ESMNode;
-    kind: ImportKind | ExportKind | ExportDefaultKind;
+export interface UnknownMember extends BaseMember {
+    kind: UnknownKind;
 }
 
-export interface ImportMember extends ESMMember {
+export interface ImportMember extends ESMLikeMember {
     node: ModuleNode.ImportNode;
     kind: ImportKind;
 }
 
-export interface ExportMember extends ESMMember {
+export interface ExportMember extends ESMLikeMember {
     node: ModuleNode.ExportNode;
     kind: ExportKind;
 }
 
-export interface ExportDefaultMember extends ESMMember {
+export interface ExportDefaultMember extends ESMLikeMember {
     node: ModuleNode.ExportDefaultNode;
     kind: ExportDefaultKind;
 }
@@ -115,12 +113,13 @@ export interface FunctionExpressionMember extends InitializerMember, FunctionAlt
 
 //
 
-export interface UnknownMember extends BaseMember {
-    kind: UnknownKind;
-}
-
 export interface KnownMember extends BaseMember {
     node: ModuleNode.KnownNode;
+}
+
+export interface ESMLikeMember extends BaseMember, KnownMember {
+    node: ModuleNode.ESMNode;
+    kind: ImportKind | ExportKind | ExportDefaultKind;
 }
 
 export interface DefinitionLikeMember extends BaseMember, KnownMember {
