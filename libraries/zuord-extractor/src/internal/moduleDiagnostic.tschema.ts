@@ -1,7 +1,7 @@
-import { ModuleNode } from "./moduleNode.tschema"
+import { Node } from "ts-morph";
 
 export interface Base {
-    node: ModuleNode;
+    node: Node;
     message: string;
     level: Level;
 }

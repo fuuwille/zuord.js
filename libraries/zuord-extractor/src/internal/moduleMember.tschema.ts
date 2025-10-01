@@ -1,8 +1,8 @@
-import { BindingName, TypeNode } from "ts-morph";
-import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode, ModuleFunctionAltNode } from "./moduleNode.tschema";
+import { BindingName, TypeNode, Node } from "ts-morph";
+import { ModuleDefinitionLikeNode, ModuleEnumNode, ModuleESMNode, ModuleExportDefaultNode, ModuleExportNode, ModuleFunctionNode, ModuleImportNode, ModuleInterfaceNode, ModuleSchemaNode, ModuleTypeNode, ModuleVariableNode, ModuleVariantNode, ModuleInitializerNode, ModuleArrowFunctionNode, ModuleFunctionExpressionNode, ModuleFunctionLikeNode, ModuleKnownNode, ModuleFunctionAltNode } from "./moduleNode.tschema";
 
 export interface ModuleMember {
-    node: ModuleNode;
+    node: Node;
     kind: ModuleMemberKind;
 }
 
