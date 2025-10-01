@@ -1,12 +1,12 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
 
-export interface BaseMember {
+export interface Member {
     node: Node;
     kind: MemberKind;
 }
 
-export interface UnknownMember extends BaseMember {
+export interface UnknownMember extends Member {
     kind: UnknownKind;
 }
 
@@ -47,7 +47,7 @@ export interface FunctionMember extends VariantLikeMember, FunctionLikeMember {
 }
 
 // Initializer Members
-export interface InitializerMember extends BaseMember, KnownLikeMember {
+export interface InitializerMember extends Member, KnownLikeMember {
     node: ModuleNode.InitializerNode;
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
@@ -64,27 +64,27 @@ export interface FunctionExpressionMember extends InitializerMember, FunctionAlt
 
 //
 
-export interface KnownLikeMember extends BaseMember {
+export interface KnownLikeMember extends Member {
     node: ModuleNode.KnownNode;
 }
 
-export interface ESMLikeMember extends BaseMember, KnownLikeMember {
+export interface ESMLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.ESMNode;
     kind: ImportKind | ExportKind | ExportDefaultKind;
 }
 
-export interface DefinitionLikeMember extends BaseMember, KnownLikeMember {
+export interface DefinitionLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.DefinitionLikeNode;
     kind: TypeKind | InterfaceKind | VariableKind | FunctionKind;
     nameNode?: BindingName | null;
 }
 
-export interface SchemaLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
+export interface SchemaLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.SchemaNode;
     kind: TypeKind | InterfaceKind;
 }
 
-export interface VariantLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
+export interface VariantLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.VariantNode;
     kind: VariableKind | FunctionKind;
 }
@@ -93,7 +93,7 @@ export interface VariableFunctionMember extends VariableMember {
     initializer?: FunctionAltMember;
 }
 
-export interface FunctionLikeMember extends BaseMember {
+export interface FunctionLikeMember extends Member {
     node: ModuleNode.FunctionLikeNode;
     returnTypeNode?: TypeNode;
     paramTypeNode?: TypeNode;
