@@ -46,11 +46,10 @@ export type DefinitionLikeNode =
 export type SchemaLikeNode =
     | TypeNode
     | InterfaceNode
-    | EnumNode;
 
 export type VariantLikeNode =
-    | FunctionNode
-    | VariableNode;
+    | VariableNode
+    | FunctionNode;
 
 export type InitializerLikeNode = 
     | ValueNode
