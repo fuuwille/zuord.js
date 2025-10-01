@@ -71,6 +71,16 @@ export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalCo
     return undefined;
 }
 
+export const getModuleFunctionalContentSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
+    var schema = getModuleFunctionalContentReturnSchema(content, schemas);
+
+    if(!schema) {
+
+    }
+
+    return schema;
+}
+
 export const getModuleFunctionalContentReturnSchema = (content: ModuleFunctionalContent, schemas: ModuleSchemaContent[]) : ModuleSchemaContent | undefined => {
     updateModuleFunctionalContentReturnSchemaName(content);
 
