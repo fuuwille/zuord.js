@@ -1,6 +1,19 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
 
+export type MemberKind =
+    | UnknownKind
+    | ImportKind
+    | ExportKind
+    | ExportDefaultKind
+    | TypeKind
+    | InterfaceKind
+    | VariableKind
+    | FunctionKind
+    | ValueKind
+    | ArrowFunctionKind
+    | FunctionExpressionKind;
+    
 export type UnknownKind = "unknown";
 
 export type ImportKind = "import";
@@ -99,21 +112,6 @@ export interface FunctionExpressionMember extends InitializerMember, FunctionAlt
     node: ModuleNode.FunctionExpressionNode;
     kind: FunctionExpressionKind;
 }
-
-//
-
-export type MemberKind =
-    | UnknownKind
-    | ImportKind
-    | ExportKind
-    | ExportDefaultKind
-    | TypeKind
-    | InterfaceKind
-    | VariableKind
-    | FunctionKind
-    | ValueKind
-    | ArrowFunctionKind
-    | FunctionExpressionKind;
 
 //
 
