@@ -3,7 +3,7 @@ import { Module } from "./module.tschema";
 import { ModuleMode } from "./module.tschema";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { createModuleSchemaContent, createModuleVariantContent, getModuleVariantContentSchema, isModuleFunctionalContent, updateModuleContentName } from "./moduleContent.variants";
-import { getModuleFunctionLikeMember, isModuleSchemaMember, isModuleVariantMember } from "./moduleMember.variants";
+import { getFunctionLikeMember, isSchemaMember, isVariantMember } from "./moduleMember.variants";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
 export const updateModule = (module: Module): void => {
@@ -14,7 +14,7 @@ export const updateModule = (module: Module): void => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(isModuleSchemaMember)) {
+        for(const member of schemaMembers.filter(isSchemaMember)) {
             const schemaContent = createModuleSchemaContent(module, member);
             updateModuleContentName(schemaContent);
 
@@ -23,7 +23,7 @@ export const updateModule = (module: Module): void => {
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(isModuleVariantMember)) {
+        for(const member of variantMembers.filter(isVariantMember)) {
             const variantContent = createModuleVariantContent(module, member);
             updateModuleContentName(variantContent);
 
@@ -43,7 +43,7 @@ export const updateModule = (module: Module): void => {
             }
 
             if(isModuleFunctionalContent(variantContent)) {
-                const member = getModuleFunctionLikeMember(variantContent.member);
+                const member = getFunctionLikeMember(variantContent.member);
 
                 const returnNode = member?.returnTypeNode;
 
