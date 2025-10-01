@@ -102,7 +102,7 @@ export const getModuleFunctionalContentSchema = (content: ModuleFunctionalConten
     var schema = getModuleFunctionalContentReturnSchema(content, schemas);
 
     if(!schema) {
-
+        schema = getModuleFunctionalContentParamSchema(content, schemas);
     }
 
     return schema;
