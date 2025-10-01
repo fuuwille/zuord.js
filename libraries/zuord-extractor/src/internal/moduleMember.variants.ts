@@ -1,6 +1,6 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
 import { ModuleMember } from "./moduleMember";
-import { isModuleImportNode, isModuleExportNode, isModuleExportDefaultNode, isModuleTypeNode, isModuleInterfaceNode, isModuleEnumNode, isModuleFunctionNode, isModuleVariableNode, isModuleInitializerNode, isModuleArrowFunctionNode, isModuleFunctionExpressionNode } from "./moduleNode.variants";
+import { isImportNode, isExportNode, isExportDefaultNode, isTypeNode, isInterfaceNode, isEnumNode, isFunctionNode, isVariableNode, isInitializerNode, isArrowFunctionNode, isFunctionExpressionNode } from "./moduleNode.variants";
 
 export const isESMMember = (member: ModuleMember.BaseMember): member is ModuleMember.ESMMember => {
     return isExportMember(member) || isImportMember(member) || isExportDefaultMember(member);
@@ -105,43 +105,43 @@ export const createMember = <TMember extends ModuleMember.BaseMember>(
 }
 
 export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
-    if (isModuleImportNode(node)) {
+    if (isImportNode(node)) {
         return ModuleMember.MemberKind.Import;
     }
 
-    if (isModuleExportNode(node)) {
+    if (isExportNode(node)) {
         return ModuleMember.MemberKind.Export;
     }
 
-    if (isModuleExportDefaultNode(node)) {
+    if (isExportDefaultNode(node)) {
         return ModuleMember.MemberKind.ExportDefault;
     }
 
-    if (isModuleTypeNode(node)) {
+    if (isTypeNode(node)) {
         return ModuleMember.MemberKind.Type;
     }
 
-    if (isModuleInterfaceNode(node)) {
+    if (isInterfaceNode(node)) {
         return ModuleMember.MemberKind.Interface;
     }
 
-    if (isModuleEnumNode(node)) {
+    if (isEnumNode(node)) {
         return ModuleMember.MemberKind.Enum;
     }
 
-    if (isModuleVariableNode(node)) {
+    if (isVariableNode(node)) {
         return ModuleMember.MemberKind.Variable;
     }
 
-    if (isModuleFunctionNode(node)) {
+    if (isFunctionNode(node)) {
         return ModuleMember.MemberKind.Function;
     }
 
-    if (isModuleArrowFunctionNode(node)) {
+    if (isArrowFunctionNode(node)) {
         return ModuleMember.MemberKind.ArrowFunction;
     }
 
-    if (isModuleFunctionExpressionNode(node)) {
+    if (isFunctionExpressionNode(node)) {
         return ModuleMember.MemberKind.FunctionExpression;
     }
 
@@ -173,7 +173,7 @@ export const getVariableMemberInitializer = (member: ModuleMember.VariableMember
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(isModuleInitializerNode(initializerNode)) {
+            if(isInitializerNode(initializerNode)) {
                 return createMember<ModuleMember.InitializerMember>(initializerNode);
             }
         }

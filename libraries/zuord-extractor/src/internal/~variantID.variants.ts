@@ -1,21 +1,20 @@
-import { ModuleFunctionNode, ModuleVariableNode, ModuleVariantNode } from "./moduleNode.tschema";
-import { isModuleFunctionNode, isModuleVariableNode } from "./moduleNode.variants";
+import { ModuleNode, moduleNode } from "./moduleNode";
 
-export const extractVariantID = (node: ModuleVariantNode): string | undefined => {
-    if(isModuleFunctionNode(node)) {
+export const extractVariantID = (node: ModuleNode.VariantNode): string | undefined => {
+    if(moduleNode.isFunctionNode(node)) {
         return extractVariantIDAsFunction(node);
     }
 
-    if(isModuleVariableNode(node)) {
+    if(moduleNode.isVariableNode(node)) {
         return extractVariantIDAsVariable(node);
     }
 }
 
-export const extractVariantIDAsFunction = (node: ModuleFunctionNode): string | undefined => {
+export const extractVariantIDAsFunction = (node: ModuleNode.FunctionNode): string | undefined => {
     return node.getName();
 }
 
-export const extractVariantIDAsVariable = (node: ModuleVariableNode): string | undefined => {
+export const extractVariantIDAsVariable = (node: ModuleNode.VariableNode): string | undefined => {
     const declaration = node.getDeclarations()[0];
 
     if(declaration) {

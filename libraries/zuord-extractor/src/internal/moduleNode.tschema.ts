@@ -1,75 +1,75 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node, ArrowFunction, FunctionExpression, ClassDeclaration } from "ts-morph";
 
-export type ModuleESMNode = 
-    | ModuleImportNode
-    | ModuleExportNode
-    | ModuleExportDefaultNode;
+export type ESMNode = 
+    | ImportNode
+    | ExportNode
+    | ExportDefaultNode;
 
-export type ModuleImportNode = ImportDeclaration;
+export type ImportNode = ImportDeclaration;
 
-export type ModuleExportNode = ExportDeclaration;
+export type ExportNode = ExportDeclaration;
 
-export type ModuleExportDefaultNode = ExportAssignment;
+export type ExportDefaultNode = ExportAssignment;
 
-export type ModuleSchemaNode =
-    | ModuleTypeNode
-    | ModuleInterfaceNode
-    | ModuleEnumNode;
+export type SchemaNode =
+    | TypeNode
+    | InterfaceNode
+    | EnumNode;
 
-export type ModuleTypeNode = TypeAliasDeclaration;
+export type TypeNode = TypeAliasDeclaration;
 
-export type ModuleInterfaceNode = InterfaceDeclaration;
+export type InterfaceNode = InterfaceDeclaration;
 
-export type ModuleEnumNode = EnumDeclaration;
+export type EnumNode = EnumDeclaration;
 
-export type ModuleVariantNode =
-    | ModuleFunctionNode
-    | ModuleVariableNode;
+export type VariantNode =
+    | FunctionNode
+    | VariableNode;
 
-export type ModuleVariableNode = VariableStatement;
+export type VariableNode = VariableStatement;
 
-export type ModuleFunctionNode = FunctionDeclaration;
+export type FunctionNode = FunctionDeclaration;
 
-export type ModuleInitializerNode = 
-    | ModuleArrowFunctionNode
-    | ModuleFunctionExpressionNode;
+export type InitializerNode = 
+    | ArrowFunctionNode
+    | FunctionExpressionNode;
 
-export type ModuleArrowFunctionNode = ArrowFunction;
+export type ArrowFunctionNode = ArrowFunction;
 
-export type ModuleFunctionExpressionNode = FunctionExpression;
-
-//
-
-export type ModuleKnownNode =
-    | ModuleESMNode
-    | ModuleSchemaNode
-    | ModuleVariantNode
-    | ModuleInitializerNode;
-
-export type ModuleExportLikeNode = 
-    | ModuleExportNode
-    | ModuleExportDefaultNode;
-
-export type ModuleDefinitionLikeNode =
-    | ModuleSchemaNode
-    | ModuleVariantNode;
-
-export type ModuleFunctionLikeNode =
-    | ModuleFunctionNode
-    | ModuleFunctionAltNode;
-
-export type ModuleFunctionAltNode = 
-    | ModuleArrowFunctionNode
-    | ModuleFunctionExpressionNode;
+export type FunctionExpressionNode = FunctionExpression;
 
 //
 
-export type ModuleDiscardedNode =
-    | ModuleDiscardedSchemaNode
-    | ModuleDiscardedVariantNode;
+export type KnownNode =
+    | ESMNode
+    | SchemaNode
+    | VariantNode
+    | InitializerNode;
 
-export type ModuleDiscardedSchemaNode = 
-    | ModuleVariantNode;
+export type ExportLikeNode = 
+    | ExportNode
+    | ExportDefaultNode;
 
-export type ModuleDiscardedVariantNode =
-    | ModuleSchemaNode;
+export type DefinitionLikeNode =
+    | SchemaNode
+    | VariantNode;
+
+export type FunctionLikeNode =
+    | FunctionNode
+    | FunctionAltNode;
+
+export type FunctionAltNode = 
+    | ArrowFunctionNode
+    | FunctionExpressionNode;
+
+//
+
+export type DiscardedNode =
+    | DiscardedSchemaNode
+    | DiscardedVariantNode;
+
+export type DiscardedSchemaNode = 
+    | VariantNode;
+
+export type DiscardedVariantNode =
+    | SchemaNode;
