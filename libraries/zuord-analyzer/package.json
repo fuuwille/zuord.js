@@ -39,6 +39,6 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "zuord-extractor": "3.0.0-alpha.8"
+    "zuord-extractor": "6.0.0-alpha.1"
   }
 }
