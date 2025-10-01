@@ -2,28 +2,6 @@ import { BindingName, Node, TypeNode } from "ts-morph";
 import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 
-export const unknownKind: ModuleMember.UnknownKind = "unknown";
-
-export const importKind: ModuleMember.ImportKind = "import";
-
-export const exportKind: ModuleMember.ExportKind = "export";
-
-export const exportDefaultKind: ModuleMember.ExportDefaultKind = "exportDefault";
-
-export const typeKind: ModuleMember.TypeKind = "type";
-
-export const interfaceKind: ModuleMember.InterfaceKind = "interface";
-
-export const variableKind: ModuleMember.VariableKind = "variable";
-
-export const functionKind: ModuleMember.FunctionKind = "function";
-
-export const arrowFunctionKind: ModuleMember.ArrowFunctionKind = "arrowFunction";
-
-export const functionExpressionKind: ModuleMember.FunctionExpressionKind = "functionExpression";
-
-//
-
 export const isUnknownMember = (member: ModuleMember.Member): member is ModuleMember.UnknownMember => {
     return member.kind === unknownKind;
 }
@@ -251,3 +229,25 @@ export const updateFunctionalMemberReturnTypeNode = (member: ModuleMember.Functi
 export const updateFunctionalMemberParamTypeNode = (member: ModuleMember.FunctionalMember): void => {
     return updateFunctionLikeMemberParamTypeNode(getFunctionLikeMember(member)!);
 };
+
+//
+
+export const unknownKind: ModuleMember.UnknownKind = "unknown";
+
+export const importKind: ModuleMember.ImportKind = "import";
+
+export const exportKind: ModuleMember.ExportKind = "export";
+
+export const exportDefaultKind: ModuleMember.ExportDefaultKind = "exportDefault";
+
+export const typeKind: ModuleMember.TypeKind = "type";
+
+export const interfaceKind: ModuleMember.InterfaceKind = "interface";
+
+export const variableKind: ModuleMember.VariableKind = "variable";
+
+export const functionKind: ModuleMember.FunctionKind = "function";
+
+export const arrowFunctionKind: ModuleMember.ArrowFunctionKind = "arrowFunction";
+
+export const functionExpressionKind: ModuleMember.FunctionExpressionKind = "functionExpression";
