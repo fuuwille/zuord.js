@@ -2,7 +2,7 @@ import { Module } from "./module.tschema";
 import { ModuleContent, ModuleContentKind, ModuleFunctionalContent, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 import { getModuleFunctionLikeMember, isModuleFunctionalMember, updateModuleDefinitionLikeMemberNameNode, updateModuleFunctionLikeMemberParamTypeNode, updateModuleFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
-import { getIdentifierChild, getTypeName, getTypeReferenceChild, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
+import { getTypeName } from "./~type.variants";
 
 export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
     return content.kind === ModuleContentKind.Schema;
