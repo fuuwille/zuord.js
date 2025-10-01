@@ -7,7 +7,7 @@ import { getModuleFunctionLikeMember, isModuleSchemaMember, isModuleVariantMembe
 import { ModuleSchemaFile, ModuleVariantsFile } from "./moduleFile.tschema";
 import { createModuleErrorDiagnostic } from "./moduleDiagnostic.variants";
 
-export const updateModule = (module: Module) => {
+export const updateModule = (module: Module): void => {
     const schemaMembers = module.schemaFile?.members;
     const variantMembers = module.variantsFile?.members;
 
@@ -75,12 +75,12 @@ export const extractModule = (dir: string, name: string): Module => {
     return module;
 };
 
-export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null) => {
+export const updateModuleTypeFile = (module: Module, sourceFile: SourceFile | null): void => {
     module.schemaFile = sourceFile ? extractModuleSchemaFile(sourceFile) : null;
     updateModule(module);
 };
 
-export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null) => {
+export const updateModuleVariantsFile = (module: Module, sourceFile: SourceFile | null): void => {
     module.variantsFile = sourceFile ? extractModuleVariantsFile(sourceFile) : null;
     updateModule(module);
 };
