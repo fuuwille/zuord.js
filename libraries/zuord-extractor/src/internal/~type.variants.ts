@@ -1,4 +1,4 @@
-import { Identifier, Node, SyntaxKind, ts, Type, TypeFlags, TypeNode, TypePredicateNode, TypeReferenceNode } from "ts-morph";
+import { Identifier, Node, QualifiedName, SyntaxKind, ts, Type, TypeFlags, TypeNode, TypePredicateNode, TypeReferenceNode } from "ts-morph";
 import { ModuleFunctionLikeNode } from "./moduleNode.tschema";
 
 export const isPrimitiveType = (type: Type): boolean => {
@@ -39,6 +39,11 @@ export const isTypeReferenceNode = (node: Node | undefined): node is TypeReferen
 export const getTypeReferenceChild = (node: Node | undefined): TypeReferenceNode | undefined => {
     if (!node) return undefined;
     return node.getFirstChild(isTypeReferenceNode) as TypeReferenceNode | undefined;
+}
+
+export const getQualifiedNameChild = (node: Node | undefined): QualifiedName | undefined => {
+    if (!node) return undefined;
+    return node.getFirstChild(n => n.getKind() === SyntaxKind.QualifiedName) as QualifiedName | undefined;
 }
 
 export const getIdentifierChild = (node: Node | undefined): Identifier | undefined => {
