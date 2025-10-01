@@ -18,10 +18,10 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         if(module) {
             explorer.update(document);
 
-            if(kind == "type") {
-                module.types.forEach(type => {
-                    const node = type.member.node;
-                    const variantsCount = type.variants.length;
+            if(kind == "tschema") {
+                module.schemaContents.forEach(schema => {
+                    const node = schema.member.node;
+                    const variantsCount = schema.variants?.length ?? 0;
 
                     const range = nodeToRange(node);
                     const codelens = new vscode.CodeLens(range, {
@@ -32,13 +32,14 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                 });
             }
             else if(kind == "variants") {
-                module.variantsFile?.members.filter($zuordExtractor.isModuleVariantLikeMember).forEach(variant => {
-                    const node = variant.node;
+                module.variantContents.forEach(variant => {
+                    const member = variant.member;
+                    const node = member.node;
                     const range = nodeToRange(node);
-                    const type = variant.type;
+                    const schema = variant.schema;
 
                     const codelens = new vscode.CodeLens(range, {
-                        title: (type?.getAliasSymbol() ?? type?.getSymbol())?.getName() ?? "no type",
+                        title: (schema?.name) ?? "no type",
                         command: ""
                     });
                     codelenses.push(codelens);
