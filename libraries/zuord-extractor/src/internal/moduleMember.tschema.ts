@@ -10,48 +10,48 @@ export interface UnknownMember extends Member {
     kind: UnknownKind;
 }
 
-export interface ImportMember extends Member, ESMLikeMember {
+export interface ImportMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ImportNode;
     kind: ImportKind;
 }
 
-export interface ExportMember extends Member, ESMLikeMember {
+export interface ExportMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ExportNode;
     kind: ExportKind;
 }
 
-export interface ExportDefaultMember extends Member, ESMLikeMember {
+export interface ExportDefaultMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ExportDefaultNode;
     kind: ExportDefaultKind;
 }
 
-export interface TypeMember extends Member, SchemaLikeMember {
+export interface TypeMember extends Member, KnownLikeMember, SchemaLikeMember {
     node: ModuleNode.TypeNode;
     kind: TypeKind;
 }
 
-export interface InterfaceMember extends Member, SchemaLikeMember {
+export interface InterfaceMember extends Member, KnownLikeMember, SchemaLikeMember {
     node: ModuleNode.InterfaceNode;
     kind: InterfaceKind;
 }
 
-export interface VariableMember extends Member, VariantLikeMember {
+export interface VariableMember extends Member, KnownLikeMember, VariantLikeMember {
     node: ModuleNode.VariableNode;
     kind: VariableKind;
     initializer?: InitializerLikeMember;
 }
 
-export interface FunctionMember extends Member, VariantLikeMember, FunctionLikeMember {
+export interface FunctionMember extends Member, KnownLikeMember, VariantLikeMember, FunctionLikeMember {
     node: ModuleNode.FunctionNode;
     kind: FunctionKind;
 }
 
-export interface ArrowFunctionMember extends Member, InitializerLikeMember, FunctionAltMember {
+export interface ArrowFunctionMember extends Member, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.ArrowFunctionNode;
     kind: ArrowFunctionKind;
 }
 
-export interface FunctionExpressionMember extends Member, InitializerLikeMember, FunctionAltMember {
+export interface FunctionExpressionMember extends Member, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.FunctionExpressionNode;
     kind: FunctionExpressionKind;
 }
