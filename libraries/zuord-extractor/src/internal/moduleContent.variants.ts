@@ -1,6 +1,6 @@
 import { Module } from "./module.tschema";
 import { BaseContent, ContentKind, FunctionalContent, SchemaContent, VariantContent } from "./moduleContent.tschema";
-import { SchemaMember, VariantMember } from "./moduleMember.tschema";
+import { SchemaLikeMember, VariantMember } from "./moduleMember.tschema";
 import { getFunctionLikeMember, isFunctionalMember, updateDefinitionLikeMemberNameNode, updateFunctionLikeMemberParamTypeNode, updateFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
 import { getTypeName } from "./~type.variants";
 
@@ -21,7 +21,7 @@ export const isFunctionalContent = (content: BaseContent): content is Functional
 //
 
 export const createSchemaContent = (
-    module: Module, member: SchemaMember
+    module: Module, member: SchemaLikeMember
 ) : SchemaContent => {
 
     return {

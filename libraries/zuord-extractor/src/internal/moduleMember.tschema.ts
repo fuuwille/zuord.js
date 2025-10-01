@@ -62,18 +62,12 @@ export interface ExportDefaultMember extends ESMLikeMember {
     kind: ExportDefaultKind;
 }
 
-// Schema Members
-export interface SchemaMember extends BaseMember, KnownMember, DefinitionLikeMember {
-    node: ModuleNode.SchemaNode;
-    kind: TypeKind | InterfaceKind;
-}
-
-export interface TypeMember extends SchemaMember {
+export interface TypeMember extends SchemaLikeMember {
     node: ModuleNode.TypeNode;
     kind: TypeKind;
 }
 
-export interface InterfaceMember extends SchemaMember {
+export interface InterfaceMember extends SchemaLikeMember {
     node: ModuleNode.InterfaceNode;
     kind: InterfaceKind;
 }
@@ -126,6 +120,11 @@ export interface DefinitionLikeMember extends BaseMember, KnownMember {
     node: ModuleNode.DefinitionLikeNode;
     kind: TypeKind | InterfaceKind | VariableKind | FunctionKind;
     nameNode?: BindingName | null;
+}
+
+export interface SchemaLikeMember extends BaseMember, KnownMember, DefinitionLikeMember {
+    node: ModuleNode.SchemaNode;
+    kind: TypeKind | InterfaceKind;
 }
 
 export interface VariableFunctionMember extends VariableMember {
