@@ -2,7 +2,7 @@ import { Module } from "./module.tschema";
 import { ModuleContent, ModuleContentKind, ModuleFunctionalContent, ModuleSchemaContent, ModuleVariantContent } from "./moduleContent.tschema";
 import { ModuleSchemaMember, ModuleVariantMember } from "./moduleMember.tschema";
 import { getModuleFunctionLikeMember, isModuleFunctionalMember, updateModuleDefinitionLikeMemberNameNode, updateModuleFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
-import { getIdentifierChild, getTypeReferenceChild, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
+import { getIdentifierChild, getTypeName, getTypeReferenceChild, isTypePredicateNode, isTypeReferenceNode } from "./~type.variants";
 
 export const isModuleSchemaContent = (content: ModuleContent): content is ModuleSchemaContent => {
     return content.kind === ModuleContentKind.Schema;
@@ -55,31 +55,17 @@ export const getModuleFunctionalContentReturnType = (content: ModuleFunctionalCo
         updateModuleFunctionLikeMemberReturnTypeNode(member);
         const typeNode = member.returnTypeNode;
 
-        var typeRef;
-        if(isTypeReferenceNode(typeNode)) {
-            typeRef = typeNode;
-        }
-        else {
-            typeRef = getTypeReferenceChild(typeNode);
-        }
-
-        const identifier = getIdentifierChild(typeRef);
-
-        const name = identifier?.getText();
+        var name = getTypeName(typeNode);
 
         if(name) {
             const typeParameter = member.node.getTypeParameter(name);
 
             if(typeParameter) {
-                const typeRef = getTypeReferenceChild(typeParameter);
-
-                const identifier = getIdentifierChild(typeRef);
-
-                return identifier?.getText();
+                name = getTypeName(typeParameter);
             }
         }
 
-        return identifier?.getText();
+        return name;
     }
 
     return undefined;

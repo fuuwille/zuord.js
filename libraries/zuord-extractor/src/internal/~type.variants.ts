@@ -46,14 +46,14 @@ export const getIdentifierChild = (node: Node | undefined): Identifier | undefin
     return node.getFirstChild(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
 }
 
-export const getTypeName = (typeNode?: TypeNode): string | undefined => {
+export const getTypeName = (node?: Node): string | undefined => {
 
     var typeRef;
-    if(isTypeReferenceNode(typeNode)) {
-        typeRef = typeNode;
+    if(isTypeReferenceNode(node)) {
+        typeRef = node;
     }
     else {
-        typeRef = getTypeReferenceChild(typeNode);
+        typeRef = getTypeReferenceChild(node);
     }
 
     const identifier = getIdentifierChild(typeRef);
