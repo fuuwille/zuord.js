@@ -169,7 +169,7 @@ export const getVariableMemberInitializer = (member: ModuleMember.VariableMember
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(moduleNode.isInitializerNode(initializerNode)) {
+            if(moduleNode.isInitializerLikeNode(initializerNode)) {
                 return createMember<ModuleMember.InitializerLikeMember>(initializerNode);
             }
         }

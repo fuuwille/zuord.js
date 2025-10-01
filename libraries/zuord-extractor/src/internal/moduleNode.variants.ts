@@ -2,11 +2,6 @@ import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleNode } from "./moduleNode";
 
-// ESM Nodes
-export const isESMNode = (node: Node): node is ModuleNode.ESMLikeNode => {
-    return isImportNode(node) || isExportNode(node) || isExportDefaultNode(node);
-}
-
 export const isImportNode = (node: Node): node is ModuleNode.ImportNode => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
 }
@@ -19,11 +14,6 @@ export const isExportDefaultNode = (node: Node): node is ModuleNode.ExportDefaul
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-// Schema Nodes
-export const isSchemaNode = (node: Node): node is ModuleNode.SchemaLikeNode => {
-    return isTypeNode(node) || isInterfaceNode(node) || isEnumNode(node);
-}
-
 export const isTypeNode = (node: Node): node is ModuleNode.TypeNode => {
     return node.getKind() === SyntaxKind.TypeAliasDeclaration;
 }
@@ -32,26 +22,12 @@ export const isInterfaceNode = (node: Node): node is ModuleNode.InterfaceNode =>
     return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
-export const isEnumNode = (node: Node): node is ModuleNode.EnumNode => {
-    return node.getKind() === SyntaxKind.EnumDeclaration;
-}
-
-// Variant Nodes
-export const isVariantNode = (node: Node): node is ModuleNode.VariantLikeNode => {
-    return isFunctionLikeNode(node) || isVariableNode(node);
-}
-
 export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
     return node.getKind() === SyntaxKind.VariableStatement;
 }
 
 export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
-}
-
-// Initializer Nodes
-export const isInitializerNode = (node: Node): node is ModuleNode.InitializerLikeNode => {
-    return isArrowFunctionNode(node) || isFunctionExpressionNode(node);
 }
 
 export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
@@ -65,7 +41,11 @@ export const isFunctionExpressionNode = (node: Node): node is ModuleNode.Functio
 //
 
 export const isKnownNode = (node: Node): node is ModuleNode.KnownNode => {
-    return isESMNode(node) || isSchemaNode(node) || isVariantNode(node) || isInitializerNode(node);
+    return isESMLikeNode(node) || isSchemaLikeNode(node) || isVariantLikeNode(node) || isInitializerLikeNode(node);
+}
+
+export const isESMLikeNode = (node: Node): node is ModuleNode.ESMLikeNode => {
+    return isImportNode(node) || isExportNode(node) || isExportDefaultNode(node);
 }
 
 export const isExportLikeNode = (node: Node): node is ModuleNode.ExportLikeNode => {
@@ -73,7 +53,19 @@ export const isExportLikeNode = (node: Node): node is ModuleNode.ExportLikeNode 
 }
 
 export const isDefinitionLikeNode = (node: Node): node is ModuleNode.DefinitionLikeNode => {
-    return isSchemaNode(node) || isVariantNode(node);
+    return isSchemaLikeNode(node) || isVariantLikeNode(node);
+}
+
+export const isSchemaLikeNode = (node: Node): node is ModuleNode.SchemaLikeNode => {
+    return isTypeNode(node) || isInterfaceNode(node);
+}
+
+export const isVariantLikeNode = (node: Node): node is ModuleNode.VariantLikeNode => {
+    return isFunctionLikeNode(node) || isVariableNode(node);
+}
+
+export const isInitializerLikeNode = (node: Node): node is ModuleNode.InitializerLikeNode => {
+    return isArrowFunctionNode(node) || isFunctionExpressionNode(node);
 }
 
 export const isFunctionLikeNode = (node: Node): node is ModuleNode.FunctionLikeNode => {
@@ -98,9 +90,9 @@ export const isDiscardedNode = (node: Node, mode : ModuleMode): node is ModuleNo
 }
 
 export const isDiscardedSchemaNode = (node: Node): node is ModuleNode.DiscardedSchemaNode => {
-    return isVariantNode(node);
+    return isVariantLikeNode(node);
 }
 
 export const isDiscardedVariantNode = (node: Node): node is ModuleNode.DiscardedVariantNode => {
-    return isSchemaNode(node);
+    return isSchemaLikeNode(node);
 }
