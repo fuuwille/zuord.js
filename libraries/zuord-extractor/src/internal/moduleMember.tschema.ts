@@ -63,7 +63,7 @@ export interface KnownLikeMember extends Member {
 }
 
 export interface ESMLikeMember extends Member, KnownLikeMember {
-    node: ModuleNode.ESMNode;
+    node: ModuleNode.ESMLikeNode;
     kind: ImportKind | ExportKind | ExportDefaultKind;
 }
 
@@ -74,17 +74,17 @@ export interface DefinitionLikeMember extends Member, KnownLikeMember {
 }
 
 export interface SchemaLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
-    node: ModuleNode.SchemaNode;
+    node: ModuleNode.SchemaLikeNode;
     kind: TypeKind | InterfaceKind;
 }
 
 export interface VariantLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
-    node: ModuleNode.VariantNode;
+    node: ModuleNode.VariantLikeNode;
     kind: VariableKind | FunctionKind;
 }
 
 export interface InitializerLikeMember extends Member, KnownLikeMember {
-    node: ModuleNode.InitializerNode;
+    node: ModuleNode.InitializerLikeNode;
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
 }
 

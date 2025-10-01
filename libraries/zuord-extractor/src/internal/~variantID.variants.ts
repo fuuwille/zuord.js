@@ -1,6 +1,6 @@
 import { ModuleNode, moduleNode } from "./moduleNode";
 
-export const extractVariantID = (node: ModuleNode.VariantNode): string | undefined => {
+export const extractVariantID = (node: ModuleNode.VariantLikeNode): string | undefined => {
     if(moduleNode.isFunctionNode(node)) {
         return extractVariantIDAsFunction(node);
     }

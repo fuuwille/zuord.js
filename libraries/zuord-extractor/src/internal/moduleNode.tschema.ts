@@ -1,20 +1,10 @@
 import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, Node, ArrowFunction, FunctionExpression, ClassDeclaration } from "ts-morph";
 
-export type ESMNode = 
-    | ImportNode
-    | ExportNode
-    | ExportDefaultNode;
-
 export type ImportNode = ImportDeclaration;
 
 export type ExportNode = ExportDeclaration;
 
 export type ExportDefaultNode = ExportAssignment;
-
-export type SchemaNode =
-    | TypeNode
-    | InterfaceNode
-    | EnumNode;
 
 export type TypeNode = TypeAliasDeclaration;
 
@@ -22,17 +12,9 @@ export type InterfaceNode = InterfaceDeclaration;
 
 export type EnumNode = EnumDeclaration;
 
-export type VariantNode =
-    | FunctionNode
-    | VariableNode;
-
 export type VariableNode = VariableStatement;
 
 export type FunctionNode = FunctionDeclaration;
-
-export type InitializerNode = 
-    | ArrowFunctionNode
-    | FunctionExpressionNode;
 
 export type ArrowFunctionNode = ArrowFunction;
 
@@ -41,18 +23,36 @@ export type FunctionExpressionNode = FunctionExpression;
 //
 
 export type KnownNode =
-    | ESMNode
-    | SchemaNode
-    | VariantNode
-    | InitializerNode;
+    | ESMLikeNode
+    | SchemaLikeNode
+    | VariantLikeNode
+    | InitializerLikeNode;
+
+export type ESMLikeNode = 
+    | ImportNode
+    | ExportNode
+    | ExportDefaultNode;
 
 export type ExportLikeNode = 
     | ExportNode
     | ExportDefaultNode;
 
 export type DefinitionLikeNode =
-    | SchemaNode
-    | VariantNode;
+    | SchemaLikeNode
+    | VariantLikeNode;
+
+export type SchemaLikeNode =
+    | TypeNode
+    | InterfaceNode
+    | EnumNode;
+
+export type VariantLikeNode =
+    | FunctionNode
+    | VariableNode;
+
+export type InitializerLikeNode = 
+    | ArrowFunctionNode
+    | FunctionExpressionNode;
 
 export type FunctionLikeNode =
     | FunctionNode
@@ -69,7 +69,7 @@ export type DiscardedNode =
     | DiscardedVariantNode;
 
 export type DiscardedSchemaNode = 
-    | VariantNode;
+    | VariantLikeNode;
 
 export type DiscardedVariantNode =
-    | SchemaNode;
+    | SchemaLikeNode;

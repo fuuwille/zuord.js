@@ -3,7 +3,7 @@ import { ModuleMode } from "./module.tschema";
 import { ModuleNode } from "./moduleNode";
 
 // ESM Nodes
-export const isESMNode = (node: Node): node is ModuleNode.ESMNode => {
+export const isESMNode = (node: Node): node is ModuleNode.ESMLikeNode => {
     return isImportNode(node) || isExportNode(node) || isExportDefaultNode(node);
 }
 
@@ -20,7 +20,7 @@ export const isExportDefaultNode = (node: Node): node is ModuleNode.ExportDefaul
 }
 
 // Schema Nodes
-export const isSchemaNode = (node: Node): node is ModuleNode.SchemaNode => {
+export const isSchemaNode = (node: Node): node is ModuleNode.SchemaLikeNode => {
     return isTypeNode(node) || isInterfaceNode(node) || isEnumNode(node);
 }
 
@@ -37,7 +37,7 @@ export const isEnumNode = (node: Node): node is ModuleNode.EnumNode => {
 }
 
 // Variant Nodes
-export const isVariantNode = (node: Node): node is ModuleNode.VariantNode => {
+export const isVariantNode = (node: Node): node is ModuleNode.VariantLikeNode => {
     return isFunctionLikeNode(node) || isVariableNode(node);
 }
 
@@ -50,7 +50,7 @@ export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
 }
 
 // Initializer Nodes
-export const isInitializerNode = (node: Node): node is ModuleNode.InitializerNode => {
+export const isInitializerNode = (node: Node): node is ModuleNode.InitializerLikeNode => {
     return isArrowFunctionNode(node) || isFunctionExpressionNode(node);
 }
 
