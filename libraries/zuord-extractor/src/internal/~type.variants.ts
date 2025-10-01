@@ -12,30 +12,6 @@ export const isPrimitiveType = (type: Type): boolean => {
     return (flags & primitiveFlags) !== 0;
 }
 
-export const getTypeName = (type?: Type): string | undefined => {
-    if(!type){
-        return undefined;
-    }
-
-    if (isPrimitiveType(type)) {
-        return type.getText();
-    }
-
-    const symbol = type.getAliasSymbol() ?? type.getSymbol();
-
-    return symbol?.getName();
-}
-
-export const getTypeNodeName = (typeNode?: TypeNode): string | undefined => {
-    if (!typeNode) {
-        return undefined;
-    }
-
-    const withoutGenerics = typeNode.getText().replace(/<.*>$/, "");
-
-    return withoutGenerics.split(".").pop();
-}
-
 export const getFunctionPredicateType = (node: ModuleFunctionLikeNode, typeNode?: TypeNode): Type | undefined => {
     typeNode ??= node.getReturnTypeNode();
 
@@ -68,4 +44,19 @@ export const getTypeReferenceChild = (node: Node | undefined): TypeReferenceNode
 export const getIdentifierChild = (node: Node | undefined): Identifier | undefined => {
     if (!node) return undefined;
     return node.getFirstChild(n => n.getKind() === SyntaxKind.Identifier) as Identifier | undefined;
+}
+
+export const getTypeName = (typeNode?: TypeNode): string | undefined => {
+
+    var typeRef;
+    if(isTypeReferenceNode(typeNode)) {
+        typeRef = typeNode;
+    }
+    else {
+        typeRef = getTypeReferenceChild(typeNode);
+    }
+
+    const identifier = getIdentifierChild(typeRef);
+
+    return identifier?.getText();
 }
