@@ -50,7 +50,7 @@ export const updateModule = (module: Module): void => {
                 if(!returnNode) {
                     variantContent.diagnostics ??= [];
                     variantContent.diagnostics.push(
-                        moduleDiagnostic.noReturnType(variantContent.member.nameNode!)
+                        moduleDiagnostic.buildInDiagnostics.noReturnType(variantContent.member.nameNode!)
                     );
                 }
             }

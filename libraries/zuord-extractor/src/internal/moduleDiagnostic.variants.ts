@@ -15,6 +15,8 @@ export const errorDiagnostic = (node: Node, message: string): ModuleDiagnostic.E
 
 //
 
-export const noReturnType = (node: Node): ModuleDiagnostic.ErrorDiagnostic => {
-    return errorDiagnostic(node, "Return type must be specified");
+export const buildInDiagnostics = {
+    noReturnType: (node: Node): ModuleDiagnostic.ErrorDiagnostic => {
+        return errorDiagnostic(node, "Return type must be specified");
+    }
 }
