@@ -39,6 +39,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "zuord-extractor": "6.0.0-alpha.31"
+    "zuord-extractor": "6.0.0-alpha.31",
+    "zuord-plugin": "^0.0.3"
   }
 }
