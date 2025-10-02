@@ -76,31 +76,3 @@ export type DiscardedSchemaNode =
 
 export type DiscardedVariantNode =
     | SchemaLikeNode;
-
-
-//
-
-
-export type ImportKind = SyntaxKind.ImportDeclaration;
-
-export type ExportKind = SyntaxKind.ExportDeclaration;
-
-export type ExportDefaultKind = SyntaxKind.ExportAssignment;
-
-export type TypeKind = SyntaxKind.TypeAliasDeclaration;
-
-export type InterfaceKind = SyntaxKind.InterfaceDeclaration;
-
-export type EnumKind = SyntaxKind.EnumDeclaration;
-
-export type VariableKind = SyntaxKind.VariableStatement;
-
-export type FunctionKind = SyntaxKind.FunctionDeclaration;
-
-export type ArrowFunctionKind = SyntaxKind.ArrowFunction;
-
-export type FunctionExpressionKind = SyntaxKind.FunctionExpression;
-
-//
-
-export type ValueKind = ValueSyntaxKind;

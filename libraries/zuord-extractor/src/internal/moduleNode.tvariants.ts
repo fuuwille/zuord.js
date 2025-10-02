@@ -1,50 +1,50 @@
-import { Node, SyntaxKind } from "ts-morph";
+import { Node } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleNode } from "./moduleNode";
-import { valueSyntaxKinds } from "./~valueSyntax";
+import { ModuleNodeKind, moduleNodeKind } from "./moduleNodeKind";
 
 export const isImportNode = (node: Node): node is ModuleNode.ImportNode => {
-    return node.getKind() === importKind;
+    return node.getKind() === moduleNodeKind.Import;
 }
 
 export const isExportNode = (node: Node): node is ModuleNode.ExportNode => {
-    return node.getKind() === exportKind;
+    return node.getKind() === moduleNodeKind.Export;
 }
 
 export const isExportDefaultNode = (node: Node): node is ModuleNode.ExportDefaultNode => {
-    return node.getKind() === exportDefaultKind;
+    return node.getKind() === moduleNodeKind.ExportDefault;
 }
 
 export const isTypeNode = (node: Node): node is ModuleNode.TypeNode => {
-    return node.getKind() === typeKind;
+    return node.getKind() === moduleNodeKind.Type;
 }
 
 export const isInterfaceNode = (node: Node): node is ModuleNode.InterfaceNode => {
-    return node.getKind() === interfaceKind;
+    return node.getKind() === moduleNodeKind.Interface;
 }
 
 export const isEnumNode = (node: Node): node is ModuleNode.EnumNode => {
-    return node.getKind() === enumKind;
+    return node.getKind() === moduleNodeKind.Enum;
 }
 
 export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
-    return node.getKind() === variableKind;
+    return node.getKind() === moduleNodeKind.Variable;
 }
 
 export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
-    return node.getKind() === functionKind;
+    return node.getKind() === moduleNodeKind.Function;
 }
 
 export const isValueNode = (node: Node): node is ModuleNode.ValueNode => {
-    return valueKinds.includes(node.getKind() as ModuleNode.ValueKind);
+    return moduleNodeKind.Values.includes(node.getKind() as ModuleNodeKind.Value);
 }
 
 export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
-    return node.getKind() === arrowFunctionKind;
+    return node.getKind() === moduleNodeKind.ArrowFunction;
 }
 
 export const isFunctionExpressionNode = (node: Node): node is ModuleNode.FunctionExpressionNode => {
-    return node.getKind() === functionExpressionKind;
+    return node.getKind() === moduleNodeKind.FunctionExpression;
 }
 
 //
@@ -105,27 +105,3 @@ export const isDiscardedSchemaNode = (node: Node): node is ModuleNode.DiscardedS
 export const isDiscardedVariantNode = (node: Node): node is ModuleNode.DiscardedVariantNode => {
     return isSchemaLikeNode(node);
 }
-
-//
-
-export const importKind: ModuleNode.ImportKind = SyntaxKind.ImportDeclaration;
-
-export const exportKind: ModuleNode.ExportKind = SyntaxKind.ExportDeclaration;
-
-export const exportDefaultKind: ModuleNode.ExportDefaultKind = SyntaxKind.ExportAssignment;
-
-export const typeKind: ModuleNode.TypeKind = SyntaxKind.TypeAliasDeclaration;
-
-export const interfaceKind: ModuleNode.InterfaceKind = SyntaxKind.InterfaceDeclaration;
-
-export const enumKind: ModuleNode.EnumKind = SyntaxKind.EnumDeclaration;
-
-export const variableKind: ModuleNode.VariableKind = SyntaxKind.VariableStatement;
-
-export const functionKind: ModuleNode.FunctionKind = SyntaxKind.FunctionDeclaration;
-
-export const arrowFunctionKind: ModuleNode.ArrowFunctionKind = SyntaxKind.ArrowFunction;
-
-export const functionExpressionKind: ModuleNode.FunctionExpressionKind = SyntaxKind.FunctionExpression;
-
-export const valueKinds: ModuleNode.ValueKind[] = valueSyntaxKinds;
