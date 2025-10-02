@@ -1,0 +1,4 @@
+{
+  "name": "zuord-plugin",
+  "main": "dist/index.js"
+}
