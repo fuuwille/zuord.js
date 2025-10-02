@@ -1,6 +1,6 @@
 import { Node } from "ts-morph";
 
-export interface BaseDiagnostic {
+export interface Common {
     node: Node;
     message: string;
     level: Level;
@@ -14,14 +14,14 @@ export enum Level {
 
 //
 
-export interface InfoDiagnostic extends BaseDiagnostic {
+export interface Info extends Common {
     level: Level.Info;
 }
 
-export interface WarningDiagnostic extends BaseDiagnostic {
+export interface Warning extends Common {
     level: Level.Warning;
 }
 
-export interface ErrorDiagnostic extends BaseDiagnostic {
+export interface Error extends Common {
     level: Level.Error;
 }

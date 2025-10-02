@@ -1,6 +1,6 @@
 import { Module } from "./module.tschema";
 import { ModuleContentKind } from "./moduleContentKind";
-import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
+import { ModuleDiagnostic } from "./moduleDiagnostic";
 import { ModuleMember } from "./moduleMember";
 
 export interface Common {
@@ -8,7 +8,7 @@ export interface Common {
     member: ModuleMember.DefinitionLike;
     kind: ModuleContentKind.Common;
     name?: string | null;
-    diagnostics?: BaseDiagnostic[];
+    diagnostics?: ModuleDiagnostic.Common[];
 }
 
 export interface Schema extends Common {

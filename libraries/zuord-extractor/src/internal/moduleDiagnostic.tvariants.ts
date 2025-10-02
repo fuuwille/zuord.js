@@ -1,22 +1,22 @@
 import { Node } from "ts-morph";
 import { ModuleDiagnostic } from "./moduleDiagnostic";
 
-export const infoDiagnostic = (node: Node, message: string): ModuleDiagnostic.InfoDiagnostic => {
+export const info = (node: Node, message: string): ModuleDiagnostic.Info => {
     return { node, message, level: ModuleDiagnostic.Level.Info };
 }
 
-export const warningDiagnostic = (node: Node, message: string): ModuleDiagnostic.WarningDiagnostic => {
+export const warning = (node: Node, message: string): ModuleDiagnostic.Warning => {
     return { node, message, level: ModuleDiagnostic.Level.Warning };
 }
 
-export const errorDiagnostic = (node: Node, message: string): ModuleDiagnostic.ErrorDiagnostic => {
+export const error = (node: Node, message: string): ModuleDiagnostic.Error => {
     return { node, message, level: ModuleDiagnostic.Level.Error };
 }
 
 //
 
 export const buildInDiagnostics = {
-    noReturnType: (node: Node): ModuleDiagnostic.ErrorDiagnostic => {
-        return errorDiagnostic(node, "Return type must be specified");
+    noReturnType: (node: Node): ModuleDiagnostic.Error => {
+        return error(node, "Return type must be specified");
     }
 }
