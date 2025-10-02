@@ -36,7 +36,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                     codelenses.push(codelens);
                 });
             }
-            else if(kind == "variants") {
+            else if(kind == "tvariants") {
                 module.variantContents.forEach(variant => {
                     const member = variant.member;
                     const node = member.node;
