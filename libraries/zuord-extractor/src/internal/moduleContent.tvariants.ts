@@ -1,8 +1,7 @@
 import { Module } from "./module.tschema";
 import { ModuleContent } from "./moduleContent";
 import { moduleContentKind } from "./moduleContentKind";
-import { ModuleMember } from "./moduleMember";
-import { getFunctionLike, isFunctional, isVariableValue, updateDefinitionLikeNameNode, updateFunctionLikeParamTypeNode, updateFunctionLikeReturnTypeNode, updateVariableValueDeclaredTypeNode } from "./moduleMember.tvariants";
+import { ModuleMember, moduleMember } from "./moduleMember";
 import { getTypeName } from "./~type.tvariants";
 
 export const isSchemaContent = (content: ModuleContent.BaseContent): content is ModuleContent.SchemaContent => {
@@ -16,11 +15,11 @@ export const isVariantContent = (content: ModuleContent.BaseContent): content is
 //
 
 export const isValueContent = (content: ModuleContent.BaseContent): content is ModuleContent.ValueContent => {
-    return isVariableValue(content.member);
+    return moduleMember.isVariableValue(content.member);
 }
 
 export const isFunctionalContent = (content: ModuleContent.BaseContent): content is ModuleContent.FunctionalContent => {
-    return isFunctional(content.member);
+    return moduleMember.isFunctional(content.member);
 }
 
 //
@@ -50,20 +49,20 @@ export const createVariantContent = (
 //
 
 export const getContentName = (content: ModuleContent.BaseContent) : string | undefined => {
-    updateDefinitionLikeNameNode(content.member);
+    moduleMember.updateDefinitionLikeNameNode(content.member);
     return content.member.nameNode?.getText();
 }
 
 export const getValueContentDeclaredSchemaName = (content: ModuleContent.ValueContent) : string | undefined => {
-    updateVariableValueDeclaredTypeNode(content.member);
+    moduleMember.updateVariableValueDeclaredTypeNode(content.member);
     const typeNode = content.member.declaredTypeNode;
     return getTypeName(typeNode);
 }
 
 export const getFunctionalContentReturnSchemaName = (content: ModuleContent.FunctionalContent) : string | undefined => {
-    const member = getFunctionLike(content.member);
+    const member = moduleMember.getFunctionLike(content.member);
     if(member) {
-        updateFunctionLikeReturnTypeNode(member);
+        moduleMember.updateFunctionLikeReturnTypeNode(member);
         const typeNode = member.returnTypeNode;
         return getTypeName(typeNode, member.node);
     }
@@ -72,10 +71,10 @@ export const getFunctionalContentReturnSchemaName = (content: ModuleContent.Func
 }
 
 export const getFunctionalContentParamSchemaName = (content: ModuleContent.FunctionalContent) : string | undefined => {
-    const member = getFunctionLike(content.member);
+    const member = moduleMember.getFunctionLike(content.member);
 
     if(member) {
-        updateFunctionLikeParamTypeNode(member);
+        moduleMember.updateFunctionLikeParamTypeNode(member);
         const typeNode = member.paramTypeNode;
         return getTypeName(typeNode, member.node);
     }
