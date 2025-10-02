@@ -107,7 +107,7 @@ export const create = <TMember extends ModuleMember.Base>(
     } as TMember;
 
     if(isVariable(member)) {
-        updateVariableMemberInitializer(member);
+        updateVariableInitializer(member);
     }
 
     return member;
@@ -157,7 +157,7 @@ export const getKind = (node: Node): ModuleMember.MemberKind => {
     return "unknown";
 };
 
-export const getDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionLike): BindingName | null => {
+export const getDefinitionLikeNameNode = (member: ModuleMember.DefinitionLike): BindingName | null => {
     if("getNameNode" in member.node) {
         return member.node.getNameNode() ?? null;
     }
@@ -173,7 +173,7 @@ export const getDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionL
     return null;
 }
 
-export const getVariableMemberInitializer = (member: ModuleMember.Variable): ModuleMember.InitializerLike | undefined => {
+export const getVariableInitializer = (member: ModuleMember.Variable): ModuleMember.InitializerLike | undefined => {
     if(!member) return undefined;
 
     const declaration = member.node.getDeclarations()[0];
@@ -191,19 +191,19 @@ export const getVariableMemberInitializer = (member: ModuleMember.Variable): Mod
     return undefined
 }
 
-export const getVariableValueMemberDeclaredTypeNode = (member: ModuleMember.VariableValue): TypeNode | undefined => {
+export const getVariableValueDeclaredTypeNode = (member: ModuleMember.VariableValue): TypeNode | undefined => {
     return member?.node?.getDeclarations()[0]?.getTypeNode();
 }
 
-export const getFunctionLikeMemberReturnTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
+export const getFunctionLikeReturnTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
     return member?.node?.getReturnTypeNode();
 }
 
-export const getFunctionLikeMemberParamTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
+export const getFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
 
-export const getFunctionLikeMember = (member: ModuleMember.Functional) : ModuleMember.FunctionLike | undefined => {
+export const getFunctionLike = (member: ModuleMember.Functional) : ModuleMember.FunctionLike | undefined => {
     if(isVariableFunctional(member)) {
         return member.initializer!;
     }
@@ -211,50 +211,50 @@ export const getFunctionLikeMember = (member: ModuleMember.Functional) : ModuleM
     return member;
 }
 
-export const getFunctionalMemberReturnType = (member: ModuleMember.Functional) : TypeNode | undefined => {
-    return getFunctionLikeMemberReturnTypeNode(getFunctionLikeMember(member)!);
+export const getFunctionalReturnType = (member: ModuleMember.Functional) : TypeNode | undefined => {
+    return getFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 }
 
-export const getFunctionalMemberParamType = (member: ModuleMember.Functional) : TypeNode | undefined => {
-    return getFunctionLikeMemberParamTypeNode(getFunctionLikeMember(member)!);
+export const getFunctionalParamType = (member: ModuleMember.Functional) : TypeNode | undefined => {
+    return getFunctionLikeParamTypeNode(getFunctionLike(member)!);
 }
 
 //
 
-export const updateDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionLike): void => {
+export const updateDefinitionLikeNameNode = (member: ModuleMember.DefinitionLike): void => {
     if(member.nameNode == undefined) {
-        member.nameNode = getDefinitionLikeMemberNameNode(member);
+        member.nameNode = getDefinitionLikeNameNode(member);
     }
 }
 
-export const updateVariableMemberInitializer = (member: ModuleMember.Variable): void => {
+export const updateVariableInitializer = (member: ModuleMember.Variable): void => {
     if(member.initializer == undefined) {
-        member.initializer = getVariableMemberInitializer(member);
+        member.initializer = getVariableInitializer(member);
     }
 }
 
-export const updateVariableValueMemberDeclaredTypeNode = (member: ModuleMember.VariableValue): void => {
+export const updateVariableValueDeclaredTypeNode = (member: ModuleMember.VariableValue): void => {
     if(member.declaredTypeNode == undefined) {
-        member.declaredTypeNode = getVariableValueMemberDeclaredTypeNode(member);
+        member.declaredTypeNode = getVariableValueDeclaredTypeNode(member);
     }
 }
 
-export const updateFunctionLikeMemberReturnTypeNode = (member: ModuleMember.FunctionLike): void => {
+export const updateFunctionLikeReturnTypeNode = (member: ModuleMember.FunctionLike): void => {
     if(member.returnTypeNode == undefined) {
-        member.returnTypeNode = getFunctionLikeMemberReturnTypeNode(member);
+        member.returnTypeNode = getFunctionLikeReturnTypeNode(member);
     }
 };
 
-export const updateFunctionLikeMemberParamTypeNode = (member: ModuleMember.FunctionLike): void => {
+export const updateFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike): void => {
     if(member.paramTypeNode == undefined) {
-        member.paramTypeNode = getFunctionLikeMemberParamTypeNode(member);
+        member.paramTypeNode = getFunctionLikeParamTypeNode(member);
     }
 };
 
-export const updateFunctionalMemberReturnTypeNode = (member: ModuleMember.Functional): void => {
-    return updateFunctionLikeMemberReturnTypeNode(getFunctionLikeMember(member)!);
+export const updateFunctionalReturnTypeNode = (member: ModuleMember.Functional): void => {
+    return updateFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 };
 
-export const updateFunctionalMemberParamTypeNode = (member: ModuleMember.Functional): void => {
-    return updateFunctionLikeMemberParamTypeNode(getFunctionLikeMember(member)!);
+export const updateFunctionalParamTypeNode = (member: ModuleMember.Functional): void => {
+    return updateFunctionLikeParamTypeNode(getFunctionLike(member)!);
 };

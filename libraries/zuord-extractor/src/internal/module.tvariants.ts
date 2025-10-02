@@ -43,7 +43,7 @@ export const updateModule = (module: Module): void => {
             }
 
             if(moduleContent.isFunctionalContent(variantContent)) {
-                const member = moduleMember.getFunctionLikeMember(variantContent.member);
+                const member = moduleMember.getFunctionLike(variantContent.member);
 
                 const returnNode = member?.returnTypeNode;
 
