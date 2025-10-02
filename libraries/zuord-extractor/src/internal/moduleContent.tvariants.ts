@@ -91,7 +91,7 @@ export const getVariantSchema = (content: ModuleContent.Variant, schemas: Module
 }
 
 export const getValueDeclaredSchema = (content: ModuleContent.Value, schemas: ModuleContent.Schema[]) : ModuleContent.Schema | undefined => {
-    updateValueContentDeclaredSchemaName(content);
+    updateValueDeclaredSchemaName(content);
 
     return schemas.find(s => s.name === content.declaredSchemaName);
 }
@@ -102,50 +102,50 @@ export const getFunctionalSchema = (content: ModuleContent.Functional, schemas: 
 }
 
 export const getFunctionalReturnSchema = (content: ModuleContent.Functional, schemas: ModuleContent.Schema[]) : ModuleContent.Schema | undefined => {
-    updateFunctionalContentReturnSchemaName(content);
+    updateFunctionalReturnSchemaName(content);
 
     return schemas.find(s => s.name === content.returnSchemaName);
 }
 
 export const getFunctionalParamSchema = (content: ModuleContent.Functional, schemas: ModuleContent.Schema[]) : ModuleContent.Schema | undefined => {
-    updateFunctionalContentParamSchemaName(content);
+    updateFunctionalParamSchemaName(content);
 
     return schemas.find(s => s.name === content.paramSchemaName);
 }
 
 //
 
-export const updateContentName = (content: ModuleContent.Base) : void => {
+export const updateName = (content: ModuleContent.Base) : void => {
     if(content.name == undefined) {
         content.name = getName(content);
     }
 };
 
-export const updateVariantContentSchema = (content: ModuleContent.Variant, schemas: ModuleContent.Schema[]) : void => {
+export const updateVariantSchema = (content: ModuleContent.Variant, schemas: ModuleContent.Schema[]) : void => {
     if(content.schema == undefined) {
         content.schema = getVariantSchema(content, schemas);
     }
 };
 
-export const updateValueContentDeclaredSchema = (content: ModuleContent.Value, schemas: ModuleContent.Schema[]) : void => {
+export const updateValueDeclaredSchema = (content: ModuleContent.Value, schemas: ModuleContent.Schema[]) : void => {
     if(content.schema == undefined) {
         content.schema = getValueDeclaredSchema(content, schemas);
     }
 }
 
-export const updateValueContentDeclaredSchemaName = (content: ModuleContent.Value) : void => {
+export const updateValueDeclaredSchemaName = (content: ModuleContent.Value) : void => {
     if(content.declaredSchemaName == undefined) {
         content.declaredSchemaName = getValueDeclaredSchemaName(content);
     }
 }
 
-export const updateFunctionalContentReturnSchemaName = (content: ModuleContent.Functional) : void => {
+export const updateFunctionalReturnSchemaName = (content: ModuleContent.Functional) : void => {
     if(content.returnSchemaName == undefined) {
         content.returnSchemaName = getFunctionalReturnSchemaName(content);
     }
 };
 
-export const updateFunctionalContentParamSchemaName = (content: ModuleContent.Functional) : void => {
+export const updateFunctionalParamSchemaName = (content: ModuleContent.Functional) : void => {
     if(content.paramSchemaName == undefined) {
         content.paramSchemaName = getFunctionalParamSchemaName(content);
     }
