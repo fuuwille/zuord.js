@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import explorer from "./explorer";
 import path from "path";
-import { $zuordExtractor } from "zuord-extractor";
 import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
