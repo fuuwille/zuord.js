@@ -5,8 +5,8 @@ export type Module = {
     name: string;
     schemaFile: ModuleFile.Schema | null;
     variantsFile: ModuleFile.Variants | null;
-    schemaContents: ModuleContent.SchemaContent[];
-    variantContents: ModuleContent.VariantContent[];
+    schemaContents: ModuleContent.Schema[];
+    variantContents: ModuleContent.Variant[];
 }
 
 export enum ModuleMode {
