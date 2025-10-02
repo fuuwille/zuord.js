@@ -1,65 +1,65 @@
 import { Module } from "./module.tschema";
-import { BaseContent, ContentKind, FunctionalContent, SchemaContent, ValueContent, VariantContent } from "./moduleContent.tschema";
-import { SchemaLike, VariantLike } from "./moduleMember.tschema";
+import { ModuleContent } from "./moduleContent";
+import { ModuleMember } from "./moduleMember";
 import { getFunctionLike, isFunctional, isValue, isVariableValue, updateDefinitionLikeNameNode, updateFunctionLikeParamTypeNode, updateFunctionLikeReturnTypeNode, updateVariableValueDeclaredTypeNode } from "./moduleMember.tvariants";
 import { getTypeName } from "./~type.tvariants";
 
-export const isSchemaContent = (content: BaseContent): content is SchemaContent => {
-    return content.kind === ContentKind.Schema;
+export const isSchemaContent = (content: ModuleContent.BaseContent): content is ModuleContent.SchemaContent => {
+    return content.kind === ModuleContent.ContentKind.Schema;
 };
 
-export const isVariantContent = (content: BaseContent): content is VariantContent => {
-    return content.kind === ContentKind.Variant;
+export const isVariantContent = (content: ModuleContent.BaseContent): content is ModuleContent.VariantContent => {
+    return content.kind === ModuleContent.ContentKind.Variant;
 };
 
 //
 
-export const isValueContent = (content: BaseContent): content is ValueContent => {
+export const isValueContent = (content: ModuleContent.BaseContent): content is ModuleContent.ValueContent => {
     return  isVariableValue(content.member);
 }
 
-export const isFunctionalContent = (content: BaseContent): content is FunctionalContent => {
+export const isFunctionalContent = (content: ModuleContent.BaseContent): content is ModuleContent.FunctionalContent => {
     return  isFunctional(content.member);
 }
 
 //
 
 export const createSchemaContent = (
-    module: Module, member: SchemaLike
-) : SchemaContent => {
+    module: Module, member: ModuleMember.SchemaLike
+) : ModuleContent.SchemaContent => {
 
     return {
         module,
         member,
-        kind: ContentKind.Schema
+        kind: ModuleContent.ContentKind.Schema
     };
 };
 
 export const createVariantContent = (
-    module: Module, member: VariantLike
-) : VariantContent => {
+    module: Module, member: ModuleMember.VariantLike
+) : ModuleContent.VariantContent => {
 
     return {
         module,
         member,
-        kind: ContentKind.Variant
+        kind: ModuleContent.ContentKind.Variant
     };
 };
 
 //
 
-export const getContentName = (content: BaseContent) : string | undefined => {
+export const getContentName = (content: ModuleContent.BaseContent) : string | undefined => {
     updateDefinitionLikeNameNode(content.member);
     return content.member.nameNode?.getText();
 }
 
-export const getValueContentDeclaredSchemaName = (content: ValueContent) : string | undefined => {
+export const getValueContentDeclaredSchemaName = (content: ModuleContent.ValueContent) : string | undefined => {
     updateVariableValueDeclaredTypeNode(content.member);
     const typeNode = content.member.declaredTypeNode;
     return getTypeName(typeNode);
 }
 
-export const getFunctionalContentReturnSchemaName = (content: FunctionalContent) : string | undefined => {
+export const getFunctionalContentReturnSchemaName = (content: ModuleContent.FunctionalContent) : string | undefined => {
     const member = getFunctionLike(content.member);
     if(member) {
         updateFunctionLikeReturnTypeNode(member);
@@ -70,7 +70,7 @@ export const getFunctionalContentReturnSchemaName = (content: FunctionalContent)
     return undefined;
 }
 
-export const getFunctionalContentParamSchemaName = (content: FunctionalContent) : string | undefined => {
+export const getFunctionalContentParamSchemaName = (content: ModuleContent.FunctionalContent) : string | undefined => {
     const member = getFunctionLike(content.member);
 
     if(member) {
@@ -80,7 +80,7 @@ export const getFunctionalContentParamSchemaName = (content: FunctionalContent) 
     }
 }
 
-export const getVariantContentSchema = (content: VariantContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+export const getVariantContentSchema = (content: ModuleContent.VariantContent, schemas: ModuleContent.SchemaContent[]) : ModuleContent.SchemaContent | undefined => {
     if(isValueContent(content)) {
         return getValueContentDeclaredSchema(content, schemas);
     }
@@ -90,24 +90,24 @@ export const getVariantContentSchema = (content: VariantContent, schemas: Schema
     }
 }
 
-export const getValueContentDeclaredSchema = (content: ValueContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+export const getValueContentDeclaredSchema = (content: ModuleContent.ValueContent, schemas: ModuleContent.SchemaContent[]) : ModuleContent.SchemaContent | undefined => {
     updateValueContentDeclaredSchemaName(content);
 
     return schemas.find(s => s.name === content.declaredSchemaName);
 }
 
-export const getFunctionalContentSchema = (content: FunctionalContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+export const getFunctionalContentSchema = (content: ModuleContent.FunctionalContent, schemas: ModuleContent.SchemaContent[]) : ModuleContent.SchemaContent | undefined => {
     return getFunctionalContentReturnSchema(content, schemas)
         ?? getFunctionalContentParamSchema(content, schemas);
 }
 
-export const getFunctionalContentReturnSchema = (content: FunctionalContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+export const getFunctionalContentReturnSchema = (content: ModuleContent.FunctionalContent, schemas: ModuleContent.SchemaContent[]) : ModuleContent.SchemaContent | undefined => {
     updateFunctionalContentReturnSchemaName(content);
 
     return schemas.find(s => s.name === content.returnSchemaName);
 }
 
-export const getFunctionalContentParamSchema = (content: FunctionalContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+export const getFunctionalContentParamSchema = (content: ModuleContent.FunctionalContent, schemas: ModuleContent.SchemaContent[]) : ModuleContent.SchemaContent | undefined => {
     updateFunctionalContentParamSchemaName(content);
 
     return schemas.find(s => s.name === content.paramSchemaName);
@@ -115,37 +115,37 @@ export const getFunctionalContentParamSchema = (content: FunctionalContent, sche
 
 //
 
-export const updateContentName = (content: BaseContent) : void => {
+export const updateContentName = (content: ModuleContent.BaseContent) : void => {
     if(content.name == undefined) {
         content.name = getContentName(content);
     }
 };
 
-export const updateVariantContentSchema = (content: VariantContent, schemas: SchemaContent[]) : void => {
+export const updateVariantContentSchema = (content: ModuleContent.VariantContent, schemas: ModuleContent.SchemaContent[]) : void => {
     if(content.schema == undefined) {
         content.schema = getVariantContentSchema(content, schemas);
     }
 };
 
-export const updateValueContentDeclaredSchema = (content: ValueContent, schemas: SchemaContent[]) : void => {
+export const updateValueContentDeclaredSchema = (content: ModuleContent.ValueContent, schemas: ModuleContent.SchemaContent[]) : void => {
     if(content.schema == undefined) {
         content.schema = getValueContentDeclaredSchema(content, schemas);
     }
 }
 
-export const updateValueContentDeclaredSchemaName = (content: ValueContent) : void => {
+export const updateValueContentDeclaredSchemaName = (content: ModuleContent.ValueContent) : void => {
     if(content.declaredSchemaName == undefined) {
         content.declaredSchemaName = getValueContentDeclaredSchemaName(content);
     }
 }
 
-export const updateFunctionalContentReturnSchemaName = (content: FunctionalContent) : void => {
+export const updateFunctionalContentReturnSchemaName = (content: ModuleContent.FunctionalContent) : void => {
     if(content.returnSchemaName == undefined) {
         content.returnSchemaName = getFunctionalContentReturnSchemaName(content);
     }
 };
 
-export const updateFunctionalContentParamSchemaName = (content: FunctionalContent) : void => {
+export const updateFunctionalContentParamSchemaName = (content: ModuleContent.FunctionalContent) : void => {
     if(content.paramSchemaName == undefined) {
         content.paramSchemaName = getFunctionalContentParamSchemaName(content);
     }
