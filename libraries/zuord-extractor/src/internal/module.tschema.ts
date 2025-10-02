@@ -3,8 +3,8 @@ import { ModuleContent } from "./moduleContent";
 
 export type Module = {
     name: string;
-    schemaFile: ModuleFile.SchemaFile | null;
-    variantsFile: ModuleFile.VariantsFile | null;
+    schemaFile: ModuleFile.Schema | null;
+    variantsFile: ModuleFile.Variants | null;
     schemaContents: ModuleContent.SchemaContent[];
     variantContents: ModuleContent.VariantContent[];
 }
