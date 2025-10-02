@@ -1,6 +1,6 @@
 import { ModuleNode, moduleNode } from "./moduleNode";
 
-export const extractVariantID = (node: ModuleNode.VariantLikeNode): string | undefined => {
+export const extractVariantID = (node: ModuleNode.VariantLike): string | undefined => {
     if(moduleNode.isFunction(node)) {
         return extractVariantIDAsFunction(node);
     }
@@ -10,11 +10,11 @@ export const extractVariantID = (node: ModuleNode.VariantLikeNode): string | und
     }
 }
 
-export const extractVariantIDAsFunction = (node: ModuleNode.FunctionNode): string | undefined => {
+export const extractVariantIDAsFunction = (node: ModuleNode.Function): string | undefined => {
     return node.getName();
 }
 
-export const extractVariantIDAsVariable = (node: ModuleNode.VariableNode): string | undefined => {
+export const extractVariantIDAsVariable = (node: ModuleNode.Variable): string | undefined => {
     const declaration = node.getDeclarations()[0];
 
     if(declaration) {

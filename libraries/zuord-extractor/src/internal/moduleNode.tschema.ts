@@ -1,78 +1,78 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction, FunctionExpression, SyntaxKind } from "ts-morph";
-import { ValueSyntaxKind, ValueSyntaxNode } from "./~valueSyntax";
+import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction as $ArrowFunction, FunctionExpression as $FunctionExpression } from "ts-morph";
+import { ValueSyntaxNode } from "./~valueSyntax";
 
-export type ImportNode = ImportDeclaration;
+export type Import = ImportDeclaration;
 
-export type ExportNode = ExportDeclaration;
+export type Export = ExportDeclaration;
 
-export type ExportDefaultNode = ExportAssignment;
+export type ExportDefault = ExportAssignment;
 
-export type TypeNode = TypeAliasDeclaration;
+export type Type = TypeAliasDeclaration;
 
-export type InterfaceNode = InterfaceDeclaration;
+export type Interface = InterfaceDeclaration;
 
-export type EnumNode = EnumDeclaration;
+export type Enum = EnumDeclaration;
 
-export type VariableNode = VariableStatement;
+export type Variable = VariableStatement;
 
-export type FunctionNode = FunctionDeclaration;
+export type Function = FunctionDeclaration;
 
-export type ValueNode = ValueSyntaxNode;
+export type Value = ValueSyntaxNode;
 
-export type ArrowFunctionNode = ArrowFunction;
+export type ArrowFunction = $ArrowFunction;
 
-export type FunctionExpressionNode = FunctionExpression;
-
-//
-
-export type KnownLikeNode =
-    | ESMLikeNode
-    | SchemaLikeNode
-    | VariantLikeNode
-    | InitializerLikeNode;
-
-export type ESMLikeNode = 
-    | ImportNode
-    | ExportNode
-    | ExportDefaultNode;
-
-export type ExportLikeNode = 
-    | ExportNode
-    | ExportDefaultNode;
-
-export type DefinitionLikeNode =
-    | SchemaLikeNode
-    | VariantLikeNode;
-
-export type SchemaLikeNode =
-    | TypeNode
-    | InterfaceNode
-
-export type VariantLikeNode =
-    | VariableNode
-    | FunctionNode;
-
-export type InitializerLikeNode = 
-    | ValueNode
-    | ArrowFunctionNode
-    | FunctionExpressionNode;
-
-export type FunctionLikeNode =
-    | FunctionNode
-    | FunctionAltNode;
-
-export type FunctionAltNode = 
-    | ArrowFunctionNode
-    | FunctionExpressionNode;
+export type FunctionExpression = $FunctionExpression;
 
 //
 
-export type DiscardedNode =
-    | DiscardedSchemaNode
-    | DiscardedVariantNode;
+export type KnownLike =
+    | ESMLike
+    | SchemaLike
+    | VariantLike
+    | InitializerLike;
 
-export type DiscardedSchemaNode = 
-    | VariantLikeNode;
+export type ESMLike = 
+    | Import
+    | Export
+    | ExportDefault;
 
-export type DiscardedVariantNode =
-    | SchemaLikeNode;
+export type ExportLike = 
+    | Export
+    | ExportDefault;
+
+export type DefinitionLike =
+    | SchemaLike
+    | VariantLike;
+
+export type SchemaLike =
+    | Type
+    | Interface
+
+export type VariantLike =
+    | Variable
+    | Function;
+
+export type InitializerLike = 
+    | Value
+    | ArrowFunction
+    | FunctionExpression;
+
+export type FunctionLike =
+    | Function
+    | FunctionAlt;
+
+export type FunctionAlt = 
+    | ArrowFunction
+    | FunctionExpression;
+
+//
+
+export type Discarded =
+    | DiscardedSchema
+    | DiscardedVariant;
+
+export type DiscardedSchema = 
+    | VariantLike;
+
+export type DiscardedVariant =
+    | SchemaLike;
