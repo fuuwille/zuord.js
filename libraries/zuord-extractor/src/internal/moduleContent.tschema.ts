@@ -1,6 +1,6 @@
 import { Module } from "./module.tschema";
 import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
-import { DefinitionLikeMember, FunctionalMember, SchemaLikeMember, VariantLikeMember } from "./moduleMember.tschema";
+import { DefinitionLikeMember, FunctionalMember, SchemaLikeMember, VariableValueMember, VariantLikeMember } from "./moduleMember.tschema";
 
 export interface BaseContent {
     module: Module;
@@ -28,6 +28,11 @@ export enum ContentKind {
 }
 
 //
+
+export interface ValueContent extends VariantContent {
+    member: VariableValueMember;
+    declaredSchemaName?: string | null;
+}
 
 export interface FunctionalContent extends VariantContent {
     member: FunctionalMember;
