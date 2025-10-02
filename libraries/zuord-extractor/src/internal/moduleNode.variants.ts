@@ -32,7 +32,7 @@ export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
 }
 
 export const isValueNode = (node: Node): node is ModuleNode.ValueNode => {
-    return node.getKind() === valueKind;
+    return (node.getKind() & valueKind) !== 0;
 }
 
 export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
