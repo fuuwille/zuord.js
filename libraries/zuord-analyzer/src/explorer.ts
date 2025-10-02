@@ -160,7 +160,7 @@ export class ExplorerProvider {
             case "tschema":        
                 zuordExtractor.updateModuleTypeFile(module, sourceFile);
                 break;
-            case "variants":
+            case "tvariants":
                 zuordExtractor.updateModuleVariantsFile(module, sourceFile);
                 break;
         }
