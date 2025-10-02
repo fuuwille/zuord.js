@@ -106,7 +106,7 @@ export const createMember = <TMember extends ModuleMember.Member>(
     } as TMember;
 
     if(isVariableMember(member)) {
-        member.initializer = getVariableMemberInitializer(member);
+        updateVariableMemberInitializer(member);
     }
 
     return member;
