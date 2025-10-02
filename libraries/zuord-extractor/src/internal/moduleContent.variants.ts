@@ -1,7 +1,7 @@
 import { Module } from "./module.tschema";
 import { BaseContent, ContentKind, FunctionalContent, SchemaContent, ValueContent, VariantContent } from "./moduleContent.tschema";
 import { SchemaLikeMember, VariantLikeMember } from "./moduleMember.tschema";
-import { getFunctionLikeMember, isFunctionalMember, isValueMember, isVariableValueMember, updateDefinitionLikeMemberNameNode, updateFunctionLikeMemberParamTypeNode, updateFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
+import { getFunctionLikeMember, isFunctionalMember, isValueMember, isVariableValueMember, updateDefinitionLikeMemberNameNode, updateFunctionLikeMemberParamTypeNode, updateFunctionLikeMemberReturnTypeNode, updateVariableValueMemberDeclaredTypeNode } from "./moduleMember.variants";
 import { getTypeName } from "./~type.variants";
 
 export const isSchemaContent = (content: BaseContent): content is SchemaContent => {
@@ -53,6 +53,12 @@ export const getContentName = (content: BaseContent) : string | undefined => {
     return content.member.nameNode?.getText();
 }
 
+export const getValueContentDeclaredSchemaName = (content: ValueContent) : string | undefined => {
+    updateVariableValueMemberDeclaredTypeNode(content.member);
+    const typeNode = content.member.declaredTypeNode;
+    return getTypeName(typeNode);
+}
+
 export const getFunctionalContentReturnSchemaName = (content: FunctionalContent) : string | undefined => {
     const member = getFunctionLikeMember(content.member);
     if(member) {
@@ -80,6 +86,12 @@ export const getVariantContentSchema = (content: VariantContent, schemas: Schema
     }
 }
 
+export const getValueContentDeclaredSchema = (content: ValueContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+    updateValueContentDeclaredSchemaName(content);
+
+    return schemas.find(s => s.name === content.declaredSchemaName);
+}
+
 export const getFunctionalContentSchema = (content: FunctionalContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
     return getFunctionalContentReturnSchema(content, schemas)
         ?? getFunctionalContentParamSchema(content, schemas);
@@ -104,6 +116,12 @@ export const updateContentName = (content: BaseContent) : void => {
         content.name = getContentName(content);
     }
 };
+
+export const updateValueContentDeclaredSchemaName = (content: ValueContent) : void => {
+    if(content.declaredSchemaName == undefined) {
+        content.declaredSchemaName = getValueContentDeclaredSchemaName(content);
+    }
+}
 
 export const updateFunctionalContentReturnSchemaName = (content: FunctionalContent) : void => {
     if(content.returnSchemaName == undefined) {
