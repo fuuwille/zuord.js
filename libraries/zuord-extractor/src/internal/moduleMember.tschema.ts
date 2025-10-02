@@ -1,5 +1,6 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
+import { ModuleMemberKind } from "./moduleMemberKind";
 
 export interface Member {
     node: Node;
@@ -7,58 +8,58 @@ export interface Member {
 }
 
 export interface UnknownMember extends Member {
-    kind: UnknownKind;
+    kind: ModuleMemberKind.Unknown;
 }
 
 export interface ImportMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ImportNode;
-    kind: ImportKind;
+    kind: ModuleMemberKind.Import;
 }
 
 export interface ExportMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ExportNode;
-    kind: ExportKind;
+    kind: ModuleMemberKind.Export;
 }
 
 export interface ExportDefaultMember extends Member, KnownLikeMember, ESMLikeMember {
     node: ModuleNode.ExportDefaultNode;
-    kind: ExportDefaultKind;
+    kind: ModuleMemberKind.ExportDefault;
 }
 
 export interface TypeMember extends Member, KnownLikeMember, SchemaLikeMember {
     node: ModuleNode.TypeNode;
-    kind: TypeKind;
+    kind: ModuleMemberKind.Type;
 }
 
 export interface InterfaceMember extends Member, KnownLikeMember, SchemaLikeMember {
     node: ModuleNode.InterfaceNode;
-    kind: InterfaceKind;
+    kind: ModuleMemberKind.Interface;
 }
 
 export interface VariableMember extends Member, KnownLikeMember, VariantLikeMember {
     node: ModuleNode.VariableNode;
-    kind: VariableKind;
+    kind: ModuleMemberKind.Variable;
     initializer?: InitializerLikeMember;
 }
 
 export interface FunctionMember extends Member, KnownLikeMember, VariantLikeMember, FunctionLikeMember {
     node: ModuleNode.FunctionNode;
-    kind: FunctionKind;
+    kind: ModuleMemberKind.Function;
 }
 
 export interface ValueMember extends Member, KnownLikeMember, InitializerLikeMember {
     node: ModuleNode.ValueNode;
-    kind: ValueKind;
+    kind: ModuleMemberKind.Value;
 }
 
 export interface ArrowFunctionMember extends Member, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.ArrowFunctionNode;
-    kind: ArrowFunctionKind;
+    kind: ModuleMemberKind.ArrowFunction;
 }
 
 export interface FunctionExpressionMember extends Member, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
     node: ModuleNode.FunctionExpressionNode;
-    kind: FunctionExpressionKind;
+    kind: ModuleMemberKind.FunctionExpression;
 }
 
 //
@@ -69,28 +70,28 @@ export interface KnownLikeMember extends Member {
 
 export interface ESMLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.ESMLikeNode;
-    kind: ImportKind | ExportKind | ExportDefaultKind;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
 export interface DefinitionLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.DefinitionLikeNode;
-    kind: TypeKind | InterfaceKind | VariableKind | FunctionKind;
+    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
     nameNode?: BindingName | null;
 }
 
 export interface SchemaLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.SchemaLikeNode;
-    kind: TypeKind | InterfaceKind;
+    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface;
 }
 
 export interface VariantLikeMember extends Member, KnownLikeMember, DefinitionLikeMember {
     node: ModuleNode.VariantLikeNode;
-    kind: VariableKind | FunctionKind;
+    kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
 export interface InitializerLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.InitializerLikeNode;
-    kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
+    kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
 export interface VariableValueMember extends VariableMember {
@@ -110,7 +111,7 @@ export interface FunctionLikeMember extends Member {
 
 export interface FunctionAltMember extends FunctionLikeMember {
     node: ModuleNode.FunctionAltNode;
-    kind: ArrowFunctionKind | FunctionExpressionKind;
+    kind: ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
 //
@@ -122,36 +123,14 @@ export type FunctionalMember =
 //
 
 export type MemberKind =
-    | UnknownKind
-    | ImportKind
-    | ExportKind
-    | ExportDefaultKind
-    | TypeKind
-    | InterfaceKind
-    | VariableKind
-    | FunctionKind
-    | ValueKind
-    | ArrowFunctionKind
-    | FunctionExpressionKind;
-
-export type UnknownKind = "unknown";
-
-export type ImportKind = "import";
-
-export type ExportKind = "export";
-
-export type ExportDefaultKind = "exportDefault";
-
-export type TypeKind = "type";
-
-export type InterfaceKind = "interface";
-
-export type VariableKind = "variable";
-
-export type FunctionKind = "function";
-
-export type ValueKind = "value";
-
-export type ArrowFunctionKind = "arrowFunction";
-
-export type FunctionExpressionKind = "functionExpression";
+    | ModuleMemberKind.Unknown
+    | ModuleMemberKind.Import
+    | ModuleMemberKind.Export
+    | ModuleMemberKind.ExportDefault
+    | ModuleMemberKind.Type
+    | ModuleMemberKind.Interface
+    | ModuleMemberKind.Variable
+    | ModuleMemberKind.Function
+    | ModuleMemberKind.Value
+    | ModuleMemberKind.ArrowFunction
+    | ModuleMemberKind.FunctionExpression;

@@ -1,49 +1,50 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
 import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
+import { moduleMemberKind } from "./moduleMemberKind";
 
 export const isUnknownMember = (member: ModuleMember.Member): member is ModuleMember.UnknownMember => {
-    return member.kind === unknownKind;
+    return member.kind === moduleMemberKind.Unknown;
 }
 
 export const isImportMember = (member: ModuleMember.Member): member is ModuleMember.ImportMember => {
-    return member.kind === importKind;
+    return member.kind === moduleMemberKind.Import;
 }
 
 export const isExportMember = (member: ModuleMember.Member): member is ModuleMember.ExportMember => {
-    return member.kind === exportKind;
+    return member.kind === moduleMemberKind.Export;
 }
 
 export const isExportDefaultMember = (member: ModuleMember.Member): member is ModuleMember.ExportDefaultMember => {
-    return member.kind === exportDefaultKind;
+    return member.kind === moduleMemberKind.ExportDefault;
 }
 
 export const isTypeMember = (member: ModuleMember.Member): member is ModuleMember.TypeMember => {
-    return member.kind === typeKind;
+    return member.kind === moduleMemberKind.Type;
 }
 
 export const isInterfaceMember = (member: ModuleMember.Member): member is ModuleMember.InterfaceMember => {
-    return member.kind === interfaceKind;
+    return member.kind === moduleMemberKind.Interface;
 }
 
 export const isVariableMember = (member: ModuleMember.Member): member is ModuleMember.VariableMember => {
-    return member.kind === variableKind;
+    return member.kind === moduleMemberKind.Variable;
 }
 
 export const isFunctionMember = (member: ModuleMember.Member): member is ModuleMember.FunctionMember => {
-    return member.kind === functionKind;
+    return member.kind === moduleMemberKind.Function;
 }
 
 export const isValueMember = (member: ModuleMember.Member): member is ModuleMember.ValueMember => {
-    return member.kind === valueKind;
+    return member.kind === moduleMemberKind.Value;
 }
 
 export const isArrowFunctionMember = (member: ModuleMember.Member): member is ModuleMember.ArrowFunctionMember => {
-    return member.kind === arrowFunctionKind;
+    return member.kind === moduleMemberKind.ArrowFunction;
 }
 
 export const isFunctionExpressionMember = (member: ModuleMember.Member): member is ModuleMember.FunctionExpressionMember => {
-    return member.kind === functionExpressionKind;
+    return member.kind === moduleMemberKind.FunctionExpression;
 }
 
 //
@@ -114,43 +115,43 @@ export const createMember = <TMember extends ModuleMember.Member>(
 
 export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
     if (moduleNode.isImportNode(node)) {
-        return importKind;
+        return moduleMemberKind.Import;
     }
 
     if (moduleNode.isExportNode(node)) {
-        return exportKind;
+        return moduleMemberKind.Export;
     }
 
     if (moduleNode.isExportDefaultNode(node)) {
-        return exportDefaultKind;
+        return moduleMemberKind.ExportDefault;
     }
 
     if (moduleNode.isTypeNode(node)) {
-        return typeKind;
+        return moduleMemberKind.Type;
     }
 
     if (moduleNode.isInterfaceNode(node)) {
-        return interfaceKind;
+        return moduleMemberKind.Interface;
     }
 
     if (moduleNode.isVariableNode(node)) {
-        return variableKind;
+        return moduleMemberKind.Variable;
     }
 
     if (moduleNode.isValueNode(node)) {
-        return valueKind;
+        return moduleMemberKind.Value;
     }
 
     if (moduleNode.isFunctionNode(node)) {
-        return functionKind;
+        return moduleMemberKind.Function;
     }
 
     if (moduleNode.isArrowFunctionNode(node)) {
-        return arrowFunctionKind;
+        return moduleMemberKind.ArrowFunction;
     }
 
     if (moduleNode.isFunctionExpressionNode(node)) {
-        return functionExpressionKind;
+        return moduleMemberKind.FunctionExpression;
     }
 
     return "unknown";
@@ -257,27 +258,3 @@ export const updateFunctionalMemberReturnTypeNode = (member: ModuleMember.Functi
 export const updateFunctionalMemberParamTypeNode = (member: ModuleMember.FunctionalMember): void => {
     return updateFunctionLikeMemberParamTypeNode(getFunctionLikeMember(member)!);
 };
-
-//
-
-export const unknownKind: ModuleMember.UnknownKind = "unknown";
-
-export const importKind: ModuleMember.ImportKind = "import";
-
-export const exportKind: ModuleMember.ExportKind = "export";
-
-export const exportDefaultKind: ModuleMember.ExportDefaultKind = "exportDefault";
-
-export const typeKind: ModuleMember.TypeKind = "type";
-
-export const interfaceKind: ModuleMember.InterfaceKind = "interface";
-
-export const variableKind: ModuleMember.VariableKind = "variable";
-
-export const functionKind: ModuleMember.FunctionKind = "function";
-
-export const valueKind: ModuleMember.ValueKind = "value";
-
-export const arrowFunctionKind: ModuleMember.ArrowFunctionKind = "arrowFunction";
-
-export const functionExpressionKind: ModuleMember.FunctionExpressionKind = "functionExpression";
