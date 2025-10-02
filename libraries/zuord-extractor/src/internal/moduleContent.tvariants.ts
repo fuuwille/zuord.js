@@ -15,7 +15,7 @@ export const isVariant = (content: ModuleContent.Common): content is ModuleConte
 //
 
 export const isValueVariant = (content: ModuleContent.Common): content is ModuleContent.ValueVariant => {
-    return moduleMember.isVariableValue(content.member);
+    return moduleMember.isValueVariable(content.member);
 }
 
 export const isFunctionalVariant = (content: ModuleContent.Common): content is ModuleContent.FunctionalVariant => {
@@ -54,7 +54,7 @@ export const getName = (content: ModuleContent.Common) : string | undefined => {
 }
 
 export const getValueVariantDeclaredSchemaName = (content: ModuleContent.ValueVariant) : string | undefined => {
-    moduleMember.updateVariableValueDeclaredTypeNode(content.member);
+    moduleMember.updateValueVariableDeclaredTypeNode(content.member);
     const typeNode = content.member.declaredTypeNode;
     return getTypeName(typeNode);
 }

@@ -94,12 +94,12 @@ export interface InitializerLike extends Base, KnownLike {
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
-export interface VariableValue extends Variable {
+export interface ValueVariable extends Variable {
     initializer?: Value;
     declaredTypeNode?: TypeNode;
 }
 
-export interface VariableFunctional extends Variable {
+export interface FunctionalVariable extends Variable {
     initializer?: FunctionAlt;
 }
 
@@ -118,7 +118,7 @@ export interface FunctionAlt extends FunctionLike {
 
 export type Functional =
     | Function
-    | VariableFunctional;
+    | FunctionalVariable;
 
 //
 

@@ -26,7 +26,7 @@ export interface Variant extends Common {
 //
 
 export interface ValueVariant extends Variant {
-    member: ModuleMember.VariableValue;
+    member: ModuleMember.ValueVariable;
     declaredSchemaName?: string | null;
 }
 

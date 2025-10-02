@@ -73,11 +73,11 @@ export const isInitializerLike = (member: ModuleMember.Base): member is ModuleMe
     return isArrowFunction(member) || isFunctionExpression(member) || isValue(member);
 }
 
-export const isVariableValue = (member: ModuleMember.Base): member is ModuleMember.VariableValue => {
+export const isValueVariable = (member: ModuleMember.Base): member is ModuleMember.ValueVariable => {
     return isVariable(member) && !!member.initializer && isValue(member.initializer);
 }
 
-export const isVariableFunctional = (member: ModuleMember.Base): member is ModuleMember.VariableFunctional => {
+export const isFunctionalVariable = (member: ModuleMember.Base): member is ModuleMember.FunctionalVariable => {
     return isVariable(member) && !!member.initializer && isFunctionAlt(member.initializer);
 }
 
@@ -92,7 +92,7 @@ export const isFunctionAlt = (member: ModuleMember.Base): member is ModuleMember
 //
 
 export  const isFunctional = (member: ModuleMember.Base): member is ModuleMember.Functional => {
-    return isFunction(member) || isVariableFunctional(member);
+    return isFunction(member) || isFunctionalVariable(member);
 };
 
 //
@@ -191,7 +191,7 @@ export const getVariableInitializer = (member: ModuleMember.Variable): ModuleMem
     return undefined
 }
 
-export const getVariableValueDeclaredTypeNode = (member: ModuleMember.VariableValue): TypeNode | undefined => {
+export const getValueVariableDeclaredTypeNode = (member: ModuleMember.ValueVariable): TypeNode | undefined => {
     return member?.node?.getDeclarations()[0]?.getTypeNode();
 }
 
@@ -204,7 +204,7 @@ export const getFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike):
 }
 
 export const getFunctionLike = (member: ModuleMember.Functional) : ModuleMember.FunctionLike | undefined => {
-    if(isVariableFunctional(member)) {
+    if(isFunctionalVariable(member)) {
         return member.initializer!;
     }
 
@@ -233,9 +233,9 @@ export const updateVariableInitializer = (member: ModuleMember.Variable): void =
     }
 }
 
-export const updateVariableValueDeclaredTypeNode = (member: ModuleMember.VariableValue): void => {
+export const updateValueVariableDeclaredTypeNode = (member: ModuleMember.ValueVariable): void => {
     if(member.declaredTypeNode == undefined) {
-        member.declaredTypeNode = getVariableValueDeclaredTypeNode(member);
+        member.declaredTypeNode = getValueVariableDeclaredTypeNode(member);
     }
 }
 
