@@ -91,7 +91,7 @@ export const isFunctionAlt = (member: ModuleMember.Base): member is ModuleMember
 
 //
 
-export  const isFunctional = (member: ModuleMember.Base): member is ModuleMember.Functional => {
+export  const isFunctionalVariant = (member: ModuleMember.Base): member is ModuleMember.FunctionalVariant => {
     return isFunction(member) || isFunctionalVariable(member);
 };
 
@@ -203,7 +203,7 @@ export const getFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike):
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
 
-export const getFunctionLike = (member: ModuleMember.Functional) : ModuleMember.FunctionLike | undefined => {
+export const getFunctionLike = (member: ModuleMember.FunctionalVariant) : ModuleMember.FunctionLike | undefined => {
     if(isFunctionalVariable(member)) {
         return member.initializer!;
     }
@@ -211,11 +211,11 @@ export const getFunctionLike = (member: ModuleMember.Functional) : ModuleMember.
     return member;
 }
 
-export const getFunctionalReturnType = (member: ModuleMember.Functional) : TypeNode | undefined => {
+export const getFunctionalVariantReturnType = (member: ModuleMember.FunctionalVariant) : TypeNode | undefined => {
     return getFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 }
 
-export const getFunctionalParamType = (member: ModuleMember.Functional) : TypeNode | undefined => {
+export const getFunctionalVariantParamType = (member: ModuleMember.FunctionalVariant) : TypeNode | undefined => {
     return getFunctionLikeParamTypeNode(getFunctionLike(member)!);
 }
 
@@ -251,10 +251,10 @@ export const updateFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLik
     }
 };
 
-export const updateFunctionalReturnTypeNode = (member: ModuleMember.Functional): void => {
+export const updateFunctionalReturnTypeNode = (member: ModuleMember.FunctionalVariant): void => {
     return updateFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 };
 
-export const updateFunctionalParamTypeNode = (member: ModuleMember.Functional): void => {
+export const updateFunctionalParamTypeNode = (member: ModuleMember.FunctionalVariant): void => {
     return updateFunctionLikeParamTypeNode(getFunctionLike(member)!);
 };

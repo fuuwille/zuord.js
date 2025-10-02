@@ -19,7 +19,7 @@ export const isValueVariant = (content: ModuleContent.Common): content is Module
 }
 
 export const isFunctionalVariant = (content: ModuleContent.Common): content is ModuleContent.FunctionalVariant => {
-    return moduleMember.isFunctional(content.member);
+    return moduleMember.isFunctionalVariant(content.member);
 }
 
 //

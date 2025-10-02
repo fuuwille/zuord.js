@@ -31,7 +31,7 @@ export interface ValueVariant extends Variant {
 }
 
 export interface FunctionalVariant extends Variant {
-    member: ModuleMember.Functional;
+    member: ModuleMember.FunctionalVariant;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
 }

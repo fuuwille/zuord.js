@@ -116,7 +116,7 @@ export interface FunctionAlt extends FunctionLike {
 
 //
 
-export type Functional =
+export type FunctionalVariant =
     | Function
     | FunctionalVariable;
 
