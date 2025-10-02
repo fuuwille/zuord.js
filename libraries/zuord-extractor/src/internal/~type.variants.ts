@@ -76,11 +76,11 @@ export const getTypeText = (node?: Node): string | undefined => {
     return getIdentifierChildLast(qualifiedName)?.getText();
 }
 
-export const getTypeName = (node: Node | undefined, body: ModuleNode.FunctionLikeNode): string | undefined => {
+export const getTypeName = (node: Node | undefined, body?: ModuleNode.FunctionLikeNode): string | undefined => {
     var name = getTypeText(node);
 
-    if(name) {
-        const typeParameter = body.getTypeParameter(name);
+    if(name && body) {
+        const typeParameter = body?.getTypeParameter(name);
 
         if(typeParameter) {
             name = getTypeText(typeParameter);
