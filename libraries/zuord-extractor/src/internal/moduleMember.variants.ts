@@ -222,6 +222,12 @@ export const updateDefinitionLikeMemberNameNode = (member: ModuleMember.Definiti
     }
 }
 
+export const updateVariableMemberInitializer = (member: ModuleMember.VariableMember): void => {
+    if(member.initializer == undefined) {
+        member.initializer = getVariableMemberInitializer(member);
+    }
+}
+
 export const updateVariableValueMemberDeclaredTypeNode = (member: ModuleMember.VariableValueMember): void => {
     if(member.declaredTypeNode == undefined) {
         member.declaredTypeNode = getVariableValueMemberDeclaredTypeNode(member);
