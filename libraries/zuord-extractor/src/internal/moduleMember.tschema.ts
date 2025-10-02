@@ -49,7 +49,6 @@ export interface FunctionMember extends Member, KnownLikeMember, VariantLikeMemb
 export interface ValueMember extends Member, KnownLikeMember, InitializerLikeMember {
     node: ModuleNode.ValueNode;
     kind: ValueKind;
-    declaredTypeNode?: TypeNode;
 }
 
 export interface ArrowFunctionMember extends Member, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
@@ -92,6 +91,11 @@ export interface VariantLikeMember extends Member, KnownLikeMember, DefinitionLi
 export interface InitializerLikeMember extends Member, KnownLikeMember {
     node: ModuleNode.InitializerLikeNode;
     kind: ValueKind | ArrowFunctionKind | FunctionExpressionKind;
+}
+
+export interface VariableValueMember extends VariableMember {
+    initializer?: ValueMember;
+    declaredTypeNode?: TypeNode;
 }
 
 export interface VariableFunctionalMember extends VariableMember {
