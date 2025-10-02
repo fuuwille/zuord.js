@@ -1,7 +1,7 @@
 import { Module } from "./module.tschema";
-import { BaseContent, ContentKind, FunctionalContent, SchemaContent, VariantContent } from "./moduleContent.tschema";
+import { BaseContent, ContentKind, FunctionalContent, SchemaContent, ValueContent, VariantContent } from "./moduleContent.tschema";
 import { SchemaLikeMember, VariantLikeMember } from "./moduleMember.tschema";
-import { getFunctionLikeMember, isFunctionalMember, updateDefinitionLikeMemberNameNode, updateFunctionLikeMemberParamTypeNode, updateFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
+import { getFunctionLikeMember, isFunctionalMember, isValueMember, isVariableValueMember, updateDefinitionLikeMemberNameNode, updateFunctionLikeMemberParamTypeNode, updateFunctionLikeMemberReturnTypeNode } from "./moduleMember.variants";
 import { getTypeName } from "./~type.variants";
 
 export const isSchemaContent = (content: BaseContent): content is SchemaContent => {
@@ -13,6 +13,10 @@ export const isVariantContent = (content: BaseContent): content is VariantConten
 };
 
 //
+
+export const isValueContent = (content: BaseContent): content is ValueContent => {
+    return  isVariableValueMember(content.member);
+}
 
 export const isFunctionalContent = (content: BaseContent): content is FunctionalContent => {
     return  isFunctionalMember(content.member);
