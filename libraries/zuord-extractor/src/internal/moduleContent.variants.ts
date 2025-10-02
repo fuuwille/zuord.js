@@ -121,6 +121,12 @@ export const updateContentName = (content: BaseContent) : void => {
     }
 };
 
+export const updateValueContentDeclaredSchema = (content: ValueContent, schemas: SchemaContent[]) : void => {
+    if(content.schema == undefined) {
+        content.schema = getValueContentDeclaredSchema(content, schemas);
+    }
+}
+
 export const updateValueContentDeclaredSchemaName = (content: ValueContent) : void => {
     if(content.declaredSchemaName == undefined) {
         content.declaredSchemaName = getValueContentDeclaredSchemaName(content);
