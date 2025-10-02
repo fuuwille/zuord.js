@@ -1,17 +1,17 @@
 import { Module } from "./module.tschema";
 import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
-import { DefinitionLikeMember, FunctionalMember, SchemaLikeMember, VariableValueMember, VariantLikeMember } from "./moduleMember.tschema";
+import { DefinitionLike, Functional, SchemaLike, VariableValue, VariantLike } from "./moduleMember.tschema";
 
 export interface BaseContent {
     module: Module;
-    member: DefinitionLikeMember;
+    member: DefinitionLike;
     kind: ContentKind;
     name?: string | null;
     diagnostics?: BaseDiagnostic[];
 }
 
 export interface SchemaContent extends BaseContent {
-    member: SchemaLikeMember;
+    member: SchemaLike;
     kind: ContentKind.Schema;
     variants?: VariantContent[];
 }
@@ -19,7 +19,7 @@ export interface SchemaContent extends BaseContent {
 export interface VariantContent extends BaseContent {
     schema?: SchemaContent;
     kind: ContentKind.Variant;
-    member: VariantLikeMember;
+    member: VariantLike;
 }
 
 export enum ContentKind {
@@ -30,12 +30,12 @@ export enum ContentKind {
 //
 
 export interface ValueContent extends VariantContent {
-    member: VariableValueMember;
+    member: VariableValue;
     declaredSchemaName?: string | null;
 }
 
 export interface FunctionalContent extends VariantContent {
-    member: FunctionalMember;
+    member: Functional;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
 }

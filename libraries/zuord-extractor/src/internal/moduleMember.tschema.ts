@@ -2,123 +2,123 @@ import { BindingName, TypeNode, Node } from "ts-morph";
 import { ModuleNode } from "./moduleNode";
 import { ModuleMemberKind } from "./moduleMemberKind";
 
-export interface BaseMember {
+export interface Base {
     node: Node;
     kind: MemberKind;
 }
 
-export interface UnknownMember extends BaseMember {
+export interface Unknown extends Base {
     kind: ModuleMemberKind.Unknown;
 }
 
-export interface ImportMember extends BaseMember, KnownLikeMember, ESMLikeMember {
+export interface Import extends Base, KnownLike, ESMLike {
     node: ModuleNode.Import;
     kind: ModuleMemberKind.Import;
 }
 
-export interface ExportMember extends BaseMember, KnownLikeMember, ESMLikeMember {
+export interface Export extends Base, KnownLike, ESMLike {
     node: ModuleNode.Export;
     kind: ModuleMemberKind.Export;
 }
 
-export interface ExportDefaultMember extends BaseMember, KnownLikeMember, ESMLikeMember {
+export interface ExportDefault extends Base, KnownLike, ESMLike {
     node: ModuleNode.ExportDefault;
     kind: ModuleMemberKind.ExportDefault;
 }
 
-export interface TypeMember extends BaseMember, KnownLikeMember, SchemaLikeMember {
+export interface Type extends Base, KnownLike, SchemaLike {
     node: ModuleNode.Type;
     kind: ModuleMemberKind.Type;
 }
 
-export interface InterfaceMember extends BaseMember, KnownLikeMember, SchemaLikeMember {
+export interface Interface extends Base, KnownLike, SchemaLike {
     node: ModuleNode.Interface;
     kind: ModuleMemberKind.Interface;
 }
 
-export interface VariableMember extends BaseMember, KnownLikeMember, VariantLikeMember {
+export interface Variable extends Base, KnownLike, VariantLike {
     node: ModuleNode.Variable;
     kind: ModuleMemberKind.Variable;
-    initializer?: InitializerLikeMember;
+    initializer?: InitializerLike;
 }
 
-export interface FunctionMember extends BaseMember, KnownLikeMember, VariantLikeMember, FunctionLikeMember {
+export interface Function extends Base, KnownLike, VariantLike, FunctionLike {
     node: ModuleNode.Function;
     kind: ModuleMemberKind.Function;
 }
 
-export interface ValueMember extends BaseMember, KnownLikeMember, InitializerLikeMember {
+export interface Value extends Base, KnownLike, InitializerLike {
     node: ModuleNode.Value;
     kind: ModuleMemberKind.Value;
 }
 
-export interface ArrowFunctionMember extends BaseMember, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
+export interface ArrowFunction extends Base, KnownLike, InitializerLike, FunctionAlt {
     node: ModuleNode.ArrowFunction;
     kind: ModuleMemberKind.ArrowFunction;
 }
 
-export interface FunctionExpressionMember extends BaseMember, KnownLikeMember, InitializerLikeMember, FunctionAltMember {
+export interface FunctionExpression extends Base, KnownLike, InitializerLike, FunctionAlt {
     node: ModuleNode.FunctionExpression;
     kind: ModuleMemberKind.FunctionExpression;
 }
 
 //
 
-export interface KnownLikeMember extends BaseMember {
+export interface KnownLike extends Base {
     node: ModuleNode.KnownLike;
 }
 
-export interface ESMLikeMember extends BaseMember, KnownLikeMember {
+export interface ESMLike extends Base, KnownLike {
     node: ModuleNode.ESMLike;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
-export interface DefinitionLikeMember extends BaseMember, KnownLikeMember {
+export interface DefinitionLike extends Base, KnownLike {
     node: ModuleNode.DefinitionLike;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
     nameNode?: BindingName | null;
 }
 
-export interface SchemaLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
+export interface SchemaLike extends Base, KnownLike, DefinitionLike {
     node: ModuleNode.SchemaLike;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface;
 }
 
-export interface VariantLikeMember extends BaseMember, KnownLikeMember, DefinitionLikeMember {
+export interface VariantLike extends Base, KnownLike, DefinitionLike {
     node: ModuleNode.VariantLike;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
-export interface InitializerLikeMember extends BaseMember, KnownLikeMember {
+export interface InitializerLike extends Base, KnownLike {
     node: ModuleNode.InitializerLike;
     kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
-export interface VariableValueMember extends VariableMember {
-    initializer?: ValueMember;
+export interface VariableValue extends Variable {
+    initializer?: Value;
     declaredTypeNode?: TypeNode;
 }
 
-export interface VariableFunctionalMember extends VariableMember {
-    initializer?: FunctionAltMember;
+export interface VariableFunctional extends Variable {
+    initializer?: FunctionAlt;
 }
 
-export interface FunctionLikeMember extends BaseMember {
+export interface FunctionLike extends Base {
     node: ModuleNode.FunctionLike;
     returnTypeNode?: TypeNode;
     paramTypeNode?: TypeNode;
 }
 
-export interface FunctionAltMember extends FunctionLikeMember {
+export interface FunctionAlt extends FunctionLike {
     node: ModuleNode.FunctionAlt;
     kind: ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
 }
 
 //
 
-export type FunctionalMember =
-    | FunctionMember
-    | VariableFunctionalMember;
+export type Functional =
+    | Function
+    | VariableFunctional;
 
 //
 

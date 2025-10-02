@@ -1,19 +1,19 @@
 import { SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
-import { BaseMember, SchemaLikeMember, VariantLikeMember } from "./moduleMember.tschema";
+import { Base, SchemaLike, VariantLike } from "./moduleMember.tschema";
 
 export interface BaseFile {
     source: SourceFile
     mode: ModuleMode;
-    members: BaseMember[];
-    discarded: BaseMember[];
-    others: BaseMember[];
+    members: Base[];
+    discarded: Base[];
+    others: Base[];
 };
 
 export interface SchemaFile extends BaseFile {
-    members: SchemaLikeMember[];
+    members: SchemaLike[];
 }
 
 export interface VariantsFile extends BaseFile {
-    members: VariantLikeMember[];
+    members: VariantLike[];
 }
