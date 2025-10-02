@@ -23,6 +23,10 @@ export const isInterfaceNode = (node: Node): node is ModuleNode.InterfaceNode =>
     return node.getKind() === interfaceKind;
 }
 
+export const isEnumNode = (node: Node): node is ModuleNode.EnumNode => {
+    return node.getKind() === enumKind;
+}
+
 export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
     return node.getKind() === variableKind;
 }
