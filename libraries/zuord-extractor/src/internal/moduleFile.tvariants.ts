@@ -3,8 +3,8 @@ import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleFile } from "./moduleFile";
-import { isDiscardedNode, isKnownLikeNode } from "./moduleNode.variants";
-import { createMember } from "./moduleMember.variants";
+import { isDiscardedNode, isKnownLikeNode } from "./moduleNode.tvariants";
+import { createMember } from "./moduleMember.tvariants";
 
 export const initializeFile = (
     sourceFile: SourceFile, mode: ModuleMode
