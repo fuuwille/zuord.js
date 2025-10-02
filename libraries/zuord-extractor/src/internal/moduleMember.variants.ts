@@ -186,6 +186,10 @@ export const getVariableMemberInitializer = (member: ModuleMember.VariableMember
     return undefined
 }
 
+export const getVariableValueMemberDeclaredTypeNode = (member: ModuleMember.VariableValueMember): TypeNode | undefined => {
+    return member?.node?.getDeclarations()[0]?.getTypeNode();
+}
+
 export const getFunctionLikeMemberReturnTypeNode = (member: ModuleMember.FunctionLikeMember): TypeNode | undefined => {
     return member?.node?.getReturnTypeNode();
 }
@@ -215,6 +219,12 @@ export const getFunctionalMemberParamType = (member: ModuleMember.FunctionalMemb
 export const updateDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionLikeMember): void => {
     if(member.nameNode == undefined) {
         member.nameNode = getDefinitionLikeMemberNameNode(member);
+    }
+}
+
+export const updateVariableValueMemberDeclaredTypeNode = (member: ModuleMember.VariableValueMember): void => {
+    if(member.declaredTypeNode == undefined) {
+        member.declaredTypeNode = getVariableValueMemberDeclaredTypeNode(member);
     }
 }
 
