@@ -122,10 +122,10 @@ export const enumKind: ModuleNode.EnumKind = SyntaxKind.EnumDeclaration;
 
 export const variableKind: ModuleNode.VariableKind = SyntaxKind.VariableStatement;
 
-export const valueKinds: ModuleNode.ValueKind[] = valueSyntaxKinds;
-
 export const functionKind: ModuleNode.FunctionKind = SyntaxKind.FunctionDeclaration;
 
 export const arrowFunctionKind: ModuleNode.ArrowFunctionKind = SyntaxKind.ArrowFunction;
 
 export const functionExpressionKind: ModuleNode.FunctionExpressionKind = SyntaxKind.FunctionExpression;
+
+export const valueKinds: ModuleNode.ValueKind[] = valueSyntaxKinds;

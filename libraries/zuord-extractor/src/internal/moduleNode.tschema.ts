@@ -95,10 +95,12 @@ export type EnumKind = SyntaxKind.EnumDeclaration;
 
 export type VariableKind = SyntaxKind.VariableStatement;
 
-export type ValueKind = ValueSyntaxKind;
-
 export type FunctionKind = SyntaxKind.FunctionDeclaration;
 
 export type ArrowFunctionKind = SyntaxKind.ArrowFunction;
 
 export type FunctionExpressionKind = SyntaxKind.FunctionExpression;
+
+//
+
+export type ValueKind = ValueSyntaxKind;
