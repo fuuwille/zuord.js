@@ -3,7 +3,7 @@ import { ModuleContentKind } from "./moduleContentKind";
 import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
 import { ModuleMember } from "./moduleMember";
 
-export interface Base {
+export interface Common {
     module: Module;
     member: ModuleMember.DefinitionLike;
     kind: ModuleContentKind.Any;
@@ -11,13 +11,13 @@ export interface Base {
     diagnostics?: BaseDiagnostic[];
 }
 
-export interface Schema extends Base {
+export interface Schema extends Common {
     member: ModuleMember.SchemaLike;
     kind: ModuleContentKind.Schema;
     variants?: Variant[];
 }
 
-export interface Variant extends Base {
+export interface Variant extends Common {
     schema?: Schema;
     kind: ModuleContentKind.Variant;
     member: ModuleMember.VariantLike;
