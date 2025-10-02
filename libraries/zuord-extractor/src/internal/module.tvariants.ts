@@ -42,7 +42,7 @@ export const updateModule = (module: Module): void => {
                 schema.variants.push(variantContent);
             }
 
-            if(moduleContent.isFunctional(variantContent)) {
+            if(moduleContent.isFunctionalVariant(variantContent)) {
                 const member = moduleMember.getFunctionLike(variantContent.member);
 
                 const returnNode = member?.returnTypeNode;

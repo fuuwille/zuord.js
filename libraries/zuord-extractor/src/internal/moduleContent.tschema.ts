@@ -25,12 +25,12 @@ export interface Variant extends Base {
 
 //
 
-export interface Value extends Variant {
+export interface ValueVariant extends Variant {
     member: ModuleMember.VariableValue;
     declaredSchemaName?: string | null;
 }
 
-export interface Functional extends Variant {
+export interface FunctionalVariant extends Variant {
     member: ModuleMember.Functional;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
