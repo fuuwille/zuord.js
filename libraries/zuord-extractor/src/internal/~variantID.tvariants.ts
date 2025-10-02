@@ -1,11 +1,11 @@
 import { ModuleNode, moduleNode } from "./moduleNode";
 
 export const extractVariantID = (node: ModuleNode.VariantLikeNode): string | undefined => {
-    if(moduleNode.isFunctionNode(node)) {
+    if(moduleNode.isFunction(node)) {
         return extractVariantIDAsFunction(node);
     }
 
-    if(moduleNode.isVariableNode(node)) {
+    if(moduleNode.isVariable(node)) {
         return extractVariantIDAsVariable(node);
     }
 }

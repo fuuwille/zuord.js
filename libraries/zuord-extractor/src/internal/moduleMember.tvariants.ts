@@ -114,43 +114,43 @@ export const createMember = <TMember extends ModuleMember.BaseMember>(
 }
 
 export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
-    if (moduleNode.isImportNode(node)) {
+    if (moduleNode.isImport(node)) {
         return moduleMemberKind.Import;
     }
 
-    if (moduleNode.isExportNode(node)) {
+    if (moduleNode.isExport(node)) {
         return moduleMemberKind.Export;
     }
 
-    if (moduleNode.isExportDefaultNode(node)) {
+    if (moduleNode.isExportDefault(node)) {
         return moduleMemberKind.ExportDefault;
     }
 
-    if (moduleNode.isTypeNode(node)) {
+    if (moduleNode.isType(node)) {
         return moduleMemberKind.Type;
     }
 
-    if (moduleNode.isInterfaceNode(node)) {
+    if (moduleNode.isInterface(node)) {
         return moduleMemberKind.Interface;
     }
 
-    if (moduleNode.isVariableNode(node)) {
+    if (moduleNode.isVariable(node)) {
         return moduleMemberKind.Variable;
     }
 
-    if (moduleNode.isValueNode(node)) {
+    if (moduleNode.isValue(node)) {
         return moduleMemberKind.Value;
     }
 
-    if (moduleNode.isFunctionNode(node)) {
+    if (moduleNode.isFunction(node)) {
         return moduleMemberKind.Function;
     }
 
-    if (moduleNode.isArrowFunctionNode(node)) {
+    if (moduleNode.isArrowFunction(node)) {
         return moduleMemberKind.ArrowFunction;
     }
 
-    if (moduleNode.isFunctionExpressionNode(node)) {
+    if (moduleNode.isFunctionExpression(node)) {
         return moduleMemberKind.FunctionExpression;
     }
 
@@ -182,7 +182,7 @@ export const getVariableMemberInitializer = (member: ModuleMember.VariableMember
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(moduleNode.isInitializerLikeNode(initializerNode)) {
+            if(moduleNode.isInitializerLike(initializerNode)) {
                 return createMember<ModuleMember.InitializerLikeMember>(initializerNode);
             }
         }

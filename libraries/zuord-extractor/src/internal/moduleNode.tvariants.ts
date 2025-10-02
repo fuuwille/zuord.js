@@ -3,105 +3,105 @@ import { ModuleMode } from "./module.tschema";
 import { ModuleNode } from "./moduleNode";
 import { ModuleNodeKind, moduleNodeKind } from "./moduleNodeKind";
 
-export const isImportNode = (node: Node): node is ModuleNode.ImportNode => {
+export const isImport = (node: Node): node is ModuleNode.ImportNode => {
     return node.getKind() === moduleNodeKind.Import;
 }
 
-export const isExportNode = (node: Node): node is ModuleNode.ExportNode => {
+export const isExport = (node: Node): node is ModuleNode.ExportNode => {
     return node.getKind() === moduleNodeKind.Export;
 }
 
-export const isExportDefaultNode = (node: Node): node is ModuleNode.ExportDefaultNode => {
+export const isExportDefault = (node: Node): node is ModuleNode.ExportDefaultNode => {
     return node.getKind() === moduleNodeKind.ExportDefault;
 }
 
-export const isTypeNode = (node: Node): node is ModuleNode.TypeNode => {
+export const isType = (node: Node): node is ModuleNode.TypeNode => {
     return node.getKind() === moduleNodeKind.Type;
 }
 
-export const isInterfaceNode = (node: Node): node is ModuleNode.InterfaceNode => {
+export const isInterface = (node: Node): node is ModuleNode.InterfaceNode => {
     return node.getKind() === moduleNodeKind.Interface;
 }
 
-export const isEnumNode = (node: Node): node is ModuleNode.EnumNode => {
+export const isEnum = (node: Node): node is ModuleNode.EnumNode => {
     return node.getKind() === moduleNodeKind.Enum;
 }
 
-export const isVariableNode = (node: Node): node is ModuleNode.VariableNode => {
+export const isVariable = (node: Node): node is ModuleNode.VariableNode => {
     return node.getKind() === moduleNodeKind.Variable;
 }
 
-export const isFunctionNode = (node: Node): node is ModuleNode.FunctionNode => {
+export const isFunction = (node: Node): node is ModuleNode.FunctionNode => {
     return node.getKind() === moduleNodeKind.Function;
 }
 
-export const isValueNode = (node: Node): node is ModuleNode.ValueNode => {
+export const isValue = (node: Node): node is ModuleNode.ValueNode => {
     return moduleNodeKind.Values.includes(node.getKind() as ModuleNodeKind.Value);
 }
 
-export const isArrowFunctionNode = (node: Node): node is ModuleNode.ArrowFunctionNode => {
+export const isArrowFunction = (node: Node): node is ModuleNode.ArrowFunctionNode => {
     return node.getKind() === moduleNodeKind.ArrowFunction;
 }
 
-export const isFunctionExpressionNode = (node: Node): node is ModuleNode.FunctionExpressionNode => {
+export const isFunctionExpression = (node: Node): node is ModuleNode.FunctionExpressionNode => {
     return node.getKind() === moduleNodeKind.FunctionExpression;
 }
 
 //
 
-export const isKnownLikeNode = (node: Node): node is ModuleNode.KnownLikeNode => {
-    return isESMLikeNode(node) || isSchemaLikeNode(node) || isVariantLikeNode(node) || isInitializerLikeNode(node);
+export const isKnownLike = (node: Node): node is ModuleNode.KnownLikeNode => {
+    return isESMLike(node) || isSchemaLike(node) || isVariantLike(node) || isInitializerLike(node);
 }
 
-export const isESMLikeNode = (node: Node): node is ModuleNode.ESMLikeNode => {
-    return isImportNode(node) || isExportNode(node) || isExportDefaultNode(node);
+export const isESMLike = (node: Node): node is ModuleNode.ESMLikeNode => {
+    return isImport(node) || isExport(node) || isExportDefault(node);
 }
 
-export const isExportLikeNode = (node: Node): node is ModuleNode.ExportLikeNode => {
-    return isExportNode(node) || isExportDefaultNode(node);
+export const isExportLike = (node: Node): node is ModuleNode.ExportLikeNode => {
+    return isExport(node) || isExportDefault(node);
 }
 
-export const isDefinitionLikeNode = (node: Node): node is ModuleNode.DefinitionLikeNode => {
-    return isSchemaLikeNode(node) || isVariantLikeNode(node);
+export const isDefinitionLike = (node: Node): node is ModuleNode.DefinitionLikeNode => {
+    return isSchemaLike(node) || isVariantLike(node);
 }
 
-export const isSchemaLikeNode = (node: Node): node is ModuleNode.SchemaLikeNode => {
-    return isTypeNode(node) || isInterfaceNode(node);
+export const isSchemaLike = (node: Node): node is ModuleNode.SchemaLikeNode => {
+    return isType(node) || isInterface(node);
 }
 
-export const isVariantLikeNode = (node: Node): node is ModuleNode.VariantLikeNode => {
-    return isFunctionLikeNode(node) || isVariableNode(node);
+export const isVariantLike = (node: Node): node is ModuleNode.VariantLikeNode => {
+    return isFunctionLike(node) || isVariable(node);
 }
 
-export const isInitializerLikeNode = (node: Node): node is ModuleNode.InitializerLikeNode => {
-    return isValueNode(node) || isArrowFunctionNode(node) || isFunctionExpressionNode(node);
+export const isInitializerLike = (node: Node): node is ModuleNode.InitializerLikeNode => {
+    return isValue(node) || isArrowFunction(node) || isFunctionExpression(node);
 }
 
-export const isFunctionLikeNode = (node: Node): node is ModuleNode.FunctionLikeNode => {
-    return isFunctionNode(node) || isFunctionAltNode(node);
+export const isFunctionLike = (node: Node): node is ModuleNode.FunctionLikeNode => {
+    return isFunction(node) || isFunctionAlt(node);
 }
 
-export const isFunctionAltNode = (node: Node): node is ModuleNode.FunctionAltNode => {
-    return isArrowFunctionNode(node) || isFunctionExpressionNode(node);
+export const isFunctionAlt = (node: Node): node is ModuleNode.FunctionAltNode => {
+    return isArrowFunction(node) || isFunctionExpression(node);
 }
 
 //
 
-export const isDiscardedNode = (node: Node, mode : ModuleMode): node is ModuleNode.DiscardedNode => {
+export const isDiscarded = (node: Node, mode : ModuleMode): node is ModuleNode.DiscardedNode => {
     switch(mode) {
         case ModuleMode.Schema:
-            return isDiscardedSchemaNode(node);
+            return isDiscardedSchema(node);
         case ModuleMode.Variants:
-            return isDiscardedVariantNode(node);
+            return isDiscardedVariant(node);
         default:
             return false;
     }
 }
 
-export const isDiscardedSchemaNode = (node: Node): node is ModuleNode.DiscardedSchemaNode => {
-    return isVariantLikeNode(node);
+export const isDiscardedSchema = (node: Node): node is ModuleNode.DiscardedSchemaNode => {
+    return isVariantLike(node);
 }
 
-export const isDiscardedVariantNode = (node: Node): node is ModuleNode.DiscardedVariantNode => {
-    return isSchemaLikeNode(node);
+export const isDiscardedVariant = (node: Node): node is ModuleNode.DiscardedVariantNode => {
+    return isSchemaLike(node);
 }
