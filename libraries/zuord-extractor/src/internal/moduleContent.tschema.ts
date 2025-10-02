@@ -1,30 +1,26 @@
 import { Module } from "./module.tschema";
+import { ModuleContentKind } from "./moduleContentKind";
 import { BaseDiagnostic } from "./moduleDiagnostic.tschema";
 import { ModuleMember } from "./moduleMember";
 
 export interface BaseContent {
     module: Module;
     member: ModuleMember.DefinitionLike;
-    kind: ContentKind;
+    kind: ModuleContentKind.Any;
     name?: string | null;
     diagnostics?: BaseDiagnostic[];
 }
 
 export interface SchemaContent extends BaseContent {
     member: ModuleMember.SchemaLike;
-    kind: ContentKind.Schema;
+    kind: ModuleContentKind.Schema;
     variants?: VariantContent[];
 }
 
 export interface VariantContent extends BaseContent {
     schema?: SchemaContent;
-    kind: ContentKind.Variant;
+    kind: ModuleContentKind.Variant;
     member: ModuleMember.VariantLike;
-}
-
-export enum ContentKind {
-    Schema = "schema",
-    Variant = "variant"
 }
 
 //

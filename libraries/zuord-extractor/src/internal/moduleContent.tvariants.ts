@@ -1,25 +1,26 @@
 import { Module } from "./module.tschema";
 import { ModuleContent } from "./moduleContent";
+import { moduleContentKind } from "./moduleContentKind";
 import { ModuleMember } from "./moduleMember";
-import { getFunctionLike, isFunctional, isValue, isVariableValue, updateDefinitionLikeNameNode, updateFunctionLikeParamTypeNode, updateFunctionLikeReturnTypeNode, updateVariableValueDeclaredTypeNode } from "./moduleMember.tvariants";
+import { getFunctionLike, isFunctional, isVariableValue, updateDefinitionLikeNameNode, updateFunctionLikeParamTypeNode, updateFunctionLikeReturnTypeNode, updateVariableValueDeclaredTypeNode } from "./moduleMember.tvariants";
 import { getTypeName } from "./~type.tvariants";
 
 export const isSchemaContent = (content: ModuleContent.BaseContent): content is ModuleContent.SchemaContent => {
-    return content.kind === ModuleContent.ContentKind.Schema;
+    return content.kind === moduleContentKind.Schema;
 };
 
 export const isVariantContent = (content: ModuleContent.BaseContent): content is ModuleContent.VariantContent => {
-    return content.kind === ModuleContent.ContentKind.Variant;
+    return content.kind === moduleContentKind.Variant;
 };
 
 //
 
 export const isValueContent = (content: ModuleContent.BaseContent): content is ModuleContent.ValueContent => {
-    return  isVariableValue(content.member);
+    return isVariableValue(content.member);
 }
 
 export const isFunctionalContent = (content: ModuleContent.BaseContent): content is ModuleContent.FunctionalContent => {
-    return  isFunctional(content.member);
+    return isFunctional(content.member);
 }
 
 //
@@ -31,7 +32,7 @@ export const createSchemaContent = (
     return {
         module,
         member,
-        kind: ModuleContent.ContentKind.Schema
+        kind: moduleContentKind.Schema
     };
 };
 
@@ -42,7 +43,7 @@ export const createVariantContent = (
     return {
         module,
         member,
-        kind: ModuleContent.ContentKind.Variant
+        kind: moduleContentKind.Variant
     };
 };
 
