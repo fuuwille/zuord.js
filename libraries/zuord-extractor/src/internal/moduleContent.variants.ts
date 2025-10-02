@@ -81,6 +81,10 @@ export const getFunctionalContentParamSchemaName = (content: FunctionalContent) 
 }
 
 export const getVariantContentSchema = (content: VariantContent, schemas: SchemaContent[]) : SchemaContent | undefined => {
+    if(isValueContent(content)) {
+        return getValueContentDeclaredSchema(content, schemas);
+    }
+
     if(isFunctionalContent(content)) {
         return getFunctionalContentSchema(content, schemas);
     }
