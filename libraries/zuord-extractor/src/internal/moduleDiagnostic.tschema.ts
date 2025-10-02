@@ -1,27 +1,22 @@
 import { Node } from "ts-morph";
+import { ModuleDiagnosticLevel } from "./moduleDiagnosticLevel";
 
 export interface Common {
     node: Node;
     message: string;
-    level: Level;
-}
-
-export enum Level {
-    Info = "info",
-    Warning = "warning",
-    Error = "error"
+    level: ModuleDiagnosticLevel.Common;
 }
 
 //
 
 export interface Info extends Common {
-    level: Level.Info;
+    level: ModuleDiagnosticLevel.Info;
 }
 
 export interface Warning extends Common {
-    level: Level.Warning;
+    level: ModuleDiagnosticLevel.Warning;
 }
 
 export interface Error extends Common {
-    level: Level.Error;
+    level: ModuleDiagnosticLevel.Error;
 }
