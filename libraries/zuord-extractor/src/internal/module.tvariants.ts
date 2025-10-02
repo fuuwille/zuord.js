@@ -14,7 +14,7 @@ export const updateModule = (module: Module): void => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(moduleMember.isSchemaLikeMember)) {
+        for(const member of schemaMembers.filter(moduleMember.isSchemaLike)) {
             const schemaContent = moduleContent.createSchemaContent(module, member);
             moduleContent.updateContentName(schemaContent);
 
@@ -23,7 +23,7 @@ export const updateModule = (module: Module): void => {
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(moduleMember.isVariantLikeMember)) {
+        for(const member of variantMembers.filter(moduleMember.isVariantLike)) {
             const variantContent = moduleContent.createVariantContent(module, member);
             moduleContent.updateContentName(variantContent);
 

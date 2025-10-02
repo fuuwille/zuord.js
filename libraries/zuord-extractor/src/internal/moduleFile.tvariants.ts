@@ -4,7 +4,7 @@ import { Project, SourceFile } from "ts-morph";
 import { ModuleMode } from "./module.tschema";
 import { ModuleFile } from "./moduleFile";
 import { isDiscarded, isKnownLike } from "./moduleNode.tvariants";
-import { createMember } from "./moduleMember.tvariants";
+import { create } from "./moduleMember.tvariants";
 
 export const initializeFile = (
     sourceFile: SourceFile, mode: ModuleMode
@@ -19,7 +19,7 @@ export const initializeFile = (
     };
 
     sourceFile.forEachChild((node) => {
-        const moduleMember = createMember(node);
+        const moduleMember = create(node);
 
         if(isKnownLike(node)) {
             const collection = isDiscarded(node, mode)

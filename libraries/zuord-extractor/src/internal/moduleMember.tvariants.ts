@@ -3,117 +3,117 @@ import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 import { moduleMemberKind } from "./moduleMemberKind";
 
-export const isUnknownMember = (member: ModuleMember.Base): member is ModuleMember.Unknown => {
+export const isUnknown = (member: ModuleMember.Base): member is ModuleMember.Unknown => {
     return member.kind === moduleMemberKind.Unknown;
 }
 
-export const isImportMember = (member: ModuleMember.Base): member is ModuleMember.Import => {
+export const isImport = (member: ModuleMember.Base): member is ModuleMember.Import => {
     return member.kind === moduleMemberKind.Import;
 }
 
-export const isExportMember = (member: ModuleMember.Base): member is ModuleMember.Export => {
+export const isExport = (member: ModuleMember.Base): member is ModuleMember.Export => {
     return member.kind === moduleMemberKind.Export;
 }
 
-export const isExportDefaultMember = (member: ModuleMember.Base): member is ModuleMember.ExportDefault => {
+export const isExportDefault = (member: ModuleMember.Base): member is ModuleMember.ExportDefault => {
     return member.kind === moduleMemberKind.ExportDefault;
 }
 
-export const isTypeMember = (member: ModuleMember.Base): member is ModuleMember.Type => {
+export const isType = (member: ModuleMember.Base): member is ModuleMember.Type => {
     return member.kind === moduleMemberKind.Type;
 }
 
-export const isInterfaceMember = (member: ModuleMember.Base): member is ModuleMember.Interface => {
+export const isInterface = (member: ModuleMember.Base): member is ModuleMember.Interface => {
     return member.kind === moduleMemberKind.Interface;
 }
 
-export const isVariableMember = (member: ModuleMember.Base): member is ModuleMember.Variable => {
+export const isVariable = (member: ModuleMember.Base): member is ModuleMember.Variable => {
     return member.kind === moduleMemberKind.Variable;
 }
 
-export const isFunctionMember = (member: ModuleMember.Base): member is ModuleMember.Function => {
+export const isFunction = (member: ModuleMember.Base): member is ModuleMember.Function => {
     return member.kind === moduleMemberKind.Function;
 }
 
-export const isValueMember = (member: ModuleMember.Base): member is ModuleMember.Value => {
+export const isValue = (member: ModuleMember.Base): member is ModuleMember.Value => {
     return member.kind === moduleMemberKind.Value;
 }
 
-export const isArrowFunctionMember = (member: ModuleMember.Base): member is ModuleMember.ArrowFunction => {
+export const isArrowFunction = (member: ModuleMember.Base): member is ModuleMember.ArrowFunction => {
     return member.kind === moduleMemberKind.ArrowFunction;
 }
 
-export const isFunctionExpressionMember = (member: ModuleMember.Base): member is ModuleMember.FunctionExpression => {
+export const isFunctionExpression = (member: ModuleMember.Base): member is ModuleMember.FunctionExpression => {
     return member.kind === moduleMemberKind.FunctionExpression;
 }
 
 //
 
-export const isKnownLikeMember = (member: ModuleMember.Base): member is ModuleMember.KnownLike => {
-    return isESMLikeMember(member) || isSchemaLikeMember(member) || isVariantLikeMember(member);
+export const isKnownLike = (member: ModuleMember.Base): member is ModuleMember.KnownLike => {
+    return isESMLike(member) || isSchemaLike(member) || isVariantLike(member);
 }
 
-export const isESMLikeMember = (member: ModuleMember.Base): member is ModuleMember.ESMLike => {
-    return isExportMember(member) || isImportMember(member) || isExportDefaultMember(member);
+export const isESMLike = (member: ModuleMember.Base): member is ModuleMember.ESMLike => {
+    return isExport(member) || isImport(member) || isExportDefault(member);
 }
 
-export const isDefinitionLikeMember = (member: ModuleMember.Base): member is ModuleMember.DefinitionLike => {
-    return isSchemaLikeMember(member) || isVariantLikeMember(member);
+export const isDefinitionLike = (member: ModuleMember.Base): member is ModuleMember.DefinitionLike => {
+    return isSchemaLike(member) || isVariantLike(member);
 }
 
-export const isSchemaLikeMember = (member: ModuleMember.Base): member is ModuleMember.SchemaLike => {
-    return isTypeMember(member) || isInterfaceMember(member);
+export const isSchemaLike = (member: ModuleMember.Base): member is ModuleMember.SchemaLike => {
+    return isType(member) || isInterface(member);
 }
 
-export const isVariantLikeMember = (member: ModuleMember.Base): member is ModuleMember.VariantLike => {
-    return isVariableMember(member) || isFunctionMember(member);
+export const isVariantLike = (member: ModuleMember.Base): member is ModuleMember.VariantLike => {
+    return isVariable(member) || isFunction(member);
 }
 
-export const isInitializerLikeMember = (member: ModuleMember.Base): member is ModuleMember.InitializerLike => {
-    return isArrowFunctionMember(member) || isFunctionExpressionMember(member) || isValueMember(member);
+export const isInitializerLike = (member: ModuleMember.Base): member is ModuleMember.InitializerLike => {
+    return isArrowFunction(member) || isFunctionExpression(member) || isValue(member);
 }
 
-export const isVariableValueMember = (member: ModuleMember.Base): member is ModuleMember.VariableValue => {
-    return isVariableMember(member) && !!member.initializer && isValueMember(member.initializer);
+export const isVariableValue = (member: ModuleMember.Base): member is ModuleMember.VariableValue => {
+    return isVariable(member) && !!member.initializer && isValue(member.initializer);
 }
 
-export const isVariableFunctionalMember = (member: ModuleMember.Base): member is ModuleMember.VariableFunctional => {
-    return isVariableMember(member) && !!member.initializer && isFunctionAltMember(member.initializer);
+export const isVariableFunctional = (member: ModuleMember.Base): member is ModuleMember.VariableFunctional => {
+    return isVariable(member) && !!member.initializer && isFunctionAlt(member.initializer);
 }
 
-export const isFunctionLikeMember = (member: ModuleMember.Base): member is ModuleMember.FunctionLike => {
-    return isFunctionMember(member) || isFunctionExpressionMember(member) || isArrowFunctionMember(member);
+export const isFunctionLike = (member: ModuleMember.Base): member is ModuleMember.FunctionLike => {
+    return isFunction(member) || isFunctionExpression(member) || isArrowFunction(member);
 }
 
-export const isFunctionAltMember = (member: ModuleMember.Base): member is ModuleMember.FunctionAlt => {
-    return isArrowFunctionMember(member) || isFunctionExpressionMember(member);
+export const isFunctionAlt = (member: ModuleMember.Base): member is ModuleMember.FunctionAlt => {
+    return isArrowFunction(member) || isFunctionExpression(member);
 }
 
 //
 
-export  const isFunctionalMember = (member: ModuleMember.Base): member is ModuleMember.Functional => {
-    return isFunctionMember(member) || isVariableFunctionalMember(member);
+export  const isFunctional = (member: ModuleMember.Base): member is ModuleMember.Functional => {
+    return isFunction(member) || isVariableFunctional(member);
 };
 
 //
 
-export const createMember = <TMember extends ModuleMember.Base>(
+export const create = <TMember extends ModuleMember.Base>(
     node: Node
 ) : TMember => {
 
     const member = {
         node,
-        kind: getMemberKind(node)
+        kind: getKind(node)
     } as TMember;
 
-    if(isVariableMember(member)) {
+    if(isVariable(member)) {
         updateVariableMemberInitializer(member);
     }
 
     return member;
 }
 
-export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
+export const getKind = (node: Node): ModuleMember.MemberKind => {
     if (moduleNode.isImport(node)) {
         return moduleMemberKind.Import;
     }
@@ -162,7 +162,7 @@ export const getDefinitionLikeMemberNameNode = (member: ModuleMember.DefinitionL
         return member.node.getNameNode() ?? null;
     }
 
-    if(isVariableMember(member)) {
+    if(isVariable(member)) {
         const declaration = member.node.getDeclarations()[0];
 
         if(declaration) {
@@ -183,7 +183,7 @@ export const getVariableMemberInitializer = (member: ModuleMember.Variable): Mod
 
         if(initializerNode) {
             if(moduleNode.isInitializerLike(initializerNode)) {
-                return createMember<ModuleMember.InitializerLike>(initializerNode);
+                return create<ModuleMember.InitializerLike>(initializerNode);
             }
         }
     }
@@ -204,7 +204,7 @@ export const getFunctionLikeMemberParamTypeNode = (member: ModuleMember.Function
 }
 
 export const getFunctionLikeMember = (member: ModuleMember.Functional) : ModuleMember.FunctionLike | undefined => {
-    if(isVariableFunctionalMember(member)) {
+    if(isVariableFunctional(member)) {
         return member.initializer!;
     }
 
