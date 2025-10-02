@@ -137,6 +137,10 @@ export const getMemberKind = (node: Node): ModuleMember.MemberKind => {
         return variableKind;
     }
 
+    if (moduleNode.isValueNode(node)) {
+        return valueKind;
+    }
+
     if (moduleNode.isFunctionNode(node)) {
         return functionKind;
     }
