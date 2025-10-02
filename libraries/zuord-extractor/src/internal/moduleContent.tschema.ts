@@ -6,7 +6,7 @@ import { ModuleMember } from "./moduleMember";
 export interface Common {
     module: Module;
     member: ModuleMember.DefinitionLike;
-    kind: ModuleContentKind.Any;
+    kind: ModuleContentKind.Common;
     name?: string | null;
     diagnostics?: BaseDiagnostic[];
 }

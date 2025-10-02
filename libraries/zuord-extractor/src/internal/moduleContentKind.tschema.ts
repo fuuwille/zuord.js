@@ -1,4 +1,4 @@
-export type Any = 
+export type Common = 
     | Schema
     | Variant;
 
