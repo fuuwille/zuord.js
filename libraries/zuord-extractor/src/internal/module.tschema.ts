@@ -11,5 +11,5 @@ export type Module = {
 
 export enum ModuleMode {
     Schema = "tschema",
-    Variants = "variants"
+    Variants = "tvariants"
 }
