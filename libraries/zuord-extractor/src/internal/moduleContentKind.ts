@@ -1,2 +1,2 @@
-export * as ModuleContentKind from "./moduleContentKind.tschema";
-export * as moduleContentKind from "./moduleContentKind.tvariants";
+export * as ModuleContentKind from "./moduleContentKind.zschema";
+export * as moduleContentKind from "./moduleContentKind.zvariants";
