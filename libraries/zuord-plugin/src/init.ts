@@ -12,7 +12,11 @@ export = function (modules: { typescript: typeof ts }) {
 
         const oldGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
 
-        host.getScriptSnapshot = (fileName: string) => {
+        host.getScriptSnapshot = (fileName: string) => {            
+            if (fileName.endsWith(".zs") || fileName.endsWith(".zv")) {
+                fileName += ".ts";
+            }
+
             const snapshot = oldGetScriptSnapshot?.(fileName);
 
             if (snapshot && fileName.endsWith(".ts")) {
