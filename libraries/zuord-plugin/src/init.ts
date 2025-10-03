@@ -8,13 +8,16 @@ export = function (modules) {
     // @ts-ignore
     function create(info) {
         const host = info.languageServiceHost;
+        
+        const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
+        const originalGetScriptKind = host.getScriptKind?.bind(host);
 
         host.getScriptSnapshot = (fileName: string) => {
-            return handleScriptSnapshot(host.getScriptSnapshot?.bind(host), fileName);
+            return handleScriptSnapshot(originalGetScriptSnapshot, fileName);
         };
 
         host.getScriptKind = (fileName: string) => {
-            return handleScriptKind(host.getScriptKind?.bind(host), fileName);
+            return handleScriptKind(originalGetScriptKind, fileName);
         }
 
         return info.languageService;
