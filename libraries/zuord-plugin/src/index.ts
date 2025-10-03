@@ -1,9 +1,10 @@
-import * as ts from "typescript/lib/tsserverlibrary";
-import * as utility from "./utility";
+import type * as ts from "typescript/lib/tsserverlibrary";
 
-module.exports = function (modules: { typescript: typeof ts }) {
+const utility = require("./utility");
+const caseAnything = require("case-anything");
+
+export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
-    const caseAnything = require("case-anything");
 
     function create(info: ts.server.PluginCreateInfo): ts.LanguageService {
         const oldLS = info.languageService;
@@ -17,7 +18,7 @@ module.exports = function (modules: { typescript: typeof ts }) {
             if (snapshot && fileName.endsWith(".ts")) {
                 let virtualImports = "";
 
-                const baseName = utility.getBaseName(fileName) || "";
+                const baseName = utility.getBaseName(fileName) || '';
                 let name = undefined;
                 let type = undefined;
 
@@ -30,6 +31,7 @@ module.exports = function (modules: { typescript: typeof ts }) {
                     type = "tvariants";
                 }
 
+                virtualImports += 'const __VIRTUAL_IMPORTS__ = true;\n';
                 virtualImports += `import * as ${name} from './${baseName}.${type}';\n`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
