@@ -11,10 +11,10 @@ module.exports = function (modules: { typescript: typeof ts }) {
 
         host.getScriptSnapshot = (fileName: string) => {
             const snapshot = originalGetScriptSnapshot?.(fileName);
-            let virtualCode = "";
-            virtualCode += `export const __VIRTUAL__ = "hello";\n`;
 
             if (snapshot && fileName.endsWith(".ts")) {
+                let virtualCode = "";
+
                 if (fileName.endsWith(".tvariants.ts")) {
                     const baseName = fileName.split("/").pop()?.replace(/\.tvariants\.ts$/, "");
                     const tschemaImport = `import * from "./${baseName}.tschema";\n`;
