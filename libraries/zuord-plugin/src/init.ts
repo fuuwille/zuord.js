@@ -10,13 +10,11 @@ export = function (modules) {
         const host = info.languageServiceHost;
 
         host.getScriptSnapshot = (fileName: string) => {
-            handleScriptSnapshot(host.getScriptSnapshot?.bind(host), fileName);
+            return handleScriptSnapshot(host.getScriptSnapshot?.bind(host), fileName);
         };
 
-        const oldGetScriptKind = host.getScriptKind?.bind(host);
-
         host.getScriptKind = (fileName: string) => {
-            return handleScriptKind(oldGetScriptKind, fileName);
+            return handleScriptKind(host.getScriptKind?.bind(host), fileName);
         }
 
         return info.languageService;
