@@ -1,4 +1,6 @@
 import * as ts from "typescript/lib/tsserverlibrary";
+import * as utility from "./utility";
+import * as caseAnything from "case-anything";
 
 module.exports = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
@@ -15,11 +17,17 @@ module.exports = function (modules: { typescript: typeof ts }) {
             if (snapshot && fileName.endsWith(".ts")) {
                 let virtualCode = "";
 
-                if (fileName.endsWith(".tvariants.ts")) {
-                    const baseName = fileName.split("/").pop()?.replace(/\.tvariants\.ts$/, "");
-                    const tschemaImport = `import * from "./${baseName}.tschema";\n`;
-                    virtualCode += tschemaImport;
+                const baseName = utility.getBaseName(fileName) || "";
+                let name = undefined;
+
+                if (utility.isZVariantsFile(fileName)) {
+                    name = caseAnything.pascalCase(baseName);
                 }
+                else if (utility.isZSchemaFile(fileName)) {
+                    name = caseAnything.camelCase(baseName);
+                }
+                    
+                virtualCode += `import * from "./${name}.tschema";\n`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
                 const combined = text + virtualCode;
