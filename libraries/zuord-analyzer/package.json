@@ -20,7 +20,7 @@
       },
       {
         "name": "zuord-plugin",
-        "enableForWorkspaceType": "all"
+        "enableForWorkspaceType": ["all"]
       }
     ],
     "commands": [
