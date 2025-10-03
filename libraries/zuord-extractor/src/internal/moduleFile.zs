@@ -1,5 +1,5 @@
 import { SourceFile } from "ts-morph";
-import { ModuleMode } from "./module.zschema";
+import { ModuleMode } from "./module.zs";
 import { ModuleMember } from "./moduleMember";
 
 export interface Base {

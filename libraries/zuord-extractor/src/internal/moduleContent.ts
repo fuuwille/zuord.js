@@ -1,2 +1,2 @@
-export * as ModuleContent from "./moduleContent.zschema";
-export * as moduleContent from "./moduleContent.zvariants";
+export * as ModuleContent from "./moduleContent.zs";
+export * as moduleContent from "./moduleContent.zv";

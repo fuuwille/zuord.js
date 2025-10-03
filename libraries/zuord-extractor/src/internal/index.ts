@@ -1,2 +1,2 @@
-export * as $ZuordExtractor from "./index.zschema";
-export * as $zuordExtractor from "./index.zvariants";
+export * as $ZuordExtractor from "./index.zs";
+export * as $zuordExtractor from "./index.zv";

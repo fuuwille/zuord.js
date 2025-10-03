@@ -1,2 +1,2 @@
-export * as ModuleContentKind from "./moduleContentKind.zschema";
-export * as moduleContentKind from "./moduleContentKind.zvariants";
+export * as ModuleContentKind from "./moduleContentKind.zs";
+export * as moduleContentKind from "./moduleContentKind.zv";
