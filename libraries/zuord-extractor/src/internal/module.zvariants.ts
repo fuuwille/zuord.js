@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
-import { Module } from "./module.tschema";
-import { ModuleMode } from "./module.tschema";
+import { Module } from "./module.zschema";
+import { ModuleMode } from "./module.zschema";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";

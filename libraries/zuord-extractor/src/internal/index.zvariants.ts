@@ -1,4 +1,4 @@
-export * from "./module.tvariants";
+export * from "./module.zvariants";
 export { moduleContent } from "./moduleContent";
 export { moduleDiagnostic } from "./moduleDiagnostic";
 export { moduleFile } from "./moduleFile";

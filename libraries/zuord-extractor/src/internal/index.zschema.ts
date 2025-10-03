@@ -1,4 +1,4 @@
-export type * from "./module.tschema";
+export type * from "./module.zschema";
 export type { ModuleContent } from "./moduleContent";
 export type { ModuleDiagnostic } from "./moduleDiagnostic";
 export type { ModuleFile } from "./moduleFile";

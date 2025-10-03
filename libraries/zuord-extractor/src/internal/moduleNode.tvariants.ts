@@ -1,5 +1,5 @@
 import { Node } from "ts-morph";
-import { ModuleMode } from "./module.tschema";
+import { ModuleMode } from "./module.zschema";
 import { ModuleNode } from "./moduleNode";
 import { ModuleNodeKind, moduleNodeKind } from "./moduleNodeKind";
 

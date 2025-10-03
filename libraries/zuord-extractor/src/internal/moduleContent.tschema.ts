@@ -1,4 +1,4 @@
-import { Module } from "./module.tschema";
+import { Module } from "./module.zschema";
 import { ModuleContentKind } from "./moduleContentKind";
 import { ModuleDiagnostic } from "./moduleDiagnostic";
 import { ModuleMember } from "./moduleMember";

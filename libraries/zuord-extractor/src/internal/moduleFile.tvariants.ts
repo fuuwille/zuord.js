@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { ModuleMode } from "./module.tschema";
+import { ModuleMode } from "./module.zschema";
 import { ModuleFile } from "./moduleFile";
 import { isDiscarded, isKnownLike } from "./moduleNode.tvariants";
 import { create } from "./moduleMember.tvariants";
