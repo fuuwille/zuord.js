@@ -1,3 +1,5 @@
+import path from "path";
+
 export const getBaseName = (fileName: string) => {
     const parts = fileName.split("/");
     const lastPart = parts.pop() || "";
@@ -8,9 +10,9 @@ export const getBaseName = (fileName: string) => {
 };
 
 export const isZVariantsFile = (fileName: string) => {
-    return fileName.endsWith(".zv");
+    return path.extname(fileName) === ".zv";
 };
 
 export const isZSchemaFile = (fileName: string) => {
-    return fileName.endsWith(".zs");
+    return path.extname(fileName) === ".zs";
 };
