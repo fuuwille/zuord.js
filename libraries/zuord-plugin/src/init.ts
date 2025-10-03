@@ -24,15 +24,19 @@ export = function (modules) {
     function handleScriptSnapshot(origin, fileName: string) {
         const snapshot = origin?.(fileName);
 
-        if (snapshot && fileName.endsWith(".ts")) {
+        const flag1 = utility.isZVariantsFile(fileName);
+        const flag2 = utility.isZSchemaFile(fileName);
+        const flag3 = flag1 || flag2;
+
+        if (snapshot && flag3) {
             let virtualImports = "";
 
             const baseName = utility.getBaseName(fileName) || '';
 
-            if (utility.isZVariantsFile(fileName)) {
+            if (flag1) {
                 virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
             }
-            else if (utility.isZSchemaFile(fileName)) {
+            else if (flag2) {
                 virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
             }
             
