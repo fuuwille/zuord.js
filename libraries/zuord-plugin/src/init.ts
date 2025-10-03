@@ -10,10 +10,10 @@ export = function (modules: { typescript: typeof ts }) {
         const oldLS = info.languageService;
         const host = info.languageServiceHost;
 
-        const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
+        const oldGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
 
         host.getScriptSnapshot = (fileName: string) => {
-            const snapshot = originalGetScriptSnapshot?.(fileName);
+            const snapshot = oldGetScriptSnapshot?.(fileName);
 
             if (snapshot && fileName.endsWith(".ts")) {
                 let virtualImports = "";
