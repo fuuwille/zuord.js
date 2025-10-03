@@ -1,8 +1,9 @@
 {
   "name": "zuord-plugin",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "npx esbuild src/init.ts --bundle --platform=node --external:vscode --outfile=index.js"
   },
   "dependencies": {
