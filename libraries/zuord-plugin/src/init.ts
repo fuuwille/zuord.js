@@ -46,7 +46,7 @@ export = function (modules) {
     }
 
     // @ts-ignore
-    export function handleScriptKind(origin, fileName: string) {
+    function handleScriptKind(origin, fileName: string) {
         if (utility.isZVariantsFile(fileName) || utility.isZSchemaFile(fileName)) {
             return typescript.ScriptKind.TS;
         }
