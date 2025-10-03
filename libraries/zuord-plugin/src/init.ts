@@ -7,7 +7,6 @@ export = function (modules) {
 
     // @ts-ignore
     function create(info) {
-        const oldLS = info.languageService;
         const host = info.languageServiceHost;
 
         host.getScriptSnapshot = (fileName: string) => {
@@ -24,7 +23,7 @@ export = function (modules) {
             return oldGetScriptKind?.(fileName) ?? typescript.ScriptKind.Unknown;
         }
 
-        return oldLS;
+        return info.languageService;
     }
 
     // @ts-ignore
