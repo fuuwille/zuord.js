@@ -21,10 +21,10 @@ export = function (modules: { typescript: typeof ts }) {
                 const baseName = utility.getBaseName(fileName) || '';
 
                 if (utility.isZVariantsFile(fileName)) {
-                    virtualImports += `\nimport * as ZSchema from './${baseName}.tschema';`;
+                    virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
                 }
                 else if (utility.isZSchemaFile(fileName)) {
-                    virtualImports += `\nimport * as zvariants from './${baseName}.tvariants';`;
+                    virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
                 }
                 
                 let text = snapshot.getText(0, snapshot.getLength());
