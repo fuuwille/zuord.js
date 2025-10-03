@@ -15,22 +15,25 @@ module.exports = function (modules: { typescript: typeof ts }) {
             const snapshot = originalGetScriptSnapshot?.(fileName);
 
             if (snapshot && fileName.endsWith(".ts")) {
-                let virtualCode = "";
+                let virtualImports = "";
 
                 const baseName = utility.getBaseName(fileName) || "";
                 let name = undefined;
+                let type = undefined;
 
                 if (utility.isZVariantsFile(fileName)) {
                     name = caseAnything.pascalCase(baseName);
+                    type = "tvariants";
                 }
                 else if (utility.isZSchemaFile(fileName)) {
                     name = caseAnything.camelCase(baseName);
+                    type = "tschema";
                 }
-                    
-                virtualCode += `import * from "./${name}.tschema";\n`;
+
+                virtualImports += `import * from './${name}.${type}';\n`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
-                const combined = text + virtualCode;
+                const combined = virtualImports + text;
 
                 return typescript.ScriptSnapshot.fromString(combined);
             }
