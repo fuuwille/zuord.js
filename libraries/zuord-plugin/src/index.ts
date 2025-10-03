@@ -1,9 +1,9 @@
 import * as ts from "typescript/lib/tsserverlibrary";
 import * as utility from "./utility";
-import * as caseAnything from "case-anything";
 
 module.exports = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
+    const caseAnything = require("case-anything");
 
     function create(info: ts.server.PluginCreateInfo): ts.LanguageService {
         const oldLS = info.languageService;
