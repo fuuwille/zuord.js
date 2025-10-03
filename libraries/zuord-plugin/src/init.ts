@@ -1,12 +1,11 @@
-import type * as ts from "typescript/lib/tsserverlibrary";
-
+// @ts-nocheck
 const utility = require("./utility");
 const caseAnything = require("case-anything");
 
-export = function (modules: { typescript: typeof ts }) {
+export = function (modules) {
     const typescript = modules.typescript;
 
-    function create(info: ts.server.PluginCreateInfo): ts.LanguageService {
+    function create(info) {
         const oldLS = info.languageService;
         const host = info.languageServiceHost;
 
