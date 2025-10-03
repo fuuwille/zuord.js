@@ -16,11 +16,7 @@ export = function (modules) {
         const oldGetScriptKind = host.getScriptKind?.bind(host);
 
         host.getScriptKind = (fileName: string) => {
-            if (utility.isZVariantsFile(fileName) || utility.isZSchemaFile(fileName)) {
-                return typescript.ScriptKind.TS;
-            }
-
-            return oldGetScriptKind?.(fileName) ?? typescript.ScriptKind.Unknown;
+            return handleScriptKind(oldGetScriptKind, fileName);
         }
 
         return info.languageService;
@@ -49,6 +45,15 @@ export = function (modules) {
         }
 
         return snapshot;
+    }
+
+    // @ts-ignore
+    export function handleScriptKind(origin, fileName: string) {
+        if (utility.isZVariantsFile(fileName) || utility.isZSchemaFile(fileName)) {
+            return typescript.ScriptKind.TS;
+        }
+
+        return origin?.(fileName) ?? typescript.ScriptKind.Unknown;
     }
 
     return { create };
