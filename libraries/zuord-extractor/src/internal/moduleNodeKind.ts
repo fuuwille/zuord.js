@@ -1,2 +1,2 @@
-export * as ModuleNodeKind from "./moduleNodeKind.tschema";
-export * as moduleNodeKind from "./moduleNodeKind.tvariants";
+export * as ModuleNodeKind from "./moduleNodeKind.zs";
+export * as moduleNodeKind from "./moduleNodeKind.zv";

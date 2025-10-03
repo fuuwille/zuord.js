@@ -1,2 +1,2 @@
-export * as ModuleFile from "./moduleFile.tschema";
-export * as moduleFile from "./moduleFile.tvariants";
+export * as ModuleFile from "./moduleFile.zs";
+export * as moduleFile from "./moduleFile.zv";

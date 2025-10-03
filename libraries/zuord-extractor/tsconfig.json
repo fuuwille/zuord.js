@@ -9,6 +9,6 @@
         "declaration": true,
         "skipLibCheck": true,
     },
-    "include": ["src/**/*.ts", "src/internal/moduleDiagnostic.zschema", "src/internal/moduleDiagnostic.zvariants"],
+    "include": ["src/**/*.ts", "src/internal/moduleDiagnostic.zschema", "src/internal/moduleDiagnostic.zvariants", "src/internal/moduleFile.zs", "src/internal/moduleFile.zv", "src/internal/moduleMember.zs", "src/internal/moduleMember.zv", "src/internal/moduleMemberKind.zs", "src/internal/moduleMemberKind.zv", "src/internal/moduleNode.zs", "src/internal/moduleNode.zv", "src/internal/moduleNodeKind.zs", "src/internal/moduleNodeKind.zv"],
     "exclude": ["node_modules", "zuord.config.ts", "example.*.ts"]
 }

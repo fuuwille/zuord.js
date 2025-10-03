@@ -1,2 +1,2 @@
-export * as ModuleMember from "./moduleMember.tschema";
-export * as moduleMember from "./moduleMember.tvariants";
+export * as ModuleMember from "./moduleMember.zs";
+export * as moduleMember from "./moduleMember.zv";
