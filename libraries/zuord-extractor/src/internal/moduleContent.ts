@@ -1,2 +1,2 @@
-export * as ModuleContent from "./moduleContent.tschema";
-export * as moduleContent from "./moduleContent.tvariants";
+export * as ModuleContent from "./moduleContent.zschema";
+export * as moduleContent from "./moduleContent.zvariants";
