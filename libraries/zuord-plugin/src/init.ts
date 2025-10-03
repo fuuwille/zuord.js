@@ -19,25 +19,13 @@ export = function (modules: { typescript: typeof ts }) {
                 let virtualImports = "";
 
                 const baseName = utility.getBaseName(fileName) || '';
-                let name = undefined;
-                let type = undefined;
-                const flag1 = utility.isZVariantsFile(fileName);
-                const flag2 = utility.isZSchemaFile(fileName);
 
-                if(flag1) {
+                if (utility.isZVariantsFile(fileName)) {
                     virtualImports += `\nimport * as ZSchema from './${baseName}.tschema';`;
                 }
-
-                if (flag1) {
-                    name = caseAnything.pascalCase(baseName);
-                    type = "tschema";
+                else if (utility.isZSchemaFile(fileName)) {
+                    virtualImports += `\nimport * as zvariants from './${baseName}.tvariants';`;
                 }
-                else if (flag2) {
-                    name = caseAnything.camelCase(baseName);
-                    type = "tvariants";
-                }
-
-                virtualImports += `\nimport * as ${name} from './${baseName}.${type}';`;
                 
                 let text = snapshot.getText(0, snapshot.getLength());
                 const combined = text + virtualImports;
