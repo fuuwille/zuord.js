@@ -1,2 +1,2 @@
-export * as ModuleDiagnostic from "./moduleDiagnostic.zschema";
-export * as moduleDiagnostic from "./moduleDiagnostic.zvariants";
+export * as ModuleDiagnostic from "./moduleDiagnostic.zs";
+export * as moduleDiagnostic from "./moduleDiagnostic.zv";
