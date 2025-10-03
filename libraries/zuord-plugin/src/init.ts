@@ -31,7 +31,6 @@ export = function (modules: { typescript: typeof ts }) {
                     type = "tvariants";
                 }
 
-                virtualImports += 'const __VIRTUAL_IMPORTS__ = true;\n';
                 virtualImports += `import * as ${name} from './${baseName}.${type}';\n`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
