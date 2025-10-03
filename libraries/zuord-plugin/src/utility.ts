@@ -8,9 +8,9 @@ export const getBaseName = (fileName: string) => {
 };
 
 export const isZVariantsFile = (fileName: string) => {
-    return fileName.endsWith(".tvariants.ts");
+    return fileName.endsWith(".zv");
 };
 
 export const isZSchemaFile = (fileName: string) => {
-    return fileName.endsWith(".tschema.ts");
+    return fileName.endsWith(".zs");
 };
