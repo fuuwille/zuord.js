@@ -11,11 +11,7 @@ export = function (modules) {
 
         const oldGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
 
-        host.getScriptSnapshot = (fileName: string) => {            
-            if (fileName.endsWith(".zs") || fileName.endsWith(".zv")) {
-                fileName += ".ts";
-            }
-
+        host.getScriptSnapshot = (fileName: string) => {
             const snapshot = oldGetScriptSnapshot?.(fileName);
 
             if (snapshot && fileName.endsWith(".ts")) {
@@ -54,3 +50,5 @@ export = function (modules) {
 
     return { create };
 }
+
+export function handleScriptSnapshot()
