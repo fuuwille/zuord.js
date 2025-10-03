@@ -36,6 +36,16 @@ export = function (modules: { typescript: typeof ts }) {
             return snapshot;
         };
 
+        const oldGetScriptKind = host.getScriptKind?.bind(host);
+
+        host.getScriptKind = (fileName: string) => {
+            if (utility.isZVariantsFile(fileName) || utility.isZSchemaFile(fileName)) {
+                return typescript.ScriptKind.TS;
+            }
+
+            return oldGetScriptKind?.(fileName) ?? typescript.ScriptKind.Unknown;
+        }
+
         return oldLS;
     }
 
