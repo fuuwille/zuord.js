@@ -1,7 +1,7 @@
 import * as ts from "typescript/lib/tsserverlibrary";
 
-export default function init(modules: { typescript: typeof ts }) {
-    const ts = modules.typescript;
+module.exports = function (modules: { typescript: typeof ts }) {
+    const typescript = modules.typescript;
 
     function create(info: ts.server.PluginCreateInfo): ts.LanguageService {
         const oldLS = info.languageService;
@@ -24,9 +24,9 @@ export default function init(modules: { typescript: typeof ts }) {
                 let text = snapshot.getText(0, snapshot.getLength());
                 const combined = text + virtualCode;
 
-                return ts.ScriptSnapshot.fromString(combined);
+                return typescript.ScriptSnapshot.fromString(combined);
             }
-            
+
             return snapshot;
         };
 
