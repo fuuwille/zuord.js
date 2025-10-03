@@ -23,14 +23,14 @@ module.exports = function (modules: { typescript: typeof ts }) {
 
                 if (utility.isZVariantsFile(fileName)) {
                     name = caseAnything.pascalCase(baseName);
-                    type = "tvariants";
+                    type = "tschema";
                 }
                 else if (utility.isZSchemaFile(fileName)) {
                     name = caseAnything.camelCase(baseName);
-                    type = "tschema";
+                    type = "tvariants";
                 }
 
-                virtualImports += `import * from './${name}.${type}';\n`;
+                virtualImports += `import * as ${name} from './${baseName}.${type}';\n`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
                 const combined = virtualImports + text;
