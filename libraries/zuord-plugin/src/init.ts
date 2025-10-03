@@ -31,10 +31,10 @@ export = function (modules: { typescript: typeof ts }) {
                     type = "tvariants";
                 }
 
-                virtualImports += `import * as ${name} from './${baseName}.${type}';\n`;
+                virtualImports += `\nimport * as ${name} from './${baseName}.${type}';`;
 
                 let text = snapshot.getText(0, snapshot.getLength());
-                const combined = virtualImports + text;
+                const combined = text + virtualImports;
 
                 return typescript.ScriptSnapshot.fromString(combined);
             }
