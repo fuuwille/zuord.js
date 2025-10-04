@@ -1,34 +1,34 @@
-import { Node } from "ts-morph";
+import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.zs";
 import * as ModuleNodeKind from "./moduleNodeKind.zs";
 import * as moduleNodeKind from "./moduleNodeKind.zv";
 
 export const isImport = (node: Node): node is ZSchema.Import => {
-    return node.getKind() === moduleNodeKind.Import;
+    return node.getKind() === SyntaxKind.ImportDeclaration;
 }
 
 export const isExport = (node: Node): node is ZSchema.Export => {
-    return node.getKind() === moduleNodeKind.Export;
+    return node.getKind() === SyntaxKind.ExportDeclaration;
 }
 
 export const isExportDefault = (node: Node): node is ZSchema.ExportDefault => {
-    return node.getKind() === moduleNodeKind.ExportDefault;
+    return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
 export const isType = (node: Node): node is ZSchema.Type => {
-    return node.getKind() === moduleNodeKind.Type;
+    return node.getKind() === SyntaxKind.TypeAliasDeclaration;
 }
 
 export const isInterface = (node: Node): node is ZSchema.Interface => {
-    return node.getKind() === moduleNodeKind.Interface;
+    return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
 export const isVariable = (node: Node): node is ZSchema.Variable => {
-    return node.getKind() === moduleNodeKind.Variable;
+    return node.getKind() === SyntaxKind.VariableStatement;
 }
 
 export const isFunction = (node: Node): node is ZSchema.Function => {
-    return node.getKind() === moduleNodeKind.Function;
+    return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
 export const isValue = (node: Node): node is ZSchema.Value => {
@@ -36,11 +36,11 @@ export const isValue = (node: Node): node is ZSchema.Value => {
 }
 
 export const isArrowFunction = (node: Node): node is ZSchema.ArrowFunction => {
-    return node.getKind() === moduleNodeKind.ArrowFunction;
+    return node.getKind() === SyntaxKind.ArrowFunction;
 }
 
 export const isFunctionExpression = (node: Node): node is ZSchema.FunctionExpression => {
-    return node.getKind() === moduleNodeKind.FunctionExpression;
+    return node.getKind() === SyntaxKind.FunctionExpression;
 }
 
 //
