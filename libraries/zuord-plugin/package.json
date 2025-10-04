@@ -5,8 +5,5 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npx esbuild src/init.ts --bundle --platform=node --external:vscode --outfile=index.js"
-  },
-  "dependencies": {
-    "case-anything": "^3.1.2"
   }
 }
