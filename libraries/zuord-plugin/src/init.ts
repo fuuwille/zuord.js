@@ -63,7 +63,7 @@ export = function (modules) {
 
     // @ts-ignore
     function handleScriptKind(origin, fileName: string) {
-        if (utility.isZVariantsFile(fileName) || utility.isZSchemaFile(fileName)) {
+        if (utility.isZSFile(fileName) || utility.isZVFile(fileName)) {
             return typescript.ScriptKind.TS;
         }
 
@@ -77,8 +77,8 @@ export = function (modules) {
         return moduleLiterals.map((literal) => {
             const moduleName = literal.text;
 
-            if (moduleName.endsWith(".zs")) {
-             const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+            if (utility.isZSFile(moduleName)) {
+                const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
 
                 if (typescript.sys.fileExists(resolvedFileName)) {
                     return {
@@ -90,7 +90,7 @@ export = function (modules) {
                 }
             }
 
-            if (moduleName.endsWith(".zv")) {
+            if (utility.isZVFile(moduleName)) {
                 const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
 
                 if (typescript.sys.fileExists(resolvedFileName)) {
