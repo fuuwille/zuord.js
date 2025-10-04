@@ -4,21 +4,21 @@ import * as ModuleMember from "./moduleMember.zs";
 import * as moduleMember from "./moduleMember.zv";
 import { getTypeName } from "./~type.tvariants";
 
-export const isSchema = (content: ZSchema.Common): content is ZSchema.Schema => {
+export const isSchema = (content: ZSchema.Base): content is ZSchema.Schema => {
     return content.kind === ModuleContentKind.Schema;
 };
 
-export const isVariant = (content: ZSchema.Common): content is ZSchema.Variant => {
+export const isVariant = (content: ZSchema.Base): content is ZSchema.Variant => {
     return content.kind === ModuleContentKind.Variant;
 };
 
 //
 
-export const isValueVariant = (content: ZSchema.Common): content is ZSchema.ValueVariant => {
+export const isValueVariant = (content: ZSchema.Base): content is ZSchema.ValueVariant => {
     return moduleMember.isValueVariable(content.member);
 }
 
-export const isFunctionalVariant = (content: ZSchema.Common): content is ZSchema.FunctionalVariant => {
+export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.FunctionalVariant => {
     return moduleMember.isFunctionalVariant(content.member);
 }
 
@@ -48,7 +48,7 @@ export const createVariant = (
 
 //
 
-export const getName = (content: ZSchema.Common) : string | undefined => {
+export const getName = (content: ZSchema.Base) : string | undefined => {
     moduleMember.updateDefinitionLikeNameNode(content.member);
     return content.member.nameNode?.getText();
 }
@@ -115,7 +115,7 @@ export const getFunctionalVariantParamSchema = (content: ZSchema.FunctionalVaria
 
 //
 
-export const updateName = (content: ZSchema.Common) : void => {
+export const updateName = (content: ZSchema.Base) : void => {
     if(content.name == undefined) {
         content.name = getName(content);
     }
