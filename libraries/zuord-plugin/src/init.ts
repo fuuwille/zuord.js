@@ -54,7 +54,7 @@ export = function (modules) {
             }
 
             if(isZV || checkZV(fileName)) {
-                virtualImports += `\nimport * as zvariants from './${baseName}.ts';`;
+                virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
             }
             
             let text = snapshot.getText(0, snapshot.getLength());
