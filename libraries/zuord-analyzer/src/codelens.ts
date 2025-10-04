@@ -21,7 +21,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         if(module) {
             explorer.update(document);
 
-            if(kind == "tschema") {
+            if(kind == "zschema") {
                 module.schemaContents.forEach(schema => {
                     const node = schema.member.node;
                     const variantsCount = schema.variants?.length ?? 0;
@@ -35,7 +35,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
                     codelenses.push(codelens);
                 });
             }
-            else if(kind == "tvariants") {
+            else if(kind == "zvariants") {
                 module.variantContents.forEach(variant => {
                     const member = variant.member;
                     const node = member.node;
