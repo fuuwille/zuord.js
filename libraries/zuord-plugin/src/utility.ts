@@ -14,6 +14,14 @@ export const getBasePath = (fileName: string) => {
     return path.join(path.dirname(fileName), path.basename(fileName, path.extname(fileName)));
 }
 
+export const getTSPath = (fileName: string) => {
+    const rootName = getBasePath(fileName);
+    if(rootName) {
+        return `${rootName}.ts`;
+    }
+    return undefined;
+}
+
 export const getZSPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
