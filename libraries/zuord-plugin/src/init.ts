@@ -34,22 +34,26 @@ export = function (modules) {
     // @ts-ignore
     function handleScriptSnapshot(origin, fileName: string) {
         const snapshot = origin?.(fileName);
-        if(!snapshot) return undefined;
+        const baseName = utility.getBaseName(fileName) || '';
 
         const isZS = utility.isZSFile(fileName);
         const isZV = utility.isZVFile(fileName);
         const isZ = isZS || isZV;
+        const isTS = utility.isTSFile(fileName);
 
-        if (isZ) {
+        const checkZ = (fileName: string) => checkZS(fileName) || checkZV(fileName);
+        const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
+        const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+
+        if (isZ && snapshot) {
             let virtualImports = "";
 
-            const baseName = utility.getBaseName(fileName) || '';
 
-            if(isZS || typescript.sys.fileExists(utility.getZSPath(fileName) || '')) {
+            if(isZS || checkZS(fileName)) {
                 virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
             }
 
-            if(isZV || typescript.sys.fileExists(utility.getZVPath(fileName) || '')) {
+            if(isZV || checkZV(fileName)) {
                 virtualImports += `\nimport * as zvariants from './${baseName}.ts';`;
             }
             
@@ -58,8 +62,34 @@ export = function (modules) {
 
             return typescript.ScriptSnapshot.fromString(combined);
         }
+        else if(isTS) {
+            const hasZS = checkZS(fileName);
+            const hasZV = checkZV(fileName);
+            const hasZ = hasZS || hasZV;
 
-        return snapshot;
+            if(hasZ) {
+                let virtualExports = "";
+
+                if(hasZS) {
+                    virtualExports += `\nexport * as ZSCH from './${baseName}.zs';`;
+                }
+
+                if(hasZV) {
+                    virtualExports += `\nexport * as ZVAR from './${baseName}.zv';`;
+                }
+
+                if(snapshot) {
+                    let text = snapshot.getText(0, snapshot.getLength());
+                    const combined = text + virtualExports;
+
+                    return typescript.ScriptSnapshot.fromString(combined);
+                }
+
+                return typescript.ScriptSnapshot.fromString(virtualExports);
+            }
+        }
+
+        return origin?.(fileName);
     }
 
     // @ts-ignore
