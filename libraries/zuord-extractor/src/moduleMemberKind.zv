@@ -1,25 +1,21 @@
-import { ModuleMemberKind } from "./moduleMemberKind";
+export const Unknown: ZSchema.Unknown = "unknown";
 
-//
+export const Import: ZSchema.Import = "import";
 
-export const Unknown: ModuleMemberKind.Unknown = "unknown";
+export const Export: ZSchema.Export = "export";
 
-export const Import: ModuleMemberKind.Import = "import";
+export const ExportDefault: ZSchema.ExportDefault = "exportDefault";
 
-export const Export: ModuleMemberKind.Export = "export";
+export const Type: ZSchema.Type = "type";
 
-export const ExportDefault: ModuleMemberKind.ExportDefault = "exportDefault";
+export const Interface: ZSchema.Interface = "interface";
 
-export const Type: ModuleMemberKind.Type = "type";
+export const Variable: ZSchema.Variable = "variable";
 
-export const Interface: ModuleMemberKind.Interface = "interface";
+export const Function: ZSchema.Function = "function";
 
-export const Variable: ModuleMemberKind.Variable = "variable";
+export const Value: ZSchema.Value = "value";
 
-export const Function: ModuleMemberKind.Function = "function";
+export const ArrowFunction: ZSchema.ArrowFunction = "arrowFunction";
 
-export const Value: ModuleMemberKind.Value = "value";
-
-export const ArrowFunction: ModuleMemberKind.ArrowFunction = "arrowFunction";
-
-export const FunctionExpression: ModuleMemberKind.FunctionExpression = "functionExpression";
+export const FunctionExpression: ZSchema.FunctionExpression = "functionExpression";
