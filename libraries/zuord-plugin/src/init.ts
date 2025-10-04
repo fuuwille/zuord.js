@@ -36,8 +36,8 @@ export = function (modules) {
     function handleScriptSnapshot(origin, fileName: string) {
         const snapshot = origin?.(fileName);
 
-        const flag1 = utility.isZVariantsFile(fileName);
-        const flag2 = utility.isZSchemaFile(fileName);
+        const flag1 = utility.isZSFile(fileName);
+        const flag2 = utility.isZVFile(fileName);
         const flag3 = flag1 || flag2;
 
         if (snapshot && flag3) {
@@ -46,10 +46,10 @@ export = function (modules) {
             const baseName = utility.getBaseName(fileName) || '';
 
             if (flag1) {
-                virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
+                virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
             }
             else if (flag2) {
-                virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
+                virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
             }
             
             let text = snapshot.getText(0, snapshot.getLength());
