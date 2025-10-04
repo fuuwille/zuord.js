@@ -109,11 +109,23 @@ export = function (modules) {
 
         for (const literal of moduleLiterals) {
             const name = literal.text;
+            const resolvedFileName = path.resolve(path.dirname(containingFile), name);
+
             if (utility.isZFile(name)) {
-                const resolvedFileName = path.resolve(path.dirname(containingFile), name);
                 if (typescript.sys.fileExists(resolvedFileName)) {
                     customResolved.push({ resolvedModule: { resolvedFileName, extension: typescript.Extension.Ts } });
                     continue;
+                }
+            }
+            else if(utility.isTSFile(name)) {
+                if (!typescript.sys.fileExists(resolvedFileName)) {
+                    const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
+                    const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+
+                    if (checkZS(resolvedFileName) || checkZV(resolvedFileName)) {
+                        customResolved.push({ resolvedModule: { resolvedFileName, extension: typescript.Extension.Ts } });
+                        continue;
+                    }
                 }
             }
 
