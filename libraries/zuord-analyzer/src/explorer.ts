@@ -157,10 +157,10 @@ export class ExplorerProvider {
         const sourceFile = new Project().createSourceFile(fsPath, textDoc.getText(), { overwrite: true });
 
         switch(kind) {
-            case "tschema":        
+            case "zschema":        
                 zuordExtractor.updateModuleTypeFile(module, sourceFile);
                 break;
-            case "tvariants":
+            case "zvariants":
                 zuordExtractor.updateModuleVariantsFile(module, sourceFile);
                 break;
         }
