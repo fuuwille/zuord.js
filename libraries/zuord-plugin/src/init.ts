@@ -47,6 +47,20 @@ info.languageServiceHost.resolveModuleNameLiterals = (moduleLiterals,containingF
       }
     }
 
+    if (moduleName.endsWith(".zv")) {
+      const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+
+      if (typescript.sys.fileExists(resolvedFileName)) {
+        log("Resolved .zv literal:", moduleName, "→", resolvedFileName);
+        return {
+          resolvedModule: {
+            resolvedFileName,
+            extension: typescript.Extension.Ts, // TS gibi parse et
+          },
+        };
+      }
+    }
+
     // fallback → orijinal
     const result = typescript.resolveModuleName(
       moduleName,
