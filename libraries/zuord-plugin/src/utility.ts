@@ -13,6 +13,22 @@ export const getRootName = (fileName: string) => {
     return path.basename(fileName, path.extname(fileName));
 }
 
+export const getZSName = (fileName: string) => {
+    const rootName = getRootName(fileName);
+    if(rootName) {
+        return `${rootName}.zs`;
+    }
+    return undefined;
+}
+
+export const getZVName = (fileName: string) => {
+    const rootName = getRootName(fileName);
+    if(rootName) {
+        return `${rootName}.zv`;
+    }
+    return undefined;
+}
+
 export const isZFile = (fileName: string) => {
     return isZSFile(fileName) || isZVFile(fileName);
 }
