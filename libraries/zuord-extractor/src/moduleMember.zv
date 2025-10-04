@@ -1,103 +1,102 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
-import { ModuleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 import { moduleMemberKind } from "./moduleMemberKind";
 
-export const isUnknown = (member: ModuleMember.Base): member is ModuleMember.Unknown => {
+export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
     return member.kind === moduleMemberKind.Unknown;
 }
 
-export const isImport = (member: ModuleMember.Base): member is ModuleMember.Import => {
+export const isImport = (member: ZSchema.Base): member is ZSchema.Import => {
     return member.kind === moduleMemberKind.Import;
 }
 
-export const isExport = (member: ModuleMember.Base): member is ModuleMember.Export => {
+export const isExport = (member: ZSchema.Base): member is ZSchema.Export => {
     return member.kind === moduleMemberKind.Export;
 }
 
-export const isExportDefault = (member: ModuleMember.Base): member is ModuleMember.ExportDefault => {
+export const isExportDefault = (member: ZSchema.Base): member is ZSchema.ExportDefault => {
     return member.kind === moduleMemberKind.ExportDefault;
 }
 
-export const isType = (member: ModuleMember.Base): member is ModuleMember.Type => {
+export const isType = (member: ZSchema.Base): member is ZSchema.Type => {
     return member.kind === moduleMemberKind.Type;
 }
 
-export const isInterface = (member: ModuleMember.Base): member is ModuleMember.Interface => {
+export const isInterface = (member: ZSchema.Base): member is ZSchema.Interface => {
     return member.kind === moduleMemberKind.Interface;
 }
 
-export const isVariable = (member: ModuleMember.Base): member is ModuleMember.Variable => {
+export const isVariable = (member: ZSchema.Base): member is ZSchema.Variable => {
     return member.kind === moduleMemberKind.Variable;
 }
 
-export const isFunction = (member: ModuleMember.Base): member is ModuleMember.Function => {
+export const isFunction = (member: ZSchema.Base): member is ZSchema.Function => {
     return member.kind === moduleMemberKind.Function;
 }
 
-export const isValue = (member: ModuleMember.Base): member is ModuleMember.Value => {
+export const isValue = (member: ZSchema.Base): member is ZSchema.Value => {
     return member.kind === moduleMemberKind.Value;
 }
 
-export const isArrowFunction = (member: ModuleMember.Base): member is ModuleMember.ArrowFunction => {
+export const isArrowFunction = (member: ZSchema.Base): member is ZSchema.ArrowFunction => {
     return member.kind === moduleMemberKind.ArrowFunction;
 }
 
-export const isFunctionExpression = (member: ModuleMember.Base): member is ModuleMember.FunctionExpression => {
+export const isFunctionExpression = (member: ZSchema.Base): member is ZSchema.FunctionExpression => {
     return member.kind === moduleMemberKind.FunctionExpression;
 }
 
 //
 
-export const isKnownLike = (member: ModuleMember.Base): member is ModuleMember.KnownLike => {
+export const isKnownLike = (member: ZSchema.Base): member is ZSchema.KnownLike => {
     return isESMLike(member) || isSchemaLike(member) || isVariantLike(member);
 }
 
-export const isESMLike = (member: ModuleMember.Base): member is ModuleMember.ESMLike => {
+export const isESMLike = (member: ZSchema.Base): member is ZSchema.ESMLike => {
     return isExport(member) || isImport(member) || isExportDefault(member);
 }
 
-export const isDefinitionLike = (member: ModuleMember.Base): member is ModuleMember.DefinitionLike => {
+export const isDefinitionLike = (member: ZSchema.Base): member is ZSchema.DefinitionLike => {
     return isSchemaLike(member) || isVariantLike(member);
 }
 
-export const isSchemaLike = (member: ModuleMember.Base): member is ModuleMember.SchemaLike => {
+export const isSchemaLike = (member: ZSchema.Base): member is ZSchema.SchemaLike => {
     return isType(member) || isInterface(member);
 }
 
-export const isVariantLike = (member: ModuleMember.Base): member is ModuleMember.VariantLike => {
+export const isVariantLike = (member: ZSchema.Base): member is ZSchema.VariantLike => {
     return isVariable(member) || isFunction(member);
 }
 
-export const isInitializerLike = (member: ModuleMember.Base): member is ModuleMember.InitializerLike => {
+export const isInitializerLike = (member: ZSchema.Base): member is ZSchema.InitializerLike => {
     return isArrowFunction(member) || isFunctionExpression(member) || isValue(member);
 }
 
-export const isValueVariable = (member: ModuleMember.Base): member is ModuleMember.ValueVariable => {
+export const isValueVariable = (member: ZSchema.Base): member is ZSchema.ValueVariable => {
     return isVariable(member) && !!member.initializer && isValue(member.initializer);
 }
 
-export const isFunctionalVariable = (member: ModuleMember.Base): member is ModuleMember.FunctionalVariable => {
+export const isFunctionalVariable = (member: ZSchema.Base): member is ZSchema.FunctionalVariable => {
     return isVariable(member) && !!member.initializer && isFunctionAlt(member.initializer);
 }
 
-export const isFunctionLike = (member: ModuleMember.Base): member is ModuleMember.FunctionLike => {
+export const isFunctionLike = (member: ZSchema.Base): member is ZSchema.FunctionLike => {
     return isFunction(member) || isFunctionExpression(member) || isArrowFunction(member);
 }
 
-export const isFunctionAlt = (member: ModuleMember.Base): member is ModuleMember.FunctionAlt => {
+export const isFunctionAlt = (member: ZSchema.Base): member is ZSchema.FunctionAlt => {
     return isArrowFunction(member) || isFunctionExpression(member);
 }
 
 //
 
-export  const isFunctionalVariant = (member: ModuleMember.Base): member is ModuleMember.FunctionalVariant => {
+export  const isFunctionalVariant = (member: ZSchema.Base): member is ZSchema.FunctionalVariant => {
     return isFunction(member) || isFunctionalVariable(member);
 };
 
 //
 
-export const create = <TMember extends ModuleMember.Base>(
+export const create = <TMember extends ZSchema.Base>(
     node: Node
 ) : TMember => {
 
@@ -113,7 +112,7 @@ export const create = <TMember extends ModuleMember.Base>(
     return member;
 }
 
-export const getKind = (node: Node): ModuleMember.MemberKind => {
+export const getKind = (node: Node): ZSchema.MemberKind => {
     if (moduleNode.isImport(node)) {
         return moduleMemberKind.Import;
     }
@@ -157,7 +156,7 @@ export const getKind = (node: Node): ModuleMember.MemberKind => {
     return "unknown";
 };
 
-export const getDefinitionLikeNameNode = (member: ModuleMember.DefinitionLike): BindingName | null => {
+export const getDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): BindingName | null => {
     if("getNameNode" in member.node) {
         return member.node.getNameNode() ?? null;
     }
@@ -173,7 +172,7 @@ export const getDefinitionLikeNameNode = (member: ModuleMember.DefinitionLike): 
     return null;
 }
 
-export const getVariableInitializer = (member: ModuleMember.Variable): ModuleMember.InitializerLike | undefined => {
+export const getVariableInitializer = (member: ZSchema.Variable): ZSchema.InitializerLike | undefined => {
     if(!member) return undefined;
 
     const declaration = member.node.getDeclarations()[0];
@@ -183,7 +182,7 @@ export const getVariableInitializer = (member: ModuleMember.Variable): ModuleMem
 
         if(initializerNode) {
             if(moduleNode.isInitializerLike(initializerNode)) {
-                return create<ModuleMember.InitializerLike>(initializerNode);
+                return create<ZSchema.InitializerLike>(initializerNode);
             }
         }
     }
@@ -191,19 +190,19 @@ export const getVariableInitializer = (member: ModuleMember.Variable): ModuleMem
     return undefined
 }
 
-export const getValueVariableDeclaredTypeNode = (member: ModuleMember.ValueVariable): TypeNode | undefined => {
+export const getValueVariableDeclaredTypeNode = (member: ZSchema.ValueVariable): TypeNode | undefined => {
     return member?.node?.getDeclarations()[0]?.getTypeNode();
 }
 
-export const getFunctionLikeReturnTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
+export const getFunctionLikeReturnTypeNode = (member: ZSchema.FunctionLike): TypeNode | undefined => {
     return member?.node?.getReturnTypeNode();
 }
 
-export const getFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike): TypeNode | undefined => {
+export const getFunctionLikeParamTypeNode = (member: ZSchema.FunctionLike): TypeNode | undefined => {
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
 
-export const getFunctionLike = (member: ModuleMember.FunctionalVariant) : ModuleMember.FunctionLike | undefined => {
+export const getFunctionLike = (member: ZSchema.FunctionalVariant) : ZSchema.FunctionLike | undefined => {
     if(isFunctionalVariable(member)) {
         return member.initializer!;
     }
@@ -211,50 +210,50 @@ export const getFunctionLike = (member: ModuleMember.FunctionalVariant) : Module
     return member;
 }
 
-export const getFunctionalVariantReturnType = (member: ModuleMember.FunctionalVariant) : TypeNode | undefined => {
+export const getFunctionalVariantReturnType = (member: ZSchema.FunctionalVariant) : TypeNode | undefined => {
     return getFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 }
 
-export const getFunctionalVariantParamType = (member: ModuleMember.FunctionalVariant) : TypeNode | undefined => {
+export const getFunctionalVariantParamType = (member: ZSchema.FunctionalVariant) : TypeNode | undefined => {
     return getFunctionLikeParamTypeNode(getFunctionLike(member)!);
 }
 
 //
 
-export const updateDefinitionLikeNameNode = (member: ModuleMember.DefinitionLike): void => {
+export const updateDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): void => {
     if(member.nameNode == undefined) {
         member.nameNode = getDefinitionLikeNameNode(member);
     }
 }
 
-export const updateVariableInitializer = (member: ModuleMember.Variable): void => {
+export const updateVariableInitializer = (member: ZSchema.Variable): void => {
     if(member.initializer == undefined) {
         member.initializer = getVariableInitializer(member);
     }
 }
 
-export const updateValueVariableDeclaredTypeNode = (member: ModuleMember.ValueVariable): void => {
+export const updateValueVariableDeclaredTypeNode = (member: ZSchema.ValueVariable): void => {
     if(member.declaredTypeNode == undefined) {
         member.declaredTypeNode = getValueVariableDeclaredTypeNode(member);
     }
 }
 
-export const updateFunctionLikeReturnTypeNode = (member: ModuleMember.FunctionLike): void => {
+export const updateFunctionLikeReturnTypeNode = (member: ZSchema.FunctionLike): void => {
     if(member.returnTypeNode == undefined) {
         member.returnTypeNode = getFunctionLikeReturnTypeNode(member);
     }
 };
 
-export const updateFunctionLikeParamTypeNode = (member: ModuleMember.FunctionLike): void => {
+export const updateFunctionLikeParamTypeNode = (member: ZSchema.FunctionLike): void => {
     if(member.paramTypeNode == undefined) {
         member.paramTypeNode = getFunctionLikeParamTypeNode(member);
     }
 };
 
-export const updateFunctionalReturnTypeNode = (member: ModuleMember.FunctionalVariant): void => {
+export const updateFunctionalReturnTypeNode = (member: ZSchema.FunctionalVariant): void => {
     return updateFunctionLikeReturnTypeNode(getFunctionLike(member)!);
 };
 
-export const updateFunctionalParamTypeNode = (member: ModuleMember.FunctionalVariant): void => {
+export const updateFunctionalParamTypeNode = (member: ZSchema.FunctionalVariant): void => {
     return updateFunctionLikeParamTypeNode(getFunctionLike(member)!);
 };
