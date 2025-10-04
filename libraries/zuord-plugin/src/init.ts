@@ -45,11 +45,12 @@ export = function (modules) {
 
             const baseName = utility.getBaseName(fileName) || '';
 
-            if (isZS) {
-                virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
-            }
-            else if (isZV) {
+            if(isZS || typescript.sys.fileExists(utility.getZSPath(fileName) || '')) {
                 virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
+            }
+
+            if(isZV || typescript.sys.fileExists(utility.getZVPath(fileName) || '')) {
+                virtualImports += `\nimport * as zvariants from './${baseName}.ts';`;
             }
             
             let text = snapshot.getText(0, snapshot.getLength());
