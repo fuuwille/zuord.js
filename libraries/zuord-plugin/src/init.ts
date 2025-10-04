@@ -25,8 +25,8 @@ export = function (modules) {
         }
 
         // @ts-ignore
-        host.resolveModuleNameLiterals = (moduleLiterals, containingFile, _redirectedReference, options, _containingSourceFile) => {
-            return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, options);
+        host.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) => {
+            return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
         }
 
         return info.languageService;
@@ -71,7 +71,7 @@ export = function (modules) {
     }
 
     // @ts-ignore
-    function handleResolveModuleNameLiterals(_origin, moduleLiterals, containingFile, options) {
+    function handleResolveModuleNameLiterals(origin, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) {
 
         // @ts-ignore
         return moduleLiterals.map((literal) => {
@@ -103,13 +103,12 @@ export = function (modules) {
                 }
             }
 
-            const result = typescript.resolveModuleName(
-                moduleName,
-                containingFile,
-                options,
-                typescript.sys
-            );
-            return { resolvedModule: result.resolvedModule };
+            if (origin) {
+                const result = origin([moduleName], containingFile, redirectedReference, options, containingSourceFile);
+                return result?.[0] ?? undefined;
+            }
+
+            return undefined;
         });
     }
 
