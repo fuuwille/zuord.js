@@ -9,20 +9,20 @@ export const getBaseName = (fileName: string) => {
     return baseName || undefined;
 };
 
-export const getRootName = (fileName: string) => {
-    return path.basename(fileName, path.extname(fileName));
+export const getBasePath = (fileName: string) => {
+    return path.join(path.dirname(fileName), path.basename(fileName, path.extname(fileName)));
 }
 
-export const getZSName = (fileName: string) => {
-    const rootName = getRootName(fileName);
+export const getZSPath = (fileName: string) => {
+    const rootName = getBasePath(fileName);
     if(rootName) {
         return `${rootName}.zs`;
     }
     return undefined;
 }
 
-export const getZVName = (fileName: string) => {
-    const rootName = getRootName(fileName);
+export const getZVPath = (fileName: string) => {
+    const rootName = getBasePath(fileName);
     if(rootName) {
         return `${rootName}.zv`;
     }
