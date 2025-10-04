@@ -73,43 +73,41 @@ export = function (modules) {
     // @ts-ignore
     function handleResolveModuleNameLiterals(origin, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) {
 
-        // @ts-ignore
-        return moduleLiterals.map((literal) => {
-            const moduleName = literal.text;
+        const customResolved = [];
+        const toFallback = [];
 
-            if (utility.isZSFile(moduleName)) {
-                const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
-
+        for (const literal of moduleLiterals) {
+            const name = literal.text;
+            if (name.endsWith(".zs") || name.endsWith(".zv")) {
+                const resolvedFileName = path.resolve(path.dirname(containingFile), name);
                 if (typescript.sys.fileExists(resolvedFileName)) {
-                    return {
-                        resolvedModule: {
-                            resolvedFileName,
-                            extension: typescript.Extension.Ts
-                        },
-                    };
+                    customResolved.push({ resolvedModule: { resolvedFileName, extension: typescript.Extension.Ts } });
+                    continue;
                 }
             }
 
-            if (utility.isZVFile(moduleName)) {
-                const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+            customResolved.push(undefined);
+            toFallback.push(literal);
+        }
 
-                if (typescript.sys.fileExists(resolvedFileName)) {
-                    return {
-                        resolvedModule: {
-                            resolvedFileName,
-                            extension: typescript.Extension.Ts
-                        },
-                    };
+        if (toFallback.length && origin) {
+            const fallbackResults = origin(
+                toFallback,
+                containingFile,
+                redirectedReference,
+                options,
+                containingSourceFile
+            );
+
+            let fallbackIndex = 0;
+            for (let i = 0; i < customResolved.length; i++) {
+                if (!customResolved[i]) {
+                    customResolved[i] = fallbackResults?.[fallbackIndex++];
                 }
             }
+        }
 
-            if (origin) {
-                const result = origin([moduleName], containingFile, redirectedReference, options, containingSourceFile);
-                return result?.[0] ?? undefined;
-            }
-
-            return undefined;
-        });
+        return customResolved;
     }
 
     return { create };
