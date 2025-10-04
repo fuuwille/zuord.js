@@ -38,6 +38,10 @@ export const getZVPath = (fileName: string) => {
     return undefined;
 }
 
+export const isTSFile = (fileName: string) => {
+    return path.extname(fileName) === ".ts";
+}
+
 export const isZFile = (fileName: string) => {
     return isZSFile(fileName) || isZVFile(fileName);
 }
