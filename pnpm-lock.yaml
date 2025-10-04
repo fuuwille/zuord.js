@@ -125,11 +125,7 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
 
-  libraries/zuord-plugin:
-    dependencies:
-      case-anything:
-        specifier: ^3.1.2
-        version: 3.1.2
+  libraries/zuord-plugin: {}
 
   packages/produce:
     dependencies:
