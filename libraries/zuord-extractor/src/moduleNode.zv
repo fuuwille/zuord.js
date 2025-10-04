@@ -23,10 +23,6 @@ export const isInterface = (node: Node): node is ZSchema.Interface => {
     return node.getKind() === moduleNodeKind.Interface;
 }
 
-export const isEnum = (node: Node): node is ZSchema.Enum => {
-    return node.getKind() === moduleNodeKind.Enum;
-}
-
 export const isVariable = (node: Node): node is ZSchema.Variable => {
     return node.getKind() === moduleNodeKind.Variable;
 }
