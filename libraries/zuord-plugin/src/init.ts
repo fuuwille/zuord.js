@@ -34,12 +34,13 @@ export = function (modules) {
     // @ts-ignore
     function handleScriptSnapshot(origin, fileName: string) {
         const snapshot = origin?.(fileName);
+        if(!snapshot) return undefined;
 
         const isZS = utility.isZSFile(fileName);
         const isZV = utility.isZVFile(fileName);
         const isZ = isZS || isZV;
 
-        if (snapshot && isZ) {
+        if (isZ) {
             let virtualImports = "";
 
             const baseName = utility.getBaseName(fileName) || '';
