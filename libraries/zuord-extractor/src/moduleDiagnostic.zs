@@ -1,10 +1,10 @@
 import { Node } from "ts-morph";
-import { ModuleDiagnosticLevel } from "./moduleDiagnosticLevel";
+import { ModuleDiagnosticLevel } from "./moduleDiagnostic";
 
 export interface Common {
     node: Node;
     message: string;
-    level: ModuleDiagnosticLevel.Common;
+    level: ModuleDiagnosticLevel;
 }
 
 //
