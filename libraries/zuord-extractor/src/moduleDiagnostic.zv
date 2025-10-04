@@ -1,23 +1,22 @@
 import { Node } from "ts-morph";
-import { ModuleDiagnostic } from "./moduleDiagnostic";
-import { moduleDiagnosticLevel } from "./moduleDiagnosticLevel";
+import { ModuleDiagnosticLevel } from "./moduleDiagnostic";
 
-export const info = (node: Node, message: string): ModuleDiagnostic.Info => {
-    return { node, message, level: moduleDiagnosticLevel.Info };
+export const info = (node: Node, message: string): ZSchema.Info => {
+    return { node, message, level: ModuleDiagnosticLevel.Info };
 }
 
-export const warning = (node: Node, message: string): ModuleDiagnostic.Warning => {
-    return { node, message, level: moduleDiagnosticLevel.Warning };
+export const warning = (node: Node, message: string): ZSchema.Warning => {
+    return { node, message, level: ModuleDiagnosticLevel.Warning };
 }
 
-export const error = (node: Node, message: string): ModuleDiagnostic.Error => {
-    return { node, message, level: moduleDiagnosticLevel.Error };
+export const error = (node: Node, message: string): ZSchema.Error => {
+    return { node, message, level: ModuleDiagnosticLevel.Error };
 }
 
 //
 
 export const buildInDiagnostics = {
-    noReturnType: (node: Node): ModuleDiagnostic.Error => {
+    noReturnType: (node: Node): ZSchema.Error => {
         return error(node, "Return type must be specified");
     }
 }
