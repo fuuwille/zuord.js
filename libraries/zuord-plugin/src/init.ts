@@ -1,3 +1,6 @@
+import path from "path";
+import { log } from "./logger";
+
 const utility = require("./utility");
 const caseAnything = require("case-anything");
 
@@ -8,7 +11,8 @@ export = function (modules) {
     // @ts-ignore
     function create(info) {
         const host = info.languageServiceHost;
-        
+        log("Plugin loaded for project:", info.project.getProjectName());
+
         const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const originalGetScriptKind = host.getScriptKind?.bind(host);
 
@@ -19,6 +23,40 @@ export = function (modules) {
         host.getScriptKind = (fileName: string) => {
             return handleScriptKind(originalGetScriptKind, fileName);
         }
+
+    const oldResolve = info.languageServiceHost.resolveModuleNames?.bind(info.languageServiceHost);
+    
+        // @ts-ignore
+info.languageServiceHost.resolveModuleNameLiterals = (moduleLiterals,containingFile,redirectedReference,options,containingSourceFile
+) => {
+    // @ts-ignore
+  return moduleLiterals.map((literal) => {
+    const moduleName = literal.text;
+
+    if (moduleName.endsWith(".zs")) {
+      const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+
+      if (typescript.sys.fileExists(resolvedFileName)) {
+        log("Resolved .zs literal:", moduleName, "→", resolvedFileName);
+        return {
+          resolvedModule: {
+            resolvedFileName,
+            extension: typescript.Extension.Ts, // TS gibi parse et
+          },
+        };
+      }
+    }
+
+    // fallback → orijinal
+    const result = typescript.resolveModuleName(
+      moduleName,
+      containingFile,
+      options,
+      typescript.sys
+    );
+    return { resolvedModule: result.resolvedModule };
+  });
+};
 
         return info.languageService;
     }
