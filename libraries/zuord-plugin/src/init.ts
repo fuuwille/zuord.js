@@ -28,6 +28,22 @@ export = function (modules) {
             return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
         }
 
+        // @ts-ignore
+        host.fileExists = (fileName: string) => {
+            if (!typescript.sys.fileExists(fileName)) {
+                const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
+                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+
+                if(checkZS(fileName) || checkZV(fileName)) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
         return info.languageService;
     }
 
@@ -41,7 +57,6 @@ export = function (modules) {
         const isZ = isZS || isZV;
         const isTS = utility.isTSFile(fileName);
 
-        const checkZ = (fileName: string) => checkZS(fileName) || checkZV(fileName);
         const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
         const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
 
