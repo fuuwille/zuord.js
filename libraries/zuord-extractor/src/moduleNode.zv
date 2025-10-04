@@ -1,6 +1,7 @@
 import { Node } from "ts-morph";
 import { ModuleMode } from "./module.zs";
-import { ModuleNodeKind, moduleNodeKind } from "./moduleNodeKind";
+import * as ModuleNodeKind from "./moduleNodeKind.zs";
+import * as moduleNodeKind from "./moduleNodeKind.zv";
 
 export const isImport = (node: Node): node is ZSchema.Import => {
     return node.getKind() === moduleNodeKind.Import;
