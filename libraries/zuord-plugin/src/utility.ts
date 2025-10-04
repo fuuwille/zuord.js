@@ -4,9 +4,10 @@ export const getBaseName = (fileName: string) => {
     const parts = fileName.split("/");
     const lastPart = parts.pop() || "";
 
-    const baseName = lastPart.split(".")[0];
+    const names = lastPart.split(".");
+    names.pop();
 
-    return baseName || undefined;
+    return names.join(".") || undefined;
 };
 
 export const getBasePath = (fileName: string) => {
