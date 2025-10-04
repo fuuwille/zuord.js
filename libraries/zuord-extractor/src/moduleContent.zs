@@ -1,14 +1,14 @@
 import { Module } from "./module.zs";
-import { ModuleContentKind } from "./moduleContentKind";
-import { ModuleDiagnostic } from "./moduleDiagnostic";
-import { ModuleMember } from "./moduleMember";
+import { ModuleContentKind } from "./moduleContent";
+import * as ModuleDiagnostic from "./moduleDiagnostic.zs";
+import * as ModuleMember from "./moduleMember.zs";
 
 export interface Common {
     module: Module;
     member: ModuleMember.DefinitionLike;
-    kind: ModuleContentKind.Common;
+    kind: ModuleContentKind;
     name?: string | null;
-    diagnostics?: ModuleDiagnostic.Common[];
+    diagnostics?: ModuleDiagnostic.Base[];
 }
 
 export interface Schema extends Common {
