@@ -2,7 +2,6 @@ import path from "path";
 import { log } from "./logger";
 
 const utility = require("./utility");
-const caseAnything = require("case-anything");
 
 // @ts-ignore
 export = function (modules) {
