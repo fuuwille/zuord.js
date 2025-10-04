@@ -1,6 +1,6 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
-import { ModuleNode } from "./moduleNode";
-import { ModuleMemberKind } from "./moduleMemberKind";
+import * as ModuleNode from "./moduleNode.zs";
+import * as ModuleMemberKind from "./moduleMemberKind.zs";
 
 export interface Base {
     node: Node;
