@@ -125,7 +125,11 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
 
-  libraries/zuord-plugin: {}
+  libraries/zuord-plugin:
+    dependencies:
+      zuord-plugin:
+        specifier: ^0.0.21
+        version: 0.0.21
 
   packages/produce:
     dependencies:
@@ -6668,6 +6672,9 @@ packages:
 
   zuord-plugin@0.0.18:
     resolution: {integrity: sha512-TRNZrN5MQ/OvntsdmP1ImGEvLn7CgaDbxIZIuCNJd70U4S2ZJCfetz7231EnxPW5MRZ/CGnS4hX76z17dOdgCg==}
+
+  zuord-plugin@0.0.21:
+    resolution: {integrity: sha512-5v4qE5f4yNTdedlGh2b0y1hXlsOYhjpQqe/n1iqOE03rV+DeZH94GjWUX2LPtfCMrGornKDuFB42OcVFzbDxHw==}
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
@@ -14700,6 +14707,8 @@ snapshots:
   zuord-plugin@0.0.18:
     dependencies:
       case-anything: 3.1.2
+
+  zuord-plugin@0.0.21: {}
 
   zuord@3.0.0-alpha.34: {}
 

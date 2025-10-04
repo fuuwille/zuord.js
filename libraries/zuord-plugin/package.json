@@ -5,5 +5,8 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "npx esbuild src/init.ts --bundle --platform=node --external:vscode --outfile=index.js"
+  },
+  "dependencies": {
+    "zuord-plugin": "^0.0.21"
   }
 }
