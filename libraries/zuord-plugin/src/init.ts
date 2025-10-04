@@ -15,6 +15,7 @@ export = function (modules) {
 
         const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const originalGetScriptKind = host.getScriptKind?.bind(host);
+        const originalResolveModuleNameLiterals = host.resolveModuleNames?.bind(info.languageServiceHost);
 
         host.getScriptSnapshot = (fileName: string) => {
             return handleScriptSnapshot(originalGetScriptSnapshot, fileName);
@@ -24,53 +25,10 @@ export = function (modules) {
             return handleScriptKind(originalGetScriptKind, fileName);
         }
 
-    const oldResolve = info.languageServiceHost.resolveModuleNames?.bind(info.languageServiceHost);
-    
         // @ts-ignore
-info.languageServiceHost.resolveModuleNameLiterals = (moduleLiterals,containingFile,redirectedReference,options,containingSourceFile
-) => {
-    // @ts-ignore
-  return moduleLiterals.map((literal) => {
-    const moduleName = literal.text;
-
-    if (moduleName.endsWith(".zs")) {
-      const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
-
-      if (typescript.sys.fileExists(resolvedFileName)) {
-        log("Resolved .zs literal:", moduleName, "→", resolvedFileName);
-        return {
-          resolvedModule: {
-            resolvedFileName,
-            extension: typescript.Extension.Ts, // TS gibi parse et
-          },
-        };
-      }
-    }
-
-    if (moduleName.endsWith(".zv")) {
-      const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
-
-      if (typescript.sys.fileExists(resolvedFileName)) {
-        log("Resolved .zv literal:", moduleName, "→", resolvedFileName);
-        return {
-          resolvedModule: {
-            resolvedFileName,
-            extension: typescript.Extension.Ts, // TS gibi parse et
-          },
-        };
-      }
-    }
-
-    // fallback → orijinal
-    const result = typescript.resolveModuleName(
-      moduleName,
-      containingFile,
-      options,
-      typescript.sys
-    );
-    return { resolvedModule: result.resolvedModule };
-  });
-};
+        host.resolveModuleNameLiterals = (moduleLiterals, containingFile, _redirectedReference, options, _containingSourceFile) => {
+            return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, options);
+        }
 
         return info.languageService;
     }
@@ -111,6 +69,51 @@ info.languageServiceHost.resolveModuleNameLiterals = (moduleLiterals,containingF
         }
 
         return origin?.(fileName) ?? typescript.ScriptKind.Unknown;
+    }
+
+    // @ts-ignore
+    function handleResolveModuleNameLiterals(origin, moduleLiterals, containingFile, options) {
+        
+        // @ts-ignore
+        return moduleLiterals.map((literal) => {
+            const moduleName = literal.text;
+
+            if (moduleName.endsWith(".zs")) {
+             const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+
+                if (typescript.sys.fileExists(resolvedFileName)) {
+                    log("Resolved .zs literal:", moduleName, "→", resolvedFileName);
+                    return {
+                        resolvedModule: {
+                            resolvedFileName,
+                            extension: typescript.Extension.Ts, // TS gibi parse et
+                        },
+                    };
+                }
+            }
+
+            if (moduleName.endsWith(".zv")) {
+                const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
+
+                if (typescript.sys.fileExists(resolvedFileName)) {
+                    log("Resolved .zv literal:", moduleName, "→", resolvedFileName);
+                    return {
+                        resolvedModule: {
+                            resolvedFileName,
+                            extension: typescript.Extension.Ts, // TS gibi parse et
+                        },
+                    };
+                }
+            }
+
+            const result = typescript.resolveModuleName(
+                moduleName,
+                containingFile,
+                options,
+                typescript.sys
+            );
+            return { resolvedModule: result.resolvedModule };
+        });
     }
 
     return { create };
