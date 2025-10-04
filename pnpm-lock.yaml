@@ -88,8 +88,8 @@ importers:
         specifier: 6.0.0-alpha.31
         version: 6.0.0-alpha.31
       zuord-plugin:
-        specifier: ^0.0.18
-        version: 0.0.18
+        specifier: ^0.0.22
+        version: 0.0.22
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.10
@@ -125,11 +125,7 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
 
-  libraries/zuord-plugin:
-    dependencies:
-      zuord-plugin:
-        specifier: ^0.0.21
-        version: 0.0.21
+  libraries/zuord-plugin: {}
 
   packages/produce:
     dependencies:
@@ -2924,10 +2920,6 @@ packages:
 
   caniuse-lite@1.0.30001737:
     resolution: {integrity: sha512-BiloLiXtQNrY5UyF0+1nSJLXUENuhka2pzy2Fx5pGxqavdrxSCW4U6Pn/PoG3Efspi2frRbHpBV2XsrPE6EDlw==}
-
-  case-anything@3.1.2:
-    resolution: {integrity: sha512-wljhAjDDIv/hM2FzgJnYQg90AWmZMNtESCjTeLH680qTzdo0nErlCxOmgzgX4ZsZAtIvqHyD87ES8QyriXB+BQ==}
-    engines: {node: '>=18'}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -6670,11 +6662,8 @@ packages:
   zuord-extractor@6.0.0-alpha.31:
     resolution: {integrity: sha512-scHS4sC7/ZGBBt0nGlNUmXu+d3bJBvyltRfbKM94N9aEnqSunwQKq66AoJTLOVJC4V5WvHU2BMCe7VdfvHg9Jg==}
 
-  zuord-plugin@0.0.18:
-    resolution: {integrity: sha512-TRNZrN5MQ/OvntsdmP1ImGEvLn7CgaDbxIZIuCNJd70U4S2ZJCfetz7231EnxPW5MRZ/CGnS4hX76z17dOdgCg==}
-
-  zuord-plugin@0.0.21:
-    resolution: {integrity: sha512-5v4qE5f4yNTdedlGh2b0y1hXlsOYhjpQqe/n1iqOE03rV+DeZH94GjWUX2LPtfCMrGornKDuFB42OcVFzbDxHw==}
+  zuord-plugin@0.0.22:
+    resolution: {integrity: sha512-dEUZuSQnNOvDM0U3l8jnSwg7hqkh7bXkSIFC83xlJvx7PSQiXxY06+/eKbQewDTmrK9/JhxKRSOF2iA2sH5CAQ==}
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
@@ -10333,8 +10322,6 @@ snapshots:
       lodash.uniq: 4.5.0
 
   caniuse-lite@1.0.30001737: {}
-
-  case-anything@3.1.2: {}
 
   ccount@2.0.1: {}
 
@@ -14704,11 +14691,7 @@ snapshots:
     dependencies:
       ts-morph: 26.0.0
 
-  zuord-plugin@0.0.18:
-    dependencies:
-      case-anything: 3.1.2
-
-  zuord-plugin@0.0.21: {}
+  zuord-plugin@0.0.22: {}
 
   zuord@3.0.0-alpha.34: {}
 
