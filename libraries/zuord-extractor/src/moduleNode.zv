@@ -1,7 +1,6 @@
 import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.zs";
 import * as ModuleNodeKind from "./moduleNodeKind.zs";
-import * as moduleNodeKind from "./moduleNodeKind.zv";
 
 export const isImport = (node: Node): node is ZSchema.Import => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
@@ -32,7 +31,7 @@ export const isFunction = (node: Node): node is ZSchema.Function => {
 }
 
 export const isValue = (node: Node): node is ZSchema.Value => {
-    return moduleNodeKind.Values.includes(node.getKind() as ModuleNodeKind.Value);
+    return valueSyntaxKinds.includes(node.getKind() as ModuleNodeKind.Value);
 }
 
 export const isArrowFunction = (node: Node): node is ZSchema.ArrowFunction => {
@@ -101,3 +100,4 @@ export const isDiscardedSchema = (node: Node): node is ZSchema.DiscardedSchema =
 export const isDiscardedVariant = (node: Node): node is ZSchema.DiscardedVariant => {
     return isSchemaLike(node);
 }
+import { valueSyntaxKinds } from "./~valueSyntax";
