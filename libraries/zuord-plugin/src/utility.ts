@@ -9,6 +9,10 @@ export const getBaseName = (fileName: string) => {
     return baseName || undefined;
 };
 
+export const isZFile = (fileName: string) => {
+    return isZSFile(fileName) || isZVFile(fileName);
+}
+
 export const isZSFile = (fileName: string) => {
     return path.extname(fileName) === ".zs";
 };
