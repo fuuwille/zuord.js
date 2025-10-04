@@ -14,7 +14,7 @@ export = function (modules) {
 
         const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const originalGetScriptKind = host.getScriptKind?.bind(host);
-        const originalResolveModuleNameLiterals = host.resolveModuleNames?.bind(info.languageServiceHost);
+        const originalResolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
 
         host.getScriptSnapshot = (fileName: string) => {
             return handleScriptSnapshot(originalGetScriptSnapshot, fileName);
