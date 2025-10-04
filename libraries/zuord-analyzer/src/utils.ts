@@ -12,9 +12,9 @@ export function nodeToRange(node: Node, document: vscode.TextDocument): vscode.R
 }
 
 export function getKind(name: string): string | undefined {
-    const parts = name.split(".");
-    if (parts.length < 2) return undefined; // sondan ikinci yoksa
-    return parts[parts.length - 2];
+    if(name.endsWith(".zs") || name.endsWith(".zschema")) return "zschema";
+    if(name.endsWith(".zv") || name.endsWith(".zvariants")) return "zvariants";
+    return undefined;
 }
 
 export function getName(name: string): string {
