@@ -11,7 +11,6 @@ export = function (modules) {
     // @ts-ignore
     function create(info) {
         const host = info.languageServiceHost;
-        log("Plugin loaded for project:", info.project.getProjectName());
 
         const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const originalGetScriptKind = host.getScriptKind?.bind(host);
@@ -72,8 +71,8 @@ export = function (modules) {
     }
 
     // @ts-ignore
-    function handleResolveModuleNameLiterals(origin, moduleLiterals, containingFile, options) {
-        
+    function handleResolveModuleNameLiterals(_origin, moduleLiterals, containingFile, options) {
+
         // @ts-ignore
         return moduleLiterals.map((literal) => {
             const moduleName = literal.text;
@@ -82,11 +81,10 @@ export = function (modules) {
              const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
 
                 if (typescript.sys.fileExists(resolvedFileName)) {
-                    log("Resolved .zs literal:", moduleName, "→", resolvedFileName);
                     return {
                         resolvedModule: {
                             resolvedFileName,
-                            extension: typescript.Extension.Ts, // TS gibi parse et
+                            extension: typescript.Extension.Ts
                         },
                     };
                 }
@@ -96,11 +94,10 @@ export = function (modules) {
                 const resolvedFileName = path.resolve(path.dirname(containingFile), moduleName);
 
                 if (typescript.sys.fileExists(resolvedFileName)) {
-                    log("Resolved .zv literal:", moduleName, "→", resolvedFileName);
                     return {
                         resolvedModule: {
                             resolvedFileName,
-                            extension: typescript.Extension.Ts, // TS gibi parse et
+                            extension: typescript.Extension.Ts
                         },
                     };
                 }
