@@ -77,7 +77,7 @@ export = function (modules) {
 
         for (const literal of moduleLiterals) {
             const name = literal.text;
-            if (name.endsWith(".zs") || name.endsWith(".zv")) {
+            if (utility.isZFile(name)) {
                 const resolvedFileName = path.resolve(path.dirname(containingFile), name);
                 if (typescript.sys.fileExists(resolvedFileName)) {
                     customResolved.push({ resolvedModule: { resolvedFileName, extension: typescript.Extension.Ts } });
