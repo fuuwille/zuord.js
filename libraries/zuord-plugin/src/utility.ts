@@ -22,10 +22,10 @@ export const getTSPath = (fileName: string) => {
     return undefined;
 }
 
-export const getZSPath = (fileName: string) => {
+export const getZTPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
-        return `${rootName}.zs`;
+        return `${rootName}.zt`;
     }
     return undefined;
 }
@@ -43,11 +43,11 @@ export const isTSFile = (fileName: string) => {
 }
 
 export const isZFile = (fileName: string) => {
-    return isZSFile(fileName) || isZVFile(fileName);
+    return isZTFile(fileName) || isZVFile(fileName);
 }
 
-export const isZSFile = (fileName: string) => {
-    return path.extname(fileName) === ".zs";
+export const isZTFile = (fileName: string) => {
+    return path.extname(fileName) === ".zt";
 };
 
 export const isZVFile = (fileName: string) => {
