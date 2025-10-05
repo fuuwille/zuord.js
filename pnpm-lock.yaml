@@ -88,8 +88,8 @@ importers:
         specifier: 6.0.0-alpha.31
         version: 6.0.0-alpha.31
       zuord-plugin:
-        specifier: ^0.0.26
-        version: 0.0.26
+        specifier: ^0.0.27
+        version: 0.0.27
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.10
@@ -6673,8 +6673,8 @@ packages:
   zuord-extractor@6.0.0-alpha.31:
     resolution: {integrity: sha512-scHS4sC7/ZGBBt0nGlNUmXu+d3bJBvyltRfbKM94N9aEnqSunwQKq66AoJTLOVJC4V5WvHU2BMCe7VdfvHg9Jg==}
 
-  zuord-plugin@0.0.26:
-    resolution: {integrity: sha512-I4tDcqdK613FIlbhHSbGQEoyrq6WWmLENHLSt/ekw63MuQ+U65zcG6Im4qEBWBOHXDqWq0DW+ueGIjBvw+isIA==}
+  zuord-plugin@0.0.27:
+    resolution: {integrity: sha512-Dy6z/A9NHPS4AjHIUvGpUflCCYK2AFTH8VmdbhhKS9oV3dkcr6Vmq5G7Cn5bD+9+/qXTBpDgq6PxOlTt5KvFKw==}
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
@@ -14704,7 +14704,7 @@ snapshots:
     dependencies:
       ts-morph: 26.0.0
 
-  zuord-plugin@0.0.26: {}
+  zuord-plugin@0.0.27: {}
 
   zuord@3.0.0-alpha.34: {}
 
