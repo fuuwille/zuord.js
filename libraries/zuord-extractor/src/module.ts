@@ -1,4 +1,4 @@
 export enum ModuleMode {
-    Schema = "tschema",
-    Variants = "tvariants"
+    Type = "ztype",
+    Variants = "zvariants"
 }

@@ -60,7 +60,7 @@ export const updateModule = (module: ZType.Module): void => {
 export const extractModule = (dir: string, name: string): ZType.Module => {
     const module: ZType.Module = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Schema) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Type) ?? null,
         variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],

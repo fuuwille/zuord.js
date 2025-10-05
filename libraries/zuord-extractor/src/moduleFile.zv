@@ -38,7 +38,7 @@ export const initialize = (
 
 export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.Base => {
     switch(mode) {
-        case ModuleMode.Schema:
+        case ModuleMode.Type:
             return extractSchema(sourceFile);
         case ModuleMode.Variants:
             return extractVariants(sourceFile);
@@ -61,7 +61,7 @@ export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: 
 };
 
 export const extractSchema = (sourceFile: SourceFile) : ModuleFile.Schema => {
-    return initialize(sourceFile, ModuleMode.Schema) as ModuleFile.Schema;
+    return initialize(sourceFile, ModuleMode.Type) as ModuleFile.Schema;
 };
 
 export const extractVariants = (sourceFile: SourceFile) : ModuleFile.Variants => {
