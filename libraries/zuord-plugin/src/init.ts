@@ -6,8 +6,13 @@ const utility = require("./utility");
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
 
+
     function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
+
+        const getScriptSnapshot = host.getScriptSnapshot?.bind(host);
+        const getScriptKind = host.getScriptKind?.bind(host);
+        const resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
 
         // SCRIPT SNAPSHOT
         {
