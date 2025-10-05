@@ -157,7 +157,7 @@ export class ExplorerProvider {
         const sourceFile = new Project().createSourceFile(fsPath, textDoc.getText(), { overwrite: true });
 
         switch(kind) {
-            case "zschema":        
+            case "ztype":        
                 zuordExtractor.updateModuleTypeFile(module, sourceFile);
                 break;
             case "zvariants":
