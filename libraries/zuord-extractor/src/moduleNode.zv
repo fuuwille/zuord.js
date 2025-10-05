@@ -2,87 +2,87 @@ import { Node, SyntaxKind } from "ts-morph";
 import { ModuleMode } from "./module.zs";
 import { ValueSyntaxKind, valueSyntaxKinds } from "./~valueSyntax";
 
-export const isImport = (node: Node): node is ZSchema.Import => {
+export const isImport = (node: Node): node is ZType.Import => {
     return node.getKind() === SyntaxKind.ImportDeclaration;
 }
 
-export const isExport = (node: Node): node is ZSchema.Export => {
+export const isExport = (node: Node): node is ZType.Export => {
     return node.getKind() === SyntaxKind.ExportDeclaration;
 }
 
-export const isExportDefault = (node: Node): node is ZSchema.ExportDefault => {
+export const isExportDefault = (node: Node): node is ZType.ExportDefault => {
     return node.getKind() === SyntaxKind.ExportAssignment;
 }
 
-export const isType = (node: Node): node is ZSchema.Type => {
+export const isType = (node: Node): node is ZType.Type => {
     return node.getKind() === SyntaxKind.TypeAliasDeclaration;
 }
 
-export const isInterface = (node: Node): node is ZSchema.Interface => {
+export const isInterface = (node: Node): node is ZType.Interface => {
     return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
-export const isVariable = (node: Node): node is ZSchema.Variable => {
+export const isVariable = (node: Node): node is ZType.Variable => {
     return node.getKind() === SyntaxKind.VariableStatement;
 }
 
-export const isFunction = (node: Node): node is ZSchema.Function => {
+export const isFunction = (node: Node): node is ZType.Function => {
     return node.getKind() === SyntaxKind.FunctionDeclaration;
 }
 
-export const isValue = (node: Node): node is ZSchema.Value => {
+export const isValue = (node: Node): node is ZType.Value => {
     return valueSyntaxKinds.includes(node.getKind() as ValueSyntaxKind);
 }
 
-export const isArrowFunction = (node: Node): node is ZSchema.ArrowFunction => {
+export const isArrowFunction = (node: Node): node is ZType.ArrowFunction => {
     return node.getKind() === SyntaxKind.ArrowFunction;
 }
 
-export const isFunctionExpression = (node: Node): node is ZSchema.FunctionExpression => {
+export const isFunctionExpression = (node: Node): node is ZType.FunctionExpression => {
     return node.getKind() === SyntaxKind.FunctionExpression;
 }
 
 //
 
-export const isKnownLike = (node: Node): node is ZSchema.KnownLike => {
+export const isKnownLike = (node: Node): node is ZType.KnownLike => {
     return isESMLike(node) || isSchemaLike(node) || isVariantLike(node) || isInitializerLike(node);
 }
 
-export const isESMLike = (node: Node): node is ZSchema.ESMLike => {
+export const isESMLike = (node: Node): node is ZType.ESMLike => {
     return isImport(node) || isExport(node) || isExportDefault(node);
 }
 
-export const isExportLike = (node: Node): node is ZSchema.ExportLike => {
+export const isExportLike = (node: Node): node is ZType.ExportLike => {
     return isExport(node) || isExportDefault(node);
 }
 
-export const isDefinitionLike = (node: Node): node is ZSchema.DefinitionLike => {
+export const isDefinitionLike = (node: Node): node is ZType.DefinitionLike => {
     return isSchemaLike(node) || isVariantLike(node);
 }
 
-export const isSchemaLike = (node: Node): node is ZSchema.SchemaLike => {
+export const isSchemaLike = (node: Node): node is ZType.SchemaLike => {
     return isType(node) || isInterface(node);
 }
 
-export const isVariantLike = (node: Node): node is ZSchema.VariantLike => {
+export const isVariantLike = (node: Node): node is ZType.VariantLike => {
     return isFunctionLike(node) || isVariable(node);
 }
 
-export const isInitializerLike = (node: Node): node is ZSchema.InitializerLike => {
+export const isInitializerLike = (node: Node): node is ZType.InitializerLike => {
     return isValue(node) || isArrowFunction(node) || isFunctionExpression(node);
 }
 
-export const isFunctionLike = (node: Node): node is ZSchema.FunctionLike => {
+export const isFunctionLike = (node: Node): node is ZType.FunctionLike => {
     return isFunction(node) || isFunctionAlt(node);
 }
 
-export const isFunctionAlt = (node: Node): node is ZSchema.FunctionAlt => {
+export const isFunctionAlt = (node: Node): node is ZType.FunctionAlt => {
     return isArrowFunction(node) || isFunctionExpression(node);
 }
 
 //
 
-export const isDiscarded = (node: Node, mode : ModuleMode): node is ZSchema.Discarded => {
+export const isDiscarded = (node: Node, mode : ModuleMode): node is ZType.Discarded => {
     switch(mode) {
         case ModuleMode.Schema:
             return isDiscardedSchema(node);
@@ -93,10 +93,10 @@ export const isDiscarded = (node: Node, mode : ModuleMode): node is ZSchema.Disc
     }
 }
 
-export const isDiscardedSchema = (node: Node): node is ZSchema.DiscardedSchema => {
+export const isDiscardedSchema = (node: Node): node is ZType.DiscardedSchema => {
     return isVariantLike(node);
 }
 
-export const isDiscardedVariant = (node: Node): node is ZSchema.DiscardedVariant => {
+export const isDiscardedVariant = (node: Node): node is ZType.DiscardedVariant => {
     return isSchemaLike(node);
 }
