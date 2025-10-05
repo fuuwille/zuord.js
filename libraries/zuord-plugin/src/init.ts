@@ -58,11 +58,16 @@ export = function (modules: { typescript: typeof ts }) {
                         attributes.forEach(attr => {
                             if(attr == "scope") {
                                 if(hasZT) {
-                                    virtualExports += `\nexport * as ${caseAnything.pascalCase(baseName)} from './${baseName}.zt';`;
+                                    const name = caseAnything.pascalCase(baseName);
+
+                                    virtualExports += `\nexport type ${name} = any;`;
+                                    virtualExports += `\nexport * as ${name} from './${baseName}.zv';`;
                                 }
 
                                 if(hasZV) {
-                                    virtualExports += `\nexport * as ${caseAnything.camelCase(baseName)} from './${baseName}.zv';`;
+                                    const name = caseAnything.camelCase(baseName);
+                                    virtualExports += `\nimport * as $${name} from './${baseName}.zv';`;
+                                    virtualExports += `\ndeclare const ${name} : typeof $${name};`;
                                 }
                             }
                         });
