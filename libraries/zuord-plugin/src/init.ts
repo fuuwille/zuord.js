@@ -6,23 +6,27 @@ const utility = require("./utility");
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
 
+    let _getScriptSnapshot: ts.LanguageServiceHost["getScriptSnapshot"] | undefined;
+    let _getScriptKind: ts.LanguageServiceHost["getScriptKind"] | undefined;
+    let _resolveModuleNameLiterals: ts.LanguageServiceHost["resolveModuleNameLiterals"] | undefined;
+
     function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
 
-        const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
-        const originalGetScriptKind = host.getScriptKind?.bind(host);
-        const originalResolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
+        _getScriptSnapshot = host.getScriptSnapshot?.bind(host);
+        _getScriptKind = host.getScriptKind?.bind(host);
+        _resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
 
         host.getScriptSnapshot = (fileName: string) => {
-            return handleScriptSnapshot(originalGetScriptSnapshot, fileName);
+            return handleScriptSnapshot(_getScriptSnapshot, fileName);
         };
 
         host.getScriptKind = (fileName: string) => {
-            return handleScriptKind(originalGetScriptKind, fileName);
+            return handleScriptKind(_getScriptKind, fileName);
         }
 
         host.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) => {
-            return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
+            return handleResolveModuleNameLiterals(_resolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
         }
 
         host.fileExists = (fileName) => {
