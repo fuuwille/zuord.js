@@ -5,8 +5,7 @@ const utility = require("./utility");
 
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
-
-
+    
     function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
 
@@ -141,25 +140,6 @@ export = function (modules: { typescript: typeof ts }) {
 
                 return customResolved as ts.ResolvedModuleWithFailedLookupLocations[];
             }
-        }
-
-        // FILE EXISTS
-        {
-            const origin = fileExists;
-            host.fileExists = (fileName) => {
-                if(!typescript.sys.fileExists(fileName)) {
-                    if(utility.isTSFile(fileName)) {
-                        const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
-                        const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
-
-                        if(checkZS(fileName) || checkZV(fileName)) {
-                            return true;
-                        }
-                    }
-                }
-
-                return origin?.(fileName);
-            };
         }
 
         return info.languageService;
