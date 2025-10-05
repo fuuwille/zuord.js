@@ -1,7 +1,7 @@
 import { Module } from "./module.zs";
 import { ModuleContentKind } from "./moduleContent";
-import * as ModuleDiagnostic from "./moduleDiagnostic.zs";
-import * as ModuleMember from "./moduleMember.zs";
+import { ModuleDiagnostic } from "./moduleDiagnostic";
+import { ModuleMember } from "./moduleMember";
 
 export interface Base {
     module: Module;
