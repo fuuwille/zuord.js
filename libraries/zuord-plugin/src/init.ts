@@ -80,7 +80,7 @@ export = function (modules: { typescript: typeof ts }) {
         {
             const origin = getScriptKind;
             host.getScriptKind = (fileName: string) => {
-                if (utility.isZTFile(fileName) || utility.isZVFile(fileName)) {
+                if (utility.isZFile(fileName)) {
                     return typescript.ScriptKind.TS;
                 }
 
