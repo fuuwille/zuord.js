@@ -125,7 +125,11 @@ importers:
         specifier: ^26.0.0
         version: 26.0.0
 
-  libraries/zuord-plugin: {}
+  libraries/zuord-plugin:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   packages/produce:
     dependencies:
