@@ -61,7 +61,7 @@ export = function (modules: { typescript: typeof ts }) {
                                     const name = caseAnything.pascalCase(baseName);
 
                                     virtualExports += `\nexport type ${name} = any;`;
-                                    virtualExports += `\nexport * as ${name} from './${baseName}.zv';`;
+                                    virtualExports += `\nexport * as ${name} from './${baseName}.zt';`;
                                 }
 
                                 if(hasZV) {
