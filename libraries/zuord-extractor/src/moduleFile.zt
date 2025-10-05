@@ -10,10 +10,10 @@ export interface Base {
     others: ModuleMember.Base[];
 };
 
-export interface Schema extends ZSchema.Base {
+export interface Schema extends ZType.Base {
     members: ModuleMember.SchemaLike[];
 }
 
-export interface Variants extends ZSchema.Base {
+export interface Variants extends ZType.Base {
     members: ModuleMember.VariantLike[];
 }
