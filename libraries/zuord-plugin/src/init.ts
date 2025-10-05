@@ -44,33 +44,6 @@ export = function (modules) {
             return true;
         }
 
-        host.readFile = (fileName: string) => {
-            const content = typescript.sys.readFile(fileName);
-
-            if (utility.isTSFile(fileName)) {
-                const hasZS = typescript.sys.fileExists(utility.getZSPath(fileName) || '');
-                const hasZV = typescript.sys.fileExists(utility.getZVPath(fileName) || '');
-
-                if(hasZS || hasZV) {
-                    const virtualImports = [];
-
-                    if(hasZS) {
-                        virtualImports.push(`export * as ZSCH from './${utility.getBaseName(fileName)}.zs';`);
-                    }
-
-                    if(hasZV) {
-                        virtualImports.push(`export * as zvar from './${utility.getBaseName(fileName)}.zv';`);
-                    }
-
-                    const text = content ?? '';
-
-                    return text + virtualImports.join('\n');
-                }
-            }
-
-            return content;
-        }
-
         return info.languageService;
     }
 
