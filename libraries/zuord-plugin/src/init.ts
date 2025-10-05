@@ -1,8 +1,7 @@
 import path from "path";
 import * as caseAnything from "case-anything";
+import * as utility from "./utility";
 import type ts from "typescript";
-
-const utility = require("./utility");
 
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
@@ -50,25 +49,26 @@ export = function (modules: { typescript: typeof ts }) {
                     const hasZV = checkZV(fileName);
                     const hasZ = hasZS || hasZV;
 
-                    if(hasZ) {
+                    if(hasZ && snapshot) {
                         let virtualExports = "";
+                        let text = snapshot.getText(0, snapshot.getLength());
 
-                        if(hasZS) {
-                            virtualExports += `\nexport * as ${caseAnything.pascalCase(baseName)} from './${baseName}.zs';`;
-                        }
+                        const attributes = utility.getZuordAttributes(snapshot?.getText(0, snapshot.getLength()) || '');
 
-                        if(hasZV) {
-                            virtualExports += `\nexport * as ${caseAnything.camelCase(baseName)} from './${baseName}.zv';`;
-                        }
+                        attributes.forEach(attr => {
+                            if(attr == "scope") {
+                                if(hasZS) {
+                                    virtualExports += `\nexport * as ${caseAnything.pascalCase(baseName)} from './${baseName}.zs';`;
+                                }
 
-                        if(snapshot) {
-                            let text = snapshot.getText(0, snapshot.getLength());
-                            const combined = text + virtualExports;
+                                if(hasZV) {
+                                    virtualExports += `\nexport * as ${caseAnything.camelCase(baseName)} from './${baseName}.zv';`;
+                                }
+                            }
+                        });
 
-                            return typescript.ScriptSnapshot.fromString(combined);
-                        }
-
-                        return typescript.ScriptSnapshot.fromString(virtualExports);
+                        const combined = text + virtualExports;
+                        return typescript.ScriptSnapshot.fromString(combined);
                     }
                 }
 
