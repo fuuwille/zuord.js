@@ -6,7 +6,6 @@ const utility = require("./utility");
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
 
-    let _getScriptSnapshot: ts.LanguageServiceHost["getScriptSnapshot"] | undefined;
     let _getScriptKind: ts.LanguageServiceHost["getScriptKind"] | undefined;
     let _resolveModuleNameLiterals: ts.LanguageServiceHost["resolveModuleNameLiterals"] | undefined;
 
@@ -147,21 +146,6 @@ export = function (modules: { typescript: typeof ts }) {
         }
 
         return info.languageService;
-    }
-
-    // @ts-ignore
-    function handleScriptSnapshot(origin, fileName: string) {
-
-    }
-
-    // @ts-ignore
-    function handleScriptKind(origin, fileName: string) {
-
-    }
-
-    // @ts-ignore
-    function handleResolveModuleNameLiterals(origin, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) {
-
     }
 
     return { create };
