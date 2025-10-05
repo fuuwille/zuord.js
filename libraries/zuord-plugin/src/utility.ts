@@ -60,6 +60,8 @@ export const getZuordAttributes = (text: string) => {
     let start = 0;
     let lineNumber = 0;
 
+    const attributes = new Set<string>();
+
     for (let i = 0; i <= text.length; i++) {
         if (i === text.length || text[i] === "\n") {
             let line = text.slice(start, i);
@@ -71,10 +73,14 @@ export const getZuordAttributes = (text: string) => {
                 break;
             }
 
+            attributes.add(attribute);
+
             lineNumber++;
             start = i + 1;
         }
     }
+
+    return Array.from(attributes);
 }
 
 export const getZuordAttribute = (line: string) => {
