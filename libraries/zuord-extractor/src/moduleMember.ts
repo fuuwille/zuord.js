@@ -1,3 +1,5 @@
+// @zuord-scope
+
 export enum ModuleMemberKind {
     Unknown = "unknown",
     Import = "import",
