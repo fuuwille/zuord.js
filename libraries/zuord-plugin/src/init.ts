@@ -13,7 +13,7 @@ export = function (modules: { typescript: typeof ts }) {
         const getScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const getScriptKind = host.getScriptKind?.bind(host);
         const resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
-        const fileExists = host.fileExists?.bind(typescript.sys);
+        const fileExists = host.fileExists?.bind(host);
 
         // SCRIPT SNAPSHOT
         {
