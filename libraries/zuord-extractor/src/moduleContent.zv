@@ -1,4 +1,4 @@
-import { Module } from "./module.zs";
+import { Module } from "./module.zt";
 import { ModuleContentKind } from "./moduleContent";
 import { ModuleMember, moduleMember } from "./moduleMember";
 import { getTypeName } from "./~type";
