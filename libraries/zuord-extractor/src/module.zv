@@ -4,7 +4,7 @@ import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
-export const updateModule = (module: ZSchema.Module): void => {
+export const updateModule = (module: ZType.Module): void => {
     const schemaMembers = module.schemaFile?.members;
     const variantMembers = module.variantsFile?.members;
 
@@ -56,11 +56,11 @@ export const updateModule = (module: ZSchema.Module): void => {
     }
 };
 
-export const extractModule = (dir: string, name: string): ZSchema.Module => {
-    const module: ZSchema.Module = {
+export const extractModule = (dir: string, name: string): ZType.Module => {
+    const module: ZType.Module = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ZSchema.ModuleMode.Schema) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ZSchema.ModuleMode.Variants) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ZType.ModuleMode.Schema) ?? null,
+        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ZType.ModuleMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };
@@ -69,12 +69,12 @@ export const extractModule = (dir: string, name: string): ZSchema.Module => {
     return module;
 };
 
-export const updateModuleTypeFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateModuleTypeFile = (module: ZType.Module, sourceFile: SourceFile | null): void => {
     module.schemaFile = sourceFile ? moduleFile.extractSchema(sourceFile) : null;
     updateModule(module);
 };
 
-export const updateModuleVariantsFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateModuleVariantsFile = (module: ZType.Module, sourceFile: SourceFile | null): void => {
     module.variantsFile = sourceFile ? moduleFile.extractVariants(sourceFile) : null;
     updateModule(module);
 };
