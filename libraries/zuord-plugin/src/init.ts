@@ -1,4 +1,5 @@
 import path from "path";
+import * as caseAnything from "case-anything";
 import type ts from "typescript";
 
 const utility = require("./utility");
@@ -53,11 +54,11 @@ export = function (modules: { typescript: typeof ts }) {
                         let virtualExports = "";
 
                         if(hasZS) {
-                            virtualExports += `\nexport * as ZSCH from './${baseName}.zs';`;
+                            virtualExports += `\nexport * as ${caseAnything.pascalCase(baseName)} from './${baseName}.zs';`;
                         }
 
                         if(hasZV) {
-                            virtualExports += `\nexport * as ZVAR from './${baseName}.zv';`;
+                            virtualExports += `\nexport * as ${caseAnything.camelCase(baseName)} from './${baseName}.zv';`;
                         }
 
                         if(snapshot) {
