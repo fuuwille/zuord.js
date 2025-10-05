@@ -3,21 +3,21 @@ import { ModuleContentKind } from "./moduleContent";
 import { ModuleMember, moduleMember } from "./moduleMember";
 import { getTypeName } from "./~type";
 
-export const isSchema = (content: ZSchema.Base): content is ZSchema.Schema => {
+export const isSchema = (content: ZType.Base): content is ZType.Schema => {
     return content.kind === ModuleContentKind.Schema;
 };
 
-export const isVariant = (content: ZSchema.Base): content is ZSchema.Variant => {
+export const isVariant = (content: ZType.Base): content is ZType.Variant => {
     return content.kind === ModuleContentKind.Variant;
 };
 
 //
 
-export const isValueVariant = (content: ZSchema.Base): content is ZSchema.ValueVariant => {
+export const isValueVariant = (content: ZType.Base): content is ZType.ValueVariant => {
     return moduleMember.isValueVariable(content.member);
 }
 
-export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.FunctionalVariant => {
+export const isFunctionalVariant = (content: ZType.Base): content is ZType.FunctionalVariant => {
     return moduleMember.isFunctionalVariant(content.member);
 }
 
@@ -25,7 +25,7 @@ export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.F
 
 export const createSchema = (
     module: Module, member: ModuleMember.SchemaLike
-) : ZSchema.Schema => {
+) : ZType.Schema => {
 
     return {
         module,
@@ -36,7 +36,7 @@ export const createSchema = (
 
 export const createVariant = (
     module: Module, member: ModuleMember.VariantLike
-) : ZSchema.Variant => {
+) : ZType.Variant => {
 
     return {
         module,
@@ -47,18 +47,18 @@ export const createVariant = (
 
 //
 
-export const getName = (content: ZSchema.Base) : string | undefined => {
+export const getName = (content: ZType.Base) : string | undefined => {
     moduleMember.updateDefinitionLikeNameNode(content.member);
     return content.member.nameNode?.getText();
 }
 
-export const getValueVariantDeclaredSchemaName = (content: ZSchema.ValueVariant) : string | undefined => {
+export const getValueVariantDeclaredSchemaName = (content: ZType.ValueVariant) : string | undefined => {
     moduleMember.updateValueVariableDeclaredTypeNode(content.member);
     const typeNode = content.member.declaredTypeNode;
     return getTypeName(typeNode);
 }
 
-export const getFunctionalVariantReturnSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
+export const getFunctionalVariantReturnSchemaName = (content: ZType.FunctionalVariant) : string | undefined => {
     const member = moduleMember.getFunctionLike(content.member);
     if(member) {
         moduleMember.updateFunctionLikeReturnTypeNode(member);
@@ -69,7 +69,7 @@ export const getFunctionalVariantReturnSchemaName = (content: ZSchema.Functional
     return undefined;
 }
 
-export const getFunctionalVariantParamSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
+export const getFunctionalVariantParamSchemaName = (content: ZType.FunctionalVariant) : string | undefined => {
     const member = moduleMember.getFunctionLike(content.member);
 
     if(member) {
@@ -79,7 +79,7 @@ export const getFunctionalVariantParamSchemaName = (content: ZSchema.FunctionalV
     }
 }
 
-export const getVariantSchema = (content: ZSchema.Variant, schemas: ZSchema.Schema[]) : ZSchema.Schema | undefined => {
+export const getVariantSchema = (content: ZType.Variant, schemas: ZType.Schema[]) : ZType.Schema | undefined => {
     if(isValueVariant(content)) {
         return getValueVariantDeclaredSchema(content, schemas);
     }
@@ -89,24 +89,24 @@ export const getVariantSchema = (content: ZSchema.Variant, schemas: ZSchema.Sche
     }
 }
 
-export const getValueVariantDeclaredSchema = (content: ZSchema.ValueVariant, schemas: ZSchema.Schema[]) : ZSchema.Schema | undefined => {
+export const getValueVariantDeclaredSchema = (content: ZType.ValueVariant, schemas: ZType.Schema[]) : ZType.Schema | undefined => {
     updateValueVariantDeclaredSchemaName(content);
 
     return schemas.find(s => s.name === content.declaredSchemaName);
 }
 
-export const getFunctionalVariantSchema = (content: ZSchema.FunctionalVariant, schemas: ZSchema.Schema[]) : ZSchema.Schema | undefined => {
+export const getFunctionalVariantSchema = (content: ZType.FunctionalVariant, schemas: ZType.Schema[]) : ZType.Schema | undefined => {
     return getFunctionalVariantReturnSchema(content, schemas)
         ?? getFunctionalVariantParamSchema(content, schemas);
 }
 
-export const getFunctionalVariantReturnSchema = (content: ZSchema.FunctionalVariant, schemas: ZSchema.Schema[]) : ZSchema.Schema | undefined => {
+export const getFunctionalVariantReturnSchema = (content: ZType.FunctionalVariant, schemas: ZType.Schema[]) : ZType.Schema | undefined => {
     updateFunctionalVariantReturnSchemaName(content);
 
     return schemas.find(s => s.name === content.returnSchemaName);
 }
 
-export const getFunctionalVariantParamSchema = (content: ZSchema.FunctionalVariant, schemas: ZSchema.Schema[]) : ZSchema.Schema | undefined => {
+export const getFunctionalVariantParamSchema = (content: ZType.FunctionalVariant, schemas: ZType.Schema[]) : ZType.Schema | undefined => {
     updateFunctionalVariantParamSchemaName(content);
 
     return schemas.find(s => s.name === content.paramSchemaName);
@@ -114,37 +114,37 @@ export const getFunctionalVariantParamSchema = (content: ZSchema.FunctionalVaria
 
 //
 
-export const updateName = (content: ZSchema.Base) : void => {
+export const updateName = (content: ZType.Base) : void => {
     if(content.name == undefined) {
         content.name = getName(content);
     }
 };
 
-export const updateVariantSchema = (content: ZSchema.Variant, schemas: ZSchema.Schema[]) : void => {
+export const updateVariantSchema = (content: ZType.Variant, schemas: ZType.Schema[]) : void => {
     if(content.schema == undefined) {
         content.schema = getVariantSchema(content, schemas);
     }
 };
 
-export const updateValueVariantDeclaredSchema = (content: ZSchema.ValueVariant, schemas: ZSchema.Schema[]) : void => {
+export const updateValueVariantDeclaredSchema = (content: ZType.ValueVariant, schemas: ZType.Schema[]) : void => {
     if(content.schema == undefined) {
         content.schema = getValueVariantDeclaredSchema(content, schemas);
     }
 }
 
-export const updateValueVariantDeclaredSchemaName = (content: ZSchema.ValueVariant) : void => {
+export const updateValueVariantDeclaredSchemaName = (content: ZType.ValueVariant) : void => {
     if(content.declaredSchemaName == undefined) {
         content.declaredSchemaName = getValueVariantDeclaredSchemaName(content);
     }
 }
 
-export const updateFunctionalVariantReturnSchemaName = (content: ZSchema.FunctionalVariant) : void => {
+export const updateFunctionalVariantReturnSchemaName = (content: ZType.FunctionalVariant) : void => {
     if(content.returnSchemaName == undefined) {
         content.returnSchemaName = getFunctionalVariantReturnSchemaName(content);
     }
 };
 
-export const updateFunctionalVariantParamSchemaName = (content: ZSchema.FunctionalVariant) : void => {
+export const updateFunctionalVariantParamSchemaName = (content: ZType.FunctionalVariant) : void => {
     if(content.paramSchemaName == undefined) {
         content.paramSchemaName = getFunctionalVariantParamSchemaName(content);
     }
