@@ -53,3 +53,33 @@ export const isZSFile = (fileName: string) => {
 export const isZVFile = (fileName: string) => {
     return path.extname(fileName) === ".zv";
 };
+
+//
+
+export const getZuordAttributes = (text: string) => {
+    let start = 0;
+    let lineNumber = 0;
+
+    for (let i = 0; i <= text.length; i++) {
+        if (i === text.length || text[i] === "\n") {
+            let line = text.slice(start, i);
+            if (line.endsWith("\r")) line = line.slice(0, -1);
+
+            const attribute = getZuordAttribute(line);
+
+            if(!attribute) {
+                break;
+            }
+
+            lineNumber++;
+            start = i + 1;
+        }
+    }
+}
+
+export const getZuordAttribute = (line: string) => {
+    const regex = /^\s*\/\/\s*@zuord-([a-zA-Z0-9_-]+)\s*$/m;
+    const match = line.match(regex);
+
+    return match?.[1] ?? undefined;
+}
