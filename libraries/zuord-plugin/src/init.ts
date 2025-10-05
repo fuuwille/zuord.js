@@ -13,6 +13,7 @@ export = function (modules: { typescript: typeof ts }) {
         const getScriptSnapshot = host.getScriptSnapshot?.bind(host);
         const getScriptKind = host.getScriptKind?.bind(host);
         const resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
+        const fileExists = host.fileExists?.bind(typescript.sys);
 
         // SCRIPT SNAPSHOT
         {
@@ -140,6 +141,25 @@ export = function (modules: { typescript: typeof ts }) {
 
                 return customResolved as ts.ResolvedModuleWithFailedLookupLocations[];
             }
+        }
+
+        // FILE EXISTS
+        {
+            const origin = fileExists;
+            host.fileExists = (fileName) => {
+                if(!typescript.sys.fileExists(fileName)) {
+                    if(utility.isTSFile(fileName)) {
+                        const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
+                        const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+
+                        if(checkZS(fileName) || checkZV(fileName)) {
+                            return true;
+                        }
+                    }
+                }
+
+                return origin?.(fileName);
+            };
         }
 
         return info.languageService;
