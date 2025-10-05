@@ -161,6 +161,15 @@ export = function (modules) {
                 }
             }
 
+            if(utility.isTSFile(containingFile) || utility.isZFile(containingFile)) {
+                const resolvedFileName = path.resolve(path.dirname(containingFile), name, ".ts");
+
+                if(!typescript.sys.fileExists(resolvedFileName)) {
+                    customResolved.push({ resolvedModule: { resolvedFileName, extension: typescript.Extension.Ts } });
+                    continue;
+                }
+            }
+
             customResolved.push(undefined);
             toFallback.push(literal);
         }
