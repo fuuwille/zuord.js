@@ -16,7 +16,7 @@ export = function (modules: { typescript: typeof ts }) {
 
         // SCRIPT SNAPSHOT
         {
-            const origin = host.getScriptSnapshot?.bind(host);
+            const origin = getScriptSnapshot;
             host.getScriptSnapshot = (fileName: string) => {
                 const snapshot = origin?.(fileName);
                 const baseName = utility.getBaseName(fileName) || '';
@@ -79,7 +79,7 @@ export = function (modules: { typescript: typeof ts }) {
 
         // SCRIPT KIND
         {
-            const origin = host.getScriptKind?.bind(host);
+            const origin = getScriptKind;
             host.getScriptKind = (fileName: string) => {
                 if (utility.isZSFile(fileName) || utility.isZVFile(fileName)) {
                     return typescript.ScriptKind.TS;
@@ -91,8 +91,7 @@ export = function (modules: { typescript: typeof ts }) {
 
         // RESOLVE MODULE NAME LITERALS
         {
-            const origin = host.resolveModuleNameLiterals?.bind(host);
-
+            const origin = resolveModuleNameLiterals;
             host.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, containingSourceFile, reusedNames) => {
                 const customResolved = [];
                 const toFallback = [];
