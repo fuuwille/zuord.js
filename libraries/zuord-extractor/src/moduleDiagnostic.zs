@@ -9,14 +9,14 @@ export interface Base {
 
 //
 
-export interface Info extends Base {
+export interface Info extends ZSchema.Base {
     level: ModuleDiagnosticLevel.Info;
 }
 
-export interface Warning extends Base {
+export interface Warning extends ZSchema.Base {
     level: ModuleDiagnosticLevel.Warning;
 }
 
-export interface Error extends Base {
+export interface Error extends ZSchema.Base {
     level: ModuleDiagnosticLevel.Error;
 }
