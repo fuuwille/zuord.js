@@ -146,21 +146,6 @@ export = function (modules: { typescript: typeof ts }) {
             }
         }
 
-        host.fileExists = (fileName) => {
-            if (!typescript.sys.fileExists(fileName)) {
-                const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
-                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
-
-                if(checkZS(fileName) || checkZV(fileName)) {
-                    return true;
-                }
-
-                return false;
-            }
-
-            return true;
-        }
-
         return info.languageService;
     }
 
