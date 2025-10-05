@@ -1,5 +1,5 @@
 import path from "path";
-import * as ts from "typescript";
+import type ts from "typescript";
 
 const utility = require("./utility");
 
