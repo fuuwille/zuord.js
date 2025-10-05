@@ -18,7 +18,7 @@ export = function (modules: { typescript: typeof ts }) {
         {
             const origin = getScriptSnapshot;
             host.getScriptSnapshot = (fileName: string) => {
-                const snapshot = origin?.(fileName);
+                const snapshot = typescript.sys.fileExists(fileName) ? origin?.(fileName) : undefined;
                 const baseName = utility.getBaseName(fileName) || '';
 
                 const isZS = utility.isZSFile(fileName);
@@ -31,7 +31,6 @@ export = function (modules: { typescript: typeof ts }) {
 
                 if (isZ && snapshot) {
                     let virtualImports = "";
-
 
                     if(isZS || checkZS(fileName)) {
                         virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
