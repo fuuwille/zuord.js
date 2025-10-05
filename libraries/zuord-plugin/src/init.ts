@@ -32,7 +32,7 @@ export = function (modules: { typescript: typeof ts }) {
                     let virtualImports = "";
 
                     if(isZS || checkZS(fileName)) {
-                        virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
+                        virtualImports += `\nimport * as ZType from './${baseName}.zt';`;
                     }
 
                     if(isZV || checkZV(fileName)) {
