@@ -1,14 +1,12 @@
 import path from "path";
-import { log } from "./logger";
+import * as ts from "typescript";
 
 const utility = require("./utility");
 
-// @ts-ignore
-export = function (modules) {
+export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
 
-    // @ts-ignore
-    function create(info) {
+    function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
 
         const originalGetScriptSnapshot = host.getScriptSnapshot?.bind(host);
@@ -23,13 +21,11 @@ export = function (modules) {
             return handleScriptKind(originalGetScriptKind, fileName);
         }
 
-        // @ts-ignore
         host.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) => {
             return handleResolveModuleNameLiterals(originalResolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
         }
 
-        // @ts-ignore
-        host.fileExists = (fileName: string) => {
+        host.fileExists = (fileName) => {
             if (!typescript.sys.fileExists(fileName)) {
                 const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
                 const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
