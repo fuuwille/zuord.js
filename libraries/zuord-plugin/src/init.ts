@@ -79,10 +79,20 @@ export = function (modules: { typescript: typeof ts }) {
             };
         }
 
+        // SCRIPT KIND
+        {
+            const origin = host.getScriptKind?.bind(host);
+            host.getScriptKind = (fileName: string) => {
+                if (utility.isZSFile(fileName) || utility.isZVFile(fileName)) {
+                    return typescript.ScriptKind.TS;
+                }
 
-        host.getScriptKind = (fileName: string) => {
-            return handleScriptKind(_getScriptKind, fileName);
+                return origin?.(fileName) ?? typescript.ScriptKind.Unknown;
+            }
         }
+
+
+
 
         host.resolveModuleNameLiterals = (moduleLiterals, containingFile, redirectedReference, options, containingSourceFile) => {
             return handleResolveModuleNameLiterals(_resolveModuleNameLiterals, moduleLiterals, containingFile, redirectedReference, options, containingSourceFile);
@@ -113,11 +123,7 @@ export = function (modules: { typescript: typeof ts }) {
 
     // @ts-ignore
     function handleScriptKind(origin, fileName: string) {
-        if (utility.isZSFile(fileName) || utility.isZVFile(fileName)) {
-            return typescript.ScriptKind.TS;
-        }
 
-        return origin?.(fileName) ?? typescript.ScriptKind.Unknown;
     }
 
     // @ts-ignore
