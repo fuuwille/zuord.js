@@ -13,13 +13,72 @@ export = function (modules: { typescript: typeof ts }) {
     function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
 
-        _getScriptSnapshot = host.getScriptSnapshot?.bind(host);
         _getScriptKind = host.getScriptKind?.bind(host);
         _resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
 
-        host.getScriptSnapshot = (fileName: string) => {
-            return handleScriptSnapshot(_getScriptSnapshot, fileName);
-        };
+        // SCRIPT SNAPSHOT
+        {
+            const origin = host.getScriptSnapshot?.bind(host);
+            host.getScriptSnapshot = (fileName: string) => {
+                const snapshot = origin?.(fileName);
+                const baseName = utility.getBaseName(fileName) || '';
+
+                const isZS = utility.isZSFile(fileName);
+                const isZV = utility.isZVFile(fileName);
+                const isZ = isZS || isZV;
+                const isTS = utility.isTSFile(fileName);
+
+                const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
+                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+
+                if (isZ && snapshot) {
+                    let virtualImports = "";
+
+
+                    if(isZS || checkZS(fileName)) {
+                        virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
+                    }
+
+                    if(isZV || checkZV(fileName)) {
+                        virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
+                    }
+                    
+                    let text = snapshot.getText(0, snapshot.getLength());
+                    const combined = text + virtualImports;
+
+                    return typescript.ScriptSnapshot.fromString(combined);
+                }
+                else if(isTS) {
+                    const hasZS = checkZS(fileName);
+                    const hasZV = checkZV(fileName);
+                    const hasZ = hasZS || hasZV;
+
+                    if(hasZ) {
+                        let virtualExports = "";
+
+                        if(hasZS) {
+                            virtualExports += `\nexport * as ZSCH from './${baseName}.zs';`;
+                        }
+
+                        if(hasZV) {
+                            virtualExports += `\nexport * as ZVAR from './${baseName}.zv';`;
+                        }
+
+                        if(snapshot) {
+                            let text = snapshot.getText(0, snapshot.getLength());
+                            const combined = text + virtualExports;
+
+                            return typescript.ScriptSnapshot.fromString(combined);
+                        }
+
+                        return typescript.ScriptSnapshot.fromString(virtualExports);
+                    }
+                }
+
+                return snapshot;
+            };
+        }
+
 
         host.getScriptKind = (fileName: string) => {
             return handleScriptKind(_getScriptKind, fileName);
@@ -49,62 +108,7 @@ export = function (modules: { typescript: typeof ts }) {
 
     // @ts-ignore
     function handleScriptSnapshot(origin, fileName: string) {
-        const snapshot = origin?.(fileName);
-        const baseName = utility.getBaseName(fileName) || '';
 
-        const isZS = utility.isZSFile(fileName);
-        const isZV = utility.isZVFile(fileName);
-        const isZ = isZS || isZV;
-        const isTS = utility.isTSFile(fileName);
-
-        const checkZS = (fileName: string) => typescript.sys.fileExists(utility.getZSPath(fileName) || '');
-        const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
-
-        if (isZ && snapshot) {
-            let virtualImports = "";
-
-
-            if(isZS || checkZS(fileName)) {
-                virtualImports += `\nimport * as ZSchema from './${baseName}.zs';`;
-            }
-
-            if(isZV || checkZV(fileName)) {
-                virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
-            }
-            
-            let text = snapshot.getText(0, snapshot.getLength());
-            const combined = text + virtualImports;
-
-            return typescript.ScriptSnapshot.fromString(combined);
-        }
-        else if(isTS) {
-            const hasZS = checkZS(fileName);
-            const hasZV = checkZV(fileName);
-            const hasZ = hasZS || hasZV;
-
-            if(hasZ) {
-                let virtualExports = "";
-
-                if(hasZS) {
-                    virtualExports += `\nexport * as ZSCH from './${baseName}.zs';`;
-                }
-
-                if(hasZV) {
-                    virtualExports += `\nexport * as ZVAR from './${baseName}.zv';`;
-                }
-
-                if(snapshot) {
-                    let text = snapshot.getText(0, snapshot.getLength());
-                    const combined = text + virtualExports;
-
-                    return typescript.ScriptSnapshot.fromString(combined);
-                }
-
-                return typescript.ScriptSnapshot.fromString(virtualExports);
-            }
-        }
-
-        return origin?.(fileName);
     }
 
     // @ts-ignore
