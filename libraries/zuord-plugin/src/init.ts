@@ -6,14 +6,8 @@ const utility = require("./utility");
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
 
-    let _getScriptKind: ts.LanguageServiceHost["getScriptKind"] | undefined;
-    let _resolveModuleNameLiterals: ts.LanguageServiceHost["resolveModuleNameLiterals"] | undefined;
-
     function create(info : ts.server.PluginCreateInfo) {
         const host = info.languageServiceHost;
-
-        _getScriptKind = host.getScriptKind?.bind(host);
-        _resolveModuleNameLiterals = host.resolveModuleNameLiterals?.bind(host);
 
         // SCRIPT SNAPSHOT
         {
