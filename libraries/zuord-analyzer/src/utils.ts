@@ -12,8 +12,8 @@ export function nodeToRange(node: Node, document: vscode.TextDocument): vscode.R
 }
 
 export function getKind(name: string): string | undefined {
-    if(name.endsWith(".zt") || name.endsWith(".ztype.ts")) return "ztype";
-    if(name.endsWith(".zv") || name.endsWith(".zvariants.ts")) return "zvariants";
+    if(name.endsWith(".tzs") || name.endsWith(".zschema.ts")) return "zschema";
+    if(name.endsWith(".tzv") || name.endsWith(".zvariants.ts")) return "zvariants";
     return undefined;
 }
 
