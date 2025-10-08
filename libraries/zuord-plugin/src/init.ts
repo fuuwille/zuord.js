@@ -32,11 +32,11 @@ export = function (modules: { typescript: typeof ts }) {
                     let virtualImports = "";
 
                     if(isTZS || checkZT(fileName)) {
-                        virtualImports += `\nimport * as ZType from './${baseName}.zt';`;
+                        virtualImports += `\nimport * as ZSchema from './${baseName}.tzs';`;
                     }
 
                     if(isTZV || checkZV(fileName)) {
-                        virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
+                        virtualImports += `\nimport * as zvariants from './${baseName}.tzv';`;
                     }
                     
                     let text = snapshot.getText(0, snapshot.getLength());
@@ -60,14 +60,14 @@ export = function (modules: { typescript: typeof ts }) {
                                 if(hasZT) {
                                     const name = caseAnything.pascalCase(baseName);
 
-                                    virtualExports += `\nexport * as ${name} from './${baseName}.zt';`;
+                                    virtualExports += `\nexport * as ${name} from './${baseName}.tzs';`;
                                     virtualExports += `\nexport type ${name} = any;`;
                                 }
 
                                 if(hasZV) {
                                     const name = caseAnything.camelCase(baseName);
 
-                                    virtualExports += `\nimport * as $${name} from './${baseName}.zv';`;
+                                    virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
                                     virtualExports += `\ntype ${name}API = typeof $${name};`;
                                     virtualExports += `\nexport const ${name} : ${name}API = $${name};`;
                                 }
