@@ -20,22 +20,22 @@ export = function (modules: { typescript: typeof ts }) {
                 const snapshot = typescript.sys.fileExists(fileName) ? origin?.(fileName) : undefined;
                 const baseName = utility.getBaseName(fileName) || '';
 
-                const isZT = utility.isTZSFile(fileName);
-                const isZV = utility.isTZVFile(fileName);
-                const isZ = isZT || isZV;
+                const isTZS = utility.isTZSFile(fileName);
+                const isTZV = utility.isTZVFile(fileName);
+                const isTZ = isTZS || isTZV;
                 const isTS = utility.isTSFile(fileName);
 
                 const checkZT = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
                 const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
 
-                if (isZ && snapshot) {
+                if (isTZ && snapshot) {
                     let virtualImports = "";
 
-                    if(isZT || checkZT(fileName)) {
+                    if(isTZS || checkZT(fileName)) {
                         virtualImports += `\nimport * as ZType from './${baseName}.zt';`;
                     }
 
-                    if(isZV || checkZV(fileName)) {
+                    if(isTZV || checkZV(fileName)) {
                         virtualImports += `\nimport * as zvariants from './${baseName}.zv';`;
                     }
                     
