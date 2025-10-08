@@ -25,17 +25,17 @@ export = function (modules: { typescript: typeof ts }) {
                 const isTZ = isTZS || isTZV;
                 const isTS = utility.isTSFile(fileName);
 
-                const checkZT = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
-                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
+                const checkTZS = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
+                const checkTZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
 
                 if (isTZ && snapshot) {
                     let virtualImports = "";
 
-                    if(isTZS || checkZT(fileName)) {
+                    if(isTZS || checkTZS(fileName)) {
                         virtualImports += `\nimport * as ZSchema from './${baseName}.tzs';`;
                     }
 
-                    if(isTZV || checkZV(fileName)) {
+                    if(isTZV || checkTZV(fileName)) {
                         virtualImports += `\nimport * as zvariants from './${baseName}.tzv';`;
                     }
                     
@@ -45,9 +45,9 @@ export = function (modules: { typescript: typeof ts }) {
                     return typescript.ScriptSnapshot.fromString(combined);
                 }
                 else if(isTS) {
-                    const hasZT = checkZT(fileName);
-                    const hasZV = checkZV(fileName);
-                    const hasZ = hasZT || hasZV;
+                    const hasTZS = checkTZS(fileName);
+                    const hasTZV = checkTZV(fileName);
+                    const hasZ = hasTZS || hasTZV;
 
                     if(hasZ && snapshot) {
                         let virtualExports = "";
@@ -57,14 +57,14 @@ export = function (modules: { typescript: typeof ts }) {
 
                         attributes.forEach(attr => {
                             if(attr == "scope") {
-                                if(hasZT) {
+                                if(hasTZS) {
                                     const name = caseAnything.pascalCase(baseName);
 
                                     virtualExports += `\nexport * as ${name} from './${baseName}.tzs';`;
                                     virtualExports += `\nexport type ${name} = any;`;
                                 }
 
-                                if(hasZV) {
+                                if(hasTZV) {
                                     const name = caseAnything.camelCase(baseName);
 
                                     virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
