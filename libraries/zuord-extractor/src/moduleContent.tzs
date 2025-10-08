@@ -11,13 +11,13 @@ export interface Base {
     diagnostics?: ModuleDiagnostic.Base[];
 }
 
-export interface Schema extends ZType.Base {
+export interface Schema extends ZSchema.Base {
     member: ModuleMember.SchemaLike;
     kind: ModuleContentKind.Schema;
     variants?: Variant[];
 }
 
-export interface Variant extends ZType.Base {
+export interface Variant extends ZSchema.Base {
     schema?: Schema;
     kind: ModuleContentKind.Variant;
     member: ModuleMember.VariantLike;
@@ -25,12 +25,12 @@ export interface Variant extends ZType.Base {
 
 //
 
-export interface ValueVariant extends ZType.Variant {
+export interface ValueVariant extends ZSchema.Variant {
     member: ModuleMember.ValueVariable;
     declaredSchemaName?: string | null;
 }
 
-export interface FunctionalVariant extends ZType.Variant {
+export interface FunctionalVariant extends ZSchema.Variant {
     member: ModuleMember.FunctionalVariant;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
