@@ -20,13 +20,13 @@ export = function (modules: { typescript: typeof ts }) {
                 const snapshot = typescript.sys.fileExists(fileName) ? origin?.(fileName) : undefined;
                 const baseName = utility.getBaseName(fileName) || '';
 
-                const isZT = utility.isZTFile(fileName);
-                const isZV = utility.isZVFile(fileName);
+                const isZT = utility.isTZSFile(fileName);
+                const isZV = utility.isTZVFile(fileName);
                 const isZ = isZT || isZV;
                 const isTS = utility.isTSFile(fileName);
 
-                const checkZT = (fileName: string) => typescript.sys.fileExists(utility.getZTPath(fileName) || '');
-                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getZVPath(fileName) || '');
+                const checkZT = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
+                const checkZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
 
                 if (isZ && snapshot) {
                     let virtualImports = "";
@@ -87,7 +87,7 @@ export = function (modules: { typescript: typeof ts }) {
         {
             const origin = getScriptKind;
             host.getScriptKind = (fileName: string) => {
-                if (utility.isZFile(fileName)) {
+                if (utility.isTZFile(fileName)) {
                     return typescript.ScriptKind.TS;
                 }
 
@@ -105,7 +105,7 @@ export = function (modules: { typescript: typeof ts }) {
                 for (const literal of moduleLiterals) {
                     const name = literal.text;
 
-                    if (utility.isZFile(name)) {
+                    if (utility.isTZFile(name)) {
                         const resolvedFileName = path.resolve(path.dirname(containingFile), name);
 
                         if (typescript.sys.fileExists(resolvedFileName)) {

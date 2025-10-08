@@ -22,7 +22,7 @@ export const getTSPath = (fileName: string) => {
     return undefined;
 }
 
-export const getZTPath = (fileName: string) => {
+export const getTZSPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
         return `${rootName}.tzs`;
@@ -30,7 +30,7 @@ export const getZTPath = (fileName: string) => {
     return undefined;
 }
 
-export const getZVPath = (fileName: string) => {
+export const getTZVPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
         return `${rootName}.tzv`;
@@ -42,15 +42,15 @@ export const isTSFile = (fileName: string) => {
     return path.extname(fileName) === ".ts";
 }
 
-export const isZFile = (fileName: string) => {
-    return isZTFile(fileName) || isZVFile(fileName);
+export const isTZFile = (fileName: string) => {
+    return isTZSFile(fileName) || isTZVFile(fileName);
 }
 
-export const isZTFile = (fileName: string) => {
+export const isTZSFile = (fileName: string) => {
     return path.extname(fileName) === ".tzs";
 };
 
-export const isZVFile = (fileName: string) => {
+export const isTZVFile = (fileName: string) => {
     return path.extname(fileName) === ".tzv";
 };
 
