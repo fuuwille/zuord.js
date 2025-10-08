@@ -5,8 +5,8 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.workspace.getConfiguration().update(
         "files.associations",
         {
-            "*.zt": "typescript",
-            "*.zv": "typescript"
+            "*.tzs": "typescript",
+            "*.tzv": "typescript"
         },
         vscode.ConfigurationTarget.Global
     );
