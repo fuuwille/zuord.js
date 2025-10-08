@@ -122,15 +122,4 @@ export type FunctionalVariant =
 
 //
 
-export type MemberKind =
-    | ModuleMemberKind.Unknown
-    | ModuleMemberKind.Import
-    | ModuleMemberKind.Export
-    | ModuleMemberKind.ExportDefault
-    | ModuleMemberKind.Type
-    | ModuleMemberKind.Interface
-    | ModuleMemberKind.Variable
-    | ModuleMemberKind.Function
-    | ModuleMemberKind.Value
-    | ModuleMemberKind.ArrowFunction
-    | ModuleMemberKind.FunctionExpression;
+export type MemberKind = ModuleMemberKind;
