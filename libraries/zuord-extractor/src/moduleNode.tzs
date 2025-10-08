@@ -26,53 +26,53 @@ export type FunctionExpression = $FunctionExpression;
 //
 
 export type KnownLike =
-    | ZType.ESMLike
-    | ZType.SchemaLike
-    | ZType.VariantLike
-    | ZType.InitializerLike;
+    | ZSchema.ESMLike
+    | ZSchema.SchemaLike
+    | ZSchema.VariantLike
+    | ZSchema.InitializerLike;
 
 export type ESMLike = 
-    | ZType.Import
-    | ZType.Export
-    | ZType.ExportDefault;
+    | ZSchema.Import
+    | ZSchema.Export
+    | ZSchema.ExportDefault;
 
 export type ExportLike = 
-    | ZType.Export
-    | ZType.ExportDefault;
+    | ZSchema.Export
+    | ZSchema.ExportDefault;
 
 export type DefinitionLike =
-    | ZType.SchemaLike
-    | ZType.VariantLike;
+    | ZSchema.SchemaLike
+    | ZSchema.VariantLike;
 
 export type SchemaLike =
-    | ZType.Type
-    | ZType.Interface
+    | ZSchema.Type
+    | ZSchema.Interface
 
 export type VariantLike =
-    | ZType.Variable
-    | ZType.Function;
+    | ZSchema.Variable
+    | ZSchema.Function;
 
 export type InitializerLike = 
-    | ZType.Value
-    | ZType.ArrowFunction
-    | ZType.FunctionExpression;
+    | ZSchema.Value
+    | ZSchema.ArrowFunction
+    | ZSchema.FunctionExpression;
 
 export type FunctionLike =
-    | ZType.Function
-    | ZType.FunctionAlt;
+    | ZSchema.Function
+    | ZSchema.FunctionAlt;
 
 export type FunctionAlt = 
-    | ZType.ArrowFunction
-    | ZType.FunctionExpression;
+    | ZSchema.ArrowFunction
+    | ZSchema.FunctionExpression;
 
 //
 
 export type Discarded =
-    | ZType.DiscardedSchema
-    | ZType.DiscardedVariant;
+    | ZSchema.DiscardedSchema
+    | ZSchema.DiscardedVariant;
 
 export type DiscardedSchema = 
-    | ZType.VariantLike;
+    | ZSchema.VariantLike;
 
 export type DiscardedVariant =
-    | ZType.SchemaLike;
+    | ZSchema.SchemaLike;
