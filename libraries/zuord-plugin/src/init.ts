@@ -60,14 +60,16 @@ export = function (modules: { typescript: typeof ts }) {
                                 if(hasZT) {
                                     const name = caseAnything.pascalCase(baseName);
 
-                                    virtualExports += `\nexport type ${name} = any;`;
                                     virtualExports += `\nexport * as ${name} from './${baseName}.zt';`;
+                                    virtualExports += `\nexport type ${name} = any;`;
                                 }
 
                                 if(hasZV) {
                                     const name = caseAnything.camelCase(baseName);
+
                                     virtualExports += `\nimport * as $${name} from './${baseName}.zv';`;
-                                    virtualExports += `\ndeclare const ${name} : typeof $${name};`;
+                                    virtualExports += `\ntype ${name}API = typeof $${name};`;
+                                    virtualExports += `\nexport const ${name} : ${name}API = $${name};`;
                                 }
                             }
                         });
