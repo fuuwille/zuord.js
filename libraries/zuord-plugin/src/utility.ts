@@ -25,7 +25,7 @@ export const getTSPath = (fileName: string) => {
 export const getZTPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
-        return `${rootName}.zt`;
+        return `${rootName}.tzs`;
     }
     return undefined;
 }
@@ -33,7 +33,7 @@ export const getZTPath = (fileName: string) => {
 export const getZVPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
-        return `${rootName}.zv`;
+        return `${rootName}.tzv`;
     }
     return undefined;
 }
@@ -47,11 +47,11 @@ export const isZFile = (fileName: string) => {
 }
 
 export const isZTFile = (fileName: string) => {
-    return path.extname(fileName) === ".zt";
+    return path.extname(fileName) === ".tzs";
 };
 
 export const isZVFile = (fileName: string) => {
-    return path.extname(fileName) === ".zv";
+    return path.extname(fileName) === ".tzv";
 };
 
 //
