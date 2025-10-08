@@ -21,7 +21,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
         if(module) {
             explorer.update(document);
 
-            if(kind == "ztype") {
+            if(kind == "zschema") {
                 module.schemaContents.forEach(schema => {
                     const node = schema.member.node;
                     const variantsCount = schema.variants?.length ?? 0;
