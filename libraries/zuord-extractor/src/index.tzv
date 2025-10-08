@@ -1,4 +1,4 @@
-export * from "./module.zv";
+export * from "./module.tzv";
 export { moduleContent } from "./moduleContent";
 export { moduleDiagnostic } from "./moduleDiagnostic";
 export { moduleFile } from "./moduleFile";

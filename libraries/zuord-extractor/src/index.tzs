@@ -1,4 +1,4 @@
-export type * from "./module.zt";
+export type * from "./module.tzs";
 export type { ModuleContent } from "./moduleContent";
 export type { ModuleDiagnostic } from "./moduleDiagnostic";
 export type { ModuleFile } from "./moduleFile";
