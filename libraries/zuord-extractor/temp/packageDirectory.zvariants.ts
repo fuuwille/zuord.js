@@ -56,3 +56,7 @@ export const getDirectoryPath = (directory: PackageDirectory): string => {
 
     return path.resolve(directory.package.path, ...parts);
 };
+
+export const getCompiledDirectoryPath = (directory: PackageDirectory): string => {
+    return path.join(getDirectoryPath(directory), "~zuord");
+};
