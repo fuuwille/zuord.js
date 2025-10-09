@@ -1,6 +1,6 @@
 // @zuord-scope
 
-export enum ModuleMemberKind {
+export enum FileMemberKind {
     Unknown = "unknown",
     Import = "import",
     Export = "export",

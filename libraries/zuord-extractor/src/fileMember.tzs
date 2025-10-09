@@ -1,6 +1,6 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
 import { FileNode } from "./fileNode";
-import { ModuleMemberKind } from "./fileMember";
+import { FileMemberKind } from "./fileMember";
 
 export interface Base {
     node: Node;
@@ -8,58 +8,58 @@ export interface Base {
 }
 
 export interface Unknown extends ZSchema.Base {
-    kind: ModuleMemberKind.Unknown;
+    kind: FileMemberKind.Unknown;
 }
 
 export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
     node: FileNode.Import;
-    kind: ModuleMemberKind.Import;
+    kind: FileMemberKind.Import;
 }
 
 export interface Export extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
     node: FileNode.Export;
-    kind: ModuleMemberKind.Export;
+    kind: FileMemberKind.Export;
 }
 
 export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
     node: FileNode.ExportDefault;
-    kind: ModuleMemberKind.ExportDefault;
+    kind: FileMemberKind.ExportDefault;
 }
 
 export interface Type extends ZSchema.Base, ZSchema.KnownLike, ZSchema.SchemaLike {
     node: FileNode.Type;
-    kind: ModuleMemberKind.Type;
+    kind: FileMemberKind.Type;
 }
 
 export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.SchemaLike {
     node: FileNode.Interface;
-    kind: ModuleMemberKind.Interface;
+    kind: FileMemberKind.Interface;
 }
 
 export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike {
     node: FileNode.Variable;
-    kind: ModuleMemberKind.Variable;
+    kind: FileMemberKind.Variable;
     initializer?: InitializerLike;
 }
 
 export interface Function extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike, ZSchema.FunctionLike {
     node: FileNode.Function;
-    kind: ModuleMemberKind.Function;
+    kind: FileMemberKind.Function;
 }
 
 export interface Value extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike {
     node: FileNode.Value;
-    kind: ModuleMemberKind.Value;
+    kind: FileMemberKind.Value;
 }
 
 export interface ArrowFunction extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
     node: FileNode.ArrowFunction;
-    kind: ModuleMemberKind.ArrowFunction;
+    kind: FileMemberKind.ArrowFunction;
 }
 
 export interface FunctionExpression extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
     node: FileNode.FunctionExpression;
-    kind: ModuleMemberKind.FunctionExpression;
+    kind: FileMemberKind.FunctionExpression;
 }
 
 //
@@ -70,48 +70,48 @@ export interface KnownLike extends ZSchema.Base {
 
 export interface GlobalLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.GlobalLike;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
+    kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault;
 }
 
 export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike {
     node: FileNode.ESMLike;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
+    kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault;
 }
 
 export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.DefinitionLike;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Type | FileMemberKind.Interface | FileMemberKind.Variable | FileMemberKind.Function;
     nameNode?: BindingName | null;
 }
 
 export interface DefinitionOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
     node: FileNode.DefinitionOnly;
-    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    kind: FileMemberKind.Type | FileMemberKind.Interface | FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
     node: FileNode.SchemaLike;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Type | ModuleMemberKind.Interface;
+    kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Type | FileMemberKind.Interface;
 }
 
 export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaLike {
     node: FileNode.SchemaOnly;
-    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface;
+    kind: FileMemberKind.Type | FileMemberKind.Interface;
 }
 
 export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
     node: FileNode.VariantLike;
-    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface VariantOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantLike {
     node: FileNode.VariantOnly;
-    kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
+    kind: FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface InitializerLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.InitializerLike;
-    kind: ModuleMemberKind.Value | ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
+    kind: FileMemberKind.Value | FileMemberKind.ArrowFunction | FileMemberKind.FunctionExpression;
 }
 
 export interface ValueVariable extends ZSchema.Variable {
@@ -131,7 +131,7 @@ export interface FunctionLike extends ZSchema.Base {
 
 export interface FunctionAlt extends ZSchema.FunctionLike {
     node: FileNode.FunctionAlt;
-    kind: ModuleMemberKind.ArrowFunction | ModuleMemberKind.FunctionExpression;
+    kind: FileMemberKind.ArrowFunction | FileMemberKind.FunctionExpression;
 }
 
 //
@@ -142,4 +142,4 @@ export type FunctionalVariant =
 
 //
 
-export type MemberKind = ModuleMemberKind;
+export type MemberKind = FileMemberKind;
