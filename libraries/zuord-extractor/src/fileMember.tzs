@@ -89,7 +89,7 @@ export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike {
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Type | ModuleMemberKind.Interface;
 }
 
-export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.SchemaLike {
+export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaLike {
     node: FileNode.SchemaOnly;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface;
 }
@@ -99,7 +99,7 @@ export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike {
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
-export interface VariantOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike {
+export interface VariantOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantLike {
     node: FileNode.VariantOnly;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
