@@ -6,7 +6,7 @@ import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
-export const updateModule = (module: ZSchema.Module): void => {
+export const updateModule = (module: ZSchema.PackageModule): void => {
     const schemaMembers = module.schemaFile?.members;
     const variantMembers = module.variantsFile?.members;
 
@@ -58,8 +58,8 @@ export const updateModule = (module: ZSchema.Module): void => {
     }
 };
 
-export const extractModule = (dir: string, name: string): ZSchema.Module => {
-    const module: ZSchema.Module = {
+export const extractModule = (dir: string, name: string): ZSchema.PackageModule => {
+    const module: ZSchema.PackageModule = {
         name,
         schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Type) ?? null,
         variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleMode.Variants) ?? null,
@@ -71,12 +71,12 @@ export const extractModule = (dir: string, name: string): ZSchema.Module => {
     return module;
 };
 
-export const updateModuleTypeFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateModuleTypeFile = (module: ZSchema.PackageModule, sourceFile: SourceFile | null): void => {
     module.schemaFile = sourceFile ? moduleFile.extractSchema(sourceFile) : null;
     updateModule(module);
 };
 
-export const updateModuleVariantsFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateModuleVariantsFile = (module: ZSchema.PackageModule, sourceFile: SourceFile | null): void => {
     module.variantsFile = sourceFile ? moduleFile.extractVariants(sourceFile) : null;
     updateModule(module);
 };

@@ -1,7 +1,7 @@
 import { ModuleFile } from "./moduleFile";
 import { ModuleContent } from "./moduleContent";
 
-export type Module = {
+export type PackageModule = {
     name: string;
     schemaFile: ModuleFile.Schema | null;
     variantsFile: ModuleFile.Variants | null;
