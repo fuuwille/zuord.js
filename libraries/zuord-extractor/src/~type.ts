@@ -1,5 +1,5 @@
 import { Identifier, Node, QualifiedName, SyntaxKind, ts, Type, TypeFlags, TypeNode, TypePredicateNode, TypeReferenceNode } from "ts-morph";
-import { ModuleNode } from "./moduleNode";
+import { ModuleNode } from "./fileNode";
 
 export const isPrimitiveType = (type: Type): boolean => {
     const flags = type.compilerType.flags;

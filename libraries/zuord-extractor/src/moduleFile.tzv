@@ -4,7 +4,7 @@ import { Project, SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile } from "./moduleFile";
 import { moduleMember } from "./moduleMember";
-import { moduleNode } from "./moduleNode";
+import { fileNode } from "./fileNode";
 
 export const initialize = (
     sourceFile: SourceFile, mode: ModuleFileMode
@@ -21,8 +21,8 @@ export const initialize = (
     sourceFile.forEachChild((node) => {
         const member = moduleMember.create(node);
 
-        if(moduleNode.isKnownLike(node)) {
-            const collection = moduleNode.isDiscarded(node, mode)
+        if(fileNode.isKnownLike(node)) {
+            const collection = fileNode.isDiscarded(node, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
