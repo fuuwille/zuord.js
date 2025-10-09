@@ -79,6 +79,11 @@ export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
     nameNode?: BindingName | null;
 }
 
+export interface DefinitionOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
+    node: FileNode.DefinitionOnly;
+    kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+}
+
 export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.SchemaLike;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Type | ModuleMemberKind.Interface;
