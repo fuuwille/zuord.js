@@ -1,6 +1,6 @@
 import path from "path";
 import * as ZSchema from "./package.zschema";
-import { extractDirectory } from "./packageDirectory.zvariants";
+import { extractDirectory, compile } from "./packageDirectory.zvariants";
 
 export const extractPackage = ($path: string) : ZSchema.Package => {
     const _package: ZSchema.Package = {
@@ -12,3 +12,7 @@ export const extractPackage = ($path: string) : ZSchema.Package => {
 
     return _package;
 }
+
+export const compilePackage = ($package: ZSchema.Package): void => {
+    $package.root && compile($package.root);
+};
