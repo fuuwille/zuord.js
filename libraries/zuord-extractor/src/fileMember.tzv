@@ -57,14 +57,22 @@ export const isESMLike = (member: ZSchema.Base): member is ZSchema.ESMLike => {
 }
 
 export const isDefinitionLike = (member: ZSchema.Base): member is ZSchema.DefinitionLike => {
-    return isSchemaLike(member) || isVariantLike(member);
+    return isSchemaOnly(member) || isVariantOnly(member);
 }
 
 export const isSchemaLike = (member: ZSchema.Base): member is ZSchema.SchemaLike => {
+    return isESMLike(member) || isSchemaOnly(member);
+}
+
+export const isSchemaOnly = (member: ZSchema.Base): member is ZSchema.SchemaOnly => {
     return isType(member) || isInterface(member);
 }
 
 export const isVariantLike = (member: ZSchema.Base): member is ZSchema.VariantLike => {
+    return isESMLike(member) || isVariantOnly(member);
+}
+
+export const isVariantOnly = (member: ZSchema.Base): member is ZSchema.VariantOnly => {
     return isVariable(member) || isFunction(member);
 }
 
