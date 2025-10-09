@@ -5,6 +5,7 @@ import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";
 import { moduleDiagnostic } from "./moduleDiagnostic";
+import { PackageDirectory } from "./packageDirectory.zschema";
 
 export const updateModule = (module: ZSchema.PackageModule): void => {
     const schemaMembers = module.schemaFile?.members;
@@ -58,11 +59,12 @@ export const updateModule = (module: ZSchema.PackageModule): void => {
     }
 };
 
-export const extractModule = (dir: string, name: string): ZSchema.PackageModule => {
+export const extractModule = (directory: PackageDirectory, name: string): ZSchema.PackageModule => {
     const module: ZSchema.PackageModule = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleFileMode.Schema) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleFileMode.Variants) ?? null,
+        directory,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(directory.package.path, name, ModuleFileMode.Schema) ?? null,
+        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(directory.package.path, name, ModuleFileMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };

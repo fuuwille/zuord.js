@@ -21,3 +21,11 @@ export const initializeDirectory = (parent : Package | PackageDirectory, name : 
         };
     }
 }
+
+export const extractDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
+    const directory = initializeDirectory(parent, name);
+
+    
+
+    return directory;
+}
