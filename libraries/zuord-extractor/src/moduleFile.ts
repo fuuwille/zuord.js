@@ -2,5 +2,5 @@
 
 export enum ModuleFileMode {
     Schema = "schema",
-    Variants = "zvariants"
+    Variants = "variants"
 }
