@@ -1,6 +1,6 @@
 import * as ZSchema from "./packageModule.zschema";
 import { SourceFile } from "ts-morph";
-import { ModuleMode } from "./module";
+import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./moduleMember";
@@ -61,8 +61,8 @@ export const updateModule = (module: ZSchema.PackageModule): void => {
 export const extractModule = (dir: string, name: string): ZSchema.PackageModule => {
     const module: ZSchema.PackageModule = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleMode.Type) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleMode.Variants) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleFileMode.Type) ?? null,
+        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleFileMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };
