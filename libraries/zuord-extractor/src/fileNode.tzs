@@ -30,6 +30,9 @@ export type KnownLike =
     | ZSchema.DefinitionLike
     | ZSchema.InitializerLike;
 
+export type GlobalLike =
+    | ESMLike;
+
 export type ESMLike = 
     | ZSchema.Import
     | ZSchema.ExportLike
