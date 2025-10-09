@@ -73,7 +73,7 @@ export const isVariantLike = (node: Node): node is ZSchema.VariantLike => {
 }
 
 export const isVariantOnly = (node: Node): node is ZSchema.VariantOnly => {
-    return isFunctionLike(node) || isVariable(node);
+    return isVariable(node) || isFunction(node);
 }
 
 export const isInitializerLike = (node: Node): node is ZSchema.InitializerLike => {
