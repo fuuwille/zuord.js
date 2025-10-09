@@ -63,12 +63,14 @@ export const extractModule = (directory: PackageDirectory, name: string): ZSchem
     const module: ZSchema.PackageModule = {
         name,
         directory,
+        coreFile: null,
         schemaFile: null,
         variantsFile: null,
         schemaContents: [],
         variantContents: [],
     };
 
+    module.coreFile = moduleFile.extractAtPath<ModuleFile.Core>(module, name, ModuleFileMode.Core) ?? null;
     module.schemaFile = moduleFile.extractAtPath<ModuleFile.Schema>(module, name, ModuleFileMode.Schema) ?? null;
     module.variantsFile = moduleFile.extractAtPath<ModuleFile.Variants>(module, name, ModuleFileMode.Variants) ?? null;
 
