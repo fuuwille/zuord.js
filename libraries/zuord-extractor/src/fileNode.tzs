@@ -26,15 +26,14 @@ export type FunctionExpression = $FunctionExpression;
 //
 
 export type KnownLike =
-    | ZSchema.ESMOnly
+    | ZSchema.ESMLike
     | ZSchema.SchemaOnly
     | ZSchema.VariantOnly
     | ZSchema.InitializerLike;
 
-export type ESMOnly = 
+export type ESMLike = 
     | ZSchema.Import
-    | ZSchema.Export
-    | ZSchema.ExportDefault;
+    | ZSchema.ExportLike
 
 export type ExportLike = 
     | ZSchema.Export

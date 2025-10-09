@@ -48,7 +48,7 @@ export const isKnownLike = (node: Node): node is ZSchema.KnownLike => {
     return isESMOnly(node) || isSchemaOnly(node) || isVariantOnly(node) || isInitializerLike(node);
 }
 
-export const isESMOnly = (node: Node): node is ZSchema.ESMOnly => {
+export const isESMOnly = (node: Node): node is ZSchema.ESMLike => {
     return isImport(node) || isExport(node) || isExportDefault(node);
 }
 

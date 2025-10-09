@@ -69,7 +69,7 @@ export interface KnownLike extends ZSchema.Base {
 }
 
 export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike {
-    node: FileNode.ESMOnly;
+    node: FileNode.ESMLike;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
