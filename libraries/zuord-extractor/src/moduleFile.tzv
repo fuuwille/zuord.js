@@ -22,7 +22,7 @@ export const initialize = (
         const member = fileMember.create(node);
 
         if(fileNode.isKnownLike(node)) {
-            const collection = fileNode.isDiscarded(node, mode)
+            const collection = fileNode.isDiscardedBy(node, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
