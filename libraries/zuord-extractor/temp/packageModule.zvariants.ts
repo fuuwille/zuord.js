@@ -87,3 +87,19 @@ export const updateModuleVariantsFile = (module: ZSchema.PackageModule, sourceFi
     module.variantsFile = sourceFile ? moduleFile.extractVariants(module, sourceFile) : null;
     updateModule(module);
 };
+
+//
+
+export const compile = (module: ZSchema.PackageModule): void => {
+    if(module.coreFile) {
+        moduleFile.compile(module.coreFile);
+    }
+
+    if(module.schemaFile) {
+        moduleFile.compile(module.schemaFile);
+    }
+
+    if(module.variantsFile) {
+        moduleFile.compile(module.variantsFile);
+    }
+};
