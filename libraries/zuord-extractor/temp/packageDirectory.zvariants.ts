@@ -2,7 +2,8 @@ import * as ZSchema from "./packageDirectory.zschema";
 import { Package } from "./package.zschema";
 import { PackageDirectory } from "./packageDirectory.zschema";
 import path from "path";
-import { getFolders } from "./~package";
+import { getFolders, getModules } from "./~package";
+import { extractModule } from "./packageModule.zvariants";
 
 export const initializeDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
     if("path" in parent) {
@@ -27,8 +28,12 @@ export const initializeDirectory = (parent : Package | PackageDirectory, name : 
 export const extractDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
     const directory = initializeDirectory(parent, name);
 
+    getModules(directory.package.path).forEach(module => {
+        directory.modules.push(extractModule(directory, path.basename(module)));
+    });
+
     getFolders(directory.package.path).forEach(folder => {
-        directory.directories.push(extractDirectory(directory, folder));
+        directory.directories.push(extractDirectory(directory, path.basename(folder)));
     });
 
     return directory;
