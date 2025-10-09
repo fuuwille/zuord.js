@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
-import { moduleMember } from "./moduleMember";
+import { moduleMember } from "./fileMember";
 import { moduleDiagnostic } from "./moduleDiagnostic";
 
 export const updateModule = (module: ZSchema.Module): void => {

@@ -1,6 +1,6 @@
 import { Module } from "./module.tzs";
 import { ModuleContentKind } from "./moduleContent";
-import { ModuleMember, moduleMember } from "./moduleMember";
+import { ModuleMember, moduleMember } from "./fileMember";
 import { getTypeName } from "./~type";
 
 export const isSchema = (content: ZSchema.Base): content is ZSchema.Schema => {

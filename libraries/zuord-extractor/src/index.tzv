@@ -2,5 +2,5 @@ export * from "./module.tzv";
 export { moduleContent } from "./moduleContent";
 export { moduleDiagnostic } from "./moduleDiagnostic";
 export { moduleFile } from "./moduleFile";
-export { moduleMember } from "./moduleMember";
+export { moduleMember } from "./fileMember";
 export { moduleNode } from "./fileNode";

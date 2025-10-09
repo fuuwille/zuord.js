@@ -1,7 +1,7 @@
 import { Module } from "./module.tzs";
 import { ModuleContentKind } from "./moduleContent";
 import { ModuleDiagnostic } from "./moduleDiagnostic";
-import { ModuleMember } from "./moduleMember";
+import { ModuleMember } from "./fileMember";
 
 export interface Base {
     module: Module;
