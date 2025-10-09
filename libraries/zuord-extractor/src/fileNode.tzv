@@ -45,11 +45,11 @@ export const isFunctionExpression = (node: Node): node is ZSchema.FunctionExpres
 //
 
 export const isKnownLike = (node: Node): node is ZSchema.KnownLike => {
-    return isESMOnly(node) || isSchemaOnly(node) || isVariantOnly(node) || isInitializerLike(node);
+    return isESMLike(node) || isSchemaOnly(node) || isVariantOnly(node) || isInitializerLike(node);
 }
 
-export const isESMOnly = (node: Node): node is ZSchema.ESMLike => {
-    return isImport(node) || isExport(node) || isExportDefault(node);
+export const isESMLike = (node: Node): node is ZSchema.ESMLike => {
+    return isImport(node) || isExportLike(node);
 }
 
 export const isExportLike = (node: Node): node is ZSchema.ExportLike => {
@@ -61,7 +61,7 @@ export const isDefinitionLike = (node: Node): node is ZSchema.DefinitionLike => 
 }
 
 export const isSchemaLike = (node: Node): node is ZSchema.SchemaLike => {
-    return isESMOnly(node) || isSchemaOnly(node);
+    return isESMLike(node) || isSchemaOnly(node);
 }
 
 export const isSchemaOnly = (node: Node): node is ZSchema.SchemaOnly => {
@@ -69,7 +69,7 @@ export const isSchemaOnly = (node: Node): node is ZSchema.SchemaOnly => {
 }
 
 export const isVariantLike = (node: Node): node is ZSchema.VariantLike => {
-    return isFunctionLike(node) || isVariable(node);
+    return isESMLike(node) || isVariantOnly(node);
 }
 
 export const isVariantOnly = (node: Node): node is ZSchema.VariantOnly => {
