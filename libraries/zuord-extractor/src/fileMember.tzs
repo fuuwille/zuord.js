@@ -80,12 +80,12 @@ export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
 }
 
 export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
-    node: FileNode.SchemaOnly;
+    node: FileNode.SchemaLike;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface;
 }
 
 export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
-    node: FileNode.VariantOnly;
+    node: FileNode.VariantLike;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
