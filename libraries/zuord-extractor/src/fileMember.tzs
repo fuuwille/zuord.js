@@ -68,7 +68,7 @@ export interface KnownLike extends ZSchema.Base {
     node: FileNode.KnownLike;
 }
 
-export interface GlobalLike extends ZSchema.Base {
+export interface GlobalLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.GlobalLike;
 }
 
