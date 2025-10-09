@@ -74,7 +74,7 @@ export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike {
 }
 
 export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
-    node: FileNode.DefinitionOnly;
+    node: FileNode.DefinitionLike;
     kind: ModuleMemberKind.Type | ModuleMemberKind.Interface | ModuleMemberKind.Variable | ModuleMemberKind.Function;
     nameNode?: BindingName | null;
 }
