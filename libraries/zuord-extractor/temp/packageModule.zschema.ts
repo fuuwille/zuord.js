@@ -5,6 +5,7 @@ import { PackageDirectory } from "./packageDirectory.zschema";
 export type PackageModule = {
     name: string;
     directory: PackageDirectory;
+    coreFile: ModuleFile.Core | null;
     schemaFile: ModuleFile.Schema | null;
     variantsFile: ModuleFile.Variants | null;
     schemaContents: ModuleContent.Schema[];
