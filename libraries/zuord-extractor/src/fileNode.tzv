@@ -60,6 +60,10 @@ export const isDefinitionLike = (node: Node): node is ZSchema.DefinitionLike => 
     return isSchemaOnly(node) || isVariantOnly(node);
 }
 
+export const isSchemaLike = (node: Node): node is ZSchema.SchemaLike => {
+    return isESMOnly(node) || isSchemaOnly(node);
+}
+
 export const isSchemaOnly = (node: Node): node is ZSchema.SchemaOnly => {
     return isType(node) || isInterface(node);
 }
