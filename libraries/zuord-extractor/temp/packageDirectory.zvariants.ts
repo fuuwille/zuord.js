@@ -1,6 +1,7 @@
 import * as ZSchema from "./packageDirectory.zschema";
 import { Package } from "./package.zschema";
 import { PackageDirectory } from "./packageDirectory.zschema";
+import path from "path";
 
 export const initializeDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
     if("path" in parent) {
@@ -29,3 +30,15 @@ export const extractDirectory = (parent : Package | PackageDirectory, name : str
 
     return directory;
 }
+
+export const getDirectoryPath = (directory: PackageDirectory): string => {
+    const parts: string[] = [];
+
+    let current: PackageDirectory | null = directory;
+    while (current) {
+        parts.unshift(current.name);
+        current = current.parent;
+    }
+
+    return path.resolve(directory.package.path, ...parts);
+};
