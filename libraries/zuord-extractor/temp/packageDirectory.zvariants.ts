@@ -28,11 +28,13 @@ export const initializeDirectory = (parent : Package | PackageDirectory, name : 
 export const extractDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
     const directory = initializeDirectory(parent, name);
 
-    getModules(directory.package.path).forEach(module => {
+    const dirPath = getDirectoryPath(directory);
+
+    getModules(dirPath).forEach(module => {
         directory.modules.push(extractModule(directory, path.basename(module)));
     });
 
-    getFolders(directory.package.path).forEach(folder => {
+    getFolders(dirPath).forEach(folder => {
         directory.directories.push(extractDirectory(directory, path.basename(folder)));
     });
 
