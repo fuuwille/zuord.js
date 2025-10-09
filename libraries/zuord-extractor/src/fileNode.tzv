@@ -84,7 +84,7 @@ export const isFunctionAlt = (node: Node): node is ZSchema.FunctionAlt => {
 
 export const isDiscarded = (node: Node, mode : ModuleFileMode): node is ZSchema.Discarded => {
     switch(mode) {
-        case ModuleFileMode.Type:
+        case ModuleFileMode.Schema:
             return isDiscardedSchema(node);
         case ModuleFileMode.Variants:
             return isDiscardedVariant(node);
