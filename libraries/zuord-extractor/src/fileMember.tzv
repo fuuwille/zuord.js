@@ -57,6 +57,10 @@ export const isESMLike = (member: ZSchema.Base): member is ZSchema.ESMLike => {
 }
 
 export const isDefinitionLike = (member: ZSchema.Base): member is ZSchema.DefinitionLike => {
+    return isESMLike(member) || isDefinitionOnly(member);
+}
+
+export const isDefinitionOnly = (member: ZSchema.Base): member is ZSchema.DefinitionOnly => {
     return isSchemaOnly(member) || isVariantOnly(member);
 }
 
