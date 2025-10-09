@@ -12,4 +12,19 @@ export enum FileMemberKind {
     Value = 1 << 7,
     ArrowFunction = 1 << 8,
     FunctionExpression = 1 << 9,
+
+    //
+    
+    FunctionAlt = ArrowFunction | FunctionExpression,
+    FunctionLike = Function | FunctionAlt,
+    InitializerLike = Value | ArrowFunction | FunctionExpression,
+    VariantOnly = Variable | Function,
+    SchemaOnly = Type | Interface,
+    DefinitionOnly = SchemaOnly | VariantOnly,
+    ExportLike = Export | ExportDefault,
+    ESMLike = Import | Export | ExportDefault,
+    GlobalLike = ESMLike,
+    VariantLike = GlobalLike | VariantOnly,
+    SchemaLike = GlobalLike | SchemaOnly,
+    KnownLike = ESMLike | DefinitionOnly | InitializerLike,
 }
