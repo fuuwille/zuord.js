@@ -43,9 +43,17 @@ export type DefinitionOnly =
     | ZSchema.SchemaOnly
     | ZSchema.VariantOnly;
 
+export type SchemaLike =
+    | ZSchema.ESMLike
+    | ZSchema.SchemaOnly;
+
 export type SchemaOnly =
     | ZSchema.Type
-    | ZSchema.Interface
+    | ZSchema.Interface;
+
+export type VariantLike =
+    | ZSchema.ESMLike
+    | ZSchema.VariantOnly;
 
 export type VariantOnly =
     | ZSchema.Variable
