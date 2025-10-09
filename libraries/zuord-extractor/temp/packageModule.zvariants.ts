@@ -63,22 +63,25 @@ export const extractModule = (directory: PackageDirectory, name: string): ZSchem
     const module: ZSchema.PackageModule = {
         name,
         directory,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(directory.package.path, name, ModuleFileMode.Schema) ?? null,
-        variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(directory.package.path, name, ModuleFileMode.Variants) ?? null,
+        schemaFile: null,
+        variantsFile: null,
         schemaContents: [],
         variantContents: [],
     };
+
+    module.schemaFile = moduleFile.extractAtPath<ModuleFile.Schema>(module, name, ModuleFileMode.Schema) ?? null;
+    module.variantsFile = moduleFile.extractAtPath<ModuleFile.Variants>(module, name, ModuleFileMode.Variants) ?? null;
 
     updateModule(module);
     return module;
 };
 
 export const updateModuleTypeFile = (module: ZSchema.PackageModule, sourceFile: SourceFile | null): void => {
-    module.schemaFile = sourceFile ? moduleFile.extractSchema(sourceFile) : null;
+    module.schemaFile = sourceFile ? moduleFile.extractSchema(module, sourceFile) : null;
     updateModule(module);
 };
 
 export const updateModuleVariantsFile = (module: ZSchema.PackageModule, sourceFile: SourceFile | null): void => {
-    module.variantsFile = sourceFile ? moduleFile.extractVariants(sourceFile) : null;
+    module.variantsFile = sourceFile ? moduleFile.extractVariants(module, sourceFile) : null;
     updateModule(module);
 };
