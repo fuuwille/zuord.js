@@ -44,9 +44,6 @@ export type DefinitionLike =
     | ZSchema.SchemaLike
     | ZSchema.VariantLike;
 
-export type MainLike =
-    | ZSchema.KnownLike;
-
 export type SchemaLike =
     | ZSchema.Type
     | ZSchema.Interface
