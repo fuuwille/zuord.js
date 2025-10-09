@@ -1,6 +1,6 @@
 export * from "./module.tzv";
 export { moduleContent } from "./moduleContent";
-export { moduleDiagnostic } from "./diagnostic";
+export { diagnostic } from "./diagnostic";
 export { moduleFile } from "./moduleFile";
-export { moduleMember } from "./fileMember";
-export { moduleNode } from "./fileNode";
+export { fileMember } from "./fileMember";
+export { fileNode } from "./fileNode";
