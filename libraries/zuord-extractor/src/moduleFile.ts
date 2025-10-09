@@ -1,7 +1,7 @@
 // @zuord-scope
 
 export enum ModuleFileMode {
-    Basis = "basis",
+    Main = "main",
     Schema = "schema",
     Variants = "variants"
 }
