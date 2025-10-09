@@ -1,15 +1,15 @@
 // @zuord-scope
 
 export enum FileMemberKind {
-    Unknown = "unknown",
-    Import = "import",
-    Export = "export",
-    ExportDefault = "exportDefault",
-    Type = "type",
-    Interface = "interface",
-    Variable = "variable",
-    Function = "function",
-    Value = "value",
-    ArrowFunction = "arrowFunction",
-    FunctionExpression = "functionExpression",
+    Unknown = 0,
+    Import = 1 << 0,
+    Export = 1 << 1,
+    ExportDefault = 1 << 2,
+    Type = 1 << 3,
+    Interface = 1 << 4,
+    Variable = 1 << 5,
+    Function = 1 << 6,
+    Value = 1 << 7,
+    ArrowFunction = 1 << 8,
+    FunctionExpression = 1 << 9,
 }
