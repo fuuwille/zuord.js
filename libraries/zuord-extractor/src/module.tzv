@@ -2,8 +2,8 @@ import { SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
-import { moduleMember } from "./fileMember";
-import { moduleDiagnostic } from "./diagnostic";
+import { fileMember } from "./fileMember";
+import { diagnostic } from "./diagnostic";
 
 export const updateModule = (module: ZSchema.Module): void => {
     const schemaMembers = module.schemaFile?.members;
@@ -13,7 +13,7 @@ export const updateModule = (module: ZSchema.Module): void => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(moduleMember.isSchemaLike)) {
+        for(const member of schemaMembers.filter(fileMember.isSchemaLike)) {
             const schemaContent = moduleContent.createSchema(module, member);
             moduleContent.updateName(schemaContent);
 
@@ -22,7 +22,7 @@ export const updateModule = (module: ZSchema.Module): void => {
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(moduleMember.isVariantLike)) {
+        for(const member of variantMembers.filter(fileMember.isVariantLike)) {
             const variantContent = moduleContent.createVariant(module, member);
             moduleContent.updateName(variantContent);
 
@@ -42,14 +42,14 @@ export const updateModule = (module: ZSchema.Module): void => {
             }
 
             if(moduleContent.isFunctionalVariant(variantContent)) {
-                const member = moduleMember.getFunctionLike(variantContent.member);
+                const member = fileMember.getFunctionLike(variantContent.member);
 
                 const returnNode = member?.returnTypeNode;
 
                 if(!returnNode) {
                     variantContent.diagnostics ??= [];
                     variantContent.diagnostics.push(
-                        moduleDiagnostic.buildInDiagnostics.noReturnType(variantContent.member.nameNode!)
+                        diagnostic.buildInDiagnostics.noReturnType(variantContent.member.nameNode!)
                     );
                 }
             }
