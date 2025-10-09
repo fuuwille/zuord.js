@@ -39,8 +39,8 @@ export type ExportLike =
     | ZSchema.ExportDefault;
 
 export type DefinitionLike =
-    | ZSchema.SchemaLike
-    | ZSchema.VariantLike;
+    | ZSchema.SchemaOnly
+    | ZSchema.VariantOnly;
 
 export type SchemaLike =
     | ZSchema.ESMLike
