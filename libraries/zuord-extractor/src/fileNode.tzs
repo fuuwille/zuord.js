@@ -1,4 +1,4 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction as $ArrowFunction, FunctionExpression as $FunctionExpression } from "ts-morph";
+import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction as $ArrowFunction, FunctionExpression as $FunctionExpression, Node } from "ts-morph";
 import { ValueSyntaxNode } from "./~valueSyntax";
 
 export type Import = ImportDeclaration;
@@ -24,6 +24,8 @@ export type ArrowFunction = $ArrowFunction;
 export type FunctionExpression = $FunctionExpression;
 
 //
+
+export type AnyLike = Node;
 
 export type KnownLike =
     | ZSchema.ESMLike
