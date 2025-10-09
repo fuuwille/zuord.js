@@ -11,17 +11,17 @@ export interface Unknown extends ZSchema.Base {
     kind: FileMemberKind.Unknown;
 }
 
-export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
+export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
     node: FileNode.Import;
     kind: FileMemberKind.Import;
 }
 
-export interface Export extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
+export interface Export extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
     node: FileNode.Export;
     kind: FileMemberKind.Export;
 }
 
-export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.ESMLike {
+export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
     node: FileNode.ExportDefault;
     kind: FileMemberKind.ExportDefault;
 }
