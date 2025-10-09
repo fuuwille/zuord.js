@@ -1,9 +1,10 @@
+import path from "path";
 import * as ZSchema from "./package.zschema";
 import { extractDirectory } from "./packageDirectory.zvariants";
 
-export const extractPackage = (path: string) : ZSchema.Package => {
+export const extractPackage = ($path: string) : ZSchema.Package => {
     const _package: ZSchema.Package = {
-        path,
+        path: path.resolve($path),
         root: null
     };
 
