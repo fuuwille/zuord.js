@@ -27,8 +27,7 @@ export type FunctionExpression = $FunctionExpression;
 
 export type KnownLike =
     | ZSchema.ESMLike
-    | ZSchema.SchemaOnly
-    | ZSchema.VariantOnly
+    | ZSchema.DefinitionLike
     | ZSchema.InitializerLike;
 
 export type ESMLike = 
