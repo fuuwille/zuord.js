@@ -1,5 +1,5 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
-import { moduleNode } from "./fileNode";
+import { fileNode } from "./fileNode";
 import { ModuleMemberKind } from "./moduleMember";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
@@ -113,43 +113,43 @@ export const create = <TMember extends ZSchema.Base>(
 }
 
 export const getKind = (node: Node): ZSchema.MemberKind => {
-    if (moduleNode.isImport(node)) {
+    if (fileNode.isImport(node)) {
         return ModuleMemberKind.Import;
     }
 
-    if (moduleNode.isExport(node)) {
+    if (fileNode.isExport(node)) {
         return ModuleMemberKind.Export;
     }
 
-    if (moduleNode.isExportDefault(node)) {
+    if (fileNode.isExportDefault(node)) {
         return ModuleMemberKind.ExportDefault;
     }
 
-    if (moduleNode.isType(node)) {
+    if (fileNode.isType(node)) {
         return ModuleMemberKind.Type;
     }
 
-    if (moduleNode.isInterface(node)) {
+    if (fileNode.isInterface(node)) {
         return ModuleMemberKind.Interface;
     }
 
-    if (moduleNode.isVariable(node)) {
+    if (fileNode.isVariable(node)) {
         return ModuleMemberKind.Variable;
     }
 
-    if (moduleNode.isValue(node)) {
+    if (fileNode.isValue(node)) {
         return ModuleMemberKind.Value;
     }
 
-    if (moduleNode.isFunction(node)) {
+    if (fileNode.isFunction(node)) {
         return ModuleMemberKind.Function;
     }
 
-    if (moduleNode.isArrowFunction(node)) {
+    if (fileNode.isArrowFunction(node)) {
         return ModuleMemberKind.ArrowFunction;
     }
 
-    if (moduleNode.isFunctionExpression(node)) {
+    if (fileNode.isFunctionExpression(node)) {
         return ModuleMemberKind.FunctionExpression;
     }
 
@@ -181,7 +181,7 @@ export const getVariableInitializer = (member: ZSchema.Variable): ZSchema.Initia
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(moduleNode.isInitializerLike(initializerNode)) {
+            if(fileNode.isInitializerLike(initializerNode)) {
                 return create<ZSchema.InitializerLike>(initializerNode);
             }
         }
