@@ -91,6 +91,11 @@ export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.Sch
 
 export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.VariantLike;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault | ModuleMemberKind.Variable | ModuleMemberKind.Function;
+}
+
+export interface VariantOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike {
+    node: FileNode.VariantOnly;
     kind: ModuleMemberKind.Variable | ModuleMemberKind.Function;
 }
 
