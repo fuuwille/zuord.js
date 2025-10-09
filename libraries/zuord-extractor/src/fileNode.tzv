@@ -57,6 +57,10 @@ export const isExportLike = (node: Node): node is ZSchema.ExportLike => {
 }
 
 export const isDefinitionLike = (node: Node): node is ZSchema.DefinitionLike => {
+    return isESMLike(node) || isDefinitionOnly(node);
+}
+
+export const isDefinitionOnly = (node: Node): node is ZSchema.DefinitionOnly => {
     return isSchemaOnly(node) || isVariantOnly(node);
 }
 
