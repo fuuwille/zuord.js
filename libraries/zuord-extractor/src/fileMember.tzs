@@ -26,23 +26,23 @@ export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.
     kind: FileMemberKind.ExportDefault;
 }
 
-export interface Type extends ZSchema.Base, ZSchema.KnownLike, ZSchema.SchemaLike {
+export interface Type extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
     node: FileNode.Type;
     kind: FileMemberKind.Type;
 }
 
-export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.SchemaLike {
+export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
     node: FileNode.Interface;
     kind: FileMemberKind.Interface;
 }
 
-export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike {
+export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly {
     node: FileNode.Variable;
     kind: FileMemberKind.Variable;
     initializer?: InitializerLike;
 }
 
-export interface Function extends ZSchema.Base, ZSchema.KnownLike, ZSchema.VariantLike, ZSchema.FunctionLike {
+export interface Function extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly, ZSchema.FunctionLike {
     node: FileNode.Function;
     kind: FileMemberKind.Function;
 }
