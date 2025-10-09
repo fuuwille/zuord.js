@@ -1,0 +1,7 @@
+index.*
+module.*
+moduleContent.*
+moduleDiagnostic.*
+moduleFile.*
+moduleMember.*
+moduleNode.*
