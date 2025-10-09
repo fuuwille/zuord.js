@@ -1,22 +1,22 @@
 import { Node } from "ts-morph";
-import { ModuleDiagnosticLevel } from "./moduleDiagnostic";
+import { DiagnosticLevel } from "./diagnostic";
 
 export interface Base {
     node: Node;
     message: string;
-    level: ModuleDiagnosticLevel;
+    level: DiagnosticLevel;
 }
 
 //
 
 export interface Info extends ZSchema.Base {
-    level: ModuleDiagnosticLevel.Info;
+    level: DiagnosticLevel.Info;
 }
 
 export interface Warning extends ZSchema.Base {
-    level: ModuleDiagnosticLevel.Warning;
+    level: DiagnosticLevel.Warning;
 }
 
 export interface Error extends ZSchema.Base {
-    level: ModuleDiagnosticLevel.Error;
+    level: DiagnosticLevel.Error;
 }

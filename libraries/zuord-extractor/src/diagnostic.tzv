@@ -1,16 +1,16 @@
 import { Node } from "ts-morph";
-import { ModuleDiagnosticLevel } from "./moduleDiagnostic";
+import { DiagnosticLevel } from "./diagnostic";
 
 export const info = (node: Node, message: string): ZSchema.Info => {
-    return { node, message, level: ModuleDiagnosticLevel.Info };
+    return { node, message, level: DiagnosticLevel.Info };
 }
 
 export const warning = (node: Node, message: string): ZSchema.Warning => {
-    return { node, message, level: ModuleDiagnosticLevel.Warning };
+    return { node, message, level: DiagnosticLevel.Warning };
 }
 
 export const error = (node: Node, message: string): ZSchema.Error => {
-    return { node, message, level: ModuleDiagnosticLevel.Error };
+    return { node, message, level: DiagnosticLevel.Error };
 }
 
 //

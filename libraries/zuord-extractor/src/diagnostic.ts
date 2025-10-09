@@ -1,6 +1,6 @@
 // @zuord-scope
 
-export enum ModuleDiagnosticLevel {
+export enum DiagnosticLevel {
     Info = "info",
     Warning = "warning",
     Error = "error"
