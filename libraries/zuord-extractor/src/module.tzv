@@ -3,7 +3,7 @@ import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile, moduleFile } from "./moduleFile";
 import { moduleContent } from "./moduleContent";
 import { moduleMember } from "./fileMember";
-import { moduleDiagnostic } from "./moduleDiagnostic";
+import { moduleDiagnostic } from "./diagnostic";
 
 export const updateModule = (module: ZSchema.Module): void => {
     const schemaMembers = module.schemaFile?.members;

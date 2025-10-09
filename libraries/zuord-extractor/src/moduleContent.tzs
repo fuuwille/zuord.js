@@ -1,6 +1,6 @@
 import { Module } from "./module.tzs";
 import { ModuleContentKind } from "./moduleContent";
-import { ModuleDiagnostic } from "./moduleDiagnostic";
+import { Diagnostic } from "./diagnostic";
 import { FileMember } from "./fileMember";
 
 export interface Base {
@@ -8,7 +8,7 @@ export interface Base {
     member: FileMember.DefinitionLike;
     kind: ModuleContentKind;
     name?: string | null;
-    diagnostics?: ModuleDiagnostic.Base[];
+    diagnostics?: Diagnostic.Base[];
 }
 
 export interface Schema extends ZSchema.Base {
