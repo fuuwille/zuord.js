@@ -14,7 +14,7 @@ export enum FileMemberKind {
     FunctionExpression = 1 << 9,
 
     //
-    
+
     FunctionAlt = ArrowFunction | FunctionExpression,
     FunctionLike = Function | FunctionAlt,
     InitializerLike = Value | ArrowFunction | FunctionExpression,
@@ -26,5 +26,6 @@ export enum FileMemberKind {
     GlobalLike = ESMLike,
     VariantLike = GlobalLike | VariantOnly,
     SchemaLike = GlobalLike | SchemaOnly,
+    DefinitionLike = GlobalLike | DefinitionOnly,
     KnownLike = ESMLike | DefinitionOnly | InitializerLike,
 }
