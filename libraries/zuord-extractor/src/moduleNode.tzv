@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleMode } from "./module";
+import { ModuleFileMode } from "./moduleFile";
 import { ValueSyntaxKind, valueSyntaxKinds } from "./~valueSyntax";
 
 export const isImport = (node: Node): node is ZSchema.Import => {
@@ -82,11 +82,11 @@ export const isFunctionAlt = (node: Node): node is ZSchema.FunctionAlt => {
 
 //
 
-export const isDiscarded = (node: Node, mode : ModuleMode): node is ZSchema.Discarded => {
+export const isDiscarded = (node: Node, mode : ModuleFileMode): node is ZSchema.Discarded => {
     switch(mode) {
-        case ModuleMode.Type:
+        case ModuleFileMode.Type:
             return isDiscardedSchema(node);
-        case ModuleMode.Variants:
+        case ModuleFileMode.Variants:
             return isDiscardedVariant(node);
         default:
             return false;

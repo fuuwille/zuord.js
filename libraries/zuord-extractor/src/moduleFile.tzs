@@ -1,10 +1,10 @@
 import { SourceFile } from "ts-morph";
-import { ModuleMode } from "./module";
+import { ModuleFileMode } from "./moduleFile";
 import { ModuleMember } from "./moduleMember";
 
 export interface Base {
     source: SourceFile
-    mode: ModuleMode;
+    mode: ModuleFileMode;
     members: ModuleMember.Base[];
     discarded: ModuleMember.Base[];
     others: ModuleMember.Base[];
