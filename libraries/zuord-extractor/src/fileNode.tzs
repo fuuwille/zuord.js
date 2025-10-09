@@ -42,7 +42,7 @@ export type ExportLike =
     | ZSchema.ExportDefault;
 
 export type DefinitionLike = 
-    | ZSchema.ESMLike
+    | ZSchema.GlobalLike
     | ZSchema.DefinitionOnly;
 
 export type DefinitionOnly =
@@ -50,7 +50,7 @@ export type DefinitionOnly =
     | ZSchema.VariantOnly;
 
 export type SchemaLike =
-    | ZSchema.ESMLike
+    | ZSchema.GlobalLike
     | ZSchema.SchemaOnly;
 
 export type SchemaOnly =
@@ -58,7 +58,7 @@ export type SchemaOnly =
     | ZSchema.Interface;
 
 export type VariantLike =
-    | ZSchema.ESMLike
+    | ZSchema.GlobalLike
     | ZSchema.VariantOnly;
 
 export type VariantOnly =
