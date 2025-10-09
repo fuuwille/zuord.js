@@ -26,12 +26,12 @@ export type FunctionExpression = $FunctionExpression;
 //
 
 export type KnownLike =
-    | ZSchema.ESMLike
-    | ZSchema.SchemaLike
-    | ZSchema.VariantLike
+    | ZSchema.ESMOnly
+    | ZSchema.SchemaOnly
+    | ZSchema.VariantOnly
     | ZSchema.InitializerLike;
 
-export type ESMLike = 
+export type ESMOnly = 
     | ZSchema.Import
     | ZSchema.Export
     | ZSchema.ExportDefault;
@@ -40,15 +40,15 @@ export type ExportLike =
     | ZSchema.Export
     | ZSchema.ExportDefault;
 
-export type DefinitionLike =
-    | ZSchema.SchemaLike
-    | ZSchema.VariantLike;
+export type DefinitionOnly =
+    | ZSchema.SchemaOnly
+    | ZSchema.VariantOnly;
 
-export type SchemaLike =
+export type SchemaOnly =
     | ZSchema.Type
     | ZSchema.Interface
 
-export type VariantLike =
+export type VariantOnly =
     | ZSchema.Variable
     | ZSchema.Function;
 
@@ -72,7 +72,7 @@ export type Discarded =
     | ZSchema.DiscardedVariant;
 
 export type DiscardedSchema = 
-    | ZSchema.VariantLike;
+    | ZSchema.VariantOnly;
 
 export type DiscardedVariant =
-    | ZSchema.SchemaLike;
+    | ZSchema.SchemaOnly;
