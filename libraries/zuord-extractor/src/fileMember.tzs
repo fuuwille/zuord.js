@@ -70,9 +70,10 @@ export interface KnownLike extends ZSchema.Base {
 
 export interface GlobalLike extends ZSchema.Base, ZSchema.KnownLike {
     node: FileNode.GlobalLike;
+    kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
 
-export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike {
+export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike {
     node: FileNode.ESMLike;
     kind: ModuleMemberKind.Import | ModuleMemberKind.Export | ModuleMemberKind.ExportDefault;
 }
