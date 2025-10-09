@@ -4,6 +4,7 @@ import { PackageDirectory } from "./packageDirectory.zschema";
 import path from "path";
 import { getFolders, getModules } from "./~package";
 import { extractModule } from "./packageModule.zvariants";
+import * as packageModule from "./packageModule.zvariants";
 
 export const initializeDirectory = (parent : Package | PackageDirectory, name : string) : ZSchema.PackageDirectory => {
     if("path" in parent) {
@@ -71,4 +72,16 @@ export const getCompiledDirectoryPath = (directory: PackageDirectory): string =>
     }
 
     return path.resolve(directory.package.path, "~zuord", ...parts);
+};
+
+//
+
+export const compile = (directory: PackageDirectory): void => {
+    directory.modules.forEach(module => {
+        packageModule.compile(module);
+    });
+
+    directory.directories.forEach(subDirectory => {
+        compile(subDirectory);
+    });
 };
