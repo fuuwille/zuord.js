@@ -61,7 +61,7 @@ export const updateModule = (module: ZSchema.PackageModule): void => {
 export const extractModule = (dir: string, name: string): ZSchema.PackageModule => {
     const module: ZSchema.PackageModule = {
         name,
-        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleFileMode.Type) ?? null,
+        schemaFile: moduleFile.extractAtPath<ModuleFile.Schema>(dir, name, ModuleFileMode.Schema) ?? null,
         variantsFile: moduleFile.extractAtPath<ModuleFile.Variants>(dir, name, ModuleFileMode.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
