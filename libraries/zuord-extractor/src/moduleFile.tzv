@@ -1,13 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { ModuleMode } from "./module";
+import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile } from "./moduleFile";
 import { moduleMember } from "./moduleMember";
 import { moduleNode } from "./moduleNode";
 
 export const initialize = (
-    sourceFile: SourceFile, mode: ModuleMode
+    sourceFile: SourceFile, mode: ModuleFileMode
 ) : ModuleFile.Base => {
 
     const moduleFile : ModuleFile.Base = {
@@ -36,18 +36,18 @@ export const initialize = (
     return moduleFile;
 };
 
-export const extract = (sourceFile: SourceFile, mode: ModuleMode) : ModuleFile.Base => {
+export const extract = (sourceFile: SourceFile, mode: ModuleFileMode) : ModuleFile.Base => {
     switch(mode) {
-        case ModuleMode.Type:
+        case ModuleFileMode.Type:
             return extractSchema(sourceFile);
-        case ModuleMode.Variants:
+        case ModuleFileMode.Variants:
             return extractVariants(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${mode}`);
     }
 };
 
-export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: string, mode: ModuleMode) : TFile | undefined => {
+export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: string, mode: ModuleFileMode) : TFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
@@ -61,9 +61,9 @@ export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: 
 };
 
 export const extractSchema = (sourceFile: SourceFile) : ModuleFile.Schema => {
-    return initialize(sourceFile, ModuleMode.Type) as ModuleFile.Schema;
+    return initialize(sourceFile, ModuleFileMode.Type) as ModuleFile.Schema;
 };
 
 export const extractVariants = (sourceFile: SourceFile) : ModuleFile.Variants => {
-    return initialize(sourceFile, ModuleMode.Variants) as ModuleFile.Variants;
+    return initialize(sourceFile, ModuleFileMode.Variants) as ModuleFile.Variants;
 };
