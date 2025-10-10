@@ -1,5 +1,5 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
-import { fileNode } from "./fileNode";
+import { node as znode } from "./node";
 import { FileMemberKind } from "./fileMember";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
@@ -125,43 +125,43 @@ export const create = <TMember extends ZSchema.Base>(
 }
 
 export const getKind = (node: Node): ZSchema.MemberKind => {
-    if (fileNode.isImport(node)) {
+    if (znode.isImport(node)) {
         return FileMemberKind.Import;
     }
 
-    if (fileNode.isExport(node)) {
+    if (znode.isExport(node)) {
         return FileMemberKind.Export;
     }
 
-    if (fileNode.isExportDefault(node)) {
+    if (znode.isExportDefault(node)) {
         return FileMemberKind.ExportDefault;
     }
 
-    if (fileNode.isType(node)) {
+    if (znode.isType(node)) {
         return FileMemberKind.Type;
     }
 
-    if (fileNode.isInterface(node)) {
+    if (znode.isInterface(node)) {
         return FileMemberKind.Interface;
     }
 
-    if (fileNode.isVariable(node)) {
+    if (znode.isVariable(node)) {
         return FileMemberKind.Variable;
     }
 
-    if (fileNode.isValue(node)) {
+    if (znode.isValue(node)) {
         return FileMemberKind.Value;
     }
 
-    if (fileNode.isFunction(node)) {
+    if (znode.isFunction(node)) {
         return FileMemberKind.Function;
     }
 
-    if (fileNode.isArrowFunction(node)) {
+    if (znode.isArrowFunction(node)) {
         return FileMemberKind.ArrowFunction;
     }
 
-    if (fileNode.isFunctionExpression(node)) {
+    if (znode.isFunctionExpression(node)) {
         return FileMemberKind.FunctionExpression;
     }
 
@@ -193,7 +193,7 @@ export const getVariableInitializer = (member: ZSchema.Variable): ZSchema.Initia
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(fileNode.isInitializerLike(initializerNode)) {
+            if(znode.isInitializerLike(initializerNode)) {
                 return create<ZSchema.InitializerLike>(initializerNode);
             }
         }

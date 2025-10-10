@@ -1,5 +1,5 @@
 import { BindingName, TypeNode, Node } from "ts-morph";
-import { FileNode } from "./fileNode";
+import { Node as ZNode } from "./node";
 import { FileMemberKind } from "./fileMember";
 
 export interface Base {
@@ -12,105 +12,105 @@ export interface Unknown extends ZSchema.Base {
 }
 
 export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
-    node: FileNode.Import;
+    node: ZNode.Import;
     kind: FileMemberKind.Import;
 }
 
 export interface Export extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
-    node: FileNode.Export;
+    node: ZNode.Export;
     kind: FileMemberKind.Export;
 }
 
 export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
-    node: FileNode.ExportDefault;
+    node: ZNode.ExportDefault;
     kind: FileMemberKind.ExportDefault;
 }
 
 export interface Type extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
-    node: FileNode.Type;
+    node: ZNode.Type;
     kind: FileMemberKind.Type;
 }
 
 export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
-    node: FileNode.Interface;
+    node: ZNode.Interface;
     kind: FileMemberKind.Interface;
 }
 
 export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly {
-    node: FileNode.Variable;
+    node: ZNode.Variable;
     kind: FileMemberKind.Variable;
     initializer?: InitializerLike;
 }
 
 export interface Function extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly, ZSchema.FunctionLike {
-    node: FileNode.Function;
+    node: ZNode.Function;
     kind: FileMemberKind.Function;
 }
 
 export interface Value extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike {
-    node: FileNode.Value;
+    node: ZNode.Value;
     kind: FileMemberKind.Value;
 }
 
 export interface ArrowFunction extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
-    node: FileNode.ArrowFunction;
+    node: ZNode.ArrowFunction;
     kind: FileMemberKind.ArrowFunction;
 }
 
 export interface FunctionExpression extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
-    node: FileNode.FunctionExpression;
+    node: ZNode.FunctionExpression;
     kind: FileMemberKind.FunctionExpression;
 }
 
 //
 
 export interface KnownLike extends ZSchema.Base {
-    node: FileNode.KnownLike;
+    node: ZNode.KnownLike;
 }
 
 export interface GlobalLike extends ZSchema.Base, ZSchema.KnownLike {
-    node: FileNode.GlobalLike;
+    node: ZNode.GlobalLike;
     kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault;
 }
 
 export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike {
-    node: FileNode.ESMLike;
+    node: ZNode.ESMLike;
     kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault;
 }
 
 export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
-    node: FileNode.DefinitionLike;
+    node: ZNode.DefinitionLike;
     kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Type | FileMemberKind.Interface | FileMemberKind.Variable | FileMemberKind.Function;
     nameNode?: BindingName | null;
 }
 
 export interface DefinitionOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
-    node: FileNode.DefinitionOnly;
+    node: ZNode.DefinitionOnly;
     kind: FileMemberKind.Type | FileMemberKind.Interface | FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
-    node: FileNode.SchemaLike;
+    node: ZNode.SchemaLike;
     kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Type | FileMemberKind.Interface;
 }
 
 export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaLike {
-    node: FileNode.SchemaOnly;
+    node: ZNode.SchemaOnly;
     kind: FileMemberKind.Type | FileMemberKind.Interface;
 }
 
 export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
-    node: FileNode.VariantLike;
+    node: ZNode.VariantLike;
     kind: FileMemberKind.Import | FileMemberKind.Export | FileMemberKind.ExportDefault | FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface VariantOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantLike {
-    node: FileNode.VariantOnly;
+    node: ZNode.VariantOnly;
     kind: FileMemberKind.Variable | FileMemberKind.Function;
 }
 
 export interface InitializerLike extends ZSchema.Base, ZSchema.KnownLike {
-    node: FileNode.InitializerLike;
+    node: ZNode.InitializerLike;
     kind: FileMemberKind.Value | FileMemberKind.ArrowFunction | FileMemberKind.FunctionExpression;
 }
 
@@ -124,13 +124,13 @@ export interface FunctionalVariable extends ZSchema.Variable {
 }
 
 export interface FunctionLike extends ZSchema.Base {
-    node: FileNode.FunctionLike;
+    node: ZNode.FunctionLike;
     returnTypeNode?: TypeNode;
     paramTypeNode?: TypeNode;
 }
 
 export interface FunctionAlt extends ZSchema.FunctionLike {
-    node: FileNode.FunctionAlt;
+    node: ZNode.FunctionAlt;
     kind: FileMemberKind.ArrowFunction | FileMemberKind.FunctionExpression;
 }
 

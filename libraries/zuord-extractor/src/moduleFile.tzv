@@ -4,7 +4,7 @@ import { Project, SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile } from "./moduleFile";
 import { fileMember } from "./fileMember";
-import { fileNode } from "./fileNode";
+import { node } from "./node";
 
 export const initialize = (
     sourceFile: SourceFile, mode: ModuleFileMode

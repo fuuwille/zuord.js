@@ -3,4 +3,4 @@ export { moduleContent } from "./moduleContent";
 export { diagnostic } from "./diagnostic";
 export { moduleFile } from "./moduleFile";
 export { fileMember } from "./fileMember";
-export { fileNode } from "./fileNode";
+export { fileNode } from "./node";

@@ -3,4 +3,4 @@ export type { ModuleContent } from "./moduleContent";
 export type { Diagnostic } from "./diagnostic";
 export type { ModuleFile } from "./moduleFile";
 export type { FileMember } from "./fileMember";
-export type { FileNode } from "./fileNode";
+export type { FileNode } from "./node";
