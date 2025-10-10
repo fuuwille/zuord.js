@@ -3,12 +3,12 @@
         "target": "ESNext",
         "module": "CommonJS",
         "strict": true,
-        "rootDir": "./temp",
-        "outDir": "./dist",    
+        "rootDir": "./dist",
+        "outDir": "./out",    
         "esModuleInterop": true,
         "declaration": true,
         "skipLibCheck": true,
     },
-    "include": ["temp/**/*.ts"],
+    "include": ["dist/**/*.ts"],
     "exclude": ["node_modules", "zuord.config.ts", "example.*.ts"]
 }
