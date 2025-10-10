@@ -1,7 +1,5 @@
-import { ModuleFile } from "./moduleFile";
+import { ModuleDocument } from "./moduleDocument";
 
 export interface Module {
-    mainFile: ModuleFile | undefined;
-    schemaFile: ModuleFile | undefined;
-    variantsFile: ModuleFile | undefined;
+    document: ModuleDocument;
 }
