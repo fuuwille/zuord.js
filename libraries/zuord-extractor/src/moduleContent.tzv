@@ -1,4 +1,4 @@
-import { Module } from "./module.tzs";
+import Module from "./module.tzs";
 import { ModuleContentKind } from "./moduleContent";
 import { FileMember, fileMember } from "./fileMember";
 import { getTypeName } from "./~type";

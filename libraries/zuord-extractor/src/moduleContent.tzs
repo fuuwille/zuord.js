@@ -1,4 +1,4 @@
-import { Module } from "./module.tzs";
+import Module from "./module.tzs";
 import { ModuleContentKind } from "./moduleContent";
 import { Diagnostic } from "./diagnostic";
 import { FileMember } from "./fileMember";
