@@ -1,5 +1,5 @@
 import { Identifier, Node, QualifiedName, SyntaxKind, ts, Type, TypeFlags, TypeNode, TypePredicateNode, TypeReferenceNode } from "ts-morph";
-import { ModuleNode } from "./node";
+import { Node as ZNode } from "./node";
 
 export const isPrimitiveType = (type: Type): boolean => {
     const flags = type.compilerType.flags;
@@ -12,7 +12,7 @@ export const isPrimitiveType = (type: Type): boolean => {
     return (flags & primitiveFlags) !== 0;
 }
 
-export const getFunctionPredicateType = (node: ModuleNode.FunctionLike, typeNode?: TypeNode): Type | undefined => {
+export const getFunctionPredicateType = (node: ZNode.FunctionLike, typeNode?: TypeNode): Type | undefined => {
     typeNode ??= node.getReturnTypeNode();
 
     if(typeNode && ts.isTypePredicateNode(typeNode.compilerNode)) {
@@ -76,7 +76,7 @@ export const getTypeText = (node?: Node): string | undefined => {
     return getIdentifierChildLast(qualifiedName)?.getText();
 }
 
-export const getTypeName = (node: Node | undefined, body?: ModuleNode.FunctionLike): string | undefined => {
+export const getTypeName = (node: Node | undefined, body?: ZNode.FunctionLike): string | undefined => {
     var name = getTypeText(node);
 
     if(name && body) {
