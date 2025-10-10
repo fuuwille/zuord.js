@@ -9,5 +9,5 @@ export interface ModuleFile {
 }
 
 export interface StoredModuleFile extends ModuleFile {
-    dirt: boolean;
+    dirty: boolean;
 }
