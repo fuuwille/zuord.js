@@ -2,5 +2,5 @@ export type * from "./module.tzs";
 export type { ModuleContent } from "./moduleContent";
 export type { Diagnostic } from "./diagnostic";
 export type { ModuleFile } from "./moduleFile";
-export type { FileMember } from "./fileMember";
+export type { Member } from "./member";
 export type { Node } from "./node";

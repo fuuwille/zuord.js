@@ -1,6 +1,6 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
 import { node as znode } from "./node";
-import { FileMemberKind } from "./fileMember";
+import { FileMemberKind } from "./member";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
     return member.kind === FileMemberKind.Unknown;

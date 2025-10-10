@@ -3,7 +3,7 @@ import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile } from "./moduleFile";
-import { fileMember } from "./fileMember";
+import { fileMember } from "./member";
 import { node as znode } from "./node";
 
 export const initialize = (

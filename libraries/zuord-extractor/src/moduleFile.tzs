@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
-import { FileMember } from "./fileMember";
+import { FileMember } from "./member";
 
 export interface Base {
     source: SourceFile
