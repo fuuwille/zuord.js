@@ -7,3 +7,4 @@ export type ModuleEntry = {
     source: ZE.Module | undefined;
 }
 
+const cache = new Map<string, ModuleEntry>();
