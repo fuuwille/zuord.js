@@ -1,6 +1,10 @@
+import ts from "typescript";
 import { $ZuordExtractor as ZE } from "zuord-extractor";
 import { moduleNameRegex } from "./utility";
-import { ModuleFile } from "./moduleFile"
+
+export const dirtySymbol = Symbol("dirty");
+
+//
 
 export interface Module {
     info: ModuleInfo;
@@ -22,6 +26,13 @@ export type ModuleDocument = {
     main: ModuleFile | undefined;
     schema: ModuleFile | undefined;
     variants: ModuleFile | undefined;
+}
+
+export interface ModuleFile {
+    [dirtySymbol]: boolean;
+    module: Module;
+    snapshot: ts.IScriptSnapshot | undefined;
+    source: ZE.ModuleFile | undefined;
 }
 
 //
