@@ -1,19 +1,19 @@
 import { SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
-import { FileMember } from "./member";
+import { Member as ZMember } from "./member";
 
 export interface Base {
     source: SourceFile
     mode: ModuleFileMode;
-    members: FileMember.Base[];
-    discarded: FileMember.Base[];
-    others: FileMember.Base[];
+    members: ZMember.Base[];
+    discarded: ZMember.Base[];
+    others: ZMember.Base[];
 };
 
 export interface Schema extends ZSchema.Base {
-    members: FileMember.SchemaLike[];
+    members: ZMember.SchemaLike[];
 }
 
 export interface Variants extends ZSchema.Base {
-    members: FileMember.VariantLike[];
+    members: ZMember.VariantLike[];
 }

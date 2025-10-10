@@ -3,7 +3,7 @@ import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
 import { ModuleFile } from "./moduleFile";
-import { fileMember } from "./member";
+import { member as zmember } from "./member";
 import { node as znode } from "./node";
 
 export const initialize = (
@@ -19,7 +19,7 @@ export const initialize = (
     };
 
     sourceFile.forEachChild((node) => {
-        const member = fileMember.create(node);
+        const member = zmember.create(node);
 
         if(znode.isKnownLike(node)) {
             const collection = znode.isDiscardedBy(node, mode)
