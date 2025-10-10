@@ -7,6 +7,10 @@ export interface Base {
     kind: MemberKind;
 }
 
+export default Base;
+
+//
+
 export interface Unknown extends ZSchema.Base {
     kind: FileMemberKind.Unknown;
 }
