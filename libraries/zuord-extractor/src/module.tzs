@@ -1,10 +1,12 @@
 import { ModuleFile } from "./moduleFile";
 import { ModuleContent } from "./moduleContent";
 
-export default interface Module {
+export interface Module {
     name: string;
     schemaFile: ModuleFile.Schema | null;
     variantsFile: ModuleFile.Variants | null;
     schemaContents: ModuleContent.Schema[];
     variantContents: ModuleContent.Variant[];
 }
+
+export default Module;
