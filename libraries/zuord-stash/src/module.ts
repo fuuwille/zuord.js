@@ -1,6 +1,6 @@
-import { ModuleDocument } from "./moduleDocument";
 import { $ZuordExtractor as ZE } from "zuord-extractor";
 import { moduleNameRegex } from "./utility";
+import { ModuleFile } from "./moduleFile"
 
 export interface Module {
     info: ModuleInfo;
@@ -16,6 +16,12 @@ export type ModuleInfo = {
 export enum ModuleType {
     Source,
     Dist
+}
+
+export type ModuleDocument = {
+    main: ModuleFile | undefined;
+    schema: ModuleFile | undefined;
+    variants: ModuleFile | undefined;
 }
 
 //
