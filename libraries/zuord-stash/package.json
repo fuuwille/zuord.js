@@ -1,4 +1,7 @@
 {
   "name": "zuord-stash",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
 }
