@@ -1,6 +1,6 @@
 import ts from "typescript";
 
-export type FileEntry = {
+export type ModuleEntry = {
     dirty: boolean;
     snapshot: ts.IScriptSnapshot | undefined;
 }
