@@ -1,8 +1,9 @@
 import ts from "typescript";
-import { $ZuordExtractor as ze } from "zuord-extractor";
+import { $ZuordExtractor as ZE } from "zuord-extractor";
 
 export type ModuleEntry = {
     dirty: boolean;
     snapshot: ts.IScriptSnapshot | undefined;
-    source: ze.Module | undefined;
+    source: ZE.Module | undefined;
 }
+
