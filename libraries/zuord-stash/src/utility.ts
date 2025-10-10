@@ -1,0 +1,1 @@
+export const moduleNameRegex = /^(?:\/[a-zA-Z0-9_]+)+\/((?!.*\.\.)[^\/\\]+?)((?:\.(?:zschema\.ts|zvariants\.ts|ts|tzs|tzv)))$/;
