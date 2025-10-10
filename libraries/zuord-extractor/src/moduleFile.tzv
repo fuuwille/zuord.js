@@ -2,15 +2,15 @@ import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { ModuleFileMode } from "./moduleFile";
-import { ModuleFile } from "./moduleFile";
+import { ModuleFile, ModuleFileD } from "./moduleFile";
 import { member as zmember } from "./member";
 import { node as znode } from "./node";
 
 export const initialize = (
     sourceFile: SourceFile, mode: ModuleFileMode
-) : ModuleFile.Base => {
+) : ModuleFileD => {
 
-    const moduleFile : ModuleFile.Base = {
+    const moduleFile : ModuleFileD = {
         source: sourceFile,
         mode: mode,
         members: [],
@@ -36,7 +36,7 @@ export const initialize = (
     return moduleFile;
 };
 
-export const extract = (sourceFile: SourceFile, mode: ModuleFileMode) : ModuleFile.Base => {
+export const extract = (sourceFile: SourceFile, mode: ModuleFileMode) : ModuleFileD => {
     switch(mode) {
         case ModuleFileMode.Schema:
             return extractSchema(sourceFile);
@@ -47,7 +47,7 @@ export const extract = (sourceFile: SourceFile, mode: ModuleFileMode) : ModuleFi
     }
 };
 
-export const extractAtPath = <TFile extends ModuleFile.Base>(dir: string, name: string, mode: ModuleFileMode) : TFile | undefined => {
+export const extractAtPath = <TFile extends ModuleFileD>(dir: string, name: string, mode: ModuleFileMode) : TFile | undefined => {
     const fileName = `${name}.${mode.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
