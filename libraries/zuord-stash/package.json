@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "devDependencies": {
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "zuord-extractor": "^0.0.52"
   }
 }

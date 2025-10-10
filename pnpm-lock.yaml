@@ -138,6 +138,10 @@ importers:
         version: 0.0.52
 
   libraries/zuord-stash:
+    dependencies:
+      zuord-extractor:
+        specifier: ^0.0.52
+        version: 0.0.52
     devDependencies:
       typescript:
         specifier: ^5.9.3
