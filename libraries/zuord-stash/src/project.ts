@@ -2,12 +2,20 @@ export type Project = {
     path: string;
 }
 
-export interface ProjectDirectory {
-    name: string;
+export abstract class ProjectDirectory {
+    protected constructor(
+        public readonly name: string
+    ) {
+
+    }
 }
 
-export interface ProjectScope extends ProjectDirectory {
-    type: ProjectScopeType;
+export class ProjectScope extends ProjectDirectory {
+    protected constructor(name: string, 
+        public readonly type: ProjectScopeType
+    ) {
+        super(name);
+    }
 }
 
 export enum ProjectScopeType {
