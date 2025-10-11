@@ -147,9 +147,16 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getFolder(name: string) : ProjectFolder | undefined {
+        const folder = this.#folders.find(f => f.name === name);
+
+        if(folder) {
+            return folder;
+        }
+
         const entry = this.getEntry(name);
-        
+
         if(entry instanceof ProjectFolder) {
+            this.#folders.push(entry);
             return entry;
         }
 
