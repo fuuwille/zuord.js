@@ -3,12 +3,16 @@ export type Project = {
 }
 
 export abstract class ProjectDirectory {
+    #folders: ProjectFolder[] = [];
+
     protected constructor(
         public readonly name: string
     ) {
 
     }
 }
+
+//
 
 export class ProjectScope extends ProjectDirectory {
     protected constructor(name: string, 
@@ -22,6 +26,8 @@ export enum ProjectScopeType {
     Source,
     Dist
 }
+
+//
 
 export class ProjectFolder extends ProjectDirectory {
     protected constructor(name: string) {
