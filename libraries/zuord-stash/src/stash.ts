@@ -63,5 +63,7 @@ export class Stash {
 
             return true;
         }
+
+        if (!scope) return undefined;
     }
 }
