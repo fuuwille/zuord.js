@@ -12,8 +12,21 @@ export class Project {
             throw new Error(`Invalid project path: ${path}`);
         }
 
-        this.#sourceScope = undefined;
-        this.#distScope = undefined;
+        const json = this.getJSON();
+
+        if(!json) {
+            this.#sourceScope = undefined;
+            this.#distScope = undefined;
+        }
+        else {
+            if(json.source && typeof json.source === "string") {
+                this.#sourceScope = new ProjectScope(json.source, ProjectScopeType.Source);
+            }
+
+            if(json.dist && typeof json.dist === "string") {
+                this.#distScope = new ProjectScope(json.dist, ProjectScopeType.Dist);
+            }
+        }
     }
 
     //
