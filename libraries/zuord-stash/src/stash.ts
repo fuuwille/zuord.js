@@ -4,17 +4,13 @@ import * as regex from "./regex";
 import { Project } from "./project";
 
 export class Stash {
-    private projects: Map<string, Project>;
-
-    public constructor() {
-        this.projects = new Map();
-    }
+    private static projects: Map<string, Project > = new Map();
 
     //
 
-    private createProject(path: string) : Project {
+    private static createProject(path: string) : Project {
         const project = new Project(path);
-        this.projects.set(path, project);
+        Stash.projects.set(path, project);
 
         return project;
     }
