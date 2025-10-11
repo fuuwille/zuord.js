@@ -14,21 +14,8 @@ export class Project {
         }
 
         this.#config = new ProjectConfig(this);
-        const data = this.#config.data;
-
-        if(!data) {
-            this.#sourceScope = undefined;
-            this.#distScope = undefined;
-        }
-        else {
-            if(data.source && typeof data.source === "string") {
-                this.#sourceScope = new ProjectScope(data.source, ProjectScopeType.Source);
-            }
-
-            if(data.dist && typeof data.dist === "string") {
-                this.#distScope = new ProjectScope(data.dist, ProjectScopeType.Dist);
-            }
-        }
+        this.#sourceScope = ProjectScope.createFrom(this, ProjectScopeType.Source);
+        this.#distScope = ProjectScope.createFrom(this, ProjectScopeType.Dist);
     }
 
     //
