@@ -294,7 +294,7 @@ export class ProjectFolder extends ProjectDirectory {
     }
 
     public getPath(): string {
-        throw new Error("Method not implemented.");
+        return PATH.join(this.parent.getPath(), this.name);
     }
 
     //
