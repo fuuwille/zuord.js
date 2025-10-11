@@ -1,4 +1,4 @@
-import { pathRegex } from "./utility";
+import { pathRegex } from "./regex";
 import fs from "fs";
 
 export class Project {

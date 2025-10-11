@@ -1,6 +1,6 @@
 import ts from "typescript";
 import { $ZuordExtractor as ZE } from "zuord-extractor";
-import { moduleNameRegex } from "./utility";
+import { moduleNameRegex } from "./regex";
 
 export const dirtySymbol = Symbol("dirty");
 
