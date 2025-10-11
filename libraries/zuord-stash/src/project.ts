@@ -22,3 +22,9 @@ export enum ProjectScopeType {
     Source,
     Dist
 }
+
+export class ProjectFolder extends ProjectDirectory {
+    protected constructor(name: string) {
+        super(name);
+    }
+}
