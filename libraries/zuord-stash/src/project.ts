@@ -114,6 +114,18 @@ export class ProjectScope extends ProjectDirectory {
     ) {
         super(name);
     }
+
+    //
+
+    public static createFrom(project: Project, type : ProjectScopeType) : ProjectScope | undefined {
+        const data = project.config.data;
+        if(!data) return undefined;
+
+        const name = type === ProjectScopeType.Source ? data.source : data.dist;
+        if(!name || typeof name !== "string") return undefined;
+
+        return new ProjectScope(name, type);
+    }
 }
 
 export enum ProjectScopeType {
