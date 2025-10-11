@@ -1,9 +1,18 @@
-import { Project } from "ts-morph";
+import { Project } from "./project";
 
 export class Stash {
-    #projects: Map<string, Project>;
+    private static projects: Map<string, Project>;
 
     public constructor() {
-        this.#projects = new Map();
+        Stash.projects = new Map();
+    }
+
+    //
+
+    public static createProject(path: string) : Project {
+        const project = new Project(path);
+        Stash.projects.set(path, project);
+
+        return project;
     }
 }
