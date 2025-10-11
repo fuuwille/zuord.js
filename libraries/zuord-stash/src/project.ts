@@ -138,6 +138,20 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         return undefined;
     }
+
+    private getFolderBySlug(slugs: string[]) : ProjectFolder | undefined {
+        if (slugs.length === 0) return undefined;
+
+        const [head, ...tail] = slugs;
+        const folder = this.fetchFolder(head);
+        if (!folder) return undefined;
+
+        if (tail.length === 0) {
+            return folder;
+        }
+
+        return folder.getFolderBySlug(tail);
+    }
 }
 
 //
