@@ -29,11 +29,18 @@ export class Stash {
         let lookingPath = "";
         let lastFoundPath: string | undefined = undefined;
 
+        let slugs: string[] = [];
+
         for (const segment of segments) {
             lookingPath = PATH.join(lookingPath, segment);
 
+            if(lastFoundPath) {
+                slugs.push(segment);
+            }
+
             if (FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
                 lastFoundPath = lookingPath;
+                slugs = [];
             }
         }
     }
