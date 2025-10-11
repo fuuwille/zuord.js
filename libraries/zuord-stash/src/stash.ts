@@ -8,18 +8,6 @@ export class Stash {
 
     //
 
-    private static fetchProject(path: string) : Project | undefined {
-        const existing = Stash.projects.get(path);
-        if (existing) return existing;
-
-        const project = new Project(path);
-        Stash.projects.set(path, project);
-
-        return project;
-    }
-
-    //
-
     public static getProjectReference(path: string): ProjectReference | undefined {
         if (!regex.path.exec(path)) return undefined;
 
@@ -45,12 +33,24 @@ export class Stash {
 
         if (!lastFoundPath) return undefined;
 
-        const project = Stash.fetchProject(lastFoundPath);
+        const project = getProject(lastFoundPath);
         if (!project) return undefined;
 
         const scopeSlugs : string[][] = [
             project.sourceScope?.getPath().split("/").filter(Boolean) || [],
             project.distScope?.getPath().split("/").filter(Boolean) || []
         ];
+
+        //
+
+        function getProject(path: string) : Project | undefined {
+            const existing = Stash.projects.get(path);
+            if (existing) return existing;
+
+            const project = new Project(path);
+            Stash.projects.set(path, project);
+
+            return project;
+        }
     }
 }
