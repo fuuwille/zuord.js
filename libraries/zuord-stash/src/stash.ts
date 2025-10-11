@@ -5,16 +5,7 @@ import { Project } from "./project";
 
 export class Stash {
     private static projects: Map<string, Project > = new Map();
-
-    //
-
-    private static createProject(path: string) : Project {
-        const project = new Project(path);
-        Stash.projects.set(path, project);
-
-        return project;
-    }
-
+    
     //
 
     public static getProject(path: string) : Project | undefined {
@@ -24,7 +15,10 @@ export class Stash {
         const existing = Stash.projects.get(projectPath);
         if (existing) return existing;
 
-        return Stash.createProject(projectPath);
+        const project = new Project(path);
+        Stash.projects.set(path, project);
+
+        return project;
     }
 
     public static getProjectPath(path: string): string | undefined {
