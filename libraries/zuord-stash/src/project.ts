@@ -8,7 +8,7 @@ export class Project {
     private constructor(
         public readonly path: string,
     ) {
-        if(!Project.isPathValid(path)) {
+        if(!regex.path.test(path)) {
             throw new Error(`Invalid project path: ${path}`);
         }
 
@@ -36,10 +36,6 @@ export class Project {
 
     public static create(path: string) : Project {
         return new Project(path);
-    }
-
-    public static isPathValid(path: string) : boolean {
-        return regex.path.test(path);
     }
 }
 
