@@ -288,11 +288,33 @@ export enum ProjectScopeType {
 //
 
 export class ProjectFolder extends ProjectDirectory {
-    public constructor(parent: ProjectDirectory, name: string) {
+    public constructor(
+        public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
     }
 
     public getPath(): string {
         throw new Error("Method not implemented.");
+    }
+
+    //
+
+    public getParentChain(): ProjectDirectory[] {
+        let current: ProjectDirectory | undefined = this.parent;
+
+        const chain: ProjectDirectory[] = [];
+
+        while (current) {
+            chain.push(current);
+
+            if (current instanceof ProjectFolder) {
+                current = current.parent;
+            }
+            else {
+                current = undefined;
+            }
+        }
+
+        return chain;
     }
 }
