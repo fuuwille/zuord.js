@@ -56,7 +56,7 @@ export class Stash {
         }
 
         function scopeIndex(scope: ProjectScope) {
-            const scopeSlugs = scope.getPath().split("/").filter(Boolean);
+            const scopeSlugs = scope.name.split("/").filter(Boolean);
 
             for (let i = 0; i < scopeSlugs.length; i++) {
                 if (slugs[i] !== scopeSlugs[i]) return 0;
