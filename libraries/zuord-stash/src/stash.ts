@@ -48,9 +48,9 @@ export class Stash {
         for (const $scope of scopeList) {
             const index = scopeIndex($scope);
 
-            if (index) {
+            if (index >= 0) {
                 scope = $scope;
-                slugs = slugs.slice(index - 1);
+                slugs = slugs.slice(index);
                 break;
             }
         }
@@ -59,13 +59,13 @@ export class Stash {
             const scopeSlugs = scope.getPath().split("/").filter(Boolean);
 
             let i;
-            for (i = 0; i < slugs.length; i++) {
+            for (i = 0; i < scopeSlugs.length; i++) {
                 if (slugs[i] !== scopeSlugs[i]) {
-                    return 0;
+                    return -1;
                 }
             }
 
-            return i + 1;
+            return i;
         }
 
         if (!scope) return undefined;
