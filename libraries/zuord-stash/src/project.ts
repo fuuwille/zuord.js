@@ -11,6 +11,16 @@ export class Project {
 
     //
 
+    public get sourceScope() : ProjectScope | undefined {
+        return this.#sourceScope;
+    }
+
+    public get distScope() : ProjectScope | undefined {
+        return this.#distScope;
+    }
+
+    //
+
     public static create(path: string) : Project {
         return new Project(path);
     }
