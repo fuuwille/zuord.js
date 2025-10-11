@@ -54,12 +54,20 @@ export class Project {
 //
 
 export class ProjectConfig {
+    #data: any | undefined;
+
     public readonly path: string;
 
     public constructor(
         public readonly project: Project
     ) {
         this.path = `${this.project.path}/zuord.json`;
+    }
+
+    //
+
+    public get data() : any | undefined {
+        return this.#data;
     }
 }
 
