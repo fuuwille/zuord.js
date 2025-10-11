@@ -46,22 +46,26 @@ export class Stash {
         const scopeList = [project.sourceScope, project.distScope].filter(Boolean) as ProjectScope[];
 
         for (const $scope of scopeList) {
-            if (isScopeMatched($scope)) {
+            const index = scopeIndex($scope);
+
+            if (index) {
                 scope = $scope;
+                slugs = slugs.slice(index - 1);
                 break;
             }
         }
 
-        function isScopeMatched(scope: ProjectScope) {
+        function scopeIndex(scope: ProjectScope) {
             const scopeSlugs = scope.getPath().split("/").filter(Boolean);
 
-            for (let i = 0; i < slugs.length; i++) {
+            let i;
+            for (i = 0; i < slugs.length; i++) {
                 if (slugs[i] !== scopeSlugs[i]) {
-                    return false;
+                    return 0;
                 }
             }
 
-            return true;
+            return i + 1;
         }
 
         if (!scope) return undefined;
