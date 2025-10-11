@@ -131,7 +131,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         const existing = this.#folders.find(folder => folder.name === name);
         if (existing) return existing;
-        
+
         const path = PATH.join(this.getPath(), name);
 
         if(fs.existsSync(path)) {
@@ -148,17 +148,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public resolveFolderBySlug(slugs: string[]) : ProjectFolder | undefined {
-        if (slugs.length === 0) return undefined;
-
-        const [head, ...tail] = slugs;
-        const folder = this.getFolder(head);
-        if (!folder) return undefined;
-
-        if (tail.length === 0) {
-            return folder;
-        }
-
-        return folder.resolveFolderBySlug(tail);
+        return this.resolveFoldersBySlug(slugs)?.pop();
     }
 
     public resolveFolders(path: string) : ProjectFolder[] {
