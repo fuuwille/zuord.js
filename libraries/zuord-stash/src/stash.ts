@@ -8,17 +8,14 @@ export class Stash {
 
     //
 
-    public static getProject(path: string) : Project | undefined {
-        const projectPath = Stash.getProjectReference(path);
-        if (!projectPath) return undefined;
-
-        /*const existing = Stash.projects.get(projectPath);
+    private static fetchProject(path: string) : Project | undefined {
+        const existing = Stash.projects.get(path);
         if (existing) return existing;
 
-        const project = new Project(projectPath);
-        Stash.projects.set(projectPath, project);
+        const project = new Project(path);
+        Stash.projects.set(path, project);
 
-        return project;*/
+        return project;
     }
 
     public static getProjectReference(path: string): ProjectReference | undefined {
