@@ -3,12 +3,12 @@ export type Project = {
 }
 
 export abstract class ProjectDirectory {
-    #folders: ProjectFolder[] = [];
+    #folders: ProjectFolder[];
 
     protected constructor(
         public readonly name: string
     ) {
-
+        this.#folders = [];
     }
 }
 
