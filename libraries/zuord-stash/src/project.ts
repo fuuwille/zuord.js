@@ -91,10 +91,10 @@ export abstract class ProjectEntry {
 }
 
 export type ProjectReference = {
-    project: Project | null;
-    scope: ProjectScope | null;
-    folders: ProjectFolder[] | null;
-    file: ProjectFile | null;
+    project: Project;
+    scope: ProjectScope;
+    folders: ProjectFolder[];
+    file?: ProjectFile;
 }
 
 //
