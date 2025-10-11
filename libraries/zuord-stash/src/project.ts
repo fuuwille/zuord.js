@@ -73,6 +73,14 @@ export class Project {
 
 //
 
+export class ProjectConfig {
+    public constructor(
+        public readonly project: Project
+    ) {}
+}
+
+//
+
 export abstract class ProjectDirectory {
     #folders: ProjectFolder[];
 
