@@ -2,7 +2,7 @@ import * as regex from "./regex";
 import fs from "fs";
 
 export class Project {
-    #config: any | undefined;
+    #config: ProjectConfig;
     #sourceScope : ProjectScope | undefined;
     #distScope : ProjectScope | undefined;
 
@@ -13,9 +13,9 @@ export class Project {
             throw new Error(`Invalid project path: ${path}`);
         }
 
-        const json = this.loadConfig();
+        this.#config = new ProjectConfig(this);
 
-        if(!json) {
+        /*if(!json) {
             this.#sourceScope = undefined;
             this.#distScope = undefined;
         }
@@ -27,7 +27,7 @@ export class Project {
             if(json.dist && typeof json.dist === "string") {
                 this.#distScope = new ProjectScope(json.dist, ProjectScopeType.Dist);
             }
-        }
+        }*/
     }
 
     //
@@ -48,26 +48,6 @@ export class Project {
 
     public exists() : boolean {
         return fs.existsSync(this.path);
-    }
-
-    public loadConfig() : any | undefined {
-        const jsonPath = this.getConfigPath();
-
-        try {
-            const content = fs.readFileSync(jsonPath, "utf-8");
-
-            this.#config = JSON.parse(content);
-            return this.#config;
-        } catch (err) {
-            console.error("Failed to read JSON:", err);
-
-            this.#config = undefined;
-            return undefined;
-        }
-    }
-
-    public getConfigPath() : string {
-        return `${this.path}/zuord.json`;
     }
 }
 
