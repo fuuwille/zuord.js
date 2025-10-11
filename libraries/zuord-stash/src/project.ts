@@ -69,6 +69,20 @@ export class ProjectConfig {
     public get data() : any | undefined {
         return this.#data;
     }
+
+    public loadData() : any | undefined {
+        if(!fs.existsSync(this.path)) {
+            this.#data = undefined;
+            return undefined;
+        }
+
+        try {
+            const content = fs.readFileSync(this.path, "utf-8");
+            return this.#data = JSON.parse(content);
+        } catch (error) {
+            return this.#data = undefined;
+        }
+    }
 }
 
 //
