@@ -1,7 +1,7 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./regex";
-import { Project, ProjectReference } from "./project";
+import { Project, ProjectReference, ProjectScope } from "./project";
 
 export class Stash {
     private static projects: Map<string, Project > = new Map();
@@ -42,9 +42,26 @@ export class Stash {
             Stash.projects.set(path, project);
         }
 
-        const scopeSlugs : string[][] = [
-            project.sourceScope?.getPath().split("/").filter(Boolean) || [],
-            project.distScope?.getPath().split("/").filter(Boolean) || []
-        ];
+        let scope: ProjectScope | undefined;
+        const scopeList = [project.sourceScope, project.distScope].filter(Boolean) as ProjectScope[];
+
+        for (const $scope of scopeList) {
+            if (isScopeMatched($scope)) {
+                scope = $scope;
+                break;
+            }
+        }
+
+        function isScopeMatched(scope: ProjectScope) {
+            const scopeSlugs = scope.getPath().split("/").filter(Boolean);
+
+            for (let i = 0; i < slugs.length; i++) {
+                if (slugs[i] !== scopeSlugs[i]) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
