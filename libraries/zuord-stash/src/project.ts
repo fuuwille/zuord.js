@@ -274,8 +274,8 @@ export class ProjectScope extends ProjectDirectory {
 }
 
 export enum ProjectScopeType {
-    Source,
-    Dist
+    Source = "source",
+    Dist = "dist"
 }
 
 //
