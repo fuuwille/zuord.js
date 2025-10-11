@@ -209,6 +209,19 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return second;
     }
 
+    public getLastFile(path: string) : ProjectFile | undefined {
+        const chain = this.getEntryChain(path);
+        const last = chain.pop();
+
+        if(!last) return undefined;
+
+        if(last instanceof ProjectFile) {
+            return last;
+        }
+        
+        return undefined;
+    }
+
     public getLastEntryBySlugs(slugs: string[]) : ProjectEntry | undefined {
         return this.getEntryChainBySlugs(slugs)?.pop();
     }
