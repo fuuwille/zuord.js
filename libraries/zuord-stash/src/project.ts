@@ -125,9 +125,13 @@ export abstract class ProjectDirectory extends ProjectEntry {
     //
 
     public getFolder(name: string) : ProjectFolder | undefined {
+        if(name.includes("/") || name.includes("\\")) {
+            return undefined;
+        }
+
         const existing = this.#folders.find(folder => folder.name === name);
         if (existing) return existing;
-
+        
         const path = PATH.join(this.getPath(), name);
 
         if(fs.existsSync(path)) {
