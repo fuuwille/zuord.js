@@ -13,7 +13,7 @@ export class Stash {
 
         const segments = path.split("/").filter(Boolean);
 
-        let lookingPath = "";
+        let lookingPath = "/";
         let projectPath: string | undefined = undefined;
 
         let slugs: string[] = [];
