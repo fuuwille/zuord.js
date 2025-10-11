@@ -94,6 +94,7 @@ export type ProjectReference = {
     project: Project;
     scope: ProjectScope;
     folders: ProjectFolder[];
+    file: ProjectFile;
 }
 
 //
