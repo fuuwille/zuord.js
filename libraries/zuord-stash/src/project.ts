@@ -1,5 +1,9 @@
-export type Project = {
-    path: string;
+export class Project {
+    private constructor(
+        public readonly path: string,
+    ) {
+
+    }
 }
 
 export abstract class ProjectDirectory {
