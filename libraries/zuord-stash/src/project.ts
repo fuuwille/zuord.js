@@ -88,6 +88,8 @@ export abstract class ProjectEntry {
         public readonly project: Project,
         public readonly name: string
     ) {}
+
+    abstract getPath(): string;
 }
 
 export type ProjectReference = {
@@ -102,6 +104,10 @@ export type ProjectReference = {
 export class ProjectFile extends ProjectEntry {
     public constructor(parent: ProjectDirectory, name: string) {
         super(parent.project, name);
+    }
+
+    public getPath(): string {
+        throw new Error("Method not implemented.");
     }
 }
 
@@ -123,6 +129,10 @@ export class ProjectScope extends ProjectDirectory {
         public readonly type: ProjectScopeType
     ) {
         super(project, name);
+    }
+
+    public getPath(): string {
+        throw new Error("Method not implemented.");
     }
 
     //
@@ -148,5 +158,9 @@ export enum ProjectScopeType {
 export class ProjectFolder extends ProjectDirectory {
     public constructor(project: Project, name: string) {
         super(project, name);
+    }
+
+    public getPath(): string {
+        throw new Error("Method not implemented.");
     }
 }
