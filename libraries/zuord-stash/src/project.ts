@@ -156,6 +156,24 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         return folder.resolveFolderBySlug(tail);
     }
+
+    public resolveFolders(path: string) : ProjectFolder[] {
+        return this.resolveFoldersBySlug(path.split("/").filter(Boolean));
+    }
+
+    public resolveFoldersBySlug(slugs: string[]) : ProjectFolder[] {
+        if (slugs.length === 0) return [];
+
+        const [head, ...tail] = slugs;
+        const folder = this.getFolder(head);
+        if (!folder) return [];
+
+        if (tail.length === 0) {
+            return [folder];
+        }
+
+        return [folder, ...folder.resolveFoldersBySlug(tail)];
+    }
 }
 
 //
