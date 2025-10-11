@@ -141,7 +141,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
             const stat = fs.statSync(path);
 
             if(stat.isDirectory()) {
-                return new ProjectFolder(this.project, name);
+                return new ProjectFolder(this, name);
             }
 
             if(stat.isFile()) {
@@ -288,8 +288,8 @@ export enum ProjectScopeType {
 //
 
 export class ProjectFolder extends ProjectDirectory {
-    public constructor(project: Project, name: string) {
-        super(project, name);
+    public constructor(parent: ProjectDirectory, name: string) {
+        super(parent.project, name);
     }
 
     public getPath(): string {
