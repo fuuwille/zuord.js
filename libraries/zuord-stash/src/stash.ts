@@ -40,5 +40,10 @@ export class Stash {
                 slugs = [];
             }
         }
+
+        if (!lastFoundPath) return undefined;
+
+        const project = Stash.fetchProject(lastFoundPath);
+        if (!project) return undefined;
     }
 }
