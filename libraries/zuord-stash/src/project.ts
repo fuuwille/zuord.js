@@ -163,30 +163,31 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getLastFolder(path: string) : ProjectFolder | undefined {
-        return this.getLastFolderBySlugs(path.split("/").filter(Boolean));
+    public getLastEntry(path: string) : ProjectEntry | undefined {
+        return this.getLastEntryBySlugs(path.split("/").filter(Boolean));
     }
 
-    public getLastFolderBySlugs(slugs: string[]) : ProjectFolder | undefined {
-        return this.getFolderChainBySlugs(slugs)?.pop();
+    public getLastEntryBySlugs(slugs: string[]) : ProjectEntry | undefined {
+        return this.getEntryChainBySlugs(slugs)?.pop();
     }
 
-    public getFolderChain(path: string) : ProjectFolder[] {
-        return this.getFolderChainBySlugs(path.split("/").filter(Boolean));
+    public getEntryChain(path: string) : ProjectEntry[] {
+        return this.getEntryChainBySlugs(path.split("/").filter(Boolean));
     }
 
-    public getFolderChainBySlugs(slugs: string[]) : ProjectFolder[] {
+    public getEntryChainBySlugs(slugs: string[]) : ProjectEntry[] {
         if (slugs.length === 0) return [];
 
         const [head, ...tail] = slugs;
-        const folder = this.getFolder(head);
-        if (!folder) return [];
+        const entry = this.getEntry(head);
+        
+        if (!entry) return [];
 
-        if (tail.length === 0) {
-            return [folder];
+        if(entry instanceof ProjectDirectory) {
+            return [entry, ...entry.getEntryChainBySlugs(tail)];
         }
 
-        return [folder, ...folder.getFolderChainBySlugs(tail)];
+        return [entry];
     }
 }
 
