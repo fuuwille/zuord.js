@@ -103,8 +103,11 @@ export type ProjectReference = {
 //
 
 export class ProjectFile extends ProjectEntry {
+    public readonly fullName: string;
+
     public constructor(parent: ProjectDirectory, name: string) {
         super(parent.project, name);
+        this.fullName = name;
     }
 
     public getPath(): string {
