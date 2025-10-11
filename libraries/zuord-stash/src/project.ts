@@ -19,7 +19,7 @@ export abstract class ProjectDirectory {
 //
 
 export class ProjectScope extends ProjectDirectory {
-    protected constructor(name: string, 
+    private constructor(name: string, 
         public readonly type: ProjectScopeType
     ) {
         super(name);
@@ -34,7 +34,7 @@ export enum ProjectScopeType {
 //
 
 export class ProjectFolder extends ProjectDirectory {
-    protected constructor(name: string) {
+    private constructor(name: string) {
         super(name);
     }
 }
