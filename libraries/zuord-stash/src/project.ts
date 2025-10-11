@@ -2,6 +2,7 @@ import * as regex from "./regex";
 import fs from "fs";
 
 export class Project {
+    #config: any | undefined;
     #sourceScope : ProjectScope | undefined;
     #distScope : ProjectScope | undefined;
 
@@ -30,6 +31,10 @@ export class Project {
     }
 
     //
+
+    public get config() : any | undefined {
+        return this.#config;
+    }
 
     public get sourceScope() : ProjectScope | undefined {
         return this.#sourceScope;
