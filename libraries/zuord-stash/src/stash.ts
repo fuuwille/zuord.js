@@ -58,14 +58,11 @@ export class Stash {
         function scopeIndex(scope: ProjectScope) {
             const scopeSlugs = scope.getPath().split("/").filter(Boolean);
 
-            let i;
-            for (i = 0; i < scopeSlugs.length; i++) {
-                if (slugs[i] !== scopeSlugs[i]) {
-                    return -1;
-                }
+            for (let i = 0; i < scopeSlugs.length; i++) {
+                if (slugs[i] !== scopeSlugs[i]) return -1;
             }
 
-            return i;
+            return scopeSlugs.length;
         }
 
         if (!scope) return undefined;
