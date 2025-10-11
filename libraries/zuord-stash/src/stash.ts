@@ -21,20 +21,20 @@ export class Stash {
 
     //
 
-    public getProjectPath(path: string) : string | undefined {
-        if(!regex.path.exec(path)) {
-            return undefined;
-        }
+    public static getProjectPath(path: string): string | undefined {
+        if (!regex.path.exec(path)) return undefined;
 
-        const segments = [...path.split("/")];
-        let lookingPath = segments[0];
+        const segments = path.split("/").filter(Boolean);
+        let lookingPath = PATH.isAbsolute(path) ? PATH.sep : "";
 
-        for(let i = 1; i < segments.length; i++) {
-            lookingPath = PATH.join(lookingPath, segments[i]);
+        for (const segment of segments) {
+            lookingPath = PATH.join(lookingPath, segment);
 
-            if(FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
+            if (FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
                 return lookingPath;
             }
         }
+
+        return undefined;
     }
 }
