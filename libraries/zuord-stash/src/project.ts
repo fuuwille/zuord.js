@@ -95,8 +95,8 @@ export abstract class ProjectEntry {
 
 export type ProjectReference = {
     project: Project;
-    scope: ProjectScope;
-    folders: ProjectFolder[];
+    scope?: ProjectScope;
+    folders?: ProjectFolder[];
     file?: ProjectFile;
 }
 
