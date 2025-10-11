@@ -1,4 +1,5 @@
 import * as regex from "./regex";
+import PATH from "path";
 import fs from "fs";
 
 export class Project {
@@ -132,7 +133,7 @@ export class ProjectScope extends ProjectDirectory {
     }
 
     public getPath(): string {
-        throw new Error("Method not implemented.");
+        return PATH.join(this.project.path, this.name);
     }
 
     //
