@@ -124,7 +124,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     //
 
-    private fetchFolder(name: string) : ProjectFolder | undefined {
+    public getFolder(name: string) : ProjectFolder | undefined {
         const existing = this.#folders.find(folder => folder.name === name);
         if (existing) return existing;
 
@@ -139,22 +139,22 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    private getFolderBySlug(slugs: string[]) : ProjectFolder | undefined {
+    public resolveFolder(path: string) : ProjectFolder | undefined {
+        return this.resolveFolderBySlug(path.split("/").filter(Boolean));
+    }
+
+    public resolveFolderBySlug(slugs: string[]) : ProjectFolder | undefined {
         if (slugs.length === 0) return undefined;
 
         const [head, ...tail] = slugs;
-        const folder = this.fetchFolder(head);
+        const folder = this.getFolder(head);
         if (!folder) return undefined;
 
         if (tail.length === 0) {
             return folder;
         }
 
-        return folder.getFolderBySlug(tail);
-    }
-
-    public getFolder(path: string) : ProjectFolder | undefined {
-        return this.getFolderBySlug(path.split("/").filter(Boolean));
+        return folder.resolveFolderBySlug(tail);
     }
 }
 
