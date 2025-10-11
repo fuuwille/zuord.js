@@ -4,6 +4,12 @@ export class Project {
     ) {
 
     }
+
+    //
+
+    public static create(path: string) : Project {
+        return new Project(path);
+    }
 }
 
 export abstract class ProjectDirectory {
