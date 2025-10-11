@@ -32,6 +32,20 @@ export class Project {
         return fs.existsSync(this.path);
     }
 
+    public getJSON() : any | undefined {
+        const jsonPath = this.getJSONPath();
+
+        try {
+            const content = fs.readFileSync(jsonPath, "utf-8");
+            const json = JSON.parse(content);
+
+            return json;
+        } catch (err) {
+            console.error("Failed to read JSON:", err);
+            return undefined;
+        }
+    }
+
     public getJSONPath() : string {
         return `${this.path}/zuord.json`;
     }
