@@ -98,6 +98,14 @@ export type ProjectReference = {
 
 //
 
+export class ProjectFile extends ProjectEntry {
+    public constructor(parent: ProjectDirectory, name: string) {
+        super(parent.project, name);
+    }
+}
+
+//
+
 export abstract class ProjectDirectory extends ProjectEntry {
     #folders: ProjectFolder[];
 
