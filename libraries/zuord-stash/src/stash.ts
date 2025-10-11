@@ -1,7 +1,7 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./regex";
-import { Project } from "./project";
+import { Project, ProjectReference } from "./project";
 
 export class Stash {
     private static projects: Map<string, Project > = new Map();
@@ -9,24 +9,24 @@ export class Stash {
     //
 
     public static getProject(path: string) : Project | undefined {
-        const projectPath = Stash.getProjectPath(path);
+        const projectPath = Stash.getProjectReference(path);
         if (!projectPath) return undefined;
 
-        const existing = Stash.projects.get(projectPath);
+        /*const existing = Stash.projects.get(projectPath);
         if (existing) return existing;
 
         const project = new Project(projectPath);
         Stash.projects.set(projectPath, project);
 
-        return project;
+        return project;*/
     }
 
-    public static getProjectPath(path: string): string | undefined {
+    public static getProjectReference(path: string): ProjectReference | undefined {
         if (!regex.path.exec(path)) return undefined;
 
         const segments = path.split("/").filter(Boolean);
 
-        let lookingPath = PATH.isAbsolute(path) ? PATH.sep : "";
+        let lookingPath = "";
         let lastFoundPath: string | undefined = undefined;
 
         for (const segment of segments) {
@@ -36,7 +36,5 @@ export class Stash {
                 lastFoundPath = lookingPath;
             }
         }
-
-        return lastFoundPath;
     }
 }
