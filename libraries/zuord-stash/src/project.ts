@@ -13,7 +13,7 @@ export class Project {
             throw new Error(`Invalid project path: ${path}`);
         }
 
-        const json = this.getJSON();
+        const json = this.loadConfig();
 
         if(!json) {
             this.#sourceScope = undefined;
@@ -50,24 +50,25 @@ export class Project {
         return fs.existsSync(this.path);
     }
 
-    public getJSON() : any | undefined {
-        const jsonPath = this.getJSONPath();
+    public loadConfig() : any | undefined {
+        const jsonPath = this.getConfigPath();
 
         try {
             const content = fs.readFileSync(jsonPath, "utf-8");
-            const json = JSON.parse(content);
 
-            return json;
+            this.#config = JSON.parse(content);
+            return this.#config;
         } catch (err) {
             console.error("Failed to read JSON:", err);
+
+            this.#config = undefined;
             return undefined;
         }
     }
 
-    public getJSONPath() : string {
+    public getConfigPath() : string {
         return `${this.path}/zuord.json`;
     }
-
 }
 
 //
