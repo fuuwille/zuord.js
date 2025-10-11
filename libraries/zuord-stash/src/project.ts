@@ -116,10 +116,13 @@ export class ProjectFile extends ProjectEntry {
 
 export abstract class ProjectDirectory extends ProjectEntry {
     #folders: ProjectFolder[];
+    #files: ProjectFile[];
 
     protected constructor(project: Project, name: string) {
         super(project, name);
+        
         this.#folders = [];
+        this.#files = [];
     }
 
     //
@@ -180,7 +183,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         const [head, ...tail] = slugs;
         const entry = this.getEntry(head);
-        
+
         if (!entry) return [];
 
         if(entry instanceof ProjectDirectory) {
