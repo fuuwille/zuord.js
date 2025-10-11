@@ -14,32 +14,32 @@ export class Stash {
         const segments = path.split("/").filter(Boolean);
 
         let lookingPath = "";
-        let lastFoundPath: string | undefined = undefined;
+        let projectPath: string | undefined = undefined;
 
         let slugs: string[] = [];
 
         for (const segment of segments) {
             lookingPath = PATH.join(lookingPath, segment);
 
-            if(lastFoundPath) {
+            if(projectPath) {
                 slugs.push(segment);
             }
 
             if (FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
-                lastFoundPath = lookingPath;
+                projectPath = lookingPath;
                 slugs = [];
             }
         }
 
-        if (!lastFoundPath) return undefined;
+        if (!projectPath) return undefined;
 
         let projectRef;
 
-        projectRef = Stash.projects.get(path);
+        projectRef = Stash.projects.get(projectPath);
 
         if (!projectRef) {
-            projectRef = new Project(path);
-            Stash.projects.set(path, projectRef);
+            projectRef = new Project(projectPath);
+            Stash.projects.set(projectPath, projectRef);
         }
 
         let scopeRef: ProjectScope | undefined;
