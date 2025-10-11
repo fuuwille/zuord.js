@@ -62,6 +62,7 @@ export class ProjectConfig {
         public readonly project: Project
     ) {
         this.path = `${this.project.path}/zuord.json`;
+        this.loadData();
     }
 
     //
