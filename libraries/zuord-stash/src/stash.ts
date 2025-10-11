@@ -8,7 +8,7 @@ export class Stash {
 
     //
 
-    public static getProjectReference(path: string): StashReference | undefined {
+    public static reference(path: string): StashReference | undefined {
         if (!regex.path.exec(path)) return undefined;
 
         const segments = path.split("/").filter(Boolean);
