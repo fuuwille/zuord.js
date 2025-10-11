@@ -83,13 +83,20 @@ export class ProjectConfig {
 
 //
 
-export abstract class ProjectDirectory {
-    #folders: ProjectFolder[];
-
-    protected constructor(
+export abstract class ProjectEntry {
+    public constructor(
         public readonly project: Project,
         public readonly name: string
-    ) {
+    ) {}
+}
+
+//
+
+export abstract class ProjectDirectory extends ProjectEntry {
+    #folders: ProjectFolder[];
+
+    protected constructor(project: Project, name: string) {
+        super(project, name);
         this.#folders = [];
     }
 }
