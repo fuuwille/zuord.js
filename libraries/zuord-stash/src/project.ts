@@ -87,6 +87,7 @@ export abstract class ProjectDirectory {
     #folders: ProjectFolder[];
 
     protected constructor(
+        public readonly project: Project,
         public readonly name: string
     ) {
         this.#folders = [];
@@ -96,10 +97,10 @@ export abstract class ProjectDirectory {
 //
 
 export class ProjectScope extends ProjectDirectory {
-    public constructor(name: string, 
+    public constructor(project: Project, name: string, 
         public readonly type: ProjectScopeType
     ) {
-        super(name);
+        super(project, name);
     }
 
     //
@@ -111,7 +112,7 @@ export class ProjectScope extends ProjectDirectory {
         const name = type === ProjectScopeType.Source ? data.source : data.dist;
         if(!name || typeof name !== "string") return undefined;
 
-        return new ProjectScope(name, type);
+        return new ProjectScope(project, name, type);
     }
 }
 
@@ -123,7 +124,7 @@ export enum ProjectScopeType {
 //
 
 export class ProjectFolder extends ProjectDirectory {
-    public constructor(name: string) {
-        super(name);
+    public constructor(project: Project, name: string) {
+        super(project, name);
     }
 }
