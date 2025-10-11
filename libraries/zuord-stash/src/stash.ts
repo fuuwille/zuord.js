@@ -33,23 +33,23 @@ export class Stash {
 
         if (!lastFoundPath) return undefined;
 
-        let project;
+        let projectRef;
 
-        project = Stash.projects.get(path);
+        projectRef = Stash.projects.get(path);
 
-        if (!project) {
-            project = new Project(path);
-            Stash.projects.set(path, project);
+        if (!projectRef) {
+            projectRef = new Project(path);
+            Stash.projects.set(path, projectRef);
         }
 
-        let scope: ProjectScope | undefined;
-        const scopeList = [project.sourceScope, project.distScope].filter(Boolean) as ProjectScope[];
+        let scopeRef: ProjectScope | undefined;
+        const scopeList = [projectRef.sourceScope, projectRef.distScope].filter(Boolean) as ProjectScope[];
 
-        for (const $scope of scopeList) {
-            const index = scopeIndex($scope);
+        for (const scope of scopeList) {
+            const index = scopeIndex(scope);
 
             if (index >= 0) {
-                scope = $scope;
+                scopeRef = scope;
                 slugs = slugs.slice(index);
                 break;
             }
@@ -65,6 +65,6 @@ export class Stash {
             return scopeSlugs.length;
         }
 
-        if (!scope) return undefined;
+        if (!scopeRef) return undefined;
     }
 }
