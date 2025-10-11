@@ -62,12 +62,19 @@ export class ProjectConfig {
         public readonly project: Project
     ) {
         this.path = `${this.project.path}/zuord.json`;
-        this.loadData();
     }
 
     //
 
     public get data() : any | undefined {
+        if(this.#data === null) {
+            return undefined;
+        }
+
+        if(this.#data === undefined) {
+            return this.loadData();
+        }
+
         return this.#data;
     }
 
@@ -81,7 +88,7 @@ export class ProjectConfig {
             const content = fs.readFileSync(this.path, "utf-8");
             return this.#data = JSON.parse(content);
         } catch (error) {
-            return this.#data = undefined;
+            return this.#data = null;
         }
     }
 }
