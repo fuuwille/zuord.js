@@ -1,3 +1,5 @@
+import { pathRegex } from "./utility";
+
 export class Project {
     #sourceScope : ProjectScope | undefined;
     #distScope : ProjectScope | undefined;
@@ -23,6 +25,10 @@ export class Project {
 
     public static create(path: string) : Project {
         return new Project(path);
+    }
+
+    public static isPathValid(path: string) : boolean {
+        return pathRegex.test(path);
     }
 }
 
