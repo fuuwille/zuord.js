@@ -17,6 +17,16 @@ export class Stash {
 
     //
 
+    public static getProject(path: string) : Project | undefined {
+        const projectPath = Stash.getProjectPath(path);
+        if (!projectPath) return undefined;
+
+        const existing = Stash.projects.get(projectPath);
+        if (existing) return existing;
+
+        return Stash.createProject(projectPath);
+    }
+
     public static getProjectPath(path: string): string | undefined {
         if (!regex.path.exec(path)) return undefined;
 
