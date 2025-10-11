@@ -9,7 +9,7 @@ export class Stash {
 
     //
 
-    public createProject(path: string) : Project {
+    private createProject(path: string) : Project {
         const project = new Project(path);
         this.projects.set(path, project);
 
