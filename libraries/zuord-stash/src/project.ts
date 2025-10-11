@@ -143,19 +143,19 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public resolveFolder(path: string) : ProjectFolder | undefined {
-        return this.resolveFolderBySlug(path.split("/").filter(Boolean));
+    public getLastFolder(path: string) : ProjectFolder | undefined {
+        return this.getLastFolderBySlugs(path.split("/").filter(Boolean));
     }
 
-    public resolveFolderBySlug(slugs: string[]) : ProjectFolder | undefined {
-        return this.resolveFoldersBySlug(slugs)?.pop();
+    public getLastFolderBySlugs(slugs: string[]) : ProjectFolder | undefined {
+        return this.getFolderChainBySlugs(slugs)?.pop();
     }
 
-    public resolveFolders(path: string) : ProjectFolder[] {
-        return this.resolveFoldersBySlug(path.split("/").filter(Boolean));
+    public getFolderChain(path: string) : ProjectFolder[] {
+        return this.getFolderChainBySlugs(path.split("/").filter(Boolean));
     }
 
-    public resolveFoldersBySlug(slugs: string[]) : ProjectFolder[] {
+    public getFolderChainBySlugs(slugs: string[]) : ProjectFolder[] {
         if (slugs.length === 0) return [];
 
         const [head, ...tail] = slugs;
@@ -166,7 +166,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
             return [folder];
         }
 
-        return [folder, ...folder.resolveFoldersBySlug(tail)];
+        return [folder, ...folder.getFolderChainBySlugs(tail)];
     }
 }
 
