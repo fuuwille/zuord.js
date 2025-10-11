@@ -54,12 +54,12 @@ export class Project {
 //
 
 export class ProjectConfig {
-    #path: string;
-    
+    public readonly path: string;
+
     public constructor(
         public readonly project: Project
     ) {
-        this.#path = `${this.project.path}/zuord.json`;
+        this.path = `${this.project.path}/zuord.json`;
     }
 }
 
