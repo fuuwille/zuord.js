@@ -18,6 +18,8 @@ export class Stash {
         return project;
     }
 
+    //
+
     public static getProjectReference(path: string): ProjectReference | undefined {
         if (!regex.path.exec(path)) return undefined;
 
@@ -45,5 +47,10 @@ export class Stash {
 
         const project = Stash.fetchProject(lastFoundPath);
         if (!project) return undefined;
+
+        const scopeSlugs : string[][] = [
+            project.sourceScope?.getPath().split("/").filter(Boolean) || [],
+            project.distScope?.getPath().split("/").filter(Boolean) || []
+        ];
     }
 }
