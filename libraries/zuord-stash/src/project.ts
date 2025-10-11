@@ -152,6 +152,10 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         return folder.getFolderBySlug(tail);
     }
+
+    public getFolder(path: string) : ProjectFolder | undefined {
+        return this.getFolderBySlug(path.split("/").filter(Boolean));
+    }
 }
 
 //
