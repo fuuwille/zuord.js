@@ -309,7 +309,7 @@ export class ProjectFolder extends ProjectDirectory {
         const chain: ProjectDirectory[] = [];
 
         while (current) {
-            chain.push(current);
+            chain.unshift(current);
 
             if (current instanceof ProjectFolder) {
                 current = current.parent;
