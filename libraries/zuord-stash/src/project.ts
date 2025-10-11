@@ -121,6 +121,23 @@ export abstract class ProjectDirectory extends ProjectEntry {
         super(project, name);
         this.#folders = [];
     }
+
+    //
+
+    private fetchFolder(name: string) : ProjectFolder | undefined {
+        const existing = this.#folders.find(folder => folder.name === name);
+        if (existing) return existing;
+
+        const path = PATH.join(this.getPath(), name);
+
+        if(fs.existsSync(path)) {
+            const folder = new ProjectFolder(this.project, name);
+            this.#folders.push(folder);
+            return folder;
+        }
+
+        return undefined;
+    }
 }
 
 //
