@@ -1,14 +1,14 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./regex";
-import { Project, ProjectFile, ProjectFolder, ProjectReference, ProjectScope } from "./project";
+import { Project, ProjectFile, ProjectFolder, ProjectScope } from "./project";
 
 export class Stash {
     private static projects: Map<string, Project > = new Map();
 
     //
 
-    public static getProjectReference(path: string): ProjectReference | undefined {
+    public static getProjectReference(path: string): StashReference | undefined {
         if (!regex.path.exec(path)) return undefined;
 
         const segments = path.split("/").filter(Boolean);
@@ -89,4 +89,11 @@ export class Stash {
             }
         }
     }
+}
+
+export type StashReference = {
+    project: Project;
+    scope?: ProjectScope;
+    folders?: ProjectFolder[];
+    file?: ProjectFile;
 }
