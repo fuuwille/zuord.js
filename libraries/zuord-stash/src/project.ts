@@ -14,20 +14,21 @@ export class Project {
         }
 
         this.#config = new ProjectConfig(this);
+        const data = this.#config.data;
 
-        /*if(!json) {
+        if(!data) {
             this.#sourceScope = undefined;
             this.#distScope = undefined;
         }
         else {
-            if(json.source && typeof json.source === "string") {
-                this.#sourceScope = new ProjectScope(json.source, ProjectScopeType.Source);
+            if(data.source && typeof data.source === "string") {
+                this.#sourceScope = new ProjectScope(data.source, ProjectScopeType.Source);
             }
 
-            if(json.dist && typeof json.dist === "string") {
-                this.#distScope = new ProjectScope(json.dist, ProjectScopeType.Dist);
+            if(data.dist && typeof data.dist === "string") {
+                this.#distScope = new ProjectScope(data.dist, ProjectScopeType.Dist);
             }
-        }*/
+        }
     }
 
     //
