@@ -31,6 +31,11 @@ export class Project {
     public exists() : boolean {
         return fs.existsSync(this.path);
     }
+
+    public getJSONPath() : string {
+        return `${this.path}/zuord.json`;
+    }
+
 }
 
 //
