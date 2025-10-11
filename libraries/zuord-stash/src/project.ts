@@ -1,4 +1,5 @@
 import { pathRegex } from "./utility";
+import fs from "fs";
 
 export class Project {
     #sourceScope : ProjectScope | undefined;
@@ -23,6 +24,12 @@ export class Project {
 
     public get distScope() : ProjectScope | undefined {
         return this.#distScope;
+    }
+
+    //
+
+    public exists() : boolean {
+        return fs.existsSync(this.path);
     }
 
     //
