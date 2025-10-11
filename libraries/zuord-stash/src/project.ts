@@ -5,7 +5,7 @@ export class Project {
     #sourceScope : ProjectScope | undefined;
     #distScope : ProjectScope | undefined;
 
-    private constructor(
+    public constructor(
         public readonly path: string,
     ) {
         if(!regex.path.test(path)) {
@@ -30,12 +30,6 @@ export class Project {
 
     public exists() : boolean {
         return fs.existsSync(this.path);
-    }
-
-    //
-
-    public static create(path: string) : Project {
-        return new Project(path);
     }
 }
 
