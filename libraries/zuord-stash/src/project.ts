@@ -5,3 +5,12 @@ export type Project = {
 export interface ProjectDirectory {
     name: string;
 }
+
+export interface ProjectScope extends ProjectDirectory {
+    type: ProjectScopeType;
+}
+
+export enum ProjectScopeType {
+    Source,
+    Dist
+}
