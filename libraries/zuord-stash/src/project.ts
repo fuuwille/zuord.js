@@ -299,6 +299,10 @@ export class ProjectFolder extends ProjectDirectory {
 
     //
 
+    public getParentSlugs(): string[] {
+        return this.getParentChain().map(folder => folder.name);
+    }
+
     public getParentChain(): ProjectDirectory[] {
         let current: ProjectDirectory | undefined = this.parent;
 
