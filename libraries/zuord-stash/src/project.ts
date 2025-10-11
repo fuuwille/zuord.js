@@ -7,6 +7,10 @@ export class Project {
     private constructor(
         public readonly path: string,
     ) {
+        if(!Project.isPathValid(path)) {
+            throw new Error(`Invalid project path: ${path}`);
+        }
+
         this.#sourceScope = undefined;
         this.#distScope = undefined;
     }
