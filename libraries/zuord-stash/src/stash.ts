@@ -33,24 +33,18 @@ export class Stash {
 
         if (!lastFoundPath) return undefined;
 
-        const project = getProject(lastFoundPath);
-        if (!project) return undefined;
+        let project;
+
+        project = Stash.projects.get(path);
+
+        if (!project) {
+            project = new Project(path);
+            Stash.projects.set(path, project);
+        }
 
         const scopeSlugs : string[][] = [
             project.sourceScope?.getPath().split("/").filter(Boolean) || [],
             project.distScope?.getPath().split("/").filter(Boolean) || []
         ];
-
-        //
-
-        function getProject(path: string) : Project | undefined {
-            const existing = Stash.projects.get(path);
-            if (existing) return existing;
-
-            const project = new Project(path);
-            Stash.projects.set(path, project);
-
-            return project;
-        }
     }
 }
