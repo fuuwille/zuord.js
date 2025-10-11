@@ -1,8 +1,12 @@
 export class Project {
+    #sourceScope : ProjectScope | undefined;
+    #distScope : ProjectScope | undefined;
+
     private constructor(
         public readonly path: string,
     ) {
-
+        this.#sourceScope = undefined;
+        this.#distScope = undefined;
     }
 
     //
