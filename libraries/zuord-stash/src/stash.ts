@@ -48,7 +48,7 @@ export class Stash {
         for (const scope of scopeList) {
             const index = scopeIndex(scope);
 
-            if (index) {
+            if (index > 0) {
                 scopeRef = scope;
                 slugs = slugs.slice(index);
                 break;
