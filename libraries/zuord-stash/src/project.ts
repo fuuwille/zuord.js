@@ -93,13 +93,6 @@ export abstract class ProjectEntry {
     abstract getPath(): string;
 }
 
-export type ProjectReference = {
-    project: Project;
-    scope?: ProjectScope;
-    folders?: ProjectFolder[];
-    file?: ProjectFile;
-}
-
 //
 
 export class ProjectFile extends ProjectEntry {
