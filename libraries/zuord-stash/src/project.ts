@@ -190,6 +190,25 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return this.getLastEntryBySlugs(path.split("/").filter(Boolean));
     }
 
+    public getLastFolder(path: string) : ProjectFolder | undefined {
+        const chain = this.getEntryChain(path);
+        const first = chain.pop();
+
+        if(!first) return undefined;
+
+        if(first instanceof ProjectFolder) {
+            return first;
+        }
+
+        const second = chain.pop();
+
+        if(!(second instanceof ProjectFolder)) {
+            throw new Error("Inconsistent state: second entry is not a folder");
+        }
+
+        return second;
+    }
+
     public getLastEntryBySlugs(slugs: string[]) : ProjectEntry | undefined {
         return this.getEntryChainBySlugs(slugs)?.pop();
     }
