@@ -33,7 +33,7 @@ export class Project {
 
     //
 
-    public get config() : any | undefined {
+    public get config() : ProjectConfig {
         return this.#config;
     }
 
