@@ -1,4 +1,4 @@
-import { pathRegex } from "./regex";
+import * as regex from "./regex";
 import fs from "fs";
 
 export class Project {
@@ -39,7 +39,7 @@ export class Project {
     }
 
     public static isPathValid(path: string) : boolean {
-        return pathRegex.test(path);
+        return regex.path.test(path);
     }
 }
 

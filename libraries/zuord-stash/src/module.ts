@@ -1,6 +1,6 @@
 import ts from "typescript";
 import { $ZuordExtractor as ZE } from "zuord-extractor";
-import { moduleNameRegex } from "./regex";
+import * as regex from "./regex";
 
 export const dirtySymbol = Symbol("dirty");
 
@@ -38,7 +38,7 @@ export interface ModuleFile {
 //
 
 export const getModuleInfo = (fileName: string): ModuleInfo | undefined => {
-    const match = moduleNameRegex.exec(fileName);
+    const match = regex.moduleName.exec(fileName);
     if (!match) return undefined;
 
     const [_, name, ext] = match;
