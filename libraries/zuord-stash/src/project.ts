@@ -92,10 +92,13 @@ export class ProjectObject {
 }
 
 export abstract class ProjectEntry extends ProjectObject {
+    public readonly path: string;
+
     public constructor(project: Project,
         public readonly name: string
     ) {
         super(project);
+        this.path = this.getPath();
     }
 
     protected abstract getPath(): string;
