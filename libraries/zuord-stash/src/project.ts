@@ -245,6 +245,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     public getFile(name: string) : ProjectFile | undefined {
         const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
+        if(!moduleName) return undefined;
 
         const module = this.#modules.find(f => f.name === moduleName);
 
@@ -252,10 +253,14 @@ export abstract class ProjectDirectory extends ProjectEntry {
             return module.getFile(fileExtension as ProjectFileExtension);
         }
 
-        const entry = this.getEntry(name);
+        const path = PATH.join(this.path, name);
+        const stat = fs.statSync(path);
 
-        if(entry instanceof ProjectFile) {
-            return entry;
+        if(moduleName && stat.isFile()) {
+            const module = new ProjectModule(this, moduleName);
+            this.#modules.push(module);
+
+            return new ProjectFile(module, fileExtension as ProjectFileExtension);
         }
 
         return undefined;
