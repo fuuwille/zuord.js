@@ -130,9 +130,37 @@ export enum ProjectFileExtension {
 //
 
 export class ProjectModule extends ProjectObject {
+    #tsFile: ProjectFile | undefined;
+    #tzsFile: ProjectFile | undefined;
+    #tzvFile: ProjectFile | undefined;
+    #zSchemaFile: ProjectFile | undefined;
+    #zVariantsFile: ProjectFile | undefined;
+
     public constructor(
         public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
+    }
+
+    //
+
+    public get tsFile(): ProjectFile | undefined {
+        return this.#tsFile;
+    }
+
+    public get tzsFile(): ProjectFile | undefined {
+        return this.#tzsFile;
+    }
+
+    public get tzvFile(): ProjectFile | undefined {
+        return this.#tzvFile;
+    }
+
+    public get zSchemaFile(): ProjectFile | undefined {
+        return this.#zSchemaFile;
+    }
+
+    public get zVariantsFile(): ProjectFile | undefined {
+        return this.#zVariantsFile;
     }
 }
 
