@@ -95,5 +95,6 @@ export type StashReference = {
     project: Project;
     scope?: ProjectScope;
     folders?: ProjectFolder[];
+    module?: ProjectModule;
     file?: ProjectFile;
 }
