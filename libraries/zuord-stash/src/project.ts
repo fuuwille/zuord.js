@@ -347,7 +347,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if (slugs.length === 0) return [];
 
         const [head, ...tail] = slugs;
-        const entry = this.getEntry(head);
+        const entry = this.getObject(head, true);
 
         if (!entry) return [];
 
