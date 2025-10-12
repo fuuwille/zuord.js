@@ -1,7 +1,7 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./regex";
-import { Project, ProjectFile, ProjectFolder, ProjectScope } from "./project";
+import { Project, ProjectFile, ProjectFolder, ProjectModule, ProjectScope } from "./project";
 
 export class Stash {
     private static projects: Map<string, Project > = new Map();
@@ -72,11 +72,12 @@ export class Stash {
 
         if(!lastEntry) return undefined;
 
-        if(lastEntry instanceof ProjectFolder) {
+        if(lastEntry instanceof ProjectModule) {
             return {
                 project: projectRef,
                 scope: scopeRef,
-                folders: [...(entries as ProjectFolder[]), lastEntry],
+                folders: [...(entries as ProjectFolder[])],
+                module: lastEntry
             }
         }
         
@@ -85,6 +86,7 @@ export class Stash {
                 project: projectRef,
                 scope: scopeRef,
                 folders: entries as ProjectFolder[],
+                module: lastEntry.module,
                 file: lastEntry
             }
         }
