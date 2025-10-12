@@ -87,17 +87,17 @@ export class ProjectConfig {
 
 export class ProjectObject {
     public constructor(
-        public readonly project: Project
+        public readonly project: Project,
+        public readonly name: string
     ) {}
 }
 
 export abstract class ProjectEntry extends ProjectObject {
     public readonly path: string;
 
-    public constructor(project: Project,
-        public readonly name: string
+    public constructor(project: Project, name: string
     ) {
-        super(project);
+        super(project, name);
         this.path = this.getPath();
     }
 
@@ -129,13 +129,9 @@ export enum ProjectFileExtension {
 
 //
 
-export class ProjectModule extends ProjectEntry {
+export class ProjectModule extends ProjectObject {
     public constructor(parent: ProjectDirectory, name: string) {
         super(parent.project, name);
-    }
-
-    protected getPath(): string {
-        throw new Error("Method not implemented.");
     }
 }
 
