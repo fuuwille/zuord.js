@@ -218,8 +218,10 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getModule(name: string) : ProjectModule | undefined {
-        const module = this.#modules.find(f => f.name === name);
+    public getFile(name: string) : ProjectModule | undefined {
+        const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
+
+        const module = this.#modules.find(f => f.name === moduleName);
 
         if(module) {
             return module;
