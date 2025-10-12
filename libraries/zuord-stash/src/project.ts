@@ -233,11 +233,15 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if(folder) {
             return folder;
         }
+        
+        const path = PATH.join(this.path, name);
 
-        const entry = this.getEntry(name);
+        const stat = fs.statSync(path);
 
-        if(entry instanceof ProjectFolder) {
-            return entry;
+        if(stat.isDirectory()) {
+            const folder = new ProjectFolder(this, name);
+            this.#folders.push(folder);
+            return folder;
         }
 
         return undefined;
