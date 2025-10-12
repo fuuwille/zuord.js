@@ -199,30 +199,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
     //
 
     public getEntry(name: string) : ProjectEntry | undefined {
-        if(name.includes("/") || name.includes("\\")) {
-            return undefined;
-        }
+        const folder = this.getFolder(name);
+        if(folder) return folder;
 
-        const path = PATH.join(this.getPath(), name);
-
-        if(fs.existsSync(path)) {
-            const stat = fs.statSync(path);
-
-            if(stat.isDirectory()) {
-                const folder = new ProjectFolder(this, name);
-                this.#folders.push(folder);
-                return folder;
-            }
-
-            const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
-
-            if(moduleName && stat.isFile()) {
-                const module = new ProjectModule(this, moduleName);
-                this.#modules.push(module);
-
-                return new ProjectFile(module, fileExtension as ProjectFileExtension);
-            }
-        }
+        const file = this.getFile(name);
+        if(file) return file;
 
         return undefined;
     }
@@ -233,7 +214,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if(folder) {
             return folder;
         }
-        
+
         const path = PATH.join(this.path, name);
 
         const stat = fs.statSync(path);
