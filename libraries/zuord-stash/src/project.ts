@@ -96,11 +96,11 @@ export abstract class ProjectEntry {
 //
 
 export class ProjectFile extends ProjectEntry {
-    public readonly fullName: string;
-
-    public constructor(parent: ProjectDirectory, name: string) {
-        super(parent.project, name);
-        this.fullName = name;
+    public constructor(
+        public readonly module: ProjectModule,
+        public readonly type: ProjectFileExtension
+    ) {
+        super(module.project, `${module.name}.${type}`);
     }
 
     public getPath(): string {
@@ -158,7 +158,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
             }
 
             if(stat.isFile()) {
-                return new ProjectFile(this, name);
+                return new ProjectFile(this, name as ProjectFileExtension);
             }
         }
 
