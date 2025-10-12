@@ -108,6 +108,14 @@ export class ProjectFile extends ProjectEntry {
     }
 }
 
+export enum ProjectFileExtension {
+    TS = "ts",
+    TZS = "tzs",
+    TZV = "tzv",
+    ZSchema = "zschema.ts",
+    ZVariants = "zvariants.ts"
+}
+
 //
 
 export abstract class ProjectDirectory extends ProjectEntry {
