@@ -206,6 +206,16 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     //
 
+    public getObject(name: string) : ProjectObject | undefined {
+        const entry = this.getEntry(name);
+        if(entry) return entry;
+
+        const module = this.getModule(name);
+        if(module) return module;
+
+        return undefined;
+    }
+
     public getEntry(name: string) : ProjectEntry | undefined {
         const folder = this.getFolder(name);
         if(folder) return folder;
