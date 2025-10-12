@@ -130,7 +130,8 @@ export enum ProjectFileExtension {
 //
 
 export class ProjectModule extends ProjectObject {
-    public constructor(parent: ProjectDirectory, name: string) {
+    public constructor(
+        public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
     }
 }
