@@ -243,8 +243,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return this.getLastFolderBySlugs(path.split("/").filter(Boolean));
     }
 
-    public getLastFile(path: string) : ProjectFile | undefined {
-        return this.getLastFileBySlugs(path.split("/").filter(Boolean));
+    public getLastModule(path: string) : ProjectModule | undefined {
+        return this.getLastModuleBySlugs(path.split("/").filter(Boolean));
     }
 
     public getLastEntryBySlugs(slugs: string[]) : ProjectEntry | undefined {
@@ -270,13 +270,13 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return second;
     }
 
-    public getLastFileBySlugs(slugs: string[]) : ProjectFile | undefined {
+    public getLastModuleBySlugs(slugs: string[]) : ProjectModule | undefined {
         const chain = this.getEntryChainBySlugs(slugs);
         const last = chain.pop();
 
         if(!last) return undefined;
 
-        if(last instanceof ProjectFile) {
+        if(last instanceof ProjectModule) {
             return last;
         }
         
