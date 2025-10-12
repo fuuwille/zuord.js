@@ -162,6 +162,25 @@ export class ProjectModule extends ProjectObject {
     public get zVariantsFile(): ProjectFile | undefined {
         return this.#zVariantsFile;
     }
+
+    //
+
+    public getFile(extension: ProjectFileExtension): ProjectFile | undefined {
+        switch (extension) {
+            case ProjectFileExtension.TS:
+                return this.#tsFile;
+            case ProjectFileExtension.TZS:
+                return this.#tzsFile;
+            case ProjectFileExtension.TZV:
+                return this.#tzvFile;
+            case ProjectFileExtension.ZSchema:
+                return this.#zSchemaFile;
+            case ProjectFileExtension.ZVariants:
+                return this.#zVariantsFile;
+            default:
+                return undefined;
+        }
+    }
 }
 
 //
