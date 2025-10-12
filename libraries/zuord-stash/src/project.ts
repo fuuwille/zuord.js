@@ -84,11 +84,19 @@ export class ProjectConfig {
 
 //
 
-export abstract class ProjectEntry {
+
+export class ProjectObject {
     public constructor(
-        public readonly project: Project,
-        public readonly name: string
+        public readonly project: Project
     ) {}
+}
+
+export abstract class ProjectEntry extends ProjectObject {
+    public constructor(project: Project,
+        public readonly name: string
+    ) {
+        super(project);
+    }
 
     abstract getPath(): string;
 }
