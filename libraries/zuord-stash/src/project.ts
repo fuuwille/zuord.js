@@ -235,8 +235,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     //
 
-    public getObject(name: string) : ProjectObject {
-        const entry = this.getEntry(name);
+    public getObject(name: string, shouldExists: boolean = false) : ProjectObject {
+        const entry = this.getEntry(name, shouldExists);
         if(entry) return entry;
 
         let [, moduleName] = regex.fileName.exec(name) || [];
@@ -247,11 +247,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return module;
     }
 
-    public getEntry(name: string) : ProjectEntry | undefined {
-        const folder = this.getFolder(name);
+    public getEntry(name: string, shouldExists: boolean = false) : ProjectEntry | undefined {
+        const folder = this.getFolder(name, shouldExists);
         if(folder) return folder;
 
-        const file = this.getFile(name);
+        const file = this.getFile(name, shouldExists);
         if(file) return file;
 
         return undefined;
