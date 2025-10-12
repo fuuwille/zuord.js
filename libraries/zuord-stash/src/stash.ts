@@ -67,27 +67,27 @@ export class Stash {
 
         if (!scopeRef) return undefined;
 
-        const entries = scopeRef.getObjectChainBySlugs(slugs);
-        const lastEntry = entries.pop();
+        const objects = scopeRef.getObjectChainBySlugs(slugs);
+        const lastObject = objects.pop();
 
-        if(!lastEntry) return undefined;
+        if(!lastObject) return undefined;
 
-        if(lastEntry instanceof ProjectModule) {
+        if(lastObject instanceof ProjectModule) {
             return {
                 project: projectRef,
                 scope: scopeRef,
-                folders: [...(entries as ProjectFolder[])],
-                module: lastEntry
+                folders: [...(objects as ProjectFolder[])],
+                module: lastObject
             }
         }
         
-        if(lastEntry instanceof ProjectFile) {
+        if(lastObject instanceof ProjectFile) {
             return {
                 project: projectRef,
                 scope: scopeRef,
-                folders: entries as ProjectFolder[],
-                module: lastEntry.module,
-                file: lastEntry
+                folders: objects as ProjectFolder[],
+                module: lastObject.module,
+                file: lastObject
             }
         }
     }
