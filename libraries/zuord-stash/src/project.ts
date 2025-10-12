@@ -210,7 +210,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
         const entry = this.getEntry(name);
         if(entry) return entry;
 
-        const module = this.getModule(name);
+        let [, moduleName] = regex.fileName.exec(name) || [];
+
+        if(!moduleName) moduleName = name;
+
+        const module = this.getModule(moduleName);
         if(module) return module;
 
         return undefined;
