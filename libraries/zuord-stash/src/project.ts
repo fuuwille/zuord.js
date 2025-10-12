@@ -98,7 +98,7 @@ export abstract class ProjectEntry extends ProjectObject {
         super(project);
     }
 
-    abstract getPath(): string;
+    protected abstract getPath(): string;
 }
 
 //
@@ -111,7 +111,7 @@ export class ProjectFile extends ProjectEntry {
         super(module.project, `${module.name}.${type}`);
     }
 
-    public getPath(): string {
+    protected getPath(): string {
         throw new Error("Method not implemented.");
     }
 }
@@ -131,7 +131,7 @@ export class ProjectModule extends ProjectEntry {
         super(parent.project, name);
     }
 
-    public getPath(): string {
+    protected getPath(): string {
         throw new Error("Method not implemented.");
     }
 }
@@ -166,7 +166,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
             }
 
             if(stat.isFile()) {
-                return new ProjectFile(this, name as ProjectFileExtension);
+                return new ProjectFile(this as unknown as ProjectModule, name as ProjectFileExtension);
             }
         }
 
@@ -314,8 +314,8 @@ export class ProjectFolder extends ProjectDirectory {
         super(parent.project, name);
     }
 
-    public getPath(): string {
-        return PATH.join(this.parent.getPath(), this.name);
+    protected getPath(): string {
+        return PATH.join("this.parent.getPath()", this.name);
     }
 
     //
