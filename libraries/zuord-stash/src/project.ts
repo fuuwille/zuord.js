@@ -218,7 +218,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     public getFolder(name: string) : ProjectFolder {
         let folder = this.#folders.find(f => f.name === name);
-        
+
         if(folder) return folder;
 
         folder = new ProjectFolder(this, name);
@@ -240,22 +240,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
         const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
         if(!moduleName) return undefined;
 
-        const module = this.#modules.find(f => f.name === moduleName);
-
-        if(module) {
-            return module.getFile(fileExtension as ProjectFileExtension);
-        }
-
-        const path = PATH.join(this.path, name);
-        if(!fs.existsSync(path)) return undefined;
-
-        const stat = fs.statSync(path);
-
-        if(moduleName && stat.isFile()) {
-            return new ProjectFile(this.getModule(moduleName), fileExtension as ProjectFileExtension);
-        }
-
-        return undefined;
+        const module = this.getModule(moduleName);
+        return module.getFile(fileExtension as ProjectFileExtension);
     }
 
     public getLastEntry(path: string) : ProjectEntry | undefined {
