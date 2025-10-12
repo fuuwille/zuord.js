@@ -256,8 +256,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return module.getFile(fileExtension as ProjectFileExtension);
     }
 
-    public getLastEntry(path: string) : ProjectEntry | undefined {
-        return this.getLastEntryBySlugs(path.split("/").filter(Boolean));
+    public getLastObject(path: string) : ProjectObject | undefined {
+        return this.getLastObjectBySlugs(path.split("/").filter(Boolean));
     }
 
     public getLastFolder(path: string) : ProjectFolder | undefined {
@@ -268,12 +268,12 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return this.getLastModuleBySlugs(path.split("/").filter(Boolean));
     }
 
-    public getLastEntryBySlugs(slugs: string[]) : ProjectEntry | undefined {
-        return this.getEntryChainBySlugs(slugs)?.pop();
+    public getLastObjectBySlugs(slugs: string[]) : ProjectObject | undefined {
+        return this.getObjectChainBySlugs(slugs)?.pop();
     }
 
     public getLastFolderBySlugs(slugs: string[]) : ProjectFolder | undefined {
-        const chain = this.getEntryChainBySlugs(slugs);
+        const chain = this.getObjectChainBySlugs(slugs);
         const first = chain.pop();
 
         if(!first) return undefined;
@@ -292,7 +292,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getLastModuleBySlugs(slugs: string[]) : ProjectModule | undefined {
-        const chain = this.getEntryChainBySlugs(slugs);
+        const chain = this.getObjectChainBySlugs(slugs);
         const last = chain.pop();
 
         if(!last) return undefined;
@@ -304,11 +304,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getEntryChain(path: string) : ProjectEntry[] {
-        return this.getEntryChainBySlugs(path.split("/").filter(Boolean));
+    public getObjectChain(path: string) : ProjectObject[] {
+        return this.getObjectChainBySlugs(path.split("/").filter(Boolean));
     }
 
-    public getEntryChainBySlugs(slugs: string[]) : ProjectEntry[] {
+    public getObjectChainBySlugs(slugs: string[]) : ProjectObject[] {
         if (slugs.length === 0) return [];
 
         const [head, ...tail] = slugs;
@@ -317,7 +317,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if (!entry) return [];
 
         if(entry instanceof ProjectDirectory) {
-            return [entry, ...entry.getEntryChainBySlugs(tail)];
+            return [entry, ...entry.getObjectChainBySlugs(tail)];
         }
 
         return [entry];

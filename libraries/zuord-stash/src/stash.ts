@@ -67,7 +67,7 @@ export class Stash {
 
         if (!scopeRef) return undefined;
 
-        const entries = scopeRef.getEntryChainBySlugs(slugs);
+        const entries = scopeRef.getObjectChainBySlugs(slugs);
         const lastEntry = entries.pop();
 
         if(!lastEntry) return undefined;
