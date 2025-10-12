@@ -224,6 +224,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         }
 
         const path = PATH.join(this.path, name);
+        if(!fs.existsSync(path)) return undefined;
 
         const stat = fs.statSync(path);
 
@@ -247,6 +248,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
         }
 
         const path = PATH.join(this.path, name);
+        if(!fs.existsSync(path)) return undefined;
+
         const stat = fs.statSync(path);
 
         if(moduleName && stat.isFile()) {
