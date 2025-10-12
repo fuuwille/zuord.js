@@ -115,7 +115,7 @@ export class ProjectFile extends ProjectEntry {
     }
 
     protected getPath(): string {
-        throw new Error("Method not implemented.");
+        return `${this.module.parent.path}/${this.name}`;
     }
 }
 
