@@ -65,12 +65,17 @@ export class Stash {
             return scopeSlugs.length;
         }
 
-        if (!scopeRef) return undefined;
+        if (!scopeRef) return {
+            project: projectRef
+        };
 
         const objects = scopeRef.getObjectChainBySlugs(slugs);
         const lastObject = objects.pop();
 
-        if(!lastObject) return undefined;
+        if(!lastObject) return {
+            project: projectRef,
+            scope: scopeRef
+        };
 
         if(lastObject instanceof ProjectFolder) {
             return {
