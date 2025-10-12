@@ -212,8 +212,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
                 return new ProjectFolder(this, name);
             }
 
-            if(stat.isFile()) {
-                return new ProjectFile(this as unknown as ProjectModule, name as ProjectFileExtension);
+            const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
+
+            if(moduleName && stat.isFile()) {
+                const module = new ProjectModule(this, moduleName);
+                return new ProjectFile(module, fileExtension as ProjectFileExtension);
             }
         }
 
@@ -249,7 +252,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         const entry = this.getEntry(name);
 
         if(entry instanceof ProjectFile) {
-            this.#modules.push(entry);
+            this.#modules.push(entry.module);
             return entry;
         }
 
