@@ -118,6 +118,18 @@ export enum ProjectFileExtension {
 
 //
 
+export class ProjectModule extends ProjectEntry {
+    public constructor(parent: ProjectDirectory, name: string) {
+        super(parent.project, name);
+    }
+
+    public getPath(): string {
+        throw new Error("Method not implemented.");
+    }
+}
+
+//
+
 export abstract class ProjectDirectory extends ProjectEntry {
     #folders: ProjectFolder[];
     #files: ProjectFile[];
