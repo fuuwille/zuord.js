@@ -216,25 +216,14 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getFolder(name: string) : ProjectFolder | undefined {
-        const folder = this.#folders.find(f => f.name === name);
+    public getFolder(name: string) : ProjectFolder {
+        let folder = this.#folders.find(f => f.name === name);
+        
+        if(folder) return folder;
 
-        if(folder) {
-            return folder;
-        }
-
-        const path = PATH.join(this.path, name);
-        if(!fs.existsSync(path)) return undefined;
-
-        const stat = fs.statSync(path);
-
-        if(stat.isDirectory()) {
-            const folder = new ProjectFolder(this, name);
-            this.#folders.push(folder);
-            return folder;
-        }
-
-        return undefined;
+        folder = new ProjectFolder(this, name);
+        this.#folders.push(folder);
+        return folder;
     }
 
     public getModule(name: string) {
