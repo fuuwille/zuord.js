@@ -318,7 +318,7 @@ export class ProjectFolder extends ProjectDirectory {
     }
 
     protected getPath(): string {
-        return PATH.join("this.parent.getPath()", this.name);
+        return PATH.join(this.parent.path, this.name);
     }
 
     //
