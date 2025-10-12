@@ -206,7 +206,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     //
 
-    public getObject(name: string) : ProjectObject | undefined {
+    public getObject(name: string) : ProjectObject {
         const entry = this.getEntry(name);
         if(entry) return entry;
 
@@ -215,9 +215,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if(!moduleName) moduleName = name;
 
         const module = this.getModule(moduleName);
-        if(module) return module;
-
-        return undefined;
+        return module;
     }
 
     public getEntry(name: string) : ProjectEntry | undefined {
