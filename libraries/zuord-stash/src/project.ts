@@ -173,21 +173,37 @@ export class ProjectModule extends ProjectObject {
 
     //
 
-    public getFile(extension: ProjectFileExtension): ProjectFile | undefined {
+    public getFile(extension: ProjectFileExtension, shouldExists: boolean = false): ProjectFile | undefined {
+        let file;
         switch (extension) {
             case ProjectFileExtension.TS:
-                return this.#tsFile;
+                file = this.#tsFile;
+                break;
             case ProjectFileExtension.TZS:
-                return this.#tzsFile;
+                file = this.#tzsFile;
+                break;
             case ProjectFileExtension.TZV:
-                return this.#tzvFile;
+                file = this.#tzvFile;
+                break;
             case ProjectFileExtension.ZSchema:
-                return this.#zSchemaFile;
+                file = this.#zSchemaFile;
+                break;
             case ProjectFileExtension.ZVariants:
-                return this.#zVariantsFile;
+                file = this.#zVariantsFile;
+                break;
             default:
                 return undefined;
         }
+
+        if(file) return file;
+
+        if(shouldExists) {
+            const path = PATH.join(this.parent.path, `${this.name}.${extension}`);
+            if(!fs.existsSync(path)) return undefined;
+            if(!fs.statSync(path).isFile()) return undefined;
+        }
+
+        return new ProjectFile(this, extension);
     }
 }
 
@@ -254,12 +270,12 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return module;
     }
 
-    public getFile(name: string) : ProjectFile | undefined {
+    public getFile(name: string, shouldExists: boolean = false) : ProjectFile | undefined {
         const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
         if(!moduleName) return undefined;
 
         const module = this.getModule(moduleName);
-        return module.getFile(fileExtension as ProjectFileExtension);
+        return module.getFile(fileExtension as ProjectFileExtension, shouldExists);
     }
 
     public getLastObject(path: string) : ProjectObject | undefined {
