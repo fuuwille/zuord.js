@@ -72,6 +72,14 @@ export class Stash {
 
         if(!lastObject) return undefined;
 
+        if(lastObject instanceof ProjectFolder) {
+            return {
+                project: projectRef,
+                scope: scopeRef,
+                folders: [...(objects as ProjectFolder[]), lastObject],
+            }
+        }
+
         if(lastObject instanceof ProjectModule) {
             return {
                 project: projectRef,
