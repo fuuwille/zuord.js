@@ -168,13 +168,13 @@ export class ProjectModule extends ProjectObject {
 
 export abstract class ProjectDirectory extends ProjectEntry {
     #folders: ProjectFolder[];
-    #files: ProjectFile[];
+    #modules: ProjectModule[];
 
     protected constructor(project: Project, name: string) {
         super(project, name);
 
         this.#folders = [];
-        this.#files = [];
+        this.#modules = [];
     }
 
     //
@@ -218,17 +218,17 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getFile(name: string) : ProjectFile | undefined {
-        const file = this.#files.find(f => f.name === name);
+    public getModule(name: string) : ProjectModule | undefined {
+        const module = this.#modules.find(f => f.name === name);
 
-        if(file) {
-            return file;
+        if(module) {
+            return module;
         }
 
         const entry = this.getEntry(name);
 
-        if(entry instanceof ProjectFile) {
-            this.#files.push(entry);
+        if(entry instanceof ProjectModule) {
+            this.#modules.push(entry);
             return entry;
         }
 
