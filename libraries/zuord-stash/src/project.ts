@@ -239,11 +239,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     public getModule(name: string) {
         let module = this.#modules.find(m => m.name === name);
-        if(!module) return undefined;
+        if(module) return module;
 
         module = new ProjectModule(this, name);
         this.#modules.push(module);
-        
+
         return module;
     }
 
@@ -263,10 +263,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         const stat = fs.statSync(path);
 
         if(moduleName && stat.isFile()) {
-            const module = new ProjectModule(this, moduleName);
-            this.#modules.push(module);
-
-            return new ProjectFile(module, fileExtension as ProjectFileExtension);
+            return new ProjectFile(this.getModule(moduleName), fileExtension as ProjectFileExtension);
         }
 
         return undefined;
