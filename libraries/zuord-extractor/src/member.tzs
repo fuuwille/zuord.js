@@ -26,8 +26,10 @@ export default Base;
 
 //
 
-export interface Unknown extends ZSchema.Base {
-    type: MemberType.Unknown;
+export class Unknown extends ZSchema.Base {
+    constructor(node: Node) {
+        super(node, MemberType.Unknown);
+    }
 }
 
 export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
