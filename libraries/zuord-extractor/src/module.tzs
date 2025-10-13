@@ -1,12 +1,12 @@
 import { FileSpec } from "./file";
-import { Content } from "./content";
+import { ContentSpec } from "./content";
 
 export interface Module {
     name: string;
     schemaFile: FileSpec.Schema | null;
     variantsFile: FileSpec.Variants | null;
-    schemaContents: Content.Schema[];
-    variantContents: Content.Variant[];
+    schemaContents: ContentSpec.Schema[];
+    variantContents: ContentSpec.Variant[];
 }
 
 export default Module;
