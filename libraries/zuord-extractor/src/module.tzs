@@ -13,6 +13,11 @@ export default Module;
 
 //
 
+export interface ModuleMeta {
+    file: ModuleFile;
+    content: ModuleContent;
+}
+
 export interface ModuleFile {
     schema: FileSpec.Schema | null;
     variants: FileSpec.Variants | null;
