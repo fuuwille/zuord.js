@@ -9,7 +9,7 @@ export enum FileExtension {
     TZV = "tzv"
 }
 
-export enum FileBehavior {
+export enum FileType {
     Unknown = "unknown",
     Schema = "schema",
     Variants = "variants"
@@ -19,15 +19,15 @@ export { File as FileSpec, file as fileSpec };
 
 //
 
-export const getBehavior = (mode : FileExtension) : FileBehavior => {
+export const getType = (mode : FileExtension) : FileType => {
     switch(mode) {
         case FileExtension.TS:
         case FileExtension.TZS:
-            return FileBehavior.Schema;
+            return FileType.Schema;
         case FileExtension.TV:
         case FileExtension.TZV:
-            return FileBehavior.Variants;
+            return FileType.Variants;
         default:
-            return FileBehavior.Unknown;
+            return FileType.Unknown;
     }
 }
