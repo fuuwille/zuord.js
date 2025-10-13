@@ -1,6 +1,6 @@
 // @zuord-scope
 
-export enum ModuleContentKind {
+export enum ContentType {
     Schema = "schema",
     Variant = "variant"
 }

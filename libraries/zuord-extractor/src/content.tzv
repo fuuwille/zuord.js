@@ -1,14 +1,14 @@
 import Module from "./module.tzs";
-import { ModuleContentKind } from "./content";
+import { ContentType } from "./content";
 import { Member as ZMember, member as zmember } from "./member";
 import { getTypeName } from "./~type";
 
 export const isSchema = (content: ZSchema.Base): content is ZSchema.Schema => {
-    return content.kind === ModuleContentKind.Schema;
+    return content.type === ContentType.Schema;
 };
 
 export const isVariant = (content: ZSchema.Base): content is ZSchema.Variant => {
-    return content.kind === ModuleContentKind.Variant;
+    return content.type === ContentType.Variant;
 };
 
 //
@@ -30,7 +30,7 @@ export const createSchema = (
     return {
         module,
         member,
-        kind: ModuleContentKind.Schema
+        type: ContentType.Schema
     };
 };
 
@@ -41,7 +41,7 @@ export const createVariant = (
     return {
         module,
         member,
-        kind: ModuleContentKind.Variant
+        type: ContentType.Variant
     };
 };
 

@@ -1,25 +1,25 @@
 import Module from "./module.tzs";
-import { ModuleContentKind } from "./content";
+import { ContentType } from "./content";
 import { Diagnostic } from "./diagnostic";
 import { Member as ZMember } from "./member";
 
 export interface Base {
     module: Module;
     member: ZMember.DefinitionLike;
-    kind: ModuleContentKind;
+    type: ContentType;
     name?: string | null;
     diagnostics?: Diagnostic.Base[];
 }
 
 export interface Schema extends ZSchema.Base {
     member: ZMember.SchemaLike;
-    kind: ModuleContentKind.Schema;
+    type: ContentType.Schema;
     variants?: Variant[];
 }
 
 export interface Variant extends ZSchema.Base {
     schema?: Schema;
-    kind: ModuleContentKind.Variant;
+    type: ContentType.Variant;
     member: ZMember.VariantLike;
 }
 
