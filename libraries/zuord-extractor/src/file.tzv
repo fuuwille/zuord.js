@@ -1,18 +1,18 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { FileType } from "./file";
+import { FileExtension } from "./file";
 import { File, FileBase } from "./file";
 import { memberSpec } from "./member";
 import { nodeSpec } from "./node";
 
 export const initialize = (
-    sourceFile: SourceFile, mode: FileType
+    sourceFile: SourceFile, mode: FileExtension
 ) : FileBase => {
 
     const moduleFile : FileBase = {
         source: sourceFile,
-        type: mode,
+        extension: mode,
         members: [],
         discarded: [],
         others: []
@@ -36,36 +36,36 @@ export const initialize = (
     return moduleFile;
 };
 
-export const extract = (sourceFile: SourceFile, mode: FileType) : FileBase => {
-    switch(mode) {
-        case FileType.TS:
-        case FileType.TZS:
+export const extract = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
+    switch(extension) {
+        case FileExtension.TS:
+        case FileExtension.TZS:
             return extractSchema(sourceFile);
-        case FileType.TV:
-        case FileType.TZV:
+        case FileExtension.TV:
+        case FileExtension.TZV:
             return extractVariants(sourceFile);
         default:
-            throw new Error(`Unknown module file kind: ${mode}`);
+            throw new Error(`Unknown module file kind: ${extension}`);
     }
 };
 
-export const extractAtPath = <TFile extends FileBase>(dir: string, name: string, mode: FileType) : TFile | undefined => {
-    const fileName = `${name}.${mode.toLowerCase()}.ts`;
+export const extractAtPath = <TFile extends FileBase>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
+    const fileName = `${name}.${extension.toLowerCase()}.ts`;
     const filePath = path.join(dir, fileName);
 
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return extract(sourceFile, mode) as TFile;
+        return extract(sourceFile, extension) as TFile;
     }
 
     return undefined;
 };
 
 export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
-    return initialize(sourceFile, FileType.TZS) as File.Schema;
+    return initialize(sourceFile, FileExtension.TZS) as File.Schema;
 };
 
 export const extractVariants = (sourceFile: SourceFile) : File.Variants => {
-    return initialize(sourceFile, FileType.TZV) as File.Variants;
+    return initialize(sourceFile, FileExtension.TZV) as File.Variants;
 };

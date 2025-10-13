@@ -2,7 +2,7 @@
 
 export { default as FileBase } from "./file.tzs";
 
-export enum FileType {
+export enum FileExtension {
     TS = "ts",
     TV = "tv",
     TZS = "tzs",
@@ -19,13 +19,13 @@ export { File as FileSpec, file as fileSpec };
 
 //
 
-export const getBehavior = (mode : FileType) : FileBehavior => {
+export const getBehavior = (mode : FileExtension) : FileBehavior => {
     switch(mode) {
-        case FileType.TS:
-        case FileType.TZS:
+        case FileExtension.TS:
+        case FileExtension.TZS:
             return FileBehavior.Schema;
-        case FileType.TV:
-        case FileType.TZV:
+        case FileExtension.TV:
+        case FileExtension.TZV:
             return FileBehavior.Variants;
         default:
             return FileBehavior.Unknown;
