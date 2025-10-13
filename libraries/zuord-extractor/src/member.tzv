@@ -52,6 +52,10 @@ export const isKnownLike = (member: ZSchema.Base): member is ZSchema.KnownLike =
     return isESMLike(member) || isSchemaLike(member) || isVariantLike(member);
 }
 
+export const isGlobalLike = (member: ZSchema.Base): member is ZSchema.GlobalLike => {
+    return isESMLike(member);
+}
+
 export const isESMLike = (member: ZSchema.Base): member is ZSchema.ESMLike => {
     return isExport(member) || isImport(member) || isExportDefault(member);
 }
