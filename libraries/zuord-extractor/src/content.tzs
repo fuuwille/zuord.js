@@ -11,6 +11,10 @@ export interface Base {
     diagnostics?: Diagnostic.Base[];
 }
 
+export default Base;
+
+//
+
 export interface Schema extends ZSchema.Base {
     member: ZMember.SchemaLike;
     type: ContentType.Schema;
