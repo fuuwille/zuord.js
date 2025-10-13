@@ -188,7 +188,7 @@ export const getNameNode = (member: ZSchema.DefinitionLike): BindingName | null 
     return null;
 }
 
-export const getVariableInitializer = (member: ZSchema.Variable): ZSchema.InitializerLike | undefined => {
+export const getInitializer = (member: ZSchema.Variable): ZSchema.InitializerLike | undefined => {
     if(!member) return undefined;
 
     const declaration = member.node.getDeclarations()[0];
@@ -244,7 +244,7 @@ export const updateDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): vo
 
 export const updateVariableInitializer = (member: ZSchema.Variable): void => {
     if(member.initializer == undefined) {
-        member.initializer = getVariableInitializer(member);
+        member.initializer = getInitializer(member);
     }
 }
 
