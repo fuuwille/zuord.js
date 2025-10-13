@@ -2,7 +2,7 @@
 
 export { default as ModuleFileD } from "./file.tzs";
 
-export enum ModuleFileMode {
+export enum FileType {
     Main = "main",
     Schema = "schema",
     Variants = "variants"

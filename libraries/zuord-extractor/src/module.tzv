@@ -1,5 +1,5 @@
 import { SourceFile } from "ts-morph";
-import { ModuleFileMode } from "./file";
+import { FileType } from "./file";
 import { FileNest, fileNest } from "./file";
 import { moduleContent } from "./moduleContent";
 import { member as zmember } from "./member";
@@ -60,8 +60,8 @@ export const updateModule = (module: ZSchema.Module): void => {
 export const extractModule = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
-        schemaFile: fileNest.extractAtPath<FileNest.Schema>(dir, name, ModuleFileMode.Schema) ?? null,
-        variantsFile: fileNest.extractAtPath<FileNest.Variants>(dir, name, ModuleFileMode.Variants) ?? null,
+        schemaFile: fileNest.extractAtPath<FileNest.Schema>(dir, name, FileType.Schema) ?? null,
+        variantsFile: fileNest.extractAtPath<FileNest.Variants>(dir, name, FileType.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };

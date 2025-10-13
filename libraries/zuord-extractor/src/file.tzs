@@ -1,10 +1,10 @@
 import { SourceFile } from "ts-morph";
-import { ModuleFileMode } from "./file";
+import { FileType } from "./file";
 import { MemberBase, Member as ZMember } from "./member";
 
 export interface Base {
     source: SourceFile
-    mode: ModuleFileMode;
+    type: FileType;
     members: MemberBase[];
     discarded: MemberBase[];
     others: MemberBase[];
