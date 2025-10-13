@@ -249,14 +249,14 @@ export const updateInitializer = (member: ZSchema.Variable): void => {
 }
 
 export const updateDeclaredType = (member: ZSchema.ValueVariable): void => {
-    if(member.declaredTypeNode == undefined) {
-        member.declaredTypeNode = getDeclaredType(member);
+    if(member.declaredType == undefined) {
+        member.declaredType = getDeclaredType(member);
     }
 }
 
 export const updateReturnType = (member: ZSchema.FunctionLike): void => {
-    if(member.returnTypeNode == undefined) {
-        member.returnTypeNode = getReturnType(member);
+    if(member.returnType == undefined) {
+        member.returnType = getReturnType(member);
     }
 };
 
@@ -265,8 +265,8 @@ export const updateFunctionalReturnType = (member: ZSchema.FunctionalVariant): v
 };
 
 export const updateParamType = (member: ZSchema.FunctionLike): void => {
-    if(member.paramTypeNode == undefined) {
-        member.paramTypeNode = getParamType(member);
+    if(member.paramType == undefined) {
+        member.paramType = getParamType(member);
     }
 };
 

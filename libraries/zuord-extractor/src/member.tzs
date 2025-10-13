@@ -120,7 +120,7 @@ export interface InitializerLike extends ZSchema.Base, ZSchema.KnownLike {
 
 export interface ValueVariable extends ZSchema.Variable {
     initializer?: Value;
-    declaredTypeNode?: TypeNode;
+    declaredType?: TypeNode;
 }
 
 export interface FunctionalVariable extends ZSchema.Variable {
@@ -129,8 +129,8 @@ export interface FunctionalVariable extends ZSchema.Variable {
 
 export interface FunctionLike extends ZSchema.Base {
     node: ZNode.FunctionLike;
-    returnTypeNode?: TypeNode;
-    paramTypeNode?: TypeNode;
+    returnType?: TypeNode;
+    paramType?: TypeNode;
 }
 
 export interface FunctionAlt extends ZSchema.FunctionLike {

@@ -44,7 +44,7 @@ export const updateModule = (module: ZSchema.Module): void => {
             if(content.isFunctionalVariant(variantContent)) {
                 const member = zmember.asFunctionLike(variantContent.member);
 
-                const returnNode = member?.returnTypeNode;
+                const returnNode = member?.returnType;
 
                 if(!returnNode) {
                     variantContent.diagnostics ??= [];
