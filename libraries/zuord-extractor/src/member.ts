@@ -15,3 +15,5 @@ export enum MemberType {
     ArrowFunction,
     FunctionExpression
 }
+
+export { Member as MemberSpec, member as memberSpec } from "./member";
