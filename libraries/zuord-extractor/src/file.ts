@@ -9,4 +9,9 @@ export enum FileType {
     TZV = "tzv"
 }
 
+export enum FileBehavior {
+    Schema = "schema",
+    Variants = "variants"
+}
+
 export { File as FileSpec, file as fileSpec };
