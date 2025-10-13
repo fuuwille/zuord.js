@@ -122,7 +122,7 @@ export const create = <TMember extends ZSchema.Base>(
     } as TMember;
 
     if(isVariable(member)) {
-        updateVariableInitializer(member);
+        updateInitializer(member);
     }
 
     return member;
@@ -242,7 +242,7 @@ export const updateNameNode = (member: ZSchema.DefinitionLike): void => {
     }
 }
 
-export const updateVariableInitializer = (member: ZSchema.Variable): void => {
+export const updateInitializer = (member: ZSchema.Variable): void => {
     if(member.initializer == undefined) {
         member.initializer = getInitializer(member);
     }
