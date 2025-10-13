@@ -100,9 +100,11 @@ export const isFunctionAlt = (node: Node): node is ZSchema.FunctionAlt => {
 
 export const isDiscardedBy = (node: Node, mode : FileType): node is ZSchema.Discarded => {
     switch(mode) {
-        case FileType.Schema:
+        case FileType.TS:
+        case FileType.TZS:
             return isDiscardedSchema(node);
-        case FileType.Variants:
+        case FileType.TV:
+        case FileType.TZV:
             return isDiscardedVariant(node);
         default:
             return false;

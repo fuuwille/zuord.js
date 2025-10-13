@@ -38,9 +38,11 @@ export const initialize = (
 
 export const extract = (sourceFile: SourceFile, mode: FileType) : FileBase => {
     switch(mode) {
-        case FileType.Schema:
+        case FileType.TS:
+        case FileType.TZS:
             return extractSchema(sourceFile);
-        case FileType.Variants:
+        case FileType.TV:
+        case FileType.TZV:
             return extractVariants(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${mode}`);
@@ -61,9 +63,9 @@ export const extractAtPath = <TFile extends FileBase>(dir: string, name: string,
 };
 
 export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
-    return initialize(sourceFile, FileType.Schema) as File.Schema;
+    return initialize(sourceFile, FileType.TZS) as File.Schema;
 };
 
 export const extractVariants = (sourceFile: SourceFile) : File.Variants => {
-    return initialize(sourceFile, FileType.Variants) as File.Variants;
+    return initialize(sourceFile, FileType.TZV) as File.Variants;
 };
