@@ -16,16 +16,19 @@ export default Module;
 //
 
 export interface ModuleMeta {
+    module: Module;
     file: ModuleFile;
     content: ModuleContent;
 }
 
 export interface ModuleFile {
+    meta: ModuleMeta;
     schema: FileSpec.Schema | null;
     variants: FileSpec.Variants | null;
 }
 
 export interface ModuleContent {
+    meta: ModuleMeta;
     schemas: ContentSpec.Schema[];
     variants: ContentSpec.Variant[];
 }
