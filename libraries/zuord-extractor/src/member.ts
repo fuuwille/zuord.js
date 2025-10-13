@@ -2,7 +2,7 @@
 
 export { default as MemberBase } from "./member.tzs";
 
-export enum FileMemberKind {
+export enum MemberKind {
     Unknown = 0,
     Import = 1 << 0,
     Export = 1 << 1,

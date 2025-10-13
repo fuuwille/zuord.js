@@ -1,49 +1,49 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
 import { node as znode } from "./node";
-import { FileMemberKind } from "./member";
+import { MemberKind } from "./member";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
-    return member.kind === FileMemberKind.Unknown;
+    return member.kind === MemberKind.Unknown;
 }
 
 export const isImport = (member: ZSchema.Base): member is ZSchema.Import => {
-    return member.kind === FileMemberKind.Import;
+    return member.kind === MemberKind.Import;
 }
 
 export const isExport = (member: ZSchema.Base): member is ZSchema.Export => {
-    return member.kind === FileMemberKind.Export;
+    return member.kind === MemberKind.Export;
 }
 
 export const isExportDefault = (member: ZSchema.Base): member is ZSchema.ExportDefault => {
-    return member.kind === FileMemberKind.ExportDefault;
+    return member.kind === MemberKind.ExportDefault;
 }
 
 export const isType = (member: ZSchema.Base): member is ZSchema.Type => {
-    return member.kind === FileMemberKind.Type;
+    return member.kind === MemberKind.Type;
 }
 
 export const isInterface = (member: ZSchema.Base): member is ZSchema.Interface => {
-    return member.kind === FileMemberKind.Interface;
+    return member.kind === MemberKind.Interface;
 }
 
 export const isVariable = (member: ZSchema.Base): member is ZSchema.Variable => {
-    return member.kind === FileMemberKind.Variable;
+    return member.kind === MemberKind.Variable;
 }
 
 export const isFunction = (member: ZSchema.Base): member is ZSchema.Function => {
-    return member.kind === FileMemberKind.Function;
+    return member.kind === MemberKind.Function;
 }
 
 export const isValue = (member: ZSchema.Base): member is ZSchema.Value => {
-    return member.kind === FileMemberKind.Value;
+    return member.kind === MemberKind.Value;
 }
 
 export const isArrowFunction = (member: ZSchema.Base): member is ZSchema.ArrowFunction => {
-    return member.kind === FileMemberKind.ArrowFunction;
+    return member.kind === MemberKind.ArrowFunction;
 }
 
 export const isFunctionExpression = (member: ZSchema.Base): member is ZSchema.FunctionExpression => {
-    return member.kind === FileMemberKind.FunctionExpression;
+    return member.kind === MemberKind.FunctionExpression;
 }
 
 //
@@ -124,48 +124,48 @@ export const create = <TMember extends ZSchema.Base>(
     return member;
 }
 
-export const getKind = (node: Node): ZSchema.MemberKind => {
+export const getKind = (node: Node): MemberKind => {
     if (znode.isImport(node)) {
-        return FileMemberKind.Import;
+        return MemberKind.Import;
     }
 
     if (znode.isExport(node)) {
-        return FileMemberKind.Export;
+        return MemberKind.Export;
     }
 
     if (znode.isExportDefault(node)) {
-        return FileMemberKind.ExportDefault;
+        return MemberKind.ExportDefault;
     }
 
     if (znode.isType(node)) {
-        return FileMemberKind.Type;
+        return MemberKind.Type;
     }
 
     if (znode.isInterface(node)) {
-        return FileMemberKind.Interface;
+        return MemberKind.Interface;
     }
 
     if (znode.isVariable(node)) {
-        return FileMemberKind.Variable;
+        return MemberKind.Variable;
     }
 
     if (znode.isValue(node)) {
-        return FileMemberKind.Value;
+        return MemberKind.Value;
     }
 
     if (znode.isFunction(node)) {
-        return FileMemberKind.Function;
+        return MemberKind.Function;
     }
 
     if (znode.isArrowFunction(node)) {
-        return FileMemberKind.ArrowFunction;
+        return MemberKind.ArrowFunction;
     }
 
     if (znode.isFunctionExpression(node)) {
-        return FileMemberKind.FunctionExpression;
+        return MemberKind.FunctionExpression;
     }
 
-    return FileMemberKind.Unknown;
+    return MemberKind.Unknown;
 };
 
 export const getDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): BindingName | null => {
