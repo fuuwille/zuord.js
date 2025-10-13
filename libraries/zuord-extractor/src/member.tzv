@@ -172,7 +172,7 @@ export const getKind = (node: Node): MemberType => {
     return MemberType.Unknown;
 };
 
-export const getDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): BindingName | null => {
+export const getNameNode = (member: ZSchema.DefinitionLike): BindingName | null => {
     if("getNameNode" in member.node) {
         return member.node.getNameNode() ?? null;
     }
@@ -238,7 +238,7 @@ export const getFunctionalVariantParamType = (member: ZSchema.FunctionalVariant)
 
 export const updateDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): void => {
     if(member.nameNode == undefined) {
-        member.nameNode = getDefinitionLikeNameNode(member);
+        member.nameNode = getNameNode(member);
     }
 }
 
