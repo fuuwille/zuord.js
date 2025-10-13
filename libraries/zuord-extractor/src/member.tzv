@@ -236,7 +236,7 @@ export const asFunctionLike = (member: ZSchema.FunctionalVariant) : ZSchema.Func
 
 //
 
-export const updateDefinitionLikeNameNode = (member: ZSchema.DefinitionLike): void => {
+export const updateNameNode = (member: ZSchema.DefinitionLike): void => {
     if(member.nameNode == undefined) {
         member.nameNode = getNameNode(member);
     }
