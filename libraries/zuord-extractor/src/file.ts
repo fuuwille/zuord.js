@@ -7,3 +7,5 @@ export enum ModuleFileMode {
     Schema = "schema",
     Variants = "variants"
 }
+
+export { File as FileNest, file as fileNest };
