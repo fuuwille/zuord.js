@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
-import { ModuleFileMode } from "./moduleFile";
-import { ModuleFile, moduleFile } from "./moduleFile";
+import { ModuleFileMode } from "./file";
+import { ModuleFile, moduleFile } from "./file";
 import { moduleContent } from "./moduleContent";
 import { member as zmember } from "./member";
 import { diagnostic } from "./diagnostic";

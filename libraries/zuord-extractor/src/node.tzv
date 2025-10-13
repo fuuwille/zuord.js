@@ -1,5 +1,5 @@
 import { Node, SyntaxKind } from "ts-morph";
-import { ModuleFileMode } from "./moduleFile";
+import { ModuleFileMode } from "./file";
 import { ValueSyntaxKind, valueSyntaxKinds } from "./~valueSyntax";
 
 export const isImport = (node: Node): node is ZSchema.Import => {

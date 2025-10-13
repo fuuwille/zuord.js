@@ -1,4 +1,4 @@
-import { ModuleFile } from "./moduleFile";
+import { ModuleFile } from "./file";
 import { ModuleContent } from "./moduleContent";
 
 export interface Module {

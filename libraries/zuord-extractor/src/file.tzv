@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { ModuleFileMode } from "./moduleFile";
-import { ModuleFile, ModuleFileD } from "./moduleFile";
+import { ModuleFileMode } from "./file";
+import { File, ModuleFileD } from "./file";
 import { member as zmember } from "./member";
 import { node as znode } from "./node";
 
@@ -60,10 +60,10 @@ export const extractAtPath = <TFile extends ModuleFileD>(dir: string, name: stri
     return undefined;
 };
 
-export const extractSchema = (sourceFile: SourceFile) : ModuleFile.Schema => {
-    return initialize(sourceFile, ModuleFileMode.Schema) as ModuleFile.Schema;
+export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
+    return initialize(sourceFile, ModuleFileMode.Schema) as File.Schema;
 };
 
-export const extractVariants = (sourceFile: SourceFile) : ModuleFile.Variants => {
-    return initialize(sourceFile, ModuleFileMode.Variants) as ModuleFile.Variants;
+export const extractVariants = (sourceFile: SourceFile) : File.Variants => {
+    return initialize(sourceFile, ModuleFileMode.Variants) as File.Variants;
 };
