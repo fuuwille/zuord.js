@@ -215,18 +215,18 @@ export const getReturnType = (member: ZSchema.FunctionLike): TypeNode | undefine
 }
 
 export const getFunctionalVariantReturnType = (member: ZSchema.FunctionalVariant) : TypeNode | undefined => {
-    return getReturnType(getFunctionLike(member)!);
+    return getReturnType(asFunctionLike(member)!);
 }
 
 export const getFunctionalVariantParamType = (member: ZSchema.FunctionalVariant) : TypeNode | undefined => {
-    return getParamType(getFunctionLike(member)!);
+    return getParamType(asFunctionLike(member)!);
 }
 
 export const getParamType = (member: ZSchema.FunctionLike): TypeNode | undefined => {
     return member?.node?.getParameters()[0]?.getTypeNode();
 }
 
-export const getFunctionLike = (member: ZSchema.FunctionalVariant) : ZSchema.FunctionLike | undefined => {
+export const asFunctionLike = (member: ZSchema.FunctionalVariant) : ZSchema.FunctionLike | undefined => {
     if(isFunctionalVariable(member)) {
         return member.initializer!;
     }
@@ -267,9 +267,9 @@ export const updateFunctionLikeParamTypeNode = (member: ZSchema.FunctionLike): v
 };
 
 export const updateFunctionalReturnTypeNode = (member: ZSchema.FunctionalVariant): void => {
-    return updateFunctionLikeReturnTypeNode(getFunctionLike(member)!);
+    return updateFunctionLikeReturnTypeNode(asFunctionLike(member)!);
 };
 
 export const updateFunctionalParamTypeNode = (member: ZSchema.FunctionalVariant): void => {
-    return updateFunctionLikeParamTypeNode(getFunctionLike(member)!);
+    return updateFunctionLikeParamTypeNode(asFunctionLike(member)!);
 };
