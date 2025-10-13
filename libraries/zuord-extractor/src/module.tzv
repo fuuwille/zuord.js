@@ -2,7 +2,7 @@ import { SourceFile } from "ts-morph";
 import { FileType } from "./file";
 import { FileSpec, fileSpec } from "./file";
 import { contentSpec } from "./content";
-import { member as zmember } from "./member";
+import { memberSpec } from "./member";
 import { diagnostic } from "./diagnostic";
 
 export const updateModule = (module: ZSchema.Module): void => {
@@ -13,7 +13,7 @@ export const updateModule = (module: ZSchema.Module): void => {
     module.variantContents = [];
 
     if(schemaMembers) {
-        for(const member of schemaMembers.filter(zmember.isSchemaLike)) {
+        for(const member of schemaMembers.filter(memberSpec.isSchemaLike)) {
             const schemaContent = contentSpec.createSchema(module, member);
             contentSpec.updateName(schemaContent);
 
@@ -22,7 +22,7 @@ export const updateModule = (module: ZSchema.Module): void => {
     }
 
     if(variantMembers) {
-        for(const member of variantMembers.filter(zmember.isVariantLike)) {
+        for(const member of variantMembers.filter(memberSpec.isVariantLike)) {
             const variantContent = contentSpec.createVariant(module, member);
             contentSpec.updateName(variantContent);
 
@@ -42,7 +42,7 @@ export const updateModule = (module: ZSchema.Module): void => {
             }
 
             if(contentSpec.isFunctionalVariant(variantContent)) {
-                const member = zmember.asFunctionLike(variantContent.member);
+                const member = memberSpec.asFunctionLike(variantContent.member);
 
                 const returnNode = member?.returnType;
 
