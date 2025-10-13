@@ -10,3 +10,10 @@ export interface Module {
 }
 
 export default Module;
+
+//
+
+export interface ModuleContent {
+    schemas: ContentSpec.Schema[];
+    variants: ContentSpec.Variant[];
+}
