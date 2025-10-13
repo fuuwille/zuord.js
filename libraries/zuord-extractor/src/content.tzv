@@ -48,20 +48,20 @@ export const createVariant = (
 //
 
 export const getName = (content: ZSchema.Base) : string | undefined => {
-    zmember.updateDefinitionLikeNameNode(content.member);
+    zmember.updateNameNode(content.member);
     return content.member.nameNode?.getText();
 }
 
 export const getValueVariantDeclaredSchemaName = (content: ZSchema.ValueVariant) : string | undefined => {
-    zmember.updateValueVariableDeclaredTypeNode(content.member);
+    zmember.updateDeclaredType(content.member);
     const typeNode = content.member.declaredTypeNode;
     return getTypeName(typeNode);
 }
 
 export const getFunctionalVariantReturnSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
-    const member = zmember.getFunctionLike(content.member);
+    const member = zmember.asFunctionLike(content.member);
     if(member) {
-        zmember.updateFunctionLikeReturnTypeNode(member);
+        zmember.updateReturnType(member);
         const typeNode = member.returnTypeNode;
         return getTypeName(typeNode, member.node);
     }
@@ -70,10 +70,10 @@ export const getFunctionalVariantReturnSchemaName = (content: ZSchema.Functional
 }
 
 export const getFunctionalVariantParamSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
-    const member = zmember.getFunctionLike(content.member);
+    const member = zmember.asFunctionLike(content.member);
 
     if(member) {
-        zmember.updateFunctionLikeParamTypeNode(member);
+        zmember.updateParamType(member);
         const typeNode = member.paramTypeNode;
         return getTypeName(typeNode, member.node);
     }
