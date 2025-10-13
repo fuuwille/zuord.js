@@ -8,4 +8,4 @@ export enum FileType {
     Variants = "variants"
 }
 
-export { File as FileNest, file as fileNest };
+export { File as FileSpec, file as fileSpec };

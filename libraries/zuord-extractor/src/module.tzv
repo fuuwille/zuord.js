@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
 import { FileType } from "./file";
-import { FileNest, fileNest } from "./file";
+import { FileSpec, fileSpec } from "./file";
 import { content } from "./content";
 import { member as zmember } from "./member";
 import { diagnostic } from "./diagnostic";
@@ -60,8 +60,8 @@ export const updateModule = (module: ZSchema.Module): void => {
 export const extractModule = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
-        schemaFile: fileNest.extractAtPath<FileNest.Schema>(dir, name, FileType.Schema) ?? null,
-        variantsFile: fileNest.extractAtPath<FileNest.Variants>(dir, name, FileType.Variants) ?? null,
+        schemaFile: fileSpec.extractAtPath<FileSpec.Schema>(dir, name, FileType.Schema) ?? null,
+        variantsFile: fileSpec.extractAtPath<FileSpec.Variants>(dir, name, FileType.Variants) ?? null,
         schemaContents: [],
         variantContents: [],
     };
@@ -71,11 +71,11 @@ export const extractModule = (dir: string, name: string): ZSchema.Module => {
 };
 
 export const updateModuleSchemaFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
-    module.schemaFile = sourceFile ? fileNest.extractSchema(sourceFile) : null;
+    module.schemaFile = sourceFile ? fileSpec.extractSchema(sourceFile) : null;
     updateModule(module);
 };
 
 export const updateModuleVariantsFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
-    module.variantsFile = sourceFile ? fileNest.extractVariants(sourceFile) : null;
+    module.variantsFile = sourceFile ? fileSpec.extractVariants(sourceFile) : null;
     updateModule(module);
 };

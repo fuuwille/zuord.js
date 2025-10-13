@@ -1,6 +1,6 @@
 export type * from "./module.tzs";
 export type { Content } from "./content";
 export type { Diagnostic } from "./diagnostic";
-export type { FileNest } from "./file";
+export type { FileSpec as FileNest } from "./file";
 export type { Member } from "./member";
 export type { Node } from "./node";
