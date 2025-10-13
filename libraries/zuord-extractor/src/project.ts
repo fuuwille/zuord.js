@@ -1,4 +1,4 @@
-import * as regex from "./regex";
+import * as regex from "../../zuord-stash/src/regex";
 import PATH from "path";
 import fs from "fs";
 
