@@ -1,6 +1,6 @@
 // @zuord-scope
 
-export { default as MemberD } from "./member.tzs";
+export { default as MemberBase } from "./member.tzs";
 
 export enum FileMemberKind {
     Unknown = 0,
