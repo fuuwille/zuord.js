@@ -150,9 +150,21 @@ export class Value extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.In
     }
 }
 
-export interface ArrowFunction extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
-    node: NodeSpec.ArrowFunction;
-    type: MemberType.ArrowFunction;
+export class ArrowFunction extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
+    returnTypeNode?: TypeNode;
+    paramTypeNode?: TypeNode;
+
+    constructor(node: NodeSpec.ArrowFunction) {
+        super(node, MemberType.ArrowFunction);
+    }
+
+    public get node(): NodeSpec.ArrowFunction {
+        return this.node;
+    }
+
+    public get type(): MemberType.ArrowFunction {
+        return this.type;
+    }
 }
 
 export interface FunctionExpression extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike, ZSchema.FunctionAlt {
