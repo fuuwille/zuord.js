@@ -1,5 +1,5 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
-import { node as znode } from "./node";
+import { nodeSpec } from "./node";
 import { MemberType } from "./member";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
@@ -129,43 +129,43 @@ export const create = <TMember extends ZSchema.Base>(
 }
 
 export const getKind = (node: Node): MemberType => {
-    if (znode.isImport(node)) {
+    if (nodeSpec.isImport(node)) {
         return MemberType.Import;
     }
 
-    if (znode.isExport(node)) {
+    if (nodeSpec.isExport(node)) {
         return MemberType.Export;
     }
 
-    if (znode.isExportDefault(node)) {
+    if (nodeSpec.isExportDefault(node)) {
         return MemberType.ExportDefault;
     }
 
-    if (znode.isType(node)) {
+    if (nodeSpec.isType(node)) {
         return MemberType.Type;
     }
 
-    if (znode.isInterface(node)) {
+    if (nodeSpec.isInterface(node)) {
         return MemberType.Interface;
     }
 
-    if (znode.isVariable(node)) {
+    if (nodeSpec.isVariable(node)) {
         return MemberType.Variable;
     }
 
-    if (znode.isValue(node)) {
+    if (nodeSpec.isValue(node)) {
         return MemberType.Value;
     }
 
-    if (znode.isFunction(node)) {
+    if (nodeSpec.isFunction(node)) {
         return MemberType.Function;
     }
 
-    if (znode.isArrowFunction(node)) {
+    if (nodeSpec.isArrowFunction(node)) {
         return MemberType.ArrowFunction;
     }
 
-    if (znode.isFunctionExpression(node)) {
+    if (nodeSpec.isFunctionExpression(node)) {
         return MemberType.FunctionExpression;
     }
 
@@ -197,7 +197,7 @@ export const getInitializer = (member: ZSchema.Variable): ZSchema.InitializerLik
         const initializerNode = declaration.getInitializer();
 
         if(initializerNode) {
-            if(znode.isInitializerLike(initializerNode)) {
+            if(nodeSpec.isInitializerLike(initializerNode)) {
                 return create<ZSchema.InitializerLike>(initializerNode);
             }
         }
