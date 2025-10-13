@@ -248,7 +248,7 @@ export const updateInitializer = (member: ZSchema.Variable): void => {
     }
 }
 
-export const updateValueVariableDeclaredTypeNode = (member: ZSchema.ValueVariable): void => {
+export const updateDeclaredTypeNode = (member: ZSchema.ValueVariable): void => {
     if(member.declaredTypeNode == undefined) {
         member.declaredTypeNode = getDeclaredType(member);
     }
