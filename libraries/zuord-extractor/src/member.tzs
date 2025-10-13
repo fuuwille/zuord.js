@@ -119,9 +119,21 @@ export class Variable extends ZSchema.Base implements ZSchema.KnownLike, ZSchema
     }
 }
 
-export interface Function extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly, ZSchema.FunctionLike {
-    node: NodeSpec.Function;
-    type: MemberType.Function;
+export class Function extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly, ZSchema.FunctionLike {
+    returnTypeNode?: TypeNode;
+    paramTypeNode?: TypeNode;
+
+    constructor(node: NodeSpec.Function) {
+        super(node, MemberType.Function);
+    }
+
+    public get node(): NodeSpec.Function {
+        return this.node;
+    }
+
+    public get type(): MemberType.Function {
+        return this.type;
+    }
 }
 
 export interface Value extends ZSchema.Base, ZSchema.KnownLike, ZSchema.InitializerLike {
