@@ -1,12 +1,12 @@
 import { FileNest } from "./file";
-import { ModuleContent } from "./moduleContent";
+import { Content } from "./content";
 
 export interface Module {
     name: string;
     schemaFile: FileNest.Schema | null;
     variantsFile: FileNest.Variants | null;
-    schemaContents: ModuleContent.Schema[];
-    variantContents: ModuleContent.Variant[];
+    schemaContents: Content.Schema[];
+    variantContents: Content.Variant[];
 }
 
 export default Module;

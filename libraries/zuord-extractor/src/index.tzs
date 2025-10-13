@@ -1,5 +1,5 @@
 export type * from "./module.tzs";
-export type { ModuleContent } from "./moduleContent";
+export type { Content } from "./content";
 export type { Diagnostic } from "./diagnostic";
 export type { FileNest } from "./file";
 export type { Member } from "./member";

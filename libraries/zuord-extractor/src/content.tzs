@@ -1,5 +1,5 @@
 import Module from "./module.tzs";
-import { ModuleContentKind } from "./moduleContent";
+import { ModuleContentKind } from "./content";
 import { Diagnostic } from "./diagnostic";
 import { Member as ZMember } from "./member";
 

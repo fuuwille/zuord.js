@@ -1,5 +1,5 @@
 import Module from "./module.tzs";
-import { ModuleContentKind } from "./moduleContent";
+import { ModuleContentKind } from "./content";
 import { Member as ZMember, member as zmember } from "./member";
 import { getTypeName } from "./~type";
 
