@@ -6,7 +6,9 @@ export function activate(context: vscode.ExtensionContext) {
         "files.associations",
         {
             "*.tzs": "typescript",
-            "*.tzv": "typescript"
+            "*.tzs.*": "typescript",
+            "*.tzv": "typescript",
+            "*.tzv.*": "typescript",
         },
         vscode.ConfigurationTarget.Global
     );
