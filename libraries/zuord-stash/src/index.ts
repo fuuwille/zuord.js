@@ -1,1 +1,1 @@
-export { Stash } from "./stash";
+export { Stash } from "../../zuord-extractor/src/stash";
