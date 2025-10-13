@@ -2,9 +2,24 @@ import { BindingName, TypeNode, Node } from "ts-morph";
 import { Node as ZNode } from "./node";
 import { MemberKind } from "./member";
 
-export interface Base {
-    node: Node;
-    kind: MemberKind;
+export class Base {
+    #node: Node;
+    #kind: MemberKind;
+
+    constructor(node: Node, kind: MemberKind) {
+        this.#node = node;
+        this.#kind = kind;
+    }
+
+    //
+
+    public get node(): Node {
+        return this.#node;
+    }
+
+    public get kind(): MemberKind {
+        return this.#kind;
+    }
 }
 
 export default Base;
