@@ -254,7 +254,7 @@ export const updateDeclaredType = (member: ZSchema.ValueVariable): void => {
     }
 }
 
-export const updateFunctionLikeReturnTypeNode = (member: ZSchema.FunctionLike): void => {
+export const updateReturnType = (member: ZSchema.FunctionLike): void => {
     if(member.returnTypeNode == undefined) {
         member.returnTypeNode = getReturnType(member);
     }
@@ -267,7 +267,7 @@ export const updateFunctionLikeParamTypeNode = (member: ZSchema.FunctionLike): v
 };
 
 export const updateFunctionalReturnTypeNode = (member: ZSchema.FunctionalVariant): void => {
-    return updateFunctionLikeReturnTypeNode(asFunctionLike(member)!);
+    return updateReturnType(asFunctionLike(member)!);
 };
 
 export const updateFunctionalParamTypeNode = (member: ZSchema.FunctionalVariant): void => {
