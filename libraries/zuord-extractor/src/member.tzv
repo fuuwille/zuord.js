@@ -206,7 +206,7 @@ export const getInitializer = (member: ZSchema.Variable): ZSchema.InitializerLik
     return undefined
 }
 
-export const getValueVariableDeclaredTypeNode = (member: ZSchema.ValueVariable): TypeNode | undefined => {
+export const getDeclaredType = (member: ZSchema.ValueVariable): TypeNode | undefined => {
     return member?.node?.getDeclarations()[0]?.getTypeNode();
 }
 
@@ -250,7 +250,7 @@ export const updateVariableInitializer = (member: ZSchema.Variable): void => {
 
 export const updateValueVariableDeclaredTypeNode = (member: ZSchema.ValueVariable): void => {
     if(member.declaredTypeNode == undefined) {
-        member.declaredTypeNode = getValueVariableDeclaredTypeNode(member);
+        member.declaredTypeNode = getDeclaredType(member);
     }
 }
 
