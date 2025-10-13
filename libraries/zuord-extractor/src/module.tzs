@@ -13,6 +13,11 @@ export default Module;
 
 //
 
+export interface ModuleFile {
+    schema: FileSpec.Schema | null;
+    variants: FileSpec.Variants | null;
+}
+
 export interface ModuleContent {
     schemas: ContentSpec.Schema[];
     variants: ContentSpec.Variant[];
