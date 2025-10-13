@@ -15,9 +15,11 @@ export default Base;
 //
 
 export interface Schema extends ZSchema.Base {
+    type: FileType.Schema;
     members: ZMember.SchemaLike[];
 }
 
 export interface Variants extends ZSchema.Base {
+    type: FileType.Variants;
     members: ZMember.VariantLike[];
 }
