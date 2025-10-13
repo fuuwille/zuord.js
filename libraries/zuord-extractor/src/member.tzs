@@ -60,9 +60,18 @@ export class Export extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.G
     }
 }
 
-export interface ExportDefault extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
-    node: NodeSpec.ExportDefault;
-    type: MemberType.ExportDefault;
+export class ExportDefault extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
+    constructor(node: NodeSpec.ExportDefault) {
+        super(node, MemberType.ExportDefault);
+    }
+
+    public get node(): NodeSpec.ExportDefault {
+        return this.node;
+    }
+
+    public get type(): MemberType.ExportDefault {
+        return this.type;
+    }
 }
 
 export interface Type extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
