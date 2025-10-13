@@ -3,8 +3,8 @@ import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { FileType } from "./file";
 import { File, FileBase } from "./file";
-import { member as zmember } from "./member";
-import { node as znode } from "./node";
+import { memberSpec } from "./member";
+import { nodeSpec } from "./node";
 
 export const initialize = (
     sourceFile: SourceFile, mode: FileType
@@ -19,10 +19,10 @@ export const initialize = (
     };
 
     sourceFile.forEachChild((node) => {
-        const member = zmember.create(node);
+        const member = memberSpec.create(node);
 
-        if(znode.isKnownLike(node)) {
-            const collection = znode.isDiscardedBy(node, mode)
+        if(nodeSpec.isKnownLike(node)) {
+            const collection = nodeSpec.isDiscardedBy(node, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
