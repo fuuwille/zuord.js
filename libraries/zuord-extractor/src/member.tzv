@@ -118,7 +118,7 @@ export const create = <TMember extends ZSchema.Base>(
 
     const member = {
         node,
-        type: getKind(node)
+        type: getType(node)
     } as TMember;
 
     if(isVariable(member)) {
@@ -128,7 +128,7 @@ export const create = <TMember extends ZSchema.Base>(
     return member;
 }
 
-export const getKind = (node: Node): MemberType => {
+export const getType = (node: Node): MemberType => {
     if (nodeSpec.isImport(node)) {
         return MemberType.Import;
     }
