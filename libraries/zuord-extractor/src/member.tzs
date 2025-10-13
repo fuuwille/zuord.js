@@ -32,9 +32,18 @@ export class Unknown extends ZSchema.Base {
     }
 }
 
-export interface Import extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
-    node: ZNode.Import;
-    type: MemberType.Import;
+export class Import extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
+    constructor(node: ZNode.Import) {
+        super(node, MemberType.Import);
+    }
+
+    public get node(): ZNode.Import {
+        return this.node;
+    }
+
+    public get type(): MemberType.Import {
+        return this.type;
+    }
 }
 
 export interface Export extends ZSchema.Base, ZSchema.KnownLike, ZSchema.GlobalLike, ZSchema.ESMLike {
