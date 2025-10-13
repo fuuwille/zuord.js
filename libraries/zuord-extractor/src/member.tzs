@@ -88,9 +88,18 @@ export class Type extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.Def
     }
 }
 
-export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
-    node: NodeSpec.Interface;
-    type: MemberType.Interface;
+export class Interface extends ZSchema.Base implements ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
+    constructor(node: NodeSpec.Interface) {
+        super(node, MemberType.Interface);
+    }
+
+    public get node(): NodeSpec.Interface {
+        return this.node;
+    }
+
+    public get type(): MemberType.Interface {
+        return this.type;
+    }
 }
 
 export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly {
