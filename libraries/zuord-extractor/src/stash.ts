@@ -1,6 +1,6 @@
 import PATH from "path";
 import FS from "fs";
-import * as regex from "./regex";
+import * as regex from "../../zuord-stash/src/regex";
 import { Project, ProjectFile, ProjectFolder, ProjectModule, ProjectScope } from "./project";
 
 export class Stash {
