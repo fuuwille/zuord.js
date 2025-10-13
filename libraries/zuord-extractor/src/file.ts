@@ -10,8 +10,24 @@ export enum FileType {
 }
 
 export enum FileBehavior {
+    Unknown = "unknown",
     Schema = "schema",
     Variants = "variants"
 }
 
 export { File as FileSpec, file as fileSpec };
+
+//
+
+export const getBehavior = (mode : FileType) : FileBehavior => {
+    switch(mode) {
+        case FileType.TS:
+        case FileType.TZS:
+            return FileBehavior.Schema;
+        case FileType.TV:
+        case FileType.TZV:
+            return FileBehavior.Variants;
+        default:
+            return FileBehavior.Unknown;
+    }
+}
