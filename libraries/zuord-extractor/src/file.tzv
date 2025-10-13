@@ -50,7 +50,7 @@ export const extract = (sourceFile: SourceFile, extension: FileExtension) : File
 };
 
 export const extractAtPath = <TFile extends FileBase>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
-    const fileName = `${name}.${extension.toLowerCase()}.ts`;
+    const fileName = `${name}.${extension.toLowerCase()}`;
     const filePath = path.join(dir, fileName);
 
     const sourceFile = new Project().addSourceFileAtPath(filePath);
