@@ -1,6 +1,6 @@
 // @zuord-scope
 
-export { default as ModuleFileD } from "./file.tzs";
+export { default as FileBase } from "./file.tzs";
 
 export enum FileType {
     Main = "main",
