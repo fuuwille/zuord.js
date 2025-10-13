@@ -3,6 +3,8 @@ import { ContentSpec } from "./content";
 
 export interface Module {
     name: string;
+    intrinsic?: ModuleMeta;
+    extrinsic?: ModuleMeta;
     schemaFile: FileSpec.Schema | null;
     variantsFile: FileSpec.Variants | null;
     schemaContents: ContentSpec.Schema[];
