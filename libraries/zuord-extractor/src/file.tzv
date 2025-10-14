@@ -10,7 +10,7 @@ export const initialize = (
     sourceFile: SourceFile, extension: FileExtension
 ) : ZSchema.Base => {
 
-    const moduleFile : FileBase = {
+    const file : FileBase = {
         source: sourceFile,
         extension,
         type: getType(extension),
@@ -24,17 +24,17 @@ export const initialize = (
 
         if(node.isKnownLike(child)) {
             const collection = node.isDiscardedBy(child, extension)
-                ? moduleFile.discarded
-                : moduleFile.members;
+                ? file.discarded
+                : file.members;
 
             collection.push(instance);
         }
         else {
-            moduleFile.others.push(instance);
+            file.others.push(instance);
         }
     });
 
-    return moduleFile;
+    return file;
 };
 
 export const extract = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
