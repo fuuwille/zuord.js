@@ -30,6 +30,10 @@ export const isClass = (member: ZSchema.Base): member is ZSchema.Class => {
     return member.type === MemberType.Class;
 }
 
+export const isEnum = (member: ZSchema.Base): member is ZSchema.Enum => {
+    return member.type === MemberType.Enum;
+}
+
 export const isVariable = (member: ZSchema.Base): member is ZSchema.Variable => {
     return member.type === MemberType.Variable;
 }
