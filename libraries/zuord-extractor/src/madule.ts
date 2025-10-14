@@ -25,3 +25,9 @@ export class ModuleObject {
         return this.#module;
     }
 }
+
+export class ModulePair extends ModuleObject {
+    constructor(module: Module) {
+        super(module);
+    }
+}
