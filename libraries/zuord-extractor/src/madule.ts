@@ -31,3 +31,18 @@ export class ModulePair extends ModuleObject {
         super(module);
     }
 }
+
+//
+
+export class ModuleEntry extends ModulePair {
+    #pair: ModulePair
+
+    constructor(pair: ModulePair) {
+        super(pair.module);
+        this.#pair = pair;
+    }
+
+    get pair(): ModulePair {
+        return this.#pair;
+    }
+}
