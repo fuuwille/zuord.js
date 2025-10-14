@@ -27,9 +27,13 @@ export const getType = (mode : FileExtension) : FileType => {
     switch(mode) {
         case FileExtension.TZM:
         case FileExtension.TZS:
+        case FileExtension.TS:
+        case FileExtension.ZSchema:
             return FileType.Schema;
         case FileExtension.TZU:
         case FileExtension.TZV:
+        case FileExtension.ZUtility:
+        case FileExtension.ZVariant:
             return FileType.Variants;
         default:
             return FileType.Unknown;
