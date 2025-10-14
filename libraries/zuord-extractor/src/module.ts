@@ -55,6 +55,9 @@ export class ModuleSet extends ModuleObject {
     constructor(module: Module, type: ModuleSetType) {
         super(module);
         this.#type = type;
+
+        this.#file = new ModuleFile(this);
+        this.#content = new ModuleContent(this);
     }
 
     get type(): ModuleSetType {
