@@ -3,8 +3,8 @@ import { Content } from "./content";
 
 export class Module {
     #name: string;
-    #primary: ModulePair | undefined;
-    #secondary: ModulePair | undefined;
+    #primary: ModuleSet | undefined;
+    #secondary: ModuleSet | undefined;
 
     constructor(name: string) {
         this.#name = name;
@@ -16,11 +16,11 @@ export class Module {
         return this.#name;
     }
 
-    get primary(): ModulePair | undefined {
+    get primary(): ModuleSet | undefined {
         return this.#primary;
     }
 
-    get secondary(): ModulePair | undefined {
+    get secondary(): ModuleSet | undefined {
         return this.#secondary;
     }
 }
@@ -39,7 +39,7 @@ export class ModuleObject {
     }
 }
 
-export class ModulePair extends ModuleObject {
+export class ModuleSet extends ModuleObject {
     #file: ModuleFile | undefined;
     #content: ModuleContent | undefined;
 
@@ -59,15 +59,15 @@ export class ModulePair extends ModuleObject {
 //
 
 export class ModuleEntry extends ModuleObject {
-    #pair: ModulePair
+    #set: ModuleSet
 
-    constructor(pair: ModulePair) {
-        super(pair.module);
-        this.#pair = pair;
+    constructor(set: ModuleSet) {
+        super(set.module);
+        this.#set = set;
     }
 
-    get pair(): ModulePair {
-        return this.#pair;
+    get set(): ModuleSet {
+        return this.#set;
     }
 }
 
@@ -75,8 +75,8 @@ export class ModuleFile extends ModuleEntry {
     #schema: File.Schema | undefined;
     #variant: File.Variant | undefined;
 
-    constructor(pair: ModulePair) {
-        super(pair);
+    constructor(set: ModuleSet) {
+        super(set);
     }
 
     get schema(): File.Schema | undefined {
@@ -92,8 +92,8 @@ export class ModuleContent extends ModuleEntry {
     #schemas: Content.Schema[];
     #variants: Content.Variant[];
 
-    constructor(pair: ModulePair) {
-        super(pair);
+    constructor(set: ModuleSet) {
+        super(set);
         this.#schemas = [];
         this.#variants = [];
     }
