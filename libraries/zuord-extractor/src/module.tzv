@@ -69,13 +69,3 @@ export const extract = (dir: string, name: string): ZSchema.Module => {
     update(module);
     return module;
 };
-
-export const updateSchema = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
-    module.schemaFile = sourceFile ? fileSpec.extractSchema(sourceFile) : null;
-    update(module);
-};
-
-export const updateVariant = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
-    module.variantsFile = sourceFile ? fileSpec.extractVariant(sourceFile) : null;
-    update(module);
-};
