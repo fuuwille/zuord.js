@@ -38,14 +38,14 @@ export const initialize = (sourceFile: SourceFile, extension: FileExtension) : Z
     return file;
 };
 
-export const extract = <TFile extends ZSchema.Base>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
+export const extract = (dir: string, name: string, extension: FileExtension) : ZSchema.Base | undefined => {
     const fileName = `${name}.${extension.toLowerCase()}`;
     const filePath = path.join(dir, fileName);
 
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return initialize(sourceFile, extension) as TFile;
+        return initialize(sourceFile, extension);
     }
 
     return undefined;
