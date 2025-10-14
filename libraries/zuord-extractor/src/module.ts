@@ -1,3 +1,5 @@
+import { FileSpec } from "./file";
+
 export class Module {
     #name: string;
 
@@ -48,8 +50,19 @@ export class ModuleEntry extends ModulePair {
 }
 
 export class ModuleFile extends ModuleEntry {
+    #schema: FileSpec.Schema | undefined;
+    #variants: FileSpec.Variants | undefined;
+
     constructor(pair: ModulePair) {
         super(pair);
+    }
+
+    get schema(): FileSpec.Schema | undefined {
+        return this.#schema;
+    }
+
+    get variants(): FileSpec.Variants | undefined {
+        return this.#variants;
     }
 }
 
