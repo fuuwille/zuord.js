@@ -3,11 +3,10 @@
 export { default as FileBase } from "./file.tzs";
 
 export enum FileExtension {
-    TZM = "tzm",
+    TS = "ts",
     TZU = "tzu",
     TZS = "tzs",
     TZV = "tzv",
-    TS = "ts",
     ZUtility = "zutility.ts",
     ZSchema = "zschema.ts",
     ZVariant = "zvariant.ts"
@@ -25,9 +24,8 @@ export { File as FileSpec, file as fileSpec };
 
 export const getType = (mode : FileExtension) : FileType => {
     switch(mode) {
-        case FileExtension.TZM:
-        case FileExtension.TZS:
         case FileExtension.TS:
+        case FileExtension.TZS:
         case FileExtension.ZSchema:
             return FileType.Schema;
         case FileExtension.TZU:

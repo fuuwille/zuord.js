@@ -16,7 +16,7 @@ export default Base;
 //
 
 export interface Schema extends ZSchema.Base {
-    extension: FileExtension.TZM | FileExtension.TZS;
+    extension: FileExtension.TS | FileExtension.TZS;
     type: FileType.Schema;
     members: ZMember.SchemaLike[];
 }

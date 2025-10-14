@@ -39,7 +39,7 @@ export const initialize = (
 
 export const extract = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
     switch(extension) {
-        case FileExtension.TZM:
+        case FileExtension.TS:
         case FileExtension.TZS:
             return extractSchema(sourceFile);
         case FileExtension.TZU:
