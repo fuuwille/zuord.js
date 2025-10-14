@@ -1,4 +1,5 @@
 // @zuord-scope
+// @zuord-exports spec
 
 export { default as MemberBase } from "./member.tzs";
 
