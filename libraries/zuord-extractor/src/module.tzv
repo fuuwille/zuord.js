@@ -59,8 +59,8 @@ export const update = (module: ZSchema.Module): void => {
 export const extract = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
-        schemaFile: file.extract<File.Schema>(dir, name, FileExtension.TZS) ?? null,
-        variantsFile: file.extract<File.Variant>(dir, name, FileExtension.TZV) ?? null,
+        schemaFile: file.extractSchema(dir, name, FileExtension.TZS)! ?? null,
+        variantsFile: file.extractVariant(dir, name, FileExtension.TZV)! ?? null,
         schemaContents: [],
         variantContents: [],
     };

@@ -101,8 +101,8 @@ export class ModuleFile extends ModuleEntry {
         const type = set.type;
         const module = set.module;
 
-        this.#schema = file.extract<File.Schema>(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TS : FileExtension.TZS);
-        this.#variant = file.extract<File.Variant>(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TZU : FileExtension.TZV);
+        this.#schema = file.extractSchema(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TS : FileExtension.TZS);
+        this.#variant = file.extractVariant(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TZU : FileExtension.TZV);
     }
 
     get schema(): File.Schema | undefined {
