@@ -1,9 +1,9 @@
-import { BindingName, TypeNode, Node } from "ts-morph";
+import * as tsm from "ts-morph";
 import { NodeSpec } from "./node";
 import { MemberType } from "./member";
 
 export interface Base {
-    node: Node;
+    node: tsm.Node;
     type: MemberType;
 }
 
@@ -95,7 +95,7 @@ export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.Global
 export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
     node: NodeSpec.DefinitionLike;
     type: MemberType.Import | MemberType.Export | MemberType.ExportDefault | MemberType.Type | MemberType.Interface | MemberType.Enum | MemberType.Class | MemberType.Variable | MemberType.Function;
-    nameNode?: BindingName | null;
+    nameNode?: tsm.BindingName | null;
 }
 
 export interface DefinitionOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
@@ -130,7 +130,7 @@ export interface InitializerLike extends ZSchema.Base, ZSchema.KnownLike {
 
 export interface ValueVariable extends ZSchema.Variable {
     initializer?: Value;
-    declaredType?: TypeNode;
+    declaredType?: tsm.TypeNode;
 }
 
 export interface FunctionalVariable extends ZSchema.Variable {
@@ -139,8 +139,8 @@ export interface FunctionalVariable extends ZSchema.Variable {
 
 export interface FunctionLike extends ZSchema.Base {
     node: NodeSpec.FunctionLike;
-    returnType?: TypeNode;
-    paramType?: TypeNode;
+    returnType?: tsm.TypeNode;
+    paramType?: tsm.TypeNode;
 }
 
 export interface FunctionAlt extends ZSchema.FunctionLike {
