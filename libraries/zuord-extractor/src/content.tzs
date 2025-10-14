@@ -1,11 +1,11 @@
 import Module from "./module.tzs";
 import { ContentType } from "./content";
 import { Diagnostic } from "./diagnostic";
-import { Member as ZMember } from "./member";
+import { Member } from "./member";
 
 export interface Base {
     module: Module;
-    member: ZMember.DefinitionLike;
+    member: Member.DefinitionLike;
     type: ContentType;
     name?: string | null;
     diagnostics?: Diagnostic.Base[];
@@ -16,7 +16,7 @@ export default Base;
 //
 
 export interface Schema extends ZSchema.Base {
-    member: ZMember.SchemaLike;
+    member: Member.SchemaLike;
     type: ContentType.Schema;
     variants?: Variant[];
 }
@@ -24,18 +24,18 @@ export interface Schema extends ZSchema.Base {
 export interface Variant extends ZSchema.Base {
     schema?: Schema;
     type: ContentType.Variant;
-    member: ZMember.VariantLike;
+    member: Member.VariantLike;
 }
 
 //
 
 export interface ValueVariant extends ZSchema.Variant {
-    member: ZMember.ValueVariable;
+    member: Member.ValueVariable;
     declaredSchemaName?: string | null;
 }
 
 export interface FunctionalVariant extends ZSchema.Variant {
-    member: ZMember.FunctionalVariant;
+    member: Member.FunctionalVariant;
     returnSchemaName?: string | null;
     paramSchemaName?: string | null;
 }
