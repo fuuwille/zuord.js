@@ -3,6 +3,8 @@ import { Content } from "./content";
 
 export class Module {
     #name: string;
+    #primary: ModulePair | undefined;
+    #secondary: ModulePair | undefined;
 
     constructor(name: string) {
         this.#name = name;
@@ -12,6 +14,14 @@ export class Module {
 
     get name(): string {
         return this.#name;
+    }
+
+    get primary(): ModulePair | undefined {
+        return this.#primary;
+    }
+
+    get secondary(): ModulePair | undefined {
+        return this.#secondary;
     }
 }
 
