@@ -44,32 +44,8 @@ export const extract = <TFile extends FileBase>(dir: string, name: string, exten
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return extractFrom(sourceFile, extension) as TFile;
+        return initialize(sourceFile, extension) as TFile;
     }
 
     return undefined;
-};
-
-export const extractFrom = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
-    switch(extension) {
-        case FileExtension.TS:
-        case FileExtension.TZS:
-        case FileExtension.ZSchema:
-            return extractSchema(sourceFile);
-        case FileExtension.TZU:
-        case FileExtension.TZV:
-        case FileExtension.ZUtility:
-        case FileExtension.ZVariant:
-            return extractVariant(sourceFile);
-        default:
-            throw new Error(`Unknown module file kind: ${extension}`);
-    }
-};
-
-export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
-    return initialize(sourceFile, FileExtension.TZS) as File.Schema;
-};
-
-export const extractVariant = (sourceFile: SourceFile) : File.Variant => {
-    return initialize(sourceFile, FileExtension.TZV)  as File.Variant;
 };
