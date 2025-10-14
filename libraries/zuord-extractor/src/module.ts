@@ -52,3 +52,9 @@ export class ModuleFile extends ModuleEntry {
         super(pair);
     }
 }
+
+export class ModuleContent extends ModuleEntry {
+    constructor(pair: ModulePair) {
+        super(pair);
+    }
+}
