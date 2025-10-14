@@ -1,5 +1,5 @@
 import { FileExtension } from "./file";
-import { FileSpec, fileSpec } from "./file";
+import { File, file } from "./file";
 import { contentSpec } from "./content";
 import { memberSpec } from "./member";
 import { diagnostic } from "./diagnostic";
@@ -59,8 +59,8 @@ export const update = (module: ZSchema.Module): void => {
 export const extract = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
-        schemaFile: fileSpec.extract<FileSpec.Schema>(dir, name, FileExtension.TZS) ?? null,
-        variantsFile: fileSpec.extract<FileSpec.Variant>(dir, name, FileExtension.TZV) ?? null,
+        schemaFile: file.extract<File.Schema>(dir, name, FileExtension.TZS) ?? null,
+        variantsFile: file.extract<File.Variant>(dir, name, FileExtension.TZV) ?? null,
         schemaContents: [],
         variantContents: [],
     };
