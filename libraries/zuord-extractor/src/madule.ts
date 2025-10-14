@@ -46,3 +46,9 @@ export class ModuleEntry extends ModulePair {
         return this.#pair;
     }
 }
+
+export class ModuleFile extends ModuleEntry {
+    constructor(pair: ModulePair) {
+        super(pair);
+    }
+}
