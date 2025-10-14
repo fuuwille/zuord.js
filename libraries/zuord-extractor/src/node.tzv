@@ -22,6 +22,10 @@ export const isInterface = (node: Node): node is ZSchema.Interface => {
     return node.getKind() === SyntaxKind.InterfaceDeclaration;
 }
 
+export const isClass = (node: Node): node is ZSchema.Class => {
+    return node.getKind() === SyntaxKind.ClassDeclaration;
+}
+
 export const isVariable = (node: Node): node is ZSchema.Variable => {
     return node.getKind() === SyntaxKind.VariableStatement;
 }
