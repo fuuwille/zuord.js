@@ -1,5 +1,5 @@
 import { SourceFile } from "ts-morph";
-import { FileExtension } from "./file";
+import { FileExtension, FileType } from "./file";
 import { MemberBase, Member as ZMember } from "./member";
 
 export interface Base {

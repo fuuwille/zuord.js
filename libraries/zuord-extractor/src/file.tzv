@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { FileExtension } from "./file";
+import { FileExtension, getType } from "./file";
 import { File, FileBase } from "./file";
 import { memberSpec } from "./member";
 import { nodeSpec } from "./node";
@@ -13,6 +13,7 @@ export const initialize = (
     const moduleFile : FileBase = {
         source: sourceFile,
         extension: mode,
+        type: getType(mode),
         members: [],
         discarded: [],
         others: []
