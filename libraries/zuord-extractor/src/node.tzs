@@ -1,33 +1,33 @@
-import { TypeAliasDeclaration, InterfaceDeclaration, EnumDeclaration, FunctionDeclaration, VariableStatement, ImportDeclaration, ExportDeclaration, ExportAssignment, ArrowFunction as $ArrowFunction, FunctionExpression as $FunctionExpression, Node, ClassDeclaration } from "ts-morph";
+import * as tsm from "ts-morph";
 import { ValueSyntaxNode } from "./~valueSyntax";
 
-export type Import = ImportDeclaration;
+export type Import = tsm.ImportDeclaration;
 
-export type Export = ExportDeclaration;
+export type Export = tsm.ExportDeclaration;
 
-export type ExportDefault = ExportAssignment;
+export type ExportDefault = tsm.ExportAssignment;
 
-export type Type = TypeAliasDeclaration;
+export type Type = tsm.TypeAliasDeclaration;
 
-export type Interface = InterfaceDeclaration;
+export type Interface = tsm.InterfaceDeclaration;
 
-export type Class = ClassDeclaration;
+export type Class = tsm.ClassDeclaration;
 
-export type Enum = EnumDeclaration;
+export type Enum = tsm.EnumDeclaration;
 
-export type Variable = VariableStatement;
+export type Variable = tsm.VariableStatement;
 
-export type Function = FunctionDeclaration;
+export type Function = tsm.FunctionDeclaration;
 
 export type Value = ValueSyntaxNode;
 
-export type ArrowFunction = $ArrowFunction;
+export type ArrowFunction = tsm.ArrowFunction;
 
-export type FunctionExpression = $FunctionExpression;
+export type FunctionExpression = tsm.FunctionExpression;
 
 //
 
-export type Any = Node;
+export type Any = tsm.Node;
 
 export type KnownLike =
     | ZSchema.ESMLike
