@@ -102,7 +102,7 @@ export const isDiscardedBy = (node: Node, mode : FileExtension): node is ZSchema
     switch(getType(mode)) {
         case FileType.Schema:
             return isDiscardedSchema(node);
-        case FileType.Variants:
+        case FileType.Variant:
             return isDiscardedVariant(node);
         default:
             return false;

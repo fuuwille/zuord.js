@@ -15,7 +15,7 @@ export enum FileExtension {
 export enum FileType {
     Unknown = "unknown",
     Schema = "schema",
-    Variants = "variants"
+    Variant = "variant"
 }
 
 export { File as FileSpec, file as fileSpec };
@@ -32,7 +32,7 @@ export const getType = (mode : FileExtension) : FileType => {
         case FileExtension.TZV:
         case FileExtension.ZUtility:
         case FileExtension.ZVariant:
-            return FileType.Variants;
+            return FileType.Variant;
         default:
             return FileType.Unknown;
     }
