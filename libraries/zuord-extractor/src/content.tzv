@@ -35,12 +35,12 @@ export const createSchema = (
 };
 
 export const createVariant = (
-    module: Module, variant: MemberSpec.VariantLike
+    module: Module, member: MemberSpec.VariantLike
 ) : ZSchema.Variant => {
 
     return {
         module,
-        member: variant,
+        member,
         type: ContentType.Variant
     };
 };
