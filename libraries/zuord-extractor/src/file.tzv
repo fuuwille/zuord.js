@@ -6,10 +6,7 @@ import { File, FileBase } from "./file";
 import { member } from "./member";
 import { node } from "./node";
 
-export const initialize = (
-    sourceFile: SourceFile, extension: FileExtension
-) : ZSchema.Base => {
-
+export const initialize = <TFile extends ZSchema.Base>(sourceFile: SourceFile, extension: FileExtension) : TFile => {
     const file : FileBase = {
         source: sourceFile,
         extension,
@@ -34,10 +31,10 @@ export const initialize = (
         }
     });
 
-    return file;
+    return file as TFile;
 };
 
-export const extract = <TFile extends FileBase>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
+export const extract = <TFile extends ZSchema.Base>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
     const fileName = `${name}.${extension.toLowerCase()}`;
     const filePath = path.join(dir, fileName);
 
