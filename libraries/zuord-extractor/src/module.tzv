@@ -57,7 +57,7 @@ export const update = (module: ZSchema.Module): void => {
     }
 };
 
-export const extractModule = (dir: string, name: string): ZSchema.Module => {
+export const extract = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
         schemaFile: fileSpec.extractAtPath<FileSpec.Schema>(dir, name, FileExtension.TZS) ?? null,

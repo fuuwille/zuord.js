@@ -253,7 +253,7 @@ export class ExplorerModule {
     constructor(directory: ExplorerDirectory, name: string) {
         this.#directory = directory;
         this.#name = name;
-        this.#source = zuordExtractor.extractModule(directory.uri.path!, getName(name));
+        this.#source = zuordExtractor.extract(directory.uri.path!, getName(name));
     }
 
     public get directory(): ExplorerDirectory {
@@ -266,6 +266,6 @@ export class ExplorerModule {
 
 
     public refresh() {
-        this.#source = zuordExtractor.extractModule(this.#directory.uri.path!, getName(this.#name));
+        this.#source = zuordExtractor.extract(this.#directory.uri.path!, getName(this.#name));
     }
 }
