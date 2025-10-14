@@ -60,8 +60,8 @@ export const update = (module: ZSchema.Module): void => {
 export const extract = (dir: string, name: string): ZSchema.Module => {
     const module: ZSchema.Module = {
         name,
-        schemaFile: fileSpec.extractAtPath<FileSpec.Schema>(dir, name, FileExtension.TZS) ?? null,
-        variantsFile: fileSpec.extractAtPath<FileSpec.Variant>(dir, name, FileExtension.TZV) ?? null,
+        schemaFile: fileSpec.extract<FileSpec.Schema>(dir, name, FileExtension.TZS) ?? null,
+        variantsFile: fileSpec.extract<FileSpec.Variant>(dir, name, FileExtension.TZV) ?? null,
         schemaContents: [],
         variantContents: [],
     };
