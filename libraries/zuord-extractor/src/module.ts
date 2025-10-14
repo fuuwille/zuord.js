@@ -2,15 +2,20 @@ import { File } from "./file";
 import { Content } from "./content";
 
 export class Module {
-    #name: string;
+    #location: string; #name: string;
     #main: ModuleSet | undefined;
     #nest: ModuleSet | undefined;
 
-    constructor(name: string) {
+    constructor(location: string, name: string) {
+        this.#location = location;
         this.#name = name;
     }
 
     //
+
+    get location(): string {
+        return this.#location;
+    }
 
     get name(): string {
         return this.#name;
