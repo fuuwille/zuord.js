@@ -27,6 +27,8 @@ export type FunctionExpression = $FunctionExpression;
 
 //
 
+export type Any = Node;
+
 export type KnownLike =
     | ZSchema.ESMLike
     | ZSchema.DefinitionLike
