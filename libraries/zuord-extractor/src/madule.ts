@@ -11,3 +11,17 @@ export class Module {
         return this.#name;
     }
 }
+
+export class ModuleObject {
+    #module: Module
+
+    constructor(module: Module) {
+        this.#module = module;
+    }
+
+    //
+
+    get module(): Module {
+        return this.#module;
+    }
+}
