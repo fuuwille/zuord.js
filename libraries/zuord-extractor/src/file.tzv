@@ -8,7 +8,7 @@ import { nodeSpec } from "./node";
 
 export const initialize = (
     sourceFile: SourceFile, mode: FileExtension
-) : FileBase => {
+) : ZSchema.Base => {
 
     const moduleFile : FileBase = {
         source: sourceFile,
