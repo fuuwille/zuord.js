@@ -1,6 +1,6 @@
 import { SourceFile } from "ts-morph";
 import { FileExtension, FileType } from "./file";
-import { MemberBase, Member as ZMember } from "./member";
+import { Member, MemberBase } from "./member";
 
 export interface Base {
     source: SourceFile
@@ -18,11 +18,11 @@ export default Base;
 export interface Schema extends ZSchema.Base {
     extension: FileExtension.TS | FileExtension.TZS | FileExtension.ZSchema;
     type: FileType.Schema;
-    members: ZMember.SchemaLike[];
+    members: Member.SchemaLike[];
 }
 
 export interface Variants extends ZSchema.Base {
     extension: FileExtension.TZU | FileExtension.TZV | FileExtension.ZUtility | FileExtension.ZVariant;
     type: FileType.Variant;
-    members: ZMember.VariantLike[];
+    members: Member.VariantLike[];
 }
