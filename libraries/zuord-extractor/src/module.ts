@@ -30,8 +30,19 @@ export class ModuleObject {
 }
 
 export class ModulePair extends ModuleObject {
+    #file: ModuleFile | undefined;
+    #content: ModuleContent | undefined;
+
     constructor(module: Module) {
         super(module);
+    }
+
+    get file(): ModuleFile | undefined {
+        return this.#file;
+    }
+
+    get content(): ModuleContent | undefined {
+        return this.#content;
     }
 }
 
