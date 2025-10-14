@@ -45,6 +45,11 @@ export interface Class extends ZSchema.Base, ZSchema.KnownLike, ZSchema.Definiti
     type: MemberType.Class;
 }
 
+export interface Enum extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
+    node: NodeSpec.Enum;
+    type: MemberType.Enum;
+}
+
 export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly {
     node: NodeSpec.Variable;
     type: MemberType.Variable;
