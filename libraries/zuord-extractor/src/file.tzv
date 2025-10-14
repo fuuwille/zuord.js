@@ -6,8 +6,8 @@ import { File, FileBase } from "./file";
 import { member } from "./member";
 import { node } from "./node";
 
-export const initialize = <TFile extends ZSchema.Base>(sourceFile: SourceFile, extension: FileExtension) : TFile => {
-    const file : FileBase = {
+export const create = (sourceFile: SourceFile, extension: FileExtension) : ZSchema.Base => {
+    return {
         source: sourceFile,
         extension,
         type: getType(extension)!,
@@ -15,6 +15,10 @@ export const initialize = <TFile extends ZSchema.Base>(sourceFile: SourceFile, e
         discarded: [],
         others: []
     };
+};
+
+export const initialize = (sourceFile: SourceFile, extension: FileExtension) : ZSchema.Base => {
+    const file = create(sourceFile, extension);
 
     sourceFile.forEachChild((child) => {
         const instance = member.create(child);
@@ -31,7 +35,7 @@ export const initialize = <TFile extends ZSchema.Base>(sourceFile: SourceFile, e
         }
     });
 
-    return file as TFile;
+    return file;
 };
 
 export const extract = <TFile extends ZSchema.Base>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
