@@ -37,7 +37,7 @@ export const initialize = (
     return file;
 };
 
-export const extract = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
+export const extractFrom = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
     switch(extension) {
         case FileExtension.TS:
         case FileExtension.TZS:
@@ -57,7 +57,7 @@ export const extractAtPath = <TFile extends FileBase>(dir: string, name: string,
     const sourceFile = new Project().addSourceFileAtPath(filePath);
 
     if(fs.existsSync(filePath)) {
-        return extract(sourceFile, extension) as TFile;
+        return extractFrom(sourceFile, extension) as TFile;
     }
 
     return undefined;
