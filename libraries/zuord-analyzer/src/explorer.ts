@@ -161,7 +161,7 @@ export class ExplorerProvider {
                 zuordExtractor.updateModuleTypeFile(module, sourceFile);
                 break;
             case "zvariants":
-                zuordExtractor.updateModuleVariantsFile(module, sourceFile);
+                zuordExtractor.updateVariant(module, sourceFile);
                 break;
         }
     }

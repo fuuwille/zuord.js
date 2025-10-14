@@ -75,7 +75,7 @@ export const updateSchema = (module: ZSchema.Module, sourceFile: SourceFile | nu
     update(module);
 };
 
-export const updateModuleVariantsFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateVariant = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
     module.variantsFile = sourceFile ? fileSpec.extractVariant(sourceFile) : null;
     update(module);
 };
