@@ -45,11 +45,17 @@ export class ModuleObject {
 }
 
 export class ModuleSet extends ModuleObject {
+    #type: ModuleSetType;
     #file: ModuleFile | undefined;
     #content: ModuleContent | undefined;
 
-    constructor(module: Module) {
+    constructor(module: Module, type: ModuleSetType) {
         super(module);
+        this.#type = type;
+    }
+
+    get type(): ModuleSetType {
+        return this.#type;
     }
 
     get file(): ModuleFile | undefined {
