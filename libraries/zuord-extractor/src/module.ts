@@ -61,7 +61,10 @@ export class ModuleSet extends ModuleObject {
     }
 }
 
-//
+export enum ModuleSetType {
+    Main,
+    Nest
+}
 
 export class ModuleEntry extends ModuleObject {
     #set: ModuleSet
