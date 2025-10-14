@@ -4,8 +4,8 @@ export { default as FileBase } from "./file.tzs";
 
 export enum FileExtension {
     TS = "ts",
-    TZU = "tzu",
     TZS = "tzs",
+    TZU = "tzu",
     TZV = "tzv",
     ZUtility =  "zutils.ts",
     ZSchema =   "zschema.ts",
