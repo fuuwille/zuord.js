@@ -4,7 +4,7 @@ import { Project, SourceFile } from "ts-morph";
 import { FileExtension, getType } from "./file";
 import { File, FileBase } from "./file";
 import { member } from "./member";
-import { nodeSpec } from "./node";
+import { node } from "./node";
 
 export const initialize = (
     sourceFile: SourceFile, mode: FileExtension
@@ -19,11 +19,11 @@ export const initialize = (
         others: []
     };
 
-    sourceFile.forEachChild((node) => {
-        const instance = member.create(node);
+    sourceFile.forEachChild((child) => {
+        const instance = member.create(child);
 
-        if(nodeSpec.isKnownLike(node)) {
-            const collection = nodeSpec.isDiscardedBy(node, mode)
+        if(node.isKnownLike(child)) {
+            const collection = node.isDiscardedBy(child, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
