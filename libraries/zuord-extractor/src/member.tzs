@@ -84,23 +84,23 @@ export interface ESMLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.Global
 
 export interface DefinitionLike extends ZSchema.Base, ZSchema.KnownLike {
     node: ZNode.DefinitionLike;
-    type: MemberType.Import | MemberType.Export | MemberType.ExportDefault | MemberType.Type | MemberType.Interface | MemberType.Variable | MemberType.Function;
+    type: MemberType.Import | MemberType.Export | MemberType.ExportDefault | MemberType.Type | MemberType.Interface | MemberType.Enum | MemberType.Class | MemberType.Variable | MemberType.Function;
     nameNode?: BindingName | null;
 }
 
 export interface DefinitionOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
     node: ZNode.DefinitionOnly;
-    type: MemberType.Type | MemberType.Interface | MemberType.Variable | MemberType.Function;
+    type: MemberType.Type | MemberType.Interface | MemberType.Class | MemberType.Enum | MemberType.Variable | MemberType.Function;
 }
 
 export interface SchemaLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
     node: ZNode.SchemaLike;
-    type: MemberType.Import | MemberType.Export | MemberType.ExportDefault | MemberType.Type | MemberType.Interface;
+    type: MemberType.Import | MemberType.Export | MemberType.ExportDefault | MemberType.Type | MemberType.Interface | MemberType.Class | MemberType.Enum;
 }
 
 export interface SchemaOnly extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaLike {
     node: ZNode.SchemaOnly;
-    type: MemberType.Type | MemberType.Interface;
+    type: MemberType.Type | MemberType.Interface | MemberType.Class | MemberType.Enum;
 }
 
 export interface VariantLike extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionLike {
