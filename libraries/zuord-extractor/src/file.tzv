@@ -67,6 +67,6 @@ export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
     return initialize(sourceFile, FileExtension.TZS) as File.Schema;
 };
 
-export const extractVariants = (sourceFile: SourceFile) : File.Variants => {
-    return initialize(sourceFile, FileExtension.TZV) as File.Variants;
+export const extractVariants = (sourceFile: SourceFile) : File.Variant => {
+    return initialize(sourceFile, FileExtension.TZV) as File.Variant;
 };

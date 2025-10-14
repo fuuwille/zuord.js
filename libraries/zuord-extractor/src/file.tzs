@@ -21,7 +21,7 @@ export interface Schema extends ZSchema.Base {
     members: Member.SchemaLike[];
 }
 
-export interface Variants extends ZSchema.Base {
+export interface Variant extends ZSchema.Base {
     extension: FileExtension.TZU | FileExtension.TZV | FileExtension.ZUtility | FileExtension.ZVariant;
     type: FileType.Variant;
     members: Member.VariantLike[];

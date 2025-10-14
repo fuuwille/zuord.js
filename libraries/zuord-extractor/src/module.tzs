@@ -6,7 +6,7 @@ export interface Module {
     intrinsic?: ModuleMeta;
     extrinsic?: ModuleMeta;
     schemaFile: FileSpec.Schema | null;
-    variantsFile: FileSpec.Variants | null;
+    variantsFile: FileSpec.Variant | null;
     schemaContents: ContentSpec.Schema[];
     variantContents: ContentSpec.Variant[];
 }
@@ -24,7 +24,7 @@ export interface ModuleMeta {
 export interface ModuleFile {
     meta: ModuleMeta;
     schema: FileSpec.Schema | null;
-    variants: FileSpec.Variants | null;
+    variants: FileSpec.Variant | null;
 }
 
 export interface ModuleContent {

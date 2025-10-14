@@ -63,7 +63,7 @@ export class ModuleEntry extends ModulePair {
 
 export class ModuleFile extends ModuleEntry {
     #schema: FileSpec.Schema | undefined;
-    #variants: FileSpec.Variants | undefined;
+    #variants: FileSpec.Variant | undefined;
 
     constructor(pair: ModulePair) {
         super(pair);
@@ -73,7 +73,7 @@ export class ModuleFile extends ModuleEntry {
         return this.#schema;
     }
 
-    get variants(): FileSpec.Variants | undefined {
+    get variants(): FileSpec.Variant | undefined {
         return this.#variants;
     }
 }
