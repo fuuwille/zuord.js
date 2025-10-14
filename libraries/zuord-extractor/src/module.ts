@@ -3,8 +3,8 @@ import { Content } from "./content";
 
 export class Module {
     #name: string;
-    #primary: ModuleSet | undefined;
-    #secondary: ModuleSet | undefined;
+    #main: ModuleSet | undefined;
+    #nest: ModuleSet | undefined;
 
     constructor(name: string) {
         this.#name = name;
@@ -16,12 +16,12 @@ export class Module {
         return this.#name;
     }
 
-    get primary(): ModuleSet | undefined {
-        return this.#primary;
+    get main(): ModuleSet | undefined {
+        return this.#main;
     }
 
-    get secondary(): ModuleSet | undefined {
-        return this.#secondary;
+    get nest(): ModuleSet | undefined {
+        return this.#nest;
     }
 }
 
