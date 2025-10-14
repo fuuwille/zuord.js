@@ -96,8 +96,3 @@ export class ModuleContent extends ModuleEntry {
         return this.#variants;
     }
 }
-
-// module.tzc
-// module.tzu
-// module.tzs
-// module.tzv
