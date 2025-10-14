@@ -70,7 +70,7 @@ export const extract = (dir: string, name: string): ZSchema.Module => {
     return module;
 };
 
-export const updateModuleSchemaFile = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
+export const updateSchema = (module: ZSchema.Module, sourceFile: SourceFile | null): void => {
     module.schemaFile = sourceFile ? fileSpec.extractSchema(sourceFile) : null;
     update(module);
 };
