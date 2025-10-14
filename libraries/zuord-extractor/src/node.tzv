@@ -81,7 +81,7 @@ export const isSchemaLike = (node: Node): node is ZSchema.SchemaLike => {
 }
 
 export const isSchemaOnly = (node: Node): node is ZSchema.SchemaOnly => {
-    return isType(node) || isInterface(node);
+    return isType(node) || isInterface(node) || isClass(node) || isEnum(node);
 }
 
 export const isVariantLike = (node: Node): node is ZSchema.VariantLike => {
