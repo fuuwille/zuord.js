@@ -7,13 +7,13 @@ import { member } from "./member";
 import { node } from "./node";
 
 export const initialize = (
-    sourceFile: SourceFile, mode: FileExtension
+    sourceFile: SourceFile, extension: FileExtension
 ) : ZSchema.Base => {
 
     const moduleFile : FileBase = {
         source: sourceFile,
-        extension: mode,
-        type: getType(mode),
+        extension,
+        type: getType(extension),
         members: [],
         discarded: [],
         others: []
@@ -23,7 +23,7 @@ export const initialize = (
         const instance = member.create(child);
 
         if(node.isKnownLike(child)) {
-            const collection = node.isDiscardedBy(child, mode)
+            const collection = node.isDiscardedBy(child, extension)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
