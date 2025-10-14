@@ -1,5 +1,5 @@
-import { ContentSpec } from "./content";
-import { FileSpec } from "./file";
+import { File } from "./file";
+import { Content } from "./content";
 
 export class Module {
     #name: string;
@@ -62,25 +62,25 @@ export class ModuleEntry extends ModulePair {
 }
 
 export class ModuleFile extends ModuleEntry {
-    #schema: FileSpec.Schema | undefined;
-    #variant: FileSpec.Variant | undefined;
+    #schema: File.Schema | undefined;
+    #variant: File.Variant | undefined;
 
     constructor(pair: ModulePair) {
         super(pair);
     }
 
-    get schema(): FileSpec.Schema | undefined {
+    get schema(): File.Schema | undefined {
         return this.#schema;
     }
 
-    get variant(): FileSpec.Variant | undefined {
+    get variant(): File.Variant | undefined {
         return this.#variant;
     }
 }
 
 export class ModuleContent extends ModuleEntry {
-    #schemas: ContentSpec.Schema[];
-    #variants: ContentSpec.Variant[];
+    #schemas: Content.Schema[];
+    #variants: Content.Variant[];
 
     constructor(pair: ModulePair) {
         super(pair);
@@ -88,11 +88,11 @@ export class ModuleContent extends ModuleEntry {
         this.#variants = [];
     }
 
-    get schemas(): ContentSpec.Schema[] {
+    get schemas(): Content.Schema[] {
         return this.#schemas;
     }
 
-    get variants(): ContentSpec.Variant[] {
+    get variants(): Content.Variant[] {
         return this.#variants;
     }
 }
