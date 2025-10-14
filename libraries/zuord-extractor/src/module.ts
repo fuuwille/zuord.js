@@ -58,7 +58,7 @@ export class ModulePair extends ModuleObject {
 
 //
 
-export class ModuleEntry extends ModulePair {
+export class ModuleEntry extends ModuleObject {
     #pair: ModulePair
 
     constructor(pair: ModulePair) {
