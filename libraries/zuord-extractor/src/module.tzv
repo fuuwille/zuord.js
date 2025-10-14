@@ -1,4 +1,3 @@
-import { SourceFile } from "ts-morph";
 import { FileExtension } from "./file";
 import { FileSpec, fileSpec } from "./file";
 import { contentSpec } from "./content";
