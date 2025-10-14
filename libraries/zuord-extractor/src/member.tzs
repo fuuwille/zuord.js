@@ -40,6 +40,11 @@ export interface Interface extends ZSchema.Base, ZSchema.KnownLike, ZSchema.Defi
     type: MemberType.Interface;
 }
 
+export interface Class extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.SchemaOnly {
+    node: NodeSpec.Class;
+    type: MemberType.Class;
+}
+
 export interface Variable extends ZSchema.Base, ZSchema.KnownLike, ZSchema.DefinitionOnly, ZSchema.VariantOnly {
     node: NodeSpec.Variable;
     type: MemberType.Variable;
