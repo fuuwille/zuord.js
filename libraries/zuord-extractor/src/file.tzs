@@ -5,6 +5,7 @@ import { MemberBase, Member as ZMember } from "./member";
 export interface Base {
     source: SourceFile
     extension: FileExtension;
+    type: FileType;
     members: MemberBase[];
     discarded: MemberBase[];
     others: MemberBase[];
@@ -16,10 +17,12 @@ export default Base;
 
 export interface Schema extends ZSchema.Base {
     extension: FileExtension.TZM | FileExtension.TZS;
+    type: FileType.Schema;
     members: ZMember.SchemaLike[];
 }
 
 export interface Variants extends ZSchema.Base {
     extension: FileExtension.TZU | FileExtension.TZV;
+    type: FileType.Variants;
     members: ZMember.VariantLike[];
 }
