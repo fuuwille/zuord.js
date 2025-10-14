@@ -44,7 +44,7 @@ export const extract = (sourceFile: SourceFile, extension: FileExtension) : File
             return extractSchema(sourceFile);
         case FileExtension.TZU:
         case FileExtension.TZV:
-            return extractVariants(sourceFile);
+            return extractVariant(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${extension}`);
     }
@@ -67,6 +67,6 @@ export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
     return initialize(sourceFile, FileExtension.TZS) as File.Schema;
 };
 
-export const extractVariants = (sourceFile: SourceFile) : File.Variant => {
-    return initialize(sourceFile, FileExtension.TZV) as File.Variant;
+export const extractVariant = (sourceFile: SourceFile) : File.Variant => {
+    return initialize(sourceFile, FileExtension.TZV)  as File.Variant;
 };
