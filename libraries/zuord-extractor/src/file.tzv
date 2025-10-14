@@ -50,10 +50,10 @@ export const extract = (dir: string, name: string, extension: FileExtension) : Z
     return undefined;
 };
 
-export const extractSchema = (dir: string, name: string, extension: FileSchemaExtension) : ZSchema.Base | undefined => {
-    return extract(dir, name, extension);
+export const extractSchema = (dir: string, name: string, extension: FileSchemaExtension) : ZSchema.Schema | undefined => {
+    return extract(dir, name, extension) as ZSchema.Schema | undefined;
 };
 
-export const extractVariant = (dir: string, name: string, extension: FileVariantExtension) : ZSchema.Base | undefined => {
-    return extract(dir, name, extension);
+export const extractVariant = (dir: string, name: string, extension: FileVariantExtension) : ZSchema.Variant | undefined => {
+    return extract(dir, name, extension) as ZSchema.Variant | undefined;
 };
