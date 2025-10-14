@@ -17,6 +17,12 @@ export type FileSchemaExtension =
     | FileExtension.TZS
     | FileExtension.ZSchema
 
+export type FileVariantExtension = 
+    | FileExtension.TZU
+    | FileExtension.TZV
+    | FileExtension.ZUtility
+    | FileExtension.ZVariant
+
 export enum FileType {
     Unknown = "unknown",
     Schema = "schema",
