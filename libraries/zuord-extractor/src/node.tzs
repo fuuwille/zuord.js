@@ -1,6 +1,8 @@
 import * as tsm from "ts-morph";
 import { ValueSyntaxNode } from "./~valueSyntax";
 
+export type Any = tsm.Node;
+
 export type Import = tsm.ImportDeclaration;
 
 export type Export = tsm.ExportDeclaration;
@@ -26,8 +28,6 @@ export type ArrowFunction = tsm.ArrowFunction;
 export type FunctionExpression = tsm.FunctionExpression;
 
 //
-
-export type Any = tsm.Node;
 
 export type KnownLike =
     | ZSchema.ESMLike
