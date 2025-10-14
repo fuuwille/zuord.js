@@ -10,6 +10,8 @@ export enum MemberType {
     ExportDefault,
     Type,
     Interface,
+    Class,
+    Enum,
     Variable,
     Function,
     Value,
