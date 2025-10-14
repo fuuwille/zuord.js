@@ -37,6 +37,19 @@ export const initialize = (
     return file;
 };
 
+export const extract = <TFile extends FileBase>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
+    const fileName = `${name}.${extension.toLowerCase()}`;
+    const filePath = path.join(dir, fileName);
+
+    const sourceFile = new Project().addSourceFileAtPath(filePath);
+
+    if(fs.existsSync(filePath)) {
+        return extractFrom(sourceFile, extension) as TFile;
+    }
+
+    return undefined;
+};
+
 export const extractFrom = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
     switch(extension) {
         case FileExtension.TS:
@@ -48,19 +61,6 @@ export const extractFrom = (sourceFile: SourceFile, extension: FileExtension) : 
         default:
             throw new Error(`Unknown module file kind: ${extension}`);
     }
-};
-
-export const extractAtPath = <TFile extends FileBase>(dir: string, name: string, extension: FileExtension) : TFile | undefined => {
-    const fileName = `${name}.${extension.toLowerCase()}`;
-    const filePath = path.join(dir, fileName);
-
-    const sourceFile = new Project().addSourceFileAtPath(filePath);
-
-    if(fs.existsSync(filePath)) {
-        return extractFrom(sourceFile, extension) as TFile;
-    }
-
-    return undefined;
 };
 
 export const extractSchema = (sourceFile: SourceFile) : File.Schema => {
