@@ -1,7 +1,7 @@
 import * as tsm from "ts-morph";
 import { ValueSyntaxNode } from "./~valueSyntax";
 
-export type Any = tsm.Node;
+export type Base = tsm.Node;
 
 export type Import = tsm.ImportDeclaration;
 
