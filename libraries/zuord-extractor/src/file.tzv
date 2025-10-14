@@ -38,10 +38,10 @@ export const initialize = (
 
 export const extract = (sourceFile: SourceFile, extension: FileExtension) : FileBase => {
     switch(extension) {
-        case FileExtension.TS:
+        case FileExtension.TZM:
         case FileExtension.TZS:
             return extractSchema(sourceFile);
-        case FileExtension.TV:
+        case FileExtension.TZU:
         case FileExtension.TZV:
             return extractVariants(sourceFile);
         default:

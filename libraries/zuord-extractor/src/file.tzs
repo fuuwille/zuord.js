@@ -15,11 +15,11 @@ export default Base;
 //
 
 export interface Schema extends ZSchema.Base {
-    extension: FileExtension.TS | FileExtension.TZS;
+    extension: FileExtension.TZM | FileExtension.TZS;
     members: ZMember.SchemaLike[];
 }
 
 export interface Variants extends ZSchema.Base {
-    extension: FileExtension.TV | FileExtension.TZV;
+    extension: FileExtension.TZU | FileExtension.TZV;
     members: ZMember.VariantLike[];
 }
