@@ -10,7 +10,7 @@ export const initialize = <TFile extends ZSchema.Base>(sourceFile: SourceFile, e
     const file : FileBase = {
         source: sourceFile,
         extension,
-        type: getType(extension),
+        type: getType(extension)!,
         members: [],
         discarded: [],
         others: []
