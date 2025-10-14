@@ -26,6 +26,10 @@ export const isInterface = (member: ZSchema.Base): member is ZSchema.Interface =
     return member.type === MemberType.Interface;
 }
 
+export const isClass = (member: ZSchema.Base): member is ZSchema.Class => {
+    return member.type === MemberType.Class;
+}
+
 export const isVariable = (member: ZSchema.Base): member is ZSchema.Variable => {
     return member.type === MemberType.Variable;
 }
