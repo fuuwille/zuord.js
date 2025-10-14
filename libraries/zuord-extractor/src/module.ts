@@ -9,6 +9,9 @@ export class Module {
     constructor(location: string, name: string) {
         this.#location = location;
         this.#name = name;
+
+        this.#main = new ModuleSet(this, ModuleSetType.Main);
+        this.#nest = new ModuleSet(this, ModuleSetType.Nest);
     }
 
     //
