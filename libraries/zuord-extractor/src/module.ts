@@ -1,3 +1,4 @@
+import { ContentSpec } from "./content";
 import { FileSpec } from "./file";
 
 export class Module {
@@ -67,7 +68,25 @@ export class ModuleFile extends ModuleEntry {
 }
 
 export class ModuleContent extends ModuleEntry {
+    #schemas: ContentSpec.Schema[];
+    #variants: ContentSpec.Variant[];
+
     constructor(pair: ModulePair) {
         super(pair);
+        this.#schemas = [];
+        this.#variants = [];
+    }
+
+    get schemas(): ContentSpec.Schema[] {
+        return this.#schemas;
+    }
+
+    get variants(): ContentSpec.Variant[] {
+        return this.#variants;
     }
 }
+
+// module.tzc
+// module.tzu
+// module.tzs
+// module.tzv
