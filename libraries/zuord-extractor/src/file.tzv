@@ -54,9 +54,12 @@ export const extractFrom = (sourceFile: SourceFile, extension: FileExtension) : 
     switch(extension) {
         case FileExtension.TS:
         case FileExtension.TZS:
+        case FileExtension.ZSchema:
             return extractSchema(sourceFile);
         case FileExtension.TZU:
         case FileExtension.TZV:
+        case FileExtension.ZUtility:
+        case FileExtension.ZVariant:
             return extractVariant(sourceFile);
         default:
             throw new Error(`Unknown module file kind: ${extension}`);
