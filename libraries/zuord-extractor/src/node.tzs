@@ -57,7 +57,9 @@ export type SchemaLike =
 
 export type SchemaOnly =
     | ZSchema.Type
-    | ZSchema.Interface;
+    | ZSchema.Interface
+    | ZSchema.Class
+    | ZSchema.Enum;
 
 export type VariantLike =
     | ZSchema.GlobalLike
