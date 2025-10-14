@@ -3,7 +3,7 @@ import path from "path";
 import { Project, SourceFile } from "ts-morph";
 import { FileExtension, getType } from "./file";
 import { File, FileBase } from "./file";
-import { memberSpec } from "./member";
+import { member } from "./member";
 import { nodeSpec } from "./node";
 
 export const initialize = (
@@ -20,17 +20,17 @@ export const initialize = (
     };
 
     sourceFile.forEachChild((node) => {
-        const member = memberSpec.create(node);
+        const instance = member.create(node);
 
         if(nodeSpec.isKnownLike(node)) {
             const collection = nodeSpec.isDiscardedBy(node, mode)
                 ? moduleFile.discarded
                 : moduleFile.members;
 
-            collection.push(member);
+            collection.push(instance);
         }
         else {
-            moduleFile.others.push(member);
+            moduleFile.others.push(instance);
         }
     });
 
