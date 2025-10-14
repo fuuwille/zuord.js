@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { FileExtension, FileSchemaExtension, getType } from "./file";
+import { FileExtension, FileSchemaExtension, FileVariantExtension, getType } from "./file";
 import { member } from "./member";
 import { node } from "./node";
 
@@ -51,5 +51,9 @@ export const extract = (dir: string, name: string, extension: FileExtension) : Z
 };
 
 export const extractSchema = (dir: string, name: string, extension: FileSchemaExtension) : ZSchema.Base | undefined => {
+    return extract(dir, name, extension);
+};
+
+export const extractVariant = (dir: string, name: string, extension: FileVariantExtension) : ZSchema.Base | undefined => {
     return extract(dir, name, extension);
 };
