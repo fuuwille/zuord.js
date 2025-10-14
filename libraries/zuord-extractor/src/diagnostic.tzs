@@ -7,6 +7,8 @@ export interface Base {
     level: DiagnosticLevel;
 }
 
+export default Base;
+
 //
 
 export interface Info extends ZSchema.Base {
