@@ -1,4 +1,5 @@
 // @zuord-scope
+import { ModuleSetType } from "./module";
 
 export { default as FileBase } from "./file.tzs";
 
@@ -48,12 +49,12 @@ export const getType = (mode : FileExtension) : FileType | undefined => {
     }
 }
 
-export const getExtension = (type: FileType, isMain: boolean) : FileExtension | undefined => {
+export const getExtension = (type: FileType, setType: ModuleSetType) : FileExtension | undefined => {
     switch(type) {
         case FileType.Schema:
-            return isMain ? FileExtension.TS : FileExtension.TZS;
+            return setType == ModuleSetType.Main ? FileExtension.TS : FileExtension.TZS;
         case FileType.Variant:
-            return isMain ? FileExtension.TZU : FileExtension.TZV;
+            return setType == ModuleSetType.Main ? FileExtension.TZU : FileExtension.TZV;
         default:
             return undefined;
     }
