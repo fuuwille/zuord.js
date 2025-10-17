@@ -1,10 +1,10 @@
-import { Module } from "./module";
+import { ModuleContent } from "./module";
 import { ContentType } from "./content";
 import { Diagnostic } from "./diagnostic";
 import { Member } from "./member";
 
 export interface Base {
-    module: Module;
+    source: ModuleContent;
     member: Member.DefinitionLike;
     type: ContentType;
     name?: string | null;

@@ -1,4 +1,4 @@
-import { Module } from "./module";
+import { Module, ModuleContent } from "./module";
 import { ContentType } from "./content";
 import { Member as MemberSpec, member as memberSpec } from "./member";
 import { getTypeName } from "./~type";
@@ -24,22 +24,22 @@ export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.F
 //
 
 export const createSchema = (
-    module: Module, schema: MemberSpec.SchemaLike
+    source: ModuleContent, schema: MemberSpec.SchemaLike
 ) : ZSchema.Schema => {
 
     return {
-        module,
+        source,
         member: schema,
         type: ContentType.Schema
     };
 };
 
 export const createVariant = (
-    module: Module, member: MemberSpec.VariantLike
+    source: ModuleContent, member: MemberSpec.VariantLike
 ) : ZSchema.Variant => {
 
     return {
-        module,
+        source,
         member,
         type: ContentType.Variant
     };
