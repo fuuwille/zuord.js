@@ -1,5 +1,7 @@
-import { file, File, FileExtension, FileSchemaExtension, FileType, FileVariantExtension, getExtension } from "./file";
-import { Content } from "./content";
+import { file, File, FileSchemaExtension, FileType, FileVariantExtension, getExtension } from "./file";
+import { content, Content } from "./content";
+import { member } from "./member";
+import { diagnostic } from "./diagnostic";
 
 export class Module {
     #location: string; #name: string;
@@ -120,8 +122,61 @@ export class ModuleContent extends ModuleEntry {
 
     constructor(set: ModuleSet) {
         super(set);
+
         this.#schemas = [];
         this.#variants = [];
+
+        const file = set.file!;
+    
+        const schemaMembers = file.schema?.members;
+        const variantMembers = file.variant?.members;
+
+        const schemaContents = [];
+        const variantContents = [];
+
+        if(schemaMembers) {
+            for(const schemaMember of schemaMembers.filter(member.isSchemaLike)) {
+                const schemaContent = content.createSchema(set.module, schemaMember);
+                content.updateName(schemaContent);
+    
+                schemaContents.push(schemaContent);
+            }
+        }
+    
+        if(variantMembers) {
+            for(const schemaMember of variantMembers.filter(member.isVariantLike)) {
+                const variantContent = content.createVariant(set.module, schemaMember);
+                content.updateName(variantContent);
+
+                variantContents.push(variantContent);
+            }
+        }
+    
+        if(variantContents.length > 0) {
+            for(const variantContent of variantContents) {
+                const schema = content.getVariantSchema(variantContent, schemaContents);
+    
+                if(schema) {
+                    variantContent.schema = schema;
+    
+                    schema.variants ??= [];
+                    schema.variants.push(variantContent);
+                }
+    
+                if(content.isFunctionalVariant(variantContent)) {
+                    const memberFL = member.asFunctionLike(variantContent.member);
+
+                    const returnNode = memberFL?.returnType;
+
+                    if(!returnNode) {
+                        variantContent.diagnostics ??= [];
+                        variantContent.diagnostics.push(
+                            diagnostic.buildInDiagnostics.noReturnType(variantContent.member.nameNode!)
+                        );
+                    }
+                }
+            }
+        }
     }
 
     get schemas(): Content.Schema[] {
