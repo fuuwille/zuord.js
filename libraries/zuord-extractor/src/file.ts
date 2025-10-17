@@ -47,3 +47,14 @@ export const getType = (mode : FileExtension) : FileType | undefined => {
             return undefined;
     }
 }
+
+export const getExtension = (type: FileType, isMain: boolean) : FileExtension | undefined => {
+    switch(type) {
+        case FileType.Schema:
+            return isMain ? FileExtension.TS : FileExtension.TZS;
+        case FileType.Variant:
+            return isMain ? FileExtension.TZU : FileExtension.TZV;
+        default:
+            return undefined;
+    }
+}
