@@ -1,4 +1,4 @@
-import { file, File, FileExtension } from "./file";
+import { file, File, FileExtension, FileSchemaExtension, FileType, FileVariantExtension, getExtension } from "./file";
 import { Content } from "./content";
 
 export class Module {
@@ -101,8 +101,8 @@ export class ModuleFile extends ModuleEntry {
         const type = set.type;
         const module = set.module;
 
-        this.#schema = file.extractSchema(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TS : FileExtension.TZS);
-        this.#variant = file.extractVariant(module.location, module.name, type == ModuleSetType.Main ? FileExtension.TZU : FileExtension.TZV);
+        this.#schema = file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ;
+        this.#variant = file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension) ;
     }
 
     get schema(): File.Schema | undefined {
