@@ -1,4 +1,4 @@
-import Module from "./module.tzs";
+import { Module } from "./module";
 import { ContentType } from "./content";
 import { Member as MemberSpec, member as memberSpec } from "./member";
 import { getTypeName } from "./~type";
