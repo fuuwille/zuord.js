@@ -49,7 +49,7 @@ export class ModuleObject {
 export class ModuleBundle extends ModuleObject {
     #type: ModuleBundleType;
     #file: ModuleFileRecord;
-    #content: { schemas: Content.Schema[]; variants: Content.Variant[] };
+    #content: ModuleContentRecord;
 
     constructor(module: Module, type: ModuleBundleType) {
         super(module);
