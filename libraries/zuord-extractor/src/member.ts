@@ -51,3 +51,8 @@ export type MemberVariantLikeType =
 export type MemberVariantOnlyType =
     | MemberType.Variable
     | MemberType.Function;
+
+export type MemberInitializerLikeType = 
+    | MemberType.Value
+    | MemberType.ArrowFunction
+    | MemberType.FunctionExpression;
