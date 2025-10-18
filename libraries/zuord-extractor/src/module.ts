@@ -48,26 +48,32 @@ export class ModuleObject {
 
 export class ModuleSet extends ModuleObject {
     #type: ModuleSetType;
-    #file: ModuleFile | undefined;
-    #content: ModuleContent | undefined;
+    #file: { schema: File.Schema | undefined; variant: File.Variant | undefined };
+    #content: { schemas: Content.Schema[]; variants: Content.Variant[] };
 
     constructor(module: Module, type: ModuleSetType) {
         super(module);
         this.#type = type;
 
-        this.#file = new ModuleFile(this);
-        this.#content = new ModuleContent(this);
+        this.#file = {
+            schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension),
+            variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension)
+        };
+        this.#content = {
+            schemas: [],
+            variants: []
+        };
     }
 
     get type(): ModuleSetType {
         return this.#type;
     }
 
-    get file(): ModuleFile | undefined {
+    get file() {
         return this.#file;
     }
 
-    get content(): ModuleContent | undefined {
+    get content() {
         return this.#content;
     }
 }
@@ -100,8 +106,7 @@ export class ModuleFile extends ModuleEntry {
         const type = set.type;
         const module = set.module;
 
-        this.#schema = file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ;
-        this.#variant = file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension) ;
+
     }
 
     get schema(): File.Schema | undefined {
