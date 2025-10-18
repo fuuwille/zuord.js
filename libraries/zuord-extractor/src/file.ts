@@ -29,8 +29,6 @@ export enum FileType {
     Variant = "variant"
 }
 
-export { File as FileSpec, file as fileSpec };
-
 //
 
 export const getType = (mode : FileExtension) : FileType | undefined => {
