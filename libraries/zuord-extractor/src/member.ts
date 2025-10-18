@@ -39,3 +39,9 @@ export type MemberDefinitionOnlyType =
     | MemberType.Variable
     | MemberType.Function
     | MemberType.Value;
+
+export type MemberSchemaOnlyType =
+    | MemberType.Type
+    | MemberType.Interface
+    | MemberType.Class
+    | MemberType.Enum;
