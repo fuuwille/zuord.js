@@ -133,13 +133,11 @@ export type ProjectFileRecord = Partial<Record<FileName, ProjectFile | undefined
 //
 
 export class ProjectModule extends ProjectObject {
-    #file: ProjectFileRecord
+    #file: ProjectFileRecord = {};
 
     public constructor(
         public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
-
-        this.#file = {};
     }
 
     //
