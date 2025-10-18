@@ -27,3 +27,15 @@ export type MemberESMLikeType =
     | MemberType.Import
     | MemberType.Export
     | MemberType.ExportDefault;
+
+export type MemberDefinitionOnlyType =
+    | MemberType.Import
+    | MemberType.Export
+    | MemberType.ExportDefault
+    | MemberType.Type
+    | MemberType.Interface
+    | MemberType.Class
+    | MemberType.Enum
+    | MemberType.Variable
+    | MemberType.Function
+    | MemberType.Value;
