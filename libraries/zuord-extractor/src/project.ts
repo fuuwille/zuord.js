@@ -40,15 +40,42 @@ export class ProjectContext {
 
 //
 
-export class ProjectConfig {
-    #data: any | undefined;
+export class ProjectObject {
+    public constructor(
+        public readonly project: ProjectContext,
+        public readonly name: string
+    ) {}
+}
 
-    public readonly path: string;
+export abstract class ProjectEntry extends ProjectObject {
+    #path: string | undefined;
+
+    public constructor(project: ProjectContext, name: string
+    ) {
+        super(project, name);
+
+    }
+
+    public get path() : string {
+        if(!this.#path) {
+            this.#path = this.getPath();
+        }
+
+        return this.#path;
+    }
+
+    protected abstract getPath(): string;
+}
+
+//
+
+export class ProjectConfig extends ProjectEntry {
+    #data: any | undefined;
 
     public constructor(
         public readonly project: ProjectContext
     ) {
-        this.path = `${this.project.path}/zuord.json`;
+        super(project, "zuord.json");
     }
 
     //
@@ -78,36 +105,12 @@ export class ProjectConfig {
             return this.#data = null;
         }
     }
-}
 
-//
+    //
 
-
-export class ProjectObject {
-    public constructor(
-        public readonly project: ProjectContext,
-        public readonly name: string
-    ) {}
-}
-
-export abstract class ProjectEntry extends ProjectObject {
-    #path: string | undefined;
-
-    public constructor(project: ProjectContext, name: string
-    ) {
-        super(project, name);
-
+    protected getPath(): string {
+        return PATH.join(this.project.path, this.name);
     }
-
-    public get path() : string {
-        if(!this.#path) {
-            this.#path = this.getPath();
-        }
-
-        return this.#path;
-    }
-
-    protected abstract getPath(): string;
 }
 
 //
