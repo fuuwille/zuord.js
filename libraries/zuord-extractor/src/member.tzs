@@ -1,6 +1,6 @@
 import { BindingName, TypeNode } from "ts-morph";
 import { Node } from "./node";
-import { MemberDefinitionLikeType, MemberDefinitionOnlyType, MemberESMLikeType, MemberGlobalLikeType, MemberInitializerLikeType, MemberSchemaLikeType, MemberSchemaOnlyType, MemberType, MemberVariantLikeType, MemberVariantOnlyType } from "./member";
+import { MemberDefinitionLikeType, MemberDefinitionOnlyType, MemberESMLikeType, MemberFunctionAltType, MemberGlobalLikeType, MemberInitializerLikeType, MemberSchemaLikeType, MemberSchemaOnlyType, MemberType, MemberVariantLikeType, MemberVariantOnlyType } from "./member";
 
 export interface Base {
     node: Node.Base;
@@ -145,7 +145,7 @@ export interface FunctionLike extends ZSchema.Base {
 
 export interface FunctionAlt extends ZSchema.FunctionLike {
     node: Node.FunctionAlt;
-    type: MemberType.ArrowFunction | MemberType.FunctionExpression;
+    type: MemberFunctionAltType;
 }
 
 //
