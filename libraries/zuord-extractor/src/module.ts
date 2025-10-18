@@ -59,7 +59,7 @@ export class ModuleSet extends ModuleObject {
             schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension),
             variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension)
         };
-        this.#content = {
+        const $content = this.#content = {
             schemas: [],
             variants: []
         };
@@ -113,6 +113,12 @@ export class ModuleSet extends ModuleObject {
                 }
             }
         }
+
+        // @ts-ignore
+        $content.schemas = schemaContents;
+
+        // @ts-ignore
+        $content.variants = variantContents;
     }
 
     get type(): ModuleSetType {
