@@ -26,6 +26,10 @@ export type MemberESMLikeType =
     | MemberType.Export
     | MemberType.ExportDefault;
 
+export type MemberDefinitionLikeType =
+    | MemberGlobalLikeType
+    | MemberDefinitionOnlyType;
+
 export type MemberDefinitionOnlyType =
     | MemberSchemaOnlyType
     | MemberType.Variable
