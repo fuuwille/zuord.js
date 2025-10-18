@@ -5,15 +5,16 @@ import { diagnostic } from "./diagnostic";
 
 export class Module {
     #location: string; #name: string;
-    #main: ModuleSet | undefined;
-    #nest: ModuleSet | undefined;
+    #set: Record<"main" | "nest", ModuleSet>;
 
     constructor(location: string, name: string) {
         this.#location = location;
         this.#name = name;
 
-        this.#main = new ModuleSet(this, ModuleSetType.Main);
-        this.#nest = new ModuleSet(this, ModuleSetType.Nest);
+        this.#set = {
+            main: new ModuleSet(this, ModuleSetType.Main),
+            nest: new ModuleSet(this, ModuleSetType.Nest)
+        };
     }
 
     //
@@ -26,12 +27,8 @@ export class Module {
         return this.#name;
     }
 
-    get main(): ModuleSet | undefined {
-        return this.#main;
-    }
-
-    get nest(): ModuleSet | undefined {
-        return this.#nest;
+    get set() {
+        return this.#set;
     }
 }
 
