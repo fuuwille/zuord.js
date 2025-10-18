@@ -5,13 +5,13 @@ import { diagnostic } from "./diagnostic";
 
 export class Module {
     #location: string; #name: string;
-    #set: Record<"main" | "nest", ModuleBundle>;
+    #bundle: Record<"main" | "nest", ModuleBundle>;
 
     constructor(location: string, name: string) {
         this.#location = location;
         this.#name = name;
 
-        this.#set = {
+        this.#bundle = {
             main: new ModuleBundle(this, ModuleSetType.Main),
             nest: new ModuleBundle(this, ModuleSetType.Nest)
         };
@@ -27,8 +27,8 @@ export class Module {
         return this.#name;
     }
 
-    public get set() {
-        return this.#set;
+    public get bundle() {
+        return this.#bundle;
     }
 }
 
