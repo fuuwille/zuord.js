@@ -121,15 +121,15 @@ export class ModuleBundle extends ModuleObject {
         $content.variants = variantContents;
     }
 
-    get type(): ModuleBundleType {
+    public get type() : ModuleBundleType {
         return this.#type;
     }
 
-    get file() {
+    public get file() : ModuleFileRecord {
         return this.#file;
     }
 
-    get content() {
+    public get content() : ModuleContentRecord {
         return this.#content;
     }
 }
