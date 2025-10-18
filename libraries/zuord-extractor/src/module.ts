@@ -12,8 +12,8 @@ export class Module {
         this.#name = name;
 
         this.#bundle = {
-            main: new ModuleBundle(this, ModuleSetType.Main),
-            nest: new ModuleBundle(this, ModuleSetType.Nest)
+            main: new ModuleBundle(this, ModuleBundleType.Main),
+            nest: new ModuleBundle(this, ModuleBundleType.Nest)
         };
     }
 
@@ -47,11 +47,11 @@ export class ModuleObject {
 }
 
 export class ModuleBundle extends ModuleObject {
-    #type: ModuleSetType;
+    #type: ModuleBundleType;
     #file: { schema: File.Schema | undefined; variant: File.Variant | undefined };
     #content: { schemas: Content.Schema[]; variants: Content.Variant[] };
 
-    constructor(module: Module, type: ModuleSetType) {
+    constructor(module: Module, type: ModuleBundleType) {
         super(module);
         this.#type = type;
 
@@ -121,7 +121,7 @@ export class ModuleBundle extends ModuleObject {
         $content.variants = variantContents;
     }
 
-    get type(): ModuleSetType {
+    get type(): ModuleBundleType {
         return this.#type;
     }
 
@@ -134,11 +134,9 @@ export class ModuleBundle extends ModuleObject {
     }
 }
 
-export type ModuleBundleRecord = Record<"main" | "nest", ModuleBundle>;
-
-//
-
-export enum ModuleSetType {
+export enum ModuleBundleType {
     Main,
     Nest
 }
+
+export type ModuleBundleRecord = Record<"main" | "nest", ModuleBundle>;
