@@ -128,42 +128,24 @@ export class ProjectFile extends ProjectEntry {
     }
 }
 
-export type ProjectFileRecord = Record<FileName, ProjectFile | undefined>;
+export type ProjectFileRecord = Partial<Record<FileName, ProjectFile | undefined>>;
 
 //
 
 export class ProjectModule extends ProjectObject {
-    #tsFile: ProjectFile | undefined;
-    #tzsFile: ProjectFile | undefined;
-    #tzvFile: ProjectFile | undefined;
-    #zSchemaFile: ProjectFile | undefined;
-    #zVariantsFile: ProjectFile | undefined;
+    #file: ProjectFileRecord
 
     public constructor(
         public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
+
+        this.#file = {};
     }
 
     //
 
-    public get tsFile(): ProjectFile | undefined {
-        return this.#tsFile;
-    }
-
-    public get tzsFile(): ProjectFile | undefined {
-        return this.#tzsFile;
-    }
-
-    public get tzvFile(): ProjectFile | undefined {
-        return this.#tzvFile;
-    }
-
-    public get zSchemaFile(): ProjectFile | undefined {
-        return this.#zSchemaFile;
-    }
-
-    public get zVariantsFile(): ProjectFile | undefined {
-        return this.#zVariantsFile;
+    public get file(): ProjectFileRecord {
+        return this.#file;
     }
 
     //
@@ -172,19 +154,19 @@ export class ProjectModule extends ProjectObject {
         let file;
         switch (extension) {
             case FileExtension.TS:
-                file = this.#tsFile;
+                file = this.#file.ts;
                 break;
             case FileExtension.TZS:
-                file = this.#tzsFile;
+                file = this.#file.tzs;
                 break;
             case FileExtension.TZV:
-                file = this.#tzvFile;
+                file = this.#file.tzv;
                 break;
             case FileExtension.ZSchema:
-                file = this.#zSchemaFile;
+                file = this.#file.zschema;
                 break;
             case FileExtension.ZVariant:
-                file = this.#zVariantsFile;
+                file = this.#file.zvariant;
                 break;
             default:
                 return undefined;
@@ -200,15 +182,15 @@ export class ProjectModule extends ProjectObject {
 
         switch (extension) {
             case FileExtension.TS:
-                return this.#tsFile = new ProjectFile(this, FileExtension.TS);
+                return this.#file.ts = new ProjectFile(this, FileExtension.TS);
             case FileExtension.TZS:
-                return this.#tzsFile = new ProjectFile(this, FileExtension.TZS);
+                return this.#file.tzs = new ProjectFile(this, FileExtension.TZS);
             case FileExtension.TZV:
-                return this.#tzvFile = new ProjectFile(this, FileExtension.TZV);
+                return this.#file.tzv = new ProjectFile(this, FileExtension.TZV);
             case FileExtension.ZSchema:
-                return this.#zSchemaFile = new ProjectFile(this, FileExtension.ZSchema);
+                return this.#file.zschema = new ProjectFile(this, FileExtension.ZSchema);
             case FileExtension.ZVariant:
-                return this.#zVariantsFile = new ProjectFile(this, FileExtension.ZVariant);
+                return this.#file.zvariant = new ProjectFile(this, FileExtension.ZVariant);
             default:
                 return undefined;
         }
