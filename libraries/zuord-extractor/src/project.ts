@@ -384,8 +384,8 @@ export enum ProjectScopeType {
 }
 
 export type ProjectScopeRecord = {
-    source: ProjectScope;
-    dist: ProjectScope;
+    source: ProjectScope | undefined;
+    dist: ProjectScope | undefined;
 }
 
 //
