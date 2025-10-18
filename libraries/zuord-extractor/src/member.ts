@@ -17,3 +17,8 @@ export enum MemberType {
     ArrowFunction,
     FunctionExpression
 }
+
+export type MemberGlobalLikeType =
+    | MemberType.Import
+    | MemberType.Export
+    | MemberType.ExportDefault;
