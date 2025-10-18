@@ -1,4 +1,3 @@
-import { ModuleContent } from "./module";
 import { ContentType } from "./content";
 import { Diagnostic } from "./diagnostic";
 import { Member } from "./member";
