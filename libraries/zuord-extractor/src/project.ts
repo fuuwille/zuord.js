@@ -165,6 +165,9 @@ export class ProjectModule extends ProjectObject {
             case FileExtension.TZS:
                 file = this.#file.tzs;
                 break;
+            case FileExtension.TZU:
+                file = this.#file.tzu;
+                break;
             case FileExtension.TZV:
                 file = this.#file.tzv;
                 break;
@@ -191,6 +194,8 @@ export class ProjectModule extends ProjectObject {
                 return this.#file.ts = new ProjectFile(this, FileExtension.TS);
             case FileExtension.TZS:
                 return this.#file.tzs = new ProjectFile(this, FileExtension.TZS);
+            case FileExtension.TZU:
+                return this.#file.tzu = new ProjectFile(this, FileExtension.TZU);
             case FileExtension.TZV:
                 return this.#file.tzv = new ProjectFile(this, FileExtension.TZV);
             case FileExtension.ZSchema:
