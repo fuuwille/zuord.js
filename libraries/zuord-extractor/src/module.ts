@@ -3,7 +3,7 @@ import { content, Content } from "./content";
 import { member } from "./member";
 import { diagnostic } from "./diagnostic";
 
-export class Module {
+export class ModuleContext {
     #location: string; #name: string;
     #bundle: ModuleBundleRecord;
 
@@ -33,18 +33,18 @@ export class Module {
 }
 
 export class ModuleBundle {
-    #module: Module
+    #context: ModuleContext
     #type: ModuleBundleType;
     #file: ModuleFileRecord;
     #content: ModuleContentRecord;
 
-    constructor(module: Module, type: ModuleBundleType) {
-        this.#module = module;
+    constructor(context: ModuleContext, type: ModuleBundleType) {
+        this.#context = context;
         this.#type = type;
 
         const $file : ModuleFileRecord = this.#file = {
-            schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ?? null,
-            variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension) ?? null
+            schema: file.extractSchema(context.location, context.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ?? null,
+            variant: file.extractVariant(context.location, context.name, getExtension(FileType.Variant, type) as FileVariantExtension) ?? null
         };
         const $content : ModuleContentRecord = this.#content = {
             schemas: [],
@@ -105,8 +105,8 @@ export class ModuleBundle {
         $content.variants = variantContents;
     }
 
-    get module(): Module {
-        return this.#module;
+    get module(): ModuleContext {
+        return this.#context;
     }
 
     public get type() : ModuleBundleType {
