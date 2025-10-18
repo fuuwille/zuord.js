@@ -5,8 +5,7 @@ import { FileExtension } from "./file";
 
 export class Project {
     #config: ProjectConfig;
-    #sourceScope : ProjectScope | undefined;
-    #distScope : ProjectScope | undefined;
+    #scope: ProjectScopeRecord;
 
     public constructor(
         public readonly path: string,
@@ -16,8 +15,10 @@ export class Project {
         }
 
         this.#config = new ProjectConfig(this);
-        this.#sourceScope = ProjectScope.createFrom(this, ProjectScopeType.Source);
-        this.#distScope = ProjectScope.createFrom(this, ProjectScopeType.Dist);
+        this.#scope = {
+            source: ProjectScope.createFrom(this, ProjectScopeType.Source),
+            dist: ProjectScope.createFrom(this, ProjectScopeType.Dist)
+        }
     }
 
     //
@@ -26,12 +27,8 @@ export class Project {
         return this.#config;
     }
 
-    public get sourceScope() : ProjectScope | undefined {
-        return this.#sourceScope;
-    }
-
-    public get distScope() : ProjectScope | undefined {
-        return this.#distScope;
+    public get scope() : ProjectScopeRecord {
+        return this.#scope;
     }
 
     //

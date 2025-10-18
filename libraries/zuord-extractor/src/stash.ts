@@ -43,7 +43,7 @@ export class Stash {
         }
 
         let scopeRef: ProjectScope | undefined;
-        const scopeList = [projectRef.sourceScope, projectRef.distScope].filter(Boolean) as ProjectScope[];
+        const scopeList = [projectRef.scope.source, projectRef.scope.dist].filter(Boolean) as ProjectScope[];
 
         for (const scope of scopeList) {
             const index = scopeIndex(scope);
