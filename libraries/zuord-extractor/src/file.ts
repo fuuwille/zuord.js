@@ -3,14 +3,24 @@ import { ModuleBundleType } from "./module";
 
 export { default as FileBase } from "./file.tzs";
 
+export enum FileName {
+    TS = "ts",
+    TZS = "tzs",
+    TZU = "tzu",
+    TZV = "tzv",
+    ZSchema = "zschema",
+    ZUtility = "zutils",
+    ZVariant = "zvariant"
+}
+
 export enum FileExtension {
     TS = "ts",
     TZS = "tzs",
     TZU = "tzu",
     TZV = "tzv",
-    ZSchema =   "zschema.ts",    
-    ZUtility =  "zutils.ts",
-    ZVariant =  "zvariant.ts"
+    ZSchema = "zschema.ts",    
+    ZUtility = "zutils.ts",
+    ZVariant = "zvariant.ts"
 }
 
 export type FileSchemaExtension =
