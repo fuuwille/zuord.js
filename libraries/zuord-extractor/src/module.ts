@@ -105,7 +105,7 @@ export class ModuleBundle {
         $content.variants = variantContents;
     }
 
-    get module(): ModuleContext {
+    public get context(): ModuleContext {
         return this.#context;
     }
 
