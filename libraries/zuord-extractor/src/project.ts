@@ -383,6 +383,11 @@ export enum ProjectScopeType {
     Dist = "dist"
 }
 
+export type ProjectScopeRecord = {
+    source: ProjectScope;
+    dist: ProjectScope;
+}
+
 //
 
 export class ProjectFolder extends ProjectDirectory {
