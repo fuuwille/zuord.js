@@ -32,9 +32,7 @@ export type MemberDefinitionLikeType =
 
 export type MemberDefinitionOnlyType =
     | MemberSchemaOnlyType
-    | MemberType.Variable
-    | MemberType.Function
-    | MemberType.Value;
+    | MemberVariantOnlyType;
 
 export type MemberSchemaLikeType =
     | MemberGlobalLikeType
@@ -45,3 +43,11 @@ export type MemberSchemaOnlyType =
     | MemberType.Interface
     | MemberType.Class
     | MemberType.Enum;
+
+export type MemberVariantLikeType =
+    | MemberGlobalLikeType
+    | MemberVariantOnlyType;
+
+export type MemberVariantOnlyType =
+    | MemberType.Variable
+    | MemberType.Function;
