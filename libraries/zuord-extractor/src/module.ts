@@ -32,27 +32,14 @@ export class Module {
     }
 }
 
-export class ModuleObject {
+export class ModuleBundle {
     #module: Module
-
-    constructor(module: Module) {
-        this.#module = module;
-    }
-
-    //
-
-    get module(): Module {
-        return this.#module;
-    }
-}
-
-export class ModuleBundle extends ModuleObject {
     #type: ModuleBundleType;
     #file: ModuleFileRecord;
     #content: ModuleContentRecord;
 
     constructor(module: Module, type: ModuleBundleType) {
-        super(module);
+        this.#module = module;
         this.#type = type;
 
         const $file : ModuleFileRecord = this.#file = {
@@ -116,6 +103,10 @@ export class ModuleBundle extends ModuleObject {
 
         $content.schemas = schemaContents;
         $content.variants = variantContents;
+    }
+
+    get module(): Module {
+        return this.#module;
     }
 
     public get type() : ModuleBundleType {
