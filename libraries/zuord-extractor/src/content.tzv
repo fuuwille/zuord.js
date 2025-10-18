@@ -24,22 +24,20 @@ export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.F
 //
 
 export const createSchema = (
-    target: ModuleContent, schema: MemberSpec.SchemaLike
+    schema: MemberSpec.SchemaLike
 ) : ZSchema.Schema => {
 
     return {
-        target,
         member: schema,
         type: ContentType.Schema
     };
 };
 
 export const createVariant = (
-    target: ModuleContent, member: MemberSpec.VariantLike
+    member: MemberSpec.VariantLike
 ) : ZSchema.Variant => {
 
     return {
-        target,
         member,
         type: ContentType.Variant
     };

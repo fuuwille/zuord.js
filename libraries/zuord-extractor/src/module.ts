@@ -136,7 +136,7 @@ export class ModuleContent extends ModuleEntry {
 
         if(schemaMembers) {
             for(const schemaMember of schemaMembers.filter(member.isSchemaLike)) {
-                const schemaContent = content.createSchema(this, schemaMember);
+                const schemaContent = content.createSchema(schemaMember);
                 content.updateName(schemaContent);
     
                 schemaContents.push(schemaContent);
@@ -145,7 +145,7 @@ export class ModuleContent extends ModuleEntry {
     
         if(variantMembers) {
             for(const schemaMember of variantMembers.filter(member.isVariantLike)) {
-                const variantContent = content.createVariant(this, schemaMember);
+                const variantContent = content.createVariant(schemaMember);
                 content.updateName(variantContent);
 
                 variantContents.push(variantContent);
