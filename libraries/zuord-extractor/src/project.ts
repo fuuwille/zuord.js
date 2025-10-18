@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { FileExtension, FileName } from "./file";
+import { FileExtension, FileName, getName } from "./file";
 
 export class ProjectContext {
     #config: ProjectConfig;
@@ -157,32 +157,8 @@ export class ProjectModule extends ProjectObject {
     //
 
     public getFile(extension: FileExtension, shouldExists: boolean = false): ProjectFile | undefined {
-        let file;
-        switch (extension) {
-            case FileExtension.TS:
-                file = this.#file.ts;
-                break;
-            case FileExtension.TZS:
-                file = this.#file.tzs;
-                break;
-            case FileExtension.TZU:
-                file = this.#file.tzu;
-                break;
-            case FileExtension.TZV:
-                file = this.#file.tzv;
-                break;
-            case FileExtension.ZSchema:
-                file = this.#file.zschema;
-                break;
-            case FileExtension.ZUtility:
-                file = this.#file.zutility;
-                break;
-            case FileExtension.ZVariant:
-                file = this.#file.zvariant;
-                break;
-            default:
-                return undefined;
-        }
+        const name = getName(extension);
+        const file = this.#file[name];
 
         if(file) return file;
 
