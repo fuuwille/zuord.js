@@ -1,5 +1,5 @@
 import { File } from "./file";
-import { ContentSpec } from "./content";
+import { Content } from "./content";
 
 export interface Module {
     name: string;
@@ -7,8 +7,8 @@ export interface Module {
     extrinsic?: ModuleMeta;
     schemaFile: File.Schema | null;
     variantsFile: File.Variant | null;
-    schemaContents: ContentSpec.Schema[];
-    variantContents: ContentSpec.Variant[];
+    schemaContents: Content.Schema[];
+    variantContents: Content.Variant[];
 }
 
 export default Module;
@@ -29,6 +29,6 @@ export interface ModuleFile {
 
 export interface ModuleContent {
     meta: ModuleMeta;
-    schemas: ContentSpec.Schema[];
-    variants: ContentSpec.Variant[];
+    schemas: Content.Schema[];
+    variants: Content.Variant[];
 }
