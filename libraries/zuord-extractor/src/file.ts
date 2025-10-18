@@ -67,3 +67,22 @@ export const getExtension = (type: FileType, setType: ModuleBundleType) : FileEx
             return undefined;
     }
 }
+
+export const getName = (extension: FileExtension) : FileName => {
+    switch(extension) {
+        case FileExtension.TS:
+            return FileName.TS;
+        case FileExtension.TZS:
+            return FileName.TZS;
+        case FileExtension.TZU:
+            return FileName.TZU;
+        case FileExtension.TZV:
+            return FileName.TZV;
+        case FileExtension.ZSchema:
+            return FileName.ZSchema;
+        case FileExtension.ZUtility:
+            return FileName.ZUtility;
+        case FileExtension.ZVariant:
+            return FileName.ZVariant;
+    }
+}
