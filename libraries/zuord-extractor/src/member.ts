@@ -19,9 +19,7 @@ export enum MemberType {
 }
 
 export type MemberGlobalLikeType =
-    | MemberType.Import
-    | MemberType.Export
-    | MemberType.ExportDefault;
+    | MemberESMLikeType;
 
 export type MemberESMLikeType =
     | MemberType.Import
@@ -29,9 +27,6 @@ export type MemberESMLikeType =
     | MemberType.ExportDefault;
 
 export type MemberDefinitionOnlyType =
-    | MemberType.Import
-    | MemberType.Export
-    | MemberType.ExportDefault
     | MemberType.Type
     | MemberType.Interface
     | MemberType.Class
