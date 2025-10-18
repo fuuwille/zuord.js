@@ -147,3 +147,8 @@ export type ModuleFileRecord = {
     schema: File.Schema | null;
     variant: File.Variant | null;
 }
+
+export type ModuleContentRecord = {
+    schemas: Content.Schema[];
+    variants: Content.Variant[];
+}
