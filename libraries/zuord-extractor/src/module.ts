@@ -48,7 +48,7 @@ export class ModuleObject {
 
 export class ModuleBundle extends ModuleObject {
     #type: ModuleBundleType;
-    #file: { schema: File.Schema | undefined; variant: File.Variant | undefined };
+    #file: ModuleFileRecord;
     #content: { schemas: Content.Schema[]; variants: Content.Variant[] };
 
     constructor(module: Module, type: ModuleBundleType) {
@@ -56,8 +56,8 @@ export class ModuleBundle extends ModuleObject {
         this.#type = type;
 
         const $file = this.#file = {
-            schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension),
-            variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension)
+            schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ?? null,
+            variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension) ?? null
         };
         const $content = this.#content = {
             schemas: [],
