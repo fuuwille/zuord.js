@@ -309,6 +309,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         return [entry];
     }
+
+    public getAllEntries() : ProjectEntry[] {
+        const entries = fs.readdirSync(this.path, { withFileTypes: true });
+        return entries.map(entry => this.getEntry(entry.name)).filter((e): e is ProjectEntry => Boolean(e));
+    }
 }
 
 //
