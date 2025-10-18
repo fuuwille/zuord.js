@@ -128,7 +128,7 @@ export class ProjectFile extends ProjectEntry {
     }
 }
 
-export type ProjectFileRecord = Partial<Record<FileName, ProjectFile | undefined>>;
+export type ProjectFileRecord = Partial<Record<FileName, ProjectFile>>;
 
 //
 
