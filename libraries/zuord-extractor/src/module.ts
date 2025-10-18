@@ -96,28 +96,6 @@ export class ModuleEntry extends ModuleObject {
     }
 }
 
-export class ModuleFile extends ModuleEntry {
-    #schema: File.Schema | undefined;
-    #variant: File.Variant | undefined;
-
-    constructor(set: ModuleSet) {
-        super(set);
-
-        const type = set.type;
-        const module = set.module;
-
-
-    }
-
-    get schema(): File.Schema | undefined {
-        return this.#schema;
-    }
-
-    get variant(): File.Variant | undefined {
-        return this.#variant;
-    }
-}
-
 export class ModuleContent extends ModuleEntry {
     #schemas: Content.Schema[];
     #variants: Content.Variant[];
