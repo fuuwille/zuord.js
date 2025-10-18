@@ -56,3 +56,7 @@ export type MemberInitializerLikeType =
     | MemberType.Value
     | MemberType.ArrowFunction
     | MemberType.FunctionExpression;
+
+export type MemberFunctionAltType =
+    | MemberType.ArrowFunction
+    | MemberType.FunctionExpression;
