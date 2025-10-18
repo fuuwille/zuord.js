@@ -55,7 +55,7 @@ export class ModuleSet extends ModuleObject {
         super(module);
         this.#type = type;
 
-        this.#file = {
+        const $file = this.#file = {
             schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension),
             variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension)
         };
@@ -63,53 +63,9 @@ export class ModuleSet extends ModuleObject {
             schemas: [],
             variants: []
         };
-    }
-
-    get type(): ModuleSetType {
-        return this.#type;
-    }
-
-    get file() {
-        return this.#file;
-    }
-
-    get content() {
-        return this.#content;
-    }
-}
-
-export enum ModuleSetType {
-    Main,
-    Nest
-}
-
-export class ModuleEntry extends ModuleObject {
-    #set: ModuleSet
-
-    constructor(set: ModuleSet) {
-        super(set.module);
-        this.#set = set;
-    }
-
-    get set(): ModuleSet {
-        return this.#set;
-    }
-}
-
-export class ModuleContent extends ModuleEntry {
-    #schemas: Content.Schema[];
-    #variants: Content.Variant[];
-
-    constructor(set: ModuleSet) {
-        super(set);
-
-        this.#schemas = [];
-        this.#variants = [];
-
-        const file = set.file!;
     
-        const schemaMembers = file.schema?.members;
-        const variantMembers = file.variant?.members;
+        const schemaMembers = $file.schema?.members;
+        const variantMembers = $file.variant?.members;
 
         const schemaContents = [];
         const variantContents = [];
@@ -157,6 +113,49 @@ export class ModuleContent extends ModuleEntry {
                 }
             }
         }
+    }
+
+    get type(): ModuleSetType {
+        return this.#type;
+    }
+
+    get file() {
+        return this.#file;
+    }
+
+    get content() {
+        return this.#content;
+    }
+}
+
+export enum ModuleSetType {
+    Main,
+    Nest
+}
+
+export class ModuleEntry extends ModuleObject {
+    #set: ModuleSet
+
+    constructor(set: ModuleSet) {
+        super(set.module);
+        this.#set = set;
+    }
+
+    get set(): ModuleSet {
+        return this.#set;
+    }
+}
+
+export class ModuleContent extends ModuleEntry {
+    #schemas: Content.Schema[];
+    #variants: Content.Variant[];
+
+    constructor(set: ModuleSet) {
+        super(set);
+
+        this.#schemas = [];
+        this.#variants = [];
+
     }
 
     get schemas(): Content.Schema[] {
