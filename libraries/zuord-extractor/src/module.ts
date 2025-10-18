@@ -144,8 +144,8 @@ export class ModuleContent extends ModuleEntry {
         }
     
         if(variantMembers) {
-            for(const schemaMember of variantMembers.filter(member.isVariantLike)) {
-                const variantContent = content.createVariant(schemaMember);
+            for(const variantMember of variantMembers.filter(member.isVariantLike)) {
+                const variantContent = content.createVariant(variantMember);
                 content.updateName(variantContent);
 
                 variantContents.push(variantContent);
