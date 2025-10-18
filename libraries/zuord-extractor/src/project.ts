@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { FileExtension } from "./file";
+import { FileExtension, FileName } from "./file";
 
 export class ProjectContext {
     #config: ProjectConfig;
@@ -127,6 +127,8 @@ export class ProjectFile extends ProjectEntry {
         return `${this.module.parent.path}/${this.name}`;
     }
 }
+
+export type ProjectFileRecord = Record<FileName, ProjectFile | undefined>;
 
 //
 
