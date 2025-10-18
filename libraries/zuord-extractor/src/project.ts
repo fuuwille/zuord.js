@@ -38,6 +38,14 @@ export class ProjectContext {
     }
 }
 
+export type ProjectReference = {
+    project: ProjectContext;
+    scope?: ProjectScope;
+    folders?: ProjectFolder[];
+    module?: ProjectModule;
+    file?: ProjectFile;
+}
+
 //
 
 export class ProjectObject {
