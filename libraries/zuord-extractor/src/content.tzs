@@ -4,7 +4,7 @@ import { Diagnostic } from "./diagnostic";
 import { Member } from "./member";
 
 export interface Base {
-    source: ModuleContent;
+    target: ModuleContent;
     member: Member.DefinitionLike;
     type: ContentType;
     name?: string | null;
