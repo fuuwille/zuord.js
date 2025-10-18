@@ -5,15 +5,15 @@ import { diagnostic } from "./diagnostic";
 
 export class Module {
     #location: string; #name: string;
-    #set: Record<"main" | "nest", ModuleSet>;
+    #set: Record<"main" | "nest", ModuleBundle>;
 
     constructor(location: string, name: string) {
         this.#location = location;
         this.#name = name;
 
         this.#set = {
-            main: new ModuleSet(this, ModuleSetType.Main),
-            nest: new ModuleSet(this, ModuleSetType.Nest)
+            main: new ModuleBundle(this, ModuleSetType.Main),
+            nest: new ModuleBundle(this, ModuleSetType.Nest)
         };
     }
 
@@ -46,7 +46,7 @@ export class ModuleObject {
     }
 }
 
-export class ModuleSet extends ModuleObject {
+export class ModuleBundle extends ModuleObject {
     #type: ModuleSetType;
     #file: { schema: File.Schema | undefined; variant: File.Variant | undefined };
     #content: { schemas: Content.Schema[]; variants: Content.Variant[] };
