@@ -3,7 +3,7 @@ import PATH from "path";
 import fs from "fs";
 import { FileExtension } from "./file";
 
-export class Project {
+export class ProjectContext {
     #config: ProjectConfig;
     #scope: ProjectScopeRecord;
 
@@ -46,7 +46,7 @@ export class ProjectConfig {
     public readonly path: string;
 
     public constructor(
-        public readonly project: Project
+        public readonly project: ProjectContext
     ) {
         this.path = `${this.project.path}/zuord.json`;
     }
@@ -85,7 +85,7 @@ export class ProjectConfig {
 
 export class ProjectObject {
     public constructor(
-        public readonly project: Project,
+        public readonly project: ProjectContext,
         public readonly name: string
     ) {}
 }
@@ -93,7 +93,7 @@ export class ProjectObject {
 export abstract class ProjectEntry extends ProjectObject {
     #path: string | undefined;
 
-    public constructor(project: Project, name: string
+    public constructor(project: ProjectContext, name: string
     ) {
         super(project, name);
 
@@ -216,7 +216,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     #folders: ProjectFolder[];
     #modules: ProjectModule[];
 
-    protected constructor(project: Project, name: string) {
+    protected constructor(project: ProjectContext, name: string) {
         super(project, name);
 
         this.#folders = [];
@@ -352,7 +352,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 //
 
 export class ProjectScope extends ProjectDirectory {
-    public constructor(project: Project, name: string, 
+    public constructor(project: ProjectContext, name: string, 
         public readonly type: ProjectScopeType
     ) {
         super(project, name);
@@ -364,7 +364,7 @@ export class ProjectScope extends ProjectDirectory {
 
     //
 
-    public static createFrom(project: Project, type : ProjectScopeType) : ProjectScope | undefined {
+    public static createFrom(project: ProjectContext, type : ProjectScopeType) : ProjectScope | undefined {
         const data = project.config.data;
         if(!data) return undefined;
 

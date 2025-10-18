@@ -1,10 +1,10 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./~regex";
-import { Project, ProjectFile, ProjectFolder, ProjectModule, ProjectScope } from "./project";
+import { ProjectContext, ProjectFile, ProjectFolder, ProjectModule, ProjectScope } from "./project";
 
 export class Stash {
-    private static projects: Map<string, Project > = new Map();
+    private static projects: Map<string, ProjectContext > = new Map();
 
     //
 
@@ -38,7 +38,7 @@ export class Stash {
         projectRef = Stash.projects.get(projectPath);
 
         if (!projectRef) {
-            projectRef = new Project(projectPath);
+            projectRef = new ProjectContext(projectPath);
             Stash.projects.set(projectPath, projectRef);
         }
 
@@ -107,7 +107,7 @@ export class Stash {
 }
 
 export type StashReference = {
-    project: Project;
+    project: ProjectContext;
     scope?: ProjectScope;
     folders?: ProjectFolder[];
     module?: ProjectModule;
