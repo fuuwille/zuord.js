@@ -138,37 +138,3 @@ export enum ModuleSetType {
     Main,
     Nest
 }
-
-export class ModuleEntry extends ModuleObject {
-    #set: ModuleSet
-
-    constructor(set: ModuleSet) {
-        super(set.module);
-        this.#set = set;
-    }
-
-    get set(): ModuleSet {
-        return this.#set;
-    }
-}
-
-export class ModuleContent extends ModuleEntry {
-    #schemas: Content.Schema[];
-    #variants: Content.Variant[];
-
-    constructor(set: ModuleSet) {
-        super(set);
-
-        this.#schemas = [];
-        this.#variants = [];
-
-    }
-
-    get schemas(): Content.Schema[] {
-        return this.#schemas;
-    }
-
-    get variants(): Content.Variant[] {
-        return this.#variants;
-    }
-}
