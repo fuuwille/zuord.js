@@ -55,11 +55,11 @@ export class ModuleBundle extends ModuleObject {
         super(module);
         this.#type = type;
 
-        const $file = this.#file = {
+        const $file : ModuleFileRecord = this.#file = {
             schema: file.extractSchema(module.location, module.name, getExtension(FileType.Schema, type) as FileSchemaExtension) ?? null,
             variant: file.extractVariant(module.location, module.name, getExtension(FileType.Variant, type) as FileVariantExtension) ?? null
         };
-        const $content = this.#content = {
+        const $content : ModuleContentRecord = this.#content = {
             schemas: [],
             variants: []
         };
@@ -114,10 +114,7 @@ export class ModuleBundle extends ModuleObject {
             }
         }
 
-        // @ts-ignore
         $content.schemas = schemaContents;
-
-        // @ts-ignore
         $content.variants = variantContents;
     }
 
