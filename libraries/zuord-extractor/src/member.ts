@@ -1,5 +1,4 @@
 // @zuord-scope
-// @zuord-exports spec
 
 export { default as MemberBase } from "./member.tzs";
 
@@ -18,5 +17,3 @@ export enum MemberType {
     ArrowFunction,
     FunctionExpression
 }
-
-export { Member as MemberSpec, member as memberSpec } from "./member";
