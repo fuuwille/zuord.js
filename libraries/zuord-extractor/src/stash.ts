@@ -33,17 +33,17 @@ export class Stash {
 
         if (!projectPath) return undefined;
 
-        let projectRef;
+        let context;
 
-        projectRef = Stash.projects.get(projectPath);
+        context = Stash.projects.get(projectPath);
 
-        if (!projectRef) {
-            projectRef = new ProjectContext(projectPath);
-            Stash.projects.set(projectPath, projectRef);
+        if (!context) {
+            context = new ProjectContext(projectPath);
+            Stash.projects.set(projectPath, context);
         }
 
         let scopeRef: ProjectScope | undefined;
-        const scopeList = [projectRef.scope.source, projectRef.scope.dist].filter(Boolean) as ProjectScope[];
+        const scopeList = [context.scope.source, context.scope.dist].filter(Boolean) as ProjectScope[];
 
         for (const scope of scopeList) {
             const index = scopeIndex(scope);
@@ -66,20 +66,20 @@ export class Stash {
         }
 
         if (!scopeRef) return {
-            project: projectRef
+            project: context
         };
 
         const objects = scopeRef.getObjectChainBySlugs(slugs);
         const lastObject = objects.pop();
 
         if(!lastObject) return {
-            project: projectRef,
+            project: context,
             scope: scopeRef
         };
 
         if(lastObject instanceof ProjectFolder) {
             return {
-                project: projectRef,
+                project: context,
                 scope: scopeRef,
                 folders: [...(objects as ProjectFolder[]), lastObject],
             }
@@ -87,7 +87,7 @@ export class Stash {
 
         if(lastObject instanceof ProjectModule) {
             return {
-                project: projectRef,
+                project: context,
                 scope: scopeRef,
                 folders: [...(objects as ProjectFolder[])],
                 module: lastObject
@@ -96,7 +96,7 @@ export class Stash {
         
         if(lastObject instanceof ProjectFile) {
             return {
-                project: projectRef,
+                project: context,
                 scope: scopeRef,
                 folders: objects as ProjectFolder[],
                 module: lastObject.module,
