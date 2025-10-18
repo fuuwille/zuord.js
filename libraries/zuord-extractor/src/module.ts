@@ -140,3 +140,10 @@ export enum ModuleBundleType {
 }
 
 export type ModuleBundleRecord = Record<"main" | "nest", ModuleBundle>;
+
+//
+
+export type ModuleFileRecord = {
+    schema: File.Schema | null;
+    variant: File.Variant | null;
+}
