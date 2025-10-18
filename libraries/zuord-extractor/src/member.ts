@@ -36,6 +36,10 @@ export type MemberDefinitionOnlyType =
     | MemberType.Function
     | MemberType.Value;
 
+export type MemberSchemaLikeType =
+    | MemberGlobalLikeType
+    | MemberSchemaOnlyType;
+
 export type MemberSchemaOnlyType =
     | MemberType.Type
     | MemberType.Interface
