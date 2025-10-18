@@ -1,4 +1,3 @@
-export * from "./module.tzv";
 export { content } from "./content";
 export { diagnostic } from "./diagnostic";
 export { fileSpec as fileNest } from "./file";
