@@ -314,6 +314,14 @@ export abstract class ProjectDirectory extends ProjectEntry {
         const entries = fs.readdirSync(this.path, { withFileTypes: true });
         return entries.map(entry => this.getEntry(entry.name)).filter((e): e is ProjectEntry => Boolean(e));
     }
+
+    public getAllFolders() : ProjectFolder[] {
+        return this.getAllEntries().filter((e): e is ProjectFolder => e instanceof ProjectFolder);
+    }
+
+    public getAllFiles() : ProjectFile[] {
+        return this.getAllEntries().filter((e): e is ProjectFile => e instanceof ProjectFile);
+    }
 }
 
 //
