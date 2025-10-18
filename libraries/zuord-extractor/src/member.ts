@@ -22,3 +22,8 @@ export type MemberGlobalLikeType =
     | MemberType.Import
     | MemberType.Export
     | MemberType.ExportDefault;
+
+export type MemberESMLikeType =
+    | MemberType.Import
+    | MemberType.Export
+    | MemberType.ExportDefault;
