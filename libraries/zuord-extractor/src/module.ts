@@ -5,7 +5,7 @@ import { diagnostic } from "./diagnostic";
 
 export class Module {
     #location: string; #name: string;
-    #bundle: Record<"main" | "nest", ModuleBundle>;
+    #bundle: ModuleBundleRecord;
 
     constructor(location: string, name: string) {
         this.#location = location;
@@ -133,6 +133,10 @@ export class ModuleBundle extends ModuleObject {
         return this.#content;
     }
 }
+
+export type ModuleBundleRecord = Record<"main" | "nest", ModuleBundle>;
+
+//
 
 export enum ModuleSetType {
     Main,
