@@ -9,7 +9,7 @@ export enum FileName {
     TZU = "tzu",
     TZV = "tzv",
     ZSchema = "zschema",
-    ZUtility = "zutils",
+    ZUtility = "zutility",
     ZVariant = "zvariant"
 }
 
