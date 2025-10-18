@@ -1,6 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
+import { FileExtension } from "./file";
 
 export class Project {
     #config: ProjectConfig;
@@ -117,22 +118,14 @@ export abstract class ProjectEntry extends ProjectObject {
 export class ProjectFile extends ProjectEntry {
     public constructor(
         public readonly module: ProjectModule,
-        public readonly type: ProjectFileExtension
+        public readonly extension: FileExtension
     ) {
-        super(module.project, `${module.name}.${type}`);
+        super(module.project, `${module.name}.${extension}`);
     }
 
     protected getPath(): string {
         return `${this.module.parent.path}/${this.name}`;
     }
-}
-
-export enum ProjectFileExtension {
-    TS = "ts",
-    TZS = "tzs",
-    TZV = "tzv",
-    ZSchema = "zschema.ts",
-    ZVariants = "zvariants.ts"
 }
 
 //
@@ -173,22 +166,22 @@ export class ProjectModule extends ProjectObject {
 
     //
 
-    public getFile(extension: ProjectFileExtension, shouldExists: boolean = false): ProjectFile | undefined {
+    public getFile(extension: FileExtension, shouldExists: boolean = false): ProjectFile | undefined {
         let file;
         switch (extension) {
-            case ProjectFileExtension.TS:
+            case FileExtension.TS:
                 file = this.#tsFile;
                 break;
-            case ProjectFileExtension.TZS:
+            case FileExtension.TZS:
                 file = this.#tzsFile;
                 break;
-            case ProjectFileExtension.TZV:
+            case FileExtension.TZV:
                 file = this.#tzvFile;
                 break;
-            case ProjectFileExtension.ZSchema:
+            case FileExtension.ZSchema:
                 file = this.#zSchemaFile;
                 break;
-            case ProjectFileExtension.ZVariants:
+            case FileExtension.ZVariant:
                 file = this.#zVariantsFile;
                 break;
             default:
@@ -204,16 +197,16 @@ export class ProjectModule extends ProjectObject {
         }
 
         switch (extension) {
-            case ProjectFileExtension.TS:
-                return this.#tsFile = new ProjectFile(this, ProjectFileExtension.TS);
-            case ProjectFileExtension.TZS:
-                return this.#tzsFile = new ProjectFile(this, ProjectFileExtension.TZS);
-            case ProjectFileExtension.TZV:
-                return this.#tzvFile = new ProjectFile(this, ProjectFileExtension.TZV);
-            case ProjectFileExtension.ZSchema:
-                return this.#zSchemaFile = new ProjectFile(this, ProjectFileExtension.ZSchema);
-            case ProjectFileExtension.ZVariants:
-                return this.#zVariantsFile = new ProjectFile(this, ProjectFileExtension.ZVariants);
+            case FileExtension.TS:
+                return this.#tsFile = new ProjectFile(this, FileExtension.TS);
+            case FileExtension.TZS:
+                return this.#tzsFile = new ProjectFile(this, FileExtension.TZS);
+            case FileExtension.TZV:
+                return this.#tzvFile = new ProjectFile(this, FileExtension.TZV);
+            case FileExtension.ZSchema:
+                return this.#zSchemaFile = new ProjectFile(this, FileExtension.ZSchema);
+            case FileExtension.ZVariant:
+                return this.#zVariantsFile = new ProjectFile(this, FileExtension.ZVariant);
             default:
                 return undefined;
         }
@@ -288,7 +281,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if(!moduleName) return undefined;
 
         const module = this.getModule(moduleName);
-        return module.getFile(fileExtension as ProjectFileExtension, shouldExists);
+        return module.getFile(fileExtension as FileExtension, shouldExists);
     }
 
     public getLastObject(path: string) : ProjectObject | undefined {
