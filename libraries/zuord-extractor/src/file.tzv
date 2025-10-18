@@ -41,9 +41,8 @@ export const extract = (dir: string, name: string, extension: FileExtension) : Z
     const fileName = `${name}.${extension.toLowerCase()}`;
     const filePath = path.join(dir, fileName);
 
-    const sourceFile = new Project().addSourceFileAtPath(filePath);
-
-    if(fs.existsSync(filePath)) {
+    if(fs.existsSync(filePath)) {    
+        const sourceFile = new Project().addSourceFileAtPath(filePath);
         return initialize(sourceFile, extension);
     }
 
