@@ -168,24 +168,7 @@ export class ProjectModule extends ProjectObject {
             if(!fs.statSync(path).isFile()) return undefined;
         }
 
-        switch (extension) {
-            case FileExtension.TS:
-                return this.#file.ts = new ProjectFile(this, FileExtension.TS);
-            case FileExtension.TZS:
-                return this.#file.tzs = new ProjectFile(this, FileExtension.TZS);
-            case FileExtension.TZU:
-                return this.#file.tzu = new ProjectFile(this, FileExtension.TZU);
-            case FileExtension.TZV:
-                return this.#file.tzv = new ProjectFile(this, FileExtension.TZV);
-            case FileExtension.ZSchema:
-                return this.#file.zschema = new ProjectFile(this, FileExtension.ZSchema);
-            case FileExtension.ZUtility:
-                return this.#file.zutility = new ProjectFile(this, FileExtension.ZUtility);
-            case FileExtension.ZVariant:
-                return this.#file.zvariant = new ProjectFile(this, FileExtension.ZVariant);
-            default:
-                return undefined;
-        }
+        return this.#file[name] = new ProjectFile(this, extension);
     }
 }
 
