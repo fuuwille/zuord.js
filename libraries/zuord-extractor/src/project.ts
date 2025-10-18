@@ -174,6 +174,9 @@ export class ProjectModule extends ProjectObject {
             case FileExtension.ZSchema:
                 file = this.#file.zschema;
                 break;
+            case FileExtension.ZUtility:
+                file = this.#file.zutility;
+                break;
             case FileExtension.ZVariant:
                 file = this.#file.zvariant;
                 break;
@@ -200,6 +203,8 @@ export class ProjectModule extends ProjectObject {
                 return this.#file.tzv = new ProjectFile(this, FileExtension.TZV);
             case FileExtension.ZSchema:
                 return this.#file.zschema = new ProjectFile(this, FileExtension.ZSchema);
+            case FileExtension.ZUtility:
+                return this.#file.zutility = new ProjectFile(this, FileExtension.ZUtility);
             case FileExtension.ZVariant:
                 return this.#file.zvariant = new ProjectFile(this, FileExtension.ZVariant);
             default:
