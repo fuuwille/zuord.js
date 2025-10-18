@@ -139,7 +139,10 @@ export enum ModuleBundleType {
     Nest
 }
 
-export type ModuleBundleRecord = Record<"main" | "nest", ModuleBundle>;
+export type ModuleBundleRecord = {
+    main: ModuleBundle;
+    nest: ModuleBundle;
+}
 
 //
 
