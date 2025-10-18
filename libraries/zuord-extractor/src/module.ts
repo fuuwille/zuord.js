@@ -19,15 +19,15 @@ export class Module {
 
     //
 
-    get location(): string {
+    public get location() {
         return this.#location;
     }
 
-    get name(): string {
+    public get name() {
         return this.#name;
     }
 
-    get set() {
+    public get set() {
         return this.#set;
     }
 }
