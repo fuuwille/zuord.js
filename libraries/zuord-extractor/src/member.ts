@@ -27,10 +27,7 @@ export type MemberESMLikeType =
     | MemberType.ExportDefault;
 
 export type MemberDefinitionOnlyType =
-    | MemberType.Type
-    | MemberType.Interface
-    | MemberType.Class
-    | MemberType.Enum
+    | MemberSchemaOnlyType
     | MemberType.Variable
     | MemberType.Function
     | MemberType.Value;
