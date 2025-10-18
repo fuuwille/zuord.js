@@ -11,7 +11,7 @@ export class ProjectContext {
         public readonly path: string,
     ) {
         if(!regex.path.test(path)) {
-            throw new Error(`Invalid project path: ${path}`);
+            path = PATH.resolve(path);
         }
 
         this.#config = new ProjectConfig(this);
