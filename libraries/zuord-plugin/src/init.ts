@@ -21,8 +21,9 @@ export = function (modules: { typescript: typeof ts }) {
                 const baseName = utility.getBaseName(fileName) || '';
 
                 const isTZS = utility.isTZSFile(fileName);
+                const isTZU = utility.isTZUFile(fileName);
                 const isTZV = utility.isTZVFile(fileName);
-                const isTZ = isTZS || isTZV;
+                const isTZ = isTZS || isTZU || isTZV;
                 const isTS = utility.isTSFile(fileName);
 
                 const checkTZS = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
@@ -46,6 +47,7 @@ export = function (modules: { typescript: typeof ts }) {
                 }
                 else if(isTS) {
                     const hasTZS = checkTZS(fileName);
+                    const hasTZU = utility.isTZUFile(fileName);
                     const hasTZV = checkTZV(fileName);
                     const hasZ = hasTZS || hasTZV;
 
@@ -56,21 +58,25 @@ export = function (modules: { typescript: typeof ts }) {
                         const attributes = utility.getZuordAttributes(snapshot?.getText(0, snapshot.getLength()) || '');
 
                         attributes.forEach(attr => {
-                            if(attr == "scope") {
-                                if(hasTZS) {
-                                    const name = caseAnything.pascalCase(baseName);
+                            if(hasTZS) {
+                                const name = caseAnything.pascalCase(baseName);
 
-                                    virtualExports += `\nexport * as Z${name} from './${baseName}.tzs';`;
-                                    virtualExports += `\nexport type Z${name} = any;`;
-                                }
+                                virtualExports += `\nexport * as Z${name} from './${baseName}.tzs';`;
+                                virtualExports += `\nexport type Z${name} = any;`;
+                            }
 
-                                if(hasTZV) {
-                                    const name = caseAnything.camelCase(baseName);
+                            if(hasTZU) {
+                                const name = caseAnything.camelCase(baseName);
 
-                                    virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
-                                    virtualExports += `\ntype z${name}API = typeof $${name};`;
-                                    virtualExports += `\nexport const z${name} : z${name}API = $${name};`;
-                                }
+                                virtualExports += `\nimport * as $${name}Utility from './${baseName}.tzu';`;
+                            }
+
+                            if(hasTZV) {
+                                const name = caseAnything.camelCase(baseName);
+
+                                virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
+                                virtualExports += `\ntype z${name}API = typeof $${name};`;
+                                virtualExports += `\nexport const z${name} : z${name}API = $${name};`;
                             }
                         });
 
