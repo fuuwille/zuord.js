@@ -341,14 +341,14 @@ export class ProjectScope extends ProjectDirectory {
 
     //
 
-    public static createFrom(project: ProjectContext, type : ProjectScopeType) : ProjectScope | undefined {
-        const data = project.config.data;
+    public static createFrom(context: ProjectContext, type : ProjectScopeType) : ProjectScope | undefined {
+        const data = context.config.data;
         if(!data) return undefined;
 
         const name = type === ProjectScopeType.Source ? data.source : data.dist;
         if(!name || typeof name !== "string") return undefined;
 
-        return new ProjectScope(project, name, type);
+        return new ProjectScope(context, name, type);
     }
 }
 
