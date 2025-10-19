@@ -212,13 +212,20 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getFile(name: string, shouldExists: boolean = true) : ProjectFile | undefined {
+        let file = this.#files.find(f => f.name === name);
+        if(file) return file;
+
         const [, moduleName, fileExtension] = regex.fileName.exec(name) || [];
         if(!moduleName) return undefined;
 
         const module = this.getModule(moduleName, shouldExists);
         if(!module) return undefined;
 
-        return module.getFile(fileExtension as FileExtension, shouldExists);
+        file = module.getFile(fileExtension as FileExtension, shouldExists);
+        if(!file) return undefined;
+
+        this.#files.push(file);
+        return file;
     }
 
     public getFolder(name: string, shouldExists: boolean = true) : ProjectFolder | undefined {
