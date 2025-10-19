@@ -59,8 +59,8 @@ export = function (modules: { typescript: typeof ts }) {
                         if(hasTZS) {
                             const name = caseAnything.pascalCase(baseName);
 
-                            virtualExports += `\nexport * as Z${name} from './${baseName}.tzs';`;
-                            virtualExports += `\nexport type Z${name} = any;`;
+                            virtualExports += `\nexport * as ${name} from './${baseName}.tzs';`;
+                            virtualExports += `\nexport type ${name} = any;`;
                         }
 
                         if(hasTZU) {
@@ -73,8 +73,8 @@ export = function (modules: { typescript: typeof ts }) {
                             const name = caseAnything.camelCase(baseName);
 
                             virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
-                            virtualExports += `\ntype z${name}API = typeof $${name};`;
-                            virtualExports += `\nexport const z${name} : z${name}API = $${name};`;
+                            virtualExports += `\ntype ${name}API = typeof $${name};`;
+                            virtualExports += `\nexport const ${name} : ${name}API = $${name};`;
                         }
 
                         const combined = text + virtualExports;
