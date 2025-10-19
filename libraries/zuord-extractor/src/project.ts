@@ -30,12 +30,6 @@ export class ProjectContext {
     public get scope() : ProjectScopeRecord {
         return this.#scope;
     }
-
-    //
-
-    public exists() : boolean {
-        return fs.existsSync(this.path);
-    }
 }
 
 export type ProjectReference = {
