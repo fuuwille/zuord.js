@@ -1,0 +1,58 @@
+import { FileExtension, FileType, FileName } from './file';
+import { ModuleBundleType } from './module';
+
+export const getType = (mode : FileExtension) : FileType | undefined => {
+    switch(mode) {
+        case FileExtension.TS:
+        case FileExtension.TZS:
+        case FileExtension.ZSchema:
+            return FileType.Schema;
+        case FileExtension.TZU:
+        case FileExtension.TZV:
+        case FileExtension.ZUtility:
+        case FileExtension.ZVariant:
+            return FileType.Variant;
+        default:
+            return undefined;
+    }
+}
+
+export const getExtension = (type: FileType, bundle: ModuleBundleType) : FileExtension | undefined => {
+    switch(type) {
+        case FileType.Schema:
+            return bundle == ModuleBundleType.Main ? FileExtension.TS : FileExtension.TZS;
+        case FileType.Variant:
+            return bundle == ModuleBundleType.Main ? FileExtension.TZU : FileExtension.TZV;
+        default:
+            return undefined;
+    }
+}
+
+export const getCompiledExtension = (name: FileExtension) : FileExtension | undefined => {
+    switch(name) {
+        case FileExtension.TS:
+            return FileExtension.TS;
+        case FileExtension.TZS:
+            return FileExtension.ZSchema;
+        case FileExtension.TZU:
+            return FileExtension.ZUtility;
+        case FileExtension.TZV:
+            return FileExtension.ZVariant;
+    }
+}
+
+export const getName = (extension: FileExtension) : FileName => {
+    switch(extension) {
+        case FileExtension.TS:
+            return FileName.TS;
+        case FileExtension.TZS:
+        case FileExtension.ZSchema:
+            return FileName.TZS;
+        case FileExtension.TZU:
+        case FileExtension.ZUtility:
+            return FileName.TZU;
+        case FileExtension.TZV:
+        case FileExtension.ZVariant:
+            return FileName.TZV;
+    }
+}
