@@ -55,30 +55,26 @@ export = function (modules: { typescript: typeof ts }) {
                         let virtualExports = "";
                         let text = snapshot.getText(0, snapshot.getLength());
 
-                        const attributes = utility.getZuordAttributes(snapshot?.getText(0, snapshot.getLength()) || '');
+                        if(hasTZS) {
+                            const name = caseAnything.pascalCase(baseName);
 
-                        attributes.forEach(attr => {
-                            if(hasTZS) {
-                                const name = caseAnything.pascalCase(baseName);
+                            virtualExports += `\nexport * as Z${name} from './${baseName}.tzs';`;
+                            virtualExports += `\nexport type Z${name} = any;`;
+                        }
 
-                                virtualExports += `\nexport * as Z${name} from './${baseName}.tzs';`;
-                                virtualExports += `\nexport type Z${name} = any;`;
-                            }
+                        if(hasTZU) {
+                            const name = caseAnything.camelCase(baseName);
 
-                            if(hasTZU) {
-                                const name = caseAnything.camelCase(baseName);
+                            virtualExports += `\nexport * as $${name}Utility from './${baseName}.tzu';`;
+                        }
 
-                                virtualExports += `\nexport * as $${name}Utility from './${baseName}.tzu';`;
-                            }
+                        if(hasTZV) {
+                            const name = caseAnything.camelCase(baseName);
 
-                            if(hasTZV) {
-                                const name = caseAnything.camelCase(baseName);
-
-                                virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
-                                virtualExports += `\ntype z${name}API = typeof $${name};`;
-                                virtualExports += `\nexport const z${name} : z${name}API = $${name};`;
-                            }
-                        });
+                            virtualExports += `\nimport * as $${name} from './${baseName}.tzv';`;
+                            virtualExports += `\ntype z${name}API = typeof $${name};`;
+                            virtualExports += `\nexport const z${name} : z${name}API = $${name};`;
+                        }
 
                         const combined = text + virtualExports;
                         return typescript.ScriptSnapshot.fromString(combined);
