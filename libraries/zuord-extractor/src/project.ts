@@ -316,7 +316,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getAllFolders() : ProjectFolder[] {
-        return this.getAllEntries().filter((e): e is ProjectFolder => e instanceof ProjectFolder);
+        const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
+        return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
     }
 
     public getAllFiles() : ProjectFile[] {
