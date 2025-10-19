@@ -30,6 +30,14 @@ export const getTZSPath = (fileName: string) => {
     return undefined;
 }
 
+export const getTZUPath = (fileName: string) => {
+    const rootName = getBasePath(fileName);
+    if(rootName) {
+        return `${rootName}.tzu`;
+    }
+    return undefined;
+}
+
 export const getTZVPath = (fileName: string) => {
     const rootName = getBasePath(fileName);
     if(rootName) {
