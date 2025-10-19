@@ -2,6 +2,7 @@ import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
 import { FileExtension, FileName, getName } from "./file";
+import { ModuleContext } from "./module";
 
 export class ProjectContext {
     #config: ProjectConfig;
@@ -171,6 +172,7 @@ export type ProjectFileRecord = Partial<Record<FileName, ProjectFile>>;
 
 export class ProjectModule extends ProjectObject {
     #file: ProjectFileRecord = {};
+    #context: ModuleContext | undefined;
 
     public constructor(
         public readonly parent: ProjectDirectory, name: string) {
@@ -181,6 +183,10 @@ export class ProjectModule extends ProjectObject {
 
     public get file(): ProjectFileRecord {
         return this.#file;
+    }
+
+    public get context(): ModuleContext | undefined {
+        return this.#context;
     }
 
     //
