@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, getCompiledExtension, getName } from "./file";
+import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, fileUtility } from "./file";
 import { ModuleContext } from "./module";
 
 export class ProjectContext {
@@ -67,7 +67,7 @@ export class ProjectContext {
                 const baseName = PATH.basename(fullPath);
                 const firstPart = baseName.split(".")[0];
 
-                const filePath = PATH.join(dirPath, `${firstPart}.${getCompiledExtension(f.extension)}`);
+                const filePath = PATH.join(dirPath, `${firstPart}.${fileUtility.getCompiledExtension(f.extension)}`);
                 fs.writeFileSync(filePath, text);
             }
         }
@@ -221,7 +221,7 @@ export class ProjectModule extends ProjectObject {
     //
 
     public getFile(extension: FileExtension, shouldExists: boolean = false): ProjectFile | undefined {
-        const name = getName(extension);
+        const name = fileUtility.getName(extension);
         const file = this.#file[name];
 
         if(file) return file;
