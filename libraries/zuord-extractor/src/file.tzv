@@ -59,7 +59,7 @@ export const extractVariant = (dir: string, name: string, extension: FileVariant
 
 //
 
-export const getCompiledText = (file: ZSchema.Base) : string => {
+export const compiledText = (file: ZSchema.Base) : string => {
     const fileText = file.source.getFullText();
     return fileText;
 }
