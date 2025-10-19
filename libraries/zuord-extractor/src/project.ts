@@ -321,7 +321,8 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getAllFiles() : ProjectFile[] {
-        return this.getAllEntries().filter((e): e is ProjectFile => e instanceof ProjectFile);
+        const files = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile());
+        return files.map(file => this.getFile(file.name, true)).filter((f): f is ProjectFile => Boolean(f));
     }
 }
 
