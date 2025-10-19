@@ -1,4 +1,4 @@
-import { file, File, FileSchemaExtension, FileType, FileVariantExtension, getExtension } from "./file";
+import { file, File, FileBase, FileExtension, FileSchemaExtension, FileType, FileVariantExtension, getExtension } from "./file";
 import { content, Content } from "./content";
 import { member } from "./member";
 import { diagnostic } from "./diagnostic";
@@ -29,6 +29,23 @@ export class ModuleContext {
 
     public get bundle() : ModuleBundleRecord {
         return this.#bundle;
+    }
+
+    //
+
+    public getFile(extension: FileExtension) : FileBase | undefined {
+        switch(extension) {
+            case FileExtension.TS:
+                return this.#bundle.main.file.schema ?? undefined;
+            case FileExtension.TZS:
+                return this.#bundle.nest.file.schema ?? undefined;
+            case FileExtension.TZU:
+                return this.#bundle.main.file.variant ?? undefined;
+            case FileExtension.TZV:
+                return this.#bundle.nest.file.variant ?? undefined;
+            default:
+                return undefined;
+        }
     }
 }
 
