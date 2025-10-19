@@ -57,9 +57,11 @@ export class ProjectContext {
             for(const f of files) {
                 if(!f.source) continue;
                 const text = file.compiledText(f.source, options);
-                const path = PATH.join(distScope.path, f.relativePath);
 
-                fs.writeFileSync(path, text);
+                const relativePath = PATH.relative(sourceScope.path, f.path);
+                const fullPath = PATH.join(distScope.path, relativePath);
+
+                fs.writeFileSync(fullPath, text);
             }
         }
     }
