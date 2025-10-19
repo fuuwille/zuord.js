@@ -75,6 +75,12 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
                 fileText += `export * as ${fileName} from './${fileName}.zvariants';`;
             }
             break;
+        case FileExtension.TZS:
+        case FileExtension.TZV:
+            if(options.tzs) {
+                fileText += `import * as ZSchema from './${fileName}.zschema';`;
+            }
+            break;
         default:
             break;
     }
