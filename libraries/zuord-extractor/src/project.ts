@@ -72,6 +72,7 @@ export class ProjectObject {
 
 export abstract class ProjectEntry extends ProjectObject {
     #path: string | undefined;
+    #relativePath: string | undefined;
 
     public constructor(project: ProjectContext, name: string
     ) {
@@ -85,6 +86,14 @@ export abstract class ProjectEntry extends ProjectObject {
         }
 
         return this.#path;
+    }
+
+    public get relativePath() : string {
+        if(!this.#relativePath) {
+            this.#relativePath = PATH.relative(this.project.path, this.path);
+        }
+
+        return this.#relativePath;
     }
 
     protected abstract getPath(): string;
