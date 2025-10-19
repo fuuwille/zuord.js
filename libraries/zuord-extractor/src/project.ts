@@ -187,7 +187,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     //
 
-    public getObject(name: string, shouldExists: boolean = true) : ProjectObject {
+    public getObject(name: string, shouldExists: boolean = true) : ProjectObject | undefined {
         const entry = this.getEntry(name, shouldExists);
         if(entry) return entry;
 
@@ -214,10 +214,12 @@ export abstract class ProjectDirectory extends ProjectEntry {
         if(!moduleName) return undefined;
 
         const module = this.getModule(moduleName, shouldExists);
+        if(!module) return undefined;
+
         return module.getFile(fileExtension as FileExtension, shouldExists);
     }
 
-    public getModule(name: string, _shouldExists: boolean = true) : ProjectModule {
+    public getModule(name: string, _shouldExists: boolean = true) : ProjectModule | undefined {
         let module = this.#modules.find(m => m.name === name);
         if(module) return module;
 
