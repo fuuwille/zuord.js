@@ -174,15 +174,15 @@ export class ProjectModule extends ProjectObject {
 
 //
 
-export abstract class ProjectDirectory extends ProjectEntry {    
+export abstract class ProjectDirectory extends ProjectEntry {   
+    #folders: ProjectFolder[]; 
     #modules: ProjectModule[];
-    #folders: ProjectFolder[];
 
     protected constructor(project: ProjectContext, name: string) {
         super(project, name);
 
-        this.#modules = [];
         this.#folders = [];
+        this.#modules = [];
     }
 
     //
