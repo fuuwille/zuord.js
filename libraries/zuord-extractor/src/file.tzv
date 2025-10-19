@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { FileExtension, FileSchemaExtension, FileVariantExtension, getType } from "./file";
+import { FileCompiledTextOptions, FileExtension, FileSchemaExtension, FileVariantExtension, getType } from "./file";
 import { member } from "./member";
 import { node } from "./node";
 
@@ -59,7 +59,17 @@ export const extractVariant = (dir: string, name: string, extension: FileVariant
 
 //
 
-export const compiledText = (file: ZSchema.Base) : string => {
-    const fileText = file.source.getFullText();
+export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOptions) : string => {
+    const rawText = file.source.getFullText();
+    let fileText = "";
+
+    switch(file.extension) {
+        case FileExtension.TS:
+
+            break;
+        default:
+            break;
+    }
+
     return fileText;
 }
