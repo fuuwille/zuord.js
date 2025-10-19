@@ -180,7 +180,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
     protected constructor(project: ProjectContext, name: string) {
         super(project, name);
-        
+
         this.#modules = [];
         this.#folders = [];
     }
@@ -317,14 +317,14 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return entries.map(entry => this.getEntry(entry.name, true)).filter((e): e is ProjectEntry => Boolean(e));
     }
 
-    public getAllFolders() : ProjectFolder[] {
-        const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
-        return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
-    }
-
     public getAllFiles() : ProjectFile[] {
         const files = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile());
         return files.map(file => this.getFile(file.name, true)).filter((f): f is ProjectFile => Boolean(f));
+    }
+
+    public getAllFolders() : ProjectFolder[] {
+        const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
+        return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
     }
 }
 
