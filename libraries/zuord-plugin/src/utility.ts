@@ -58,6 +58,10 @@ export const isTZSFile = (fileName: string) => {
     return path.extname(fileName) === ".tzs";
 };
 
+export const isTZUFile = (fileName: string) => {
+    return path.extname(fileName) === ".tzu";
+}
+
 export const isTZVFile = (fileName: string) => {
     return path.extname(fileName) === ".tzv";
 };
