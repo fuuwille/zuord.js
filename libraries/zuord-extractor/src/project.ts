@@ -219,16 +219,6 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return module.getFile(fileExtension as FileExtension, shouldExists);
     }
 
-    public getModule(name: string, _shouldExists: boolean = true) : ProjectModule | undefined {
-        let module = this.#modules.find(m => m.name === name);
-        if(module) return module;
-
-        module = new ProjectModule(this, name);
-        this.#modules.push(module);
-
-        return module;
-    }
-
     public getFolder(name: string, shouldExists: boolean = true) : ProjectFolder | undefined {
         let folder = this.#folders.find(f => f.name === name);
         if(folder) return folder;
@@ -243,6 +233,16 @@ export abstract class ProjectDirectory extends ProjectEntry {
         folder = new ProjectFolder(this, name);
         this.#folders.push(folder);
         return folder;
+    }
+
+    public getModule(name: string, _shouldExists: boolean = true) : ProjectModule | undefined {
+        let module = this.#modules.find(m => m.name === name);
+        if(module) return module;
+
+        module = new ProjectModule(this, name);
+        this.#modules.push(module);
+
+        return module;
     }
 
     public getLastObject(path: string) : ProjectObject | undefined {
@@ -322,6 +322,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return files.map(file => this.getFile(file.name, true)).filter((f): f is ProjectFile => Boolean(f));
     }
 
+    public getAllFolders() : ProjectFolder[] {
+        const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
+        return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
+    }
+
     public getAllModules() : ProjectModule[] {
         const entries = fs.readdirSync(this.path, { withFileTypes: true });
         const moduleNames = new Set<string>();
@@ -344,11 +349,6 @@ export abstract class ProjectDirectory extends ProjectEntry {
         }
 
         return modules;
-    }
-
-    public getAllFolders() : ProjectFolder[] {
-        const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
-        return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
     }
 }
 
