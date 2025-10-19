@@ -68,7 +68,7 @@ export = function (modules: { typescript: typeof ts }) {
                             if(hasTZU) {
                                 const name = caseAnything.camelCase(baseName);
 
-                                virtualExports += `\nimport * as $${name}Utility from './${baseName}.tzu';`;
+                                virtualExports += `\nexport * as $${name}Utility from './${baseName}.tzu';`;
                             }
 
                             if(hasTZV) {
