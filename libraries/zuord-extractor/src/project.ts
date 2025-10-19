@@ -200,11 +200,11 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getEntry(name: string, shouldExists: boolean = true) : ProjectEntry | undefined {
-        const folder = this.getFolder(name, shouldExists);
-        if(folder) return folder;
-
         const file = this.getFile(name, shouldExists);
         if(file) return file;
+
+        const folder = this.getFolder(name, shouldExists);
+        if(folder) return folder;
 
         return undefined;
     }
