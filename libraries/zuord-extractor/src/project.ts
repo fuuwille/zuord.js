@@ -11,9 +11,7 @@ export class ProjectContext {
     public constructor(
         public readonly path: string,
     ) {
-        if(!regex.path.test(path)) {
-            path = PATH.resolve(path);
-        }
+        path = PATH.resolve(path);
 
         this.#config = new ProjectConfig(this);
         this.#scope = {
