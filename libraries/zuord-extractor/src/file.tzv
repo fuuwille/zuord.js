@@ -72,7 +72,7 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
             if(options.tzv) {
                 if(options.tzs) fileText += `\n\n`;
 
-                fileText += `export * as ${fileName} from './${fileName}.zvariants';`;
+                fileText += `export * as ${fileName} from './${fileName}.zvariant';`;
             }
             break;
         case FileExtension.TZS:
