@@ -327,7 +327,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getAllFiles() : ProjectFile[] {
-        const files = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile());
+        const files = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile() && regex.fileName.test(entry.name));
         return files.map(file => this.getFile(file.name, true)).filter((f): f is ProjectFile => Boolean(f));
     }
 
@@ -337,7 +337,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getAllModules() : ProjectModule[] {
-        const entries = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile());
+        const entries = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile() && regex.fileName.test(entry.name));
         const moduleNames = new Set<string>();
 
         for (const entry of entries) {
