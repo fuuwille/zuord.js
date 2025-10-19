@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
-import { FileCompiledTextOptions, FileExtension, FileSchemaExtension, FileVariantExtension, getType } from "./file";
+import { FileCompiledTextOptions, FileExtension, FileSchemaExtension, FileVariantExtension, fileUtility } from "./file";
 import { member } from "./member";
 import { node } from "./node";
 
@@ -9,7 +9,7 @@ export const create = (sourceFile: SourceFile, extension: FileExtension) : ZSche
     return {
         source: sourceFile,
         extension,
-        type: getType(extension)!,
+        type: fileUtility.getType(extension)!,
         members: [],
         discarded: [],
         others: []
