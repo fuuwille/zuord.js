@@ -322,6 +322,30 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return files.map(file => this.getFile(file.name, true)).filter((f): f is ProjectFile => Boolean(f));
     }
 
+    public getAllModules() : ProjectModule[] {
+        const entries = fs.readdirSync(this.path, { withFileTypes: true });
+        const moduleNames = new Set<string>();
+
+        for (const entry of entries) {
+            if (entry.isFile()) {
+                const [, moduleName] = regex.fileName.exec(entry.name) || [];
+                if (moduleName) {
+                    moduleNames.add(moduleName);
+                }
+            }
+        }
+
+        const modules: ProjectModule[] = [];
+        for (const moduleName of moduleNames) {
+            const module = this.getModule(moduleName, true);
+            if (module) {
+                modules.push(module);
+            }
+        }
+
+        return modules;
+    }
+
     public getAllFolders() : ProjectFolder[] {
         const folders = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isDirectory());
         return folders.map(folder => this.getFolder(folder.name, true)).filter((f): f is ProjectFolder => Boolean(f));
