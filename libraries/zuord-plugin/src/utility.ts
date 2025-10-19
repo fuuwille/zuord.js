@@ -51,7 +51,7 @@ export const isTSFile = (fileName: string) => {
 }
 
 export const isTZFile = (fileName: string) => {
-    return isTZSFile(fileName) || isTZVFile(fileName);
+    return isTZSFile(fileName) || isTZUFile(fileName) || isTZVFile(fileName);
 }
 
 export const isTZSFile = (fileName: string) => {
