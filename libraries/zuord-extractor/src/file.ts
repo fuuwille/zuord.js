@@ -56,12 +56,12 @@ export const getType = (mode : FileExtension) : FileType | undefined => {
     }
 }
 
-export const getExtension = (type: FileType, setType: ModuleBundleType) : FileExtension | undefined => {
+export const getExtension = (type: FileType, bundle: ModuleBundleType) : FileExtension | undefined => {
     switch(type) {
         case FileType.Schema:
-            return setType == ModuleBundleType.Main ? FileExtension.TS : FileExtension.TZS;
+            return bundle == ModuleBundleType.Main ? FileExtension.TS : FileExtension.TZS;
         case FileType.Variant:
-            return setType == ModuleBundleType.Main ? FileExtension.TZU : FileExtension.TZV;
+            return bundle == ModuleBundleType.Main ? FileExtension.TZU : FileExtension.TZV;
         default:
             return undefined;
     }
