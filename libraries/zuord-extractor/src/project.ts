@@ -37,6 +37,9 @@ export class ProjectContext {
         const sourceScope = this.#scope.source;
         if(!sourceScope) return;
 
+        const distScope = this.#scope.dist;
+        if(!distScope) return;
+
         const modules = sourceScope.getAllModules();
         if(modules?.length === 0) return;
 
@@ -49,6 +52,8 @@ export class ProjectContext {
                 [FileName.TZU]: Boolean(tzu),
                 [FileName.TZV]: Boolean(tzv),
             };
+
+            const files = [ts, tzs, tzu, tzv].filter(Boolean) as ProjectFile[];
         }
     }
 }
