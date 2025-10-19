@@ -39,6 +39,8 @@ export enum FileType {
     Variant = "variant"
 }
 
+export type FileCompiledTextOptions = Record<FileName, boolean>;
+
 //
 
 export const getType = (mode : FileExtension) : FileType | undefined => {
