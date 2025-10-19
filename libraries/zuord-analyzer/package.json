@@ -36,20 +36,5 @@
     "test": "vscode-test",
     "script:zuord-plugin": "node scripts/zuord-plugin.js",
     "postinstall": "npm run script:zuord-plugin"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "@types/vscode": "^1.103.0",
-    "@typescript-eslint/eslint-plugin": "^8.39.0",
-    "@typescript-eslint/parser": "^8.39.0",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.32.0",
-    "typescript": "^5.9.2"
-  },
-  "dependencies": {
-    "zuord-extractor": "0.0.70",
-    "zuord-plugin": "^0.0.40"
   }
 }
