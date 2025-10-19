@@ -217,7 +217,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return module.getFile(fileExtension as FileExtension, shouldExists);
     }
 
-    public getModule(name: string, _shouldExists: boolean = false) : ProjectModule {
+    public getModule(name: string, _shouldExists: boolean = true) : ProjectModule {
         let module = this.#modules.find(m => m.name === name);
         if(module) return module;
 
