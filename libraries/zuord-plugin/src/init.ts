@@ -27,6 +27,7 @@ export = function (modules: { typescript: typeof ts }) {
                 const isTS = utility.isTSFile(fileName);
 
                 const checkTZS = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
+                const checkTZU = (fileName: string) => typescript.sys.fileExists(utility.getTZUPath(fileName) || '');
                 const checkTZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
 
                 if (isTZ && snapshot) {
@@ -47,7 +48,7 @@ export = function (modules: { typescript: typeof ts }) {
                 }
                 else if(isTS) {
                     const hasTZS = checkTZS(fileName);
-                    const hasTZU = utility.isTZUFile(fileName);
+                    const hasTZU = checkTZU(fileName);
                     const hasTZV = checkTZV(fileName);
                     const hasZ = hasTZS || hasTZV;
 
