@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { FileBase, FileExtension, FileName, getName } from "./file";
+import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, getName } from "./file";
 import { ModuleContext } from "./module";
 
 export class ProjectContext {
@@ -47,7 +47,7 @@ export class ProjectContext {
         for(const module of modules) {
             const { ts, tzs, tzu, tzv } = module.file;
 
-            const options = {
+            const options : FileCompiledTextOptions = {
                 [FileName.TS]: Boolean(ts),
                 [FileName.TZS]: Boolean(tzs),
                 [FileName.TZU]: Boolean(tzu),
@@ -55,6 +55,14 @@ export class ProjectContext {
             };
 
             const files = [ts, tzs, tzu, tzv].filter(Boolean) as ProjectFile[];
+
+            for(const f of files) {
+                if(!f.source) continue;
+                const text = file.compiledText(f.source, options);
+                const path = PATH.join(distScope.path, f.relativePath);
+
+                fs.writeFileSync(path, text);
+            }
         }
     }
 }
