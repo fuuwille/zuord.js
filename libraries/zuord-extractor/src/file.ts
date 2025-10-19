@@ -39,7 +39,7 @@ export enum FileType {
     Variant = "variant"
 }
 
-export type FileCompiledTextOptions = Record<FileName, boolean>;
+export type FileCompiledTextOptions = Record<"ts" | "tzs" | "tzu" | "tzv", boolean>;
 
 //
 
