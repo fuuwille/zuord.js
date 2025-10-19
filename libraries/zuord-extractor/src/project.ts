@@ -209,22 +209,6 @@ export abstract class ProjectDirectory extends ProjectEntry {
         return undefined;
     }
 
-    public getFolder(name: string, shouldExists: boolean = true) : ProjectFolder | undefined {
-        let folder = this.#folders.find(f => f.name === name);
-        if(folder) return folder;
-
-        const path = PATH.join(this.path, name);
-
-        if(shouldExists) {
-            if(!fs.existsSync(path)) return undefined;
-            if(!fs.statSync(path).isDirectory()) return undefined;
-        }
-
-        folder = new ProjectFolder(this, name);
-        this.#folders.push(folder);
-        return folder;
-    }
-
     public getModule(name: string) {
         let module = this.#modules.find(m => m.name === name);
         if(module) return module;
@@ -241,6 +225,22 @@ export abstract class ProjectDirectory extends ProjectEntry {
 
         const module = this.getModule(moduleName);
         return module.getFile(fileExtension as FileExtension, shouldExists);
+    }
+
+    public getFolder(name: string, shouldExists: boolean = true) : ProjectFolder | undefined {
+        let folder = this.#folders.find(f => f.name === name);
+        if(folder) return folder;
+
+        const path = PATH.join(this.path, name);
+
+        if(shouldExists) {
+            if(!fs.existsSync(path)) return undefined;
+            if(!fs.statSync(path).isDirectory()) return undefined;
+        }
+
+        folder = new ProjectFolder(this, name);
+        this.#folders.push(folder);
+        return folder;
     }
 
     public getLastObject(path: string) : ProjectObject | undefined {
