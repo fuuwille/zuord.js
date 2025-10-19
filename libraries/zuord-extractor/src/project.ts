@@ -30,6 +30,27 @@ export class ProjectContext {
     public get scope() : ProjectScopeRecord {
         return this.#scope;
     }
+
+    //
+
+    public compile() : void {
+        const sourceScope = this.#scope.source;
+        if(!sourceScope) return;
+
+        const modules = sourceScope.getAllModules();
+        if(modules?.length === 0) return;
+
+        for(const module of modules) {
+            const { ts, tzs, tzu, tzv } = module.file;
+
+            const options = {
+                [FileName.TS]: Boolean(ts),
+                [FileName.TZS]: Boolean(tzs),
+                [FileName.TZU]: Boolean(tzu),
+                [FileName.TZV]: Boolean(tzv),
+            };
+        }
+    }
 }
 
 export type ProjectReference = {
