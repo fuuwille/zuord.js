@@ -1,6 +1,6 @@
 {
   "name": "zuord-plugin",
-  "version": "0.0.35",
+  "version": "0.0.40",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run build",
