@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { FileExtension, FileName, getName } from "./file";
+import { FileBase, FileExtension, FileName, getName } from "./file";
 import { ModuleContext } from "./module";
 
 export class ProjectContext {
@@ -154,11 +154,15 @@ export class ProjectConfig extends ProjectEntry {
 //
 
 export class ProjectFile extends ProjectEntry {
+    #source: FileBase | undefined;
+
     public constructor(
         public readonly module: ProjectModule,
         public readonly extension: FileExtension
     ) {
         super(module.project, `${module.name}.${extension}`);
+
+        this.#source = module.context?.getFile(extension);
     }
 
     protected getPath(): string {
