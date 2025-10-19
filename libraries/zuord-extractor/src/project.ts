@@ -177,6 +177,8 @@ export class ProjectModule extends ProjectObject {
     public constructor(
         public readonly parent: ProjectDirectory, name: string) {
         super(parent.project, name);
+
+        this.#context = new ModuleContext(this.parent.path, this.name);
     }
 
     //
