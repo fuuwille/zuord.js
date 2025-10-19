@@ -1,14 +1,12 @@
 import * as vscode from "vscode";
-import explorer from "./explorer";
-import path from "path";
-import { getKind, nodeToRange } from "./utils";
 
 export class CodelensProvider implements vscode.CodeLensProvider {
 
     private diagnosticsCollection = vscode.languages.createDiagnosticCollection('customErrors');
 
     public provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
-        const codelenses: vscode.CodeLens[] = [];
+        return [];
+        /*const codelenses: vscode.CodeLens[] = [];
         this.diagnosticsCollection.set(document.uri, []);
 
         const allDiagnostics: vscode.Diagnostic[] = [];
@@ -64,7 +62,7 @@ export class CodelensProvider implements vscode.CodeLensProvider {
             this.diagnosticsCollection.set(document.uri, allDiagnostics);
         }
 
-        return codelenses;
+        return codelenses;*/
     }
 }
 
