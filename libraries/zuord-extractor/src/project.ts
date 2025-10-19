@@ -165,6 +165,14 @@ export class ProjectFile extends ProjectEntry {
         this.#source = module.context?.getFile(extension);
     }
 
+    //
+
+    public get source() : FileBase | undefined {
+        return this.#source;
+    }
+
+    //
+
     protected getPath(): string {
         return `${this.module.parent.path}/${this.name}`;
     }
