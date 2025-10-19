@@ -337,7 +337,7 @@ export abstract class ProjectDirectory extends ProjectEntry {
     }
 
     public getAllModules() : ProjectModule[] {
-        const entries = fs.readdirSync(this.path, { withFileTypes: true });
+        const entries = fs.readdirSync(this.path, { withFileTypes: true }).filter(entry => entry.isFile());
         const moduleNames = new Set<string>();
 
         for (const entry of entries) {
