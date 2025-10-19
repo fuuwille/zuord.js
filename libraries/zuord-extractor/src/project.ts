@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, getName } from "./file";
+import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, getCompiledExtension, getName } from "./file";
 import { ModuleContext } from "./module";
 
 export class ProjectContext {
@@ -61,8 +61,14 @@ export class ProjectContext {
                 const relativePath = PATH.relative(sourceScope.path, f.path);
                 const fullPath = PATH.resolve(PATH.join(distScope.path, relativePath));
 
-                fs.mkdirSync(PATH.dirname(fullPath), { recursive: true });
-                fs.writeFileSync(fullPath, text);
+                const dirPath = PATH.dirname(fullPath);
+                fs.mkdirSync(dirPath, { recursive: true });
+
+                const baseName = PATH.basename(fullPath);
+                const firstPart = baseName.split(".")[0];
+
+                const filePath = PATH.join(dirPath, `${firstPart}.${getCompiledExtension(f.extension)}`);
+                fs.writeFileSync(filePath, text);
             }
         }
     }
