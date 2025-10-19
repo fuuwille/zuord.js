@@ -7,10 +7,7 @@ export enum FileName {
     TS = "ts",
     TZS = "tzs",
     TZU = "tzu",
-    TZV = "tzv",
-    ZSchema = "zschema",
-    ZUtility = "zutility",
-    ZVariant = "zvariant"
+    TZV = "tzv"
 }
 
 export enum FileExtension {
@@ -75,16 +72,13 @@ export const getName = (extension: FileExtension) : FileName => {
         case FileExtension.TS:
             return FileName.TS;
         case FileExtension.TZS:
+        case FileExtension.ZSchema:
             return FileName.TZS;
         case FileExtension.TZU:
+        case FileExtension.ZUtility:
             return FileName.TZU;
         case FileExtension.TZV:
-            return FileName.TZV;
-        case FileExtension.ZSchema:
-            return FileName.ZSchema;
-        case FileExtension.ZUtility:
-            return FileName.ZUtility;
         case FileExtension.ZVariant:
-            return FileName.ZVariant;
+            return FileName.TZV;
     }
 }
