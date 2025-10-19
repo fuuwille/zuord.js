@@ -50,7 +50,7 @@ export = function (modules: { typescript: typeof ts }) {
                     const hasTZS = checkTZS(fileName);
                     const hasTZU = checkTZU(fileName);
                     const hasTZV = checkTZV(fileName);
-                    const hasZ = hasTZS || hasTZV;
+                    const hasZ = hasTZS || hasTZU || hasTZV;
 
                     if(hasZ && snapshot) {
                         let virtualExports = "";
