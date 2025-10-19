@@ -59,8 +59,9 @@ export class ProjectContext {
                 const text = file.compiledText(f.source, options);
 
                 const relativePath = PATH.relative(sourceScope.path, f.path);
-                const fullPath = PATH.join(distScope.path, relativePath);
+                const fullPath = PATH.resolve(PATH.join(distScope.path, relativePath));
 
+                fs.mkdirSync(PATH.dirname(fullPath), { recursive: true });
                 fs.writeFileSync(fullPath, text);
             }
         }
