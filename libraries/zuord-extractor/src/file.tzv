@@ -61,17 +61,19 @@ export const extractVariant = (dir: string, name: string, extension: FileVariant
 
 export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOptions) : string => {
     const fileName = file.source.getBaseNameWithoutExtension();
-    const rawText = file.source.getFullText();
     let fileText = "";
 
     switch(file.extension) {
         case FileExtension.TS:
             fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';`;
             fileText += `\n\nexport * as ${fileName} from './${fileName}.zvariants';`;
-
             break;
         default:
             break;
+    }
+
+    for(const member of file.members) {
+        fileText += `\n\n${member.node.getFullText()}`;
     }
 
     return fileText;
