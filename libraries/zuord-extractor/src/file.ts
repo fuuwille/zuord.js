@@ -36,4 +36,8 @@ export enum FileType {
     Variant = "variant"
 }
 
-export type FileCompiledTextOptions = Record<FileName, boolean>;
+export type FileCompiledTextOptions = {
+    exists: FileCompiledTextExists;
+};
+
+export type FileCompiledTextExists = Record<FileName, boolean>;

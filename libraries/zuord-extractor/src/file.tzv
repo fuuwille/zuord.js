@@ -61,25 +61,27 @@ export const extractVariant = (dir: string, name: string, extension: FileVariant
 
 export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOptions) : string => {
     const fileName = file.source.getBaseNameWithoutExtension();
+    const exists = options.exists;
+    
     let fileText = "";
 
     switch(file.extension) {
         case FileExtension.TS:
-            if(options.main) {
+            if(exists.main) {
                 fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';`;
             }
 
-            if(options.utility) {
+            if(exists.utility) {
                 fileText += `export * as ${fileName}Utility from './${fileName}.zutility';`;
             }
 
-            if(options.variant) {
+            if(exists.variant) {
                 fileText += `export * as ${fileName} from './${fileName}.zvariant';`;
             }
             break;
         case FileExtension.TZS:
         case FileExtension.TZV:
-            if(options.schema) {
+            if(exists.schema) {
                 fileText += `import * as ZSchema from './${fileName}.zschema';`;
             }
             break;
