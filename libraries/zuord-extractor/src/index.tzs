@@ -1,5 +1,0 @@
-export type { Content } from "./content";
-export type { Diagnostic } from "./diagnostic";
-export type { File } from "./file";
-export type { Member } from "./member";
-export type { Node } from "./node";
