@@ -1,7 +1,7 @@
 import * as regex from "./~regex";
 import PATH from "path";
 import fs from "fs";
-import { file, FileBase, FileCompiledTextOptions, FileExtension, FileName, fileUtility } from "./file";
+import { file, FileBase, FileCompiledTextExists, FileExtension, FileName, fileUtility } from "./file";
 import { ModuleContext } from "./module";
 
 export class ProjectContext {
@@ -45,12 +45,14 @@ export class ProjectContext {
         for(const module of modules) {
             const { main: mainFile, schema: schemaFile, utility: utilityFile, variant: variantFile } = module.file;
 
-            const options : FileCompiledTextOptions = {
+            const exists : FileCompiledTextExists = {
                 [FileName.Main]: Boolean(mainFile),
                 [FileName.Schema]: Boolean(schemaFile),
                 [FileName.Utility]: Boolean(utilityFile),
                 [FileName.Variant]: Boolean(variantFile),
             };
+
+            const options = { exists };
 
             const files = [mainFile, schemaFile, utilityFile, variantFile].filter(Boolean) as ProjectFile[];
 
