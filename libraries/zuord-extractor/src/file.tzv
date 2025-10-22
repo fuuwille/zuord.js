@@ -86,7 +86,7 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
     }
 
     for(const member of file.members) {
-        fileText += `\n\n${member.node.getFullText()}`;
+        fileText += `${member.node.getFullText()}`;
     }
 
     return fileText;
