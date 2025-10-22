@@ -16,7 +16,7 @@ export enum FileExtension {
     TZU = "tzu",
     TZV = "tzv",
     ZSchema = "zschema.ts",    
-    ZUtility = "zutils.ts",
+    ZUtility = "zutility.ts",
     ZVariant = "zvariant.ts"
 }
 
