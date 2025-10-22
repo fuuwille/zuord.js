@@ -65,21 +65,21 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
 
     switch(file.extension) {
         case FileExtension.TS:
-            if(options.tzs) {
+            if(options.main) {
                 fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';`;
             }
 
-            if(options.tzu) {
+            if(options.utility) {
                 fileText += `export * as ${fileName}Utility from './${fileName}.zutility';`;
             }
 
-            if(options.tzv) {
+            if(options.variant) {
                 fileText += `export * as ${fileName} from './${fileName}.zvariant';`;
             }
             break;
         case FileExtension.TZS:
         case FileExtension.TZV:
-            if(options.tzs) {
+            if(options.schema) {
                 fileText += `import * as ZSchema from './${fileName}.zschema';`;
             }
             break;

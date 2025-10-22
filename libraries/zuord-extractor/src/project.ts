@@ -43,16 +43,16 @@ export class ProjectContext {
         if(modules?.length === 0) return;
 
         for(const module of modules) {
-            const { ts, tzs, tzu, tzv } = module.file;
+            const { main: mainFile, schema: schemaFile, utility: utilityFile, variant: variantFile } = module.file;
 
             const options : FileCompiledTextOptions = {
-                [FileName.TS]: Boolean(ts),
-                [FileName.TZS]: Boolean(tzs),
-                [FileName.TZU]: Boolean(tzu),
-                [FileName.TZV]: Boolean(tzv),
+                [FileName.Main]: Boolean(mainFile),
+                [FileName.Schema]: Boolean(schemaFile),
+                [FileName.Utility]: Boolean(utilityFile),
+                [FileName.Variant]: Boolean(variantFile),
             };
 
-            const files = [ts, tzs, tzu, tzv].filter(Boolean) as ProjectFile[];
+            const files = [mainFile, schemaFile, utilityFile, variantFile].filter(Boolean) as ProjectFile[];
 
             for(const f of files) {
                 if(!f.source) continue;

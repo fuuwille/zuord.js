@@ -44,15 +44,15 @@ export const getCompiledExtension = (name: FileExtension) : FileExtension | unde
 export const getName = (extension: FileExtension) : FileName => {
     switch(extension) {
         case FileExtension.TS:
-            return FileName.TS;
+            return FileName.Main;
         case FileExtension.TZS:
         case FileExtension.ZSchema:
-            return FileName.TZS;
+            return FileName.Schema;
         case FileExtension.TZU:
         case FileExtension.ZUtility:
-            return FileName.TZU;
+            return FileName.Utility;
         case FileExtension.TZV:
         case FileExtension.ZVariant:
-            return FileName.TZV;
+            return FileName.Variant;
     }
 }
