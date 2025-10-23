@@ -6,98 +6,98 @@ import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectMo
 const projects: Map<string, ProjectContext > = new Map();
 
 export const reference = (path: string): ProjectReference | undefined => {
-        if (!regex.path.exec(path)) return undefined;
+    if (!regex.path.exec(path)) return undefined;
 
-        const segments = path.split("/").filter(Boolean);
+    const segments = path.split("/").filter(Boolean);
 
-        let lookingPath = "/";
-        let projectPath: string | undefined = undefined;
+    let lookingPath = "/";
+    let projectPath: string | undefined = undefined;
 
-        let slugs: string[] = [];
+    let slugs: string[] = [];
 
-        for (const segment of segments) {
-            lookingPath = PATH.join(lookingPath, segment);
+    for (const segment of segments) {
+        lookingPath = PATH.join(lookingPath, segment);
 
-            if(projectPath) {
-                slugs.push(segment);
-            }
-
-            if (FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
-                projectPath = lookingPath;
-                slugs = [];
-            }
+        if(projectPath) {
+            slugs.push(segment);
         }
 
-        if (!projectPath) return undefined;
-
-        let context;
-
-        context = projects.get(projectPath);
-
-        if (!context) {
-            context = new ProjectContext(projectPath);
-            projects.set(projectPath, context);
-        }
-
-        let scopeRef: ProjectScope | undefined;
-        const scopeList = [context.scope.source, context.scope.dist].filter(Boolean) as ProjectScope[];
-
-        for (const scope of scopeList) {
-            const index = scopeIndex(scope);
-
-            if (index > 0) {
-                scopeRef = scope;
-                slugs = slugs.slice(index);
-                break;
-            }
-        }
-
-        function scopeIndex(scope: ProjectScope) {
-            const scopeSlugs = scope.name.split("/").filter(Boolean);
-
-            for (let i = 0; i < scopeSlugs.length; i++) {
-                if (slugs[i] !== scopeSlugs[i]) return 0;
-            }
-
-            return scopeSlugs.length;
-        }
-
-        if (!scopeRef) return {
-            context: context
-        };
-
-        const objects = scopeRef.getObjectChainBySlugs(slugs);
-        const lastObject = objects.pop();
-
-        if(!lastObject) return {
-            context: context,
-            scope: scopeRef
-        };
-
-        if(lastObject instanceof ProjectFolder) {
-            return {
-                context: context,
-                scope: scopeRef,
-                folders: [...(objects as ProjectFolder[]), lastObject],
-            }
-        }
-
-        if(lastObject instanceof ProjectModule) {
-            return {
-                context: context,
-                scope: scopeRef,
-                folders: [...(objects as ProjectFolder[])],
-                module: lastObject
-            }
-        }
-        
-        if(lastObject instanceof ProjectFile) {
-            return {
-                context,
-                scope: scopeRef,
-                folders: objects as ProjectFolder[],
-                module: lastObject.module,
-                file: lastObject
-            }
+        if (FS.existsSync(PATH.join(lookingPath, "zuord.json"))) {
+            projectPath = lookingPath;
+            slugs = [];
         }
     }
+
+    if (!projectPath) return undefined;
+
+    let context;
+
+    context = projects.get(projectPath);
+
+    if (!context) {
+        context = new ProjectContext(projectPath);
+        projects.set(projectPath, context);
+    }
+
+    let scopeRef: ProjectScope | undefined;
+    const scopeList = [context.scope.source, context.scope.dist].filter(Boolean) as ProjectScope[];
+
+    for (const scope of scopeList) {
+        const index = scopeIndex(scope);
+
+        if (index > 0) {
+            scopeRef = scope;
+            slugs = slugs.slice(index);
+            break;
+        }
+    }
+
+    function scopeIndex(scope: ProjectScope) {
+        const scopeSlugs = scope.name.split("/").filter(Boolean);
+
+        for (let i = 0; i < scopeSlugs.length; i++) {
+            if (slugs[i] !== scopeSlugs[i]) return 0;
+        }
+
+        return scopeSlugs.length;
+    }
+
+    if (!scopeRef) return {
+        context: context
+    };
+
+    const objects = scopeRef.getObjectChainBySlugs(slugs);
+    const lastObject = objects.pop();
+
+    if(!lastObject) return {
+        context: context,
+        scope: scopeRef
+    };
+
+    if(lastObject instanceof ProjectFolder) {
+        return {
+            context: context,
+            scope: scopeRef,
+            folders: [...(objects as ProjectFolder[]), lastObject],
+        }
+    }
+
+    if(lastObject instanceof ProjectModule) {
+        return {
+            context: context,
+            scope: scopeRef,
+            folders: [...(objects as ProjectFolder[])],
+            module: lastObject
+        }
+    }
+    
+    if(lastObject instanceof ProjectFile) {
+        return {
+            context,
+            scope: scopeRef,
+            folders: objects as ProjectFolder[],
+            module: lastObject.module,
+            file: lastObject
+        }
+    }
+}
