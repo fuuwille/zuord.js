@@ -10,16 +10,6 @@ export enum FileName {
     Variant = "variant"
 }
 
-export enum FileExtension {
-    TS = "ts",
-    TZS = "tzs",
-    TZU = "tzu",
-    TZV = "tzv",
-    ZSchema = "zschema.ts",    
-    ZUtility = "zutility.ts",
-    ZVariant = "zvariant.ts"
-}
-
 export enum FileSourceExtension {
     TS = "ts",
     TZS = "tzs",
@@ -34,16 +24,27 @@ export enum FileCompiledExtension {
     TZV = "zvariant.ts"
 }
 
+export enum FileExtension {
+    TS = FileSourceExtension.TS,
+    TZS = FileSourceExtension.TZS,
+    TZU = FileSourceExtension.TZU,
+    TZV = FileSourceExtension.TZV,
+    ZSchema = FileCompiledExtension.TZS,
+    ZUtility = FileCompiledExtension.TZU,
+    ZVariant = FileCompiledExtension.TZV
+}
+
+
 export type FileSchemaExtension =
     | FileExtension.TS
     | FileExtension.TZS
-    | FileCompiledExtension.TZS
+    | FileExtension.ZSchema
 
 export type FileVariantExtension = 
     | FileExtension.TZU
     | FileExtension.TZV
-    | FileCompiledExtension.TZU
-    | FileCompiledExtension.TZV
+    | FileExtension.ZUtility
+    | FileExtension.ZVariant
 
 export enum FileType {
     Schema = "schema",
