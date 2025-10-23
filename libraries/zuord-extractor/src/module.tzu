@@ -1,0 +1,5 @@
+import { ModuleContext } from "./module";
+
+export const getMainExportStr = (context: ModuleContext) : string => {
+    return "";
+}
