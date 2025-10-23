@@ -82,7 +82,7 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
         case FileExtension.TZS:
         case FileExtension.TZV:
             if(exists.schema) {
-                fileText += `import * as ZSchema from './${fileName}.zschema';`;
+                fileText += `import * as ZSchema from './${fileName}.zschema';\n`;
             }
             break;
         default:
