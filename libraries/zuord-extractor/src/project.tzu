@@ -63,20 +63,20 @@ export const reference = (path: string): ProjectReference | undefined => {
         }
 
         if (!scopeRef) return {
-            project: context
+            context: context
         };
 
         const objects = scopeRef.getObjectChainBySlugs(slugs);
         const lastObject = objects.pop();
 
         if(!lastObject) return {
-            project: context,
+            context: context,
             scope: scopeRef
         };
 
         if(lastObject instanceof ProjectFolder) {
             return {
-                project: context,
+                context: context,
                 scope: scopeRef,
                 folders: [...(objects as ProjectFolder[]), lastObject],
             }
@@ -84,7 +84,7 @@ export const reference = (path: string): ProjectReference | undefined => {
 
         if(lastObject instanceof ProjectModule) {
             return {
-                project: context,
+                context: context,
                 scope: scopeRef,
                 folders: [...(objects as ProjectFolder[])],
                 module: lastObject
@@ -93,7 +93,7 @@ export const reference = (path: string): ProjectReference | undefined => {
         
         if(lastObject instanceof ProjectFile) {
             return {
-                project: context,
+                context,
                 scope: scopeRef,
                 folders: objects as ProjectFolder[],
                 module: lastObject.module,

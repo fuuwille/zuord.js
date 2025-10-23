@@ -77,7 +77,7 @@ export class ProjectContext {
 }
 
 export type ProjectReference = {
-    project: ProjectContext;
+    context: ProjectContext;
     scope?: ProjectScope;
     folders?: ProjectFolder[];
     module?: ProjectModule;
