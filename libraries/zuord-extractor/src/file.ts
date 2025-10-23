@@ -34,7 +34,6 @@ export enum FileCompiledExtension {
     TZV = FileExtension.ZVariant
 }
 
-
 export type FileSchemaLikeExtension =
     | FileExtension.TS
     | FileExtension.TZS
