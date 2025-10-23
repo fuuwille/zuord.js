@@ -20,6 +20,13 @@ export enum FileExtension {
     ZVariant = "zvariant.ts"
 }
 
+export enum FileSourceExtension {
+    TS = "ts",
+    TZS = "tzs",
+    TZU = "tzu",
+    TZV = "tzv"
+}
+
 export enum FileCompiledExtension {
     TS = "ts",
     TZS = "zschema.ts",
