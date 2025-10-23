@@ -78,10 +78,6 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
             if(exists.utility) {
                 fileText += `export * as ${fileName}Utility from './${fileName}.zutility';\n`;
             }
-
-            if(fileText.length > 0) {
-                fileText += `\n`;
-            }
             break;
         case FileExtension.TZS:
         case FileExtension.TZV:
@@ -91,6 +87,10 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
             break;
         default:
             break;
+    }
+
+    if(fileText.length > 0) {
+        fileText += `\n`;
     }
 
     for(const m of file.members) {
