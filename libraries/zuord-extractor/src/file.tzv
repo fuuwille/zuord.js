@@ -71,12 +71,12 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
                 fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';\n`;
             }
 
-            if(exists.utility) {
-                fileText += `export * as ${fileName}Utility from './${fileName}.zutility';\n`;
-            }
-
             if(exists.variant) {
                 fileText += `export * as ${fileName} from './${fileName}.zvariant';\n`;
+            }
+
+            if(exists.utility) {
+                fileText += `export * as ${fileName}Utility from './${fileName}.zutility';\n`;
             }
 
             if(fileText.length > 0) {
