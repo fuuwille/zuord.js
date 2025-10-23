@@ -4,10 +4,10 @@ import { ModuleBundleType } from "./module";
 export { default as FileBase } from "./file.tzs";
 
 export enum FileName {
-    Main = "main",
-    Schema = "schema",
-    Utility = "utility",
-    Variant = "variant"
+    TS = "main",
+    TZS = "schema",
+    TZU = "utility",
+    TZV = "variant"
 }
 
 export enum FileExtension {

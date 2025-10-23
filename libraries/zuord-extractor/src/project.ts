@@ -46,10 +46,10 @@ export class ProjectContext {
             const { main: mainFile, schema: schemaFile, utility: utilityFile, variant: variantFile } = module.file;
 
             const exists : FileCompiledTextExists = {
-                [FileName.Main]: Boolean(mainFile),
-                [FileName.Schema]: Boolean(schemaFile),
-                [FileName.Utility]: Boolean(utilityFile),
-                [FileName.Variant]: Boolean(variantFile),
+                [FileName.TS]: Boolean(mainFile),
+                [FileName.TZS]: Boolean(schemaFile),
+                [FileName.TZU]: Boolean(utilityFile),
+                [FileName.TZV]: Boolean(variantFile),
             };
 
             const options = { exists };
