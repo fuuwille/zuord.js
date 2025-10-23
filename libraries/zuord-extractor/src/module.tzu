@@ -1,5 +1,5 @@
 import { ModuleContext } from "./module";
 
-export const getMainExportStr = (context: ModuleContext) : string => {
+export const getMainExportsText = (context: ModuleContext) : string => {
     return "";
 }
