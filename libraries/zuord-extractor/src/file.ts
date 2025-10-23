@@ -35,12 +35,12 @@ export enum FileExtension {
 }
 
 
-export type FileSchemaExtension =
+export type FileSchemaLikeExtension =
     | FileExtension.TS
     | FileExtension.TZS
     | FileExtension.ZSchema
 
-export type FileVariantExtension = 
+export type FileVariantLikeExtension = 
     | FileExtension.TZU
     | FileExtension.TZV
     | FileExtension.ZUtility

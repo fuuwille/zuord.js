@@ -1,4 +1,4 @@
-import { file, File, FileBase, FileExtension, FileSchemaExtension, FileType, FileVariantExtension, fileUtility } from "./file";
+import { file, File, FileBase, FileExtension, FileSchemaLikeExtension, FileType, FileVariantLikeExtension, fileUtility } from "./file";
 import { content, Content } from "./content";
 import { member } from "./member";
 import { diagnostic } from "./diagnostic";
@@ -60,8 +60,8 @@ export class ModuleBundle {
         this.#type = type;
 
         const $file : ModuleFileRecord = this.#file = {
-            schema: file.extractSchema(context.location, context.name, fileUtility.getExtension(FileType.Schema, type) as FileSchemaExtension) ?? null,
-            variant: file.extractVariant(context.location, context.name, fileUtility.getExtension(FileType.Variant, type) as FileVariantExtension) ?? null
+            schema: file.extractSchema(context.location, context.name, fileUtility.getExtension(FileType.Schema, type) as FileSchemaLikeExtension) ?? null,
+            variant: file.extractVariant(context.location, context.name, fileUtility.getExtension(FileType.Variant, type) as FileVariantLikeExtension) ?? null
         };
         const $content : ModuleContentRecord = this.#content = {
             schemas: [],
