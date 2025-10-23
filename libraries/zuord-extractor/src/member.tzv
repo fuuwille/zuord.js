@@ -1,6 +1,6 @@
 import { BindingName, Node, TypeNode } from "ts-morph";
 import { node } from "./node";
-import { MemberType } from "./member";
+import { MemberType, memberUtility } from "./member";
 
 export const isUnknown = (member: ZSchema.Base): member is ZSchema.Unknown => {
     return member.type === MemberType.Unknown;
@@ -126,7 +126,7 @@ export const create = <TMember extends ZSchema.Base>(
 
     const member = {
         node,
-        type: getType(node)
+        type: memberUtility.getType(node)
     } as TMember;
 
     if(isVariable(member)) {
@@ -135,50 +135,6 @@ export const create = <TMember extends ZSchema.Base>(
 
     return member;
 }
-
-export const getType = (target: Node): MemberType => {
-    if (node.isImport(target)) {
-        return MemberType.Import;
-    }
-
-    if (node.isExport(target)) {
-        return MemberType.Export;
-    }
-
-    if (node.isExportDefault(target)) {
-        return MemberType.ExportDefault;
-    }
-
-    if (node.isType(target)) {
-        return MemberType.Type;
-    }
-
-    if (node.isInterface(target)) {
-        return MemberType.Interface;
-    }
-
-    if (node.isVariable(target)) {
-        return MemberType.Variable;
-    }
-
-    if (node.isValue(target)) {
-        return MemberType.Value;
-    }
-
-    if (node.isFunction(target)) {
-        return MemberType.Function;
-    }
-
-    if (node.isArrowFunction(target)) {
-        return MemberType.ArrowFunction;
-    }
-
-    if (node.isFunctionExpression(target)) {
-        return MemberType.FunctionExpression;
-    }
-
-    return MemberType.Unknown;
-};
 
 export const getNameNode = (member: ZSchema.DefinitionLike): BindingName | null => {
     if("getNameNode" in member.node) {
