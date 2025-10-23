@@ -1,0 +1,47 @@
+import { Node } from "ts-morph";
+import { MemberType } from './member';
+import { node } from './node';
+
+export const getType = (target: Node): MemberType => {
+    if (node.isImport(target)) {
+        return MemberType.Import;
+    }
+
+    if (node.isExport(target)) {
+        return MemberType.Export;
+    }
+
+    if (node.isExportDefault(target)) {
+        return MemberType.ExportDefault;
+    }
+
+    if (node.isType(target)) {
+        return MemberType.Type;
+    }
+
+    if (node.isInterface(target)) {
+        return MemberType.Interface;
+    }
+
+    if (node.isVariable(target)) {
+        return MemberType.Variable;
+    }
+
+    if (node.isValue(target)) {
+        return MemberType.Value;
+    }
+
+    if (node.isFunction(target)) {
+        return MemberType.Function;
+    }
+
+    if (node.isArrowFunction(target)) {
+        return MemberType.ArrowFunction;
+    }
+
+    if (node.isFunctionExpression(target)) {
+        return MemberType.FunctionExpression;
+    }
+
+    return MemberType.Unknown;
+};
