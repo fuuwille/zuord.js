@@ -1,5 +1,5 @@
 import { SyntaxKind } from "ts-morph";
-import { FileType, FileExtension, fileUtility } from "./file";
+import { FileType } from "./file";
 import { ValueSyntaxKind, valueSyntaxKinds } from "./~valueSyntax";
 
 export const isImport = (node: ZSchema.Base): node is ZSchema.Import => {
@@ -106,8 +106,8 @@ export const isFunctionAlt = (node: ZSchema.Base): node is ZSchema.FunctionAlt =
 
 //
 
-export const isDiscardedBy = (node: ZSchema.Base, mode : FileExtension): node is ZSchema.Discarded => {
-    switch(fileUtility.getType(mode)) {
+export const isDiscardedBy = (node: ZSchema.Base, type : FileType): node is ZSchema.Discarded => {
+    switch(type) {
         case FileType.Schema:
             return isDiscardedSchema(node);
         case FileType.Variant:
