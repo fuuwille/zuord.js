@@ -21,17 +21,17 @@ export enum FileExtension {
 }
 
 export enum FileSourceExtension {
-    TS = "ts",
-    TZS = "tzs",
-    TZU = "tzu",
-    TZV = "tzv"
+    TS = FileExtension.TS,
+    TZS = FileExtension.TZS,
+    TZU = FileExtension.TZU,
+    TZV = FileExtension.TZV
 }
 
 export enum FileCompiledExtension {
-    TS = "ts",
-    TZS = "zschema.ts",
-    TZU = "zutility.ts",
-    TZV = "zvariant.ts"
+    TS = FileExtension.TS,
+    TZS = FileExtension.ZSchema,
+    TZU = FileExtension.ZUtility,
+    TZV = FileExtension.ZVariant
 }
 
 
