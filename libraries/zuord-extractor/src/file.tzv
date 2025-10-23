@@ -66,7 +66,7 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
     let fileText = "";
 
     switch(file.extension) {
-        case FileExtension.TS:
+        case FileExtension.TS:            
             if(exists.main) {
                 fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';\n`;
             }
@@ -77,6 +77,10 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
 
             if(exists.variant) {
                 fileText += `export * as ${fileName} from './${fileName}.zvariant';\n`;
+            }
+
+            if(fileText.length > 0) {
+                fileText += `\n`;
             }
             break;
         case FileExtension.TZS:
