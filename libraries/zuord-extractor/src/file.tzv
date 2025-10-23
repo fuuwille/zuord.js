@@ -23,7 +23,7 @@ export const initialize = (sourceFile: SourceFile, extension: FileExtension) : Z
         const instance = member.create(child);
 
         if(node.isKnownLike(child)) {
-            const collection = node.isDiscardedBy(child, extension)
+            const collection = node.isDiscardedBy(child, fileUtility.getType(extension)!)
                 ? file.discarded
                 : file.members;
 
