@@ -97,9 +97,9 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
         let text = m.node.getFullText();
 
         if(member.isESMLike(m)) {
-            text = text.replace(".tzs'", ".zschema'");
-            text = text.replace(".tzu'", ".zutility'");
-            text = text.replace(".tzv'", ".zvariant'");
+            text = text.replace(".tzs", ".zschema");
+            text = text.replace(".tzu", ".zutility");
+            text = text.replace(".tzv", ".zvariant");
         }
 
         fileText += `${text}`;
