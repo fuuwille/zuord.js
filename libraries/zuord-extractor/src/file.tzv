@@ -67,7 +67,7 @@ export const compiledText = (file: ZSchema.Base, options: FileCompiledTextOption
 
     switch(file.extension) {
         case FileExtension.TS:            
-            if(exists.main) {
+            if(exists.schema) {
                 fileText += `export * as ${fileName[0].toUpperCase() + fileName.slice(1)} from './${fileName}.zschema';\n`;
             }
 
