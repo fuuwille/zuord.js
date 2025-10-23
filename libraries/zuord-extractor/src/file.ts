@@ -30,13 +30,13 @@ export enum FileCompiledExtension {
 export type FileSchemaExtension =
     | FileExtension.TS
     | FileExtension.TZS
-    | FileExtension.ZSchema
+    | FileCompiledExtension.TZS
 
 export type FileVariantExtension = 
     | FileExtension.TZU
     | FileExtension.TZV
-    | FileExtension.ZUtility
-    | FileExtension.ZVariant
+    | FileCompiledExtension.TZU
+    | FileCompiledExtension.TZV
 
 export enum FileType {
     Schema = "schema",
