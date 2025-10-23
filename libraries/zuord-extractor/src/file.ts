@@ -1,6 +1,3 @@
-// @zuord-scope
-import { ModuleBundleType } from "./module";
-
 export { default as FileBase } from "./file.tzs";
 
 export enum FileName {
