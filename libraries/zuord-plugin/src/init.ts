@@ -33,11 +33,11 @@ export = function (modules: { typescript: typeof ts }) {
                 if (isTZ && snapshot) {
                     let virtualImports = "";
 
-                    if(isTZS || checkTZS(fileName)) {
+                    if(isTZS || (isTZV && checkTZS(fileName))) {
                         virtualImports += `\nimport * as ZSchema from './${baseName}.tzs';`;
                     }
 
-                    if(isTZV || checkTZV(fileName)) {
+                    if(isTZV || (isTZS && checkTZV(fileName))) {
                         virtualImports += `\nimport * as zvariants from './${baseName}.tzv';`;
                     }
                     
