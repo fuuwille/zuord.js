@@ -84,7 +84,7 @@ export type ProjectReference = {
     file?: ProjectFile;
 }
 
-export type ProjectRecord = Map<string, ProjectContext>;
+export type ProjectStore = Map<string, ProjectContext>;
 
 //
 
