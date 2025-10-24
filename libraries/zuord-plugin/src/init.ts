@@ -2,7 +2,6 @@ import path from "path";
 import * as caseAnything from "case-anything";
 import * as utility from "./utility";
 import type ts from "typescript";
-import { moduleUtility, projectUtility } from "zuord-extractor";
 
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
@@ -21,10 +20,10 @@ export = function (modules: { typescript: typeof ts }) {
                 const snapshot = typescript.sys.fileExists(fileName) ? origin?.(fileName) : undefined;
                 const baseName = utility.getBaseName(fileName) || '';
 
-                const reference = projectUtility.reference(fileName);
+                /*const reference = projectUtility.reference(fileName);
                 if(!(reference && "file" in reference)) {
                     return snapshot;
-                }
+                }*/
 
                 const isTZS = utility.isTZSFile(fileName);
                 const isTZU = utility.isTZUFile(fileName);
@@ -40,9 +39,9 @@ export = function (modules: { typescript: typeof ts }) {
                 if (isTZ && snapshot) {
                     let virtualImports = "";
 
-                    if(isTS || (isTZU && checkTS(fileName))) {
+                    /*if(isTS || (isTZU && checkTS(fileName))) {
                         virtualImports += `\n${moduleUtility.getSchemaExportText(reference.module.context!.bundle.main)}`;
-                    }
+                    }*/
 
                     if(isTZS || (isTZV && checkTZS(fileName))) {
                         virtualImports += `\nimport * as ZSchema from './${baseName}.tzs';`;
