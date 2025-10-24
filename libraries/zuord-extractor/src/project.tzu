@@ -8,10 +8,10 @@ export const globalStore: ProjectStore = new Map();
 //
 
 export const reference = (path: string, store: ProjectStore = globalStore): ProjectReference | undefined => {
-    if (!regex.path.exec(path)) return undefined;
-
     const _store = store;
     if (_store === undefined) return undefined;
+
+    path = PATH.resolve(path);
 
     const segments = path.split("/").filter(Boolean);
 
