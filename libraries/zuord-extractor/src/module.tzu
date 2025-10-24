@@ -1,9 +1,22 @@
-import { ModuleBundle } from './module';
+import { ModuleBundle, ModuleBundleType } from './module';
 
 export const getSchemaExportText = (bundle: ModuleBundle): string => {
     const names = bundle.content.schemas
         .map(schema => schema.name)
         .filter(Boolean);
 
-    return `export { ${names.join(", ")} }`;
+    const moduleName = bundle.context.name;
+
+    let moduleFullname;
+
+    switch(bundle.type) {
+        case ModuleBundleType.Main:
+            moduleFullname = moduleName;
+            break;
+        case ModuleBundleType.Nest:
+            moduleFullname = `${moduleName}.tzs`;
+            break;
+    }
+
+    return `export { ${names.join(", ")} } from "${moduleFullname}";`;
 }
