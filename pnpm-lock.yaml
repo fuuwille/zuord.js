@@ -83,6 +83,10 @@ importers:
         version: 14.0.0
 
   libraries/zuord-analyzer:
+    dependencies:
+      zuord-plugin:
+        specifier: ^0.0.47
+        version: 0.0.47
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.10
@@ -114,9 +118,6 @@ importers:
       zuord-extractor:
         specifier: 0.0.70
         version: 0.0.70
-      zuord-plugin:
-        specifier: ^0.0.47
-        version: 0.0.47
 
   libraries/zuord-extractor:
     dependencies:
