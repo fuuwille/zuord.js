@@ -76,13 +76,12 @@ export class ProjectContext {
     }
 }
 
-export type ProjectReference = {
-    context: ProjectContext;
-    scope?: ProjectScope;
-    folders?: ProjectFolder[];
-    module?: ProjectModule;
-    file?: ProjectFile;
-}
+export type ProjectReference = 
+    | { context: ProjectContext }
+    | { context: ProjectContext; scope: ProjectScope }
+    | { context: ProjectContext; scope: ProjectScope; folders: ProjectFolder[] }
+    | { context: ProjectContext; scope: ProjectScope; folders: ProjectFolder[]; module: ProjectModule }
+    | { context: ProjectContext; scope: ProjectScope; folders: ProjectFolder[]; module: ProjectModule; file: ProjectFile };
 
 export type ProjectStore = Map<string, ProjectContext>;
 
