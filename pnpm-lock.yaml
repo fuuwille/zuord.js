@@ -137,16 +137,6 @@ importers:
         specifier: 0.0.74
         version: 0.0.74
 
-  libraries/zuord-stash:
-    dependencies:
-      zuord-extractor:
-        specifier: ^0.0.52
-        version: 0.0.52
-    devDependencies:
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
   packages/produce:
     dependencies:
       '@zuord/trait':
@@ -6687,9 +6677,6 @@ packages:
   yocto-queue@1.2.1:
     resolution: {integrity: sha512-AyeEbWOu/TAXdxlV9wmGcR0+yh2j3vYPGOECcIj2S7MkrLyC7ne+oye2BKTItt0ii2PHk4cDy+95+LshzbXnGg==}
     engines: {node: '>=12.20'}
-
-  zuord-extractor@0.0.52:
-    resolution: {integrity: sha512-TUOG4DT0KvcmOo4FOxCA8BI/IXygvK/u44QHCeuAI63v34OrpLgiVOg0fMAHAE8kIEEvHtmkId/CqHjO7lf0Bw==}
 
   zuord-extractor@0.0.70:
     resolution: {integrity: sha512-qvf1h9qtQCT1DOFSfVukj0k6zLFFwwHzJ7xO3/zCIwEdF8owNmVeVb4qseh/Vd96gNZiUmS6XievXP/0/U8x8Q==}
@@ -14729,10 +14716,6 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.2.1: {}
-
-  zuord-extractor@0.0.52:
-    dependencies:
-      ts-morph: 26.0.0
 
   zuord-extractor@0.0.70:
     dependencies:
