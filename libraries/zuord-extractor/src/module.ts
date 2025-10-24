@@ -2,6 +2,7 @@ import { file, File, FileBase, FileExtension, FileSchemaLikeExtension, FileType,
 import { content, Content } from "./content";
 import { member } from "./member";
 import { diagnostic } from "./diagnostic";
+import { getSchemaExportText } from "./module.tzu";
 
 export class ModuleContext {
     #location: string; #name: string;
@@ -54,6 +55,8 @@ export class ModuleBundle {
     #type: ModuleBundleType;
     #file: ModuleFileRecord;
     #content: ModuleContentRecord;
+
+    #schemaExport: string | undefined;
 
     constructor(context: ModuleContext, type: ModuleBundleType) {
         this.#context = context;
@@ -136,6 +139,16 @@ export class ModuleBundle {
 
     public get content() : ModuleContentRecord {
         return this.#content;
+    }
+
+    //
+
+    public get schemaExportText() : string {
+        if(this.#schemaExport === undefined) {
+            this.#schemaExport = getSchemaExportText(this);
+        }
+
+        return this.#schemaExport;
     }
 }
 
