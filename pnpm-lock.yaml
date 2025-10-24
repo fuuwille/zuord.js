@@ -115,8 +115,8 @@ importers:
         specifier: 0.0.70
         version: 0.0.70
       zuord-plugin:
-        specifier: ^0.0.46
-        version: 0.0.46
+        specifier: ^0.0.47
+        version: 0.0.47
 
   libraries/zuord-extractor:
     dependencies:
@@ -6696,8 +6696,8 @@ packages:
   zuord-extractor@0.0.74:
     resolution: {integrity: sha512-RougyMiAZqWENWGx8BVsb5kjAr8BdQxAjBFQnLIKRFniM8kFKf7kAwDULrN1vjdi/YYU56hjoM3YJVkuhI4UOg==}
 
-  zuord-plugin@0.0.46:
-    resolution: {integrity: sha512-SsQkeFVlerbdYpkoP0iq9b13hMsY6bfDJvyY7pWONJzqXsAsbXlQkTh91SjUSDeyaZG1QRd0IU1wMGYRiHD+vA==}
+  zuord-plugin@0.0.47:
+    resolution: {integrity: sha512-oa7S28LnlYknF9Hcmn17aBc4MCfREOxy9rNCZg9Do3w9pT2gxwcUT8fN7SRSv9cUFFkZ8xd0dSar+D/5y1KEFg==}
 
   zuord@3.0.0-alpha.34:
     resolution: {integrity: sha512-hEoqpg7bCLHAsh/HpikJGHhXsWf0wGudohUW5WHRHhAR97iwbZQu5c1OA9VgP4rNkVTjunZWX1u2VFRxgChfWg==}
@@ -14741,7 +14741,7 @@ snapshots:
     dependencies:
       ts-morph: 26.0.0
 
-  zuord-plugin@0.0.46: {}
+  zuord-plugin@0.0.47: {}
 
   zuord@3.0.0-alpha.34: {}
 
