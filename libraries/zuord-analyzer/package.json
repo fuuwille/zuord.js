@@ -50,6 +50,6 @@
   },
   "dependencies": {
     "zuord-extractor": "0.0.70",
-    "zuord-plugin": "^0.0.44"
+    "zuord-plugin": "^0.0.45"
   }
 }
