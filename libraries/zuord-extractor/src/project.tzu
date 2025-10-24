@@ -1,6 +1,5 @@
 import PATH from "path";
 import FS from "fs";
-import * as regex from "./~regex";
 import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope, ProjectStore } from "./project";
 
 export const globalStore: ProjectStore = new Map();
