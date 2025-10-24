@@ -2,6 +2,7 @@ import path from "path";
 import * as caseAnything from "case-anything";
 import * as utility from "./utility";
 import type ts from "typescript";
+import { projectUtility } from "zuord-extractor";
 
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
@@ -19,6 +20,11 @@ export = function (modules: { typescript: typeof ts }) {
             host.getScriptSnapshot = (fileName: string) => {
                 const snapshot = typescript.sys.fileExists(fileName) ? origin?.(fileName) : undefined;
                 const baseName = utility.getBaseName(fileName) || '';
+
+                const reference = projectUtility.reference(fileName);
+                if(!(reference && "file" in reference)) {
+                    return snapshot;
+                }
 
                 const isTZS = utility.isTZSFile(fileName);
                 const isTZU = utility.isTZUFile(fileName);
@@ -74,7 +80,7 @@ export = function (modules: { typescript: typeof ts }) {
 
                         if(hasTZU) {
                             const name = caseAnything.camelCase(baseName);
-
+                            
                             virtualExports += `\nexport * as ${name}Utility from './${baseName}.tzu';`;
                         }
 
