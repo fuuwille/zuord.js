@@ -3,4 +3,4 @@
 packages:
   - "libraries/**"
   - "packages/**"
-  - "website"
+  - "websites/**"
