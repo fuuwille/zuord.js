@@ -2,7 +2,7 @@ import path from "path";
 import * as caseAnything from "case-anything";
 import * as utility from "./utility";
 import type ts from "typescript";
-import { projectUtility } from "zuord-extractor";
+import { moduleUtility, projectUtility } from "zuord-extractor";
 
 export = function (modules: { typescript: typeof ts }) {
     const typescript = modules.typescript;
@@ -41,7 +41,7 @@ export = function (modules: { typescript: typeof ts }) {
                     let virtualImports = "";
 
                     if(isTS || (isTZU && checkTS(fileName))) {
-                        virtualImports += `\nimport * as ZMain from './${baseName}';`;
+                        virtualImports += `\n${moduleUtility.getSchemaExportText(reference.module.context!.bundle.main)}`;
                     }
 
                     if(isTZS || (isTZV && checkTZS(fileName))) {
