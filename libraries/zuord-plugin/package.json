@@ -9,6 +9,6 @@
   "devDependencies": {
     "case-anything": "^3.1.2",
     "typescript": "^5.9.2",
-    "zuord-extractor": "0.0.52"
+    "zuord-extractor": "0.0.74"
   }
 }
