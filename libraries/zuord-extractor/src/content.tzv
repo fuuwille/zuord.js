@@ -1,5 +1,5 @@
 import { ContentType } from "./content";
-import { Member as MemberSpec, member as memberSpec } from "./member";
+import { Member, member } from "./member";
 import { getTypeName } from "./~type";
 
 export const isSchema = (content: ZSchema.Base): content is ZSchema.Schema => {
@@ -13,17 +13,17 @@ export const isVariant = (content: ZSchema.Base): content is ZSchema.Variant => 
 //
 
 export const isValueVariant = (content: ZSchema.Base): content is ZSchema.ValueVariant => {
-    return memberSpec.isValueVariable(content.member);
+    return member.isValueVariable(content.member);
 }
 
 export const isFunctionalVariant = (content: ZSchema.Base): content is ZSchema.FunctionalVariant => {
-    return memberSpec.isFunctionalVariant(content.member);
+    return member.isFunctionalVariant(content.member);
 }
 
 //
 
 export const createSchema = (
-    schema: MemberSpec.SchemaLike
+    schema: Member.SchemaLike
 ) : ZSchema.Schema => {
 
     return {
@@ -33,7 +33,7 @@ export const createSchema = (
 };
 
 export const createVariant = (
-    member: MemberSpec.VariantLike
+    member: Member.VariantLike
 ) : ZSchema.Variant => {
 
     return {
@@ -45,34 +45,34 @@ export const createVariant = (
 //
 
 export const getName = (content: ZSchema.Base) : string | undefined => {
-    memberSpec.updateNameNode(content.member);
+    member.updateNameNode(content.member);
     return content.member.nameNode?.getText();
 }
 
 export const getValueVariantDeclaredSchemaName = (content: ZSchema.ValueVariant) : string | undefined => {
-    memberSpec.updateDeclaredType(content.member);
+    member.updateDeclaredType(content.member);
     const typeNode = content.member.declaredType;
     return getTypeName(typeNode);
 }
 
 export const getFunctionalVariantReturnSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
-    const member = memberSpec.asFunctionLike(content.member);
-    if(member) {
-        memberSpec.updateReturnType(member);
-        const typeNode = member.returnType;
-        return getTypeName(typeNode, member.node);
+    const mfl = member.asFunctionLike(content.member);
+    if(mfl) {
+        member.updateReturnType(mfl);
+        const typeNode = mfl.returnType;
+        return getTypeName(typeNode, mfl.node);
     }
 
     return undefined;
 }
 
 export const getFunctionalVariantParamSchemaName = (content: ZSchema.FunctionalVariant) : string | undefined => {
-    const member = memberSpec.asFunctionLike(content.member);
+    const mfl = member.asFunctionLike(content.member);
 
-    if(member) {
-        memberSpec.updateParamType(member);
-        const typeNode = member.paramType;
-        return getTypeName(typeNode, member.node);
+    if(mfl) {
+        member.updateParamType(mfl);
+        const typeNode = mfl.paramType;
+        return getTypeName(typeNode, mfl.node);
     }
 }
 
