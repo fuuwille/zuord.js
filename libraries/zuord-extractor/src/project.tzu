@@ -1,9 +1,9 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./~regex";
-import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope } from "./project";
+import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope, ProjectRecord } from "./project";
 
-const projects: Map<string, ProjectContext > = new Map();
+const projects: ProjectRecord = new Map();
 
 export const reference = (path: string): ProjectReference | undefined => {
     if (!regex.path.exec(path)) return undefined;
