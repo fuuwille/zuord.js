@@ -26,12 +26,17 @@ export = function (modules: { typescript: typeof ts }) {
                 const isTZ = isTZS || isTZU || isTZV;
                 const isTS = utility.isTSFile(fileName);
 
+                const checkTS = (fileName: string) => typescript.sys.fileExists(utility.getTSPath(fileName) || '');
                 const checkTZS = (fileName: string) => typescript.sys.fileExists(utility.getTZSPath(fileName) || '');
                 const checkTZU = (fileName: string) => typescript.sys.fileExists(utility.getTZUPath(fileName) || '');
                 const checkTZV = (fileName: string) => typescript.sys.fileExists(utility.getTZVPath(fileName) || '');
 
                 if (isTZ && snapshot) {
                     let virtualImports = "";
+
+                    if(isTS || (isTZU && checkTS(fileName))) {
+                        virtualImports += `\nimport * as ZMain from './${baseName}';`;
+                    }
 
                     if(isTZS || (isTZV && checkTZS(fileName))) {
                         virtualImports += `\nimport * as ZSchema from './${baseName}.tzs';`;
