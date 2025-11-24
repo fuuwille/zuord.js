@@ -3,7 +3,9 @@ import FS from "fs";
 import * as regex from "./~regex";
 import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope, ProjectRecord } from "./project";
 
-const projects: ProjectRecord = new Map();
+export const global: ProjectRecord = new Map();
+
+//
 
 export const reference = (path: string): ProjectReference | undefined => {
     if (!regex.path.exec(path)) return undefined;
@@ -32,11 +34,11 @@ export const reference = (path: string): ProjectReference | undefined => {
 
     let context;
 
-    context = projects.get(projectPath);
+    context = global.get(projectPath);
 
     if (!context) {
         context = new ProjectContext(projectPath);
-        projects.set(projectPath, context);
+        global.set(projectPath, context);
     }
 
     let scopeRef: ProjectScope | undefined;
