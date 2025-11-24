@@ -1,5 +1,3 @@
-import { ModuleContext } from "./module";
-
-export const getMainExportsText = (context: ModuleContext) : string => {
+export const getMainExportsText = (_context: ZMain.ModuleContext) : string => {
     return "";
 }
