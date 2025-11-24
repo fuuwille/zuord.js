@@ -1,9 +1,9 @@
 import PATH from "path";
 import FS from "fs";
 import * as regex from "./~regex";
-import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope, ProjectRecord } from "./project";
+import { ProjectContext, ProjectReference, ProjectFile, ProjectFolder, ProjectModule, ProjectScope, ProjectStore } from "./project";
 
-export const globalCache: ProjectRecord = new Map();
+export const globalStore: ProjectStore = new Map();
 
 //
 
@@ -34,11 +34,11 @@ export const reference = (path: string): ProjectReference | undefined => {
 
     let context;
 
-    context = globalCache.get(projectPath);
+    context = globalStore.get(projectPath);
 
     if (!context) {
         context = new ProjectContext(projectPath);
-        globalCache.set(projectPath, context);
+        globalStore.set(projectPath, context);
     }
 
     let scopeRef: ProjectScope | undefined;
